@@ -6,15 +6,65 @@
 Welcome to DevTechs's documentation!
 ====================================
 
+.. meta::
+    :description lang=es: Tecnologías de desarrollo web y servidores.
+
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 2
+    :caption: Ansible
 
+    topics/ansible/_ansible
 
+.. toctree::
+    :maxdepth: 2
+    :caption: Git & GitHub
 
-Indices and tables
-==================
+    topics/gitgithub/_gitgithub
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+    :maxdepth: 2
+    :caption: GNU/Linux
+
+    topics/gnulinux/_gnulinux
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Markdown
+
+    topics/markdown/_markdown
+
+.. toctree::
+    :maxdepth: 2
+    :caption: OpenStack
+
+    topics/openstack/_openstack
+
+.. toctree::
+    :maxdepth: 2
+    :caption: PXE & Kickstart
+
+    topics/pxekickstart/_pxekickstart
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Python
+
+    topics/python/_python
+
+.. toctree::
+    :maxdepth: 2
+    :caption: SDN
+
+    topics/sdn/_sdn
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Virtualization
+
+    topics/virtualization/_virtualization
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Web
+
+    topics/web/_web
