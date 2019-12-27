@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lesson 4 &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Lesson 5" href="lesson5.html" />
+    <link rel="prev" title="Lesson 3" href="lesson3.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lesson1.html">Lesson 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson2.html">Lesson 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson3.html">Lesson 3</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lesson 4</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-rename-a-file-in-git">How to rename a file in Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-a-file">Deleting a file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ignoring-files-using-a-gitignore-file">Ignoring files using a .gitignore file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#global-gitexcludes-and-other-git-ignore-options">Global gitexcludes and other Git ignore options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-ignore-precedence">Git ignore precedence</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-commit-a-shortcut"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> shortcut</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lesson5.html">Lesson 5</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a> &raquo;</li>
+        
+      <li>Lesson 4</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/gitgithub/lesson4.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lesson-4">
+<h1><a class="toc-backref" href="#id1">Lesson 4</a><a class="headerlink" href="#lesson-4" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><em>Lesson 4: Files in Git: renaming, deleting, ignoring</em></p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lesson-4" id="id1">Lesson 4</a><ul>
+<li><a class="reference internal" href="#how-to-rename-a-file-in-git" id="id2">How to rename a file in Git</a></li>
+<li><a class="reference internal" href="#deleting-a-file" id="id3">Deleting a file</a></li>
+<li><a class="reference internal" href="#ignoring-files-using-a-gitignore-file" id="id4">Ignoring files using a .gitignore file</a></li>
+<li><a class="reference internal" href="#global-gitexcludes-and-other-git-ignore-options" id="id5">Global gitexcludes and other Git ignore options</a></li>
+<li><a class="reference internal" href="#git-ignore-precedence" id="id6">Git ignore precedence</a></li>
+<li><a class="reference internal" href="#git-commit-a-shortcut" id="id7"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> shortcut</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="how-to-rename-a-file-in-git">
+<h2><a class="toc-backref" href="#id2">How to rename a file in Git</a><a class="headerlink" href="#how-to-rename-a-file-in-git" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Listar los archivos del directorio <code class="docutils literal notranslate"><span class="pre">app1</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls
+about.css  about.html  contact.css  contact.html  index.css  index.html
+</pre></div>
+</div>
+<p>Para <strong>renombrar</strong> un archivo podemos hacerlo de <strong>2 formas</strong>:</p>
+<ol class="arabic simple">
+<li>Con el comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">mv</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git mv index.html home.htm
+</pre></div>
+</div>
+<p>Veamos el estado del repo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+R  index.html -&gt; home.htm
+
+$ git status
+On branch master
+Your branch is up to date with <span class="s1">&#39;origin/master&#39;</span>.
+
+Changes to be committed:
+<span class="o">(</span>use <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+
+        renamed:    index.html -&gt; home.htm
+</pre></div>
+</div>
+<p>Nos aparece una <code class="docutils literal notranslate"><span class="pre">R</span></code> en color verde (verde = «staged») en la versión resumida del comando. En la versión completa vemos que se ha renombrado el archivo. Pero todavía no se ha hecho el <code class="docutils literal notranslate"><span class="pre">commit</span></code>, solo un «stage».</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>¿Por no se hace el <code class="docutils literal notranslate"><span class="pre">commit</span></code> automáticamente?:</p>
+<p class="last">En un escenario real probablemente tendríamos otros archivos que quisiéramos formasen parte de este <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Sobre todo, archivos que dependen del nombre que estamos cambiando. Por ejemplo, otras páginas que redirigen a <code class="docutils literal notranslate"><span class="pre">home.htm</span></code>.</p>
+</div>
+<p>Ahora podremos hacer el <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;Renamed home page to follow corporate guidelines&quot;</span>
+
+<span class="o">[</span>master 57e910e<span class="o">]</span> Renamed home page to follow corporate guidelines
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+rename index.html <span class="o">=</span>&gt; home.htm <span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>La otra alternativa es no usar <code class="docutils literal notranslate"><span class="pre">git</span></code>:</li>
+</ol>
+<p>En la práctica probablemente no usaremos Git para renombrar un archivo, sino Windows Explorer, IntelliJ, u otro IDE. En este caso lo haremos con el comando <code class="docutils literal notranslate"><span class="pre">mv</span></code> de Unix.</p>
+<p>Renombrar <code class="docutils literal notranslate"><span class="pre">index.css</span></code> a <code class="docutils literal notranslate"><span class="pre">home.css</span></code> y ver el estado del repo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mv index.css home.css
+
+$ git status
+On branch master
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">1</span> commit.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+Changes not staged <span class="k">for</span> commit:
+<span class="o">(</span>use <span class="s2">&quot;git add/rm &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
+<span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+
+        deleted:    index.css
+
+Untracked files:
+<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
+
+        home.css
+
+no changes added to commit <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> and/or <span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+
+
+$ git s
+
+D index.css
+?? home.css
+</pre></div>
+</div>
+<p>Git asume que se ha eliminado el archivo <code class="docutils literal notranslate"><span class="pre">index.css</span></code> y se ha creado un nuevo archivo <code class="docutils literal notranslate"><span class="pre">home.css</span></code> que todavía no ha sido añadido al repositorio. Para arreglar esto usaremos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add -A
+</pre></div>
+</div>
+<p>En versiones de Git <code class="docutils literal notranslate"><span class="pre">2.0</span></code> o superiores también se puede usar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code></p>
+<p>Si vemos el estado del repositorio, Git habrá registrado el cambio de nombre:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch master
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">1</span> commit.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+Changes to be committed:
+<span class="o">(</span>use <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+
+        renamed:    index.css -&gt; home.css
+
+$ git s
+R  index.css -&gt; home.css
+</pre></div>
+</div>
+<p>La razón por la cual Git se ha dado cuenta de que es un cambio de nombre se debe a que Git corrió el contenido de ambos archivos en un código que los comparó y retornó un «<strong>similarity index</strong>». Retorna un decimal entre <code class="docutils literal notranslate"><span class="pre">0</span></code> y <code class="docutils literal notranslate"><span class="pre">1</span></code>:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">0</span></code> si los 2 archivos no tienen nada en común</li>
+<li><code class="docutils literal notranslate"><span class="pre">1</span></code> si son idénticos caracter por caracter.</li>
+<li>Si el <code class="docutils literal notranslate"><span class="pre">similarity</span> <span class="pre">index</span></code> excede <code class="docutils literal notranslate"><span class="pre">0.5</span></code> Git supondrá que hemos renombrado el archivo.</li>
+<li>Si el <code class="docutils literal notranslate"><span class="pre">similarity</span> <span class="pre">index</span></code> es menor a <code class="docutils literal notranslate"><span class="pre">0.5</span></code> Git supondrá que hemos eliminado un archivo y agregado otro distinto.</li>
+</ul>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p>Tener en cuenta estas consejos:</p>
+<ul class="last simple">
+<li>NO hacer cambios sustanciales al contenido del archivo en el mismo <code class="docutils literal notranslate"><span class="pre">commit</span></code> con el que renombramos el archivo.</li>
+<li>NO debemos eliminar un archivo y agregar otro archivo que son distintos pero tienen contenido en común. Git supondrá que estamos renombrando el archivo.</li>
+</ul>
+</div>
+<p>Ahora podremos hacer el <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;Renamed stylesheet for the home page&quot;</span>
+
+<span class="o">[</span>master 40afaa5<span class="o">]</span> Renamed stylesheet <span class="k">for</span> the home page
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+rename index.css <span class="o">=</span>&gt; home.css <span class="o">(</span><span class="m">100</span>%<span class="o">)</span>
+
+$ git s
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-a-file">
+<h2><a class="toc-backref" href="#id3">Deleting a file</a><a class="headerlink" href="#deleting-a-file" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Igual que para renombrar un archivo, hay 2 formas de eliminar un archivo:</p>
+<ol class="arabic simple">
+<li>Usar <code class="docutils literal notranslate"><span class="pre">git</span></code> para eliminar un archivo</li>
+<li>Eliminar el archivo y luego decírselo a Git</li>
+</ol>
+<p>A continuación el detalle de las 2 formas:</p>
+<ol class="arabic simple">
+<li>Usando Git:</li>
+</ol>
+<p>Usar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rm</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git rm contact.html
+rm <span class="s1">&#39;contact.html&#39;</span>
+</pre></div>
+</div>
+<p>El comando habrá realizado 2 acciones: el archivo se habrá eliminado</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$  ls
+about.css  about.html  contact.css  home.css  home.htm
+
+$ git s
+D  contact.html
+</pre></div>
+</div>
+<p>El estado del repositorio nos indica con una letra <code class="docutils literal notranslate"><span class="pre">D</span></code> en color verde («staged») que se ha eliminado («Deleted»).</p>
+<p>Ahora podemos hacer el <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;Deleted contact us page&quot;</span>
+<span class="o">[</span>master 4702c3a<span class="o">]</span> Deleted contact us page
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+delete mode <span class="m">100644</span> contact.html
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Eliminando un archivo con cualquier otro programa:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rm contact.css
+
+$ git s
+D contact.css
+</pre></div>
+</div>
+<p>Nos aparece una letra <code class="docutils literal notranslate"><span class="pre">D</span></code> en color rojo, indicando que la eliminación está en estado «unstaged». Haremos el mismo procedimiento que para renombrar un archivo:</p>
+<p>Usar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">-A</span></code> o <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">.</span></code> para cambiar el estado a «staged»:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add -A
+
+$ git s
+D  contact.css
+</pre></div>
+</div>
+<p>Ahora nos aparece la letra <code class="docutils literal notranslate"><span class="pre">D</span></code> en verde y podemos hacer el <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;Deleted stylesheet for contact us page&quot;</span>
+<span class="o">[</span>master f1ebec7<span class="o">]</span> Deleted stylesheet <span class="k">for</span> contact us page
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+delete mode <span class="m">100644</span> contact.css
+</pre></div>
+</div>
+</div>
+<div class="section" id="ignoring-files-using-a-gitignore-file">
+<h2><a class="toc-backref" href="#id4">Ignoring files using a .gitignore file</a><a class="headerlink" href="#ignoring-files-using-a-gitignore-file" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Podríamos querer ignorar un archivo por distintas razones. Por ejemplo, cada vez que corremos una aplicación puede generar archivos de log.</p>
+<p>Creemos un archivo que procederemos a ignorar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch test.log
+
+$ git s
+?? test.log
+</pre></div>
+</div>
+<p>Tenemos un archivo «untracked», «unstaged». Git sabe que está ahí pero no va a ser guardado en historial al hacer un <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
+<p>Podríamos dejarlo ahí, ya que, gracias al «staging area» de Git no necesitamos tener una forma especial de decirle a Git que ignore los archivos. Podríamos dejarlo ahí y nunca agregarlo a «staging area».</p>
+<p>Sin embargo, mientras el repositorio vaya creciendo en cantidad de archivos se creará una larga lista de archivos no agregados. Y cuando queramos agregar un archivo a «staging area» no podremos encontrarlo con facilidad.</p>
+<p>Podemos decirle a Git que ignore estos archivos, mediante la creación de un archivo <code class="docutils literal notranslate"><span class="pre">ignore</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi .gitignore
+
+*.log
+</pre></div>
+</div>
+<p>Con este archivo le decimos a Git que ignore todos los archivos con formato <code class="docutils literal notranslate"><span class="pre">.log</span></code>.</p>
+<p>Veamos el estado del repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+?? .gitignore
+</pre></div>
+</div>
+<p>Nuestro archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> funcionó, no nos dice que el archivo <code class="docutils literal notranslate"><span class="pre">test.log</span></code> está en estado «untracked». Es decir, está ignorando su existencia. Sin embargo, nos está diciendo que el archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> está en estado <code class="docutils literal notranslate"><span class="pre">untracked</span></code> y presuntamente debería ser agregado y luego hacerle un <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
+<p>La mayoría de configuraciones en Git son particulares a la computadora donde estamos trabajando. Pero <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> está diseñado para ser compartido. Esto es porque queremos informar a las personas que descargan nuestro código del repo que también ignoren estos archivos. No queremos que ellos hagan un <code class="docutils literal notranslate"><span class="pre">commit</span></code> de los archivos que nosotros ignoramos.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">La regla de oro para archivos que están en <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> es que si estamos en duda de agregar o no un archivo, debemos agregarlo. Si es algo que pueda afectar a parte del equipo, agregarlo a <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>.</p>
+</div>
+<p>Como cualquier otro archivo, lo agregamos y hacemos <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+$ git s
+A  .gitignore
+
+$ git commit -m <span class="s2">&quot;Added log files to .gitignore&quot;</span>
+<span class="o">[</span>master 3c8e5e3<span class="o">]</span> Added log files to .gitignore
+<span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+create mode <span class="m">100644</span> .gitignore
+</pre></div>
+</div>
+</div>
+<div class="section" id="global-gitexcludes-and-other-git-ignore-options">
+<h2><a class="toc-backref" href="#id5">Global gitexcludes and other Git ignore options</a><a class="headerlink" href="#global-gitexcludes-and-other-git-ignore-options" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hay otras formas de ignorar archivos usando Git. Una forma es usando archivos «Global excludes». Hay algunos riesgos de usar esto pero es importante usarlo en el contexto correcto.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global core.excludesfile ~/.gitignore
+</pre></div>
+</div>
+<p>La ventaja de usar un archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> global es que podemos ignorar algunos archivos en cada proyecto que trabajemos. El riesgo es que vamos a ignorar archivos en proyectos que algunos miembros del equipo no lo harán. Esto terminará haciendo que algunos miembros hagan <code class="docutils literal notranslate"><span class="pre">commits</span></code> que no deberían.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">La recomendación es usar un <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> global en archivos que sabemos que nadie en el equipo nunca va a crear.</p>
+</div>
+<p>Otros 2 puntos importantes sobre <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>:</p>
+<ul class="simple">
+<li>Podemos crear cuantos <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> queramos. Podemos poner un <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> diferente en cada directorio de nuestro proyecto. Sin embargo NO debemos hacerlo. Es una mala idea porque el usuario quiere leer todo lo que va a ser ignorado de un único archivo.</li>
+<li>Si encontramos que alguien está ignorando archivos y no sabemos por qué. Buscamos el archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> en la raíz del proyecto, o buscamos en cada subdirectorio, o en un archivo Global Exclude. Pero está ignorando un archivo que no encontramos. Esto es debido al siguiente archivo:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat .git/info/exclude
+<span class="c1"># git ls-files --others --exclude-from=.git/info/exclude</span>
+<span class="c1"># Lines that start with &#39;#&#39; are comments.</span>
+<span class="c1"># For a project mostly in C, the following would be a good set of</span>
+<span class="c1"># exclude patterns (uncomment them if you want to use them):</span>
+<span class="c1"># *.[oa]</span>
+<span class="c1"># *~</span>
+</pre></div>
+</div>
+<p>Este archivo es otro <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> local. Este archivo no se comparte con las personas cuando hacemos <code class="docutils literal notranslate"><span class="pre">push</span></code> al repositorio o cuando lo clonamos. No se usa en otros proyectos. Por tanto, si queremos ignorar archivos localmente en un proyecto y no dejar saber a nadie que estamos ignorando estos archivos podemos usar el archivo <code class="docutils literal notranslate"><span class="pre">.git/info/exclude</span></code></p>
+</div>
+<div class="section" id="git-ignore-precedence">
+<h2><a class="toc-backref" href="#id6">Git ignore precedence</a><a class="headerlink" href="#git-ignore-precedence" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Digamos que estamos en un subdirectorio del proyecto que tiene su propio archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, el directorio padre tiene otro <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> y también tenemos el <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> global.</p>
+<p>Lo primero que Git hará será correr el archivo global <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> para todos nuestros proyectos. Luego correrá el <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> del directorio raíz del proyecto. Finalmente correra las reglas <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> del subdirectorio.</p>
+<p>La forma en que Git trabaja con archivos <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> es que «la prioridad importa» («precedence matters»). Veamos el ejemplo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch special.log
+$ git s
+</pre></div>
+</div>
+<p>El archivo <code class="docutils literal notranslate"><span class="pre">special.log</span></code> es ignorado por Git. Pero qué pasa si queremos hacer un <code class="docutils literal notranslate"><span class="pre">commit</span></code> a este archivo. Tenemos que cambiar el documento <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi .gitignore
+
+*.log
+!special.log
+</pre></div>
+</div>
+<p>Con el signo de exclamación (<code class="docutils literal notranslate"><span class="pre">!</span></code>) decimos que no ignore al archivo <code class="docutils literal notranslate"><span class="pre">special.log</span></code>. Podemos pensar en el archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> como un conjunto de reglas que ponemos en donde el orden/prioridad importa. <strong>La última regla manda sobre la primera</strong>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+M .gitignore
+?? special.log
+</pre></div>
+</div>
+<p>El estado nos dice que hemos modificado el archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>. Pero ahora el archivo <code class="docutils literal notranslate"><span class="pre">special.log</span></code> es visible y puedo añadirlo y hacerle <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
+<p>Si el orden de las instrucciones fuera distinto veríamos que se ignoran todos los archivos <code class="docutils literal notranslate"><span class="pre">.log</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi .gitignore
+
+!special.log
+*.log
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+M .gitignore
+</pre></div>
+</div>
+<p>Regresemos a la anterior configuración:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi .gitignore
+
+*.log
+!special.log
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+M .gitignore
+?? special.log
+</pre></div>
+</div>
+<p>Ahora estamos listos para agregar los cambios y guardarlos en historial.</p>
+</div>
+<div class="section" id="git-commit-a-shortcut">
+<h2><a class="toc-backref" href="#id7"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> shortcut</a><a class="headerlink" href="#git-commit-a-shortcut" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Sabemos las ventajas de primero añadir un archivo y luego hacerle <code class="docutils literal notranslate"><span class="pre">commit</span></code>, pero podemos usar un atajo para hacer ambos pasos. El atajo es <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code>, esto es añadir y también hacer <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Pero este atajo viene con una advertencia. Solo funciona en archivos modificados (<code class="docutils literal notranslate"><span class="pre">M</span></code>), no en archivos «untracked».</p>
+</div>
+<p>Si tenemos un archivo que estaba en Git y lo hemos guardado, luego hicimos un cambio y queremos añadir y guardar ese cambio, podemos usar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> pero no funcionará en archivos «untracked» (<code class="docutils literal notranslate"><span class="pre">??</span></code>).</p>
+<p>En el último ejemplo teníamos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+M .gitignore
+?? special.log
+</pre></div>
+</div>
+<p>Nos conviene hacer un <code class="docutils literal notranslate"><span class="pre">commit</span></code> sobre <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> primero y luego hacer un <code class="docutils literal notranslate"><span class="pre">commit</span></code> separado sobre <code class="docutils literal notranslate"><span class="pre">special.log</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -am <span class="s2">&quot;Modified gitignore to allow special log to be committed&quot;</span>
+<span class="o">[</span>master <span class="m">1691860</span><span class="o">]</span> Modified gitignore to allow special log to be committed
+<span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+
+$ git s
+?? special.log
+</pre></div>
+</div>
+<p>Para el archivo <code class="docutils literal notranslate"><span class="pre">special.log</span></code> no hay atajos. Debemos agregarlo y luego hacer <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add special.log
+
+$ git s
+A  special.log
+
+$ git commit -m <span class="s2">&quot;Adding special log to show how log output should look&quot;</span>
+<span class="o">[</span>master c8ee367<span class="o">]</span> Adding special log to show how log output should look
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> special.log
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lesson5.html" class="btn btn-neutral float-right" title="Lesson 5" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lesson3.html" class="btn btn-neutral float-left" title="Lesson 3" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

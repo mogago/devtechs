@@ -20,6 +20,7 @@ Welcome to DevTechs's documentation!
     :caption: Git & GitHub
 
     topics/gitgithub/_gitgithub
+    topics/gitgithub/gitgithub-lessons
 
 .. toctree::
     :maxdepth: 2

@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lesson 1 &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Lesson 2" href="lesson2.html" />
+    <link rel="prev" title="Git &amp; GitHub Lessons" href="gitgithub-lessons.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lesson 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#three-levels-of-configuration">Three levels of configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-configuration-settings">Basic Configuration settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-line-endings">Configuring line endings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-aliases">Configuring aliases</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lesson2.html">Lesson 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson3.html">Lesson 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson4.html">Lesson 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson5.html">Lesson 5</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a> &raquo;</li>
+        
+      <li>Lesson 1</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/gitgithub/lesson1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lesson-1">
+<span id="leccion-1"></span><h1><a class="toc-backref" href="#id1">Lesson 1</a><a class="headerlink" href="#lesson-1" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><em>Lesson 1: Configuring Git, Three Stage thinking</em></p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lesson-1" id="id1">Lesson 1</a><ul>
+<li><a class="reference internal" href="#three-levels-of-configuration" id="id2">Three levels of configuration</a></li>
+<li><a class="reference internal" href="#basic-configuration-settings" id="id3">Basic Configuration settings</a></li>
+<li><a class="reference internal" href="#configuring-line-endings" id="id4">Configuring line endings</a></li>
+<li><a class="reference internal" href="#configuring-aliases" id="id5">Configuring aliases</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="three-levels-of-configuration">
+<h2><a class="toc-backref" href="#id2">Three levels of configuration</a><a class="headerlink" href="#three-levels-of-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hay 3 niveles de configuración en Git: Local, Global y System:</p>
+<ul class="simple">
+<li>La mayoría de las veces solo usaremos configuraciones a nivel global. <strong>Global</strong> configura cosas de todos los repositorios que usamos, logueados con nuestro usuario en nuestra PC.</li>
+<li><strong>Local</strong> solo funciona específicamente en un solo repo. Es para hacer configuraciones específicas de solo ese repositorio en el que estamos trabajando (<code class="docutils literal notranslate"><span class="pre">--local</span></code>).</li>
+<li>El tercer nivel de configuración menos usado es la opción de configuración <code class="docutils literal notranslate"><span class="pre">--system</span></code>. Es para cualquier otra persona que se loguee en nuestra computadora. Si tenemos múltiples personas logueandose en una misma computadora usando distintas cuentas de usuario, es ahí donde usaríamos una opción de configuración de nivel <strong>System</strong>.</li>
+</ul>
+</div>
+<div class="section" id="basic-configuration-settings">
+<h2><a class="toc-backref" href="#id3">Basic Configuration settings</a><a class="headerlink" href="#basic-configuration-settings" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El comando principal de configuración en Git es <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code>.</p>
+<p>Para realizar una configuración a nivel Global usamos: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span></code>. Por ejemplo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global user.name
+</pre></div>
+</div>
+<p>Este comando nos retorna el username si es que tenemos configurado alguno. Si no hay ningún username configurado no retornará nada.</p>
+<p>Con el mismo comando podemos ingresar el nombre por el cual queremos ser conocidos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global user.name <span class="s2">&quot;Nombre Apellido&quot;</span>
+
+$ git config --global user.name
+Nombre Apellido
+</pre></div>
+</div>
+<p>Podemos usar el comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code> como <em>getter</em> para obtener información o como <em>setter</em> para configurar.</p>
+<p>Podemos hacer lo mismo para el correo del usuario:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global user.email username@example.com
+
+$ git config --global user.email
+username@example.com
+</pre></div>
+</div>
+<p>Podemos usar el comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span></code> para listar las configuraciones globales:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global --list
+user.name<span class="o">=</span>Nombre Apellido
+user.email<span class="o">=</span>username@example.com
+</pre></div>
+</div>
+<p>Las configuraciones globales se guardan en un archivo <cite>~/.gitconfig</cite>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat ~/.gitconfig
+<span class="o">[</span>user<span class="o">]</span>
+        <span class="nv">name</span> <span class="o">=</span> Nombre Apellido
+        <span class="nv">email</span> <span class="o">=</span> username@example.com
+</pre></div>
+</div>
+<p>Podemos editar el archivo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi ~/.gitconfig
+</pre></div>
+</div>
+<p>Podemos listar toda la configuración global:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global --list
+user.name<span class="o">=</span>Nombre Apellido
+user.email<span class="o">=</span>newuser1@mail.com
+</pre></div>
+</div>
+<p>La siguiente configuración sirve para colorear el output de ciertos comandos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global color.ui <span class="nb">true</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Si estamos usando una versión de Git 1.8.4 o más nueva esta opción estará por defecto.</p>
+</div>
+</div>
+<div class="section" id="configuring-line-endings">
+<h2><a class="toc-backref" href="#id4">Configuring line endings</a><a class="headerlink" href="#configuring-line-endings" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Una de las configuraciones más importantes es “auto carriage return line feed”.</p>
+<p><a class="reference external" href="https://stackoverflow.com/questions/3091524/what-are-carriage-return-linefeed-and-form-feed">STACKOVERFLOW - Carriage Return _ Linefeeds _ Form Feeds</a></p>
+<p><code class="docutils literal notranslate"><span class="pre">autocrlf</span></code> - Auto Carriage Return Line Feed</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux/MAC</span>
+$ git config --global core.autocrlf input
+
+<span class="c1"># Windows</span>
+$ git config --global core.autocrlf <span class="nb">true</span>
+</pre></div>
+</div>
+<p>Cuando alguien está haciendo <code class="docutils literal notranslate"><span class="pre">commit</span></code> a un proyecto, y se ve como si hubiese cambiado todas las líneas en 2 archivos diferentes. Pero cuando vemos los archivos, el contenido parece el mismo. Lo que pudo haber pasado es que estaba usando un editor particular de Windows que agregaba caracteres escondidos: <strong>Carriage Returns</strong> y <strong>Line Feeds</strong>.</p>
+<p>Esto es negativo porque se pensará que se han cambiado líneas en las que en realidad el editor no ha cambiado el código. Y tampoco sabremos los cambios que se han hecho realmente.</p>
+<p>Por eso, es importante configurar el manejo de Auto Carriage Return Line Feed. La forma en que trabaja es que en la mayoría de sistemas <strong>Linux/MAC</strong> se tiene un Line Feed al final de cada línea y en <strong>Windows</strong> tenemos 2 caracteres escondidos: Line Feed y Carriage Return.</p>
+<p><strong>En Linux:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linux/MAC</span>
+$ git config --global core.autocrlf input
+</pre></div>
+</div>
+<p>Cuando guardemos un archivo en git o en el repositorio, se eliminará todos los Carriage Returns y solo dejará Line Feeds. Esto es porque podemos haber descargado un archivo que proviene de Windows con caracteres Carriage Returns escondidos.</p>
+<p><strong>En Windows:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Windows</span>
+$ git config --global core.autocrlf <span class="nb">true</span>
+</pre></div>
+</div>
+<p>Para cualquier archivo que pongamos en un repositorio, se extraerán los Carriage Returns. Pero cuando extraigamos archivos del repo, pondrá los Carriage Return de vuelta, para poderlos editar en editores como Notepad.</p>
+</div>
+<div class="section" id="configuring-aliases">
+<span id="aliases"></span><h2><a class="toc-backref" href="#id5">Configuring aliases</a><a class="headerlink" href="#configuring-aliases" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los alias en Git permiten crear nuestros propios comandos, especificando varias opciones, de forma que facilite y agilice el trabajo.</p>
+<ul class="simple">
+<li>Creemos nuestro primer alias:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global alias.s <span class="s2">&quot;status -s&quot;</span>
+</pre></div>
+</div>
+<p>El nombre del alias es <code class="docutils literal notranslate"><span class="pre">s</span></code>. De forma que en el futuro cuando escribamos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">s</span></code>, correrá el comando que está dentro de las comillas <code class="docutils literal notranslate"><span class="pre">&quot;status</span> <span class="pre">-s&quot;</span></code>.
+Con el parámetro <code class="docutils literal notranslate"><span class="pre">-s</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> correrá en modo silencioso.</p>
+<ul class="simple">
+<li>Creemos otro alias:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global alias.lg <span class="s2">&quot;log --oneline --all --graph --decorate&quot;</span>
+</pre></div>
+</div>
+<p>El alias llamdo <code class="docutils literal notranslate"><span class="pre">lg</span></code> correrá el comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">log</span></code> con estas opciones:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">oneline</span></code> - poner el output del historial o el log en una sola línea.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--all</span></code> - mostrar todos los branches. No solo el historial del branch donde estamos actualmente.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--graph</span></code> - queremos que se muestra en forma gráfica</li>
+<li><code class="docutils literal notranslate"><span class="pre">--decorate</span></code> - mostrar información adicional.</li>
+</ul>
+<p>—</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lesson2.html" class="btn btn-neutral float-right" title="Lesson 2" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gitgithub-lessons.html" class="btn btn-neutral float-left" title="Git &amp; GitHub Lessons" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

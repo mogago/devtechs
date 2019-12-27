@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lesson 3 &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Lesson 4" href="lesson4.html" />
+    <link rel="prev" title="Lesson 2" href="lesson2.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lesson1.html">Lesson 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson2.html">Lesson 2</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lesson 3</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-repository-on-github">Creating a repository on GitHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#uploading-your-repo-to-github">Uploading your repo to Github</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-repository-after-starting-to-code">Creating a repository after starting to code</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lesson4.html">Lesson 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson5.html">Lesson 5</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a> &raquo;</li>
+        
+      <li>Lesson 3</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/gitgithub/lesson3.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lesson-3">
+<h1><a class="toc-backref" href="#id7">Lesson 3</a><a class="headerlink" href="#lesson-3" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><em>Lesson 3: Getting Started with GitHub</em></p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lesson-3" id="id7">Lesson 3</a><ul>
+<li><a class="reference internal" href="#creating-a-repository-on-github" id="id8">Creating a repository on GitHub</a></li>
+<li><a class="reference internal" href="#uploading-your-repo-to-github" id="id9">Uploading your repo to Github</a></li>
+<li><a class="reference internal" href="#creating-a-repository-after-starting-to-code" id="id10">Creating a repository after starting to code</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="creating-a-repository-on-github">
+<h2><a class="toc-backref" href="#id8">Creating a repository on GitHub</a><a class="headerlink" href="#creating-a-repository-on-github" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Luego de haber hecho nuestros <code class="docutils literal notranslate"><span class="pre">commits</span></code> localmente necesitaremos tener un backup de nuestros archivos.</p>
+<p>Entrar a nuestra cuenta de <a class="reference external" href="https://github.com/">GitHub</a>:</p>
+<p>En la esquina superior derecha, clic en el ícono <span class="guilabel">+</span>. Elegir la opción <span class="guilabel">New repository</span>:</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/GitHub_create-new-repository1.png" src="../../_images/GitHub_create-new-repository1.png" />
+<p class="caption"><span class="caption-text">GitHub - create new repository - Paso 1</span></p>
+</div>
+<p>Normalmente pondremos el nombre al repositorio igual al que hemos estado trabajando localmente:</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/GitHub_create-new-repository2.png" src="../../_images/GitHub_create-new-repository2.png" />
+<p class="caption"><span class="caption-text">GitHub - create new repository - Paso 2</span></p>
+</div>
+<p>Mantendremos este repositorio de forma pública, permitiendo que todos puedan acceder al repositorio.</p>
+<p>Si fuéramos administradores no-técnicos y solo quisieramos crear un repositorio en GitHub que los desarrolladores puedan usar, podemos inicializar el repositorio con archivo <code class="docutils literal notranslate"><span class="pre">README</span></code>, de forma que no hagamos ninguna tarea en la línea de comandos. Este no es el caso.</p>
+<p>Finalmente, clic en el botón <span class="guilabel">Create Repository</span>:</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/GitHub_create-new-repository3.png" src="../../_images/GitHub_create-new-repository3.png" />
+<p class="caption"><span class="caption-text">GitHub - create new repository - Paso 3</span></p>
+</div>
+</div>
+<div class="section" id="uploading-your-repo-to-github">
+<h2><a class="toc-backref" href="#id9">Uploading your repo to Github</a><a class="headerlink" href="#uploading-your-repo-to-github" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Ocasionalmente tendremos que usar SSH. Primero deberemos crear llaves SSH.</p>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/Github_mode-SSH.png" src="../../_images/Github_mode-SSH.png" />
+<p class="caption"><span class="caption-text">GitHub - mode SSH</span></p>
+</div>
+<p>En esta guía usaremos HTTPS. Seleccionar este botón:</p>
+<div class="figure align-center" id="id5">
+<img alt="../../_images/Github_mode-HTTPS.png" src="../../_images/Github_mode-HTTPS.png" />
+<p class="caption"><span class="caption-text">GitHub - mode HTTPS</span></p>
+</div>
+<p>En la parte inferior nos muestran comandos para subir (<code class="docutils literal notranslate"><span class="pre">push</span></code>) un repositorio existente a GitHub. Copiar y pegar ambas líneas en el terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/mogago/app1.git
+
+$ git push -u origin master
+
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: mogago
+Password <span class="k">for</span> <span class="s1">&#39;https://mogago@github.com&#39;</span>:
+Counting objects: <span class="m">7</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">4</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">6</span>/6<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">7</span>/7<span class="o">)</span>, <span class="m">651</span> bytes <span class="p">|</span> <span class="m">651</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">7</span> <span class="o">(</span>delta <span class="m">1</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+remote: Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span class="m">1</span>/1<span class="o">)</span>, <span class="k">done</span>.
+To https://github.com/mogago/app1.git
+* <span class="o">[</span>new branch<span class="o">]</span>      master -&gt; master
+Branch <span class="s1">&#39;master&#39;</span> <span class="nb">set</span> up to track remote branch <span class="s1">&#39;master&#39;</span> from <span class="s1">&#39;origin&#39;</span>.
+</pre></div>
+</div>
+<p>Si actualizamos nuestra página en GitHub veremos que los archivos se de nuestro repositorio local han sido subidos:</p>
+<div class="figure align-center" id="id6">
+<img alt="../../_images/Github_repo_pushed.png" src="../../_images/Github_repo_pushed.png" />
+<p class="caption"><span class="caption-text">GitHub - repo pushed</span></p>
+</div>
+</div>
+<div class="section" id="creating-a-repository-after-starting-to-code">
+<h2><a class="toc-backref" href="#id10">Creating a repository after starting to code</a><a class="headerlink" href="#creating-a-repository-after-starting-to-code" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Creemos un nuevo repositorio. Primero iremos un directorio hacia arriba, comprobar que no estamos en un repositorio de Git y crear un directorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ..
+
+$ git status
+fatal: not a git repository <span class="o">(</span>or any of the parent directories<span class="o">)</span>: .git
+
+$ mkdir web2
+</pre></div>
+</div>
+<p>Esta vez haremos algo diferente. Idealmente haríamos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">init</span> <span class="pre">web2</span></code> y estaría listo. Pero generalmente la persona comenzaría a crear código:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> web2/
+$ touch index.html index.css
+</pre></div>
+</div>
+<p>En este punto intentaríamos agregar los archivos a Git. Pero no funcionará porque no hemos creado un repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+fatal: not a git repository <span class="o">(</span>or any of the parent directories<span class="o">)</span>: .git
+</pre></div>
+</div>
+<p>Lo que podemos hacer es ir al directorio que queremos inicializar y usar el comando <cite>git init</cite>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git init
+Initialized empty Git repository in /home/user/Documents/web2/.git/
+
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
+
+        index.css
+        index.html
+
+nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> to track<span class="o">)</span>
+</pre></div>
+</div>
+<p>Luego podremos agregar los archivos y hacer un <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Por el momento los eliminaremos para tener un repositorio de Git sin archivos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rm index.*
+$ git s
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lesson4.html" class="btn btn-neutral float-right" title="Lesson 4" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lesson2.html" class="btn btn-neutral float-left" title="Lesson 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,399 @@
+Lesson 4
+========
+
+*Lesson 4: Files in Git: renaming, deleting, ignoring*
+
+.. contents:: Table of Contents 
+
+
+How to rename a file in Git
+---------------------------
+
+Listar los archivos del directorio ``web1``:
+
+.. code-block:: bash
+
+    $ ls
+    about.css  about.html  contact.css  contact.html  index.css  index.html
+
+Para **renombrar** un archivo podemos hacerlo de **2 formas**:
+
+1. Con el comando ``git mv``:
+
+.. code-block:: bash
+
+    $ git mv index.html home.htm
+
+Veamos el estado del repo:
+
+.. code-block:: bash
+
+    $ git s
+    R  index.html -> home.htm
+
+    $ git status
+    On branch master
+    Your branch is up to date with 'origin/master'.
+
+    Changes to be committed:
+    (use "git reset HEAD <file>..." to unstage)
+
+            renamed:    index.html -> home.htm
+
+Nos aparece una ``R`` en color verde (verde = "staged") en la versión resumida del comando. En la versión completa vemos que se ha renombrado el archivo. Pero todavía no se ha hecho el ``commit``, solo un "stage".
+
+**¿Por no se hace el ``commit`` automáticamente?**:
+
+En un escenario real probablemente tendríamos otros archivos que quisiéramos formasen parte de este ``commit``. Sobre todo, archivos que dependen del nombre que estamos cambiando. Por ejemplo, otras páginas que redirigen a ``home.htm``.
+
+Ahora podremos hacer el ``commit``:
+
+.. code-block:: bash
+
+    $ git commit -m "Renamed home page to follow corporate guidelines"
+
+    [master 57e910e] Renamed home page to follow corporate guidelines
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    rename index.html => home.htm (100%)
+
+2. La otra alternativa es no usar ``git``:
+
+En la práctica probablemente no usaremos Git para renombrar un archivo, sino Windows Explorer, IntelliJ, u otro IDE. En este caso lo haremos con el comando ``mv`` de Unix.
+
+Renombrar ``index.css`` a ``home.css`` y ver el estado del repo:
+
+.. code-block:: bash
+
+    $ mv index.css home.css
+
+    $ git status
+    On branch master
+    Your branch is ahead of 'origin/master' by 1 commit.
+    (use "git push" to publish your local commits)
+
+    Changes not staged for commit:
+    (use "git add/rm <file>..." to update what will be committed)
+    (use "git checkout -- <file>..." to discard changes in working directory)
+
+            deleted:    index.css
+
+    Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+
+            home.css
+
+    no changes added to commit (use "git add" and/or "git commit -a")
+
+Git asume que se ha eliminado el archivo ``index.css`` y se ha creado un nuevo archivo ``home.css`` que todavía no ha sido añadido al repositorio. Para arreglar esto usaremos:
+
+.. code-block:: bash
+
+    $ git add -A
+
+En versiones de Git ``2.0`` o superiores también se puede usar ``git add .``
+
+Si vemos el estado del repositorio, Git habrá registrado el cambio de nombre:
+
+.. code-block:: bash
+
+    $ git status
+    On branch master
+    Your branch is ahead of 'origin/master' by 1 commit.
+    (use "git push" to publish your local commits)
+
+    Changes to be committed:
+    (use "git reset HEAD <file>..." to unstage)
+
+            renamed:    index.css -> home.css
+
+La razón por la cual Git se ha dado cuenta de que es un cambio de nombre se debe a que Git corrió el contenido de ambos archivos en un código que los comparó y retornó un "similarity index". Retorna un decimal entre ``0`` y ``1``:
+- ``0`` si los 2 archivos no tienen nada en común
+- ``1`` si son idénticos caracter por caracter.
+- Si el ``similarity index`` excede ``0.5`` Git supondrá que hemos renombrado el archivo.
+- Si el ``similarity index`` es menor a ``0.5`` Git supondrá que hemos eliminado un archivo y agregado otro distinto.
+
+
+.. Warning::
+
+    Tener en cuenta estas consejos:
+
+    - NO hacer cambios sustanciales al contenido del archivo en el mismo ``commit`` con el que renombramos el archivo.
+    - NO debemos eliminar un archivo y agregar otro archivo que son distintos pero tienen contenido en común. Git supondrá que estamos renombrando el archivo.
+
+Ahora podremos hacer el ``commit``:
+
+.. code-block:: bash
+
+    $ git commit -m "Renamed stylesheet for the home page"
+
+    [master 40afaa5] Renamed stylesheet for the home page
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    rename index.css => home.css (100%)
+
+    $ git s
+
+Deleting a file
+---------------
+
+Igual que para renombrar un archivos, hay 2 formas de eliminar un archivo:
+
+1. Usar ``git`` para eliminar un archivo
+2. Eliminar el archivo y luego decírselo a Git
+
+A continuación el detalle de las 2 formas:
+
+1. Usando Git:
+
+Usar ``git rm``:
+
+.. code-block:: bash
+
+    $ git rm contact.html
+    rm 'contact.html'
+
+El comando habrá realizado 2 acciones: el archivo se habrá eliminado
+
+.. code-block:: bash
+
+    $  ls
+    about.css  about.html  contact.css  home.css  home.htm
+
+    $ git s
+    D  contact.html
+
+El estado del repositorio nos indica con una letra ``D`` en color verde ("staged") que se ha eliminado ("Deleted").
+
+Ahora podemos hacer el ``commit``:
+
+.. code-block:: bash
+
+    $ git commit -m "Deleted contact us page"
+    [master 4702c3a] Deleted contact us page
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    delete mode 100644 contact.html
+
+2. Eliminando un archivo con cualquier otro programa:
+
+.. code-block:: bash
+
+    $ rm contact.css
+
+    $ git s
+    D contact.css
+
+Nos aparece una letra ``D`` en color rojo, indicando que la eliminación está en estado "unstaged". Haremos el mismo procedimiento que para renombrar un archivo:
+
+Usar ``git add -A`` o ``git add .`` para cambiar el estado a "staged":
+
+.. code-block:: bash
+
+    $ git add -A
+
+    $ git s
+    D  contact.css
+
+Ahora nos aparece la letra ``D`` en verde y podemos hacer el ``commit``:
+
+.. code-block:: bash
+
+    $ git commit -m "Deleted stylesheet for contact us page"
+    [master f1ebec7] Deleted stylesheet for contact us page
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    delete mode 100644 contact.css
+
+Ignoring files using a .gitignore file
+--------------------------------------
+
+Podríamos querer ignorar un archivo por distintas razones. Por ejemplo, cada vez que corremos una aplicación puede generar archivos de log.
+
+Creemos un archivo que procederemos a ignorar:
+
+.. code-block:: bash
+
+    $ touch test.log
+
+    $ git s
+    ?? test.log
+
+Tenemos un archivo "untracked", "unstaged". Git sabe que está ahí pero no va a ser guardado en historial al hacer un ``commit``.
+
+Podríamos dejarlo ahí, ya que, gracias al "staging area" de Git no necesitamos tener una forma especial de decirle a Git que ignore los archivos. Podríamos dejarlo ahí y nunca agregarlo a "staging area".
+
+Sin embargo, mientras el repositorio vaya creciendo en cantidad de archivos se creará una larga lista de archivos no agregados. Y cuando queramos agregar un archivo a "staging area" no podremos encontrarlo con facilidad.
+
+Podemos decirle a Git que ignore estos archivos, mediante la creación de un archivo ``ignore``.
+
+.. code-block:: bash
+
+    $ vi .gitignore
+
+    *.log
+
+Con este archivo le decimos a Git que ignore todos los archivos con formato ``.log``.
+
+Veamos el estado del repositorio:
+
+.. code-block:: bash
+
+    $ git s
+    ?? .gitignore
+
+Nuestro archivo ``.gitignore`` funcionó, no nos dice que el archivo ``test.log`` está en estado "untracked". Es decir, está ignorando su existencia. Sin embargo, nos está diciendo que el archivo ``.gitignore`` está en estado ``untracked`` y presuntamente debería ser agregado y luego hacerle un ``commit``.
+
+La mayoría de configuraciones en Git son particulares a la computadora donde estamos trabajando. Pero ``.gitignore`` está diseñado para ser compartido. Esto es porque queremos informar a las personas que descargan nuestro código del repo que también ignoren estos archivos. No queremos que ellos hagan un ``commit`` de los archivos que nosotros ignoramos.
+
+.. Tip::
+
+    La regla de oro para archivos que están en ``.gitignore`` es que si estamos en duda de agregar o no un archivo, debemos agregarlo. Si es algo que pueda afectar a parte del equipo, agregarlo a ``.gitignore``.
+
+Como cualquier otro archivo, lo agregamos y hacemos ``commit``:
+
+.. code-block:: bash
+
+    $ git add .
+    $ git s
+    A  .gitignore
+
+    $ git commit -m "Added log files to .gitignore"
+    [master 3c8e5e3] Added log files to .gitignore
+    1 file changed, 1 insertion(+)
+    create mode 100644 .gitignore
+
+Global gitexcludes and other Git ignore options
+-----------------------------------------------
+
+Hay otras formas de ignorar archivos usando Git. Una forma es usando archivos "Global excludes". Hay algunos riesgos de usar esto pero es importante usarlo en el contexto correcto.
+
+.. code-block:: bash
+
+    $ git config --global core.excludesfile ~/.gitignore
+
+La ventaja de usar un archivo ``.gitignore`` global es que podemos ignorar algunos archivos en cada proyecto que trabajemos. El riesgo es que vamos a ignorar archivos en proyectos que algunos miembros del equipo no lo harán. Esto terminará haciendo que algunos miembros hagan ``commits`` que no deberían.
+
+.. Tip::
+
+    La recomendación es usar un ``.gitignore`` global en archivos que sabemos que nadie en el equipo nunca va a crear.
+
+Otros 2 puntos importantes sobre ``.gitignore``:
+
+- Podemos crear crear cuantos ``.gitignore`` queramos. Podemos poner un ``.gitignore`` diferente en cada directorio de nuestro proyecto. Sin embargo NO debemos hacerlo. Es una mala idea porque el usuario quiere leer todo lo que va a ser ignorado de un único archivo.
+
+- Si encontramos que alguien está ignorando archivos y no sabemos por qué. Buscamos el archivo ``.gitignore`` en la raíz del proyecto, o buscamos en cada subdirectorio, o en un archivo Global Exclude. Pero está ignorando un archivo que no encontramos. Esto es debido al siguiente archivo:
+
+.. code-block:: bash
+
+    $ cat .git/info/exclude
+    # git ls-files --others --exclude-from=.git/info/exclude
+    # Lines that start with '#' are comments.
+    # For a project mostly in C, the following would be a good set of
+    # exclude patterns (uncomment them if you want to use them):
+    # *.[oa]
+    # *~
+
+Este archivo es otro ``.gitignore`` local. Este archivo no se comparte con las personas cuando hacemos ``push`` al repositorio o cuando lo clonamos. No se usa en otros proyectos. Por tanto, si queremos ignorar archivos localmente en un proyecto y no dejar saber a nadie que estamos ignorando estos archivos podemos usar el archivo ``.git/info/exclude``
+
+Git ignore precedence
+---------------------
+
+Digamos que estamos en un subdirectorio del proyecto que tiene su propio archivo ``.gitignore``, el directorio padre tiene otro ``.gitignore`` y también tenemos el ``.gitignore`` global.
+
+Lo primero que Git hará será correr el archivo global ``.gitignore`` para todos nuestros proyectos. Luego correrá el ``.gitignore`` del directorio raíz del proyecto. Finalmente correra las reglas ``.gitignore`` del subdirectorio.
+
+La forma en que Git trabaja con archivos ``.gitignore`` es la prioridad importa ("precedence matters"). Veamos el ejemplo:
+
+.. code-block:: bash
+
+    $ touch special.log
+    $ git s
+
+El archivo ``special.log`` es ignorado por Git. Pero que pasa si queremos hacer un ``commit`` a este archivo. Tenemos que cambiar el documento ``.gitignore``:
+
+.. code-block:: bash
+
+    $ vi .gitignore
+
+    *.log
+    !special.log
+
+Con el signo de exclamación (``!``) decimos que no ignore al archivo ``special.log``. Podemos pensar en el archivo ``.gitignore`` como un conjunto de reglas que ponemos en donde el orden/prioridad importa. La última regla manda sobre la primera.
+
+.. code-block:: bash
+
+    $ git s
+    M .gitignore
+    ?? special.log
+
+El estado nos dice que hemos modificado el archivo ``.gitignore``. Pero ahora el archivo ``special.log`` es visible y puedo añadirlo y hacerle ``commit``.
+
+Si el orden de las instrucciones fuera distinto veríamos que se ignoran todos lo archivos ``.log``:
+
+.. code-block:: bash
+
+    $ vi .gitignore
+
+    !special.log
+    *.log
+
+.. code-block:: bash
+
+    $ git s
+    M .gitignore
+
+Regresemos a la anterior configuración:
+
+.. code-block:: bash
+
+    $ vi .gitignore
+
+    *.log
+    !special.log
+
+.. code-block:: bash
+
+    $ git s
+    M .gitignore
+    ?? special.log
+
+Ahora podemos agregar los cambios y guardarlos en historial.
+
+Git ``commit -a``
+-----------------
+
+Sabemos las ventajas de primero añadir un archivo y luego hacerle ``commit``, pero podemos usar un atajo para hacer ambos pasos. El atajo es ``git commit -a``, esto es añadir y también hacer ``commit``.
+
+Pero este atajo viene con una advertencia. Solo funciona en archivos modificados (``M``), no en archivos "untracked".
+
+Si tenemos un archivo que estaba en Git y lo hemos guardado, luego hicimos un cambio y queremos añadir y guardar ese cambio, podemos usar ``git commit -a`` pero no funcionará en archivos "untracked".
+
+En el último ejemplo teníamos:
+
+.. code-block:: bash
+
+    $ git s
+    M .gitignore
+    ?? special.log
+
+Nos conviene hacer un ``commit`` sobre ``.gitignore`` primero y luego hacer un ``commit`` separado sobre ``special.log``.
+
+.. code-block:: bash
+
+    $ git commit -am "Modified gitignore to allow special log to be committed"
+    [master 1691860] Modified gitignore to allow special log to be committed
+    1 file changed, 1 insertion(+)
+
+    $ git s
+    ?? special.log
+
+Para el archivo ``special.log`` no hay atajos. Debemos agregarlo y luego hacer ``commit``:
+
+.. code-block:: bash
+
+    $ git add special.log
+
+    $ git s
+    A  special.log
+
+    $ git commit -m "Adding special log to show how log output should look"
+    [master c8ee367] Adding special log to show how log output should look
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 special.log

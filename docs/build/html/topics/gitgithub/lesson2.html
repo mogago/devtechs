@@ -1,0 +1,590 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lesson 2 &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Lesson 3" href="lesson3.html" />
+    <link rel="prev" title="Lesson 1" href="lesson1.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lesson1.html">Lesson 1</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lesson 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-your-first-git-repository">Creating your first Git repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#committing-in-git">Committing in Git</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-git-commit">Understanding Git Commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-benefits-of-the-staging-area">The benefits of the staging area</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-log-for-viewing-history">Git log for viewing history</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lesson3.html">Lesson 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson4.html">Lesson 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson5.html">Lesson 5</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a> &raquo;</li>
+        
+      <li>Lesson 2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/gitgithub/lesson2.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lesson-2">
+<h1><a class="toc-backref" href="#id3">Lesson 2</a><a class="headerlink" href="#lesson-2" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><em>Lesson 2: Getting Started with Git</em></p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lesson-2" id="id3">Lesson 2</a><ul>
+<li><a class="reference internal" href="#creating-your-first-git-repository" id="id4">Creating your first Git repository</a></li>
+<li><a class="reference internal" href="#committing-in-git" id="id5">Committing in Git</a></li>
+<li><a class="reference internal" href="#understanding-git-commit" id="id6">Understanding Git Commit</a></li>
+<li><a class="reference internal" href="#the-benefits-of-the-staging-area" id="id7">The benefits of the staging area</a></li>
+<li><a class="reference internal" href="#git-log-for-viewing-history" id="id8">Git log for viewing history</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Lesson 2: Getting Started with Git</p>
+<div class="section" id="creating-your-first-git-repository">
+<h2><a class="toc-backref" href="#id4">Creating your first Git repository</a><a class="headerlink" href="#creating-your-first-git-repository" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Inicialmente al tipear el comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> un error nos indica que no estamos en un repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+fatal: not a git repository <span class="o">(</span>or any of the parent directories<span class="o">)</span>: .git
+</pre></div>
+</div>
+<p>Para crear un nuevo repositorio en Git llamado <code class="docutils literal notranslate"><span class="pre">app1</span></code> usamos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git init app1
+Initialized empty Git repository in /home/user/app1/.git/
+</pre></div>
+</div>
+<p>No hemos necesitado conexión a Internet para que este comando funcione. Hemos creado una <strong>copia local</strong> de un repositorio. Podemos usar branches, tags, ver el historial con esta copia de Git. Luego podemos decidir compartirlo con un grupo, y es ahí donde necesitamos conectarnos a un servidor remoto como <strong>Github</strong>.</p>
+<p>Podemos cambiar el directorio a nuestro repositorio creado y ver su estado:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> app1/
+
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit <span class="o">(</span>create/copy files and use <span class="s2">&quot;git add&quot;</span> to track<span class="o">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">On</span> <span class="pre">branch</span> <span class="pre">master</span></code> - nos dice que estamos en el branch master (branch por defecto).</li>
+<li><code class="docutils literal notranslate"><span class="pre">No</span> <span class="pre">commits</span> <span class="pre">yet</span></code> - nos dice que hemos creado un repositorio pero no hemos guardado, todavía no hemos hecho nuestro «Initial commit».</li>
+<li><code class="docutils literal notranslate"><span class="pre">nothing</span> <span class="pre">to</span> <span class="pre">commit</span></code> - nos dice que no hay nada para hacerle commit. No hay archivos que podamos añadir al historial.</li>
+</ul>
+</div>
+<div class="section" id="committing-in-git">
+<h2><a class="toc-backref" href="#id5">Committing in Git</a><a class="headerlink" href="#committing-in-git" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En Git se tiene la idea de pensamiento en 3 etapas (3 stage thinking):</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/git-stages.png" src="../../_images/git-stages.png" />
+<p class="caption"><span class="caption-text">3 stage thinking de Git</span></p>
+</div>
+<hr class="docutils" />
+<div class="figure align-center" id="id2">
+<img alt="../../_images/git-staging-diagram.png" src="../../_images/git-staging-diagram.png" />
+<p class="caption"><span class="caption-text">3 stage thinking de Git diagram</span></p>
+</div>
+<p>Crear un archivo de prueba sin contenido:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch index.html
+</pre></div>
+</div>
+<p>Veamos el estado del repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
+
+        index.html
+
+nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> to track<span class="o">)</span>
+</pre></div>
+</div>
+<p>Todavía no hemos hecho un <code class="docutils literal notranslate"><span class="pre">commit</span></code>, es decir, no hemos guardado nada en el historial.</p>
+<p>Nos ha salido un mensaje de <code class="docutils literal notranslate"><span class="pre">Untracked</span> <span class="pre">files</span></code>. Es decir, existen archivos que no hemos notificado a Git dentro del repo. Hay 2 cosas que le diremos que haga:</p>
+<ol class="arabic simple">
+<li>Le diremos que agregue el archivo a «<strong>staging area</strong>». Y usamos el comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>:</li>
+</ol>
+<ul class="simple">
+<li>Una opción es añadir solamente el archivo <code class="docutils literal notranslate"><span class="pre">index.html</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add index.html
+</pre></div>
+</div>
+<ul class="simple">
+<li>Otra opción es agregar todos los archivos al repositorio usando un punto (<code class="docutils literal notranslate"><span class="pre">.</span></code>):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+</pre></div>
+</div>
+<p>Una vez que hayamos puesto cualquiera de los dos comandos anteriores, veremos que Git nos dice que está listo para guardar el archivo en historial:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+<span class="o">(</span>use <span class="s2">&quot;git rm --cached &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+
+        new file:   index.html
+</pre></div>
+</div>
+<p>Esta sección de «staging area» es como una página web de compras, donde ponemos objetos en el carrito de compras, pero esto no quiere decir que nos lo vayan a enviar. La página esperará hasta que hagamos clic en el botón de comprar. Podemos agregar o quitar productos, esto nos permite hacer cambios antes de la compra. Para el «staging area» en Git es similar.</p>
+<p>Creemos otro archivo de prueba:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch index.css
+</pre></div>
+</div>
+<p>Veamos el estado del repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+<span class="o">(</span>use <span class="s2">&quot;git rm --cached &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+
+        new file:   index.html
+
+Untracked files:
+<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
+
+        index.css
+</pre></div>
+</div>
+<p>Agreguemos el nuevo archivo que está «Untracked»:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+</pre></div>
+</div>
+<p>Y vemos que tenemos los dos archivos agregados al repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+<span class="o">(</span>use <span class="s2">&quot;git rm --cached &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+
+        new file:   index.css
+        new file:   index.html
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>El siguiente paso es hacer el <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</li>
+</ol>
+<p>Cuando hagamos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> se hará un <code class="docutils literal notranslate"><span class="pre">commit</span></code> de ambos archivos juntos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;Added home page&quot;</span>
+
+<span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> 49ab535<span class="o">]</span> Added home page
+<span class="m">2</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> index.css
+create mode <span class="m">100644</span> index.html
+</pre></div>
+</div>
+<p>Con el parámetro <code class="docutils literal notranslate"><span class="pre">-m</span></code> se agrega un mensaje al <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch master
+nothing to commit, working tree clean
+</pre></div>
+</div>
+<p>El mensaje nos dice que cualquier trabajo que hemos hecho se ha guardado satisfactoriamente en Git, o en el historial. Podremos volver a este punto en el tiempo.</p>
+<p>Generalmente este mensaje es lo que queremos ver al correr <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>, sin importar el branch donde estemos trabajando.</p>
+</div>
+<div class="section" id="understanding-git-commit">
+<h2><a class="toc-backref" href="#id6">Understanding Git Commit</a><a class="headerlink" href="#understanding-git-commit" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Al hacer nuestro primer <code class="docutils literal notranslate"><span class="pre">commit</span></code> obtuvimos el siguiente mensaje:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;Added home page&quot;</span>
+
+<span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> 49ab535<span class="o">]</span> Added home page
+<span class="m">2</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> index.css
+create mode <span class="m">100644</span> index.html
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">master</span></code> - nos dice que estamos en el branch <code class="docutils literal notranslate"><span class="pre">master</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">root-commit</span></code> - es el primer <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Solo lo veremos una vez por proyecto.</li>
+<li><code class="docutils literal notranslate"><span class="pre">49ab535</span></code> - son los primeros dígitos del «<strong>commit HASH</strong>», es decir, el identificador único del <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>¿Por qué no se usan números incrementales para los «commits»: <code class="docutils literal notranslate"><span class="pre">commit-1</span></code>, <code class="docutils literal notranslate"><span class="pre">commit-2</span></code>, <code class="docutils literal notranslate"><span class="pre">commit-3</span></code>, … ?:</p>
+<p class="last">La razón es que cuando trabajamos con Git estamos trabajando con un sistema de control distribuido. Si un repositorio estuviese colgado en Github y alguien descargara una copia, ambos estaríamos haciendo <code class="docutils literal notranslate"><span class="pre">commits</span></code> de nuestras propias copias del repositorio sin conectarnos a Internet. Git no tiene idea de quién hizo <code class="docutils literal notranslate"><span class="pre">commit-3</span></code> o <code class="docutils literal notranslate"><span class="pre">commit-4</span></code> porque varios tienen sus copias y hacen <code class="docutils literal notranslate"><span class="pre">commit</span></code> localmente. Por eso se usan <strong>identificadores globales únicos</strong>, un <strong>HASH SHA-1</strong> que identifican singularmente un <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">files</span> <span class="pre">changed</span></code> - pues hemos hecho <code class="docutils literal notranslate"><span class="pre">commit</span></code> a 2 archivos.</li>
+<li><code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">insertions(+),</span> <span class="pre">0</span> <span class="pre">deletions(-)</span></code> - esto es inusual, pero se debe a que los archivos están en blanco. Si hubiese 3 líneas de texto en un archivo y 2 en el otro archivo, tendríamos <code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">insertions</span></code> y <code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">deletions</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">mode</span> <span class="pre">100644</span></code> - Solo podremos ver 3 números como este: 1 para links simbólicos, 1 para ejecutables y 1 para todo lo demás.</li>
+<li><code class="docutils literal notranslate"><span class="pre">create</span> <span class="pre">mode</span> <span class="pre">100644</span> <span class="pre">index.css</span></code> - archivo agregado a historial.</li>
+</ul>
+</div>
+<div class="section" id="the-benefits-of-the-staging-area">
+<h2><a class="toc-backref" href="#id7">The benefits of the staging area</a><a class="headerlink" href="#the-benefits-of-the-staging-area" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><strong>¿Por qué tenemos que añadir archivos a «staging area» y luego hacer commit?</strong>:</p>
+<p>Porque Git está diseñado para ayudarnos a hacer un correcto control de versiones. Y una parte de hacer un buen control de versiones es hacer <code class="docutils literal notranslate"><span class="pre">commits</span></code> atómicos con sentido.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Una de las mejores prácticas en Git y Github es escribir mejores mensajes de <code class="docutils literal notranslate"><span class="pre">commit</span></code> y ver qué archivos poner juntos. Los <code class="docutils literal notranslate"><span class="pre">commits</span></code> nos deben decir la historia del trabajo que hemos realizado.</p>
+</div>
+<p>Hagamos un ejemplo de cómo nos complicaría no tener una <code class="docutils literal notranslate"><span class="pre">staging</span> <span class="pre">area</span></code>.</p>
+<ul class="simple">
+<li>Creemos varios archivos de prueba:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch about.html about.css contact.html contact.css
+</pre></div>
+</div>
+<ul class="simple">
+<li>Listar el contenido del directorio:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls
+about.css  about.html  contact.css  contact.html  index.css  index.html
+</pre></div>
+</div>
+<ul class="simple">
+<li>Ver el estado del repositorio:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+
+On branch master
+Untracked files:
+<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
+
+        about.css
+        about.html
+        contact.css
+        contact.html
+
+nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> to track<span class="o">)</span>
+</pre></div>
+</div>
+<p>Vemos que tenemos a los 4 archivos agregados sin trackear.</p>
+<ul class="simple">
+<li>Usar el alias creado en la sección <a class="reference internal" href="lesson1.html#aliases"><span class="std std-ref">Configuring aliases</span></a> de <a class="reference internal" href="lesson1.html#leccion-1"><span class="std std-ref">Lesson 1</span></a> para ver el estado del repositorio en modo silencioso (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">alias.s</span> <span class="pre">&quot;status</span> <span class="pre">-s&quot;</span></code>):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+
+?? about.css
+?? about.html
+?? contact.css
+?? contact.html
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> toma mucho espacio, es útil pero la mayoría de las veces sabemos el estado de los archivos. Así que podemos saber el estado de forma resumida con el modo silencioso.</p>
+<p>Un color rojo de los signos de interrogación nos indica que los archivos no han sido agregados al <code class="docutils literal notranslate"><span class="pre">staging</span> <span class="pre">area</span></code>. Doble signo de interrogación <code class="docutils literal notranslate"><span class="pre">??</span></code> nos indica que son archivos nuevos sin trackear.</p>
+<ul class="simple">
+<li>Podemos añadir al repositorio los 4 archivos en dos partes para mantener el orden (las páginas de <code class="docutils literal notranslate"><span class="pre">about</span></code> y <code class="docutils literal notranslate"><span class="pre">contact</span></code>). Primero para la página <code class="docutils literal notranslate"><span class="pre">about</span></code> usamos:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add ab*
+
+$ git s
+A  about.css
+A  about.html
+?? contact.css
+?? contact.html
+</pre></div>
+</div>
+<p>Habremos agregado 2 nuevo archivos (<code class="docutils literal notranslate"><span class="pre">about.css</span></code>, <code class="docutils literal notranslate"><span class="pre">about.html</span></code>) al repositorio. Al ejecutar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">s</span></code>, un color verde en las letras <code class="docutils literal notranslate"><span class="pre">A</span></code> nos indica que han sido <code class="docutils literal notranslate"><span class="pre">staged</span></code>, es decir, agregados al repositorio.</p>
+<ul class="simple">
+<li>Luego hacemos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> con un mensaje descriptivo:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;Added about us page&quot;</span>
+
+<span class="o">[</span>master aa2d60c<span class="o">]</span> Added about us page
+<span class="m">2</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> about.css
+create mode <span class="m">100644</span> about.html
+</pre></div>
+</div>
+<ul class="simple">
+<li>Podemos hacer el mismo procedimiento para la página <code class="docutils literal notranslate"><span class="pre">contact</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$  git s
+
+?? contact.css
+?? contact.html
+<span class="sb">```</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+
+$ git s
+A  contact.css
+A  contact.html
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;Added contact us page&quot;</span>
+
+<span class="o">[</span>master 4388cdf<span class="o">]</span> Added contact us page
+<span class="m">2</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> contact.css
+create mode <span class="m">100644</span> contact.html
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-log-for-viewing-history">
+<h2><a class="toc-backref" href="#id8">Git log for viewing history</a><a class="headerlink" href="#git-log-for-viewing-history" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Podemos ver el historial usando el alias creado en la sección <a class="reference internal" href="lesson1.html#aliases"><span class="std std-ref">Configuring aliases</span></a> de <a class="reference internal" href="lesson1.html#leccion-1"><span class="std std-ref">Lesson 1</span></a> (<code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">config</span> <span class="pre">--global</span> <span class="pre">alias.lg</span> <span class="pre">&quot;log</span> <span class="pre">--oneline</span> <span class="pre">--all</span> <span class="pre">--graph</span> <span class="pre">--decorate&quot;</span></code>)</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">--oneline</span></code> - imprime cada <code class="docutils literal notranslate"><span class="pre">commit</span></code> en una sola línea</li>
+<li><code class="docutils literal notranslate"><span class="pre">--decorate</span></code> - nos da información de los HEAD de los branches.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--graph</span></code> - imprime estrellas al lado del identificador del <cite>commit</cite> que ayudan en el trabajo con branches.</li>
+</ul>
+<p>Primero veamos el log con el comando por defecto:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git log
+commit 4388cdfb26762db96df7fe845d09f6dbca7c5257 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span>
+Author: Nombre Apellido &lt;newuser1@mail.com&gt;
+Date:   Thu Sep <span class="m">26</span> <span class="m">23</span>:40:51 <span class="m">2019</span> -0500
+
+    Added contact us page
+
+commit aa2d60c167b1d066771d871e14616f1ff89fcaef
+Author: Nombre Apellido &lt;newuser1@mail.com&gt;
+Date:   Thu Sep <span class="m">26</span> <span class="m">23</span>:38:36 <span class="m">2019</span> -0500
+
+    Added about us page
+
+commit 49ab5355d7bc3e8ffed85cd6f9c7b491007ecfaa
+Author: Nombre Apellido &lt;newuser1@mail.com&gt;
+Date:   Wed Sep <span class="m">25</span> <span class="m">23</span>:23:45 <span class="m">2019</span> -0500
+
+    Added home page
+</pre></div>
+</div>
+<p>Si tuviesemos muchos más <code class="docutils literal notranslate"><span class="pre">commits</span></code> nos tomaría mucho tiempo leer todo. Así que podemos usar el alias:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+
+* 4388cdf <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added contact us page
+* aa2d60c Added about us page
+* 49ab535 Added home page
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lesson3.html" class="btn btn-neutral float-right" title="Lesson 3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lesson1.html" class="btn btn-neutral float-left" title="Lesson 1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
