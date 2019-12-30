@@ -1127,7 +1127,7 @@ Veamos ``home.htm`` para resolver el conflicto:
         - Checkout
         >>>>>>> checkout_page
 
-Copyright 2014
+        Copyright 2014
 
 En ambos lados del historial tenemos las líneas del logo y copyright, pero en el ``HEAD`` (merge con ``master`` branch) tenemos links ``About`` y ``My Account``. Mientras que en ``>>>>>>> checkout_page`` tenemos un link a ``Checkout``. Git no sabe qué hacer ni el orden en que debería posicionar los elementos si todos deberían estar. Por lo tanto, es nuestra labor editar el contenido según deseemos con nuestro editor:
 
