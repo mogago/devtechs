@@ -9,7 +9,7 @@ Lesson 4
 How to rename a file in Git
 ---------------------------
 
-Listar los archivos del directorio ``web1``:
+Listar los archivos del directorio ``app1``:
 
 .. code-block:: bash
 
@@ -42,9 +42,11 @@ Veamos el estado del repo:
 
 Nos aparece una ``R`` en color verde (verde = "staged") en la versión resumida del comando. En la versión completa vemos que se ha renombrado el archivo. Pero todavía no se ha hecho el ``commit``, solo un "stage".
 
-**¿Por no se hace el ``commit`` automáticamente?**:
+.. Note::
 
-En un escenario real probablemente tendríamos otros archivos que quisiéramos formasen parte de este ``commit``. Sobre todo, archivos que dependen del nombre que estamos cambiando. Por ejemplo, otras páginas que redirigen a ``home.htm``.
+    ¿Por no se hace el ``commit`` automáticamente?:
+
+    En un escenario real probablemente tendríamos otros archivos que quisiéramos formasen parte de este ``commit``. Sobre todo, archivos que dependen del nombre que estamos cambiando. Por ejemplo, otras páginas que redirigen a ``home.htm``.
 
 Ahora podremos hacer el ``commit``:
 
@@ -84,6 +86,12 @@ Renombrar ``index.css`` a ``home.css`` y ver el estado del repo:
 
     no changes added to commit (use "git add" and/or "git commit -a")
 
+    
+    $ git s
+
+    D index.css
+    ?? home.css
+
 Git asume que se ha eliminado el archivo ``index.css`` y se ha creado un nuevo archivo ``home.css`` que todavía no ha sido añadido al repositorio. Para arreglar esto usaremos:
 
 .. code-block:: bash
@@ -106,7 +114,11 @@ Si vemos el estado del repositorio, Git habrá registrado el cambio de nombre:
 
             renamed:    index.css -> home.css
 
-La razón por la cual Git se ha dado cuenta de que es un cambio de nombre se debe a que Git corrió el contenido de ambos archivos en un código que los comparó y retornó un "similarity index". Retorna un decimal entre ``0`` y ``1``:
+    $ git s
+    R  index.css -> home.css
+
+La razón por la cual Git se ha dado cuenta de que es un cambio de nombre se debe a que Git corrió el contenido de ambos archivos en un código que los comparó y retornó un "**similarity index**". Retorna un decimal entre ``0`` y ``1``:
+
 - ``0`` si los 2 archivos no tienen nada en común
 - ``1`` si son idénticos caracter por caracter.
 - Si el ``similarity index`` excede ``0.5`` Git supondrá que hemos renombrado el archivo.
@@ -135,7 +147,7 @@ Ahora podremos hacer el ``commit``:
 Deleting a file
 ---------------
 
-Igual que para renombrar un archivos, hay 2 formas de eliminar un archivo:
+Igual que para renombrar un archivo, hay 2 formas de eliminar un archivo:
 
 1. Usar ``git`` para eliminar un archivo
 2. Eliminar el archivo y luego decírselo a Git
@@ -276,7 +288,7 @@ La ventaja de usar un archivo ``.gitignore`` global es que podemos ignorar algun
 
 Otros 2 puntos importantes sobre ``.gitignore``:
 
-- Podemos crear crear cuantos ``.gitignore`` queramos. Podemos poner un ``.gitignore`` diferente en cada directorio de nuestro proyecto. Sin embargo NO debemos hacerlo. Es una mala idea porque el usuario quiere leer todo lo que va a ser ignorado de un único archivo.
+- Podemos crear cuantos ``.gitignore`` queramos. Podemos poner un ``.gitignore`` diferente en cada directorio de nuestro proyecto. Sin embargo NO debemos hacerlo. Es una mala idea porque el usuario quiere leer todo lo que va a ser ignorado de un único archivo.
 
 - Si encontramos que alguien está ignorando archivos y no sabemos por qué. Buscamos el archivo ``.gitignore`` en la raíz del proyecto, o buscamos en cada subdirectorio, o en un archivo Global Exclude. Pero está ignorando un archivo que no encontramos. Esto es debido al siguiente archivo:
 
@@ -299,14 +311,14 @@ Digamos que estamos en un subdirectorio del proyecto que tiene su propio archivo
 
 Lo primero que Git hará será correr el archivo global ``.gitignore`` para todos nuestros proyectos. Luego correrá el ``.gitignore`` del directorio raíz del proyecto. Finalmente correra las reglas ``.gitignore`` del subdirectorio.
 
-La forma en que Git trabaja con archivos ``.gitignore`` es la prioridad importa ("precedence matters"). Veamos el ejemplo:
+La forma en que Git trabaja con archivos ``.gitignore`` es que "la prioridad importa" ("precedence matters"). Veamos el ejemplo:
 
 .. code-block:: bash
 
     $ touch special.log
     $ git s
 
-El archivo ``special.log`` es ignorado por Git. Pero que pasa si queremos hacer un ``commit`` a este archivo. Tenemos que cambiar el documento ``.gitignore``:
+El archivo ``special.log`` es ignorado por Git. Pero qué pasa si queremos hacer un ``commit`` a este archivo. Tenemos que cambiar el documento ``.gitignore``:
 
 .. code-block:: bash
 
@@ -315,7 +327,7 @@ El archivo ``special.log`` es ignorado por Git. Pero que pasa si queremos hacer 
     *.log
     !special.log
 
-Con el signo de exclamación (``!``) decimos que no ignore al archivo ``special.log``. Podemos pensar en el archivo ``.gitignore`` como un conjunto de reglas que ponemos en donde el orden/prioridad importa. La última regla manda sobre la primera.
+Con el signo de exclamación (``!``) decimos que no ignore al archivo ``special.log``. Podemos pensar en el archivo ``.gitignore`` como un conjunto de reglas que ponemos en donde el orden/prioridad importa. **La última regla manda sobre la primera**.
 
 .. code-block:: bash
 
@@ -325,7 +337,7 @@ Con el signo de exclamación (``!``) decimos que no ignore al archivo ``special.
 
 El estado nos dice que hemos modificado el archivo ``.gitignore``. Pero ahora el archivo ``special.log`` es visible y puedo añadirlo y hacerle ``commit``.
 
-Si el orden de las instrucciones fuera distinto veríamos que se ignoran todos lo archivos ``.log``:
+Si el orden de las instrucciones fuera distinto veríamos que se ignoran todos los archivos ``.log``:
 
 .. code-block:: bash
 
@@ -354,16 +366,18 @@ Regresemos a la anterior configuración:
     M .gitignore
     ?? special.log
 
-Ahora podemos agregar los cambios y guardarlos en historial.
+Ahora estamos listos para agregar los cambios y guardarlos en historial.
 
-Git ``commit -a``
------------------
+``git commit -a`` shortcut
+--------------------------
 
 Sabemos las ventajas de primero añadir un archivo y luego hacerle ``commit``, pero podemos usar un atajo para hacer ambos pasos. El atajo es ``git commit -a``, esto es añadir y también hacer ``commit``.
 
-Pero este atajo viene con una advertencia. Solo funciona en archivos modificados (``M``), no en archivos "untracked".
+.. Warning::
 
-Si tenemos un archivo que estaba en Git y lo hemos guardado, luego hicimos un cambio y queremos añadir y guardar ese cambio, podemos usar ``git commit -a`` pero no funcionará en archivos "untracked".
+    Pero este atajo viene con una advertencia. Solo funciona en archivos modificados (``M``), no en archivos "untracked".
+
+Si tenemos un archivo que estaba en Git y lo hemos guardado, luego hicimos un cambio y queremos añadir y guardar ese cambio, podemos usar ``git commit -a`` pero no funcionará en archivos "untracked" (``??``).
 
 En el último ejemplo teníamos:
 

@@ -98,7 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#ignoring-files-using-a-gitignore-file">Ignoring files using a .gitignore file</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#global-gitexcludes-and-other-git-ignore-options">Global gitexcludes and other Git ignore options</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#git-ignore-precedence">Git ignore precedence</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#git-commit-a">Git <code class="docutils literal notranslate"><span class="pre">commit</span> <span class="pre">-a</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-commit-a-shortcut"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> shortcut</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="lesson5.html">Lesson 5</a></li>
@@ -214,14 +214,14 @@
 <li><a class="reference internal" href="#ignoring-files-using-a-gitignore-file" id="id4">Ignoring files using a .gitignore file</a></li>
 <li><a class="reference internal" href="#global-gitexcludes-and-other-git-ignore-options" id="id5">Global gitexcludes and other Git ignore options</a></li>
 <li><a class="reference internal" href="#git-ignore-precedence" id="id6">Git ignore precedence</a></li>
-<li><a class="reference internal" href="#git-commit-a" id="id7">Git <code class="docutils literal notranslate"><span class="pre">commit</span> <span class="pre">-a</span></code></a></li>
+<li><a class="reference internal" href="#git-commit-a-shortcut" id="id7"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> shortcut</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="how-to-rename-a-file-in-git">
 <h2><a class="toc-backref" href="#id2">How to rename a file in Git</a><a class="headerlink" href="#how-to-rename-a-file-in-git" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Listar los archivos del directorio <code class="docutils literal notranslate"><span class="pre">web1</span></code>:</p>
+<p>Listar los archivos del directorio <code class="docutils literal notranslate"><span class="pre">app1</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls
 about.css  about.html  contact.css  contact.html  index.css  index.html
 </pre></div>
@@ -248,8 +248,11 @@ Changes to be committed:
 </pre></div>
 </div>
 <p>Nos aparece una <code class="docutils literal notranslate"><span class="pre">R</span></code> en color verde (verde = «staged») en la versión resumida del comando. En la versión completa vemos que se ha renombrado el archivo. Pero todavía no se ha hecho el <code class="docutils literal notranslate"><span class="pre">commit</span></code>, solo un «stage».</p>
-<p><strong>¿Por no se hace el ``commit`` automáticamente?</strong>:</p>
-<p>En un escenario real probablemente tendríamos otros archivos que quisiéramos formasen parte de este <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Sobre todo, archivos que dependen del nombre que estamos cambiando. Por ejemplo, otras páginas que redirigen a <code class="docutils literal notranslate"><span class="pre">home.htm</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>¿Por no se hace el <code class="docutils literal notranslate"><span class="pre">commit</span></code> automáticamente?:</p>
+<p class="last">En un escenario real probablemente tendríamos otros archivos que quisiéramos formasen parte de este <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Sobre todo, archivos que dependen del nombre que estamos cambiando. Por ejemplo, otras páginas que redirigen a <code class="docutils literal notranslate"><span class="pre">home.htm</span></code>.</p>
+</div>
 <p>Ahora podremos hacer el <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;Renamed home page to follow corporate guidelines&quot;</span>
 
@@ -282,6 +285,12 @@ Untracked files:
         home.css
 
 no changes added to commit <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> and/or <span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+
+
+$ git s
+
+D index.css
+?? home.css
 </pre></div>
 </div>
 <p>Git asume que se ha eliminado el archivo <code class="docutils literal notranslate"><span class="pre">index.css</span></code> y se ha creado un nuevo archivo <code class="docutils literal notranslate"><span class="pre">home.css</span></code> que todavía no ha sido añadido al repositorio. Para arreglar esto usaremos:</p>
@@ -299,13 +308,18 @@ Changes to be committed:
 <span class="o">(</span>use <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
 
         renamed:    index.css -&gt; home.css
+
+$ git s
+R  index.css -&gt; home.css
 </pre></div>
 </div>
-<p>La razón por la cual Git se ha dado cuenta de que es un cambio de nombre se debe a que Git corrió el contenido de ambos archivos en un código que los comparó y retornó un «similarity index». Retorna un decimal entre <code class="docutils literal notranslate"><span class="pre">0</span></code> y <code class="docutils literal notranslate"><span class="pre">1</span></code>:
-- <code class="docutils literal notranslate"><span class="pre">0</span></code> si los 2 archivos no tienen nada en común
-- <code class="docutils literal notranslate"><span class="pre">1</span></code> si son idénticos caracter por caracter.
-- Si el <code class="docutils literal notranslate"><span class="pre">similarity</span> <span class="pre">index</span></code> excede <code class="docutils literal notranslate"><span class="pre">0.5</span></code> Git supondrá que hemos renombrado el archivo.
-- Si el <code class="docutils literal notranslate"><span class="pre">similarity</span> <span class="pre">index</span></code> es menor a <code class="docutils literal notranslate"><span class="pre">0.5</span></code> Git supondrá que hemos eliminado un archivo y agregado otro distinto.</p>
+<p>La razón por la cual Git se ha dado cuenta de que es un cambio de nombre se debe a que Git corrió el contenido de ambos archivos en un código que los comparó y retornó un «<strong>similarity index</strong>». Retorna un decimal entre <code class="docutils literal notranslate"><span class="pre">0</span></code> y <code class="docutils literal notranslate"><span class="pre">1</span></code>:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">0</span></code> si los 2 archivos no tienen nada en común</li>
+<li><code class="docutils literal notranslate"><span class="pre">1</span></code> si son idénticos caracter por caracter.</li>
+<li>Si el <code class="docutils literal notranslate"><span class="pre">similarity</span> <span class="pre">index</span></code> excede <code class="docutils literal notranslate"><span class="pre">0.5</span></code> Git supondrá que hemos renombrado el archivo.</li>
+<li>Si el <code class="docutils literal notranslate"><span class="pre">similarity</span> <span class="pre">index</span></code> es menor a <code class="docutils literal notranslate"><span class="pre">0.5</span></code> Git supondrá que hemos eliminado un archivo y agregado otro distinto.</li>
+</ul>
 <div class="admonition warning">
 <p class="first admonition-title">Advertencia</p>
 <p>Tener en cuenta estas consejos:</p>
@@ -327,7 +341,7 @@ $ git s
 </div>
 <div class="section" id="deleting-a-file">
 <h2><a class="toc-backref" href="#id3">Deleting a file</a><a class="headerlink" href="#deleting-a-file" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Igual que para renombrar un archivos, hay 2 formas de eliminar un archivo:</p>
+<p>Igual que para renombrar un archivo, hay 2 formas de eliminar un archivo:</p>
 <ol class="arabic simple">
 <li>Usar <code class="docutils literal notranslate"><span class="pre">git</span></code> para eliminar un archivo</li>
 <li>Eliminar el archivo y luego decírselo a Git</li>
@@ -438,7 +452,7 @@ create mode <span class="m">100644</span> .gitignore
 </div>
 <p>Otros 2 puntos importantes sobre <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>:</p>
 <ul class="simple">
-<li>Podemos crear crear cuantos <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> queramos. Podemos poner un <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> diferente en cada directorio de nuestro proyecto. Sin embargo NO debemos hacerlo. Es una mala idea porque el usuario quiere leer todo lo que va a ser ignorado de un único archivo.</li>
+<li>Podemos crear cuantos <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> queramos. Podemos poner un <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> diferente en cada directorio de nuestro proyecto. Sin embargo NO debemos hacerlo. Es una mala idea porque el usuario quiere leer todo lo que va a ser ignorado de un único archivo.</li>
 <li>Si encontramos que alguien está ignorando archivos y no sabemos por qué. Buscamos el archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> en la raíz del proyecto, o buscamos en cada subdirectorio, o en un archivo Global Exclude. Pero está ignorando un archivo que no encontramos. Esto es debido al siguiente archivo:</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat .git/info/exclude
@@ -456,26 +470,26 @@ create mode <span class="m">100644</span> .gitignore
 <h2><a class="toc-backref" href="#id6">Git ignore precedence</a><a class="headerlink" href="#git-ignore-precedence" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Digamos que estamos en un subdirectorio del proyecto que tiene su propio archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>, el directorio padre tiene otro <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> y también tenemos el <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> global.</p>
 <p>Lo primero que Git hará será correr el archivo global <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> para todos nuestros proyectos. Luego correrá el <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> del directorio raíz del proyecto. Finalmente correra las reglas <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> del subdirectorio.</p>
-<p>La forma en que Git trabaja con archivos <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> es la prioridad importa («precedence matters»). Veamos el ejemplo:</p>
+<p>La forma en que Git trabaja con archivos <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> es que «la prioridad importa» («precedence matters»). Veamos el ejemplo:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch special.log
 $ git s
 </pre></div>
 </div>
-<p>El archivo <code class="docutils literal notranslate"><span class="pre">special.log</span></code> es ignorado por Git. Pero que pasa si queremos hacer un <code class="docutils literal notranslate"><span class="pre">commit</span></code> a este archivo. Tenemos que cambiar el documento <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>:</p>
+<p>El archivo <code class="docutils literal notranslate"><span class="pre">special.log</span></code> es ignorado por Git. Pero qué pasa si queremos hacer un <code class="docutils literal notranslate"><span class="pre">commit</span></code> a este archivo. Tenemos que cambiar el documento <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi .gitignore
 
 *.log
 !special.log
 </pre></div>
 </div>
-<p>Con el signo de exclamación (<code class="docutils literal notranslate"><span class="pre">!</span></code>) decimos que no ignore al archivo <code class="docutils literal notranslate"><span class="pre">special.log</span></code>. Podemos pensar en el archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> como un conjunto de reglas que ponemos en donde el orden/prioridad importa. La última regla manda sobre la primera.</p>
+<p>Con el signo de exclamación (<code class="docutils literal notranslate"><span class="pre">!</span></code>) decimos que no ignore al archivo <code class="docutils literal notranslate"><span class="pre">special.log</span></code>. Podemos pensar en el archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code> como un conjunto de reglas que ponemos en donde el orden/prioridad importa. <strong>La última regla manda sobre la primera</strong>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
 M .gitignore
 ?? special.log
 </pre></div>
 </div>
 <p>El estado nos dice que hemos modificado el archivo <code class="docutils literal notranslate"><span class="pre">.gitignore</span></code>. Pero ahora el archivo <code class="docutils literal notranslate"><span class="pre">special.log</span></code> es visible y puedo añadirlo y hacerle <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
-<p>Si el orden de las instrucciones fuera distinto veríamos que se ignoran todos lo archivos <code class="docutils literal notranslate"><span class="pre">.log</span></code>:</p>
+<p>Si el orden de las instrucciones fuera distinto veríamos que se ignoran todos los archivos <code class="docutils literal notranslate"><span class="pre">.log</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi .gitignore
 
 !special.log
@@ -498,13 +512,16 @@ M .gitignore
 ?? special.log
 </pre></div>
 </div>
-<p>Ahora podemos agregar los cambios y guardarlos en historial.</p>
+<p>Ahora estamos listos para agregar los cambios y guardarlos en historial.</p>
 </div>
-<div class="section" id="git-commit-a">
-<h2><a class="toc-backref" href="#id7">Git <code class="docutils literal notranslate"><span class="pre">commit</span> <span class="pre">-a</span></code></a><a class="headerlink" href="#git-commit-a" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="git-commit-a-shortcut">
+<h2><a class="toc-backref" href="#id7"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> shortcut</a><a class="headerlink" href="#git-commit-a-shortcut" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Sabemos las ventajas de primero añadir un archivo y luego hacerle <code class="docutils literal notranslate"><span class="pre">commit</span></code>, pero podemos usar un atajo para hacer ambos pasos. El atajo es <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code>, esto es añadir y también hacer <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
-<p>Pero este atajo viene con una advertencia. Solo funciona en archivos modificados (<code class="docutils literal notranslate"><span class="pre">M</span></code>), no en archivos «untracked».</p>
-<p>Si tenemos un archivo que estaba en Git y lo hemos guardado, luego hicimos un cambio y queremos añadir y guardar ese cambio, podemos usar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> pero no funcionará en archivos «untracked».</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Pero este atajo viene con una advertencia. Solo funciona en archivos modificados (<code class="docutils literal notranslate"><span class="pre">M</span></code>), no en archivos «untracked».</p>
+</div>
+<p>Si tenemos un archivo que estaba en Git y lo hemos guardado, luego hicimos un cambio y queremos añadir y guardar ese cambio, podemos usar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-a</span></code> pero no funcionará en archivos «untracked» (<code class="docutils literal notranslate"><span class="pre">??</span></code>).</p>
 <p>En el último ejemplo teníamos:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
 M .gitignore

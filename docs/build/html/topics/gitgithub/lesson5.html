@@ -35,7 +35,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../genindex.html" />
-    <link rel="search" title="Búsqueda" href="../../search.html" /> 
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="GNU/Linux" href="../gnulinux/_gnulinux.html" />
+    <link rel="prev" title="Lesson 4" href="lesson4.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,9 +86,29 @@
 <li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_gitgithub.html">Git y GitHub</a></li>
-<li class="toctree-l1"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lesson1.html">Lesson 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson2.html">Lesson 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson3.html">Lesson 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson4.html">Lesson 4</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lesson 5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introducing-branching">Introducing Branching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merging-a-branch">Merging a branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-fast-forward-merge">Creating a fast forward merge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introducing-recursives-merges">Introducing recursives merges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#no-fast-forward-recursive-merges">“No fast forward” recursive merges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resolving-merge-conflicts">Resolving merge conflicts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#another-merge-conflict-example">Another merge conflict example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-diff">Git Diff</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introducing-rebasing">Introducing rebasing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rebasing-a-branch">Rebasing a branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#handling-rebase-conflicts">Handling rebase conflicts</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">GNU/Linux</span></p>
 <ul>
@@ -164,6 +186,8 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a> &raquo;</li>
+        
       <li>Lesson 5</li>
     
     
@@ -184,13 +208,1768 @@
            <div itemprop="articleBody">
             
   <div class="section" id="lesson-5">
-<h1><a class="toc-backref" href="#id1">Lesson 5</a><a class="headerlink" href="#lesson-5" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><a class="toc-backref" href="#id2">Lesson 5</a><a class="headerlink" href="#lesson-5" title="Enlazar permanentemente con este título">¶</a></h1>
 <p><em>Lesson 5: Branching, Merging, Rebasing</em></p>
 <div class="contents topic" id="table-of-contents">
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#lesson-5" id="id1">Lesson 5</a></li>
+<li><a class="reference internal" href="#lesson-5" id="id2">Lesson 5</a><ul>
+<li><a class="reference internal" href="#introducing-branching" id="id3">Introducing Branching</a></li>
+<li><a class="reference internal" href="#merging-a-branch" id="id4">Merging a branch</a></li>
+<li><a class="reference internal" href="#creating-a-fast-forward-merge" id="id5">Creating a fast forward merge</a></li>
+<li><a class="reference internal" href="#introducing-recursives-merges" id="id6">Introducing recursives merges</a></li>
+<li><a class="reference internal" href="#no-fast-forward-recursive-merges" id="id7">“No fast forward” recursive merges</a></li>
+<li><a class="reference internal" href="#resolving-merge-conflicts" id="id8">Resolving merge conflicts</a></li>
+<li><a class="reference internal" href="#another-merge-conflict-example" id="id9">Another merge conflict example</a></li>
+<li><a class="reference internal" href="#git-diff" id="id10">Git Diff</a></li>
+<li><a class="reference internal" href="#introducing-rebasing" id="id11">Introducing rebasing</a></li>
+<li><a class="reference internal" href="#rebasing-a-branch" id="id12">Rebasing a branch</a></li>
+<li><a class="reference internal" href="#handling-rebase-conflicts" id="id13">Handling rebase conflicts</a></li>
 </ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introducing-branching">
+<h2><a class="toc-backref" href="#id3">Introducing Branching</a><a class="headerlink" href="#introducing-branching" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El propósito de un «<strong>branch</strong>» es permitirnos crear una línea independiente de trabajo. Trabajar con «branches» en Git es de forma local. Si chequear otro branch toma más de medio segundo o más, algo está mal probablemente, ya que, es una operación local.</p>
+<p>Veamos «branches» en Git:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch
+* master
+</pre></div>
+</div>
+<p>Esto nos muestra que solo tenemos el «branch» por defecto, llamado <code class="docutils literal notranslate"><span class="pre">master</span></code>. En Github podemos establecer otro «branches» como nuestro «branch» por defecto.</p>
+<p>Generalmente el flujo de trabajo en Git es crear «<strong>feature branches</strong>» cada vez que creamos una nueva característica. Imaginemos que agregamos una característica de buscado a nuestra página web:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch search
+
+$ git branch
+* master
+search
+</pre></div>
+</div>
+<p>Hemos creado un nuevo «branch» llamdo <code class="docutils literal notranslate"><span class="pre">search</span></code>. Podemos cambiar de «branch» con el siguiente comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout search
+Switched to branch <span class="s1">&#39;search&#39;</span>
+
+$ git branch
+master
+* search
+</pre></div>
+</div>
+<p>El color verde del nombre del «branch» y el asterisco a su costado nos dice que ahora  estamos en el branch <code class="docutils literal notranslate"><span class="pre">search</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch search.html search.css
+
+$ git add .
+
+$ git commit -m <span class="s2">&quot;Added search page&quot;</span>
+<span class="o">[</span>search 54f68cb<span class="o">]</span> Added search page
+<span class="m">2</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> search.css
+create mode <span class="m">100644</span> search.html
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Hemos creado un <code class="docutils literal notranslate"><span class="pre">commit</span></code> que solo existe en el «branch» <code class="docutils literal notranslate"><span class="pre">search</span></code>.</p>
+</div>
+<p>Si corremos el alias de log creado anteriormente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 54f68cb <span class="o">(</span>HEAD -&gt; search<span class="o">)</span> Added search page
+* c8ee367 <span class="o">(</span>master<span class="o">)</span> Adding special log to show how log output should look
+* <span class="m">1691860</span> Modified gitignore to allow special log to be committed
+* 3c8e5e3 Added log files to .gitignore
+* f1ebec7 Deleted stylesheet <span class="k">for</span> contact us page
+* 4702c3a Deleted contact us page
+* 40afaa5 Renamed stylesheet <span class="k">for</span> the home page
+* 57e910e Renamed home page to follow corporate guidelines
+* 4388cdf <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* aa2d60c Added about us page
+* 49ab535 Added home page
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Debemos leer el log desde abajo hacia arriba.</p>
+</div>
+<p>La primera línea del log nos dice que estamos en el «branch» <code class="docutils literal notranslate"><span class="pre">search</span></code> (<code class="docutils literal notranslate"><span class="pre">HEAD</span> <span class="pre">-&gt;</span> <span class="pre">search</span></code>). <code class="docutils literal notranslate"><span class="pre">4388cdf</span> <span class="pre">(origin/master)</span> <span class="pre">Added</span> <span class="pre">contact</span> <span class="pre">us</span> <span class="pre">page</span></code> es la última vez que hicimos <code class="docutils literal notranslate"><span class="pre">push</span></code> hacia el servidor <code class="docutils literal notranslate"><span class="pre">origin</span></code> a Github.</p>
+<p>Las cosas que tenemos en el directorio de trabajo actual (<code class="docutils literal notranslate"><span class="pre">HEAD</span></code>) es la punta del «branch» <code class="docutils literal notranslate"><span class="pre">search</span></code>. Y si listamos los archivos veremos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls
+about.css   home.css  search.css   special.log
+about.html  home.htm  search.html  test.log
+</pre></div>
+</div>
+<p>Si cambiamos de «branch» a <code class="docutils literal notranslate"><span class="pre">master</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">7</span> commits.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+</pre></div>
+</div>
+<p>Si vemos el directorio, habrá dos archivos menos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls
+about.css  about.html  home.css  home.htm  special.log  test.log
+</pre></div>
+</div>
+<p>En el log veremos lo siguiente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 54f68cb <span class="o">(</span>search<span class="o">)</span> Added search page
+* c8ee367 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Adding special log to show how log output should look
+* <span class="m">1691860</span> Modified gitignore to allow special log to be committed
+* 3c8e5e3 Added log files to .gitignore
+* f1ebec7 Deleted stylesheet <span class="k">for</span> contact us page
+* 4702c3a Deleted contact us page
+* 40afaa5 Renamed stylesheet <span class="k">for</span> the home page
+* 57e910e Renamed home page to follow corporate guidelines
+* 4388cdf <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* aa2d60c Added about us page
+* 49ab535 Added home page
+</pre></div>
+</div>
+<p>El log nos dice que estamos en el «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code> como indica el texto <code class="docutils literal notranslate"><span class="pre">(HEAD,</span> <span class="pre">master)</span></code>. Además, todo lo que está encima de esta línea no ha ocurrido aún en la historia. Es como si hubiésemos retrocedido en el tiempo o ido u otra línea de historia. Para nosotros todavía no ha ocurrido el trabajo en el «branch» <code class="docutils literal notranslate"><span class="pre">serarch</span></code>.</p>
+<p>Gracias a esto, distintos desarrolladores pueden trabajar al mismo tiempo, sobre diferentes características y luego solo unirlas en <code class="docutils literal notranslate"><span class="pre">master</span></code> cuando esté listo para poner el trabajo en producción.</p>
+</div>
+<div class="section" id="merging-a-branch">
+<h2><a class="toc-backref" href="#id4">Merging a branch</a><a class="headerlink" href="#merging-a-branch" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Imaginemos que hemos acabado con la página <code class="docutils literal notranslate"><span class="pre">search</span></code>. Ahora lo que debemos hacer es traer de vuelta el trabajo al «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Already on <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">7</span> commits.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git merge search
+Updating c8ee367..54f68cb
+Fast-forward
+search.css  <span class="p">|</span> <span class="m">0</span>
+search.html <span class="p">|</span> <span class="m">0</span>
+<span class="m">2</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> search.css
+create mode <span class="m">100644</span> search.html
+</pre></div>
+</div>
+<p>Este comando traerá el trabajo que hemos hecho en el «branch» <code class="docutils literal notranslate"><span class="pre">search</span></code> al «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code>. Y ahora que vemos el directorio de trabajo del «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code> tendrá los archivos creados por el «branch» <code class="docutils literal notranslate"><span class="pre">search</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls
+about.css   home.css  search.css   special.log
+about.html  home.htm  search.html  test.log
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 54f68cb <span class="o">(</span>HEAD -&gt; master, search<span class="o">)</span> Added search page
+* c8ee367 Adding special log to show how log output should look
+* <span class="m">1691860</span> Modified gitignore to allow special log to be committed
+* 3c8e5e3 Added log files to .gitignore
+* f1ebec7 Deleted stylesheet <span class="k">for</span> contact us page
+* 4702c3a Deleted contact us page
+* 40afaa5 Renamed stylesheet <span class="k">for</span> the home page
+* 57e910e Renamed home page to follow corporate guidelines
+* 4388cdf <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* aa2d60c Added about us page
+* 49ab535 Added home page
+</pre></div>
+</div>
+<p>El log nos muestra que el «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code> ha ido «fast forward». Este es el tipo de «merge» que se ha realizado. Tanto el «branch» <code class="docutils literal notranslate"><span class="pre">search</span></code> como <code class="docutils literal notranslate"><span class="pre">master</span></code> tienen el mismo ID de <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Es decir, ambos tienen integrada la funcionalidad de <code class="docutils literal notranslate"><span class="pre">search</span></code>.</p>
+<p>Una vez que hemos unido el «branch» <code class="docutils literal notranslate"><span class="pre">search</span></code> al «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code> ya no necesitamos más al «branch» <code class="docutils literal notranslate"><span class="pre">search</span></code>. Por lo que podemos eliminarlo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch -d search
+Deleted branch search <span class="o">(</span>was 54f68cb<span class="o">)</span>.
+
+$ git branch
+* master
+
+$ git lg
+* 54f68cb <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added search page
+* c8ee367 Adding special log to show how log output should look
+* <span class="m">1691860</span> Modified gitignore to allow special log to be committed
+* 3c8e5e3 Added log files to .gitignore
+* f1ebec7 Deleted stylesheet <span class="k">for</span> contact us page
+* 4702c3a Deleted contact us page
+* 40afaa5 Renamed stylesheet <span class="k">for</span> the home page
+* 57e910e Renamed home page to follow corporate guidelines
+* 4388cdf <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* aa2d60c Added about us page
+* 49ab535 Added home page
+</pre></div>
+</div>
+<p>Eliminar el «branch» <code class="docutils literal notranslate"><span class="pre">search</span></code> no significa eliminar los archivos o <code class="docutils literal notranslate"><span class="pre">commits</span></code> que pasaron en ese «branch» solo eliminamos la etiqueta <code class="docutils literal notranslate"><span class="pre">search</span></code> del output del log.</p>
+</div>
+<div class="section" id="creating-a-fast-forward-merge">
+<h2><a class="toc-backref" href="#id5">Creating a fast forward merge</a><a class="headerlink" href="#creating-a-fast-forward-merge" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hay 2 tipos de «<strong>merge</strong>» que Git hará usualmente, aunque existen más: <strong>fast forward</strong> y <strong>recursive</strong>. Veremos estos dos tipos de «merge» y cómo o cuándo usarlos.</p>
+<ul class="simple">
+<li><strong>Fast forward merge</strong>:</li>
+</ul>
+<p>La última vez usamos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">branch</span> <span class="pre">{new_branch}</span></code> para crear un nuevo «branch» y luego <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">{new_branch}</span></code> para cambiar al «branch» creado. Una opción para hacer los dos comandos al mismo tiempo es usar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout -b categories
+Switched to a new branch <span class="s1">&#39;categories&#39;</span>
+
+$ git branch
+* categories
+master
+</pre></div>
+</div>
+<p>Este comando ha creado un nuevo «branch» llamado <code class="docutils literal notranslate"><span class="pre">categories</span></code> y ha hecho «checkout» a ese «branch» automáticamente (es decir, hemos cambiado a ese «branch»).</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Buena práctica: crear un nuevo «branch» solo cuando se necesite. No crear varios «branch» que no serán usados próximamente.</p>
+</div>
+<p>Creemos un archivo de prueba y hagamos un <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch categories.html
+
+$ git add .
+
+$ git commit -m <span class="s2">&quot;Added categories page&quot;</span>
+<span class="o">[</span>categories e92fcca<span class="o">]</span> Added categories page
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> categories.html
+</pre></div>
+</div>
+<p>Digamos que paralelamente otros estaban trabajando en otro «branch»:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">8</span> commits.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git checkout -b products
+Switched to a new branch <span class="s1">&#39;products&#39;</span>
+</pre></div>
+</div>
+<p>Para crear un nuevo «branch» hemos partido del «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code> pues lo estamos tomando como punto inicial.</p>
+<p>En ese branch crearemos archivos de prueba:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch products.html
+
+$ git add .
+
+$ git commit -m <span class="s2">&quot;Added products page&quot;</span>
+<span class="o">[</span>products e0b254d<span class="o">]</span> Added products page
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> products.html
+</pre></div>
+</div>
+<p>Veamos el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* e0b254d <span class="o">(</span>HEAD -&gt; products<span class="o">)</span> Added products page
+<span class="p">|</span> * e92fcca <span class="o">(</span>categories<span class="o">)</span> Added categories page
+<span class="p">|</span>/
+* 54f68cb <span class="o">(</span>master<span class="o">)</span> Added search page
+* c8ee367 Adding special log to show how log output should look
+* <span class="m">1691860</span> Modified gitignore to allow special log to be committed
+* 3c8e5e3 Added log files to .gitignore
+* f1ebec7 Deleted stylesheet <span class="k">for</span> contact us page
+* 4702c3a Deleted contact us page
+* 40afaa5 Renamed stylesheet <span class="k">for</span> the home page
+* 57e910e Renamed home page to follow corporate guidelines
+* 4388cdf <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* aa2d60c Added about us page
+* 49ab535 Added home page
+</pre></div>
+</div>
+<p>Interpretemos el log:</p>
+<ul class="simple">
+<li>Vemos gráficamente que existe una división del ID <code class="docutils literal notranslate"><span class="pre">54f68cb</span></code> en dos partes: <code class="docutils literal notranslate"><span class="pre">e92fcca</span></code> y <code class="docutils literal notranslate"><span class="pre">e0b254d</span></code>.</li>
+<li>A los 3 primeros <code class="docutils literal notranslate"><span class="pre">commits</span></code> se le han hecho <code class="docutils literal notranslate"><span class="pre">push</span></code> a Github. Las líneas de arriban indican <code class="docutils literal notranslate"><span class="pre">commits</span></code> que solo se han hecho localmente en el «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code>.</li>
+<li>Y en las últimas 2 líneas vemos otros 2 <code class="docutils literal notranslate"><span class="pre">commits</span></code>: uno en la «branch» <code class="docutils literal notranslate"><span class="pre">categories</span></code> y el otro en el «branch» <code class="docutils literal notranslate"><span class="pre">products</span></code>.</li>
+</ul>
+<p>Cuando decidamos que hemos acabado con el desarrollo de <code class="docutils literal notranslate"><span class="pre">products</span></code> debemos unirlo («merge») con el «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code>. Podemos hacerlo haciendo un «<strong>fast forward merge</strong>».</p>
+<p>Hacemos <code class="docutils literal notranslate"><span class="pre">checkout</span></code> al «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code> y hacemos «merge» del «branch» <code class="docutils literal notranslate"><span class="pre">products</span></code>. Por defecto se hará un <strong>«merge»  tipo Fast-forward</strong>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">8</span> commits.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git merge products
+Updating 54f68cb..e0b254d
+Fast-forward
+products.html <span class="p">|</span> <span class="m">0</span>
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> products.html
+</pre></div>
+</div>
+<p>Como indica el output, se ha realizado un «merge» tipo fast forward. Y el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* e0b254d <span class="o">(</span>HEAD -&gt; master, products<span class="o">)</span> Added products page
+<span class="p">|</span> * e92fcca <span class="o">(</span>categories<span class="o">)</span> Added categories page
+<span class="p">|</span>/
+* 54f68cb Added search page
+* c8ee367 Adding special log to show how log output should look
+* <span class="m">1691860</span> Modified gitignore to allow special log to be committed
+* 3c8e5e3 Added log files to .gitignore
+* f1ebec7 Deleted stylesheet <span class="k">for</span> contact us page
+* 4702c3a Deleted contact us page
+* 40afaa5 Renamed stylesheet <span class="k">for</span> the home page
+* 57e910e Renamed home page to follow corporate guidelines
+* 4388cdf <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* aa2d60c Added about us page
+* 49ab535 Added home page
+</pre></div>
+</div>
+<p>En la primera línea vemos que el «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code> ha saltado hacia adelante («fast forward»), hacia el <code class="docutils literal notranslate"><span class="pre">commit</span></code> de ID <code class="docutils literal notranslate"><span class="pre">e0b254d</span></code>. Es decir, se ha añadido el <code class="docutils literal notranslate"><span class="pre">commit</span></code> hecho en el «branch» <code class="docutils literal notranslate"><span class="pre">products</span></code> como si fuera parte del «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+<p>Eliminamos el «branch» <code class="docutils literal notranslate"><span class="pre">products</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch -d products
+Deleted branch products <span class="o">(</span>was e0b254d<span class="o">)</span>.
+</pre></div>
+</div>
+</div>
+<div class="section" id="introducing-recursives-merges">
+<h2><a class="toc-backref" href="#id6">Introducing recursives merges</a><a class="headerlink" href="#introducing-recursives-merges" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><strong>Recursive merge</strong>:</li>
+</ul>
+<p>La razón por la cual pudimos hacer un «merge» <code class="docutils literal notranslate"><span class="pre">fast</span> <span class="pre">forward</span></code> fue porque no había diferencia en historia. Se puede pretender que los <code class="docutils literal notranslate"><span class="pre">commits</span></code> se hicieron directamente el «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code>, ya que, no habían cambios en este «branch».</p>
+<p>En el log actual:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* e0b254d <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added products page
+<span class="p">|</span> * e92fcca <span class="o">(</span>categories<span class="o">)</span> Added categories page
+<span class="p">|</span>/
+* 54f68cb Added search page
+* c8ee367 Adding special log to show how log output should look
+* <span class="m">1691860</span> Modified gitignore to allow special log to be committed
+* 3c8e5e3 Added log files to .gitignore
+* f1ebec7 Deleted stylesheet <span class="k">for</span> contact us page
+* 4702c3a Deleted contact us page
+* 40afaa5 Renamed stylesheet <span class="k">for</span> the home page
+* 57e910e Renamed home page to follow corporate guidelines
+* 4388cdf <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* aa2d60c Added about us page
+* 49ab535 Added home page
+</pre></div>
+</div>
+<p>Vemos que tenemos diferencias en historial de los «branches» <code class="docutils literal notranslate"><span class="pre">master</span></code> y <code class="docutils literal notranslate"><span class="pre">categories</span></code>. El «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code> tiene un <code class="docutils literal notranslate"><span class="pre">commit</span></code> que <code class="docutils literal notranslate"><span class="pre">categories</span></code> no tiene (<code class="docutils literal notranslate"><span class="pre">e0b254d</span></code>) y <code class="docutils literal notranslate"><span class="pre">categories</span></code> tiene un <code class="docutils literal notranslate"><span class="pre">commit</span></code> que <code class="docutils literal notranslate"><span class="pre">master</span></code> no tiene (<code class="docutils literal notranslate"><span class="pre">e92fcca</span></code>).</p>
+<p>Para resolver esto, Git tendrá que hacer un «<strong>recursive merge</strong>» , que juntará dos líneas de historia distintas y creará un nuevo <code class="docutils literal notranslate"><span class="pre">commit</span></code> que unirá esos 2 trabajos.</p>
+<p>Primero comprobemos que estamos en el «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch
+categories
+* master
+</pre></div>
+</div>
+<p>Luego ejecutar el comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span></code>. Este comando nos retorna a un editor de texto como <code class="docutils literal notranslate"><span class="pre">nano</span></code> donde podemos personalizar el mensaje de <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Salir del editor y ver el resultado del «merge»:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git merge categories
+
+Merge made by the <span class="s1">&#39;recursive&#39;</span> strategy.
+categories.html <span class="p">|</span> <span class="m">0</span>
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> categories.html
+</pre></div>
+</div>
+<p>En el log veremos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+*   <span class="m">3662531</span> <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;categories&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 44409c8 <span class="o">(</span>categories<span class="o">)</span> Added categories page
+* <span class="p">|</span> 7c5c668 Added products page
+<span class="p">|</span>/
+* 564baf7 Added search page
+* d71267c Adding special log to show how log output should look
+* 01f02ee Modified gitignore to allow special log to be committed
+* 1b59604 Added log files to .gitignore
+* ced7c37 Deleted stylesheet <span class="k">for</span> contact us page
+* ffaef7d Deleted contact us page
+* 48b8639 Renamed stylesheet <span class="k">for</span> the home page
+* faf6cf4 Renamed home page to follow corporate guidelines
+* 6c2ab19 <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* 49bfaa2 Added about us page
+* eaeaa56 Added home page
+</pre></div>
+</div>
+<p>Como vemos en el <code class="docutils literal notranslate"><span class="pre">commit</span></code> más reciente notamos que se ha hecho un «merge» los cambios hechos en el «branch» <code class="docutils literal notranslate"><span class="pre">master</span></code> con los hechos en el «branch» <code class="docutils literal notranslate"><span class="pre">categories</span></code>.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">La regla de oro es que si tenemos dos «branches» distintos que tienen al menos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> en cada uno, tendremos que hacer un «<strong>recursive merge</strong>».</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Los «recursive merge» nos dan más información en el log que los «fast forward merge». Viendo el log podemos ver los <code class="docutils literal notranslate"><span class="pre">commits</span></code> realizados en un «branch» distinto al branch <code class="docutils literal notranslate"><span class="pre">master</span></code> en el caso del «recursive merge».</p>
+</div>
+</div>
+<div class="section" id="no-fast-forward-recursive-merges">
+<h2><a class="toc-backref" href="#id7">“No fast forward” recursive merges</a><a class="headerlink" href="#no-fast-forward-recursive-merges" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Esta idea de agregar la página de <code class="docutils literal notranslate"><span class="pre">products</span></code> en un lado y la página de <code class="docutils literal notranslate"><span class="pre">categories</span></code> en otra puede resultar confuso. Veremos una forma de realizar «fast forward merges» pero sin la complejidad de ver registros en diferentes tiempos.</p>
+<p>Primero eliminar el branch <code class="docutils literal notranslate"><span class="pre">categories</span></code> y luego usar el «<strong>no fast forward</strong>» para crear un «recursive mersh».</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch -d categories
+Deleted branch categories <span class="o">(</span>was 44409c8<span class="o">)</span>.
+
+$ git lg
+*   <span class="m">3662531</span> <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;categories&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 44409c8 Added categories page
+* <span class="p">|</span> 7c5c668 Added products page
+<span class="p">|</span>/
+* 564baf7 Added search page
+* d71267c Adding special log to show how log output should look
+* 01f02ee Modified gitignore to allow special log to be committed
+* 1b59604 Added log files to .gitignore
+* ced7c37 Deleted stylesheet <span class="k">for</span> contact us page
+* ffaef7d Deleted contact us page
+* 48b8639 Renamed stylesheet <span class="k">for</span> the home page
+* faf6cf4 Renamed home page to follow corporate guidelines
+* 6c2ab19 <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* 49bfaa2 Added about us page
+* eaeaa56 Added home page
+</pre></div>
+</div>
+<p>Ahora creemos una página <code class="docutils literal notranslate"><span class="pre">my_account</span></code> con un nuevo «branch» y realicemos algunos <code class="docutils literal notranslate"><span class="pre">commits</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout -b my_account
+Switched to a new branch <span class="s1">&#39;my_account&#39;</span>
+
+$ touch account.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added my_account page&quot;</span>
+<span class="o">[</span>my_account 33d2f6e<span class="o">]</span> Added my_account page
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> account.html
+
+$ touch account.css
+$ git add .
+$ git commit -m <span class="s2">&quot;Styled my_account page&quot;</span>
+<span class="o">[</span>my_account 0c3519b<span class="o">]</span> Styled my_account page
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> account.css
+</pre></div>
+</div>
+<p>Tenemos un historial parecido al anterior:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 0c3519b <span class="o">(</span>HEAD -&gt; my_account<span class="o">)</span> Styled my_account page
+* 33d2f6e Added my_account page
+*   <span class="m">3662531</span> <span class="o">(</span>master<span class="o">)</span> Merge branch <span class="s1">&#39;categories&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 44409c8 Added categories page
+* <span class="p">|</span> 7c5c668 Added products page
+<span class="p">|</span>/
+* 564baf7 Added search page
+* d71267c Adding special log to show how log output should look
+* 01f02ee Modified gitignore to allow special log to be committed
+* 1b59604 Added log files to .gitignore
+* ced7c37 Deleted stylesheet <span class="k">for</span> contact us page
+* ffaef7d Deleted contact us page
+* 48b8639 Renamed stylesheet <span class="k">for</span> the home page
+* faf6cf4 Renamed home page to follow corporate guidelines
+* 6c2ab19 <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* 49bfaa2 Added about us page
+* eaeaa56 Added home page
+</pre></div>
+</div>
+<p>Podemos ver los últimos 2 <code class="docutils literal notranslate"><span class="pre">commits</span></code> que solo pertenecen al branch <code class="docutils literal notranslate"><span class="pre">my_account</span></code>.</p>
+<p>Cuando hayamos acabado con la sección <code class="docutils literal notranslate"><span class="pre">my_account</span></code> podríamos hacer un «merge» con el branch <code class="docutils literal notranslate"><span class="pre">master</span></code> y por defecto hará un «fast forward merge», pues no existen <code class="docutils literal notranslate"><span class="pre">commits</span></code> en <code class="docutils literal notranslate"><span class="pre">master</span></code> que no formen parte del historial del branch <code class="docutils literal notranslate"><span class="pre">my_account</span></code>.</p>
+<p>Sin embargo, queremos esa información adicional que nos indique que esos dos <code class="docutils literal notranslate"><span class="pre">commits</span></code> fueron realizados juntos como parte de un mismo «branch». Para lograr esto ejecutamos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git merge --no-ff my_account
+
+Merge branch <span class="s1">&#39;my_account&#39;</span>
+</pre></div>
+</div>
+<p>La opción <code class="docutils literal notranslate"><span class="pre">--no-ff</span></code> significa «no fast forward» nos permite decirle a Git que preserve la información adicional de los <code class="docutils literal notranslate"><span class="pre">commits</span></code> realizados en el «branch». Git puede pretender que estos <code class="docutils literal notranslate"><span class="pre">commits</span></code> se realizaron el <code class="docutils literal notranslate"><span class="pre">master</span></code> porque no han habido otros cambios, pero le decimos que no lo haga.</p>
+<p>Este comando nos retorna a un editor de texto, pues si no es un «fast forward merge», será un «recursive merge», es decir, se necesita un <code class="docutils literal notranslate"><span class="pre">commit</span></code> para juntar el historial.</p>
+<p>Veamos el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+*   777cd1a <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;my_account&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 0c3519b <span class="o">(</span>my_account<span class="o">)</span> Styled my_account page
+<span class="p">|</span> * 33d2f6e Added my_account page
+<span class="p">|</span>/
+*   <span class="m">3662531</span> Merge branch <span class="s1">&#39;categories&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 44409c8 Added categories page
+* <span class="p">|</span> 7c5c668 Added products page
+<span class="p">|</span>/
+* 564baf7 Added search page
+* d71267c Adding special log to show how log output should look
+* 01f02ee Modified gitignore to allow special log to be committed
+* 1b59604 Added log files to .gitignore
+* ced7c37 Deleted stylesheet <span class="k">for</span> contact us page
+* ffaef7d Deleted contact us page
+* 48b8639 Renamed stylesheet <span class="k">for</span> the home page
+* faf6cf4 Renamed home page to follow corporate guidelines
+* 6c2ab19 <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* 49bfaa2 Added about us page
+* eaeaa56 Added home page
+</pre></div>
+</div>
+<p>Al ver el log notamos que los <code class="docutils literal notranslate"><span class="pre">commits</span></code> con ID <code class="docutils literal notranslate"><span class="pre">0c3519b</span></code> y <code class="docutils literal notranslate"><span class="pre">33d2f6e</span></code> se realizaron juntos bajo un mismo «branch», aún cuando eliminemos el «branch»:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch -d my_account
+Deleted branch my_account <span class="o">(</span>was 0c3519b<span class="o">)</span>.
+
+$ git lg
+*   777cd1a <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;my_account&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="hll"><span class="p">|</span> * 0c3519b Styled my_account page
+</span><span class="hll"><span class="p">|</span> * 33d2f6e Added my_account page
+</span><span class="p">|</span>/
+*   <span class="m">3662531</span> Merge branch <span class="s1">&#39;categories&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 44409c8 Added categories page
+* <span class="p">|</span> 7c5c668 Added products page
+<span class="p">|</span>/
+* 564baf7 Added search page
+* d71267c Adding special log to show how log output should look
+* 01f02ee Modified gitignore to allow special log to be committed
+* 1b59604 Added log files to .gitignore
+* ced7c37 Deleted stylesheet <span class="k">for</span> contact us page
+* ffaef7d Deleted contact us page
+* 48b8639 Renamed stylesheet <span class="k">for</span> the home page
+* faf6cf4 Renamed home page to follow corporate guidelines
+* 6c2ab19 <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* 49bfaa2 Added about us page
+* eaeaa56 Added home page
+</pre></div>
+</div>
+</div>
+<div class="section" id="resolving-merge-conflicts">
+<h2><a class="toc-backref" href="#id8">Resolving merge conflicts</a><a class="headerlink" href="#resolving-merge-conflicts" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Creemos un nuevo branch <code class="docutils literal notranslate"><span class="pre">cart</span></code> y realicemos <code class="docutils literal notranslate"><span class="pre">commit</span></code> con él:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout -b cartSwitched to a new branch <span class="s1">&#39;cart&#39;</span>
+
+$ touch cart.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added shopping cart&quot;</span>
+<span class="o">[</span>cart 230d74e<span class="o">]</span> Added shopping cart
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> cart.html
+</pre></div>
+</div>
+<p>Editemos el archivo <code class="docutils literal notranslate"><span class="pre">home.htm</span></code> simulando que creamos un link al shopping cart <code class="docutils literal notranslate"><span class="pre">cart.html</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi home.htm
+
+link to cart
+</pre></div>
+</div>
+<p>Viendo el estado veremos que ha sido modificado el archivo <code class="docutils literal notranslate"><span class="pre">home.htm</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+ M home.htm
+</pre></div>
+</div>
+<p>Podemos usar el shortcut para hacer un <code class="docutils literal notranslate"><span class="pre">commit</span></code> a archivos modificados:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -am <span class="s2">&quot;Added link on home page to shopping cart&quot;</span>
+
+<span class="o">[</span>cart 7b4c481<span class="o">]</span> Added link on home page to shopping cart
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Ahora volviendo al branch <code class="docutils literal notranslate"><span class="pre">master</span></code> decidimos hacer un rediseño de la página <code class="docutils literal notranslate"><span class="pre">home</span></code>:</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">No preocuparnos por nombres de «branch» largos, es mejor que este sea descriptivo.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">14</span> commits.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+
+$ git checkout -b home_page_redisign
+Switched to a new branch <span class="s1">&#39;home_page_redisign&#39;</span>
+
+$ git branch
+  cart
+* home_page_redisign
+  master
+</pre></div>
+</div>
+<p>Desde este branch también editaremos el archivo <code class="docutils literal notranslate"><span class="pre">home.htm</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi home.htm
+
+    Company logo
+    Links:
+    - Products
+    - Categories
+
+    Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<p>Luego el estado será de modificado (<code class="docutils literal notranslate"><span class="pre">M</span></code>), por lo que podremos hacer <code class="docutils literal notranslate"><span class="pre">commit</span></code> directamente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+ M home.htm
+
+$ git commit -am <span class="s2">&quot;Implemented home page redesign&quot;</span>
+<span class="o">[</span>home_page_redisign d2276e2<span class="o">]</span> Implemented home page redesign
+ <span class="m">1</span> file changed, <span class="m">7</span> insertions<span class="o">(</span>+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Veamos el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+<span class="hll">* d2276e2 <span class="o">(</span>HEAD -&gt; home_page_redisign<span class="o">)</span> Implemented home page redesign
+</span><span class="hll"><span class="p">|</span> * 7b4c481 <span class="o">(</span>cart<span class="o">)</span> Added link on home page to shopping cart
+</span><span class="hll"><span class="p">|</span> * 230d74e Added shopping cart
+</span><span class="p">|</span>/
+*   777cd1a <span class="o">(</span>master<span class="o">)</span> Merge branch <span class="s1">&#39;my_account&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 0c3519b Styled my_account page
+<span class="p">|</span> * 33d2f6e Added my_account page
+<span class="p">|</span>/
+*   <span class="m">3662531</span> Merge branch <span class="s1">&#39;categories&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 44409c8 Added categories page
+* <span class="p">|</span> 7c5c668 Added products page
+<span class="p">|</span>/
+* 564baf7 Added search page
+* d71267c Adding special log to show how log output should look
+* 01f02ee Modified gitignore to allow special log to be committed
+* 1b59604 Added log files to .gitignore
+* ced7c37 Deleted stylesheet <span class="k">for</span> contact us page
+* ffaef7d Deleted contact us page
+* 48b8639 Renamed stylesheet <span class="k">for</span> the home page
+* faf6cf4 Renamed home page to follow corporate guidelines
+* 6c2ab19 <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* 49bfaa2 Added about us page
+* eaeaa56 Added home page
+</pre></div>
+</div>
+<p>Tenemos una situación en la que se han realizado dos branches distintos con sus respectivos <code class="docutils literal notranslate"><span class="pre">commits</span></code> por separado. Ahora digamos que el rediseño de la página web ha finalizado y queremos hacer un merge con el branch <code class="docutils literal notranslate"><span class="pre">master</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">14</span> commits.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+
+$ git merge --no-ff home_page_redisign
+
+Merge branch <span class="s1">&#39;home_page_redesign&#39;</span>
+
+Merge made by the <span class="s1">&#39;recursive&#39;</span> strategy.
+ home.htm <span class="p">|</span> <span class="m">7</span> +++++++
+ <span class="m">1</span> file changed, <span class="m">7</span> insertions<span class="o">(</span>+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Se realizó un «fast forward merge» usando una estrategia «recursive merge» mediante <code class="docutils literal notranslate"><span class="pre">--no-ff</span></code>. Ahora podemos eliminar el <code class="docutils literal notranslate"><span class="pre">branch</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch -d home_page_redisign
+Deleted branch home_page_redisign <span class="o">(</span>was d2276e2<span class="o">)</span>.
+
+$ git branch
+  cart
+* master
+
+$ git lg
+*   2bf9637 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;home_page_redesign&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * d2276e2 Implemented home page redesign
+<span class="p">|</span>/
+<span class="p">|</span> * 7b4c481 <span class="o">(</span>cart<span class="o">)</span> Added link on home page to shopping cart
+<span class="p">|</span> * 230d74e Added shopping cart
+<span class="p">|</span>/
+*   777cd1a Merge branch <span class="s1">&#39;my_account&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 0c3519b Styled my_account page
+<span class="p">|</span> * 33d2f6e Added my_account page
+<span class="p">|</span>/
+*   <span class="m">3662531</span> Merge branch <span class="s1">&#39;categories&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 44409c8 Added categories page
+* <span class="p">|</span> 7c5c668 Added products page
+<span class="p">|</span>/
+* 564baf7 Added search page
+* d71267c Adding special log to show how log output should look
+* 01f02ee Modified gitignore to allow special log to be committed
+* 1b59604 Added log files to .gitignore
+* ced7c37 Deleted stylesheet <span class="k">for</span> contact us page
+* ffaef7d Deleted contact us page
+* 48b8639 Renamed stylesheet <span class="k">for</span> the home page
+* faf6cf4 Renamed home page to follow corporate guidelines
+* 6c2ab19 <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* 49bfaa2 Added about us page
+* eaeaa56 Added home page
+</pre></div>
+</div>
+<p>Como vemos en el log, la funcionalidad del branch <code class="docutils literal notranslate"><span class="pre">cart</span></code> todavía no se le ha realizado un «merge», no existe una línea que vuelva a la izquierda, desde el <code class="docutils literal notranslate"><span class="pre">commit</span></code> <code class="docutils literal notranslate"><span class="pre">7b4c481</span></code> o <code class="docutils literal notranslate"><span class="pre">230d74e</span></code>.</p>
+<p>Supondremos que ocurrirá un problema porque en los dos branches hemos realizado cambios totalmente distintos a <code class="docutils literal notranslate"><span class="pre">home.htm</span></code>, por lo que hemos creado deliberadamente una situación de conflicto en el «merge». Veamos que ocurre:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch
+  cart
+* master
+
+$ git merge cart
+Auto-merging home.htm
+CONFLICT <span class="o">(</span>content<span class="o">)</span>: Merge conflict in home.htm
+Automatic merge failed<span class="p">;</span> fix conflicts and <span class="k">then</span> commit the result.
+</pre></div>
+</div>
+<p>Este merge no puede ser tipo «fast forward» porque hay cosas en <code class="docutils literal notranslate"><span class="pre">master</span></code> que no están en <code class="docutils literal notranslate"><span class="pre">cart</span></code> y hay cosas en <code class="docutils literal notranslate"><span class="pre">cart</span></code> que no están en <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+<p>El merge nos da un error al <code class="docutils literal notranslate"><span class="pre">Auto-merging</span></code> de <code class="docutils literal notranslate"><span class="pre">home.htm</span></code>. Git hace un buen trabajo de «merging» automático; por ejemplo, si tenemos un cambio al principio del archivo y otro al final del archivo, Git no dará ningún error. Pero si dos personas hicieron cambios al mismo archivo en las mismas líneas, Git no sabrá que habrás hecho.</p>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p class="last">Para resolver el problema de merge usar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code>.</p>
+</div>
+<p>Veamos el estado del repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+
+On branch master
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">16</span> commits.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+You have unmerged paths.
+<span class="o">(</span>fix conflicts and run <span class="s2">&quot;git commit&quot;</span><span class="o">)</span>
+<span class="o">(</span>use <span class="s2">&quot;git merge --abort&quot;</span> to abort the merge<span class="o">)</span>
+
+Changes to be committed:
+
+        new file:   cart.html
+
+Unmerged paths:
+    <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to mark resolution<span class="o">)</span>
+
+        both modified:   home.htm
+</pre></div>
+</div>
+<p>Antes de hacer <code class="docutils literal notranslate"><span class="pre">commit</span></code> al archivo indicado debemos arreglar lo indicado en <code class="docutils literal notranslate"><span class="pre">Unmerged</span> <span class="pre">paths</span></code>. Estos podrían ser múltiples archivos. Arreglamos este error de merge en Git y podremos generalizarlo para otros casos donde tengamos varios archivos.</p>
+<p>En Git, para resolver un problema de merge solo necesitamos un editor de texto. Por ejemplo con <code class="docutils literal notranslate"><span class="pre">vi</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;&lt;&lt;&lt;&lt;&lt;</span>&lt; HEAD
+Company logo
+
+Links:
+- Products
+- Categories
+
+Copyright <span class="nv">2014</span>
+<span class="o">=======</span>
+link to cart
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; cart
+</pre></div>
+</div>
+<p>Vemos que se ha insertado texto adicional al archivo <code class="docutils literal notranslate"><span class="pre">home.htm</span></code>. <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;&lt;&lt;&lt;&lt;</span> <span class="pre">HEAD</span></code> (<strong>current change</strong>) indica que en el master branch (<code class="docutils literal notranslate"><span class="pre">HEAD</span></code>) tenemos todo el contenido delimitado hasta el <code class="docutils literal notranslate"><span class="pre">=======</span></code>, luego de este delimitador tenemos contenido realizado con otro branch indicado por <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="pre">cart</span></code> (<strong>incoming change</strong>). Es decir, tenemos 2 contenidos distintos en el mismo archivo.</p>
+<p>Lo que debemos hacer es editar el archivo de forma que se vea como debería:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Company logo
+
+Links:
+- Products
+- Categories
+- Cart
+
+Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Es importante notar que nosotros podríamos editar el archivo como deseemos, agregando o eliminado líneas. Pero NO debemos modificar cosas no relacionadas al branch al cual le estamos haciendo merge, pues en el <code class="docutils literal notranslate"><span class="pre">commit</span></code> estaríamos mintiendo.</p>
+</div>
+<p>Una vez hemos guardado los cambios del archivo, revisar el estado:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch master
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">16</span> commits.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+You have unmerged paths.
+<span class="o">(</span>fix conflicts and run <span class="s2">&quot;git commit&quot;</span><span class="o">)</span>
+<span class="o">(</span>use <span class="s2">&quot;git merge --abort&quot;</span> to abort the merge<span class="o">)</span>
+
+Changes to be committed:
+
+        new file:   cart.html
+
+Unmerged paths:
+    <span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to mark resolution<span class="o">)</span>
+
+        both modified:   home.htm
+</pre></div>
+</div>
+<p>Vemos que el estado no ha cambiado. Así que ahora debemos decirle a Git que hemos arreglado el conflicto.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+
+$ git status
+On branch master
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">16</span> commits.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+All conflicts fixed but you are still merging.
+<span class="o">(</span>use <span class="s2">&quot;git commit&quot;</span> to conclude merge<span class="o">)</span>
+
+Changes to be committed:
+
+        new file:   cart.html
+        modified:   home.htm
+</pre></div>
+</div>
+<p>Para finalizar este merge debemos hacer un <code class="docutils literal notranslate"><span class="pre">commit</span></code>. No usaremos la opción <code class="docutils literal notranslate"><span class="pre">-m</span></code> para ver que nos mande a un editor de texto y ver el mensaje por defecto del <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Merge branch <span class="s1">&#39;cart&#39;</span>
+
+<span class="c1"># Conflicts:</span>
+<span class="c1">#       home.htm</span>
+<span class="c1">#</span>
+<span class="c1"># It looks like you may be committing a merge.</span>
+<span class="c1"># If this is not correct, please remove the file</span>
+<span class="c1">#       .git/MERGE_HEAD</span>
+<span class="c1"># and try again.</span>
+
+
+<span class="c1"># Please enter the commit message for your changes. Lines starting</span>
+<span class="c1"># with &#39;#&#39; will be ignored, and an empty message aborts the commit.</span>
+<span class="c1">#</span>
+<span class="c1"># On branch master</span>
+<span class="c1"># Your branch is ahead of &#39;origin/master&#39; by 16 commits.</span>
+<span class="c1">#   (use &quot;git push&quot; to publish your local commits)</span>
+<span class="c1">#</span>
+<span class="c1"># All conflicts fixed but you are still merging.</span>
+<span class="c1">#</span>
+<span class="c1"># Changes to be committed:</span>
+<span class="c1">#       new file:   cart.html</span>
+<span class="c1">#       modified:   home.htm</span>
+<span class="c1">#</span>
+</pre></div>
+</div>
+<p>Vemos que la primera línea es el mensaje de <code class="docutils literal notranslate"><span class="pre">commit</span></code> tradicional al hacer merge pero también tenemos información de los archivos en los que hubieron conflictos (<code class="docutils literal notranslate"><span class="pre">home.htm</span></code>). Podemos agregar información adicional a este mensaje:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Merge branch <span class="s1">&#39;cart&#39;</span>
+
+Conflicts:
+        home.htm
+
+Conflict in home.html between link to cart and new page design. Make link match the new page redesign and saved.
+
+$ git commit
+<span class="o">[</span>master 82ae112<span class="o">]</span> Merge branch <span class="s1">&#39;cart&#39;</span>
+</pre></div>
+</div>
+<p>Guardemos el mensaje de <code class="docutils literal notranslate"><span class="pre">commit</span></code> y vemos el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+*   82ae112 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;cart&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 7b4c481 <span class="o">(</span>cart<span class="o">)</span> Added link on home page to shopping cart
+<span class="p">|</span> * 230d74e Added shopping cart
+* <span class="p">|</span>   2bf9637 Merge branch <span class="s1">&#39;home_page_redesign&#39;</span>
+<span class="p">|</span><span class="se">\ \</span>
+<span class="p">|</span> <span class="p">|</span>/
+<span class="p">|</span>/<span class="p">|</span>
+<span class="p">|</span> * d2276e2 Implemented home page redesign
+<span class="p">|</span>/
+*   777cd1a Merge branch <span class="s1">&#39;my_account&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 0c3519b Styled my_account page
+<span class="p">|</span> * 33d2f6e Added my_account page
+<span class="p">|</span>/
+*   <span class="m">3662531</span> Merge branch <span class="s1">&#39;categories&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 44409c8 Added categories page
+* <span class="p">|</span> 7c5c668 Added products page
+<span class="p">|</span>/
+* 564baf7 Added search page
+* d71267c Adding special log to show how log output should look
+* 01f02ee Modified gitignore to allow special log to be committed
+* 1b59604 Added log files to .gitignore
+* ced7c37 Deleted stylesheet <span class="k">for</span> contact us page
+* ffaef7d Deleted contact us page
+* 48b8639 Renamed stylesheet <span class="k">for</span> the home page
+* faf6cf4 Renamed home page to follow corporate guidelines
+* 6c2ab19 <span class="o">(</span>origin/master<span class="o">)</span> Added contact us page
+* 49bfaa2 Added about us page
+* eaeaa56 Added home page
+</pre></div>
+</div>
+<p>Comprobamos que tenemos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> con el merge al branch de <code class="docutils literal notranslate"><span class="pre">cart</span></code>. Finalmente eliminamos este branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch -d cart
+Deleted branch cart <span class="o">(</span>was 7b4c481<span class="o">)</span>.
+
+$ git lg
+*   82ae112 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;cart&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 7b4c481 Added link on home page to shopping cart
+<span class="p">|</span> * 230d74e Added shopping cart
+* <span class="p">|</span>   2bf9637 Merge branch <span class="s1">&#39;home_page_redesign&#39;</span>
+<span class="p">|</span><span class="se">\ \</span>
+<span class="p">|</span> <span class="p">|</span>/
+<span class="p">|</span>/<span class="p">|</span>
+<span class="p">|</span> * d2276e2 Implemented home page redesign
+<span class="p">|</span>/
+*   777cd1a Merge branch <span class="s1">&#39;my_account&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="another-merge-conflict-example">
+<h2><a class="toc-backref" href="#id9">Another merge conflict example</a><a class="headerlink" href="#another-merge-conflict-example" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Veamos otro ejemplo de conflicto con merges. Creemos una página de <code class="docutils literal notranslate"><span class="pre">checkout</span></code> con un nuevo branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout -b checkout_page
+Switched to a new branch <span class="s1">&#39;checkout_page&#39;</span>
+
+$ touch checkout.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added checkout page&quot;</span>
+<span class="o">[</span>checkout_page a1b7834<span class="o">]</span> Added checkout page
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> checkout.html
+</pre></div>
+</div>
+<p>Simulemos la creación de un link a esta página creada desde el home:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi home.htm
+
+    Company logo
+
+    Links:
+    - Products
+    - Categories
+    - Cart
+    - Checkout
+
+    Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<p>Luego hagamos un <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -am <span class="s2">&quot;Added link to checkout page&quot;</span>
+<span class="o">[</span>checkout_page 048ec79<span class="o">]</span> Added link to checkout page
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Volver al branch <code class="docutils literal notranslate"><span class="pre">master</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">19</span> commits.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+</pre></div>
+</div>
+<p>Veamos el contenido del archivo <code class="docutils literal notranslate"><span class="pre">home.htm</span></code>, comprobando que no se han registrado los cambios hechos con el branch <code class="docutils literal notranslate"><span class="pre">checkout</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat home.htm
+    Company logo
+
+    Links:
+    - Products
+    - Categories
+    - Cart
+
+    Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<p>Añadir un nuevo branch <code class="docutils literal notranslate"><span class="pre">add_home_page_links</span></code> y editemos el archivo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout -b add_home_page_links
+Switched to a new branch <span class="s1">&#39;add_home_page_links&#39;</span>
+
+$ vi home.htm
+
+    Company logo
+
+    Links:
+    - Products
+    - Categories
+    - Cart
+    - About
+    - My Account
+
+    Copyright <span class="m">2014</span>
+
+$ git commit -am <span class="s2">&quot;Added new links to the home page&quot;</span>
+<span class="o">[</span>add_home_page_links d044e8e<span class="o">]</span> Added new links to the home page
+ <span class="m">1</span> file changed, <span class="m">2</span> insertions<span class="o">(</span>+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Hemos creado una situación que presentará un conflicto cuando intentemos hacer un merge, pues hemos editado el mismo archivo con dos branches distintos.</p>
+<p>Regresemos al branch <code class="docutils literal notranslate"><span class="pre">master</span></code> y hagamos merge con el branch <code class="docutils literal notranslate"><span class="pre">add_home_page_links</span></code>, posteriormente borremos este branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">19</span> commits.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git merge --no-ff add_home_page_links
+Merge branch <span class="s1">&#39;add_home_page_links&#39;</span>
+
+Merge made by the <span class="s1">&#39;recursive&#39;</span> strategy.
+ home.htm <span class="p">|</span> <span class="m">2</span> ++
+ <span class="m">1</span> file changed, <span class="m">2</span> insertions<span class="o">(</span>+<span class="o">)</span>
+
+$ git branch -d add_home_page_links
+Deleted branch add_home_page_links <span class="o">(</span>was d044e8e<span class="o">)</span>.
+</pre></div>
+</div>
+<p>Veamos el log para comprobar que el trabajo hecho con el branch <code class="docutils literal notranslate"><span class="pre">add_home_page_links</span></code> se ha unido con el branch <code class="docutils literal notranslate"><span class="pre">master</span></code> mediante merge:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+*   c3f3863 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;add_home_page_links&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * d044e8e Added new links to the home page
+<span class="p">|</span>/
+<span class="p">|</span> * 048ec79 <span class="o">(</span>checkout_page<span class="o">)</span> Added link to checkout page
+<span class="p">|</span> * a1b7834 Added checkout page
+<span class="p">|</span>/
+*   82ae112 Merge branch <span class="s1">&#39;cart&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 7b4c481 Added link on home page to shopping cart
+<span class="p">|</span> * 230d74e Added shopping cart
+* <span class="p">|</span>   2bf9637 Merge branch <span class="s1">&#39;home_page_redesign&#39;</span>
+<span class="p">|</span><span class="se">\ \</span>
+<span class="p">|</span> <span class="p">|</span>/
+<span class="p">|</span>/<span class="p">|</span>
+<span class="p">|</span> * d2276e2 Implemented home page redesign
+<span class="p">|</span>/
+*   777cd1a Merge branch <span class="s1">&#39;my_account&#39;</span>
+</pre></div>
+</div>
+<p>Lo siguiente será hacer un merge del branch <code class="docutils literal notranslate"><span class="pre">checkout</span></code> con el <code class="docutils literal notranslate"><span class="pre">master</span></code>. Es aquí donde obtendremos un conflicto:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git merge checkout_page
+Auto-merging home.htm
+CONFLICT <span class="o">(</span>content<span class="o">)</span>: Merge conflict in home.htm
+Automatic merge failed<span class="p">;</span> fix conflicts and <span class="k">then</span> commit the result.
+</pre></div>
+</div>
+<p>Veamos <code class="docutils literal notranslate"><span class="pre">home.htm</span></code> para resolver el conflicto:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi home.htm
+
+    Company logo
+
+    Links:
+    - Products
+    - Categories
+    - Cart
+    <span class="o">&lt;&lt;&lt;&lt;&lt;&lt;</span>&lt; HEAD
+    - About
+    - My <span class="nv">Account</span>
+    <span class="o">=======</span>
+    - Checkout
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt; checkout_page
+</pre></div>
+</div>
+<p>Copyright 2014</p>
+<p>En ambos lados del historial tenemos las líneas del logo y copyright, pero en el <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> (merge con <code class="docutils literal notranslate"><span class="pre">master</span></code> branch) tenemos links <code class="docutils literal notranslate"><span class="pre">About</span></code> y <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">Account</span></code>. Mientras que en <code class="docutils literal notranslate"><span class="pre">&gt;&gt;&gt;&gt;&gt;&gt;&gt;</span> <span class="pre">checkout_page</span></code> tenemos un link a <code class="docutils literal notranslate"><span class="pre">Checkout</span></code>. Git no sabe qué hacer ni el orden en que debería posicionar los elementos si todos deberían estar. Por lo tanto, es nuestra labor editar el contenido según deseemos con nuestro editor:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi home.htm
+
+    Company logo
+
+    Links:
+    - Products
+    - Categories
+    - Cart
+    - About
+    - My Account
+    - Checkout
+
+    Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="first admonition-title">Truco</p>
+<p>Algunos editores como Visual Studio Code proveen funcionalidad adicionales para realizar acciones sobre estos archivos con conflicto.</p>
+<div class="last figure align-center" id="id1">
+<img alt="../../_images/visual-studio-code-git-conflict.png" src="../../_images/visual-studio-code-git-conflict.png" />
+<p class="caption"><span class="caption-text">Visual Studio Code - Git Conflicts</span></p>
+</div>
+</div>
+<p>Guardar los cambios del archivo editado y ver el estado del repo con los conflictos todavía presentes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+On branch master
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">21</span> commits.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+You have unmerged paths.
+<span class="o">(</span>fix conflicts and run <span class="s2">&quot;git commit&quot;</span><span class="o">)</span>
+<span class="o">(</span>use <span class="s2">&quot;git merge --abort&quot;</span> to abort the merge<span class="o">)</span>
+
+Changes to be committed:
+
+        new file:   checkout.html
+
+Unmerged paths:
+<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to mark resolution<span class="o">)</span>
+
+        both modified:   home.htm
+</pre></div>
+</div>
+<p>Ahora podemos resolver el conflicto en Git añadiendo y haciendo un <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+$ git status
+On branch master
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">21</span> commits.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+All conflicts fixed but you are still merging.
+<span class="o">(</span>use <span class="s2">&quot;git commit&quot;</span> to conclude merge<span class="o">)</span>
+
+Changes to be committed:
+
+        new file:   checkout.html
+        modified:   home.htm
+
+$ git commit
+
+    Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+
+    <span class="c1"># Conflicts:</span>
+    <span class="c1">#       home.htm</span>
+
+<span class="o">[</span>master 064b2c7<span class="o">]</span> Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+</pre></div>
+</div>
+<p>Veamos el log para comprobar que hemos realizado un merge del trabajo realizado en <code class="docutils literal notranslate"><span class="pre">checkout_page</span></code> al <code class="docutils literal notranslate"><span class="pre">master</span></code> branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+*   064b2c7 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 048ec79 <span class="o">(</span>checkout_page<span class="o">)</span> Added link to checkout page
+<span class="p">|</span> * a1b7834 Added checkout page
+* <span class="p">|</span>   c3f3863 Merge branch <span class="s1">&#39;add_home_page_links&#39;</span>
+<span class="p">|</span><span class="se">\ \</span>
+<span class="p">|</span> <span class="p">|</span>/
+<span class="p">|</span>/<span class="p">|</span>
+<span class="p">|</span> * d044e8e Added new links to the home page
+<span class="p">|</span>/
+*   82ae112 Merge branch <span class="s1">&#39;cart&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 7b4c481 Added link on home page to shopping cart
+<span class="p">|</span> * 230d74e Added shopping cart
+* <span class="p">|</span>   2bf9637 Merge branch <span class="s1">&#39;home_page_redesign&#39;</span>
+<span class="p">|</span><span class="se">\ \</span>
+<span class="p">|</span> <span class="p">|</span>/
+<span class="p">|</span>/<span class="p">|</span>
+<span class="p">|</span> * d2276e2 Implemented home page redesign
+<span class="p">|</span>/
+*   777cd1a Merge branch <span class="s1">&#39;my_account&#39;</span>
+</pre></div>
+</div>
+<p>Eliminemos el branch <code class="docutils literal notranslate"><span class="pre">checkout_page</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch -d checkout_page
+Deleted branch checkout_page <span class="o">(</span>was 048ec79<span class="o">)</span>.
+
+$ git lg
+*   064b2c7 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 048ec79 Added link to checkout page
+<span class="p">|</span> * a1b7834 Added checkout page
+* <span class="p">|</span>   c3f3863 Merge branch <span class="s1">&#39;add_home_page_links&#39;</span>
+<span class="p">|</span><span class="se">\ \</span>
+<span class="p">|</span> <span class="p">|</span>/
+<span class="p">|</span>/<span class="p">|</span>
+<span class="p">|</span> * d044e8e Added new links to the home page
+<span class="p">|</span>/
+*   82ae112 Merge branch <span class="s1">&#39;cart&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 7b4c481 Added link on home page to shopping cart
+<span class="p">|</span> * 230d74e Added shopping cart
+* <span class="p">|</span>   2bf9637 Merge branch <span class="s1">&#39;home_page_redesign&#39;</span>
+<span class="p">|</span><span class="se">\ \</span>
+<span class="p">|</span> <span class="p">|</span>/
+<span class="p">|</span>/<span class="p">|</span>
+<span class="p">|</span> * d2276e2 Implemented home page redesign
+<span class="p">|</span>/
+*   777cd1a Merge branch <span class="s1">&#39;my_account&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-diff">
+<h2><a class="toc-backref" href="#id10">Git Diff</a><a class="headerlink" href="#git-diff" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> nos permite ver las diferencias. Con el comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">help</span></code> veremos las posibilidades y opciones del comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git <span class="nb">help</span> diff
+</pre></div>
+</div>
+<p>Hagamos un par de cambios con el <code class="docutils literal notranslate"><span class="pre">master</span></code> branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi home.htm
+
+    Company logo
+
+    Links:
+    - Products
+    - Categories
+    - Cart
+    - About
+    - History
+    - My Account
+
+    Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<p>Si vemos el estado del repo, comprobaremos que existe un archivo modificado:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+ M home.htm
+</pre></div>
+</div>
+<p>¿Pero cual es la modificación de ese archivo?: es para esto que sirve <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git diff
+
+<span class="hll">diff --git a/home.htm b/home.htm
+</span><span class="hll">index afd16cf..1fdd419 <span class="m">100644</span>
+</span><span class="hll">--- a/home.htm
+</span><span class="hll">+++ b/home.htm
+</span><span class="hll">@@ -5,7 +5,7 @@ Links:
+</span>- Categories
+- Cart
+- About
+<span class="hll">+- History
+</span>- My Account
+<span class="hll">-- Checkout
+</span>
+Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<p>Veremos que hemos agregado una línea para “- History” (<code class="docutils literal notranslate"><span class="pre">+</span></code>) y hemos eliminado una línea para “- Checkout” (<code class="docutils literal notranslate"><span class="pre">-</span></code>).</p>
+<p>Pasemos este cambio a “staged area”. Y veamos el resultado del comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+
+$ git diff
+
+$
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> no nos muestra nada pues, solo muestra diferencias de cambios “unstaged” por defecto.</p>
+<p>Para ver los cambios “staged” debemos agregar un parámetro:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git diff --staged
+
+diff --git a/home.htm b/home.htm
+index afd16cf..1fdd419 <span class="m">100644</span>
+--- a/home.htm
++++ b/home.htm
+@@ -5,7 +5,7 @@ Links:
+- Categories
+- Cart
+- About
++- History
+- My Account
+-- Checkout
+
+Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<p>Con <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">HEAD</span></code> veremos las diferencias con el directorio actual y el último <code class="docutils literal notranslate"><span class="pre">commit</span></code> realizado.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git diff HEAD
+
+diff --git a/home.htm b/home.htm
+index afd16cf..1fdd419 <span class="m">100644</span>
+--- a/home.htm
++++ b/home.htm
+@@ -5,7 +5,7 @@ Links:
+- Categories
+- Cart
+- About
++- History
+- My Account
+-- Checkout
+
+Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<p>Ahora hagamos otros cambios:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Company logo
+
+Links:
+- About
+- History
+- My Account
+
+Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<p>Veamos el estado:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+MM home.htm
+</pre></div>
+</div>
+<p>Esto nos dice que podemos tener cambios “staged” y “unstaged” del mismo archivo. Si corrieramos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span></code> cómo encontramos qué cambiaría, veamos las tres posibilidades:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git diff --staged
+diff --git a/home.htm b/home.htm
+index afd16cf..1fdd419 <span class="m">100644</span>
+--- a/home.htm
++++ b/home.htm
+@@ -5,7 +5,7 @@ Links:
+- Categories
+- Cart
+- About
++- History
+- My Account
+-- Checkout
+
+Copyright <span class="m">2014</span>
+
+
+$ git diff
+diff --git a/home.htm b/home.htm
+index 1fdd419..516fd1f <span class="m">100644</span>
+--- a/home.htm
++++ b/home.htm
+@@ -1,9 +1,6 @@
+Company logo
+
+Links:
+-- Products
+-- Categories
+-- Cart
+- About
+- History
+- My Account
+
+$ git diff HEAD
+diff --git a/home.htm b/home.htm
+index afd16cf..516fd1f <span class="m">100644</span>
+--- a/home.htm
++++ b/home.htm
+@@ -1,11 +1,8 @@
+Company logo
+
+Links:
+-- Products
+-- Categories
+-- Cart
+- About
++- History
+- My Account
+-- Checkout
+
+Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">--staged</span></code> nos mostrará todas las diferencias que han sido añadidas al “staged area”.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> nos mostrará los cambios que no han sido añadidos al “staged area”.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">HEAD</span></code> nos mostrará todos los cambios hechos desde el último <code class="docutils literal notranslate"><span class="pre">commit</span></code> al historial. Esto es lo que ocurrirá si añadimos y hacemos <code class="docutils literal notranslate"><span class="pre">commit</span></code> de todos los cambios.</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+$ git commit -m <span class="s2">&quot;Changed the home page links&quot;</span>
+<span class="o">[</span>master 51975c0<span class="o">]</span> Changed the home page links
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>, <span class="m">4</span> deletions<span class="o">(</span>-<span class="o">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">--staged</span></code>, <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> y <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span> <span class="pre">HEAD</span></code> son 3 comandos comúnes usados con <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">diff</span></code> para ver qué pasará antes de hacer <code class="docutils literal notranslate"><span class="pre">commit</span></code> a los cambios.</p>
+</div>
+</div>
+<div class="section" id="introducing-rebasing">
+<h2><a class="toc-backref" href="#id11">Introducing rebasing</a><a class="headerlink" href="#introducing-rebasing" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Rebasing es una herramienta intermedia que no es imprescindible para un buen uso de Git. Es usada para mejorar la calidad de la experiencia cuando colaboramos con otras personas.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En Git hay dos comandos que usan la palabra <code class="docutils literal notranslate"><span class="pre">rebase</span></code> pero son totalmente diferentes: <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code> y <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span> <span class="pre">-i</span></code>. Debemos tratarlos como cosas diferentes que resulven problemas distintos. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span> <span class="pre">-i</span></code> o «git rebase interfactive» se enfoca en reescribir y limpiar el historial, cambiar el orden de <code class="docutils literal notranslate"><span class="pre">commits</span></code>, comprimir <code class="docutils literal notranslate"><span class="pre">commits</span></code>. En cambio <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span></code> también sirve para limpiar el historial pero de una manera muy diferente.</p>
+</div>
+<p>Cuando el historial se vuelve muy complejo de leer (viendo el log), debemos considerar usar <code class="docutils literal notranslate"><span class="pre">rebase</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">¿Debería usar <code class="docutils literal notranslate"><span class="pre">rebase</span></code> o <code class="docutils literal notranslate"><span class="pre">merge</span></code>?:
+Usarás merge, la única pregunta será ¿harás un <code class="docutils literal notranslate"><span class="pre">rebase</span></code> primero?</p>
+</div>
+<p>Hacer un <code class="docutils literal notranslate"><span class="pre">rebase</span></code>, equivale a decir cambiar la base o cambiar el punto inicial de ese branch antes de hacerle merge.</p>
+</div>
+<div class="section" id="rebasing-a-branch">
+<h2><a class="toc-backref" href="#id12">Rebasing a branch</a><a class="headerlink" href="#rebasing-a-branch" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Creemos una situación en la que veamos el valor de “rebasing”. Para esto crearemos 2 branches (<code class="docutils literal notranslate"><span class="pre">feature1</span></code> y <code class="docutils literal notranslate"><span class="pre">feature2</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout -b feature1
+Switched to a new branch <span class="s1">&#39;feature1&#39;</span>
+
+$ touch feature1.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added feature 1&quot;</span>
+<span class="o">[</span>feature1 1e1bb9a<span class="o">]</span> Added feature <span class="m">1</span>
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> feature1.html
+
+$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">25</span> commits.
+<span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git checkout -b feature2
+Switched to a new branch <span class="s1">&#39;feature2&#39;</span>
+
+$ touch feature2.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added feature 2&quot;</span>
+<span class="o">[</span>feature2 b1c8223<span class="o">]</span> Added feature <span class="m">2</span>
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> feature2.html
+</pre></div>
+</div>
+<p>Acabamos en una situación con dos branches y un <code class="docutils literal notranslate"><span class="pre">commit</span></code> en cada uno:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+<span class="hll">* b1c8223 <span class="o">(</span>HEAD -&gt; feature2<span class="o">)</span> Added feature <span class="m">2</span>
+</span><span class="hll"><span class="p">|</span> * 1e1bb9a <span class="o">(</span>feature1<span class="o">)</span> Added feature <span class="m">1</span>
+</span><span class="p">|</span>/
+* 51975c0 <span class="o">(</span>master<span class="o">)</span> Changed the home page links
+*   064b2c7 Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 048ec79 Added link to checkout page
+<span class="p">|</span> * a1b7834 Added checkout page
+* <span class="p">|</span>   c3f3863 Merge branch <span class="s1">&#39;add_home_page_links&#39;</span>
+<span class="p">|</span><span class="se">\ \</span>
+<span class="p">|</span> <span class="p">|</span>/
+<span class="p">|</span>/<span class="p">|</span>
+<span class="p">|</span> * d044e8e Added new links to the home page
+<span class="p">|</span>/
+*   82ae112 Merge branch <span class="s1">&#39;cart&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 7b4c481 Added link on home page to shopping cart
+<span class="p">|</span> * 230d74e Added shopping cart
+* <span class="p">|</span>   2bf9637 Merge branch <span class="s1">&#39;home_page_redesign&#39;</span>
+<span class="p">|</span><span class="se">\ \</span>
+<span class="p">|</span> <span class="p">|</span>/
+<span class="p">|</span>/<span class="p">|</span>
+<span class="p">|</span> * d2276e2 Implemented home page redesign
+<span class="p">|</span>/
+*   777cd1a Merge branch <span class="s1">&#39;my_account&#39;</span>
+</pre></div>
+</div>
+<p>Una vez que hemos acabado de desarrollar esos features queremos hacerles merge. Hagamos merge del branch <code class="docutils literal notranslate"><span class="pre">feature1</span></code> que será tipo recursive:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">25</span> commits.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git merge --no-ff feature1
+Merge branch <span class="s1">&#39;feature1&#39;</span>
+
+Merge made by the <span class="s1">&#39;recursive&#39;</span> strategy.
+ feature1.html <span class="p">|</span> <span class="m">0</span>
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> feature1.html
+
+$ git branch -d feature1
+Deleted branch feature1 <span class="o">(</span>was 1e1bb9a<span class="o">)</span>.
+</pre></div>
+</div>
+<p>Viendo el log comprobamos que hemos hecho merge de <code class="docutils literal notranslate"><span class="pre">feature1</span></code> en el <code class="docutils literal notranslate"><span class="pre">master</span></code> branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$  git lg
+*   cdbc4aa <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;feature1&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 1e1bb9a Added feature <span class="m">1</span>
+<span class="p">|</span>/
+<span class="p">|</span> * b1c8223 <span class="o">(</span>feature2<span class="o">)</span> Added feature <span class="m">2</span>
+<span class="p">|</span>/
+* 51975c0 Changed the home page links
+*   064b2c7 Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+</pre></div>
+</div>
+<p>Podríamos volver a hacer lo que hicimos antes: asegurarnos que estamos en el branch <code class="docutils literal notranslate"><span class="pre">master</span></code> y hacer merge de <code class="docutils literal notranslate"><span class="pre">feature2</span></code>, esto funcionaría pero no se verá bien conforme el proyecto sea más grande.</p>
+<p>Ahora haremos un rebase de <code class="docutils literal notranslate"><span class="pre">feature2</span></code>. Esto significa que cambiaremos la base o el punto inicial de <code class="docutils literal notranslate"><span class="pre">feature2</span></code>. Pretendremos que no comenzamos a trabajar en <code class="docutils literal notranslate"><span class="pre">feature2</span></code> hasta después que se hizo un merge de <code class="docutils literal notranslate"><span class="pre">feature1</span></code> satisfactoriamente. Esto facilitará el orden de lectura de desarrollo de trabajo.</p>
+<p>Viendo nuevamente el log notamos que <code class="docutils literal notranslate"><span class="pre">feature2</span></code> tiene una base identificada con el ID <code class="docutils literal notranslate"><span class="pre">51975c0</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$  git lg
+*   cdbc4aa <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;feature1&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 1e1bb9a Added feature <span class="m">1</span>
+<span class="p">|</span>/
+<span class="p">|</span> * b1c8223 <span class="o">(</span>feature2<span class="o">)</span> Added feature <span class="m">2</span>
+<span class="p">|</span>/
+<span class="hll">* 51975c0 Changed the home page links
+</span>*   064b2c7 Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+</pre></div>
+</div>
+<p>Deberemos hacer un rebase hacia el <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> de <code class="docutils literal notranslate"><span class="pre">master</span></code>, con punto inicial o base el ID <code class="docutils literal notranslate"><span class="pre">cdbc4aa</span></code>. Para esto haremos checkout a <code class="docutils literal notranslate"><span class="pre">feature2</span></code>, luego rebase a <code class="docutils literal notranslate"><span class="pre">master</span></code> y deshará cualquier trabajo que hayamos hecho en el branch <code class="docutils literal notranslate"><span class="pre">feature2</span></code>, irá al <code class="docutils literal notranslate"><span class="pre">HEAD</span></code> de <code class="docutils literal notranslate"><span class="pre">master</span></code> y volverá a hacer el trabajo como si hubiera escrito el código recién:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout feature2
+Switched to branch <span class="s1">&#39;feature2&#39;</span>
+
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: Added feature <span class="m">2</span>
+
+$ git lg
+* 9baf6a2 <span class="o">(</span>HEAD -&gt; feature2<span class="o">)</span> Added feature <span class="m">2</span>
+*   cdbc4aa <span class="o">(</span>master<span class="o">)</span> Merge branch <span class="s1">&#39;feature1&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 1e1bb9a Added feature <span class="m">1</span>
+<span class="p">|</span>/
+* 51975c0 Changed the home page links
+*   064b2c7 Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+</pre></div>
+</div>
+<p>En el log comprobamos que ahora se ve como si no se hubiera trabajo en el branch <code class="docutils literal notranslate"><span class="pre">feature2</span></code> hasta que se hizo el merge de <code class="docutils literal notranslate"><span class="pre">feature1</span></code>. Lo que sigue es hacerle merge hacia el <code class="docutils literal notranslate"><span class="pre">master</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">27</span> commits.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git merge --no-ff feature2
+Merge made by the <span class="s1">&#39;recursive&#39;</span> strategy.
+ feature2.html <span class="p">|</span> <span class="m">0</span>
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> feature2.html
+
+Merge branch <span class="s1">&#39;feature2&#39;</span>
+
+$ git lg
+*   08875c4 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;feature2&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 9baf6a2 <span class="o">(</span>feature2<span class="o">)</span> Added feature <span class="m">2</span>
+<span class="p">|</span>/
+*   cdbc4aa Merge branch <span class="s1">&#39;feature1&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 1e1bb9a Added feature <span class="m">1</span>
+<span class="p">|</span>/
+* 51975c0 Changed the home page links
+*   064b2c7 Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+
+$ git branch -d feature2
+Deleted branch feature2 <span class="o">(</span>was 9baf6a2<span class="o">)</span>.
+</pre></div>
+</div>
+<p>Ahora se ve como si hubiésemos trabajado en <code class="docutils literal notranslate"><span class="pre">feature1</span></code>, le hicimos merge y cuando acabamos trabajamos en <code class="docutils literal notranslate"><span class="pre">feature2</span></code>.</p>
+<p>El otro beneficio es que nos permite realizar todas nuestras pruebas de integración en nuestro branches de <code class="docutils literal notranslate"><span class="pre">feature</span></code> antes de hacer hacerle merge en el <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+</div>
+<div class="section" id="handling-rebase-conflicts">
+<h2><a class="toc-backref" href="#id13">Handling rebase conflicts</a><a class="headerlink" href="#handling-rebase-conflicts" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hemos visto conflicto con merge, ¿cómo será un conflicto con rebase?. Creemos un caso:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout -b feature3
+Switched to a new branch <span class="s1">&#39;feature3&#39;</span>
+
+$ touch feature3.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added feature 3&quot;</span>
+<span class="o">[</span>feature3 4d5f561<span class="o">]</span> Added feature <span class="m">3</span>
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> feature3.html
+
+$ vi home.htm
+
+    Company logo
+
+    Links:
+    - About
+    - History
+    - My Account
+    - Feature <span class="m">3</span>
+
+    Copyright <span class="m">2014</span>
+</pre></div>
+</div>
+<p>Veamos el estado y hagamos un <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git s
+ M home.htm
+
+$ git commit -am <span class="s2">&quot;Added link to feature 3&quot;</span>
+<span class="o">[</span>feature3 07866ad<span class="o">]</span> Added link to feature <span class="m">3</span>
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Para crear el conflicto haremos lo mismo con <code class="docutils literal notranslate"><span class="pre">feature4</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">29</span> commits.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git checkout -b feature4
+Switched to a new branch <span class="s1">&#39;feature4&#39;</span>
+
+$ touch feature4.html
+
+$ git add .
+
+$ git commit -m <span class="s2">&quot;Added feature 4&quot;</span>
+<span class="o">[</span>feature4 411e7b2<span class="o">]</span> Added feature <span class="m">4</span>
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> feature4.html
+
+$ vi home.htm
+
+    Company logo
+
+    Links:
+    - About
+    - History
+    - My Account
+    - Feature <span class="m">4</span>
+
+    Copyright <span class="m">2014</span>
+
+$ git commit -am <span class="s2">&quot;Added link to feature 4&quot;</span>
+<span class="o">[</span>feature4 df7ff8c<span class="o">]</span> Added link to feature <span class="m">4</span>
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Hemos creado 2 features que harán conflicto, veamos el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* df7ff8c <span class="o">(</span>HEAD -&gt; feature4<span class="o">)</span> Added link to feature <span class="m">4</span>
+* 411e7b2 Added feature <span class="m">4</span>
+<span class="p">|</span> * 07866ad <span class="o">(</span>feature3<span class="o">)</span> Added link to feature <span class="m">3</span>
+<span class="p">|</span> * 4d5f561 Added feature <span class="m">3</span>
+<span class="p">|</span>/
+*   08875c4 <span class="o">(</span>master<span class="o">)</span> Merge branch <span class="s1">&#39;feature2&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 9baf6a2 Added feature <span class="m">2</span>
+<span class="p">|</span>/
+*   cdbc4aa Merge branch <span class="s1">&#39;feature1&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 1e1bb9a Added feature <span class="m">1</span>
+<span class="p">|</span>/
+* 51975c0 Changed the home page links
+*   064b2c7 Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+</pre></div>
+</div>
+<p>Una vez que hayamos acabado con <code class="docutils literal notranslate"><span class="pre">feature3</span></code> le haremos merge y luego rebase de <code class="docutils literal notranslate"><span class="pre">feature4</span></code> y resolveremos el conflicto.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">29</span> commits.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git merge --no-ff feature3
+
+Merge branch <span class="s1">&#39;feature3&#39;</span>
+
+Merge made by the <span class="s1">&#39;recursive&#39;</span> strategy.
+ feature3.html <span class="p">|</span> <span class="m">0</span>
+ home.htm      <span class="p">|</span> <span class="m">1</span> +
+ <span class="m">2</span> files changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+ create mode <span class="m">100644</span> feature3.html
+
+$ git branch -d feature3
+Deleted branch feature3 <span class="o">(</span>was 07866ad<span class="o">)</span>.
+
+$ git lg
+*   e59b16c <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;feature3&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 07866ad Added link to feature <span class="m">3</span>
+<span class="p">|</span> * 4d5f561 Added feature <span class="m">3</span>
+<span class="p">|</span>/
+<span class="p">|</span> * df7ff8c <span class="o">(</span>feature4<span class="o">)</span> Added link to feature <span class="m">4</span>
+<span class="p">|</span> * 411e7b2 Added feature <span class="m">4</span>
+<span class="p">|</span>/
+*   08875c4 Merge branch <span class="s1">&#39;feature2&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 9baf6a2 Added feature <span class="m">2</span>
+<span class="p">|</span>/
+*   cdbc4aa Merge branch <span class="s1">&#39;feature1&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 1e1bb9a Added feature <span class="m">1</span>
+<span class="p">|</span>/
+* 51975c0 Changed the home page links
+*   064b2c7 Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+</pre></div>
+</div>
+<p>Viendo el log vemos que habrá un conflicto en <code class="docutils literal notranslate"><span class="pre">df7ff8c</span></code>. La única pregunta será si es un conflicto de merge o de rebase. Lo bueno es que realmente no importa de qué tipo es, pues los resolvemos de la misma forma.</p>
+<p>Hagamos el rebase de <code class="docutils literal notranslate"><span class="pre">feature4</span></code> para tener un orden en la construcción de los 4 features en el historial.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout feature4
+Switched to branch <span class="s1">&#39;feature4&#39;</span>
+
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: Added feature <span class="m">4</span>
+Applying: Added link to feature <span class="m">4</span>
+Using index info to reconstruct a base tree...
+M       home.htm
+Falling back to patching base and <span class="m">3</span>-way merge...
+Auto-merging home.htm
+CONFLICT <span class="o">(</span>content<span class="o">)</span>: Merge conflict in home.htm
+error: Failed to merge in the changes.
+Patch failed at <span class="m">0002</span> Added link to feature <span class="m">4</span>
+Use <span class="s1">&#39;git am --show-current-patch&#39;</span> to see the failed patch
+
+Resolve all conflicts manually, mark them as resolved with
+<span class="s2">&quot;git add/rm &lt;conflicted_files&gt;&quot;</span>, <span class="k">then</span> run <span class="s2">&quot;git rebase --continue&quot;</span>.
+You can instead skip this commit: run <span class="s2">&quot;git rebase --skip&quot;</span>.
+To abort and get back to the state before <span class="s2">&quot;git rebase&quot;</span>, run <span class="s2">&quot;git rebase --abort&quot;</span>.
+</pre></div>
+</div>
+<p>Esta vez hemos encontrado un conflicto, similar al de merge. El mensaje nos dice que una vez arreglemos el conflicto, corramos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">rebase</span> <span class="pre">--continue</span></code>. <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">status</span></code> nos dirá qué hacer:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+rebase in progress<span class="p">;</span> onto e59b16c
+You are currently rebasing branch <span class="s1">&#39;feature4&#39;</span> on <span class="s1">&#39;e59b16c&#39;</span>.
+<span class="o">(</span>fix conflicts and <span class="k">then</span> run <span class="s2">&quot;git rebase --continue&quot;</span><span class="o">)</span>
+<span class="o">(</span>use <span class="s2">&quot;git rebase --skip&quot;</span> to skip this patch<span class="o">)</span>
+<span class="o">(</span>use <span class="s2">&quot;git rebase --abort&quot;</span> to check out the original branch<span class="o">)</span>
+
+Unmerged paths:
+<span class="o">(</span>use <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to mark resolution<span class="o">)</span>
+
+        both modified:   home.htm
+
+no changes added to commit <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> and/or <span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+</pre></div>
+</div>
+<p>El estado nos indica que estamos en medio de un rebase de <code class="docutils literal notranslate"><span class="pre">e59b16c</span></code>, y debemos arreglar el archivo <code class="docutils literal notranslate"><span class="pre">home.htm</span></code>. Veamos el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 7eda1d6 <span class="o">(</span>HEAD<span class="o">)</span> Added feature <span class="m">4</span>
+*   e59b16c <span class="o">(</span>master<span class="o">)</span> Merge branch <span class="s1">&#39;feature3&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 07866ad Added link to feature <span class="m">3</span>
+<span class="p">|</span> * 4d5f561 Added feature <span class="m">3</span>
+<span class="p">|</span>/
+<span class="p">|</span> * df7ff8c <span class="o">(</span>feature4<span class="o">)</span> Added link to feature <span class="m">4</span>
+<span class="p">|</span> * 411e7b2 Added feature <span class="m">4</span>
+<span class="p">|</span>/
+*   08875c4 Merge branch <span class="s1">&#39;feature2&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 9baf6a2 Added feature <span class="m">2</span>
+<span class="p">|</span>/
+*   cdbc4aa Merge branch <span class="s1">&#39;feature1&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 1e1bb9a Added feature <span class="m">1</span>
+<span class="p">|</span>/
+* 51975c0 Changed the home page links
+*   064b2c7 Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+</pre></div>
+</div>
+<p>Veremos el mismo commit 2 veces: <code class="docutils literal notranslate"><span class="pre">7eda1d6</span></code> y <code class="docutils literal notranslate"><span class="pre">df7ff8c</span></code>: Added feature 4. Una vez que resolvamos el conflicto, finalizará el rebase y eliminará los commits sobrantes.</p>
+<p>Arreglémoslo igual que un conflicto de merge, excepto que veremos una diferencia en el archivo conflictivo. Ahora no veremos el nombre del branch sino con un commit específico que está dando conflicto:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat home.htm
+
+    Company logo
+
+    Links:
+    - About
+    - History
+    - My Account
+    <span class="o">&lt;&lt;&lt;&lt;&lt;&lt;</span>&lt; HEAD
+    - Feature <span class="nv">3</span>
+    <span class="o">=======</span>
+    - Feature <span class="m">4</span>
+    &gt;&gt;&gt;&gt;&gt;&gt;&gt; Added link to feature <span class="m">4</span>
+
+    Copyright <span class="m">2014</span>
+
+$ vi home.htm
+
+    Company logo
+
+    Links:
+    - About
+    - History
+    - My Account
+    - Feature <span class="m">3</span>
+    - Feature <span class="m">4</span>
+
+    Copyright <span class="m">2014</span>
+
+$ git add .
+
+$ git status
+rebase in progress<span class="p">;</span> onto e59b16c
+You are currently rebasing branch <span class="s1">&#39;feature4&#39;</span> on <span class="s1">&#39;e59b16c&#39;</span>.
+<span class="o">(</span>all conflicts fixed: run <span class="s2">&quot;git rebase --continue&quot;</span><span class="o">)</span>
+
+Changes to be committed:
+<span class="o">(</span>use <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+
+        modified:   home.htm
+</pre></div>
+</div>
+<p>El estado nos dice que se han arreglado todos los conflictos y solo corramos el siguiente comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git rebase --continue
+Applying: Added link to feature <span class="m">4</span>
+
+$ git lg
+* 5f75f25 <span class="o">(</span>HEAD -&gt; feature4<span class="o">)</span> Added link to feature <span class="m">4</span>
+* 7eda1d6 Added feature <span class="m">4</span>
+*   e59b16c <span class="o">(</span>master<span class="o">)</span> Merge branch <span class="s1">&#39;feature3&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 07866ad Added link to feature <span class="m">3</span>
+<span class="p">|</span> * 4d5f561 Added feature <span class="m">3</span>
+<span class="p">|</span>/
+*   08875c4 Merge branch <span class="s1">&#39;feature2&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 9baf6a2 Added feature <span class="m">2</span>
+<span class="p">|</span>/
+*   cdbc4aa Merge branch <span class="s1">&#39;feature1&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 1e1bb9a Added feature <span class="m">1</span>
+<span class="p">|</span>/
+* 51975c0 Changed the home page links
+*   064b2c7 Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+</pre></div>
+</div>
+<p>Hemos hecho un rebase de <code class="docutils literal notranslate"><span class="pre">feature4</span></code> sobre el <code class="docutils literal notranslate"><span class="pre">master</span></code> y solo nos quedaría hacer merge:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">32</span> commits.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git merge --no-ff feature4
+Merge branch <span class="s1">&#39;feature4&#39;</span>
+
+Merge made by the <span class="s1">&#39;recursive&#39;</span> strategy.
+ feature4.html <span class="p">|</span> <span class="m">0</span>
+ home.htm      <span class="p">|</span> <span class="m">1</span> +
+ <span class="m">2</span> files changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+ create mode <span class="m">100644</span> feature4.html
+
+$ git branch -d feature4
+Deleted branch feature4 <span class="o">(</span>was 5f75f25<span class="o">)</span>.
+
+$ git lg
+*   d0ade3c <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge branch <span class="s1">&#39;feature4&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 5f75f25 Added link to feature <span class="m">4</span>
+<span class="p">|</span> * 7eda1d6 Added feature <span class="m">4</span>
+<span class="p">|</span>/
+*   e59b16c Merge branch <span class="s1">&#39;feature3&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 07866ad Added link to feature <span class="m">3</span>
+<span class="p">|</span> * 4d5f561 Added feature <span class="m">3</span>
+<span class="p">|</span>/
+*   08875c4 Merge branch <span class="s1">&#39;feature2&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 9baf6a2 Added feature <span class="m">2</span>
+<span class="p">|</span>/
+*   cdbc4aa Merge branch <span class="s1">&#39;feature1&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 1e1bb9a Added feature <span class="m">1</span>
+<span class="p">|</span>/
+* 51975c0 Changed the home page links
+*   064b2c7 Merge branch <span class="s1">&#39;checkout_page&#39;</span>
+</pre></div>
+</div>
+<p>Vemos que el historial está limpio y es linear en la construcción de <code class="docutils literal notranslate"><span class="pre">feature1</span></code>, <code class="docutils literal notranslate"><span class="pre">feature2</span></code>, <code class="docutils literal notranslate"><span class="pre">feature3</span></code> y <code class="docutils literal notranslate"><span class="pre">feature4</span></code>.</p>
 </div>
 </div>
 
@@ -199,6 +1978,15 @@
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gnulinux/_gnulinux.html" class="btn btn-neutral float-right" title="GNU/Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lesson4.html" class="btn btn-neutral float-left" title="Lesson 4" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

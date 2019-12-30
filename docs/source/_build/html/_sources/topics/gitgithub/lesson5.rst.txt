@@ -4,3 +4,566 @@ Lesson 5
 *Lesson 5: Branching, Merging, Rebasing*
 
 .. contents:: Table of Contents 
+
+Introducing Branching
+---------------------
+
+El propósito de un "**branch**" es permitirnos crear una línea independiente de trabajo. Trabajar con "branches" en Git es de forma local. Si chequear otro branch toma más de medio segundo o más, algo está mal probablemente, ya que, es una operación local.
+
+Veamos "branches" en Git:
+
+.. code-block:: bash
+
+    $ git branch
+    * master
+
+Esto nos muestra que solo tenemos el "branch" por defecto, llamado ``master``. En Github podemos establecer otro "branches" como nuestro "branch" por defecto.
+
+Generalmente el flujo de trabajo en Git es crear "**feature branches**" cada vez que creamos una nueva característica. Imaginemos que agregamos una característica de buscado a nuestra página web:
+
+.. code-block:: bash
+
+    $ git branch search
+
+    $ git branch
+    * master
+    search
+
+Hemos creado un nuevo "branch" llamdo ``search``. Podemos cambiar de "branch" con el siguiente comando:
+
+.. code-block:: bash
+
+    $ git checkout search
+    Switched to branch 'search'
+
+    $ git branch
+    master
+    * search
+
+El color verde del nombre del "branch" y el asterisco a su costado nos dice que ahora  estamos en el branch ``search``.
+
+.. code-block:: bash
+
+    $ touch search.html search.css
+
+    $ git add .
+
+    $ git commit -m "Added search page"
+    [search 54f68cb] Added search page
+    2 files changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 search.css
+    create mode 100644 search.html
+
+.. Note::
+
+    Hemos creado un ``commit`` que solo existe en el "branch" ``search``.
+
+Si corremos el alias de log creado anteriormente:
+
+.. code-block:: bash
+
+    $ git lg
+    * 54f68cb (HEAD -> search) Added search page
+    * c8ee367 (master) Adding special log to show how log output should look
+    * 1691860 Modified gitignore to allow special log to be committed
+    * 3c8e5e3 Added log files to .gitignore
+    * f1ebec7 Deleted stylesheet for contact us page
+    * 4702c3a Deleted contact us page
+    * 40afaa5 Renamed stylesheet for the home page
+    * 57e910e Renamed home page to follow corporate guidelines
+    * 4388cdf (origin/master) Added contact us page
+    * aa2d60c Added about us page
+    * 49ab535 Added home page
+
+.. Tip::
+
+    Debemos leer el log desde abajo hacia arriba.
+
+La primera línea del log nos dice que estamos en el "branch" ``search`` (``HEAD -> search``). ``4388cdf (origin/master) Added contact us page`` es la última vez que hicimos ``push`` hacia el servidor ``origin`` a Github.
+
+Las cosas que tenemos en el directorio de trabajo actual (``HEAD``) es la punta del "branch" ``search``. Y si listamos los archivos veremos:
+
+.. code-block:: bash
+
+    $ ls
+    about.css   home.css  search.css   special.log
+    about.html  home.htm  search.html  test.log
+
+Si cambiamos de "branch" a ``master``:
+
+.. code-block:: bash
+
+    $ git checkout master
+    Switched to branch 'master'
+    Your branch is ahead of 'origin/master' by 7 commits.
+    (use "git push" to publish your local commits)
+    user@hostname:~/Documents/app1$ ls
+
+Si vemos el directorio, habrá dos archivos menos:
+
+.. code-block:: bash
+
+    $ ls
+    about.css  about.html  home.css  home.htm  special.log  test.log
+
+En el log veremos lo siguiente:
+
+.. code-block:: bash
+
+    $ git lg
+    * 54f68cb (search) Added search page
+    * c8ee367 (HEAD -> master) Adding special log to show how log output should look
+    * 1691860 Modified gitignore to allow special log to be committed
+    * 3c8e5e3 Added log files to .gitignore
+    * f1ebec7 Deleted stylesheet for contact us page
+    * 4702c3a Deleted contact us page
+    * 40afaa5 Renamed stylesheet for the home page
+    * 57e910e Renamed home page to follow corporate guidelines
+    * 4388cdf (origin/master) Added contact us page
+    * aa2d60c Added about us page
+    * 49ab535 Added home page
+
+El log nos dice que estamos en el "branch" ``master`` como indica el texto ``(HEAD, master)``. Además, todo lo que está encima de esta línea no ha ocurrido aún en la historia. Es como si hubiésemos retrocedido en el tiempo o ido u otra línea de historia. Para nosotros todavía no ha ocurrido el trabajo en el "branch" ``serarch``.
+
+Gracias a esto, distintos desarrolladores pueden trabajar al mismo tiempo, sobre diferentes características y luego solo unirlas en ``master`` cuando esté listo para poner el trabajo en producción.
+
+
+Merging a branch
+----------------
+
+Imaginemos que hemos acabado con la página ``search``. Ahora lo que debemos hacer es traer de vuelta el trabajo al "branch" ``master``:
+
+.. code-block:: bash
+
+    $ git checkout master
+    Already on 'master'
+    Your branch is ahead of 'origin/master' by 7 commits.
+    (use "git push" to publish your local commits)
+
+    $ git merge search
+    Updating c8ee367..54f68cb
+    Fast-forward
+    search.css  | 0
+    search.html | 0
+    2 files changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 search.css
+    create mode 100644 search.html
+
+Este comando traerá el trabajo que hemos hecho en el "branch" ``search`` al "branch" ``master``. Y ahora que vemos el directorio de trabajo del "branch" ``master`` tendrá los archivos creados por el "branch" ``search``:
+
+.. code-block:: bash
+
+    $ ls
+    about.css   home.css  search.css   special.log
+    about.html  home.htm  search.html  test.log
+
+.. code-block:: bash
+
+    $ git lg
+    * 54f68cb (HEAD -> master, search) Added search page
+    * c8ee367 Adding special log to show how log output should look
+    * 1691860 Modified gitignore to allow special log to be committed
+    * 3c8e5e3 Added log files to .gitignore
+    * f1ebec7 Deleted stylesheet for contact us page
+    * 4702c3a Deleted contact us page
+    * 40afaa5 Renamed stylesheet for the home page
+    * 57e910e Renamed home page to follow corporate guidelines
+    * 4388cdf (origin/master) Added contact us page
+    * aa2d60c Added about us page
+    * 49ab535 Added home page
+
+El log nos muestra que el "branch" ``master`` ha ido "fast forward". Este es el tipo de "merge" que se ha realizado. Tanto el "branch" ``search`` como ``master`` tienen el mismo ID de ``commit``. Es decir, ambos tienen integrada la funcionalidad de ``search``.
+
+Una vez que hemos unido el "branch" ``search`` al "branch" ``master`` ya no necesitamos más al "branch" ``search``. Por lo que podemos eliminarlo:
+
+.. code-block:: bash
+
+    $ git branch -d search
+    Deleted branch search (was 54f68cb).
+
+    $ git branch
+    * master
+
+    $ git lg
+    * 54f68cb (HEAD -> master) Added search page
+    * c8ee367 Adding special log to show how log output should look
+    * 1691860 Modified gitignore to allow special log to be committed
+    * 3c8e5e3 Added log files to .gitignore
+    * f1ebec7 Deleted stylesheet for contact us page
+    * 4702c3a Deleted contact us page
+    * 40afaa5 Renamed stylesheet for the home page
+    * 57e910e Renamed home page to follow corporate guidelines
+    * 4388cdf (origin/master) Added contact us page
+    * aa2d60c Added about us page
+    * 49ab535 Added home page
+
+Eliminar el "branch" ``search`` no significa eliminar los archivos o ``commits`` que pasaron en ese "branch" solo eliminamos la etiqueta ``search`` del output del log.
+
+Creating a fast forward merge
+-----------------------------
+
+Hay 2 tipos de "**merge**" que Git hará usualmente, aunque existen más: **fast forward** y **recursive**. Veremos estos dos tipos de "merge" y cómo o cuándo usarlos.
+
+- **Fast forward merge**:
+
+La última vez usamos ``git branch {new_branch}`` para crear un nuevo "branch" y luego ``git checkout {new_branch}`` para cambiar al "branch" creado. Una opción para hacer los dos comandos al mismo tiempo es usar:
+
+.. code-block:: bash
+
+    $ git checkout -b categories
+    Switched to a new branch 'categories'
+
+    $ git branch
+    * categories
+    master
+
+Este comando ha creado un nuevo "branch" llamado ``categories`` y ha hecho "checkout" a ese "branch" automáticamente (es decir, hemos cambiado a ese "branch").
+
+.. Tip::
+
+    Buena práctica: crear un nuevo "branch" solo cuando se necesite. No crear varios "branch" que no serán usados próximamente.
+
+Creemos un archivo de prueba y hagamos un ``commit``:
+
+.. code-block:: bash
+
+    $ touch categories.html
+
+    $ git add .
+
+    $ git commit -m "Added categories page"
+    [categories e92fcca] Added categories page
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 categories.html
+
+Digamos que paralelamente otros estaban trabajando en otro "branch":
+
+.. code-block:: bash
+
+    $ git checkout master
+    Switched to branch 'master'
+    Your branch is ahead of 'origin/master' by 8 commits.
+    (use "git push" to publish your local commits)
+
+    $ git checkout -b products
+    Switched to a new branch 'products'
+
+Para crear un nuevo "branch" hemos partido del "branch" ``master`` pues lo estamos tomando como punto inicial.
+
+En ese branch crearemos archivos de prueba:
+
+.. code-block:: bash
+
+    $ touch products.html
+
+    $ git add .
+
+    $ git commit -m "Added products page"
+    [products e0b254d] Added products page
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 products.html
+
+Veamos el log:
+
+.. code-block:: bash
+
+    $ git lg
+    * e0b254d (HEAD -> products) Added products page
+    | * e92fcca (categories) Added categories page
+    |/  
+    * 54f68cb (master) Added search page
+    * c8ee367 Adding special log to show how log output should look
+    * 1691860 Modified gitignore to allow special log to be committed
+    * 3c8e5e3 Added log files to .gitignore
+    * f1ebec7 Deleted stylesheet for contact us page
+    * 4702c3a Deleted contact us page
+    * 40afaa5 Renamed stylesheet for the home page
+    * 57e910e Renamed home page to follow corporate guidelines
+    * 4388cdf (origin/master) Added contact us page
+    * aa2d60c Added about us page
+    * 49ab535 Added home page
+
+Interpretemos el log:
+
+- Vemos gráficamente que existe una división del ID ``54f68cb`` en dos partes: ``e92fcca`` y ``e0b254d``.
+- A los 3 primeros ``commits`` se le han hecho ``push`` a Github. Las líneas de arriban indican ``commits`` que solo se han hecho localmente en el "branch" ``master``.
+- Y en las últimas 2 líneas vemos otros 2 ``commits``: uno en la "branch" ``categories`` y el otro en el "branch" ``products``.
+
+Cuando decidamos que hemos acabado con el desarrollo de ``products`` debemos unirlo ("merge") con el "branch" ``master``. Podemos hacerlo haciendo un "**fast forward merge**".
+
+Hacemos ``checkout`` al "branch" ``master`` y hacemos "merge" del "branch" ``products``. Por defecto se hará un **"merge"  tipo Fast-forward**.
+
+.. code-block:: bash
+
+    $ git checkout master
+    Switched to branch 'master'
+    Your branch is ahead of 'origin/master' by 8 commits.
+    (use "git push" to publish your local commits)
+
+    $ git merge products
+    Updating 54f68cb..e0b254d
+    Fast-forward
+    products.html | 0
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 products.html
+
+Como indica el output, se ha realizado un "merge" tipo fast forward. Y el log:
+
+.. code-block:: bash
+
+    $ git lg
+    * e0b254d (HEAD -> master, products) Added products page
+    | * e92fcca (categories) Added categories page
+    |/  
+    * 54f68cb Added search page
+    * c8ee367 Adding special log to show how log output should look
+    * 1691860 Modified gitignore to allow special log to be committed
+    * 3c8e5e3 Added log files to .gitignore
+    * f1ebec7 Deleted stylesheet for contact us page
+    * 4702c3a Deleted contact us page
+    * 40afaa5 Renamed stylesheet for the home page
+    * 57e910e Renamed home page to follow corporate guidelines
+    * 4388cdf (origin/master) Added contact us page
+    * aa2d60c Added about us page
+    * 49ab535 Added home page
+
+En la primera línea vemos que el "branch" ``master`` ha saltado hacia adelante ("fast forward"), hacia el ``commit`` de ID ``e0b254d``. Es decir, se ha añadido el ``commit`` hecho en el "branch" ``products`` como si fuera parte del "branch" ``master``.
+
+Eliminamos el "branch" ``products``:
+
+.. code-block:: bash
+
+    $ git branch -d products
+    Deleted branch products (was e0b254d).
+
+Introducing recursives merges
+-----------------------------
+
+- **Recursive merge**:
+
+La razón por la cual pudimos hacer un "merge" ``fast forward`` fue porque no había diferencia en historia. Se puede pretender que los ``commits`` se hicieron directamente el "branch" ``master``, ya que, no habían cambios en este "branch".
+
+En el log actual:
+
+.. code-block:: bash
+
+    $ git lg
+    * e0b254d (HEAD -> master) Added products page
+    | * e92fcca (categories) Added categories page
+    |/  
+    * 54f68cb Added search page
+    * c8ee367 Adding special log to show how log output should look
+    * 1691860 Modified gitignore to allow special log to be committed
+    * 3c8e5e3 Added log files to .gitignore
+    * f1ebec7 Deleted stylesheet for contact us page
+    * 4702c3a Deleted contact us page
+    * 40afaa5 Renamed stylesheet for the home page
+    * 57e910e Renamed home page to follow corporate guidelines
+    * 4388cdf (origin/master) Added contact us page
+    * aa2d60c Added about us page
+    * 49ab535 Added home page
+
+Vemos que tenemos diferencias en historial de los "branches" ``master`` y ``categories``. El "branch" ``master`` tiene un ``commit`` que ``categories`` no tiene (``e0b254d``) y ``categories`` tiene un ``commit`` que ``master`` no tiene (``e92fcca``).
+
+Para resolver esto, Git tendrá que hacer un "**recursive merge**" , que juntará dos líneas de historia distintas y creará un nuevo ``commit`` que unirá esos 2 trabajos.
+
+Primero comprobemos que estamos en el "branch" ``master``:
+
+.. code-block:: bash
+
+    $ git branch
+    categories
+    * master
+
+Luego ejecutar el comando ``git merge``. Este comando nos retorna a un editor de texto como ``nano`` donde podemos personalizar el mensaje de ``commit``. Salir del editor y ver el resultado del "merge":
+
+.. code-block:: bash
+
+    $ git merge categories
+
+    Merge made by the 'recursive' strategy.
+    categories.html | 0
+    1 file changed, 0 insertions(+), 0 deletions(-)
+    create mode 100644 categories.html
+
+En el log veremos:
+
+.. code-block:: bash
+
+    $ git lg
+    *   3662531 (HEAD -> master) Merge branch 'categories'
+    |\  
+    | * 44409c8 (categories) Added categories page
+    * | 7c5c668 Added products page
+    |/  
+    * 564baf7 Added search page
+    * d71267c Adding special log to show how log output should look
+    * 01f02ee Modified gitignore to allow special log to be committed
+    * 1b59604 Added log files to .gitignore
+    * ced7c37 Deleted stylesheet for contact us page
+    * ffaef7d Deleted contact us page
+    * 48b8639 Renamed stylesheet for the home page
+    * faf6cf4 Renamed home page to follow corporate guidelines
+    * 6c2ab19 (origin/master) Added contact us page
+    * 49bfaa2 Added about us page
+    * eaeaa56 Added home page
+
+Como vemos en el ``commit`` más reciente notamos que se ha hecho un "merge" los cambios hechos en el "branch" ``master`` con los hechos en el "branch" ``categories``.
+
+.. Tip::
+
+    La regla de oro es que si tenemos dos "branches" distintos que tienen al menos un ``commit`` en cada uno, tendremos que hacer un "**recursive merge**".
+
+.. Note::
+
+    Los "recursive merge" nos dan más información en el log que los "fast forward merge". Viendo el log podemos ver los ``commits`` realizados en un "branch" distinto al branch ``master`` en el caso del "recursive merge".
+
+'No fast forward' recursive merges
+----------------------------------
+
+Esta idea de agregar la página de ``products`` en un lado y la página de ``categories`` en otra puede resultar confuso. Veremos una forma de realizar "fast forward merges" pero sin la complejidad de ver registros en diferentes tiempos.
+
+Primero eliminar el branch ``categories`` y luego usar el "**no fast forward**" para crear un "recursive mersh".
+
+.. code-block:: bash
+
+    $ git branch -d categories
+    Deleted branch categories (was 44409c8).
+
+    $ git lg
+    *   3662531 (HEAD -> master) Merge branch 'categories'
+    |\  
+    | * 44409c8 Added categories page
+    * | 7c5c668 Added products page
+    |/  
+    * 564baf7 Added search page
+    * d71267c Adding special log to show how log output should look
+    * 01f02ee Modified gitignore to allow special log to be committed
+    * 1b59604 Added log files to .gitignore
+    * ced7c37 Deleted stylesheet for contact us page
+    * ffaef7d Deleted contact us page
+    * 48b8639 Renamed stylesheet for the home page
+    * faf6cf4 Renamed home page to follow corporate guidelines
+    * 6c2ab19 (origin/master) Added contact us page
+    * 49bfaa2 Added about us page
+    * eaeaa56 Added home page
+
+Ahora creemos una página ``my_account`` con un nuevo "branch" y realicemos algunos ``commits``:
+
+.. code-block:: bash
+
+    $ git checkout -b my_account
+    Switched to a new branch 'my_account'
+
+    $ touch account.html
+    $ git add .
+    $ git commit -m "Added my_account page"
+    [my_account 33d2f6e] Added my_account page
+     1 file changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 account.html
+
+    $ touch account.css
+    $ git add .
+    $ git commit -m "Styled my_account page"
+    [my_account 0c3519b] Styled my_account page
+     1 file changed, 0 insertions(+), 0 deletions(-)
+     create mode 100644 account.css
+
+Tenemos un historial parecido al anterior:
+
+.. code-block:: bash
+
+    $ git lg
+    * 0c3519b (HEAD -> my_account) Styled my_account page
+    * 33d2f6e Added my_account page
+    *   3662531 (master) Merge branch 'categories'
+    |\  
+    | * 44409c8 Added categories page
+    * | 7c5c668 Added products page
+    |/  
+    * 564baf7 Added search page
+    * d71267c Adding special log to show how log output should look
+    * 01f02ee Modified gitignore to allow special log to be committed
+    * 1b59604 Added log files to .gitignore
+    * ced7c37 Deleted stylesheet for contact us page
+    * ffaef7d Deleted contact us page
+    * 48b8639 Renamed stylesheet for the home page
+    * faf6cf4 Renamed home page to follow corporate guidelines
+    * 6c2ab19 (origin/master) Added contact us page
+    * 49bfaa2 Added about us page
+    * eaeaa56 Added home page
+
+Podemos ver los últimos 2 ``commits`` que solo pertenecen al branch ``my_account``.
+
+Cuando hayamos acabado con la sección ``my_account`` podríamos hacer un "merge" con el branch ``master`` y por defecto hará un "fast forward merge", pues no existen ``commits`` en ``master`` que no formen parte del historial del branch ``my_account``.
+
+Sin embargo, queremos esa información adicional que nos indique que esos dos ``commits`` fueron realizados juntos como parte de un mismo "branch". Para lograr esto ejecutamos:
+
+.. code-block:: bash
+
+    $ git merge --no-ff my_account
+
+    Merge branch 'my_account'
+
+La opción ``--no-ff`` significa "no fast forward" nos permite decirle a Git que preserve la información adicional de los ``commits`` realizados en el "branch". Git puede pretender que estos ``commits`` se realizaron el ``master`` porque no han habido otros cambios, pero le decimos que no lo haga.
+
+Este comando nos retorna a un editor de texto, pues si no es un "fast forward merge", será un "recursive merge", es decir, se necesita un ``commit`` para juntar el historial.
+
+Veamos el log:
+
+.. code-block:: bash
+
+    $ git lg
+    *   777cd1a (HEAD -> master) Merge branch 'my_account'
+    |\  
+    | * 0c3519b (my_account) Styled my_account page
+    | * 33d2f6e Added my_account page
+    |/  
+    *   3662531 Merge branch 'categories'
+    |\  
+    | * 44409c8 Added categories page
+    * | 7c5c668 Added products page
+    |/  
+    * 564baf7 Added search page
+    * d71267c Adding special log to show how log output should look
+    * 01f02ee Modified gitignore to allow special log to be committed
+    * 1b59604 Added log files to .gitignore
+    * ced7c37 Deleted stylesheet for contact us page
+    * ffaef7d Deleted contact us page
+    * 48b8639 Renamed stylesheet for the home page
+    * faf6cf4 Renamed home page to follow corporate guidelines
+    * 6c2ab19 (origin/master) Added contact us page
+    * 49bfaa2 Added about us page
+    * eaeaa56 Added home page
+
+Al ver el log notamos que los ``commits`` con ID ``0c3519b`` y ``33d2f6e`` se realizaron juntos bajo un mismo "branch", aún cuando eliminemos el "branch":
+
+.. code-block:: bash
+    :emphasize-lines: 7,8
+
+    $ git branch -d my_account 
+    Deleted branch my_account (was 0c3519b).
+
+    $ git lg
+    *   777cd1a (HEAD -> master) Merge branch 'my_account'
+    |\  
+    | * 0c3519b Styled my_account page
+    | * 33d2f6e Added my_account page
+    |/  
+    *   3662531 Merge branch 'categories'
+    |\  
+    | * 44409c8 Added categories page
+    * | 7c5c668 Added products page
+    |/  
+    * 564baf7 Added search page
+    * d71267c Adding special log to show how log output should look
+    * 01f02ee Modified gitignore to allow special log to be committed
+    * 1b59604 Added log files to .gitignore
+    * ced7c37 Deleted stylesheet for contact us page
+    * ffaef7d Deleted contact us page
+    * 48b8639 Renamed stylesheet for the home page
+    * faf6cf4 Renamed home page to follow corporate guidelines
+    * 6c2ab19 (origin/master) Added contact us page
+    * 49bfaa2 Added about us page
+    * eaeaa56 Added home page
+
