@@ -1,0 +1,329 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lesson 8 &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="GNU/Linux" href="../gnulinux/_gnulinux.html" />
+    <link rel="prev" title="Lesson 7" href="lesson7.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lesson1.html">Lesson 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson2.html">Lesson 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson3.html">Lesson 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson4.html">Lesson 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson5.html">Lesson 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson6.html">Lesson 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson7.html">Lesson 7</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lesson 8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-an-overview-of-a-project-on-github-using-the-readme">Getting an overview of a project on GitHub using the README</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-more-information-about-a-project">Getting more information about a project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introducing-issues">Introducing issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#viewing-project-state-through-pulse-and-graphs">Viewing project state through pulse and graphs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a> &raquo;</li>
+        
+      <li>Lesson 8</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/gitgithub/lesson8.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lesson-8">
+<h1><a class="toc-backref" href="#id7">Lesson 8</a><a class="headerlink" href="#lesson-8" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><em>Lesson 8: Reviewing a Project on GitHub</em></p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lesson-8" id="id7">Lesson 8</a><ul>
+<li><a class="reference internal" href="#getting-an-overview-of-a-project-on-github-using-the-readme" id="id8">Getting an overview of a project on GitHub using the README</a></li>
+<li><a class="reference internal" href="#getting-more-information-about-a-project" id="id9">Getting more information about a project</a></li>
+<li><a class="reference internal" href="#introducing-issues" id="id10">Introducing issues</a></li>
+<li><a class="reference internal" href="#viewing-project-state-through-pulse-and-graphs" id="id11">Viewing project state through pulse and graphs</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="getting-an-overview-of-a-project-on-github-using-the-readme">
+<h2><a class="toc-backref" href="#id8">Getting an overview of a project on GitHub using the README</a><a class="headerlink" href="#getting-an-overview-of-a-project-on-github-using-the-readme" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Veamos la forma recomendada de ver un repositorio en GitHub. Por ejemplo el <a class="reference external" href="https://github.com/rails/rails">repositorio de Ruby on Rails</a>.</p>
+<p>Si fuese un proyecto que nunca hemos visto antes, primero deberíamos leer el archivo <code class="docutils literal notranslate"><span class="pre">README.md</span></code>. Aquí encontraremos información general del proyecto.</p>
+<p>En la descripción podemos usar medallas (badges) en el archivo README.md. Por ejemplo en código markdown:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>[<span class="nt">![Build Status</span>](<span class="na">https://badge.buildkite.com/ab1152b6a1f6a61d3ea4ec5b3eece8d4c2b830998459c75352.svg?branch=master</span>)](https://buildkite.com/rails/rails)
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-more-information-about-a-project">
+<h2><a class="toc-backref" href="#id9">Getting more information about a project</a><a class="headerlink" href="#getting-more-information-about-a-project" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Luego de leer el archivo README deberíamos mirar los <code class="docutils literal notranslate"><span class="pre">commits</span></code> recientes. No veremos el último trabajo que las personas han hecho sino el último trabajo que se le ha hecho merge hacia el branch <code class="docutils literal notranslate"><span class="pre">master</span></code>, que presuntamente ya debe estar listo para producción.</p>
+<p>Ver los <code class="docutils literal notranslate"><span class="pre">commits</span></code>:</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/commits.png" src="../../_images/commits.png" />
+<p class="caption"><span class="caption-text">GitHub - Commits</span></p>
+</div>
+<p>Si queremos obtener actividades aún más recientes, no solo los features que han sigo añadidos con merge, debemos ver los <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code>:</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/pull-requests.png" src="../../_images/pull-requests.png" />
+<p class="caption"><span class="caption-text">GitHub - Pull requests</span></p>
+</div>
+<p>Estas son las unidades de trabajo que se están trabajando, siendo arreglos de bugs o nuevos features.</p>
+</div>
+<div class="section" id="introducing-issues">
+<h2><a class="toc-backref" href="#id10">Introducing issues</a><a class="headerlink" href="#introducing-issues" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Otro lugar que vale la pena ver es «Issues». Es usado para dos casos distintos:</p>
+<ol class="arabic simple">
+<li>Track de bugs</li>
+<li>Administrar feature requests</li>
+</ol>
+</div>
+<div class="section" id="viewing-project-state-through-pulse-and-graphs">
+<h2><a class="toc-backref" href="#id11">Viewing project state through pulse and graphs</a><a class="headerlink" href="#viewing-project-state-through-pulse-and-graphs" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Otra área recomendable de mirar para obtener un sentido del proyecto es «Pulse» y «Graphs»:</p>
+<p>Podemos ver quienes han contribuido al proyecto y quienes lo han hecho más:</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/graph-contributors.png" src="../../_images/graph-contributors.png" />
+<p class="caption"><span class="caption-text">GitHub - Gráfico de contribuidores</span></p>
+</div>
+<p>Las gráficas de <code class="docutils literal notranslate"><span class="pre">commits</span></code> mostrará la cantidad de <code class="docutils literal notranslate"><span class="pre">commits</span></code> por semana a lo largo del tiempo de vida del proyecto en forma de barras:</p>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/graph-commits.png" src="../../_images/graph-commits.png" />
+<p class="caption"><span class="caption-text">GitHub - Gráficas de commits</span></p>
+</div>
+<p>La gráfica de code frequency nos mostrará el número de líneas añadidas y eliminadas del código:</p>
+<div class="figure align-center" id="id5">
+<img alt="../../_images/graph-code-frequency.png" src="../../_images/graph-code-frequency.png" />
+<p class="caption"><span class="caption-text">GitHub - Gráficas de Code frequency</span></p>
+</div>
+<p>Si Graph nos muestra qué pasa a lo largo de la historia de nuestro proyecto, Pulse nos dice qué ha pasado recientemente en el proyecto (el último día, semana, mes):</p>
+<div class="figure align-center" id="id6">
+<img alt="../../_images/pulse.png" src="../../_images/pulse.png" />
+<p class="caption"><span class="caption-text">GitHub - Pulse</span></p>
+</div>
+<p>Estos números no nos dicen cúantos <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code> o issues están abiertos, nos dice cuántos han sido cambiados:</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gnulinux/_gnulinux.html" class="btn btn-neutral float-right" title="GNU/Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lesson7.html" class="btn btn-neutral float-left" title="Lesson 7" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
