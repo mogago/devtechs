@@ -45,3 +45,5 @@ Basado en: `Git and GitHub LiveLessons - Workshop`_ (by Peter Bell)
     lesson3
     lesson4
     lesson5
+    lesson6
+    lesson7

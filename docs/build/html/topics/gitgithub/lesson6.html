@@ -1,0 +1,876 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lesson 6 &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Lesson 7" href="lesson7.html" />
+    <link rel="prev" title="Lesson 5" href="lesson5.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lesson1.html">Lesson 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson2.html">Lesson 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson3.html">Lesson 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson4.html">Lesson 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson5.html">Lesson 5</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lesson 6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introducing-git-under-the-hood">Introducing Git under the hood</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-first-commit">Creating the first commit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exploring-the-object-store">Exploring the object store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cat-file-to-explore-object-contents">cat-file to explore object contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-benefits-of-git-s-use-of-sha1-hashes">The benefits of Git’s use of SHA1 hashes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-as-a-content-store-how-many-new-hashes">Git as a content store (how many new hashes)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#understanding-remotes-and-their-configuration">Understanding remotes and their configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-your-push-default">Configuring your push default</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fetch-versus-pull">Fetch versus pull</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merge-versus-rebase-on-pull">Merge versus rebase on pull</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lesson7.html">Lesson 7</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a> &raquo;</li>
+        
+      <li>Lesson 6</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/gitgithub/lesson6.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lesson-6">
+<h1><a class="toc-backref" href="#id13">Lesson 6</a><a class="headerlink" href="#lesson-6" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><em>Lesson 6: Git Internals</em></p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lesson-6" id="id13">Lesson 6</a><ul>
+<li><a class="reference internal" href="#introducing-git-under-the-hood" id="id14">Introducing Git under the hood</a></li>
+<li><a class="reference internal" href="#creating-the-first-commit" id="id15">Creating the first commit</a></li>
+<li><a class="reference internal" href="#exploring-the-object-store" id="id16">Exploring the object store</a></li>
+<li><a class="reference internal" href="#cat-file-to-explore-object-contents" id="id17">cat-file to explore object contents</a></li>
+<li><a class="reference internal" href="#the-benefits-of-git-s-use-of-sha1-hashes" id="id18">The benefits of Git’s use of SHA1 hashes</a></li>
+<li><a class="reference internal" href="#git-as-a-content-store-how-many-new-hashes" id="id19">Git as a content store (how many new hashes)</a></li>
+<li><a class="reference internal" href="#understanding-remotes-and-their-configuration" id="id20">Understanding remotes and their configuration</a></li>
+<li><a class="reference internal" href="#configuring-your-push-default" id="id21">Configuring your push default</a></li>
+<li><a class="reference internal" href="#fetch-versus-pull" id="id22">Fetch versus pull</a></li>
+<li><a class="reference internal" href="#merge-versus-rebase-on-pull" id="id23">Merge versus rebase on pull</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introducing-git-under-the-hood">
+<h2><a class="toc-backref" href="#id14">Introducing Git under the hood</a><a class="headerlink" href="#introducing-git-under-the-hood" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En esta sección veremos Git y GitHub a bajo nivel (under the hood). Nos servirá para entender varias cosas que hacemos con Git y por qué trabajan de la forma en que lo hacen.</p>
+</div>
+<div class="section" id="creating-the-first-commit">
+<h2><a class="toc-backref" href="#id15">Creating the first commit</a><a class="headerlink" href="#creating-the-first-commit" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Crear el siguiente archivo en un nuevo repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git init app2
+Initialized empty Git repository in /home/user/Documents/gittests/app2/.git/
+
+$ <span class="nb">cd</span> app2
+$ vi index.html
+
+    hello world
+
+$ git s
+?? index.html
+</pre></div>
+</div>
+<p>según el estado tenemos un archivo sin trackear. Hagamos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> de ese archivo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+$ git commit -m <span class="s2">&quot;Added home page&quot;</span>
+<span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> 6c4de50<span class="o">]</span> Added home page
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+ create mode <span class="m">100644</span> index.html
+</pre></div>
+</div>
+</div>
+<div class="section" id="exploring-the-object-store">
+<h2><a class="toc-backref" href="#id16">Exploring the object store</a><a class="headerlink" href="#exploring-the-object-store" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En el directorio de trabajo actual abramos el directorio oculto <code class="docutils literal notranslate"><span class="pre">.git</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls -a
+.  ..  .git  index.html
+
+$ ls -a .git/
+.   branches        config       HEAD   index  logs     refs
+..  COMMIT_EDITMSG  description  hooks  info   objects
+</pre></div>
+</div>
+<p>Veamos los elementos dentro del subdirectorio <code class="docutils literal notranslate"><span class="pre">.git/objects</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls .git/objects/
+3b  6c  ff  info  pack
+
+$ tree .git/objects/
+.git/objects/
+├── 3b
+│   └── 18e512dba79e4c8300dd08aeb37f8e728b8dad
+├── 6c
+│   └── 4de5016bf89390a661676c855d82005b88c448
+├── ff
+│   └── 46f55ec679bb30e1b2291bf56558ec435b1df3
+├── info
+└── pack
+
+<span class="m">5</span> directories, <span class="m">3</span> files
+</pre></div>
+</div>
+<p>Se han creado 3 nuevos directorios en en este subdirectorio: <code class="docutils literal notranslate"><span class="pre">3b</span></code>, <code class="docutils literal notranslate"><span class="pre">6c</span></code>, <code class="docutils literal notranslate"><span class="pre">ff</span></code>. Aquí es donde Git guarda todos sus objetos. Si ponemos un archivo en control de versiones con Git estará en este directorio, si tenemos un filename en el directorio estará aquí, si creamos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> será puesto también en el directorio de objetos.</p>
+<p>Tenemos 3 archivos, pudiendo concatenar los nombres del directorio y el nombre del archivo para obtener el hash SHA-1. Por ejemplo, en este caso los 3 objetos serían:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">3b</span> <span class="pre">18e512dba79e4c8300dd08aeb37f8e728b8dad</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">6c</span> <span class="pre">4de5016bf89390a661676c855d82005b88c448</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">ff</span> <span class="pre">46f55ec679bb30e1b2291bf56558ec435b1df3</span></code></li>
+</ul>
+</div>
+<div class="section" id="cat-file-to-explore-object-contents">
+<h2><a class="toc-backref" href="#id17">cat-file to explore object contents</a><a class="headerlink" href="#cat-file-to-explore-object-contents" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Veamos qué son estos 3 objetos. Usaremos un comando a bajo nivel <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">cat-file</span> <span class="pre">-p</span></code> para ver qué contiene dentro un objeto en el git object store. Es suficiente dar 4 caracteres del objeto para obtener la información:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git cat-file -p 3b18
+hello world
+
+$ git cat-file -p 3b18e512dba79e4c8300dd08aeb37f8e728b8dad
+hello world
+</pre></div>
+</div>
+<p>Esto quiere decir que si en otra PC escribiéramos en el archivo <code class="docutils literal notranslate"><span class="pre">index.html</span></code> los caracteres <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">world</span></code> también tendríamos un objeto con el mismo identificador <code class="docutils literal notranslate"><span class="pre">3b18...</span></code>. La razón de esto es porque Git usa un algoritmo hash SHA-1.</p>
+<p>Probemos con el ultimo directorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git cat-file -p ff46
+<span class="m">100644</span> blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    index.html
+</pre></div>
+</div>
+<p>Los contenidos del primer respositorio eran sobre el contenido del archivo <code class="docutils literal notranslate"><span class="pre">index.html</span></code> (content store) pero no decían nada sobre el nombre del archivo. Esto es útil porque si tuviese otro archivo con exactamente el mismo contenido pero con otro nombre y otro directorio no tendría que tenerlo duplicado.</p>
+<p>En este último directorio obtenemos el nombre del archivo con detalles extra:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">100644</span></code>: no es un archivo ejecutable</li>
+<li><code class="docutils literal notranslate"><span class="pre">blob</span></code>: binary large object</li>
+<li><code class="docutils literal notranslate"><span class="pre">3b18e512dba79e4c8300dd08aeb37f8e728b8dad</span></code>: contenidos del archivo descritos por este identificador</li>
+<li><code class="docutils literal notranslate"><span class="pre">index.html</span></code>: nombre del archivo</li>
+</ul>
+<p>Este objeto es llamado <strong>tree object</strong>, que guarda el directorio con toda la información del nombre del archivo y qué objetos guarda el contenido de esos archivos en el directorio.</p>
+<p>El otro objeto que tenemos y varía de PC en PC sin importar que sigamos los mismos pasos es el siguiente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git cat-file -p 6c4d
+tree ff46f55ec679bb30e1b2291bf56558ec435b1df3
+author Nombre Apellido &lt;newuser1@mail.com&gt; <span class="m">1577681651</span> -0500
+committer Nombre Apellido &lt;newuser1@mail.com&gt; <span class="m">1577681651</span> -0500
+
+Added home page
+</pre></div>
+</div>
+<p>Este es el mensaje de <code class="docutils literal notranslate"><span class="pre">commit</span></code> que también vemos al momento de crear el <code class="docutils literal notranslate"><span class="pre">commit</span></code> o listar el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 6c4de50 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added home page
+</pre></div>
+</div>
+<p>La razón de que sea diferente para cualquier PC es que tiene autores, correo, día, hora y mensaje del <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
+</div>
+<div class="section" id="the-benefits-of-git-s-use-of-sha1-hashes">
+<h2><a class="toc-backref" href="#id18">The benefits of Git’s use of SHA1 hashes</a><a class="headerlink" href="#the-benefits-of-git-s-use-of-sha1-hashes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La ventaja de usar SHA1 nos da un nivel de seguridad. Si el hash SHA1 es el mismo todo será lo mismo para el caso del tree hash y el hash de los contenidos del archivo. Es decir, tenemos una consistencia garantizada en términos de qué contenidos es guardada dentro de los repositorios.</p>
+</div>
+<div class="section" id="git-as-a-content-store-how-many-new-hashes">
+<h2><a class="toc-backref" href="#id19">Git as a content store (how many new hashes)</a><a class="headerlink" href="#git-as-a-content-store-how-many-new-hashes" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Agreguemos otro archivo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi about.html
+hello world
+
+$ git add .
+$ git commit -m <span class="s2">&quot;Added about us page&quot;</span>
+<span class="o">[</span>master 7c71072<span class="o">]</span> Added about us page
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+ create mode <span class="m">100644</span> about.html
+</pre></div>
+</div>
+<p>¿Cuántos nuevos objetos deberá haber?: podríamos suponer que 3 (contenidos del nuevo archivo, nuevo tree del directorio con 2 archivos en él y el nuevo commit).</p>
+<p>Si listamos el directorio veremos que solo hay 2 nuevos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ tree .git/objects/
+.git/objects/
+├── 3b
+│   └── 18e512dba79e4c8300dd08aeb37f8e728b8dad
+<span class="hll">├── <span class="m">40</span>
+</span><span class="hll">│   └── 83ab857b34cf3ee53639f6ee188fa36e751c11
+</span>├── 6c
+│   └── 4de5016bf89390a661676c855d82005b88c448
+<span class="hll">├── 7c
+</span><span class="hll">│   └── 71072f9f35c27abf0a39ba71414ca4e64540f6
+</span>├── ff
+│   └── 46f55ec679bb30e1b2291bf56558ec435b1df3
+├── info
+└── pack
+</pre></div>
+</div>
+<p>Veamos que hay en ellos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git cat-file -p <span class="m">4083</span>
+<span class="m">100644</span> blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    about.html
+<span class="m">100644</span> blob 3b18e512dba79e4c8300dd08aeb37f8e728b8dad    index.html
+</pre></div>
+</div>
+<p>Este es el nuevo tree que debería tener el mismo identificador en cualquier PC que haya creado los mismo archivos.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git cat-file -p 7c71tree 4083ab857b34cf3ee53639f6ee188fa36e751c11
+parent 6c4de5016bf89390a661676c855d82005b88c448
+author Nombre Apellido &lt;newuser1@mail.com&gt; <span class="m">1577716707</span> -0500
+committer Nombre Apellido &lt;newuser1@mail.com&gt; <span class="m">1577716707</span> -0500
+
+Added about us page
+</pre></div>
+</div>
+<p>Este objeto hace referencia al último <code class="docutils literal notranslate"><span class="pre">commit</span></code>. No existe un sexto objeto porque nosotros sabemos qué pasa cuando le hacemos un hash SHA1 al string <code class="docutils literal notranslate"><span class="pre">hello</span> <span class="pre">world</span></code>. Git ya calculó el hash SHA1 de ese texto anteriormente y al crear un nuevo archivo con exactamente el mismo contenido apuntará al mismo objeto. Git no necesita duplicar objetos en el <strong>content store</strong>.</p>
+<p>Hay algunas implicancias para esto: es eficiente tener el mismo contenido del archivo a través del tiempo, en diferentes directorios o diferentes branches. Serán guardados como una sola referencia, y será eficiente en términos de espacio. Sin embargo, hay una desventaja, ¿qué pasa si cambio un caracter en el contenido del archivo?: cambia el hash SHA1 sin importar qué tan grande o pequeño es el cambio. Git irá creando copias y más copias de esos archivos con pequeñas diferencias. ¿Por qué no seguir el procedimiento de Subversion donde solo se almacenan los deltas?. Resulta que esta decisión de Git sí es inteligente.</p>
+<p>La clave de que funcione este modo de trabajo en Git es por los <strong>pack files</strong>. Pensemos en los archivos zip; si tenemos 100 archivos que son similares y son todos archivos de texto los zipeamos antes de enviarlo a alguna persona, donde el trabajo de compresión puede realizar un buen trabajo tomando archivos similares y generando una archivo más pequeño. Esto es lo que hace Git a bajo nivel, hace una copia entera de cada modificación de un archivo y no representará un problema porque creará un paquete de ellos y los guardará oficialmente en disco.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Una regla que debemos seguir es no guardar archivos binarios grandes en Git que frecuentemente estén cambiando. Desafortunadamente los programas de compresión no harán un buen trabajo comprimiendo archivos binarios con pequeñas modificaciones.</p>
+</div>
+</div>
+<div class="section" id="understanding-remotes-and-their-configuration">
+<h2><a class="toc-backref" href="#id20">Understanding remotes and their configuration</a><a class="headerlink" href="#understanding-remotes-and-their-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hagamos una conexión a un servidor remoto. Tomemos estos archivos y hagámosle push a GitHub:</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/GitHub_create-new-repository1.png" src="../../_images/GitHub_create-new-repository1.png" />
+<p class="caption"><span class="caption-text">GitHub - create new repository - Paso 1</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/github-new-repo1.png" src="../../_images/github-new-repo1.png" />
+<p class="caption"><span class="caption-text">GitHub - create new repository - Paso 2</span></p>
+</div>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/github-new-repo2.png" src="../../_images/github-new-repo2.png" />
+<p class="caption"><span class="caption-text">GitHub - create new repository - Paso 3</span></p>
+</div>
+<p>Ya hemos creado nuestro repositorio. La última vez copiamos y pegamos los siguientes comandos sin pensar qué hacían, ahora veamos qué está ocurriendo:</p>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/github-new-repo3.png" src="../../_images/github-new-repo3.png" />
+<p class="caption"><span class="caption-text">GitHub - create new repository - Paso 4</span></p>
+</div>
+<p>En un terminal catalogar los contenidos del archivo <code class="docutils literal notranslate"><span class="pre">config</span></code> del directorio <code class="docutils literal notranslate"><span class="pre">.git</span></code>, <strong>este directorio es nuestro repositorio</strong>. Si eliminamos este directorio, nuestro historial, branches, tags y más se irá con él incluyendo nuestro archivo de configuración local <code class="docutils literal notranslate"><span class="pre">.git/confi</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat .git/config
+<span class="o">[</span>core<span class="o">]</span>
+        <span class="nv">repositoryformatversion</span> <span class="o">=</span> <span class="m">0</span>
+        <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
+        <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
+        <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
+</pre></div>
+</div>
+<p>Así como vimos el archivo de configuración global de Git <code class="docutils literal notranslate"><span class="pre">~/.gitconfig</span></code>, tenemos el archivo de configuración local de Git <code class="docutils literal notranslate"><span class="pre">.git/config</span></code>.</p>
+<p>Veamos que ocurre cuando agregamos un remote. Copiemos el archivo de GitHub a nuestro terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/mogago/app2.git
+</pre></div>
+</div>
+<p>Este comando indica que queremos agregar un lugar remoto donde podamos interactuar con nuestro repositorio de Git. Los remotes pueden ser engañosos porque se pueden configurar en otro directorio de nuestro disco duro, es decir, o debe ser realmente remoto a través de Internet, pero lo será la mayoría de las veces.</p>
+<p>Llamamos a nuestro remote <code class="docutils literal notranslate"><span class="pre">origin</span></code> como alias que apunta a la dirección <code class="docutils literal notranslate"><span class="pre">https://github.com/mogago/app2.git</span></code>. Veremos que nuestro configuración local tiene algo extra:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat .git/config
+<span class="o">[</span>core<span class="o">]</span>
+        <span class="nv">repositoryformatversion</span> <span class="o">=</span> <span class="m">0</span>
+        <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
+        <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
+        <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="hll"><span class="o">[</span>remote <span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+</span><span class="hll">        <span class="nv">url</span> <span class="o">=</span> https://github.com/mogago/app2.git
+</span><span class="hll">        <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
+</span></pre></div>
+</div>
+<p>Ahora tendremos un <code class="docutils literal notranslate"><span class="pre">remote</span> <span class="pre">&quot;origin&quot;</span></code> con una URL y un <strong>Refspecs</strong>, que indica cómo conectar branches en el servidor remoto a los branches locales. Ahora podemos correr el último comando de GitHub:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git push -u origin master
+
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>:
+Password <span class="k">for</span> <span class="s1">&#39;https://mogago@github.com&#39;</span>:
+Counting objects: <span class="m">5</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">4</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">5</span>/5<span class="o">)</span>, <span class="m">449</span> bytes <span class="p">|</span> <span class="m">449</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">5</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+To https://github.com/mogago/app2.git
+* <span class="o">[</span>new branch<span class="o">]</span>      master -&gt; master
+Branch <span class="s1">&#39;master&#39;</span> <span class="nb">set</span> up to track remote branch <span class="s1">&#39;master&#39;</span> from <span class="s1">&#39;origin&#39;</span>.
+</pre></div>
+</div>
+<p>Si solo hubiésemos corrido <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">origin</span> <span class="pre">master</span></code> hubiese hecho push de una copia de todos nuestro cambios y la información de nuestro repositorio en el servidor remoto de GitHub. Específicamente tomaría todo el contenido del branch <code class="docutils literal notranslate"><span class="pre">master</span></code> y apuntará al branch <code class="docutils literal notranslate"><span class="pre">master</span></code> del servidor remoto. Pero usando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span> <span class="pre">-u</span></code> no solo subimos los archivos a GitHub, también estamos configurando un <strong>default upstream</strong> (<code class="docutils literal notranslate"><span class="pre">-u</span></code>) para este branch:</p>
+<p>Veamos el contenido de nuestro archivo de configuración local:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat .git/config
+<span class="o">[</span>core<span class="o">]</span>
+        <span class="nv">repositoryformatversion</span> <span class="o">=</span> <span class="m">0</span>
+        <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
+        <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
+        <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="o">[</span>remote <span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+        <span class="nv">url</span> <span class="o">=</span> https://github.com/mogago/app2.git
+        <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
+<span class="hll"><span class="o">[</span>branch <span class="s2">&quot;master&quot;</span><span class="o">]</span>
+</span><span class="hll">        <span class="nv">remote</span> <span class="o">=</span> origin
+</span><span class="hll">        <span class="nv">merge</span> <span class="o">=</span> refs/heads/master
+</span></pre></div>
+</div>
+<p>Ahora tenemos 3 nuevas líneas que nos indican que para este repo, si estamos en el branch <code class="docutils literal notranslate"><span class="pre">master</span></code>, cuando hagamos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> o <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> por defecto se debe conectar al servidor remote <code class="docutils literal notranslate"><span class="pre">&quot;origin&quot;</span></code> y que obtenga o entregue los contenidos del branch <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+<p>Si usáramos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> sin indicar una dirección, por defecto sabrá que debe hacer pull de <code class="docutils literal notranslate"><span class="pre">origin</span> <span class="pre">master</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git pull
+Already up to date.
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuring-your-push-default">
+<h2><a class="toc-backref" href="#id21">Configuring your push default</a><a class="headerlink" href="#configuring-your-push-default" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hagamos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code>.</p>
+<p>Antes de la versión de Git 2.0, el <code class="docutils literal notranslate"><span class="pre">push</span></code> default estaba configurado a “matching”. Digamos que tenemos 2 branches locales <code class="docutils literal notranslate"><span class="pre">master</span></code> y <code class="docutils literal notranslate"><span class="pre">feature1</span></code>. Si estamos en uno de estos branches, si hiciéramos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> haría push no solo de este branch si no también de todos los demás, por ejemplo del branch <code class="docutils literal notranslate"><span class="pre">master</span></code>. Este modo se llama <code class="docutils literal notranslate"><span class="pre">matching</span></code>.</p>
+<p>Desde la versión Git 2.0 se cambió el push por defecto a <code class="docutils literal notranslate"><span class="pre">simple</span></code>, es decir, si hacemos push en un branch solo hará push del branch donde nos encontramos.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Para versiones anteriores a Git 2.0 cambiar el push por defecto a <code class="docutils literal notranslate"><span class="pre">simple</span></code>:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git config --global push.default simple
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="fetch-versus-pull">
+<h2><a class="toc-backref" href="#id22">Fetch versus pull</a><a class="headerlink" href="#fetch-versus-pull" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Miremos las diferencias entre <code class="docutils literal notranslate"><span class="pre">fetch</span></code> y <code class="docutils literal notranslate"><span class="pre">pull</span></code>. Comencemos creando un escenario.</p>
+<p>En GitHub, actualizar la página web del repositorio. Se recomienda tener un archivo <code class="docutils literal notranslate"><span class="pre">README</span></code>, así que lo crearemos, haciendo clic en el botón <span class="guilabel">Create new file</span>:</p>
+<div class="figure align-center" id="id5">
+<img alt="../../_images/github-new-file1.png" src="../../_images/github-new-file1.png" />
+<p class="caption"><span class="caption-text">GitHub - create new file - Paso 1</span></p>
+</div>
+<p>Crear el archivo <code class="docutils literal notranslate"><span class="pre">README.md</span></code> con el editor de GitHub integrado. Este archivo sirve para compartir información del proyecto en el home:</p>
+<div class="figure align-center" id="id6">
+<img alt="../../_images/github-new-file2.png" src="../../_images/github-new-file2.png" />
+<p class="caption"><span class="caption-text">GitHub - create new file - Paso 2</span></p>
+</div>
+<p>Dejemos el mensaje de commit por defecto y clic en el botón <span class="guilabel">Commit new file</span>:</p>
+<div class="figure align-center" id="id7">
+<img alt="../../_images/github-new-file3.png" src="../../_images/github-new-file3.png" />
+<p class="caption"><span class="caption-text">GitHub - create new file - Paso 3</span></p>
+</div>
+<p>Veremos el archivo <code class="docutils literal notranslate"><span class="pre">README</span></code> en el home del proyecto:</p>
+<div class="figure align-center" id="id8">
+<img alt="../../_images/github-new-file4.png" src="../../_images/github-new-file4.png" />
+<p class="caption"><span class="caption-text">GitHub - create new file - Paso 4</span></p>
+</div>
+<p>Veamos los branches:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch
+* master
+</pre></div>
+</div>
+<p>Pero ahora usemos la opción <code class="docutils literal notranslate"><span class="pre">-a</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch -a
+* master
+  remotes/origin/master
+</pre></div>
+</div>
+<p>Tenemos el branch local <code class="docutils literal notranslate"><span class="pre">master</span></code> pero también un branch denominado «<strong>remote tracking branch</strong>» (<code class="docutils literal notranslate"><span class="pre">remote/origin/master</span></code>).</p>
+<p>Si vemos el log nos explicará por qué esta ahí y qué hace:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 7c71072 <span class="o">(</span>HEAD -&gt; master, origin/master<span class="o">)</span> Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+<p>Vemos que los branches <code class="docutils literal notranslate"><span class="pre">origin/master</span></code> y <code class="docutils literal notranslate"><span class="pre">master</span></code> están apuntando al mismo <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Cabe señalar que a pesar que vemos este branch remoto, Git no realiza una búsqueda por la red en Internet.</p>
+</div>
+<p>Este «remote tracking branch» es una copia local de todas las cosas que estaban en nuestro servidor remoto hasta la última vez que hablamos con él (le hicimos <code class="docutils literal notranslate"><span class="pre">pull</span></code> o clonamos el repositorio).</p>
+<p>Algunas veces haremos checkout al branch <code class="docutils literal notranslate"><span class="pre">origin/master</span></code> para ver qué cambios están hanciendo en el servidor remoto y decir si lo pasamos a nuestro trabajo. Hay 2 formas en que podemos hacer esto:</p>
+<ol class="arabic simple">
+<li>Usualmente usamos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> para obtener los cambios de GitHub y hacer merge en nuestro branch local <code class="docutils literal notranslate"><span class="pre">master</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git pull
+
+remote: Enumerating objects: <span class="m">4</span>, <span class="k">done</span>.
+remote: Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">4</span>/4<span class="o">)</span>, <span class="k">done</span>.
+remote: Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="k">done</span>.
+remote: Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">0</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+From https://github.com/mogago/app2
+    7c71072..4423d0f  master     -&gt; origin/master
+Updating 7c71072..4423d0f
+Fast-forward
+ README.md <span class="p">|</span> <span class="m">4</span> ++++
+ <span class="m">1</span> file changed, <span class="m">4</span> insertions<span class="o">(</span>+<span class="o">)</span>
+ create mode <span class="m">100644</span> README.md
+
+$ git lg
+* 4423d0f <span class="o">(</span>HEAD -&gt; master, origin/master<span class="o">)</span> Create README.md
+* 7c71072 Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+<p>Vemos que el log se habrá actualizado y tenemos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> más y tanto <code class="docutils literal notranslate"><span class="pre">origin/master</span></code> y <code class="docutils literal notranslate"><span class="pre">master</span></code> están apuntando al nuevo <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
+<ol class="arabic simple" start="2">
+<li>Hay otra cosa que podemos hacer de forma más granular. Podemos hacer «<strong>fetch</strong>» (extraer) y luego merge.</li>
+</ol>
+<p>En GitHub, editemos el archivo <code class="docutils literal notranslate"><span class="pre">README.md</span></code>:</p>
+<div class="figure align-center" id="id9">
+<img alt="../../_images/github-new-commit1.png" src="../../_images/github-new-commit1.png" />
+<p class="caption"><span class="caption-text">GitHub - new commit</span></p>
+</div>
+<p>Clic en <span class="guilabel">Commit new file</span>:</p>
+<div class="figure align-center" id="id10">
+<img alt="../../_images/github-new-commit2.png" src="../../_images/github-new-commit2.png" />
+<p class="caption"><span class="caption-text">GitHub - new commit</span></p>
+</div>
+<p>En GitHub veremos que tenemos 1 commit más, sin embargo en Git, seguiremos teniendo los mismos:</p>
+<div class="figure align-center" id="id11">
+<img alt="../../_images/github-new-commit3.png" src="../../_images/github-new-commit3.png" />
+<p class="caption"><span class="caption-text">GitHub - new commit</span></p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$  git lg
+* 4423d0f <span class="o">(</span>HEAD -&gt; master, origin/master<span class="o">)</span> Create README.md
+* 7c71072 Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+<p>Ahora seamos más cuidadosos usando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code>. Esta es en realidad la operación de red. Cuando decimos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>, en realidad estamos corriendo 2 comandos: fetch y merge. Fetch para que obtenga la información de Internet y merge los cambios de <code class="docutils literal notranslate"><span class="pre">origin/master</span></code> a nuestro branch <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git fetch
+
+remote: Enumerating objects: <span class="m">5</span>, <span class="k">done</span>.
+remote: Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">5</span>/5<span class="o">)</span>, <span class="k">done</span>.
+remote: Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+remote: Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">0</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+From https://github.com/mogago/app2
+    4423d0f..6c53f4e  master     -&gt; origin/master
+
+$ git lg
+* 6c53f4e <span class="o">(</span>origin/master<span class="o">)</span> Adding contributor guide to README.md
+* 4423d0f <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Create README.md
+* 7c71072 Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">fetch</span></code> ha bajado los cambios desde Internet pero no ha hecho el merge en el branch <code class="docutils literal notranslate"><span class="pre">master</span></code>.</p>
+<p>Si quisiéramos ver qué contiene es guía de contribuidores podríamos hacer checkout a <code class="docutils literal notranslate"><span class="pre">origin/master</span></code> como cualquier otro branch:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat README.md
+    <span class="nv">Web2</span>
+    <span class="o">====</span>
+
+    Welcome to this greate new project
+
+
+$ git checkout origin/master
+Note: checking out <span class="s1">&#39;origin/master&#39;</span>.
+
+You are in <span class="s1">&#39;detached HEAD&#39;</span> state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+<span class="k">do</span> so <span class="o">(</span>now or later<span class="o">)</span> by using -b with the checkout <span class="nb">command</span> again. Example:
+
+git checkout -b &lt;new-branch-name&gt;
+
+HEAD is now at 6c53f4e Adding contributor guide to README.md
+</pre></div>
+</div>
+<p>Veamos el contenido del <code class="docutils literal notranslate"><span class="pre">README.md</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat README.md
+    <span class="nv">Web2</span>
+    <span class="o">====</span>
+
+    Welcome to this greate new project
+
+    Contributors <span class="nv">Guide</span>
+    <span class="o">==================</span>
+
+    Just fork the repo and send me a pull request
+</pre></div>
+</div>
+<p>Si estamos contentos con el contenido del archivo nos queda hacer merge (tipo «fast forward») hacia el <code class="docutils literal notranslate"><span class="pre">master</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Previous HEAD position was 6c53f4e Adding contributor guide to README.md
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is behind <span class="s1">&#39;origin/master&#39;</span> by <span class="m">1</span> commit, and can be fast-forwarded.
+  <span class="o">(</span>use <span class="s2">&quot;git pull&quot;</span> to update your <span class="nb">local</span> branch<span class="o">)</span>
+
+$ git merge origin/master
+Updating 4423d0f..6c53f4e
+Fast-forward
+ README.md <span class="p">|</span> <span class="m">5</span> +++++
+ <span class="m">1</span> file changed, <span class="m">5</span> insertions<span class="o">(</span>+<span class="o">)</span>
+</pre></div>
+</div>
+<p>Comprobemos que tenemos el archivo actualizado desde el branch <code class="docutils literal notranslate"><span class="pre">master</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat README.md
+    <span class="nv">Web2</span>
+    <span class="o">====</span>
+
+    Welcome to this greate new project
+
+    Contributors <span class="nv">Guide</span>
+    <span class="o">==================</span>
+
+    Just fork the repo and send me a pull request
+
+$ git lg
+* 6c53f4e <span class="o">(</span>HEAD -&gt; master, origin/master<span class="o">)</span> Adding contributor guide to README.md
+* 4423d0f Create README.md
+* 7c71072 Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+</div>
+<div class="section" id="merge-versus-rebase-on-pull">
+<h2><a class="toc-backref" href="#id23">Merge versus rebase on pull</a><a class="headerlink" href="#merge-versus-rebase-on-pull" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La última cosa que veremos sobre fetching y mergin es: merging versus rebasing cuando hacemos <code class="docutils literal notranslate"><span class="pre">pull</span></code>.</p>
+<p>Acabamos de ver el caso que hacemos fetch y luego merge hacia el branch <code class="docutils literal notranslate"><span class="pre">master</span></code>. ¿Qué hubiese pasado si hubiéramos tenido nuestro propio <code class="docutils literal notranslate"><span class="pre">commit</span></code> en el branch <code class="docutils literal notranslate"><span class="pre">master</span></code>?</p>
+<p>Volvamos a editar el archivo README.md desde GitHub con el mensaje de <code class="docutils literal notranslate"><span class="pre">commit</span></code> por defecto:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span>Web2
+====
+
+Welcome to this greate new project
+
+Contributors Guide
+==================
+
+Just fork the repo and send me a pull request
+
+Add more text
+</pre></div>
+</div>
+<p>Veamos los commits en GitHub:</p>
+<div class="figure align-center" id="id12">
+<img alt="../../_images/github-new-commit4.png" src="../../_images/github-new-commit4.png" />
+<p class="caption"><span class="caption-text">GitHub - new commit</span></p>
+</div>
+<p>Ahora localmente tenemos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> menos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 6c53f4e <span class="o">(</span>HEAD -&gt; master, origin/master<span class="o">)</span> Adding contributor guide to README.md
+* 4423d0f Create README.md
+* 7c71072 Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+<p>Hagamos fetch y veamos el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git fetch
+remote: Enumerating objects: <span class="m">5</span>, <span class="k">done</span>.
+remote: Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">5</span>/5<span class="o">)</span>, <span class="k">done</span>.
+remote: Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+remote: Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">1</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">0</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+From https://github.com/mogago/app2
+    6c53f4e..2d57fde  master     -&gt; origin/master
+
+$ git lg
+* 2d57fde <span class="o">(</span>origin/master<span class="o">)</span> Update README.md
+* 6c53f4e <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Adding contributor guide to README.md
+* 4423d0f Create README.md
+* 7c71072 Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+<p>Imaginemos que hagamos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> localmente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vi index.html
+    hello world
+    welcome to our website!
+
+$ git commit -am <span class="s2">&quot;Added longer welcome to the home page&quot;</span>
+<span class="o">[</span>master 1e4341a<span class="o">]</span> Added longer welcome to the home page
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+
+$ git lg
+* 1e4341a <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added longer welcome to the home page
+<span class="p">|</span> * 2d57fde <span class="o">(</span>origin/master<span class="o">)</span> Update README.md
+<span class="p">|</span>/
+* 6c53f4e Adding contributor guide to README.md
+* 4423d0f Create README.md
+* 7c71072 Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+<p>Antes hicimos un cambios en el branch <code class="docutils literal notranslate"><span class="pre">origin/master</span></code> desde GitHub, pero ahora hemos hecho un cambio localmente en nuestro branch <code class="docutils literal notranslate"><span class="pre">master</span></code>. Encontrando una divergencia en el historial.</p>
+<p>Si corriéramos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code> o <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">merge</span> <span class="pre">origin/master</span></code> no haría un fast forward y tendríamos un mensaje de <code class="docutils literal notranslate"><span class="pre">commit</span></code> no aconsejable. Funciona pero está mal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git merge origin/master
+
+    Merge remote-tracking branch <span class="s1">&#39;origin/master&#39;</span>
+
+    <span class="c1"># Please enter a commit message to explain why this merge is necessary,</span>
+    <span class="c1"># especially if it merges an updated upstream into a topic branch.</span>
+    <span class="c1">#</span>
+    <span class="c1"># Lines starting with &#39;#&#39; will be ignored, and an empty message aborts</span>
+    <span class="c1"># the commit.</span>
+
+Merge made by the <span class="s1">&#39;recursive&#39;</span> strategy.
+README.md <span class="p">|</span> <span class="m">2</span> ++
+<span class="m">1</span> file changed, <span class="m">2</span> insertions<span class="o">(</span>+<span class="o">)</span>
+
+$ git lg
+*   6a4c9da <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Merge remote-tracking branch <span class="s1">&#39;origin/master&#39;</span>
+<span class="p">|</span><span class="se">\</span>
+<span class="p">|</span> * 2d57fde <span class="o">(</span>origin/master<span class="o">)</span> Update README.md
+* <span class="p">|</span> 1e4341a Added longer welcome to the home page
+<span class="p">|</span>/
+* 6c53f4e Adding contributor guide to README.md
+* 4423d0f Create README.md
+* 7c71072 Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+<p>No es aconsejable porque no tenemos una información semática útil. Así que borremos el último <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git reset --hard HEAD~1
+HEAD is now at 1e4341a Added longer welcome to the home page
+
+$ git lg
+* 1e4341a <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added longer welcome to the home page
+<span class="p">|</span> * 2d57fde <span class="o">(</span>origin/master<span class="o">)</span> Update README.md
+<span class="p">|</span>/
+* 6c53f4e Adding contributor guide to README.md
+* 4423d0f Create README.md
+* 7c71072 Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+<p>Hemos vuelto al punto de referencia anterior. Queremos juntar esas dos líneas de historia pero no queremos hacer merge, es decir, hacer que parezca como si viéramos cosa por cosa pero en realidad estamos haciendo más de una cosa al mismo tiempo. Esto lo haremos usando <strong>rebase</strong>.</p>
+<p>En el branch <code class="docutils literal notranslate"><span class="pre">master</span></code> usamos rebase:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git rebase origin/master
+First, rewinding head to replay your work on top of it...
+Applying: Added longer welcome to the home page
+
+$ git lg
+* 42c4494 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added longer welcome to the home page
+* 2d57fde <span class="o">(</span>origin/master<span class="o">)</span> Update README.md
+* 6c53f4e Adding contributor guide to README.md
+* 4423d0f Create README.md
+* 7c71072 Added about us page
+* 6c4de50 Added home page
+</pre></div>
+</div>
+<p>Hemos cambiado la base del <code class="docutils literal notranslate"><span class="pre">master</span></code> a <code class="docutils literal notranslate"><span class="pre">2d57fde</span></code>, como si no hubiéramos comenzado a programar localmente hasta que <code class="docutils literal notranslate"><span class="pre">origin/master</span></code> haya acabado su trabajo.</p>
+<p>Ahora actualizaremos nuestro trabajo en el servidor remoto con <code class="docutils literal notranslate"><span class="pre">push</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git push
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: mogago
+Password <span class="k">for</span> <span class="s1">&#39;https://mogago@github.com&#39;</span>:
+Counting objects: <span class="m">3</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">4</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="m">313</span> bytes <span class="p">|</span> <span class="m">313</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">1</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+remote: Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span class="m">1</span>/1<span class="o">)</span>, completed with <span class="m">1</span> <span class="nb">local</span> object.
+To https://github.com/mogago/app2.git
+    2d57fde..42c4494  master -&gt; master
+</pre></div>
+</div>
+<p>En lugar de usar fetch y merge podemos hacer un fetch y rebase en un solo comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git pull --rebase
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lesson7.html" class="btn btn-neutral float-right" title="Lesson 7" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lesson5.html" class="btn btn-neutral float-left" title="Lesson 5" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

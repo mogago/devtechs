@@ -1,0 +1,751 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lesson 7 &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="GNU/Linux" href="../gnulinux/_gnulinux.html" />
+    <link rel="prev" title="Lesson 6" href="lesson6.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lesson1.html">Lesson 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson2.html">Lesson 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson3.html">Lesson 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson4.html">Lesson 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson5.html">Lesson 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson6.html">Lesson 6</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lesson 7</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cloning-a-repository">Cloning a repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#forking-a-repository">Forking a repository</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contributing-via-a-pull-request-from-a-fork">Contributing via a pull request from a fork</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#approving-a-pull-request-from-a-fork">Approving a pull request from a fork</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-cases-for-fork-based-collaboration">Use cases for fork based collaboration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-repo-collaboration-directly-on-master">Single repo collaboration directly on master</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#single-repo-collaboration-using-feature-branches">Single repo collaboration using feature branches</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contributing-to-another-feature-branch">Contributing to another feature branch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-pull-request-within-a-single-repo">Creating a pull request within a single repo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collaborating-on-a-pull-request">Collaborating on a pull request</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#merging-in-a-pull-request">Merging in a pull request</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a> &raquo;</li>
+        
+      <li>Lesson 7</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/gitgithub/lesson7.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lesson-7">
+<h1><a class="toc-backref" href="#id22">Lesson 7</a><a class="headerlink" href="#lesson-7" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><em>Lesson 7: Collaborating via GitHub</em></p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lesson-7" id="id22">Lesson 7</a><ul>
+<li><a class="reference internal" href="#cloning-a-repository" id="id23">Cloning a repository</a></li>
+<li><a class="reference internal" href="#forking-a-repository" id="id24">Forking a repository</a></li>
+<li><a class="reference internal" href="#contributing-via-a-pull-request-from-a-fork" id="id25">Contributing via a pull request from a fork</a></li>
+<li><a class="reference internal" href="#approving-a-pull-request-from-a-fork" id="id26">Approving a pull request from a fork</a></li>
+<li><a class="reference internal" href="#use-cases-for-fork-based-collaboration" id="id27">Use cases for fork based collaboration</a></li>
+<li><a class="reference internal" href="#single-repo-collaboration-directly-on-master" id="id28">Single repo collaboration directly on master</a></li>
+<li><a class="reference internal" href="#single-repo-collaboration-using-feature-branches" id="id29">Single repo collaboration using feature branches</a></li>
+<li><a class="reference internal" href="#contributing-to-another-feature-branch" id="id30">Contributing to another feature branch</a></li>
+<li><a class="reference internal" href="#creating-a-pull-request-within-a-single-repo" id="id31">Creating a pull request within a single repo</a></li>
+<li><a class="reference internal" href="#collaborating-on-a-pull-request" id="id32">Collaborating on a pull request</a></li>
+<li><a class="reference internal" href="#merging-in-a-pull-request" id="id33">Merging in a pull request</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="cloning-a-repository">
+<h2><a class="toc-backref" href="#id23">Cloning a repository</a><a class="headerlink" href="#cloning-a-repository" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hasta este momento solo hemos creado nuestros proyectos localmente y le hemos hecho <code class="docutils literal notranslate"><span class="pre">push</span></code> hacia GitHub. Pero es más común que trabajemos en proyectos que alguien más haya iniciado:</p>
+<p>Un usuario distinto al nuestro ha creado su repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+fatal: not a git repository <span class="o">(</span>or any of the parent directories<span class="o">)</span>: .git
+
+$ mkdir clone_me
+$ <span class="nb">cd</span> clone_me/
+$ touch index.html
+$ git init
+Initialized empty Git repository in /home/user/Documents/gittests/clone_me/.git/
+
+$ git add .
+$ git commit -m <span class="s2">&quot;Added home page&quot;</span>
+<span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> 9568a2a<span class="o">]</span> Added home page
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> index.html
+</pre></div>
+</div>
+<p>El usuario, desde GitHub creó un repositorio con el mismo nombre <code class="docutils literal notranslate"><span class="pre">clone_me</span></code> y lo añadió a su repositorio local de Git creado. Presionar el botón <span class="guilabel">+</span>, opción <span class="guilabel">New Repository</span>, usar el nombre <code class="docutils literal notranslate"><span class="pre">clone_me</span></code> y clic en el botón <span class="guilabel">Create repository</span>:</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/github-new-repo11.png" src="../../_images/github-new-repo11.png" />
+<p class="caption"><span class="caption-text">GitHub - create new repository <code class="docutils literal notranslate"><span class="pre">clone_me</span></code></span></p>
+</div>
+<p>En el terminal, el usuario ejecutó:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/mogago/clone_me.git
+$ git push -u origin master
+</pre></div>
+</div>
+<p>Desde un lugar que no sea un directorio Git haremos una copia local de este repositorio externo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ..
+$ mkdir student
+$ <span class="nb">cd</span> student/
+$ git status
+fatal: not a git repository <span class="o">(</span>or any of the parent directories<span class="o">)</span>: .git
+
+$ git clone https://github.com/mogago/clone_me
+Cloning into <span class="s1">&#39;clone_me&#39;</span>...
+remote: Enumerating objects: <span class="m">3</span>, <span class="k">done</span>.
+remote: Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+remote: Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">0</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+</pre></div>
+</div>
+<p>Ahora tenemos nuestra propia copia del repositorio y podemos hacer cualquier cambio localmente. Veamos el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> clone_me/
+$ git lg
+* 9568a2a <span class="o">(</span>HEAD -&gt; master, origin/master, origin/HEAD<span class="o">)</span> Added home page
+
+$ touch about.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added about as page&quot;</span>
+<span class="o">[</span>master f76a9a0<span class="o">]</span> Added about as page
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> about.html
+</pre></div>
+</div>
+<p>Pero si ahora tratamos de hacer <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> obtendremos un error de autenticación porque somos un usuario distinto. No somo invitados como colaboradores a este proyecto.</p>
+<p>El primer uso de cloning es tener una copia a la cual podemos hacerle cambios localmente.</p>
+</div>
+<div class="section" id="forking-a-repository">
+<h2><a class="toc-backref" href="#id24">Forking a repository</a><a class="headerlink" href="#forking-a-repository" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>¿Qué pasa si hay un proyecto al que no tenemos acceso de hacer <code class="docutils literal notranslate"><span class="pre">push</span></code> pero queremos contribuir al proyecto?: creamos un <strong>fork</strong>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git status
+fatal: not a git repository <span class="o">(</span>or any of the parent directories<span class="o">)</span>: .git
+
+$ git init fork_me
+Initialized empty Git repository in /home/gabriel/Documents/gittests/fork_me/.git/
+
+$ <span class="nb">cd</span> fork_me/
+$ touch index.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added home page to forkable repo&quot;</span>
+<span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> 70b87af<span class="o">]</span> Added home page to forkable repo
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> index.html
+</pre></div>
+</div>
+<p>En GitHub:</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/github-new-repo21.png" src="../../_images/github-new-repo21.png" />
+<p class="caption"><span class="caption-text">GitHub - create new repository <code class="docutils literal notranslate"><span class="pre">fork_me</span></code></span></p>
+</div>
+<p>En el terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/mogago/fork_me.git
+$ git push -u origin master
+</pre></div>
+</div>
+<p>Desde una ventan en incógnito sin loguearnos o usando un usuario distinto acceder al URL: <a class="reference external" href="https://github.com/mogago/fork_me.git">https://github.com/mogago/fork_me.git</a></p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">¿Cuál es la diferencia entre clone y fork?. Es como la pregunta ¿usar merge o rebase?, siempre harás merge pero la pregunta es si harás rebase primero. Es similiar con cloning y forking.</p>
+</div>
+<p>Siempre clonaremos un repositorio si queremos una copia local en nuestra laptop donde podamos hacer cambios. La única pregunta es si primero haremos fork al repositorio. Veamos algunos casos:</p>
+<ul class="simple">
+<li>Si no queremos hacer contribuciones a un proyecto, no requerimos hacer fork para tener una copia del repositorio, solo basta hacer cloning.</li>
+<li>Si es un repositorio al que hemos sido añadidos como colaboradores, no necesitamos hacer fork, solo hacer cloning y hacer <code class="docutils literal notranslate"><span class="pre">push</span></code> de vuelta con nuestros cambios porque alguien nos agregó como colaborador.</li>
+<li>Si queremos contribuir a un proyecto del cual desconocemos quienes lo crearon, deberemos hacer <strong>fork</strong> de ese repositorio. Esto es, tomaremos su copia del repositorio de Github y haremos nuestra propia copia del repositorio también en GitHub. Es decir el mismo proyecto bajo nuestro nombre de usuario (<code class="docutils literal notranslate"><span class="pre">https://github.com/anotheruser/fork_me.git</span></code>). Luego podemos clonarlo, hacerle cambios y hacerle <code class="docutils literal notranslate"><span class="pre">push</span></code> a nuestra propia copia, nuestro fork del repositorio.</li>
+</ul>
+<p>Desde otra cuenta de GitHub, entrar a la URL del creador del repositorio: <a class="reference external" href="https://github.com/mogago/fork_me.git">https://github.com/mogago/fork_me.git</a> y clic en la opción <span class="guilabel">Fork</span>:</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/github-fork1.png" src="../../_images/github-fork1.png" />
+<p class="caption"><span class="caption-text">GitHub - Fork de repositorio externo</span></p>
+</div>
+<p>Ahora veremos que hemos hecho un fork del repositorio en nuestra dashboard de GitHub:</p>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/github-fork2.png" src="../../_images/github-fork2.png" />
+<p class="caption"><span class="caption-text">GitHub - Fork de repositorio externo</span></p>
+</div>
+<p>Hagamos una copia local de nuestro repositorio, nuestro fork:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ..
+$ <span class="nb">cd</span> student/
+$ git status
+fatal: not a git repository <span class="o">(</span>or any of the parent directories<span class="o">)</span>: .git
+
+$ git clone https://github.com/externaluser/fork_me
+Cloning into <span class="s1">&#39;fork_me&#39;</span>...
+remote: Enumerating objects: <span class="m">3</span>, <span class="k">done</span>.
+remote: Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+remote: Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">0</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+
+$ <span class="nb">cd</span> fork_me/
+</pre></div>
+</div>
+<p>Con nuestra copia, creemos un archivo con nuestro nombre de usuario:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git push
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: externaluser
+Password <span class="k">for</span> <span class="s1">&#39;https://externaluser@github.com&#39;</span>:
+Counting objects: <span class="m">2</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">4</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="m">272</span> bytes <span class="p">|</span> <span class="m">272</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">2</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+To https://github.com/externaluser/fork_me
+    70b87af..241bd97  master -&gt; master
+</pre></div>
+</div>
+<p>Si vamos al repositorio original veremos que ninguno de nuestros cambios están aquí porque nuestros cambios se han hecho en el fork:</p>
+<div class="figure align-center" id="id5">
+<img alt="../../_images/github-fork3.png" src="../../_images/github-fork3.png" />
+<p class="caption"><span class="caption-text">GitHub - Repositorio original</span></p>
+</div>
+<p>En los commits de GitHub veremos 2 commits en el fork. Un fork hecho por el creador original y otro hecho por nosotros en nuestra copia local.</p>
+</div>
+<div class="section" id="contributing-via-a-pull-request-from-a-fork">
+<h2><a class="toc-backref" href="#id25">Contributing via a pull request from a fork</a><a class="headerlink" href="#contributing-via-a-pull-request-from-a-fork" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Una vez que he hecho fork de un repositorio, lo he clonado para tener una copia local, he hecho mis cambios y le he hecho <code class="docutils literal notranslate"><span class="pre">push</span></code> de vuelta a mi fork, ¿cómo haríamos para que nuestros cambios vayan al repositorio original?. Debemos usar un <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code>.</p>
+<p>El propósito de un <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code> es pedir o preguntar a personas en otros proyectos para que incorporen nuestros cambios.</p>
+<p>Con el usuario que ha creado el fork ingresar a nuestro fork desde GitHub y clic en el botón <span class="guilabel">New pull request</span>:</p>
+<div class="figure align-center" id="id6">
+<img alt="../../_images/github-fork4.png" src="../../_images/github-fork4.png" />
+<p class="caption"><span class="caption-text">GitHub - Repositorio original</span></p>
+</div>
+<p>Ya que este es un fork de otro proyecto, GitHub supone que lo que queremos hacer es tomar los cambios del <code class="docutils literal notranslate"><span class="pre">master</span></code> branch que hemos hecho en el fork del repositorio y hacer merge con el <code class="docutils literal notranslate"><span class="pre">master</span></code> branch del repositorio original. Clic en botón <span class="guilabel">Create pull request</span>:</p>
+<div class="figure align-center" id="id7">
+<img alt="../../_images/github-pull-request1.png" src="../../_images/github-pull-request1.png" />
+<p class="caption"><span class="caption-text">GitHub - <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code></span></p>
+</div>
+<p>Ahora deberemos ingresar un mensaje donde fundamentamos por qué deben incluir nuestro código en ese repositorio. Clic en botón <span class="guilabel">Create pull request</span>:</p>
+<div class="figure align-center" id="id8">
+<img alt="../../_images/github-pull-request2.png" src="../../_images/github-pull-request2.png" />
+<p class="caption"><span class="caption-text">GitHub - Mensaje <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code></span></p>
+</div>
+<p>Alguien que posea el proyecto podrá hacer merge con nuestros cambios.</p>
+</div>
+<div class="section" id="approving-a-pull-request-from-a-fork">
+<h2><a class="toc-backref" href="#id26">Approving a pull request from a fork</a><a class="headerlink" href="#approving-a-pull-request-from-a-fork" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Ahora logueados como usuarios propietarios del repositorio podemos ver la lista de <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code>:</p>
+<div class="figure align-center" id="id9">
+<img alt="../../_images/github-pull-request3.png" src="../../_images/github-pull-request3.png" />
+<p class="caption"><span class="caption-text">GitHub - Lista de peticiones de <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code></span></p>
+</div>
+<div class="figure align-center" id="id10">
+<img alt="../../_images/github-pull-request4.png" src="../../_images/github-pull-request4.png" />
+<p class="caption"><span class="caption-text">GitHub - Aceptar petición <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code></span></p>
+</div>
+<div class="figure align-center" id="id11">
+<img alt="../../_images/github-pull-request5.png" src="../../_images/github-pull-request5.png" />
+<p class="caption"><span class="caption-text">GitHub - Aceptar petición <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code></span></p>
+</div>
+<p>Una vez que aceptemos los cambios de la petición <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code> podemos hacer merge de este. Para hacer esto será igual que hacer merge de dos branches en la línea de comandos. Tomará la divergencia del historial si existe y nunca creará un fast forward merge. Clic en la opción <span class="guilabel">Merge pull request</span>:</p>
+<p>Nos saldrá en la misma ventana un recuadro de texto para confierma el merge, editarlo según deseemos y clic en <span class="guilabel">Confirm merge</span>:</p>
+<div class="figure align-center" id="id12">
+<img alt="../../_images/github-pull-request6.png" src="../../_images/github-pull-request6.png" />
+<p class="caption"><span class="caption-text">GitHub - Aceptar petición <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code></span></p>
+</div>
+<p>En los archivos del repositorio externo veremos el archivo con el cual contribuyó el usuario externo:</p>
+<div class="figure align-center" id="id13">
+<img alt="../../_images/github-pull-request7.png" src="../../_images/github-pull-request7.png" />
+<p class="caption"><span class="caption-text">GitHub - Petición <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code> aceptada</span></p>
+</div>
+</div>
+<div class="section" id="use-cases-for-fork-based-collaboration">
+<h2><a class="toc-backref" href="#id27">Use cases for fork based collaboration</a><a class="headerlink" href="#use-cases-for-fork-based-collaboration" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Hay 2 casos de uso principales de fork based <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code>:</p>
+<ol class="arabic simple">
+<li>Entorno de confianza: Si estamos trabajando con un equipo de personas que no conocemos. Aceptamos contribuciones que no conocemos personalmente.</li>
+<li>Contribuidores ocasiones. En una compañía podría servir para no dar permisos totales a personas que no deseemos darles permisos dentro de nuestro repo.</li>
+</ol>
+<p>Donde no funciona muy bien es con un grupo pequeño de personas que trabajan juntos regularmente. No es deseable que cada uno tenga su propio fork.</p>
+</div>
+<div class="section" id="single-repo-collaboration-directly-on-master">
+<h2><a class="toc-backref" href="#id28">Single repo collaboration directly on master</a><a class="headerlink" href="#single-repo-collaboration-directly-on-master" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Nuevo repositorio en Git y GitHub.</li>
+<li>Desde otro usuario distinto al creador del repositorio clonar el repositorio y agregar un archivo, commit y push. No podremos hacer push porque no somos colaboradores.</li>
+<li>Agregar como colaborador desde GitHub al usuario que hizo fork del proyecto.</li>
+<li>Si hacemos un push desde el creador del repo, antes que los colaboradores haga un repo no obtendremos error.</li>
+<li>Si alguien hace push obtendrá error. Deberá hacer git pull primero. Pero para que no sea desordenado, usar –rebase.</li>
+<li>Si nadie ha hecho un push, podremos hacer nuestro git push</li>
+</ol>
+<p>Creemos otro proyecto. Desde el terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git init single_repo
+Initialized empty Git repository in /home/gabriel/Documents/gittests/single_repo/.git/
+
+$ <span class="nb">cd</span> single_repo/
+$ touch index.html
+$ git add .
+
+$ git commit -m <span class="s2">&quot;Added new home page&quot;</span>
+<span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> aa2d72f<span class="o">]</span> Added new home page
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> index.html
+</pre></div>
+</div>
+<p>Desde GitHub:</p>
+<div class="figure align-center" id="id14">
+<img alt="../../_images/github-single_repo1.png" src="../../_images/github-single_repo1.png" />
+<p class="caption"><span class="caption-text">GitHub - Creación de nuevo repo</span></p>
+</div>
+<p>En el terminal hacemos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> del repositorio local:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/mogago/single_repo.git
+$ git push -u origin master
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: mogago
+Password <span class="k">for</span> <span class="s1">&#39;https://mogago@github.com&#39;</span>:
+Counting objects: <span class="m">3</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="m">219</span> bytes <span class="p">|</span> <span class="m">219</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+To https://github.com/mogago/single_repo.git
+* <span class="o">[</span>new branch<span class="o">]</span>      master -&gt; master
+Branch <span class="s1">&#39;master&#39;</span> <span class="nb">set</span> up to track remote branch <span class="s1">&#39;master&#39;</span> from <span class="s1">&#39;origin&#39;</span>.
+</pre></div>
+</div>
+<p>Hasta acá hemos hecho una configuración y creación básica de un repositorio Git/GitHub.</p>
+<p>Desde otra cuenta diferente al creador del repositorio ireamos al URL del repo (<a class="reference external" href="https://github.com/mogago/single_repo">https://github.com/mogago/single_repo</a>), lo clonaremos y haremos un <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Sin embargo, no podremos hacer <code class="docutils literal notranslate"><span class="pre">push</span></code> a este repositorio porque no somos colaboradores.</p>
+<p>Primero añadiremos como colaborador desde el usuario dueño del repositorio al otro usuario. En el repositorio de GitHub seleccionar la opción <span class="guilabel">Settings</span> de la barra superior, luego seleccionar la opción <span class="guilabel">Collaborators</span> de la barra lateral izquierda.</p>
+<div class="figure align-center" id="id15">
+<img alt="../../_images/github-single_repo2.png" src="../../_images/github-single_repo2.png" />
+<p class="caption"><span class="caption-text">GitHub - Añadir Colaborador, opción <span class="guilabel">Settings</span>, <span class="guilabel">Collaborators</span></span></p>
+</div>
+<p>Ingresar el nombre de usuario o correo del colaborador que deseemos agregar. Clic en <span class="guilabel">Add collaborator</span></p>
+<div class="figure align-center" id="id16">
+<img alt="../../_images/github-single_repo3.png" src="../../_images/github-single_repo3.png" />
+<p class="caption"><span class="caption-text">GitHub - Añadir colaborador, nombre de usuario</span></p>
+</div>
+<p>Se habrá enviado una invitación de colaboración al usuario externo:</p>
+<div class="figure align-center" id="id17">
+<img alt="../../_images/github-single_repo4.png" src="../../_images/github-single_repo4.png" />
+<p class="caption"><span class="caption-text">GitHub - Añadir colaborador, invitación enviada</span></p>
+</div>
+<p>El usuario externo recibirá un correo con la invitación de colaboración mediante la URL: <a class="reference external" href="https://github.com/mogago/single_repo/invitations">https://github.com/mogago/single_repo/invitations</a></p>
+<div class="figure align-center" id="id18">
+<img alt="../../_images/github-single_repo5.png" src="../../_images/github-single_repo5.png" />
+<p class="caption"><span class="caption-text">GitHub - Aceptar invitación, opción <span class="guilabel">Accept invitation</span></span></p>
+</div>
+<p>Clic en la opción <span class="guilabel">Accept invitation</span>. Ahora en el repositorio veremos el siguiente mensaje: <code class="docutils literal notranslate"><span class="pre">You</span> <span class="pre">now</span> <span class="pre">have</span> <span class="pre">push</span> <span class="pre">access</span> <span class="pre">to</span> <span class="pre">the</span> <span class="pre">mogago/single_repo</span> <span class="pre">repository.</span></code>. Es decir, ahora podremos hacer <code class="docutils literal notranslate"><span class="pre">push</span></code> al repositorio.</p>
+<p>Los dos colaboradores están trabajando en el mismo branch <code class="docutils literal notranslate"><span class="pre">master</span></code> y harán <code class="docutils literal notranslate"><span class="pre">push</span></code> a este branch.</p>
+<p>Desde el usuario externo añadido como colaborador clonaremos el repositorio, haremos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> y <code class="docutils literal notranslate"><span class="pre">push</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/mogago/single_repo.git
+$ touch externaluser.txt
+$ git add .
+$ git commit -m <span class="s2">&quot;Added my name&quot;</span>
+<span class="o">[</span>master f395a21<span class="o">]</span> Added my name
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> externaluser.txt
+
+$ git push
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: andrtemdown
+Password <span class="k">for</span> <span class="s1">&#39;https://andrtemdown@github.com&#39;</span>:
+Counting objects: <span class="m">2</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">4</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="m">257</span> bytes <span class="p">|</span> <span class="m">257</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">2</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+To https://github.com/mogago/single_repo.git
+    aa2d72f..f395a21  master -&gt; master
+</pre></div>
+</div>
+<p>Desde el usuario creador del repo tendremos problemas al hacer un <code class="docutils literal notranslate"><span class="pre">push</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch mogago.txt
+$ git add .
+$ git commit -m <span class="s2">&quot;Added my name mogago&quot;</span>
+<span class="o">[</span>master b0c8a81<span class="o">]</span> Added my name mogago
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> mogago.txt
+
+$ git push
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: mogago
+Password <span class="k">for</span> <span class="s1">&#39;https://mogago@github.com&#39;</span>:
+To https://github.com/mogago/single_repo.git
+    ! <span class="o">[</span>rejected<span class="o">]</span>        master -&gt; master <span class="o">(</span>fetch first<span class="o">)</span>
+error: failed to push some refs to <span class="s1">&#39;https://github.com/mogago/single_repo.git&#39;</span>
+hint: Updates were rejected because the remote contains work that you <span class="k">do</span>
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: <span class="o">(</span>e.g., <span class="s1">&#39;git pull ...&#39;</span><span class="o">)</span> before pushing again.
+hint: See the <span class="s1">&#39;Note about fast-forwards&#39;</span> in <span class="s1">&#39;git push --help&#39;</span> <span class="k">for</span> details.
+</pre></div>
+</div>
+<p>El <code class="docutils literal notranslate"><span class="pre">push</span></code> no funciona porque hay cambios en GitHub que nosotros no tenemos, por lo tanto primero debemos hacer <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>. Sin embargo, con este comando será un poco desordenado, así que usaremos <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span></code> desde el usuario creador del repo. Y luego <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code> para agregar nuestros cambios:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git pull --rebase
+remote: Enumerating objects: <span class="m">3</span>, <span class="k">done</span>.
+remote: Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+remote: Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="k">done</span>.
+remote: Total <span class="m">2</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">2</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">0</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="k">done</span>.
+From https://github.com/mogago/single_repo
+aa2d72f..f395a21  master     -&gt; origin/master
+First, rewinding head to replay your work on top of it...
+Applying: Added my name mogago
+
+$ ls
+externaluser.txt  index.html  mogago.txt
+
+$ git push
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: mogago
+Password <span class="k">for</span> <span class="s1">&#39;https://mogago@github.com&#39;</span>:
+Counting objects: <span class="m">2</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">4</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="m">276</span> bytes <span class="p">|</span> <span class="m">276</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">2</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+To https://github.com/mogago/single_repo.git
+    f395a21..31c9eb4  master -&gt; master
+</pre></div>
+</div>
+<p>Podemos ver que esta no es una buena forma de trabajo porque si fuesen más usuarios, todos estarían haciendo <code class="docutils literal notranslate"><span class="pre">push</span></code> sobre el mismo branch al mismo tiempo sobre el trabajo de otros. El problema es que no podremos hacer <code class="docutils literal notranslate"><span class="pre">push</span></code> sin antes haber hecho <code class="docutils literal notranslate"><span class="pre">pull</span></code> y obstaculiza el trabajo del grupo. Todos trabajando en <code class="docutils literal notranslate"><span class="pre">master</span></code> branch no funciona.</p>
+</div>
+<div class="section" id="single-repo-collaboration-using-feature-branches">
+<h2><a class="toc-backref" href="#id29">Single repo collaboration using feature branches</a><a class="headerlink" href="#single-repo-collaboration-using-feature-branches" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para solucionar el problema anterior, usaremos <strong>feature branches</strong>. Con feature branches, en lugar de que todos colaboremos directamente en el branch <code class="docutils literal notranslate"><span class="pre">master</span></code>, todos construyamos nuestros feature branches por separado.</p>
+<p>Usualmente en un proyecto real, cada feature branch será nombrado bajo el nombre del feature que deseemos construir. En este caso, podemos crear un brach con nuestro nombre de usuario.</p>
+<p>Desde el usuario añadido como colaborador:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout -b externaluser
+Switched to a new branch <span class="s1">&#39;externaluser&#39;</span>
+$ vi externaluser.txt
+    Here is some text I added
+
+$ git commit -am <span class="s2">&quot;Added some great content to my file&quot;</span>
+<span class="o">[</span>externaluser fb2938b<span class="o">]</span> Added some great content to my file
+<span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+$ git lg
+* fb2938b <span class="o">(</span>HEAD -&gt; externaluser<span class="o">)</span> Added some great content to my file
+* f395a21 <span class="o">(</span>origin/master, origin/HEAD, master<span class="o">)</span> Added my name
+* aa2d72f Added new home page
+</pre></div>
+</div>
+<p>En el log veremos que nuestro branch está un <code class="docutils literal notranslate"><span class="pre">commit</span></code> adelante del branch <code class="docutils literal notranslate"><span class="pre">master</span></code> y <code class="docutils literal notranslate"><span class="pre">origin/master</span></code>. Lo siguiente que debemos hacer es un <code class="docutils literal notranslate"><span class="pre">push</span></code> de nuestro branch hacia GitHub. Para esto, configuraremos otro <strong>default upstream</strong> con nuestro <strong>feature branch</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git push -u origin externaluser
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: andrtemdown
+Password <span class="k">for</span> <span class="s1">&#39;https://andrtemdown@github.com&#39;</span>:
+Counting objects: <span class="m">8</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">4</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">5</span>/5<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">8</span>/8<span class="o">)</span>, <span class="m">743</span> bytes <span class="p">|</span> <span class="m">743</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">8</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+remote:
+remote: Create a pull request <span class="k">for</span> <span class="s1">&#39;externaluser&#39;</span> on GitHub by visiting:
+remote:      https://github.com/mogago/single_repo/pull/new/externaluser
+remote:
+To https://github.com/mogago/single_repo.git
+* <span class="o">[</span>new branch<span class="o">]</span>      externaluser -&gt; externaluser
+Branch <span class="s1">&#39;externaluser&#39;</span> <span class="nb">set</span> up to track remote branch <span class="s1">&#39;externaluser&#39;</span> from <span class="s1">&#39;origin&#39;</span>.
+</pre></div>
+</div>
+<p>En GitHub veremos que se ha creado un nuevo branch <code class="docutils literal notranslate"><span class="pre">externaluser</span></code>:</p>
+<div class="figure align-center" id="id19">
+<img alt="../../_images/github-single_repo6.png" src="../../_images/github-single_repo6.png" />
+<p class="caption"><span class="caption-text">GitHub - Nuevo branch</span></p>
+</div>
+<p>Con el creador del repositorio recuperaremos los cambios hechos por el usuario externo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 31c9eb4 <span class="o">(</span>HEAD -&gt; master, origin/master<span class="o">)</span> Added my name mogago
+* f395a21 Added my name
+* aa2d72f Added new home page
+
+$ cat externaluser.txt
+$ git checkout master
+Already on <span class="s1">&#39;master&#39;</span>
+Your branch is up to date with <span class="s1">&#39;origin/master&#39;</span>.
+
+$ git pull
+remote: Enumerating objects: <span class="m">5</span>, <span class="k">done</span>.
+remote: Counting objects: <span class="m">100</span>% <span class="o">(</span><span class="m">5</span>/5<span class="o">)</span>, <span class="k">done</span>.
+remote: Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="k">done</span>.
+remote: Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">3</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, pack-reused <span class="m">0</span>
+Unpacking objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+From https://github.com/mogago/single_repo
+* <span class="o">[</span>new branch<span class="o">]</span>      externaluser -&gt; origin/externaluser
+Already up to date.
+</pre></div>
+</div>
+<p>Notamos que se tiene un nuevo branch <code class="docutils literal notranslate"><span class="pre">externaluser</span></code> al haber hecho <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">pull</span></code>. Ahora veremos los cambios en el repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* fb2938b <span class="o">(</span>origin/externaluser<span class="o">)</span> Added some great content to my file
+<span class="p">|</span> * 31c9eb4 <span class="o">(</span>HEAD -&gt; master, origin/master<span class="o">)</span> Added my name mogago
+<span class="p">|</span>/
+* f395a21 Added my name
+* aa2d72f Added new home page
+</pre></div>
+</div>
+</div>
+<div class="section" id="contributing-to-another-feature-branch">
+<h2><a class="toc-backref" href="#id30">Contributing to another feature branch</a><a class="headerlink" href="#contributing-to-another-feature-branch" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Desde el usuario creador del repositorio podemos ver todos los branches con la opción <code class="docutils literal notranslate"><span class="pre">branch</span> <span class="pre">-a</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git branch -a
+* master
+remotes/origin/externaluser
+remotes/origin/master
+</pre></div>
+</div>
+<p>Con el mismo usuario creador del repositorio haremos checkout al branch creado por el usuario externo colaborador:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout externaluser
+Branch <span class="s1">&#39;externaluser&#39;</span> <span class="nb">set</span> up to track remote branch <span class="s1">&#39;externaluser&#39;</span> from <span class="s1">&#39;origin&#39;</span>.
+Switched to a new branch <span class="s1">&#39;externaluser&#39;</span>
+
+$ git branch
+* externaluser
+  master
+
+$ cat externaluser.txt
+Here is some text I added
+</pre></div>
+</div>
+<p>Veremos que tenemos un branch más agregado y podemos ver el contenido del archivo <code class="docutils literal notranslate"><span class="pre">externaluser.txt</span></code>, hacerle cambios y contribuir.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">¿Qué hemos hecho?: Tenemos un solo repositorio, cada colabordor está trabajando en un feature branch y cada uno puede bajar (<code class="docutils literal notranslate"><span class="pre">pull</span></code>) cualquier feature branch que se haya subido a GitHub (<code class="docutils literal notranslate"><span class="pre">push</span></code>), hacer checkout a esos branches y contribuir si deseamos.</p>
+</div>
+</div>
+<div class="section" id="creating-a-pull-request-within-a-single-repo">
+<h2><a class="toc-backref" href="#id31">Creating a pull request within a single repo</a><a class="headerlink" href="#creating-a-pull-request-within-a-single-repo" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En algún punto querremos crear un <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code>. Previamente vimos a <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code> como una forma de pedir a una persona en otro proyecto agregue nuestro trabajo de nuestro fork del proyecto.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code> también se usa por varios equipos como la forma por defecto de colaborar en un nuevo feature. La forma en que funciona es que creamos un nuevo feature branch y le hacemos <code class="docutils literal notranslate"><span class="pre">push</span></code> hacia GitHub (como hemos visto en el tema anterior). Cuando hemos acabado con esto, creamos un <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code>. Ahora cualquiera en el equipo, puede comentarlo, interactuar y hacer cambios si lo necesita.</p>
+<p>Creemos un <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code>. Desde el usuario añadido como colaborador en GitHub ir a la sección <span class="guilabel">Pull requests</span>, opción <span class="guilabel">New pull request</span>, comparar los branches <code class="docutils literal notranslate"><span class="pre">master</span></code> y <code class="docutils literal notranslate"><span class="pre">externaluser</span></code>:</p>
+<div class="figure align-center" id="id20">
+<img alt="../../_images/github-single_repo7.png" src="../../_images/github-single_repo7.png" />
+<p class="caption"><span class="caption-text">GitHub - Comparing changes</span></p>
+</div>
+<p>Seleccionar la opción <span class="guilabel">pull request</span>. Dar una descripción y clic en la opción <span class="guilabel">Create pull request</span>. El usuario creador del repositorio podrá interactuar con este <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code>.</p>
+</div>
+<div class="section" id="collaborating-on-a-pull-request">
+<h2><a class="toc-backref" href="#id32">Collaborating on a pull request</a><a class="headerlink" href="#collaborating-on-a-pull-request" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Todos los colaboradores pueden hacer merge del <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code>. La idea es que el mismo usuario que ha realizado el <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code> no haga el merge sin antes haber recibido feedback de su trabajo. Ya que es un repositorio público, cualquiera puede poner comentarios en la siguiente ventana:</p>
+<div class="figure align-center" id="id21">
+<img alt="../../_images/github-single_repo8.png" src="../../_images/github-single_repo8.png" />
+<p class="caption"><span class="caption-text">GitHub - <span class="guilabel">Merge pull request</span></span></p>
+</div>
+<p>Un <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code> no apunta a un <code class="docutils literal notranslate"><span class="pre">commit</span></code>, apunta a un branch. Si agregamos más cosas a un branch, añadirá más <code class="docutils literal notranslate"><span class="pre">commits</span></code> al pull request. Luego de que sintamos que el código está listo, algunos de los colaboradores hará merge del <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code>.</p>
+</div>
+<div class="section" id="merging-in-a-pull-request">
+<h2><a class="toc-backref" href="#id33">Merging in a pull request</a><a class="headerlink" href="#merging-in-a-pull-request" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Generalmente queremos asegurarnos que otros colaboradores haya aceptado nuestro trabajo y hacerle merge. ¿Quién hará el merge?: mejor será que quien ha creado el <code class="docutils literal notranslate"><span class="pre">pull</span> <span class="pre">request</span></code> haga el merge, habiendo recibido aceptación en su trabajo de otros colaboradores.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gnulinux/_gnulinux.html" class="btn btn-neutral float-right" title="GNU/Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lesson6.html" class="btn btn-neutral float-left" title="Lesson 6" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
