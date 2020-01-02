@@ -51,7 +51,8 @@ Objetivos
 - Aprender el funcionamiento básico de NOOBS.
 - Instalar un sistema operativo en el Raspberry Pi usando NOOBS.
 
-Obtener NOOBS:
+Obtener NOOBS
+-------------
 
 Se puede obtener NOOBS descargando el archivo correspondiente desde la `página de descargas de Raspberry Pi`_. Podrás elegir la versión de NOOBS que prefieras y descargarla. O puedes dirigirte directamente a las `versiones de NOOBS disponibles`_.
 

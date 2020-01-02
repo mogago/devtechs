@@ -37,7 +37,7 @@
     <link rel="index" title="Índice" href="../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../search.html" />
     <link rel="next" title="Información extra de NOOBS" href="info-extra-noobs.html" />
-    <link rel="prev" title="RaspberryPi" href="_raspberrypi.html" /> 
+    <link rel="prev" title="NOOBS (New Out Of Box Software)" href="noobs.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -113,19 +113,24 @@
 <p class="caption"><span class="caption-text">RaspberryPi</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="_raspberrypi.html">RaspberryPi</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Instalando un Sistema Operativo con NOOBS</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduccion">Introducción</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#prerequisitos">Prerequisitos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#objetivos">Objetivos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-windows">Formateo de tarjeta Micro SD (en Windows)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-linux">Formateo de tarjeta Micro SD (en Linux)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#instalar-noobs-windows">Instalar NOOBS (Windows)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#instalar-noobs-linux-con-interfaz-grafica">Instalar NOOBS (Linux, con interfaz gráfica)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#instalar-noobs-linux-con-linea-de-comandos">Instalar NOOBS (Linux, con línea de comandos)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#instalar-un-so-usando-noobs">Instalar un SO usando NOOBS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="noobs.html">NOOBS (New Out Of Box Software)</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Instalando un Sistema Operativo con NOOBS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduccion">Introducción</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisitos">Prerequisitos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#objetivos">Objetivos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#obtener-noobs">Obtener NOOBS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-windows">Formateo de tarjeta Micro SD (en Windows)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-linux">Formateo de tarjeta Micro SD (en Linux)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-noobs-windows">Instalar NOOBS (Windows)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-noobs-linux-con-interfaz-grafica">Instalar NOOBS (Linux, con interfaz gráfica)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-noobs-linux-con-linea-de-comandos">Instalar NOOBS (Linux, con línea de comandos)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-un-so-usando-noobs">Instalar un SO usando NOOBS</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="info-extra-noobs.html">Información extra de NOOBS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info-extra-noobs.html">Información extra de NOOBS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="touchscreen.html">Touchscreen</a></li>
 </ul>
 <p class="caption"><span class="caption-text">SDN</span></p>
 <ul>
@@ -183,6 +188,8 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
+          <li><a href="noobs.html">NOOBS (New Out Of Box Software)</a> &raquo;</li>
+        
       <li>Instalando un Sistema Operativo con NOOBS</li>
     
     
@@ -217,12 +224,13 @@
 <li><a class="reference internal" href="#introduccion" id="id16">Introducción</a></li>
 <li><a class="reference internal" href="#prerequisitos" id="id17">Prerequisitos</a></li>
 <li><a class="reference internal" href="#objetivos" id="id18">Objetivos</a></li>
-<li><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-windows" id="id19">Formateo de tarjeta Micro SD (en Windows)</a></li>
-<li><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-linux" id="id20">Formateo de tarjeta Micro SD (en Linux)</a></li>
-<li><a class="reference internal" href="#instalar-noobs-windows" id="id21">Instalar NOOBS (Windows)</a></li>
-<li><a class="reference internal" href="#instalar-noobs-linux-con-interfaz-grafica" id="id22">Instalar NOOBS (Linux, con interfaz gráfica)</a></li>
-<li><a class="reference internal" href="#instalar-noobs-linux-con-linea-de-comandos" id="id23">Instalar NOOBS (Linux, con línea de comandos)</a></li>
-<li><a class="reference internal" href="#instalar-un-so-usando-noobs" id="id24">Instalar un SO usando NOOBS</a></li>
+<li><a class="reference internal" href="#obtener-noobs" id="id19">Obtener NOOBS</a></li>
+<li><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-windows" id="id20">Formateo de tarjeta Micro SD (en Windows)</a></li>
+<li><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-linux" id="id21">Formateo de tarjeta Micro SD (en Linux)</a></li>
+<li><a class="reference internal" href="#instalar-noobs-windows" id="id22">Instalar NOOBS (Windows)</a></li>
+<li><a class="reference internal" href="#instalar-noobs-linux-con-interfaz-grafica" id="id23">Instalar NOOBS (Linux, con interfaz gráfica)</a></li>
+<li><a class="reference internal" href="#instalar-noobs-linux-con-linea-de-comandos" id="id24">Instalar NOOBS (Linux, con línea de comandos)</a></li>
+<li><a class="reference internal" href="#instalar-un-so-usando-noobs" id="id25">Instalar un SO usando NOOBS</a></li>
 </ul>
 </li>
 </ul>
@@ -265,7 +273,9 @@
 <li>Aprender el funcionamiento básico de NOOBS.</li>
 <li>Instalar un sistema operativo en el Raspberry Pi usando NOOBS.</li>
 </ul>
-<p>Obtener NOOBS:</p>
+</div>
+<div class="section" id="obtener-noobs">
+<h2><a class="toc-backref" href="#id19">Obtener NOOBS</a><a class="headerlink" href="#obtener-noobs" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Se puede obtener NOOBS descargando el archivo correspondiente desde la <a class="reference external" href="https://www.raspberrypi.org/downloads/">página de descargas de Raspberry Pi</a>. Podrás elegir la versión de NOOBS que prefieras y descargarla. O puedes dirigirte directamente a las <a class="reference external" href="https://www.raspberrypi.org/downloads/noobs/">versiones de NOOBS disponibles</a>.</p>
 <p>En este tutorial descargaré el archivo ZIP de la versión NOOBS Lite.</p>
 <div class="figure align-center" id="id1">
@@ -276,7 +286,7 @@
 <p>Para tarjetas micro SD de 64 GB o más de almacenamiento se deberá formatear exclusivamente como FAT32. Detalles: <a class="reference external" href="https://www.raspberrypi.org/documentation/installation/sdxc_formatting.md">formatting an SDXC card for use with NOOBS</a>.</p>
 </div>
 <div class="section" id="formateo-de-tarjeta-micro-sd-en-windows">
-<h2><a class="toc-backref" href="#id19">Formateo de tarjeta Micro SD (en Windows)</a><a class="headerlink" href="#formateo-de-tarjeta-micro-sd-en-windows" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Formateo de tarjeta Micro SD (en Windows)</a><a class="headerlink" href="#formateo-de-tarjeta-micro-sd-en-windows" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
 <p class="last">Procedimiento para sistemas operativos Windows</p>
@@ -310,7 +320,7 @@
 </div>
 </div>
 <div class="section" id="formateo-de-tarjeta-micro-sd-en-linux">
-<h2><a class="toc-backref" href="#id20">Formateo de tarjeta Micro SD (en Linux)</a><a class="headerlink" href="#formateo-de-tarjeta-micro-sd-en-linux" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">Formateo de tarjeta Micro SD (en Linux)</a><a class="headerlink" href="#formateo-de-tarjeta-micro-sd-en-linux" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
 <p class="last">Procedimiento para sistemas operativos Linux</p>
@@ -506,7 +516,7 @@ mkfs.fat <span class="m">4</span>.1 <span class="o">(</span><span class="m">2017
 </div>
 </div>
 <div class="section" id="instalar-noobs-windows">
-<h2><a class="toc-backref" href="#id21">Instalar NOOBS (Windows)</a><a class="headerlink" href="#instalar-noobs-windows" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id22">Instalar NOOBS (Windows)</a><a class="headerlink" href="#instalar-noobs-windows" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Extraer el archivo <code class="docutils literal notranslate"><span class="pre">.zip</span></code> y copiar todos los archivos a la tarjeta micro SD formateada. ¡! Copia los archivos directamente en el directorio raíz de la tarjeta (por ejemplo <code class="docutils literal notranslate"><span class="pre">D:/</span></code>).</p>
 <div class="figure align-center" id="id5">
 <img alt="../../_images/copying-noobs-windows.png" src="../../_images/copying-noobs-windows.png" />
@@ -514,7 +524,7 @@ mkfs.fat <span class="m">4</span>.1 <span class="o">(</span><span class="m">2017
 </div>
 </div>
 <div class="section" id="instalar-noobs-linux-con-interfaz-grafica">
-<h2><a class="toc-backref" href="#id22">Instalar NOOBS (Linux, con interfaz gráfica)</a><a class="headerlink" href="#instalar-noobs-linux-con-interfaz-grafica" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id23">Instalar NOOBS (Linux, con interfaz gráfica)</a><a class="headerlink" href="#instalar-noobs-linux-con-interfaz-grafica" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En primer lugar, saca la tarjeta micro SD de la PC y vuelve a insertarla para montarla en el sistema. Seguramente te aparezca un aviso para abrir el dispositivo con el navegador de archivos; de ser así, hazlo. Descomprime el archivo <code class="docutils literal notranslate"><span class="pre">.zip</span></code> de NOOBS descargado y copia todos los archivos directamente a la tarjeta micro SD.</p>
 <div class="figure align-center" id="id6">
 <img alt="../../_images/copying-noobs-linux.png" src="../../_images/copying-noobs-linux.png" />
@@ -522,7 +532,7 @@ mkfs.fat <span class="m">4</span>.1 <span class="o">(</span><span class="m">2017
 </div>
 </div>
 <div class="section" id="instalar-noobs-linux-con-linea-de-comandos">
-<h2><a class="toc-backref" href="#id23">Instalar NOOBS (Linux, con línea de comandos)</a><a class="headerlink" href="#instalar-noobs-linux-con-linea-de-comandos" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id24">Instalar NOOBS (Linux, con línea de comandos)</a><a class="headerlink" href="#instalar-noobs-linux-con-linea-de-comandos" title="Enlazar permanentemente con este título">¶</a></h2>
 <ol class="arabic simple">
 <li>En primer lugar, saca la tarjeta micro SD de la PC y vuelve a insertarla para montarla en el sistema. Para comprobar donde está montada la partición usar:</li>
 </ol>
@@ -545,7 +555,7 @@ $ unzip ~/Downloads/NOOBS_lite_v3_2.zip
 </div>
 </div>
 <div class="section" id="instalar-un-so-usando-noobs">
-<h2><a class="toc-backref" href="#id24">Instalar un SO usando NOOBS</a><a class="headerlink" href="#instalar-un-so-usando-noobs" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">Instalar un SO usando NOOBS</a><a class="headerlink" href="#instalar-un-so-usando-noobs" title="Enlazar permanentemente con este título">¶</a></h2>
 <ol class="arabic simple">
 <li>Expulsa la tarjeta micro SD de la PC. Luego inserta la tarjeta micro SD al Raspberry Pi y encenderlo. En el primer arranque, se creará un partición llamada «RECOVERY». En ella se guardarán las distribuciones y archivos para el proceso de recuperación.</li>
 <li>Una vez dentro de NOOBS, si no cuentas con una conexión cableada Ethernet a la que puedas conectar tu Raspberry, conéctate usando una red WiFi disponible.</li>
@@ -612,7 +622,7 @@ $ unzip ~/Downloads/NOOBS_lite_v3_2.zip
         <a href="info-extra-noobs.html" class="btn btn-neutral float-right" title="Información extra de NOOBS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="_raspberrypi.html" class="btn btn-neutral float-left" title="RaspberryPi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="noobs.html" class="btn btn-neutral float-left" title="NOOBS (New Out Of Box Software)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
