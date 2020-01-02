@@ -1,3 +1,5 @@
+.. _leccion-7:
+
 Lesson 7
 ========
 
@@ -258,6 +260,8 @@ Hay 2 casos de uso principales de fork based ``pull request``:
 2. Contribuidores ocasiones. En una compañía podría servir para no dar permisos totales a personas que no deseemos darles permisos dentro de nuestro repo.
 
 Donde no funciona muy bien es con un grupo pequeño de personas que trabajan juntos regularmente. No es deseable que cada uno tenga su propio fork.
+
+.. _colaboradores:
 
 Single repo collaboration directly on master
 --------------------------------------------
