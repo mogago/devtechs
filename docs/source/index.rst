@@ -54,6 +54,13 @@ Welcome to DevTechs's documentation!
 
 .. toctree::
     :maxdepth: 2
+    :caption: RaspberryPi
+
+    topics/raspberrypi/_raspberypi
+    topics/raspberrypi/installing-os-with-noobs.rst
+
+.. toctree::
+    :maxdepth: 2
     :caption: SDN
 
     topics/sdn/_sdn
