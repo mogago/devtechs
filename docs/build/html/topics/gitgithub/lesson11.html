@@ -1,0 +1,864 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lesson 11 &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="GNU/Linux" href="../gnulinux/_gnulinux.html" />
+    <link rel="prev" title="Lesson 10" href="lesson10.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lesson1.html">Lesson 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson2.html">Lesson 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson3.html">Lesson 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson4.html">Lesson 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson5.html">Lesson 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson6.html">Lesson 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson7.html">Lesson 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson8.html">Lesson 8</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson9.html">Lesson 9</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson10.html">Lesson 10</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lesson 11</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#private-versus-public-history-and-git-revert">Private versus public history and git revert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#don-t-push-too-often">Don’t push too often</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-commit-ammend">Git commit –ammend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#git-reset">Git reset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introducing-the-reflog">Introducing the reflog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rebase-interactive">Rebase interactive</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a> &raquo;</li>
+        
+      <li>Lesson 11</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/gitgithub/lesson11.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lesson-11">
+<h1><a class="toc-backref" href="#id3">Lesson 11</a><a class="headerlink" href="#lesson-11" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><em>Lesson 11: How to undo almost everything using Git</em></p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lesson-11" id="id3">Lesson 11</a><ul>
+<li><a class="reference internal" href="#private-versus-public-history-and-git-revert" id="id4">Private versus public history and git revert</a></li>
+<li><a class="reference internal" href="#don-t-push-too-often" id="id5">Don’t push too often</a></li>
+<li><a class="reference internal" href="#git-commit-ammend" id="id6">Git commit –ammend</a></li>
+<li><a class="reference internal" href="#git-reset" id="id7">Git reset</a></li>
+<li><a class="reference internal" href="#introducing-the-reflog" id="id8">Introducing the reflog</a></li>
+<li><a class="reference internal" href="#rebase-interactive" id="id9">Rebase interactive</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="private-versus-public-history-and-git-revert">
+<h2><a class="toc-backref" href="#id4">Private versus public history and git revert</a><a class="headerlink" href="#private-versus-public-history-and-git-revert" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Veamos ahora cómo deshacer casi todo usando Git. La primera área que cubriremos es la diferencia entre historial público y privado, y qué comando debemos usar.</p>
+<p>El historial público es aquel historial al que le hemos hecho <code class="docutils literal notranslate"><span class="pre">push</span></code> hacia Git en un repositorio en el que al menos una persona tiene acceso, ya sea un colaborador o un proyecto público. Tan pronto hemos creado un proyecto público debemos asumir que alguien más tiene nuestro código fuente.</p>
+<p>Como regla de oro, solo hay una forma en la que queremos cambiar el historial público, será a través del comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code>. Lo que hace este comando es tomar un <code class="docutils literal notranslate"><span class="pre">commit</span></code> existente y añade un <code class="docutils literal notranslate"><span class="pre">commit</span></code> que hace exactamente lo contrario: deshacer nuestro trabajo. Veamos un ejemplo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git init undoing
+Initialized empty Git repository in /home/user/Documents/gittests/undoing/.git/
+
+$ <span class="nb">cd</span> undoing/
+$ touch index.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added home page&quot;</span>
+<span class="o">[</span>master <span class="o">(</span>root-commit<span class="o">)</span> 29519be<span class="o">]</span> Added home page
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> index.html
+
+$ touch badidea.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Bad idea&quot;</span>
+<span class="o">[</span>master 4e9acd9<span class="o">]</span> Bad idea
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> badidea.html
+
+$ git lg
+* 4e9acd9 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Creemos el repositorio en GitHub:</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/github-new-repo12.png" src="../../_images/github-new-repo12.png" />
+<p class="caption"><span class="caption-text">GitHub - Creating a repo</span></p>
+</div>
+<p>En el terminal agregamos un remote:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git remote add origin https://github.com/mogago/undoing.git
+$ git push -u origin master
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: mogago
+Password <span class="k">for</span> <span class="s1">&#39;https://mogago@github.com&#39;</span>:
+Counting objects: <span class="m">5</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">4</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">5</span>/5<span class="o">)</span>, <span class="m">429</span> bytes <span class="p">|</span> <span class="m">429</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">5</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+To https://github.com/mogago/undoing.git
+ * <span class="o">[</span>new branch<span class="o">]</span>      master -&gt; master
+Branch <span class="s1">&#39;master&#39;</span> <span class="nb">set</span> up to track remote branch <span class="s1">&#39;master&#39;</span> from <span class="s1">&#39;origin&#39;</span>.
+</pre></div>
+</div>
+<p>Ahora tenemos historial público, por ejemplo veremos los <code class="docutils literal notranslate"><span class="pre">commits</span></code>:</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/github-new-repo22.png" src="../../_images/github-new-repo22.png" />
+<p class="caption"><span class="caption-text">GitHub - Commits</span></p>
+</div>
+<p>Si hemos compartido públicamente algo que no deseamos que lo sea, podemos usar varios comandos para borrar esos commits o cambiarlos. Sin embargo, tan pronto como hemos compartido esa información con el mundo, debemos usar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">revert</span></code> con el identificador hash SHA1 del <code class="docutils literal notranslate"><span class="pre">commit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git revert 4e9acd90b9d191414f2fe4a8f16f768125ed7287
+
+    Revert <span class="s2">&quot;Bad idea&quot;</span>
+    This reverts commit 4e9acd90b9d191414f2fe4a8f16f768125ed7287.
+</pre></div>
+</div>
+<p>Se abrirá un editor de texto para agregar un mensaje al <code class="docutils literal notranslate"><span class="pre">commit</span></code> de revertir el cambio. Hagamos <code class="docutils literal notranslate"><span class="pre">push</span></code> y veamos el log:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git push
+
+$ git lg
+* c76cba8 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 <span class="o">(</span>origin/master<span class="o">)</span> Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Tenemos dos <code class="docutils literal notranslate"><span class="pre">commits</span></code>, no es bueno pero al menos es seguro. Esto significa que si cualquier otra persona descarga una copia del repositorio no tendrán problemas porque tendrán un <code class="docutils literal notranslate"><span class="pre">commit</span></code> que ocasiona el problema y otro <code class="docutils literal notranslate"><span class="pre">commit</span></code> posterior que lo arregla.</p>
+<p>Lo importante es que eliminado el problema de borrar ese código problemático (<code class="docutils literal notranslate"><span class="pre">badidea.html</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls
+index.html
+</pre></div>
+</div>
+</div>
+<div class="section" id="don-t-push-too-often">
+<h2><a class="toc-backref" href="#id5">Don’t push too often</a><a class="headerlink" href="#don-t-push-too-often" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Si estamos trabajando con cosas que no le hemos hecho <code class="docutils literal notranslate"><span class="pre">push</span></code>, hay muchas otras formas que podemos usar para reescribir el historial. Debido a esta distinción entre historial público y privado, cambia drásticamente la forma de trabajo con Git y GitHub.</p>
+<p>Experiencia: antes mi manera de trabajo era escribir un poco de código y hacía <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">commit</span></code>, <code class="docutils literal notranslate"><span class="pre">push</span></code>. Luego escribía más código y hacía <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">commit</span></code>, <code class="docutils literal notranslate"><span class="pre">push</span></code>. Haciendo <code class="docutils literal notranslate"><span class="pre">push</span></code>  a GitHub cada 5-10 minutos. Ahora trabajo de forma diferente porque hay varias herramientas que se pueden usar para limpiar el historial. Ahora escribo código y solo hago <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">commit</span></code>, desarrollo más código y  hago <code class="docutils literal notranslate"><span class="pre">add</span></code>, <code class="docutils literal notranslate"><span class="pre">commit</span></code>, pero no hago <code class="docutils literal notranslate"><span class="pre">push</span></code>. Puedo seguir haciendo un commit cada 5 minutos pero hago mucho menos <code class="docutils literal notranslate"><span class="pre">push</span></code> a GitHub. La ventaja de esto es que antes de hacer <code class="docutils literal notranslate"><span class="pre">push</span></code> a los cambios, puedo ver lo <code class="docutils literal notranslate"><span class="pre">commits</span></code> realizados y limpiar el historial.</p>
+<p>En las siguientes secciones se verán algunos comando para limpiar el historial.</p>
+</div>
+<div class="section" id="git-commit-ammend">
+<h2><a class="toc-backref" href="#id6">Git commit –ammend</a><a class="headerlink" href="#git-commit-ammend" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Uno de los comandos más fáciles es <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--ammend</span></code>. Veamos un ejemplo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ls
+index.html
+$ touch about.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added about us page dasndksajdnjksa&quot;</span>
+<span class="o">[</span>master c425487<span class="o">]</span> Added about us page dasndksajdnjksa
+ <span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> about.html
+
+$ git lg
+* c425487 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added about us page dasndksajdnjksa
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>En este caso hemos cometido un error al escribir el mensaje del <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Esto claramente se ve mal. Siempre y cuando sea el último <code class="docutils literal notranslate"><span class="pre">commit</span></code>, podemos arreglarlo con:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit --amend
+
+    Added about us page
+
+$ git lg
+* c9d0d2a <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Al haber ejecutado el comando <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></code> nos retorna a un editor de texto en el que podemos editar el mensaje del <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Notar que el hash del <code class="docutils literal notranslate"><span class="pre">commit</span></code> cambiará, pues es otra hora y otro mensaje.</p>
+<p>Otro uso de este comando es cuando no hacemos <code class="docutils literal notranslate"><span class="pre">commit</span></code> a todo lo que queríamos. Veamos el ejemplo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch contact.html
+$ vi index.html
+$ cat index.html
+link to contact us page
+
+$ git s
+M index.html
+?? contact.html
+
+$ git commit -am <span class="s2">&quot;Added contact us page&quot;</span>
+ <span class="o">[</span>master 7e762db<span class="o">]</span> Added contact us page
+ <span class="m">1</span> file changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+
+$ git s
+?? contact.html
+
+$ git lg
+* 7e762db <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+
+$ git show 7e762db
+commit 7e762dbdca91e202b3bfd3d8461bd68948bf3d58 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span>
+Author: Nombre Apellido &lt;newuser1@mail.com&gt;
+Date:   Wed Jan <span class="m">1</span> <span class="m">23</span>:33:41 <span class="m">2020</span> -0500
+
+    Added contact us page
+
+diff --git a/index.html b/index.html
+index e69de29..79cfe97 <span class="m">100644</span>
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++link to contact us page
+</pre></div>
+</div>
+<p>En este caso, el <code class="docutils literal notranslate"><span class="pre">commit</span> <span class="pre">-am</span></code> lo ha tomado solo el archivo modificado, pues el otro no ha sido añadido con <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">add</span></code>. Nuestro <code class="docutils literal notranslate"><span class="pre">commit</span></code> indica que hemos agregado la página de contacto pero esta no está siendo trackeada por Git, como lo indica el estado del repositorio.</p>
+<p>Para solucionar esto ejecutaremos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add .
+$ git s
+A  contact.html
+$ git commit --amend
+<span class="o">[</span>master 94ffa02<span class="o">]</span> Added contact us page
+ Date: Wed Jan <span class="m">1</span> <span class="m">23</span>:33:41 <span class="m">2020</span> -0500
+ <span class="m">2</span> files changed, <span class="m">1</span> insertion<span class="o">(</span>+<span class="o">)</span>
+ create mode <span class="m">100644</span> contact.html
+
+Added contact us page
+
+<span class="c1"># Please enter the commit message for your changes. Lines starting</span>
+<span class="c1"># with &#39;#&#39; will be ignored, and an empty message aborts the commit.</span>
+<span class="c1">#</span>
+<span class="c1"># Date:      Wed Jan 1 23:33:41 2020 -0500</span>
+<span class="c1">#</span>
+<span class="c1"># On branch master</span>
+<span class="c1"># Your branch is ahead of &#39;origin/master&#39; by 2 commits.</span>
+<span class="c1">#   (use &quot;git push&quot; to publish your local commits)</span>
+<span class="c1">#</span>
+<span class="c1"># Changes to be committed:</span>
+<span class="c1">#       new file:   contact.html</span>
+<span class="c1">#       modified:   index.html</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></code> también sirve para agregar un archivo que se nos olvidó poner en el <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 94ffa02 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+
+$ git show 94ffa02
+commit 94ffa02184f7d4e69d0086c82f1738507bf507c6 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span>
+Author: Gabriel Omar &lt;newuser1@mail.com&gt;
+Date:   Wed Jan <span class="m">1</span> <span class="m">23</span>:33:41 <span class="m">2020</span> -0500
+
+    Added contact us page
+
+diff --git a/contact.html b/contact.html
+new file mode <span class="m">100644</span>
+index <span class="m">0000000</span>..e69de29
+diff --git a/index.html b/index.html
+index e69de29..79cfe97 <span class="m">100644</span>
+--- a/index.html
++++ b/index.html
+@@ -0,0 +1 @@
++link to contact us page
+
+$ git s
+$
+</pre></div>
+</div>
+</div>
+<div class="section" id="git-reset">
+<h2><a class="toc-backref" href="#id7">Git reset</a><a class="headerlink" href="#git-reset" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Si tenemos un <code class="docutils literal notranslate"><span class="pre">commit</span></code> antiguo que debemos arreglar no podemos usar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">commit</span> <span class="pre">--amend</span></code> porque solo funciona en el último <code class="docutils literal notranslate"><span class="pre">commit</span></code>. Lo que debemos hacer es usar <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code>. Veamos los varios modos que tiene este comando, cuándo y cómo usarlos.</p>
+<p>Supongamos que estamos desarrollando una página e-commerce:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch categories.html categories.css products.html products.css
+$ git s
+?? categories.css
+?? categories.html
+?? products.css
+?? products.html
+</pre></div>
+</div>
+<p>Supongamos que como desarrolladores inexpertos decidimos hacer un <code class="docutils literal notranslate"><span class="pre">commit</span></code> para las páginas <code class="docutils literal notranslate"><span class="pre">html</span></code> y otro para las <code class="docutils literal notranslate"><span class="pre">css</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git add *.html
+$ git commit -m <span class="s2">&quot;Added new pages to the site&quot;</span>
+<span class="o">[</span>master 2079fef<span class="o">]</span> Added new pages to the site
+<span class="m">2</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> categories.html
+create mode <span class="m">100644</span> products.html
+
+$ git add .
+$ git commit -m <span class="s2">&quot;Styled new pages&quot;</span>
+<span class="o">[</span>master a03eaf5<span class="o">]</span> Styled new pages
+<span class="m">2</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> categories.css
+create mode <span class="m">100644</span> products.css
+
+$ git lg
+* a03eaf5 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Styled new pages
+* 2079fef Added new pages to the site
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Esta forma de trabajo no es buena porque no describimos con qué páginas estamos trabajando en los <code class="docutils literal notranslate"><span class="pre">commits</span></code>. El propósito de <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code> es eliminar <code class="docutils literal notranslate"><span class="pre">commits</span></code>. Hay 3 niveles de <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code>:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--soft</span></code>: deja los archivos del <code class="docutils literal notranslate"><span class="pre">commit</span></code> en el staging area para que se les pueda aplicar un <code class="docutils literal notranslate"><span class="pre">commit</span></code> nuevamente.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--hard</span></code>: no solo va a eliminar los <code class="docutils literal notranslate"><span class="pre">commit</span></code>, sino que eliminará todo nuestros archivos involucrados en el <code class="docutils literal notranslate"><span class="pre">commit</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span> <span class="pre">--mixed</span></code> o <code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">reset</span></code>: opción por defecto. Elimina los <code class="docutils literal notranslate"><span class="pre">commits</span></code>, limpia la staging area pero deja los archivos en el directorio de trabajo, para que puedan ser agregados y hacerles <code class="docutils literal notranslate"><span class="pre">commit</span></code> nuevamente.</li>
+</ol>
+<p>Para este caso que deseamos eliminar los dos últimos commits podemos usar el último caso:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git reset HEAD~2
+$ git s
+?? categories.css
+?? categories.html
+?? products.css
+?? products.html
+
+$ git add ca*
+$ git commit -m <span class="s2">&quot;Added categories page&quot;</span>
+<span class="o">[</span>master 8943c44<span class="o">]</span> Added categories page
+<span class="m">2</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> categories.css
+create mode <span class="m">100644</span> categories.html
+
+$ git add .
+$ git commit -m <span class="s2">&quot;Added products page&quot;</span>
+<span class="o">[</span>master 3d2c3e0<span class="o">]</span> Added products page
+<span class="m">2</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> products.css
+create mode <span class="m">100644</span> products.html
+
+$ git lg
+* 3d2c3e0 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added products page
+* 8943c44 Added categories page
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Si ahora deseamos menos granularidad en los <code class="docutils literal notranslate"><span class="pre">commits</span></code> y transformar los últimos dos <code class="docutils literal notranslate"><span class="pre">commits</span></code> en uno solo podríamos usar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git commit -m <span class="s2">&quot;Added e-commerce page&quot;</span>
+<span class="o">[</span>master c1d6629<span class="o">]</span> Added e-commerce page
+<span class="m">4</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> categories.css
+create mode <span class="m">100644</span> categories.html
+create mode <span class="m">100644</span> products.css
+create mode <span class="m">100644</span> products.html
+$ git lg
+* c1d6629 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added e-commerce page
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Si ahora deseamos eliminar todo rastro de trabajo y los <code class="docutils literal notranslate"><span class="pre">commits</span></code> usaremos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git reset --hard HEAD~1
+HEAD is now at 94ffa02 Added contact us page
+
+$ ls
+about.html  contact.html  index.html
+
+$ git lg
+* 94ffa02 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home pag
+</pre></div>
+</div>
+</div>
+<div class="section" id="introducing-the-reflog">
+<h2><a class="toc-backref" href="#id8">Introducing the reflog</a><a class="headerlink" href="#introducing-the-reflog" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Veremos cómo usar reflog para traer archivos de vuelta. Reflog no trabaja en cualquier situación, solo mantiene seguimiento de todas las cosas que hacemos en Git. Si estamos en la misma PC, no hemos corrido el recolector de basura en Git y estamos buscando un cambio de los últimos 30 días podremos usar Reflog para recuperar archivos de vuelta. Veamos un ejemplo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git reflog
+94ffa02 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> HEAD@<span class="o">{</span><span class="m">0</span><span class="o">}</span>: reset: moving to HEAD~1
+c1d6629 HEAD@<span class="o">{</span><span class="m">1</span><span class="o">}</span>: commit: Added e-commerce page
+94ffa02 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> HEAD@<span class="o">{</span><span class="m">2</span><span class="o">}</span>: reset: moving to HEAD~2
+3d2c3e0 HEAD@<span class="o">{</span><span class="m">3</span><span class="o">}</span>: commit: Added products page
+8943c44 HEAD@<span class="o">{</span><span class="m">4</span><span class="o">}</span>: commit: Added categories page
+94ffa02 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> HEAD@<span class="o">{</span><span class="m">5</span><span class="o">}</span>: reset: moving to HEAD~2
+a03eaf5 HEAD@<span class="o">{</span><span class="m">6</span><span class="o">}</span>: commit: Styled new pages
+2079fef HEAD@<span class="o">{</span><span class="m">7</span><span class="o">}</span>: commit: Added new pages to the site
+94ffa02 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> HEAD@<span class="o">{</span><span class="m">8</span><span class="o">}</span>: commit <span class="o">(</span>amend<span class="o">)</span>: Added contact us page
+7e762db HEAD@<span class="o">{</span><span class="m">9</span><span class="o">}</span>: commit: Added contact us page
+c9d0d2a HEAD@<span class="o">{</span><span class="m">10</span><span class="o">}</span>: commit <span class="o">(</span>amend<span class="o">)</span>: Added about us page
+c42641d HEAD@<span class="o">{</span><span class="m">11</span><span class="o">}</span>: commit <span class="o">(</span>amend<span class="o">)</span>: Added about us page
+c425487 HEAD@<span class="o">{</span><span class="m">12</span><span class="o">}</span>: commit: Added about us page dasndksajdnjksa
+c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> HEAD@<span class="o">{</span><span class="m">13</span><span class="o">}</span>: revert: Revert <span class="s2">&quot;Bad idea&quot;</span>
+4e9acd9 HEAD@<span class="o">{</span><span class="m">14</span><span class="o">}</span>: commit: Bad idea
+29519be HEAD@<span class="o">{</span><span class="m">15</span><span class="o">}</span>: commit <span class="o">(</span>initial<span class="o">)</span>: Added home page
+</pre></div>
+</div>
+<p>Buscaremos el hash del commit que deseemos recuperar, por ejemplo <code class="docutils literal notranslate"><span class="pre">c1d6629</span> <span class="pre">HEAD&#64;{1}:</span> <span class="pre">commit:</span> <span class="pre">Added</span> <span class="pre">e-commerce</span> <span class="pre">page</span></code>, luego:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git reset --hard c1d6629
+HEAD is now at c1d6629 Added e-commerce page
+
+$ git lg
+* c1d6629 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added e-commerce page
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+
+$ ls
+about.html      categories.html  index.html    products.html
+categories.css  contact.html     products.css
+</pre></div>
+</div>
+<p>Veremos que tenemos nuestro archivos y el <code class="docutils literal notranslate"><span class="pre">commit</span></code> de vuelta. Pero lo hicimos reiniciando <code class="docutils literal notranslate"><span class="pre">--hard</span></code> y esta no siempre es una opción.</p>
+<p>Veamos cómo recuperar el historial si hemos hecho algunos <code class="docutils literal notranslate"><span class="pre">commmits</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git reset --hard HEAD~1
+HEAD is now at 94ffa02 Added contact us page
+
+$ git lg
+* 94ffa02 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+
+$ touch test.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Added a test file&quot;</span>
+<span class="o">[</span>master 85c090e<span class="o">]</span> Added a <span class="nb">test</span> file
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> test.html
+
+$ git lg
+* 85c090e <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added a <span class="nb">test</span> file
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Ahora que hemos eliminado la funcionalidad de e-commerce y hemos creado un archivo <code class="docutils literal notranslate"><span class="pre">test.html</span></code>, si deseamos volver a un punto de la historia donde recuperamos la funcionalidad de e-commerce, perderíamos el archivo <code class="docutils literal notranslate"><span class="pre">test.html</span></code>. Esto no es conveniente, afortunadamente hay 2 formas de tener el commit de vuelta usando el reflog:</p>
+<ol class="arabic simple">
+<li>Mirar el reflog, copiar el hash del <code class="docutils literal notranslate"><span class="pre">commit</span></code> donde agregaba las páginas de e-commerce y usar <code class="docutils literal notranslate"><span class="pre">cherry-pick</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git reflog
+85c090e <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> HEAD@<span class="o">{</span><span class="m">0</span><span class="o">}</span>: commit: Added a <span class="nb">test</span> file
+94ffa02 HEAD@<span class="o">{</span><span class="m">1</span><span class="o">}</span>: reset: moving to HEAD~1
+c1d6629 HEAD@<span class="o">{</span><span class="m">2</span><span class="o">}</span>: reset: moving to c1d6629
+94ffa02 HEAD@<span class="o">{</span><span class="m">3</span><span class="o">}</span>: reset: moving to HEAD~1
+c1d6629 HEAD@<span class="o">{</span><span class="m">4</span><span class="o">}</span>: commit: Added e-commerce page
+94ffa02 HEAD@<span class="o">{</span><span class="m">5</span><span class="o">}</span>: reset: moving to HEAD~2
+3d2c3e0 HEAD@<span class="o">{</span><span class="m">6</span><span class="o">}</span>: commit: Added products page
+8943c44 HEAD@<span class="o">{</span><span class="m">7</span><span class="o">}</span>: commit: Added categories page
+94ffa02 HEAD@<span class="o">{</span><span class="m">8</span><span class="o">}</span>: reset: moving to HEAD~2
+a03eaf5 HEAD@<span class="o">{</span><span class="m">9</span><span class="o">}</span>: commit: Styled new pages
+
+$ git cherry-pick c1d6629
+<span class="o">[</span>master c5631c6<span class="o">]</span> Added e-commerce page
+ Date: Thu Jan <span class="m">2</span> <span class="m">00</span>:10:44 <span class="m">2020</span> -0500
+ <span class="m">4</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> categories.css
+ create mode <span class="m">100644</span> categories.html
+ create mode <span class="m">100644</span> products.css
+ create mode <span class="m">100644</span> products.html
+
+$ git lg
+* c5631c6 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added e-commerce page
+* 85c090e Added a <span class="nb">test</span> file
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Lo que hará será recuperar las páginas de e-commerce sobre mi trabajo actual sin borrarlo.</p>
+<p>Si quisiera múltiples <code class="docutils literal notranslate"><span class="pre">commits</span></code> podría usar <code class="docutils literal notranslate"><span class="pre">cherry-pick</span></code> en cada uno pero más eficiente será crear un branch:</p>
+<p>Borro el el último <code class="docutils literal notranslate"><span class="pre">commit</span></code> y hago checkout al punto en el tiempo en que estoy añadiendo las páginas de categories (<code class="docutils literal notranslate"><span class="pre">8943c44</span> <span class="pre">HEAD&#64;{7}:</span> <span class="pre">commit:</span> <span class="pre">Added</span> <span class="pre">categories</span> <span class="pre">page</span></code>) y products (<code class="docutils literal notranslate"><span class="pre">3d2c3e0</span> <span class="pre">HEAD&#64;{6}:</span> <span class="pre">commit:</span> <span class="pre">Added</span> <span class="pre">products</span> <span class="pre">page</span></code>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git reset --hard HEAD~1
+HEAD is now at 85c090e Added a <span class="nb">test</span> file
+$ git lg
+* 85c090e <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added a <span class="nb">test</span> file
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+
+$ git checkout 3d2c3e0
+Note: checking out <span class="s1">&#39;3d2c3e0&#39;</span>.
+
+You are in <span class="s1">&#39;detached HEAD&#39;</span> state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+<span class="k">do</span> so <span class="o">(</span>now or later<span class="o">)</span> by using -b with the checkout <span class="nb">command</span> again. Example:
+
+    git checkout -b &lt;new-branch-name&gt;
+
+HEAD is now at 3d2c3e0 Added products page
+</pre></div>
+</div>
+<p>Creo un branch en ese punto en el tiempo y puedo hacer merge o rebase con el branch <code class="docutils literal notranslate"><span class="pre">master</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout -b tmp
+Switched to a new branch <span class="s1">&#39;tmp&#39;</span>
+$ git lg
+* 85c090e <span class="o">(</span>master<span class="o">)</span> Added a <span class="nb">test</span> file
+<span class="p">|</span> * 3d2c3e0 <span class="o">(</span>HEAD -&gt; tmp<span class="o">)</span> Added products page
+<span class="p">|</span> * 8943c44 Added categories page
+<span class="p">|</span>/
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+$ git checkout tmp
+Already on <span class="s1">&#39;tmp&#39;</span>
+
+$ git rebase master
+First, rewinding head to replay your work on top of it...
+Applying: Added categories page
+Applying: Added products page
+
+$ git lg
+* 7c7c945 <span class="o">(</span>HEAD -&gt; tmp<span class="o">)</span> Added products page
+* d2a6ff4 Added categories page
+* 85c090e <span class="o">(</span>master<span class="o">)</span> Added a <span class="nb">test</span> file
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Tengo estos dos <code class="docutils literal notranslate"><span class="pre">commits</span></code> de vuelta sin haber perdido los cambios hechos en medio.</p>
+</div>
+<div class="section" id="rebase-interactive">
+<h2><a class="toc-backref" href="#id9">Rebase interactive</a><a class="headerlink" href="#rebase-interactive" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Limpiemos el repositorio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git checkout master
+Switched to branch <span class="s1">&#39;master&#39;</span>
+Your branch is ahead of <span class="s1">&#39;origin/master&#39;</span> by <span class="m">3</span> commits.
+  <span class="o">(</span>use <span class="s2">&quot;git push&quot;</span> to publish your <span class="nb">local</span> commits<span class="o">)</span>
+
+$ git merge tmp
+Updating 85c090e..7c7c945
+Fast-forward
+ categories.css  <span class="p">|</span> <span class="m">0</span>
+ categories.html <span class="p">|</span> <span class="m">0</span>
+ products.css    <span class="p">|</span> <span class="m">0</span>
+ products.html   <span class="p">|</span> <span class="m">0</span>
+ <span class="m">4</span> files changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+ create mode <span class="m">100644</span> categories.css
+ create mode <span class="m">100644</span> categories.html
+ create mode <span class="m">100644</span> products.css
+ create mode <span class="m">100644</span> products.html
+
+$ git branch -d tmp
+Deleted branch tmp <span class="o">(</span>was 7c7c945<span class="o">)</span>.
+$ git lg
+* 7c7c945 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added products page
+* d2a6ff4 Added categories page
+* 85c090e Added a <span class="nb">test</span> file
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Imaginemos que hemos estado trabajando en el código por un rato y queremos limpiar el historial antes de hacerle <code class="docutils literal notranslate"><span class="pre">push</span></code>. Lo que podemos hacer es ver los últimos commits y ejecutar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git lg
+* 7c7c945 <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added products page
+* d2a6ff4 Added categories page
+* 85c090e Added a <span class="nb">test</span> file
+* 94ffa02 Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+
+$ git rebase -i HEAD~5
+
+pick c9d0d2a Added about us page
+pick 94ffa02 Added contact us page
+pick 85c090e Added a <span class="nb">test</span> file
+pick d2a6ff4 Added categories page
+pick 7c7c945 Added products page
+
+<span class="c1"># Rebase c76cba8..7c7c945 onto c76cba8 (5 commands)</span>
+<span class="c1">#</span>
+<span class="c1"># Commands:</span>
+<span class="c1"># p, pick = use commit</span>
+<span class="c1"># r, reword = use commit, but edit the commit message</span>
+<span class="c1"># e, edit = use commit, but stop for amending</span>
+<span class="c1"># s, squash = use commit, but meld into previous commit</span>
+<span class="c1"># f, fixup = like &quot;squash&quot;, but discard this commit&#39;s log message</span>
+<span class="c1"># x, exec = run command (the rest of the line) using shell</span>
+<span class="c1"># d, drop = remove commit</span>
+<span class="c1">#</span>
+<span class="c1"># These lines can be re-ordered; they are executed from top to bottom.</span>
+<span class="c1">#</span>
+<span class="c1"># If you remove a line here THAT COMMIT WILL BE LOST.</span>
+<span class="c1">#</span>
+<span class="c1"># However, if you remove everything, the rebase will be aborted.</span>
+<span class="c1">#</span>
+<span class="c1"># Note that empty commits are commented out</span>
+</pre></div>
+</div>
+<p>Esto me permitirá realizar una serie de acciones a los <code class="docutils literal notranslate"><span class="pre">commits</span></code> seleccionados. Puedo borrarlos, reordenarlos o comprimirlos en menos <code class="docutils literal notranslate"><span class="pre">commits</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git rebase -i HEAD~5
+
+pick c9d0d2a Added about us page
+pick 94ffa02 Added contact us page
+f 85c090e Added a <span class="nb">test</span> file
+pick d2a6ff4 Added categories page
+pick 7c7c945 Added products page
+
+$ git lg
+* <span class="m">6681986</span> <span class="o">(</span>HEAD -&gt; master<span class="o">)</span> Added products page
+* 7c963d9 Added categories page
+* b5ebb9c Added contact us page
+* c9d0d2a Added about us page
+* c76cba8 <span class="o">(</span>origin/master<span class="o">)</span> Revert <span class="s2">&quot;Bad idea&quot;</span>
+* 4e9acd9 Bad idea
+* 29519be Added home page
+</pre></div>
+</div>
+<p>Vemos que hemos eliminado el <code class="docutils literal notranslate"><span class="pre">commit</span></code> de <code class="docutils literal notranslate"><span class="pre">test.html</span></code>, pues le hemos merge a otro <code class="docutils literal notranslate"><span class="pre">commit</span></code> previo.</p>
+<p>También podemos volver a redactar el primer <code class="docutils literal notranslate"><span class="pre">commit</span></code> y comprimir los demás:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git rebase -i HEAD~4
+
+r c9d0d2a Added about us page
+f b5ebb9c Added contact us page
+f 7c963d9 Added categories page
+f <span class="m">6681986</span> Added products page
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../gnulinux/_gnulinux.html" class="btn btn-neutral float-right" title="GNU/Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lesson10.html" class="btn btn-neutral float-left" title="Lesson 10" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

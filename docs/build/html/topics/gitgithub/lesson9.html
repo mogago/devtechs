@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Lesson 9 &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Lesson 10" href="lesson10.html" />
+    <link rel="prev" title="Lesson 8" href="lesson8.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lesson1.html">Lesson 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson2.html">Lesson 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson3.html">Lesson 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson4.html">Lesson 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson5.html">Lesson 5</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson6.html">Lesson 6</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson7.html">Lesson 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson8.html">Lesson 8</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Lesson 9</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-configuration-options-and-renaming-on-a-repo">Basic configuration options and renaming on a repo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github-pages">GitHub Pages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-collaborators-and-integrations">Adding collaborators and integrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-deploy-keys">Configuring deploy keys</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="lesson10.html">Lesson 10</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lesson11.html">Lesson 11</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="gitgithub-lessons.html">Git &amp; GitHub Lessons</a> &raquo;</li>
+        
+      <li>Lesson 9</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/gitgithub/lesson9.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="lesson-9">
+<h1><a class="toc-backref" href="#id12">Lesson 9</a><a class="headerlink" href="#lesson-9" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><em>Lesson 9: Configuring a Project on GitHub</em></p>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#lesson-9" id="id12">Lesson 9</a><ul>
+<li><a class="reference internal" href="#basic-configuration-options-and-renaming-on-a-repo" id="id13">Basic configuration options and renaming on a repo</a></li>
+<li><a class="reference internal" href="#github-pages" id="id14">GitHub Pages</a></li>
+<li><a class="reference internal" href="#adding-collaborators-and-integrations" id="id15">Adding collaborators and integrations</a></li>
+<li><a class="reference internal" href="#configuring-deploy-keys" id="id16">Configuring deploy keys</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="basic-configuration-options-and-renaming-on-a-repo">
+<h2><a class="toc-backref" href="#id13">Basic configuration options and renaming on a repo</a><a class="headerlink" href="#basic-configuration-options-and-renaming-on-a-repo" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Veamos cómo se configura GitHub. En la opción <span class="guilabel">Settings</span> del proyecto podemos ver disitintas configuraciones. Por ejemplo podemos renombrar un repositorio:</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/github-renaming1.png" src="../../_images/github-renaming1.png" />
+<p class="caption"><span class="caption-text">GitHub - Renaming a repo</span></p>
+</div>
+<p>Hemos renombrado el repositorio de GitHub de <code class="docutils literal notranslate"><span class="pre">app2</span></code> a <code class="docutils literal notranslate"><span class="pre">newapp2</span></code> pero aun así seríamos capaces de hacer <code class="docutils literal notranslate"><span class="pre">push</span></code> desde el terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat .git/config
+<span class="o">[</span>core<span class="o">]</span>
+        <span class="nv">repositoryformatversion</span> <span class="o">=</span> <span class="m">0</span>
+        <span class="nv">filemode</span> <span class="o">=</span> <span class="nb">true</span>
+        <span class="nv">bare</span> <span class="o">=</span> <span class="nb">false</span>
+        <span class="nv">logallrefupdates</span> <span class="o">=</span> <span class="nb">true</span>
+<span class="o">[</span>remote <span class="s2">&quot;origin&quot;</span><span class="o">]</span>
+        <span class="nv">url</span> <span class="o">=</span> https://github.com/mogago/app2.git
+        <span class="nv">fetch</span> <span class="o">=</span> +refs/heads/*:refs/remotes/origin/*
+<span class="o">[</span>branch <span class="s2">&quot;master&quot;</span><span class="o">]</span>
+        <span class="nv">remote</span> <span class="o">=</span> origin
+        <span class="nv">merge</span> <span class="o">=</span> refs/heads/master
+</pre></div>
+</div>
+<p>Pensaríamos que al hacer un push a la dirección <a class="reference external" href="https://github.com/mogago/app2.git">https://github.com/mogago/app2.git</a> daría error pues ahora el repositorio apunta a <a class="reference external" href="https://github.com/mogago/newapp2">https://github.com/mogago/newapp2</a> , sin embargo veremos que no encontraremos este problema:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ touch test.html
+$ git add .
+$ git commit -m <span class="s2">&quot;Whatever&quot;</span>
+<span class="o">[</span>master 1d8cd6b<span class="o">]</span> Whatever
+<span class="m">1</span> file changed, <span class="m">0</span> insertions<span class="o">(</span>+<span class="o">)</span>, <span class="m">0</span> deletions<span class="o">(</span>-<span class="o">)</span>
+create mode <span class="m">100644</span> test.html
+
+$ git push
+Username <span class="k">for</span> <span class="s1">&#39;https://github.com&#39;</span>: mogago
+Password <span class="k">for</span> <span class="s1">&#39;https://mogago@github.com&#39;</span>:
+Counting objects: <span class="m">3</span>, <span class="k">done</span>.
+Delta compression using up to <span class="m">4</span> threads.
+Compressing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">2</span>/2<span class="o">)</span>, <span class="k">done</span>.
+Writing objects: <span class="m">100</span>% <span class="o">(</span><span class="m">3</span>/3<span class="o">)</span>, <span class="m">267</span> bytes <span class="p">|</span> <span class="m">267</span>.00 KiB/s, <span class="k">done</span>.
+Total <span class="m">3</span> <span class="o">(</span>delta <span class="m">1</span><span class="o">)</span>, reused <span class="m">0</span> <span class="o">(</span>delta <span class="m">0</span><span class="o">)</span>
+remote: Resolving deltas: <span class="m">100</span>% <span class="o">(</span><span class="m">1</span>/1<span class="o">)</span>, completed with <span class="m">1</span> <span class="nb">local</span> object.
+To https://github.com/mogago/app2.git
+    42c4494..1d8cd6b  master -&gt; master
+</pre></div>
+</div>
+<p>En GitHub vemos que tenemos el archivo <code class="docutils literal notranslate"><span class="pre">test.html</span></code> creado a pesar del cambio de nombre:</p>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/github-renaming1.png" src="../../_images/github-renaming1.png" />
+<p class="caption"><span class="caption-text">GitHub - Repo renamed</span></p>
+</div>
+<p>En <span class="guilabel">Settings</span> también podemos configurar Wikis, prender/apagar issues.</p>
+</div>
+<div class="section" id="github-pages">
+<h2><a class="toc-backref" href="#id14">GitHub Pages</a><a class="headerlink" href="#github-pages" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>GitHub Pages permite crear una página web de un proyecto que se ve mejor que una simple wiki.</p>
+<p>Dentro de la opción <span class="guilabel">Settings</span> donde veremos la sección de <strong>GitHub Pages</strong>:</p>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/github-pages1.png" src="../../_images/github-pages1.png" />
+<p class="caption"><span class="caption-text">GitHub - Settings, GitHub Pages</span></p>
+</div>
+<p>Al seleccionar <span class="guilabel">master branch</span> bajo la opción Source, tendremos otras opciones de selección como elegir un dominio personalizado:</p>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/github-pages2.png" src="../../_images/github-pages2.png" />
+<p class="caption"><span class="caption-text">GitHub - GitHub Pages, branch <code class="docutils literal notranslate"><span class="pre">master</span></code> seleccionado</span></p>
+</div>
+<p>Además se habrá creado nuestra página web bajo la siguiente dirección: <a class="reference external" href="https://mogago.github.io/newapp2/">https://mogago.github.io/newapp2/</a></p>
+<div class="figure align-center" id="id5">
+<img alt="../../_images/github-pages3.png" src="../../_images/github-pages3.png" />
+<p class="caption"><span class="caption-text">GitHub - GitHub Pages webpage</span></p>
+</div>
+<p>En la sección de GitHub Pages podemos seleccionar un tema para la página web presionando el botón <span class="guilabel">Choose a theme</span>:</p>
+<div class="figure align-center" id="id6">
+<img alt="../../_images/github-pages4.png" src="../../_images/github-pages4.png" />
+<p class="caption"><span class="caption-text">GitHub - GitHub Pages themes</span></p>
+</div>
+<p>Seleccionar un tema de nuestro agrado y hacer clic en el botón <span class="guilabel">Select theme</span>.</p>
+</div>
+<div class="section" id="adding-collaborators-and-integrations">
+<h2><a class="toc-backref" href="#id15">Adding collaborators and integrations</a><a class="headerlink" href="#adding-collaborators-and-integrations" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Otra sección de <span class="guilabel">Settings</span> importante es la de <span class="guilabel">Collaborators</span>:</p>
+<div class="figure align-center" id="id7">
+<img alt="../../_images/github-single_repo3.png" src="../../_images/github-single_repo3.png" />
+<p class="caption"><span class="caption-text">GitHub - Añadir colaborador</span></p>
+</div>
+<p>Si hay otra persona que deseamos sea capaz de hacer <code class="docutils literal notranslate"><span class="pre">push</span></code> al repositorio debemos agregarlo a esta lista de colaboradores. (Referencia para agregar colaboradores en: sección <a class="reference internal" href="lesson7.html#colaboradores"><span class="std std-ref">Single repo collaboration directly on master</span></a> de <a class="reference internal" href="lesson7.html#leccion-7"><span class="std std-ref">Lesson 7</span></a>). Sin embargo ellos no podrán agregar nuevos colaboradores o cambiar configuraciones de administrador.</p>
+<p>Otra parte importante de integración con GitHub es trabajar con <strong>web hooks</strong> y <strong>services</strong>. Estas son unas formas de integrar aplicaciones de terceros en nuestro proyecto de GitHub.</p>
+<p>Podemos agregar un webhook, especificando una URL que usamos para que nos contacten. Si estamos buscando escribir nuestra propia aplicación y deseamos recibir notificaciones en tiempo real cuando algo sucede en nuestro repositorio de GitHub, esta sección es la que buscamos:</p>
+<div class="figure align-center" id="id8">
+<img alt="../../_images/github-webhooks1.png" src="../../_images/github-webhooks1.png" />
+<p class="caption"><span class="caption-text">GitHub webhooks</span></p>
+</div>
+<div class="figure align-center" id="id9">
+<img alt="../../_images/github-webhooks2.png" src="../../_images/github-webhooks2.png" />
+<p class="caption"><span class="caption-text">GitHub webhooks</span></p>
+</div>
+<p>Si queremos integrar algo que ya ha sido construido, lo mejor será usar <strong>Services</strong>:</p>
+<div class="figure align-center" id="id10">
+<img alt="../../_images/github-services.png" src="../../_images/github-services.png" />
+<p class="caption"><span class="caption-text">GitHub service</span></p>
+</div>
+</div>
+<div class="section" id="configuring-deploy-keys">
+<h2><a class="toc-backref" href="#id16">Configuring deploy keys</a><a class="headerlink" href="#configuring-deploy-keys" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La última sección de Settings que veremos es <strong>Deploy keys</strong>. Una de las formas que podemos lidiar con seguridad en GitHub es creando un <strong>deploy key</strong> para un repositorio en específico:</p>
+<div class="figure align-center" id="id11">
+<img alt="../../_images/github-deploy-keys.png" src="../../_images/github-deploy-keys.png" />
+<p class="caption"><span class="caption-text">GitHub deploy keys</span></p>
+</div>
+<p>La razón por la que usaríamos esto, por ejemplo, sería cuando tengamos una aplicación que queramos que tenga acceso a este repositorio pero no a otros. Lo que haríamos es configurarlo con un deploy key (una llave SSH) e ingresaríamos esta información para que nuestro script tenga permisos para acceder y trabajar con ese repositorio en específico pero no con otros.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="lesson10.html" class="btn btn-neutral float-right" title="Lesson 10" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lesson8.html" class="btn btn-neutral float-left" title="Lesson 8" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
