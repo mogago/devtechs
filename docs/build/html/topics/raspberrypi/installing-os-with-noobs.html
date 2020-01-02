@@ -1,0 +1,653 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Instalando un Sistema Operativo con NOOBS &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Información extra de NOOBS" href="info-extra-noobs.html" />
+    <link rel="prev" title="RaspberryPi" href="_raspberrypi.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Instalando un Sistema Operativo con NOOBS</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduccion">Introducción</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisitos">Prerequisitos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#objetivos">Objetivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-windows">Formateo de tarjeta Micro SD (en Windows)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-linux">Formateo de tarjeta Micro SD (en Linux)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instalar-noobs-windows">Instalar NOOBS (Windows)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instalar-noobs-linux-con-interfaz-grafica">Instalar NOOBS (Linux, con interfaz gráfica)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instalar-noobs-linux-con-linea-de-comandos">Instalar NOOBS (Linux, con línea de comandos)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instalar-un-so-usando-noobs">Instalar un SO usando NOOBS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="info-extra-noobs.html">Información extra de NOOBS</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Instalando un Sistema Operativo con NOOBS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/raspberrypi/installing-os-with-noobs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="instalando-un-sistema-operativo-con-noobs">
+<h1><a class="toc-backref" href="#id15">Instalando un Sistema Operativo con NOOBS</a><a class="headerlink" href="#instalando-un-sistema-operativo-con-noobs" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>Links útiles:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.raspberrypi.org/documentation/">Raspberry Pi Documentation</a></li>
+<li><a class="reference external" href="https://www.raspberrypi.org/documentation/installation/">Installation</a>: Installing an operating system on your Raspberry Pi</li>
+<li><a class="reference external" href="https://www.raspberrypi.org/documentation/installation/noobs.md">NOOBS Documentation</a></li>
+</ul>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#instalando-un-sistema-operativo-con-noobs" id="id15">Instalando un Sistema Operativo con NOOBS</a><ul>
+<li><a class="reference internal" href="#introduccion" id="id16">Introducción</a></li>
+<li><a class="reference internal" href="#prerequisitos" id="id17">Prerequisitos</a></li>
+<li><a class="reference internal" href="#objetivos" id="id18">Objetivos</a></li>
+<li><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-windows" id="id19">Formateo de tarjeta Micro SD (en Windows)</a></li>
+<li><a class="reference internal" href="#formateo-de-tarjeta-micro-sd-en-linux" id="id20">Formateo de tarjeta Micro SD (en Linux)</a></li>
+<li><a class="reference internal" href="#instalar-noobs-windows" id="id21">Instalar NOOBS (Windows)</a></li>
+<li><a class="reference internal" href="#instalar-noobs-linux-con-interfaz-grafica" id="id22">Instalar NOOBS (Linux, con interfaz gráfica)</a></li>
+<li><a class="reference internal" href="#instalar-noobs-linux-con-linea-de-comandos" id="id23">Instalar NOOBS (Linux, con línea de comandos)</a></li>
+<li><a class="reference internal" href="#instalar-un-so-usando-noobs" id="id24">Instalar un SO usando NOOBS</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduccion">
+<h2><a class="toc-backref" href="#id16">Introducción</a><a class="headerlink" href="#introduccion" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>La manera más sencilla de instalar un sistema operativo (SO) en el Raspberry Pi es a través de NOOBS.</p>
+<p><strong>NOOBS (New Out Of Box Software)</strong> es un administrador para la instalación de SOs en Raspberry Pi. Este software incluye los siguientes SOs:</p>
+<ul class="simple">
+<li>Raspbian</li>
+<li>LibreELEC</li>
+<li>OSMC</li>
+<li>Recalbox</li>
+<li>Lakka</li>
+<li>RISC OS</li>
+<li>Screenly OSE</li>
+<li>Windows 10 IoT Core</li>
+<li>TLXOS</li>
+</ul>
+<p>Existen 2 versiones de NOOBS: la versión offline e instalación por red (NOOBS) y la versión únicamente de instalación por red (NOOBS Lite). La diferencia es que la versión offline tiene el SO Raspbian incluido. Instalar otro SO o instalar Raspbian con NOOBS Lite requiere que contemos con conexión a Internet.</p>
+</div>
+<div class="section" id="prerequisitos">
+<h2><a class="toc-backref" href="#id17">Prerequisitos</a><a class="headerlink" href="#prerequisitos" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Una PC con Windows o Linux.</li>
+<li>Un Raspberry Pi con monitor, mouse, teclado y conexión a Internet (alámbrica o inalámbrica).</li>
+<li>Una tarjeta micro SD clase 4 o clase 10 vacía de 8GB o más de almacenamiento.</li>
+</ul>
+<div class="admonition danger">
+<p class="first admonition-title">Peligro</p>
+<p class="last">Se formateará la tarjeta, por lo que se perderán todos los archivos que estén guardados en la memoria.</p>
+</div>
+<ul class="simple">
+<li>Un adaptador o lector de tarjetas micro SD que permita conectar la tarjeta a la computadora.</li>
+</ul>
+</div>
+<div class="section" id="objetivos">
+<h2><a class="toc-backref" href="#id18">Objetivos</a><a class="headerlink" href="#objetivos" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Aprender el funcionamiento básico de NOOBS.</li>
+<li>Instalar un sistema operativo en el Raspberry Pi usando NOOBS.</li>
+</ul>
+<p>Obtener NOOBS:</p>
+<p>Se puede obtener NOOBS descargando el archivo correspondiente desde la <a class="reference external" href="https://www.raspberrypi.org/downloads/">página de descargas de Raspberry Pi</a>. Podrás elegir la versión de NOOBS que prefieras y descargarla. O puedes dirigirte directamente a las <a class="reference external" href="https://www.raspberrypi.org/downloads/noobs/">versiones de NOOBS disponibles</a>.</p>
+<p>En este tutorial descargaré el archivo ZIP de la versión NOOBS Lite.</p>
+<div class="figure align-center" id="id1">
+<img alt="../../_images/noobs.png" src="../../_images/noobs.png" />
+<p class="caption"><span class="caption-text">Versiones de NOOBS</span></p>
+</div>
+<p>Necesitarás una tarjeta micro SD de 8 GB o más de almacenamiento para guardar los archivos de instalación. Esta se deberá formatear como FAT o FAT32. En mi caso usaré una tarjeta de 16GB.</p>
+<p>Para tarjetas micro SD de 64 GB o más de almacenamiento se deberá formatear exclusivamente como FAT32. Detalles: <a class="reference external" href="https://www.raspberrypi.org/documentation/installation/sdxc_formatting.md">formatting an SDXC card for use with NOOBS</a>.</p>
+</div>
+<div class="section" id="formateo-de-tarjeta-micro-sd-en-windows">
+<h2><a class="toc-backref" href="#id19">Formateo de tarjeta Micro SD (en Windows)</a><a class="headerlink" href="#formateo-de-tarjeta-micro-sd-en-windows" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Procedimiento para sistemas operativos Windows</p>
+</div>
+<ol class="arabic simple">
+<li>En Windows se puede usar el programa de formateo de la SD Association con el fin de formatear la tarjeta micro SD. Descarga e instala el programa <strong>SD Card Formatter</strong> (<a class="reference external" href="https://www.sdcard.org/downloads/formatter/">Link de descarga de SD Card Formatter</a>).</li>
+<li>Una vez instalado el programa SD Card Formatter, ingresa la tarjeta micro SD en la lectora de la PC (si tu PC no tiene lectora micro SD puedes usar un adaptador de micro SD a SD o a USB  para que la PC lea la tarjeta).</li>
+<li>Abre el programa SD Card Formatter y selecciona la unidad correspondiente a la tarjeta e ingrésale un nombre que la identifique en la sección <em>Volume label</em>. Dale clic en <span class="guilabel">Format</span> y espera que el proceso de formateo acabe.</li>
+</ol>
+<div class="figure align-center" id="id2">
+<img alt="../../_images/sd-format-1.png" src="../../_images/sd-format-1.png" />
+<p class="caption"><span class="caption-text">SD Card Formatter - Formateo de la tarjeta SD - Paso 1</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Confirma el mensaje de advertencia. Clic en <span class="guilabel">Sí</span>.</li>
+</ol>
+<div class="admonition danger">
+<p class="first admonition-title">Peligro</p>
+<p class="last">TODA TU INFORMACIÓN SERÁ BORRADA DE LA MEMORIA MICRO SD</p>
+</div>
+<div class="figure align-center" id="id3">
+<img alt="../../_images/sd-format-2.png" src="../../_images/sd-format-2.png" />
+<p class="caption"><span class="caption-text">SD Card Formatter - Formateo de la tarjeta SD - Paso 2</span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Aparecerá un resumen con las nuevas propiedades de la tarjeta. Clic en <span class="guilabel">Aceptar</span>.</li>
+</ol>
+<div class="figure align-center" id="id4">
+<img alt="../../_images/sd-format-3.png" src="../../_images/sd-format-3.png" />
+<p class="caption"><span class="caption-text">SD Card Formatter - Formateo de la tarjeta SD - Paso 3</span></p>
+</div>
+</div>
+<div class="section" id="formateo-de-tarjeta-micro-sd-en-linux">
+<h2><a class="toc-backref" href="#id20">Formateo de tarjeta Micro SD (en Linux)</a><a class="headerlink" href="#formateo-de-tarjeta-micro-sd-en-linux" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Procedimiento para sistemas operativos Linux</p>
+</div>
+<p>Basado en: <a class="reference external" href="http://qdosmsq.dunbar-it.co.uk/blog/2013/06/noobs-for-raspberry-pi/">NOOBS For Raspberry Pi (Rants and Raves)</a></p>
+<ol class="arabic simple">
+<li>En Linux, el primer paso será reconocer cuál es tu dispositivo micro SD en la PC. Corre el siguiente comando en un terminal (todavía no insertes tu memoria micro SD):</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo fdisk -l
+</pre></div>
+</div>
+<p>Se listarán todos los dispositivos montados y no montados en la computadora. Luego insertar la memoria micro SD a la PC y ejecuta el mismo comando de nuevo. Compara los dos listados y ve qué dispositivo nuevo ha sido agregado. En mi caso es el siguiente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Disk /dev/sdb: <span class="m">14</span>,5 GiB, <span class="m">15523119104</span> bytes, <span class="m">30318592</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+Disklabel type: dos
+Disk identifier: 0xe72674a9
+
+Device     Boot Start      End  Sectors  Size Id Type
+/dev/sdb1        <span class="m">2048</span> <span class="m">30316543</span> <span class="m">30314496</span> <span class="m">14</span>,5G  c W95 FAT32 <span class="o">(</span>LBA<span class="o">)</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Ahora que conocemos qué dispositivo es nuestra micro SD debemos borrar todas las particiones y archivos existentes dentro de ella. De esta forma, luego podremos crear la única partición que necesitamos. Para esto, usaremos la herramienta fdisk de esta forma:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo fdisk /dev/<span class="o">{</span>nombre_del_dispositivo<span class="o">}</span>
+</pre></div>
+</div>
+<p>Cambia <code class="docutils literal notranslate"><span class="pre">{nombre_del_dispositivo}</span></code> según tu caso. En mi caso, ejecutaré el comando: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">fdisk</span> <span class="pre">/dev/sdb</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo fdisk /dev/sdb
+
+Welcome to fdisk <span class="o">(</span>util-linux <span class="m">2</span>.31.1<span class="o">)</span>.
+Changes will remain in memory only, <span class="k">until</span> you decide to write them.
+Be careful before using the write command.
+
+
+Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>:
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Primero lista las particiones de tu tarjeta micro SD usando la opción <span class="guilabel">p</span>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: p
+Disk /dev/sdb: <span class="m">14</span>,5 GiB, <span class="m">15523119104</span> bytes, <span class="m">30318592</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+Disklabel type: dos
+Disk identifier: 0xe72674a9
+
+Device     Boot Start      End  Sectors  Size Id Type
+/dev/sdb1        <span class="m">2048</span> <span class="m">30316543</span> <span class="m">30314496</span> <span class="m">14</span>,5G  c W95 FAT32 <span class="o">(</span>LBA<span class="o">)</span>
+
+Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>:
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Ahora, asegúrate de borrar cada partición que tenga tu tarjeta micro SD usando la opción <span class="guilabel">d</span>. Luego comprueba que ya no exista usando la opción <span class="guilabel">p</span> nuevamente:</li>
+</ol>
+<div class="admonition danger">
+<p class="first admonition-title">Peligro</p>
+<p class="last">TODA TU INFORMACIÓN SERÁ BORRADA DE LA MEMORIA MICRO SD</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: d
+Selected partition <span class="m">1</span>
+Partition <span class="m">1</span> has been deleted.
+
+Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: p
+Disk /dev/sdb: <span class="m">14</span>,5 GiB, <span class="m">15523119104</span> bytes, <span class="m">30318592</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+Disklabel type: dos
+Disk identifier: 0xe72674a9
+
+Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>:
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Seguido a esto crearemos una nueva partición usando la opción <span class="guilabel">n</span>. Presionar <span class="guilabel">Enter</span> a todas las opciones que aparezcan para que tomen los valores por defecto:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: n
+Partition <span class="nb">type</span>
+    p   primary <span class="o">(</span><span class="m">0</span> primary, <span class="m">0</span> extended, <span class="m">4</span> free<span class="o">)</span>
+    e   extended <span class="o">(</span>container <span class="k">for</span> logical partitions<span class="o">)</span>
+Select <span class="o">(</span>default p<span class="o">)</span>: p
+Partition number <span class="o">(</span><span class="m">1</span>-4, default <span class="m">1</span><span class="o">)</span>: <span class="m">1</span>
+First sector <span class="o">(</span><span class="m">2048</span>-30318591, default <span class="m">2048</span><span class="o">)</span>:
+Last sector, +sectors or +size<span class="o">{</span>K,M,G,T,P<span class="o">}</span> <span class="o">(</span><span class="m">2048</span>-30318591, default <span class="m">30318591</span><span class="o">)</span>:
+
+Created a new partition <span class="m">1</span> of <span class="nb">type</span> <span class="s1">&#39;Linux&#39;</span> and of size <span class="m">14</span>,5 GiB.
+Partition <span class="c1">#1 contains a vfat signature.</span>
+
+Do you want to remove the signature? <span class="o">[</span>Y<span class="o">]</span>es/<span class="o">[</span>N<span class="o">]</span>o: y
+
+The signature will be removed by a write command.
+</pre></div>
+</div>
+<p>Obtendremos una nueva partición para nuestra tarjeta micro SD. Vuelve a comprobar con la opción <span class="guilabel">p</span>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: p
+Disk /dev/sdb: <span class="m">14</span>,5 GiB, <span class="m">15523119104</span> bytes, <span class="m">30318592</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+Disklabel type: dos
+Disk identifier: 0xe72674a9
+
+Device     Boot Start      End  Sectors  Size Id Type
+/dev/sdb1        <span class="m">2048</span> <span class="m">30318591</span> <span class="m">30316544</span> <span class="m">14</span>,5G <span class="m">83</span> Linux
+
+Filesystem/RAID signature on partition <span class="m">1</span> will be wiped.
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Ahora cambiaremos el tipo de partición de Linux a FAT32. Para esto usaremos la opción <span class="guilabel">t</span>:</li>
+</ol>
+<p>Si quieres listar todos los formatos disponibles, usa la opción <span class="guilabel">L</span> primero:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command (m for help): t
+Selected partition 1
+Hex code (type L to list all codes): L
+
+0  Empty           24  NEC DOS         81  Minix / old Lin bf  Solaris
+1  FAT12           27  Hidden NTFS Win 82  Linux swap / So c1  DRDOS/sec (FAT-
+2  XENIX root      39  Plan 9          83  Linux           c4  DRDOS/sec (FAT-
+3  XENIX usr       3c  PartitionMagic  84  OS/2 hidden or  c6  DRDOS/sec (FAT-
+4  FAT16 &lt;32M      40  Venix 80286     85  Linux extended  c7  Syrinx
+5  Extended        41  PPC PReP Boot   86  NTFS volume set da  Non-FS data
+6  FAT16           42  SFS             87  NTFS volume set db  CP/M / CTOS / .
+7  HPFS/NTFS/exFAT 4d  QNX4.x          88  Linux plaintext de  Dell Utility
+8  AIX             4e  QNX4.x 2nd part 8e  Linux LVM       df  BootIt
+9  AIX bootable    4f  QNX4.x 3rd part 93  Amoeba          e1  DOS access
+a  OS/2 Boot Manag 50  OnTrack DM      94  Amoeba BBT      e3  DOS R/O
+<span class="hll">b  W95 FAT32       51  OnTrack DM6 Aux 9f  BSD/OS          e4  SpeedStor
+</span>c  W95 FAT32 (LBA) 52  CP/M            a0  IBM Thinkpad hi ea  Rufus alignment
+e  W95 FAT16 (LBA) 53  OnTrack DM6 Aux a5  FreeBSD         eb  BeOS fs
+f  W95 Ext&#39;d (LBA) 54  OnTrackDM6      a6  OpenBSD         ee  GPT
+10  OPUS            55  EZ-Drive        a7  NeXTSTEP        ef  EFI (FAT-12/16/
+11  Hidden FAT12    56  Golden Bow      a8  Darwin UFS      f0  Linux/PA-RISC b
+12  Compaq diagnost 5c  Priam Edisk     a9  NetBSD          f1  SpeedStor
+14  Hidden FAT16 &lt;3 61  SpeedStor       ab  Darwin boot     f4  SpeedStor
+16  Hidden FAT16    63  GNU HURD or Sys af  HFS / HFS+      f2  DOS secondary
+17  Hidden HPFS/NTF 64  Novell Netware  b7  BSDI fs         fb  VMware VMFS
+18  AST SmartSleep  65  Novell Netware  b8  BSDI swap       fc  VMware VMKCORE
+1b  Hidden W95 FAT3 70  DiskSecure Mult bb  Boot Wizard hid fd  Linux raid auto
+1c  Hidden W95 FAT3 75  PC/IX           bc  Acronis FAT32 L fe  LANstep
+1e  Hidden W95 FAT1 80  Old Minix       be  Solaris boot    ff  BBT
+</pre></div>
+</div>
+<p>Si no deseas listar las opciones de formato, usa directamente la opción <span class="guilabel">b</span> para transformar la partición a formato FAT32:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: t
+Selected partition <span class="m">1</span>
+Hex code <span class="o">(</span><span class="nb">type</span> L to list all codes<span class="o">)</span>: b
+Changed <span class="nb">type</span> of partition <span class="s1">&#39;Linux&#39;</span> to <span class="s1">&#39;W95 FAT32&#39;</span>.
+</pre></div>
+</div>
+<p>De nuevo, comprueba que todo esté correcto con la opción <span class="guilabel">p</span>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: p
+Disk /dev/sdb: <span class="m">14</span>,5 GiB, <span class="m">15523119104</span> bytes, <span class="m">30318592</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+Disklabel type: dos
+Disk identifier: 0xe72674a9
+
+Device     Boot Start      End  Sectors  Size Id Type
+/dev/sdb1        <span class="m">2048</span> <span class="m">30318591</span> <span class="m">30316544</span> <span class="m">14</span>,5G  b W95 FAT32
+
+Filesystem/RAID signature on partition <span class="m">1</span> will be wiped.
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>Para acabar con la configuración de la partición y escribirla en la tarjeta micro SD usar la opción <span class="guilabel">w</span>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: w
+The partition table has been altered.
+Calling ioctl<span class="o">()</span> to re-read partition table.
+Syncing disks.
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li>Ahora que tenemos la partición creada debemos formatearla, ya que, únicamente fdisk sabe que es del tipo FAT32. Para formatear la partición usar:</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">No usar el nombre del dispositivo sino de la partición</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo mkfs.vfat /dev/<span class="o">{</span>nombre_de_la_partición<span class="o">}</span>
+
+$ sudo mkfs.vfat /dev/sdb1
+mkfs.fat <span class="m">4</span>.1 <span class="o">(</span><span class="m">2017</span>-01-24<span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalar-noobs-windows">
+<h2><a class="toc-backref" href="#id21">Instalar NOOBS (Windows)</a><a class="headerlink" href="#instalar-noobs-windows" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Extraer el archivo <code class="docutils literal notranslate"><span class="pre">.zip</span></code> y copiar todos los archivos a la tarjeta micro SD formateada. ¡! Copia los archivos directamente en el directorio raíz de la tarjeta (por ejemplo <code class="docutils literal notranslate"><span class="pre">D:/</span></code>).</p>
+<div class="figure align-center" id="id5">
+<img alt="../../_images/copying-noobs-windows.png" src="../../_images/copying-noobs-windows.png" />
+<p class="caption"><span class="caption-text">Copiar contenidos de NOOBS a la tarjeta micro SD</span></p>
+</div>
+</div>
+<div class="section" id="instalar-noobs-linux-con-interfaz-grafica">
+<h2><a class="toc-backref" href="#id22">Instalar NOOBS (Linux, con interfaz gráfica)</a><a class="headerlink" href="#instalar-noobs-linux-con-interfaz-grafica" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En primer lugar, saca la tarjeta micro SD de la PC y vuelve a insertarla para montarla en el sistema. Seguramente te aparezca un aviso para abrir el dispositivo con el navegador de archivos; de ser así, hazlo. Descomprime el archivo <code class="docutils literal notranslate"><span class="pre">.zip</span></code> de NOOBS descargado y copia todos los archivos directamente a la tarjeta micro SD.</p>
+<div class="figure align-center" id="id6">
+<img alt="../../_images/copying-noobs-linux.png" src="../../_images/copying-noobs-linux.png" />
+<p class="caption"><span class="caption-text">Copiar contenidos de NOOBS a la tarjeta micro SD</span></p>
+</div>
+</div>
+<div class="section" id="instalar-noobs-linux-con-linea-de-comandos">
+<h2><a class="toc-backref" href="#id23">Instalar NOOBS (Linux, con línea de comandos)</a><a class="headerlink" href="#instalar-noobs-linux-con-linea-de-comandos" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>En primer lugar, saca la tarjeta micro SD de la PC y vuelve a insertarla para montarla en el sistema. Para comprobar donde está montada la partición usar:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ mount <span class="p">|</span> grep -i /dev/<span class="o">{</span>nombre_de_la_partición<span class="o">}</span>
+$ mount <span class="p">|</span> grep -i /dev/sdb1
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Cambia a la ruta donde está montado tu partición y descomprime el archivo .zip de NOOBS descargado:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /media/<span class="o">{</span>ruta_de_la_partición_montada<span class="o">}</span>
+$ unzip ~/Downloads/NOOBS_lite_v3_2.zip
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Por último, desmonta la tarjeta micro SD con:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo umount /dev/<span class="o">{</span>nombre_de_la_partición<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalar-un-so-usando-noobs">
+<h2><a class="toc-backref" href="#id24">Instalar un SO usando NOOBS</a><a class="headerlink" href="#instalar-un-so-usando-noobs" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Expulsa la tarjeta micro SD de la PC. Luego inserta la tarjeta micro SD al Raspberry Pi y encenderlo. En el primer arranque, se creará un partición llamada «RECOVERY». En ella se guardarán las distribuciones y archivos para el proceso de recuperación.</li>
+<li>Una vez dentro de NOOBS, si no cuentas con una conexión cableada Ethernet a la que puedas conectar tu Raspberry, conéctate usando una red WiFi disponible.</li>
+</ol>
+<div class="figure align-center" id="id7">
+<img alt="../../_images/installing-os-with-noobs-1.png" src="../../_images/installing-os-with-noobs-1.png" />
+<p class="caption"><span class="caption-text">Proceso de instalación de un SO con NOOBS</span></p>
+</div>
+<p>Una vez cuentes con conexión a Internet puede seguir con el tutorial.</p>
+<ol class="arabic simple" start="3">
+<li>En la pantalla se verá todos los sistemas operativos que pueden ser instalados en la tarjeta micro SD. También puedes cambiar el idioma y teclado que se muestra. Selecciona el (o los) sistema(s) operativo(s) que desees instalar.</li>
+</ol>
+<div class="figure align-center" id="id8">
+<img alt="../../_images/installing-os-with-noobs-2.png" src="../../_images/installing-os-with-noobs-2.png" />
+<p class="caption"><span class="caption-text">Proceso de instalación de un SO con NOOBS</span></p>
+</div>
+<div class="figure align-center" id="id9">
+<img alt="../../_images/installing-os-with-noobs-3.png" src="../../_images/installing-os-with-noobs-3.png" />
+<p class="caption"><span class="caption-text">Proceso de instalación de un SO con NOOBS</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Una vez selecciones el sistema operativo que desees, que en mi caso es Raspbian Full, dale clic en el botón Install.</li>
+</ol>
+<div class="figure align-center" id="id10">
+<img alt="../../_images/installing-os-with-noobs-4.png" src="../../_images/installing-os-with-noobs-4.png" />
+<p class="caption"><span class="caption-text">Proceso de instalación de un SO con NOOBS</span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Acepta el mensaje de confirmación. Seguido a esto, comenzará la descarga del sistema operativo y su instalación.</li>
+</ol>
+<div class="figure align-center" id="id11">
+<img alt="../../_images/installing-os-with-noobs-5.png" src="../../_images/installing-os-with-noobs-5.png" />
+<p class="caption"><span class="caption-text">Proceso de instalación de un SO con NOOBS</span></p>
+</div>
+<div class="figure align-center" id="id12">
+<img alt="../../_images/installing-os-with-noobs-6.png" src="../../_images/installing-os-with-noobs-6.png" />
+<p class="caption"><span class="caption-text">Proceso de instalación de un SO con NOOBS</span></p>
+</div>
+<ol class="arabic simple" start="6">
+<li>Al acabar la instalación del sistema operativo acepta el mensaje de confirmación.</li>
+</ol>
+<div class="figure align-center" id="id13">
+<img alt="../../_images/installing-os-with-noobs-7.png" src="../../_images/installing-os-with-noobs-7.png" />
+<p class="caption"><span class="caption-text">Proceso de instalación de un SO con NOOBS</span></p>
+</div>
+<ol class="arabic simple" start="7">
+<li>El Raspberry Pi reiniciará automáticamente y ahora arrancará con el sistema operativo que hemos instalado.</li>
+</ol>
+<div class="figure align-center" id="id14">
+<img alt="../../_images/installing-os-with-noobs-8.png" src="../../_images/installing-os-with-noobs-8.png" />
+<p class="caption"><span class="caption-text">Proceso de instalación de un SO con NOOBS</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="info-extra-noobs.html" class="btn btn-neutral float-right" title="Información extra de NOOBS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_raspberrypi.html" class="btn btn-neutral float-left" title="RaspberryPi" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

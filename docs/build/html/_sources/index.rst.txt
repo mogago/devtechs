@@ -54,6 +54,14 @@ Welcome to DevTechs's documentation!
 
 .. toctree::
     :maxdepth: 2
+    :caption: RaspberryPi
+
+    topics/raspberrypi/_raspberrypi
+    topics/raspberrypi/noobs
+    topics/raspberrypi/touchscreen
+
+.. toctree::
+    :maxdepth: 2
     :caption: SDN
 
     topics/sdn/_sdn

@@ -56,8 +56,9 @@ Welcome to DevTechs's documentation!
     :maxdepth: 2
     :caption: RaspberryPi
 
-    topics/raspberrypi/_raspberypi
-    topics/raspberrypi/installing-os-with-noobs.rst
+    topics/raspberrypi/_raspberrypi
+    topics/raspberrypi/noobs
+    topics/raspberrypi/touchscreen
 
 .. toctree::
     :maxdepth: 2
