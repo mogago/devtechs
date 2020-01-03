@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Programas instalados &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Cambiar layout del teclado" href="keyboard-layout.html" />
+    <link rel="prev" title="Raspbian configuration" href="raspbian-config.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/user-management.html">User Management</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="raspbian-config.html">Raspbian configuration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Programas instalados</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#verificar-la-version-de-raspbian">Verificar la versión de Raspbian</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#verificar-arquitectura-del-sistema">Verificar arquitectura del sistema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-software-properties-common">Instalar software-properties-common</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-visual-studio-code">Instalar Visual Studio Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-teamviewer">Instalar Teamviewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-redshift">Instalar redshift</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalar-aplicacion-para-screenshots">Instalar aplicación para screenshots</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="keyboard-layout.html">Cambiar layout del teclado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="remote-access.html">Habilitar acceso remoto</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="raspbian-config.html">Raspbian configuration</a> &raquo;</li>
+        
+      <li>Programas instalados</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/raspberrypi/installed-programs.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="programas-instalados">
+<h1><a class="toc-backref" href="#id1">Programas instalados</a><a class="headerlink" href="#programas-instalados" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#programas-instalados" id="id1">Programas instalados</a><ul>
+<li><a class="reference internal" href="#verificar-la-version-de-raspbian" id="id2">Verificar la versión de Raspbian</a></li>
+<li><a class="reference internal" href="#verificar-arquitectura-del-sistema" id="id3">Verificar arquitectura del sistema</a></li>
+<li><a class="reference internal" href="#instalar-software-properties-common" id="id4">Instalar software-properties-common</a></li>
+<li><a class="reference internal" href="#instalar-visual-studio-code" id="id5">Instalar Visual Studio Code</a></li>
+<li><a class="reference internal" href="#instalar-teamviewer" id="id6">Instalar Teamviewer</a></li>
+<li><a class="reference internal" href="#instalar-redshift" id="id7">Instalar redshift</a></li>
+<li><a class="reference internal" href="#instalar-aplicacion-para-screenshots" id="id8">Instalar aplicación para screenshots</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="verificar-la-version-de-raspbian">
+<h2><a class="toc-backref" href="#id2">Verificar la versión de Raspbian</a><a class="headerlink" href="#verificar-la-version-de-raspbian" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat /etc/os-release
+
+<span class="nv">PRETTY_NAME</span><span class="o">=</span><span class="s2">&quot;Raspbian GNU/Linux 10 (buster)&quot;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;Raspbian GNU/Linux&quot;</span>
+<span class="nv">VERSION_ID</span><span class="o">=</span><span class="s2">&quot;10&quot;</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="s2">&quot;10 (buster)&quot;</span>
+<span class="nv">VERSION_CODENAME</span><span class="o">=</span>buster
+<span class="nv">ID</span><span class="o">=</span>raspbian
+<span class="nv">ID_LIKE</span><span class="o">=</span>debian
+<span class="nv">HOME_URL</span><span class="o">=</span><span class="s2">&quot;http://www.raspbian.org/&quot;</span>
+<span class="nv">SUPPORT_URL</span><span class="o">=</span><span class="s2">&quot;http://www.raspbian.org/RaspbianForums&quot;</span>
+<span class="nv">BUG_REPORT_URL</span><span class="o">=</span><span class="s2">&quot;http://www.raspbian.org/RaspbianBugs&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="verificar-arquitectura-del-sistema">
+<h2><a class="toc-backref" href="#id3">Verificar arquitectura del sistema</a><a class="headerlink" href="#verificar-arquitectura-del-sistema" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ uname -a
+Linux raspberrypi <span class="m">4</span>.19.75-v7+ <span class="c1">#1270 SMP Tue Sep 24 18:45:11 BST 2019 armv7l GNU/Linux</span>
+</pre></div>
+</div>
+<p>El sistema tiene una arquitectura <code class="docutils literal notranslate"><span class="pre">armv7</span> <span class="pre">32</span> <span class="pre">bits</span></code>.</p>
+</div>
+<div class="section" id="instalar-software-properties-common">
+<h2><a class="toc-backref" href="#id4">Instalar software-properties-common</a><a class="headerlink" href="#instalar-software-properties-common" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo add-apt-repository
+sudo: add-apt-repository: <span class="nb">command</span> not found
+
+$ sudo apt-get install software-properties-common
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalar-visual-studio-code">
+<h2><a class="toc-backref" href="#id5">Instalar Visual Studio Code</a><a class="headerlink" href="#instalar-visual-studio-code" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Basado en: <a class="reference external" href="https://www.raspberrypi.org/forums/viewtopic.php?t=191342">Installing VS Code on Raspbian buster</a></p>
+<ol class="arabic simple">
+<li>Instalar GPG key</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo wget -qO - https://packagecloud.io/headmelted/codebuilds/gpgkey <span class="p">|</span> sudo apt-key add -<span class="p">;</span>
+OK
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Añadir source repository</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo nano /etc/apt/sources.list
+</pre></div>
+</div>
+<p>… y añadir:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>deb https://packagecloud.io/headmelted/codebuilds/raspbian/ jessie main
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Usar la versión <code class="docutils literal notranslate"><span class="pre">jessie</span></code> de Raspbian aún cuando tengamos la versión buster.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Instalar VS Code (code-oss)</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get update
+$ sudo apt-get install code-oss
+</pre></div>
+</div>
+<p>Ejecutar <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">update</span></code> es esencial para que funcione</p>
+<ol class="arabic simple" start="4">
+<li>Ejecutar VS Code (code-oss)</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ code-oss
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Versión de VS Code</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ code-oss -version
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalar-teamviewer">
+<h2><a class="toc-backref" href="#id6">Instalar Teamviewer</a><a class="headerlink" href="#instalar-teamviewer" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Basado en: <a class="reference external" href="https://www.techrrival.com/install-teamviewer-raspberry-pi/">How to Install Teamviewer on Raspberry Pi 2/3/4 Within a Minute</a></p>
+<ol class="arabic simple">
+<li>Descargar de la <a class="reference external" href="http://teamviewer.com/en-us/download/linux">página web oficial de descargas de Teamviewer para Linux</a>, la versión de Teamviewer para Raspbian con <strong>arquitectura armv7 32bit</strong>.</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Instalar el paquete <code class="docutils literal notranslate"><span class="pre">.deb</span></code>. Se tendrá varias dependencias faltantes:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dpkg -i ~/Downloads/teamviewer-host_15.1.3937_armhf.deb
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Para descargar las dependencias ejecutar:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get update
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Instalar las dependencias:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get -f install
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalar-redshift">
+<h2><a class="toc-backref" href="#id7">Instalar redshift</a><a class="headerlink" href="#instalar-redshift" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Instalar redshift</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install redshift
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Ejecutar el siguiente comando:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo raspi-config
+</pre></div>
+</div>
+<p>Ir a <span class="guilabel">Advanced Options</span>, luego <span class="guilabel">GL Driver</span> y seleccionar <span class="guilabel">G3 GL (FUll KMS)</span>.</p>
+<ol class="arabic simple" start="3">
+<li>Al hacer el cambio pedirá reiniciar el sistema. Aceptar.</li>
+<li>Comprobar que redshift funcione ejecutando en el terminal:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ redshift -O <span class="m">3500</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Regresar a un modo normal: <code class="docutils literal notranslate"><span class="pre">-x</span>&#160;&#160;&#160;&#160; <span class="pre">Reset</span> <span class="pre">mode</span> <span class="pre">(remove</span> <span class="pre">adjustment</span> <span class="pre">from</span> <span class="pre">screen)</span></code></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ redshift -x
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalar-aplicacion-para-screenshots">
+<h2><a class="toc-backref" href="#id8">Instalar aplicación para screenshots</a><a class="headerlink" href="#instalar-aplicacion-para-screenshots" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Scrot es una aplicación de línea de comandos para tomar capturas de pantallas en un Raspberry Pi.</p>
+<p>Generalmente Scrot ya viene instalado con Raspbian, de no ser el caso, instalarlo con:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install scrot
+</pre></div>
+</div>
+<p>Tenemos varias opciones de uso para capturar la pantalla:</p>
+<ol class="arabic simple">
+<li>Tomar una captura instantánea a toda la pantalla:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ scrot
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Tomar una captura con delay:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Delay de 3 segundos:</span>
+$ scrot -d <span class="m">3</span>
+</pre></div>
+</div>
+<p>Agregar un contandor al terminal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ scrot -c -d <span class="m">3</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Tomar captura solo a la aplicación actual (se agrega un delay para poder cambiar a la ventana deseada):</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ scrot -u -d <span class="m">3</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Tomar una captura a solo un área seleccionada:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ scrot -s
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Ejecutar una aplicación sobre la imagen guardada:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Abrir la imagen con el visor de imágenes por defecto de Raspbian</span>
+$ scrot -e gpicview
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="keyboard-layout.html" class="btn btn-neutral float-right" title="Cambiar layout del teclado" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="raspbian-config.html" class="btn btn-neutral float-left" title="Raspbian configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

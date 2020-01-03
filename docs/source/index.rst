@@ -61,6 +61,7 @@ Welcome to DevTechs's documentation!
     topics/raspberrypi/_raspberrypi
     topics/raspberrypi/noobs
     topics/raspberrypi/touchscreen
+    topics/raspberrypi/raspbian-config
 
 .. toctree::
     :maxdepth: 2
