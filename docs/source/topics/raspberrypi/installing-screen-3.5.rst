@@ -36,9 +36,9 @@ Este modo deja initulizable la pantalla táctil 3.5".
 Links útiles
 ------------
 
-`Tutorial - 3.5 Inch 480x320 TFT Display with Touch Screen for Raspberry Pi`_
-`Elecrow-LCD35 GitHub repository`_
-`Switching back to HDMI output - GitHub issue`_
+- `Tutorial - 3.5 Inch 480x320 TFT Display with Touch Screen for Raspberry Pi`_
+- `Elecrow-LCD35 GitHub repository`_
+- `Switching back to HDMI output - GitHub issue`_
 
 .. _Tutorial - 3.5 Inch 480x320 TFT Display with Touch Screen for Raspberry Pi: https://www.elecrow.com/wiki/index.php?title=3.5_Inch_480x320_TFT_Display_with_Touch_Screen_for_Raspberry_Pi
 .. _Elecrow-LCD35 GitHub repository: https://github.com/Elecrow-RD/Elecrow-LCD35
