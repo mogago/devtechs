@@ -28,6 +28,7 @@ Welcome to DevTechs's documentation!
 
     topics/gnulinux/_gnulinux
     topics/gnulinux/ssh
+    topics/gnulinux/user-management
 
 .. toctree::
     :maxdepth: 2
