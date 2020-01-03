@@ -27,6 +27,7 @@ Welcome to DevTechs's documentation!
     :caption: GNU/Linux
 
     topics/gnulinux/_gnulinux
+    topics/gnulinux/ssh
 
 .. toctree::
     :maxdepth: 2
