@@ -406,6 +406,10 @@ Una vez cuentes con conexión a Internet puede seguir con el tutorial.
 
     Proceso de instalación de un SO con NOOBS
 
+.. Warning::
+
+    Cuando la barra llegue al 100% se demorará unos minutos en acabar la instalación. Esperar pacientemente hasta que veamos el mensaje del siguiente paso.
+
 6. Al acabar la instalación del sistema operativo acepta el mensaje de confirmación.
 
 .. figure:: images/installing-os-with-noobs/installing-os-with-noobs-7.png
