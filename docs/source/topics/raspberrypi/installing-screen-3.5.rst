@@ -44,7 +44,7 @@ Script ``mini-screen-mode.sh``
     #!/bin/bash
 
     cd ~/Programs/Elecrow-LCD35
-    sudo ./Elecrow-LCD35 hdmi
+    sudo ./Elecrow-LCD35
 
 Script ``hdmi-mode.sh``
 '''''''''''''''''''''''
@@ -54,7 +54,7 @@ Script ``hdmi-mode.sh``
     #!/bin/bash
 
     cd ~/Programs/Elecrow-LCD35
-    sudo ./Elecrow-LCD35
+    sudo ./Elecrow-LCD35 hdmi
 
 Links útiles
 ------------
