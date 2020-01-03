@@ -1,4 +1,4 @@
-Instalar pantalla táctil 3.5"
+Instalar pantalla táctil 3.5'
 =============================
 
 Para la instalación de la pantalla táctil se usa un programa llamado **Elecrow**.
