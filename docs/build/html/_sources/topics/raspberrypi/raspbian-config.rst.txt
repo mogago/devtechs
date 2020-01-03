@@ -9,3 +9,4 @@ Raspbian configuration
     installed-programs
     keyboard-layout
     remote-access
+    vnc

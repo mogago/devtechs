@@ -1,3 +1,5 @@
+.. _remote-access:
+
 Habilitar acceso remoto
 =======================
 
