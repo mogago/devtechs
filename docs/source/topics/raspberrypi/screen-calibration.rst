@@ -25,7 +25,7 @@ Para entrar ir a :menuselection:`Menú --> Preferencias --> Calibrate Touchscree
 
     Menú - Preferencias
 
-Se puede entrar a este menú solo cuando se reconoce un dispositivo que pueda ser configurado. Por lo tanto cambiar de modo a **pantalla 3.5"**.
+Se puede entrar a este menú solo cuando se reconoce un dispositivo que pueda ser configurado. Por lo tanto cambiar de modo a **pantalla 3.5'**.
 
 .. code-block:: bash
 

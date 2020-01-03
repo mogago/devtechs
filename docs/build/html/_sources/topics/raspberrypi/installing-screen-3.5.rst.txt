@@ -13,7 +13,7 @@ Obtener paquetes
     $ cd ~ 
     $ git clone https://github.com/Elecrow-keen/Elecrow-LCD35.git
 
-Cambiar a modo pantalla 3.5"
+Cambiar a modo pantalla 3.5'
 ----------------------------
 
 Este modo deja initulizable la pantalla HDMI.
@@ -26,12 +26,35 @@ Este modo deja initulizable la pantalla HDMI.
 Cambiar a modo pantalla HDMI
 ----------------------------
 
-Este modo deja initulizable la pantalla táctil 3.5".
+Este modo deja initulizable la pantalla táctil 3.5'.
 
 .. code-block:: bash
 
     $ cd ~/Elecrow-LCD35
     $ sudo ./Elecrow-LCD35 hdmi
+
+Scripts para automatizar cambio de modos
+----------------------------------------
+
+Script ``mini-screen-mode.sh``
+''''''''''''''''''''''''''''''
+
+.. code-block:: bash
+
+    #!/bin/bash
+
+    cd ~/Programs/Elecrow-LCD35
+    sudo ./Elecrow-LCD35 hdmi
+
+Script ``hdmi-mode.sh``
+'''''''''''''''''''''''
+
+.. code-block:: bash
+
+    #!/bin/bash
+
+    cd ~/Programs/Elecrow-LCD35
+    sudo ./Elecrow-LCD35
 
 Links útiles
 ------------

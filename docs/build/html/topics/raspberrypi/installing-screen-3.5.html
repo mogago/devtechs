@@ -119,8 +119,13 @@
 <li class="toctree-l1 current"><a class="reference internal" href="touchscreen.html">Touchscreen</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Instalar pantalla táctil 3.5”</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#obtener-paquetes">Obtener paquetes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#cambiar-a-modo-pantalla-3-5">Cambiar a modo pantalla 3.5»</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cambiar-a-modo-pantalla-3-5">Cambiar a modo pantalla 3.5”</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cambiar-a-modo-pantalla-hdmi">Cambiar a modo pantalla HDMI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scripts-para-automatizar-cambio-de-modos">Scripts para automatizar cambio de modos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#script-mini-screen-mode-sh">Script <code class="docutils literal notranslate"><span class="pre">mini-screen-mode.sh</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#script-hdmi-mode-sh">Script <code class="docutils literal notranslate"><span class="pre">hdmi-mode.sh</span></code></a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#links-utiles">Links útiles</a></li>
 </ul>
 </li>
@@ -214,9 +219,14 @@
 <ul class="simple">
 <li><a class="reference internal" href="#instalar-pantalla-tactil-3-5" id="id1">Instalar pantalla táctil 3.5”</a><ul>
 <li><a class="reference internal" href="#obtener-paquetes" id="id2">Obtener paquetes</a></li>
-<li><a class="reference internal" href="#cambiar-a-modo-pantalla-3-5" id="id3">Cambiar a modo pantalla 3.5»</a></li>
+<li><a class="reference internal" href="#cambiar-a-modo-pantalla-3-5" id="id3">Cambiar a modo pantalla 3.5”</a></li>
 <li><a class="reference internal" href="#cambiar-a-modo-pantalla-hdmi" id="id4">Cambiar a modo pantalla HDMI</a></li>
-<li><a class="reference internal" href="#links-utiles" id="id5">Links útiles</a></li>
+<li><a class="reference internal" href="#scripts-para-automatizar-cambio-de-modos" id="id5">Scripts para automatizar cambio de modos</a><ul>
+<li><a class="reference internal" href="#script-mini-screen-mode-sh" id="id6">Script <code class="docutils literal notranslate"><span class="pre">mini-screen-mode.sh</span></code></a></li>
+<li><a class="reference internal" href="#script-hdmi-mode-sh" id="id7">Script <code class="docutils literal notranslate"><span class="pre">hdmi-mode.sh</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#links-utiles" id="id8">Links útiles</a></li>
 </ul>
 </li>
 </ul>
@@ -229,7 +239,7 @@ $ git clone https://github.com/Elecrow-keen/Elecrow-LCD35.git
 </div>
 </div>
 <div class="section" id="cambiar-a-modo-pantalla-3-5">
-<h2><a class="toc-backref" href="#id3">Cambiar a modo pantalla 3.5»</a><a class="headerlink" href="#cambiar-a-modo-pantalla-3-5" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Cambiar a modo pantalla 3.5”</a><a class="headerlink" href="#cambiar-a-modo-pantalla-3-5" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Este modo deja initulizable la pantalla HDMI.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/Elecrow-LCD35
 $ sudo ./Elecrow-LCD35
@@ -238,14 +248,35 @@ $ sudo ./Elecrow-LCD35
 </div>
 <div class="section" id="cambiar-a-modo-pantalla-hdmi">
 <h2><a class="toc-backref" href="#id4">Cambiar a modo pantalla HDMI</a><a class="headerlink" href="#cambiar-a-modo-pantalla-hdmi" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Este modo deja initulizable la pantalla táctil 3.5».</p>
+<p>Este modo deja initulizable la pantalla táctil 3.5”.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/Elecrow-LCD35
 $ sudo ./Elecrow-LCD35 hdmi
 </pre></div>
 </div>
 </div>
+<div class="section" id="scripts-para-automatizar-cambio-de-modos">
+<h2><a class="toc-backref" href="#id5">Scripts para automatizar cambio de modos</a><a class="headerlink" href="#scripts-para-automatizar-cambio-de-modos" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="script-mini-screen-mode-sh">
+<h3><a class="toc-backref" href="#id6">Script <code class="docutils literal notranslate"><span class="pre">mini-screen-mode.sh</span></code></a><a class="headerlink" href="#script-mini-screen-mode-sh" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nb">cd</span> ~/Programs/Elecrow-LCD35
+sudo ./Elecrow-LCD35 hdmi
+</pre></div>
+</div>
+</div>
+<div class="section" id="script-hdmi-mode-sh">
+<h3><a class="toc-backref" href="#id7">Script <code class="docutils literal notranslate"><span class="pre">hdmi-mode.sh</span></code></a><a class="headerlink" href="#script-hdmi-mode-sh" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nb">cd</span> ~/Programs/Elecrow-LCD35
+sudo ./Elecrow-LCD35
+</pre></div>
+</div>
+</div>
+</div>
 <div class="section" id="links-utiles">
-<h2><a class="toc-backref" href="#id5">Links útiles</a><a class="headerlink" href="#links-utiles" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id8">Links útiles</a><a class="headerlink" href="#links-utiles" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://www.elecrow.com/wiki/index.php?title=3.5_Inch_480x320_TFT_Display_with_Touch_Screen_for_Raspberry_Pi">Tutorial - 3.5 Inch 480x320 TFT Display with Touch Screen for Raspberry Pi</a></li>
 <li><a class="reference external" href="https://github.com/Elecrow-RD/Elecrow-LCD35">Elecrow-LCD35 GitHub repository</a></li>
