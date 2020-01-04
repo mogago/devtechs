@@ -68,6 +68,7 @@ Welcome to DevTechs's documentation!
     :caption: SDN
 
     topics/sdn/_sdn
+    topics/sdn/sdn-with-openstack-book/_sdn-with-openstack-book
 
 .. toctree::
     :maxdepth: 2
