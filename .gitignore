@@ -1,4 +1,7 @@
+# SDN WITH OPENSTACK (BOOK)
+# archivos .doctree para cada archivo dentro del directorio sdn-with-openstack-book (misma organización que la fuente)
 docs/build/doctrees/topics/sdn/sdn-with-openstack-book/*
+# imágenes dentro de build/html (directorio de imágenes de toda la página, comparten el mismo directorio)
 docs/build/html/_images/controller-gui.png
 docs/build/html/_images/image_01_001.jpg
 docs/build/html/_images/image_01_002.jpg
@@ -41,6 +44,58 @@ docs/build/html/_images/ovs-dlux-nodes.png
 docs/build/html/_images/ovs-dlux-topology.png
 docs/build/html/_images/ovs-odl-topology.png
 docs/build/html/_images/topology-final.png
+# archivos .txt para cada archivo dentro del directorio sdn-with-openstack-book (misma organización que la fuente)
 docs/build/html/_sources/topics/sdn/sdn-with-openstack-book/*
+# archivos .html para cada archivo dentro del directorio sdn-with-openstack-book (misma organización que la fuente)
 docs/build/html/topics/sdn/sdn-with-openstack-book/*
+# archivos .rst creados por mí (fuente)
 docs/source/topics/sdn/sdn-with-openstack-book/*
+
+# MASTERING KVM VIRTUALIZATION
+# archivos .doctree para cada archivo dentro del directorio mastering-kvm-virtualization-book (misma organización que la fuente)
+docs/build/doctrees/topics/virtualization/mastering-kvm-virtualization-book/*
+# imágenes dentro de build/html (directorio de imágenes de toda la página, comparten el mismo directorio)
+docs/build/html/_images/ch01-01.png
+docs/build/html/_images/ch01-02.png
+docs/build/html/_images/ch01-03.png
+docs/build/html/_images/ch01-04.png
+docs/build/html/_images/ch01-05.png
+docs/build/html/_images/ch01-06.png
+docs/build/html/_images/ch01-07.png
+docs/build/html/_images/ch01-08.png
+docs/build/html/_images/ch01-09.png
+docs/build/html/_images/ch01-10.png
+docs/build/html/_images/ch01-11.png
+docs/build/html/_images/ch02-01.png
+docs/build/html/_images/ch02-02.png
+docs/build/html/_images/ch02-03.png
+docs/build/html/_images/ch02-04.png
+docs/build/html/_images/ch02-05.png
+docs/build/html/_images/ch02-06.png
+docs/build/html/_images/ch02-07.png
+docs/build/html/_images/ch02-08.png
+docs/build/html/_images/ch02-09.png
+docs/build/html/_images/ch02-10.png
+docs/build/html/_images/ch03-01.png
+docs/build/html/_images/ch03-02.png
+docs/build/html/_images/ch03-03.png
+docs/build/html/_images/ch03-04.png
+docs/build/html/_images/ch04-01.png
+docs/build/html/_images/ch04-02.png
+docs/build/html/_images/ch04-03.png
+docs/build/html/_images/ch04-04.png
+docs/build/html/_images/ch04-05.png
+docs/build/html/_images/ch04-06.png
+docs/build/html/_images/ch04-07.png
+docs/build/html/_images/ch04-08.png
+docs/build/html/_images/ch04-09.png
+docs/build/html/_images/ch04-10.png
+docs/build/html/_images/ch04-11.png
+docs/build/html/_images/ch04-12.png
+docs/build/html/_images/ch04-13.png
+# archivos .txt para cada archivo dentro del directorio mastering-kvm-virtualization-book (misma organización que la fuente)
+docs/build/html/_sources/topics/virtualization/mastering-kvm-virtualization-book/*
+# archivos .html para cada archivo dentro del directorio mastering-kvm-virtualization-book (misma organización que la fuente)
+docs/build/html/topics/virtualization/mastering-kvm-virtualization-book/*
+# archivos .rst creados por mí (fuente)
+docs/source/topics/virtualization/mastering-kvm-virtualization-book/*
