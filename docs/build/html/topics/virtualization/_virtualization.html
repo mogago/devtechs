@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../search.html" />
-    <link rel="next" title="Web" href="../web/_web.html" />
-    <link rel="prev" title="SDN" href="../sdn/_sdn.html" /> 
+    <link rel="next" title="Mastering KVM Virtualization Book" href="mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html" />
+    <link rel="prev" title="Chapter 5. Getting Started with OpenDaylight" href="../sdn/sdn-with-openstack-book/chapter5.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -93,6 +93,8 @@
 <p class="caption"><span class="caption-text">GNU/Linux</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/user-management.html">User Management</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Markdown</span></p>
 <ul>
@@ -110,13 +112,22 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
 </ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
 <p class="caption"><span class="caption-text">SDN</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Virtualization</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Web</span></p>
 <ul>
@@ -191,6 +202,120 @@
 <li>QEMU/KVM</li>
 <li>Virtual Networks</li>
 </ul>
+<p>MASTERING KVM VIRTUALIZATION:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>CH3:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Revisión de los requerimientos para nuestro entorno de virtualización (Determining the right system requirements for your environment)</dt>
+<dd><ul class="first last">
+<li>Búsqueda de flags: grep –color -Ew “svm|vmx|lm” /proc/cpuinfo</li>
+<li>Búsqueda de módulos KVM: lsmod | grep kvm</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Instalación de los paquetes de virtualización (Setting up the environment)</dt>
+<dd><ul class="first last">
+<li>Con yum: yum install qemu-kvm libvirt virt-install virt-manager -y</li>
+<li>Con apt (investigar): apt-get install virt-manager</li>
+<li>Instalación grupal: yum groupinstall «virtualization» -y</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Inicializar los servicios: systemctl enable libvirtd &amp;&amp; systemctl start libvirtd</li>
+<li>Ver versión de libvirt: libvirtd –version</li>
+<li><dl class="first docutils">
+<dt>Verificar capacidades de virtualización del sistema:</dt>
+<dd><ul class="first last">
+<li>virt-host-validate</li>
+<li>virsh nodeinfo</li>
+<li>virsh domcapabilities (virsh domcapabilities | grep -i max), (virsh domcapabilities | grep diskDevice -A 5)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Conexión en virt-manager (Hardware configuration examples)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Tutoriales:</p>
+<ol class="arabic simple">
+<li>Revisar los requerimientos para virtualización QEMU/KVM</li>
+<li>Instalación de paquetes para virtualización QEMU/KVM (yum, apt) e iniciar servicios</li>
+<li>Crear una conexión en virt-manager o virsh</li>
+</ol>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>CH4:</dt>
+<dd><ul class="first last">
+<li>polkit (Introducing virt-manager)</li>
+<li>Virtual Network Tab: virt-manager</li>
+<li>listado de redes con virsh (Virtual Network Tab): virsh net-list –all</li>
+<li>detalle de red con virsh (Virtual Network Tab): <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-info</span> <span class="pre">default</span></code> , <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-dumpxml</span> <span class="pre">default</span></code></li>
+<li>Comandos básicos de virsh: <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-destroy</span></code> y <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-start</span></code></li>
+<li>Storage tab de <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></li>
+<li><dl class="first docutils">
+<dt>Creación de una VM con wizard de virt-manager (Creating a new virtual machine wizard)</dt>
+<dd><ul class="first last">
+<li>Base de datos de SOs: libosinfo, sinfo-query</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Método de instalación por red en virt-manager (The Network installation (HTTP, FTP, or NFS) method)</li>
+<li>Método Instalación por PXE en virt-manager, con macvtap y bridge (Network Boot (PXE))</li>
+<li>Método de Instalación con una imagen de disco existente (Importing an existing disk image)</li>
+<li><dl class="first docutils">
+<dt>Usando virt-install para la creación de una VM y configuración del SO guest. (Introducing <code class="docutils literal notranslate"><span class="pre">virt-install</span></code>, Installing a Windows 7 Guest using the <code class="docutils literal notranslate"><span class="pre">virt-install</span></code> command)</dt>
+<dd><ul class="first last">
+<li>comando <code class="docutils literal notranslate"><span class="pre">qemu-img</span></code> para crear un disco virtual</li>
+<li>comando <code class="docutils literal notranslate"><span class="pre">virt-install</span> <span class="pre">--prompt</span></code> para una instalación interactiva de la VM.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Instalación y uso de <code class="docutils literal notranslate"><span class="pre">virt-builder</span></code> para personalizar un SO con plantillas. Uso junto <code class="docutils literal notranslate"><span class="pre">virt-install</span></code> para automatizar el proceso de despliegue de la VM (Introducing virt-builder)</dt>
+<dd><ul class="first last">
+<li>uso <code class="docutils literal notranslate"><span class="pre">virt-builder</span></code> y  combinación con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></li>
+<li>listar VMs con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">list</span> <span class="pre">--all</span></code></li>
+<li>iniciar la VM con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">start</span> <span class="pre">&lt;vname&gt;</span></code></li>
+<li>opciones de virt-builder y virt-builder –note &lt;guest&gt;</li>
+<li>caché de virt-builder: <code class="docutils literal notranslate"><span class="pre">virt-builder</span> <span class="pre">--print-cache</span></code></li>
+<li>eliminar caché: <code class="docutils literal notranslate"><span class="pre">virt-builder</span> <span class="pre">--delete-cache</span></code></li>
+<li>descargar todas las plantillas a caché: <code class="docutils literal notranslate"><span class="pre">virt-builder</span> <span class="pre">--cache-all-templates</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Creación de una VM usando <code class="docutils literal notranslate"><span class="pre">oz</span></code> (Introducing <code class="docutils literal notranslate"><span class="pre">oz</span></code>): instalación de <code class="docutils literal notranslate"><span class="pre">oz</span></code>, archivo TDL, <code class="docutils literal notranslate"><span class="pre">oz-install</span></code> para construir la imagen, virsh define + virsh start</dt>
+<dd><ul class="first last">
+<li>Archivo de configuración para creación de VMs en <code class="docutils literal notranslate"><span class="pre">oz</span></code>: <code class="docutils literal notranslate"><span class="pre">/etc/oz/oz.cfg</span></code> (The oz configuration file)</li>
+<li>Crear una VM usando <code class="docutils literal notranslate"><span class="pre">oz</span></code> (Creating a virtual machine using <code class="docutils literal notranslate"><span class="pre">oz</span></code>)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Tutoriales:</p>
+<ol class="arabic simple">
+<li>Creación de VMs usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> (métodos de medio: ISO, PXE, HTTP)</li>
+<li>Ver detalles de red con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></li>
+<li>Creación de VMs usando <code class="docutils literal notranslate"><span class="pre">virt-install</span></code> (+ <code class="docutils literal notranslate"><span class="pre">qemu-img</span></code> para crear un disco virtual)</li>
+<li>Creación de VMs usando <code class="docutils literal notranslate"><span class="pre">virt-builder</span></code></li>
+<li>Creación de VMs usando <code class="docutils literal notranslate"><span class="pre">oz</span></code></li>
+</ol>
 </div>
 
 
@@ -201,10 +326,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../web/_web.html" class="btn btn-neutral float-right" title="Web" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html" class="btn btn-neutral float-right" title="Mastering KVM Virtualization Book" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../sdn/_sdn.html" class="btn btn-neutral float-left" title="SDN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../sdn/sdn-with-openstack-book/chapter5.html" class="btn btn-neutral float-left" title="Chapter 5. Getting Started with OpenDaylight" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

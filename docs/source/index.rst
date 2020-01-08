@@ -75,6 +75,7 @@ Welcome to DevTechs's documentation!
     :caption: Virtualization
 
     topics/virtualization/_virtualization
+    topics/virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book
 
 .. toctree::
     :maxdepth: 2
