@@ -1,0 +1,686 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Despliegue automatizado de VMs con oz &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Web" href="../../web/_web.html" />
+    <link rel="prev" title="Despliegue automatizado de VMs con virt-builder" href="virt-builder.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_qemu-kvm.html">QEMU/KVM Virtualization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html">Requerimientos de virtualización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu-img.html">Comando <code class="docutils literal notranslate"><span class="pre">qemu-img</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-builder.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">virt-builder</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">oz</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduccion-a-oz">Introducción a <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#usando-oz">Usando <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-de-configuracion-de-oz">Archivo de configuración de <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#log-de-oz-install">Log de oz-install</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_qemu-kvm.html">QEMU/KVM Virtualization</a> &raquo;</li>
+        
+      <li>Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">oz</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/qemu-kvm/oz.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="despliegue-automatizado-de-vms-con-oz">
+<h1><a class="toc-backref" href="#id1">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">oz</span></code></a><a class="headerlink" href="#despliegue-automatizado-de-vms-con-oz" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#despliegue-automatizado-de-vms-con-oz" id="id1">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">oz</span></code></a><ul>
+<li><a class="reference internal" href="#introduccion-a-oz" id="id2">Introducción a <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+<li><a class="reference internal" href="#usando-oz" id="id3">Usando <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+<li><a class="reference internal" href="#archivo-de-configuracion-de-oz" id="id4">Archivo de configuración de <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+<li><a class="reference internal" href="#referencias" id="id5">Referencias</a></li>
+<li><a class="reference internal" href="#log-de-oz-install" id="id6">Log de oz-install</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="introduccion-a-oz">
+<h2><a class="toc-backref" href="#id2">Introducción a <code class="docutils literal notranslate"><span class="pre">oz</span></code></a><a class="headerlink" href="#introduccion-a-oz" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">oz</span></code> es un conjunto de programas útiles para crear VMs <strong>JEOS (Just Enough Operating System)</strong> con una mínima entrada del guest. La entrada mínima por parte del usuario será: nombre del guest y detalles de SO como arquitectura, URL para el OS tree o ISO y contraseña root. Todos estos atributos pueden definirse en un archivo XML simple llamado <a class="reference external" href="https://github.com/clalancette/oz/wiki/Oz-template-description-language">TDL (Template Definition Language)</a>.</p>
+<p>La plantilla TDL empleada contendrá los siguientes parámetros:</p>
+<ul class="simple">
+<li>La ISO o URI en la que la imagen estará basada</li>
+<li>Tamaño de disco</li>
+<li>Los paquetes extra a instalar</li>
+<li>Los comandos a ejecutar luego de que la imagen es creada</li>
+<li>Los archivos a ser introducidos luego de que la imagen es creada</li>
+</ul>
+<p>En resumen, el archivo TDL describe al SO que el usuario quiere instalar, de dónde obtener el medio de instalación y cualquier paquete adicional o acción que el usuario desee se realice en el SO. Ver <a class="reference external" href="https://github.com/clalancette/oz/wiki/oz-examples">ejemplos de TDL y usos</a>.</p>
+<p>Con este grupo de herramientas es posible instalar una variedad de SOs. A bajo nivel usa componentes de infraestructura de virtualización conocidos como <code class="docutils literal notranslate"><span class="pre">qemu/kvm</span></code>, <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> y <code class="docutils literal notranslate"><span class="pre">libguestfs</span></code>. Para la instalación de SOs se emplean un conjunto de archivos predefinidos <strong>kickstart</strong> para sistemas basados en Red Hat, archivos <strong>preseed</strong> para sistemas basados en Debian y archivos <strong>XML</strong> para instalaciones de Windows automatizadas.</p>
+<p>Las imágenes del SO compatible con <code class="docutils literal notranslate"><span class="pre">oz</span></code> debe estar diseñado para una arquitectura de CPU <strong>i386</strong> o <strong>x86_64</strong>. Y puede ser Debian, Fedora, FreeBSD, Mandrake, OpenSUSE, RHEL, CentOS, Ubuntu y Windows.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ oz-install -h
+
+Currently supported architectures are:
+    i386, x86_64
+Currently supported operating systems are:
+    Debian: <span class="m">5</span>, <span class="m">6</span>, <span class="m">7</span>, <span class="m">8</span>
+    Fedora Core: <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">5</span>, <span class="m">6</span>
+    Fedora: <span class="m">7</span>, <span class="m">8</span>, <span class="m">9</span>, <span class="m">10</span>, <span class="m">11</span>, <span class="m">12</span>, <span class="m">13</span>, <span class="m">14</span>, <span class="m">15</span>, <span class="m">16</span>, <span class="m">17</span>, <span class="m">18</span>, <span class="m">19</span>, <span class="m">20</span>, <span class="m">21</span>, <span class="m">22</span>, <span class="m">23</span>, <span class="m">24</span>, <span class="m">25</span>, <span class="m">26</span>
+    FreeBSD: <span class="m">10</span>, <span class="m">11</span>
+    Mageia: <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">4</span>.1, <span class="m">5</span>
+    Mandrake: <span class="m">8</span>.2, <span class="m">9</span>.0, <span class="m">9</span>.1, <span class="m">9</span>.2, <span class="m">10</span>.0, <span class="m">10</span>.1
+    Mandriva: <span class="m">2005</span>, <span class="m">2006</span>.0, <span class="m">2007</span>.0, <span class="m">2008</span>.0
+    OpenSUSE: <span class="m">10</span>.3, <span class="m">11</span>.0, <span class="m">11</span>.1, <span class="m">11</span>.2, <span class="m">11</span>.3, <span class="m">11</span>.4, <span class="m">12</span>.1, <span class="m">12</span>.2, <span class="m">12</span>.3, <span class="m">13</span>.1, <span class="m">13</span>.2, <span class="m">42</span>.1, <span class="m">42</span>.2
+    RHEL <span class="m">2</span>.1: GOLD, U2, U3, U4, U5, U6
+    RHEL <span class="m">7</span>: Beta, <span class="m">0</span>, <span class="m">1</span>, <span class="m">2</span>
+    RHEL/CentOS <span class="m">3</span>: GOLD, U1, U2, U3, U4, U5, U6, U7, U8, U9
+    RHEL/CentOS/Scientific Linux <span class="m">4</span>: GOLD, U1, U2, U3, U4, U5, U6, U7, U8, U9
+    RHEL/OL/CentOS/Scientific Linux<span class="o">{</span>,CERN<span class="o">}</span> <span class="m">5</span>: GOLD, U1, U2, U3, U4, U5, U6, U7, U8, U9, U10, U11
+    RHEL/OL/CentOS/Scientific Linux<span class="o">{</span>,CERN<span class="o">}</span> <span class="m">6</span>: <span class="m">0</span>, <span class="m">1</span>, <span class="m">2</span>, <span class="m">3</span>, <span class="m">4</span>, <span class="m">5</span>, <span class="m">6</span>, <span class="m">7</span>, <span class="m">8</span>
+    RHL: <span class="m">7</span>.0, <span class="m">7</span>.1, <span class="m">7</span>.2, <span class="m">7</span>.3, <span class="m">8</span>, <span class="m">9</span>
+    Ubuntu: <span class="m">5</span>.04, <span class="m">5</span>.10, <span class="m">6</span>.06<span class="o">[</span>.1,.2<span class="o">]</span>, <span class="m">6</span>.10, <span class="m">7</span>.04, <span class="m">7</span>.10, <span class="m">8</span>.04<span class="o">[</span>.1,.2,.3,.4<span class="o">]</span>, <span class="m">8</span>.10, <span class="m">9</span>.04, <span class="m">9</span>.10, <span class="m">10</span>.04<span class="o">[</span>.1,.2,.3<span class="o">]</span>, <span class="m">10</span>.10, <span class="m">11</span>.04, <span class="m">11</span>.10, <span class="m">12</span>.04<span class="o">[</span>.1,.2,.3,.4,.5<span class="o">]</span>, <span class="m">12</span>.10, <span class="m">13</span>.04, <span class="m">13</span>.10, <span class="m">14</span>.04<span class="o">[</span>.1,.2,.3,.4,.5<span class="o">]</span>, <span class="m">14</span>.10, <span class="m">15</span>.04, <span class="m">15</span>.10, <span class="m">16</span>.04<span class="o">[</span>.1<span class="o">]</span>, <span class="m">16</span>.10, <span class="m">17</span>.04
+    Windows: <span class="m">2000</span>, XP, <span class="m">2003</span>, <span class="m">7</span>, <span class="m">2008</span>, <span class="m">2012</span>, <span class="m">8</span>, <span class="m">8</span>.1, <span class="m">2016</span>, <span class="m">10</span>
+</pre></div>
+</div>
+<p>Para comenzar a usar <code class="docutils literal notranslate"><span class="pre">oz</span></code> con el fin de crear VMs y desplegarlas de forma automatizada sigamos los siguientes pasos:</p>
+</div>
+<div class="section" id="usando-oz">
+<h2><a class="toc-backref" href="#id3">Usando <code class="docutils literal notranslate"><span class="pre">oz</span></code></a><a class="headerlink" href="#usando-oz" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Instalar <code class="docutils literal notranslate"><span class="pre">oz</span></code>:</li>
+</ol>
+<ul class="simple">
+<li>Con <code class="docutils literal notranslate"><span class="pre">apt</span></code>: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">oz</span></code></li>
+<li>Con <code class="docutils literal notranslate"><span class="pre">yum</span></code>: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">oz</span></code></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li>Obtener un archivo ISO (local, HTTP, FTP) con el medio de instalación del SO deseado o una URL con el tree OS para obtener el SO a través de Internet.</li>
+<li>Crear nuestro archivo TDL (formato <code class="docutils literal notranslate"><span class="pre">.tdl</span></code>) con la descripción personalizada del SO que vamos a instalar:</li>
+</ol>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;template&gt;</span>
+<span class="nt">&lt;name&gt;</span>centos7<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;os&gt;</span>
+    <span class="nt">&lt;name&gt;</span>CentOS-7<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;version&gt;</span>7<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;arch&gt;</span>x86_64<span class="nt">&lt;/arch&gt;</span>
+    <span class="nt">&lt;install</span> <span class="na">type=</span><span class="s">&#39;iso&#39;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;iso&gt;</span>http://mirror.unimagdalena.edu.co/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso<span class="nt">&lt;/iso&gt;</span>
+    <span class="nt">&lt;/install&gt;</span>
+<span class="nt">&lt;/os&gt;</span>
+<span class="nt">&lt;description&gt;</span>CentOS 7 x86_64 template<span class="nt">&lt;/description&gt;</span>
+<span class="nt">&lt;/template&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">/template/name</span></code> es un nombre definido por el usuario. Puede ser cualquiera pero debe ser único entre todos los TDLs que deseemos construir.</li>
+<li><code class="docutils literal notranslate"><span class="pre">/template/os/name</span></code>, <code class="docutils literal notranslate"><span class="pre">/template/os/version</span></code> y <code class="docutils literal notranslate"><span class="pre">/template/os/arch</span></code> es el nombre, versión y arquitectura del SO que deseamos instalar, respectivamente.</li>
+<li><code class="docutils literal notranslate"><span class="pre">/template/os/install</span></code> le dice a <code class="docutils literal notranslate"><span class="pre">oz</span></code> de dónde obtener el medio de instalación. En este caso usamos un archivo <code class="docutils literal notranslate"><span class="pre">iso</span></code>, entonces necesitamos un elemento ISO en el archivo XML apuntando al medio de instalación ISO.</li>
+<li><code class="docutils literal notranslate"><span class="pre">/template/description</span></code> es un parámetro  opcional que describe esta plantilla</li>
+</ul>
+<ol class="arabic simple" start="4">
+<li>Una vez hayamos guardado nuestro archivo <code class="docutils literal notranslate"><span class="pre">.tdl</span></code> ejecutaremos el sigueinte comando:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># sudo oz-install /path/to/tdl-file.tdl</span>
+$ sudo oz-install -u -d3 ~/Downloads/my-centos7-template.tdl
+</pre></div>
+</div>
+<p>Sintáxis:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">-u</span></code>: Customize  the  image after installation.  This generally installs additional packages onto the  disk  image  after installation.</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">-d</span></code>: loglevel. Turn on debugging output to level loglevel.  Log levels:</dt>
+<dd><ul class="first last">
+<li>0 - errors only (this is the default)</li>
+<li>1 - errors and warnings</li>
+<li>2 - errors, warnings, and information</li>
+<li>3 - all messages</li>
+<li>4 - all messages, prepended with the level and classname</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Si hemos corrido <code class="docutils literal notranslate"><span class="pre">oz-install</span></code> con el modo de debugueo (<code class="docutils literal notranslate"><span class="pre">-d</span></code>) y con valor <code class="docutils literal notranslate"><span class="pre">3</span></code> veremos todo el log del proceso (<a class="reference internal" href="#log-de-oz-install">Log de oz-install</a>):</p>
+<ul class="simple">
+<li>Primero descargará el archivo <code class="docutils literal notranslate"><span class="pre">.iso</span></code> que hemos especificado en la URL. La dirección de descarga por defecto será <code class="docutils literal notranslate"><span class="pre">/var/lib/oz/isos/</span></code>.</li>
+<li>Luego comenzará a escanear los archivos que tiene el instalador</li>
+<li>Comenzará el proceso de instalación. Ahora podremos ver el porcentaje de avance.</li>
+<li>Luego se genera imagen de disco bajo la ruta /var/lib/libvirt/image con formato <code class="docutils literal notranslate"><span class="pre">.dsk</span></code>.</li>
+<li>También se habrá creado el archivo XML que puede usarse para iniciar el guest inmediatamente.</li>
+</ul>
+<ol class="arabic simple" start="5">
+<li>El archivo XML creado estará en el mismo directorio donde está nuestra plantilla TDL. Usar el archivo XML para definir el guest (<code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">define</span></code>) y crear la VM (<code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">start</span></code>):</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># virsh define &lt;XML-file&gt;</span>
+$ virsh define centos7Jan_09_2020-18<span class="se">\:</span><span class="m">19</span><span class="se">\:</span><span class="m">42</span>
+
+Domain centos7 defined from centos7Jan_09_2020-18:19:42
+
+<span class="c1"># virsh start &lt;domain&gt;</span>
+$ virsh start centos7
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Abrir una consola de nuestra VM con <code class="docutils literal notranslate"><span class="pre">virt-viewer</span></code> o <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virt-viewer centos7
+</pre></div>
+</div>
+</div>
+<div class="section" id="archivo-de-configuracion-de-oz">
+<h2><a class="toc-backref" href="#id4">Archivo de configuración de <code class="docutils literal notranslate"><span class="pre">oz</span></code></a><a class="headerlink" href="#archivo-de-configuracion-de-oz" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El archivo <code class="docutils literal notranslate"><span class="pre">/etc/oz/oz.cfg</span></code> es el archivo de configuración de <code class="docutils literal notranslate"><span class="pre">oz</span></code> para la creación de VMs. El contenido por defecto es el siguiente:</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="k">[paths]</span>
+<span class="na">output_dir</span> <span class="o">=</span> <span class="s">/var/lib/libvirt/images</span>
+<span class="na">data_dir</span> <span class="o">=</span> <span class="s">/var/lib/oz</span>
+<span class="na">screenshot_dir</span> <span class="o">=</span> <span class="s">/var/lib/oz/screenshots</span>
+<span class="c1"># sshprivkey = /etc/oz/id_rsa-icicle-gen</span>
+
+<span class="k">[libvirt]</span>
+<span class="na">uri</span> <span class="o">=</span> <span class="s">qemu:///system</span>
+<span class="na">image_type</span> <span class="o">=</span> <span class="s">raw</span>
+<span class="c1"># type = kvm</span>
+<span class="c1"># bridge_name = virbr0</span>
+<span class="c1"># cpus = 1</span>
+<span class="c1"># memory = 1024</span>
+
+<span class="k">[cache]</span>
+<span class="na">original_media</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="na">modified_media</span> <span class="o">=</span> <span class="s">no</span>
+<span class="na">jeos</span> <span class="o">=</span> <span class="s">no</span>
+
+<span class="k">[icicle]</span>
+<span class="na">safe_generation</span> <span class="o">=</span> <span class="s">no</span>
+
+<span class="k">[timeouts]</span>
+<span class="na">install</span> <span class="o">=</span> <span class="s">1200</span>
+<span class="na">inactivity</span> <span class="o">=</span> <span class="s">300</span>
+<span class="na">boot</span> <span class="o">=</span> <span class="s">300</span>
+<span class="na">shutdown</span> <span class="o">=</span> <span class="s">90</span>
+</pre></div>
+</div>
+<p>Como vemos, aquí podemos establecer varios parámetros de configuración para la creación de VMs. Algunos importantes son:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">output_dir</span></code>: ruta de almancenamiento de las imágenes posterior a su creación. (<code class="docutils literal notranslate"><span class="pre">/var/lib/libvirt/images</span></code> por defecto).</li>
+<li><code class="docutils literal notranslate"><span class="pre">bridge_name</span></code>: bridge al cual se conectará la VM (<code class="docutils literal notranslate"><span class="pre">vibr0</span></code> por defecto).</li>
+<li><code class="docutils literal notranslate"><span class="pre">cpus</span></code>: cantidad de CPUs asignados a la VM</li>
+<li><code class="docutils literal notranslate"><span class="pre">memoria</span></code>: memoria RAM asignada a la VM</li>
+</ul>
+<p>El resto de directivas las podemos encontrar en <a class="reference external" href="https://github.com/clalancette/oz/wiki/oz-customize">oz-customize</a>.</p>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id5">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/clalancette/oz/wiki/Oz-template-description-language">TDL (Template Definition Language)</a></li>
+<li><a class="reference external" href="https://github.com/clalancette/oz/wiki/oz-examples">ejemplos de TDL y usos</a></li>
+<li><a class="reference external" href="https://wiki.centos.org/Download">Download CentOS Linux ISO images</a></li>
+<li><a class="reference external" href="https://www.leaseweb.com/labs/2013/12/vm-template-creation-oz-install/">VM template creation with oz-install (with preseed)</a></li>
+<li><a class="reference external" href="https://kashyapc.wordpress.com/2011/08/09/using-oz-tool-to-create-virtual-guests-with-minimal-input/">Using OZ tool to create virtual guests (with minimal input)</a></li>
+<li><a class="reference external" href="https://github.com/clalancette/oz/wiki/oz-customize">oz-customize</a></li>
+</ul>
+</div>
+<div class="section" id="log-de-oz-install">
+<h2><a class="toc-backref" href="#id6">Log de oz-install</a><a class="headerlink" href="#log-de-oz-install" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ sudo oz-install -u -d3 ~/Downloads/my-centos7-template.tdl
+
+Libvirt network without a forward element, skipping
+libvirt bridge name is virbr0
+Libvirt type is kvm
+Name: centos7, UUID: 50507349-dbd5-4fc5-8c54-7d6e6ea42de6
+MAC: 52:54:00:89:09:e6, distro: CentOS-7
+update: 7, arch: x86_64, diskimage: /var/lib/libvirt/images/centos7.dsk
+nicmodel: virtio, clockoffset: utc
+mousetype: ps2, disk_bus: virtio, disk_dev: vda
+icicletmp: /var/lib/oz/icicletmp/centos7, listen_port: 44993
+console_listen_port: 36931
+Original ISO path: /var/lib/oz/isos/CentOS-77x86_64-iso.iso
+Modified ISO cache: /var/lib/oz/isos/CentOS-77x86_64-iso-oz.iso
+Output ISO path: /var/lib/libvirt/images/centos7-iso-oz.iso
+ISO content path: /var/lib/oz/isocontent/centos7-iso
+Checking for guest conflicts with centos7
+Generating install media
+Fetching the original media
+Starting new HTTP connection (1): mirror.unimagdalena.edu.co:80
+http://mirror.unimagdalena.edu.co:80 &quot;POST /centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso HTTP/1.1&quot; 200 987758592
+Fetching the original install media from http://mirror.unimagdalena.edu.co/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso
+Starting new HTTP connection (1): mirror.unimagdalena.edu.co:80
+http://mirror.unimagdalena.edu.co:80 &quot;GET /centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso HTTP/1.1&quot; 200 987758592
+10240kB of 964608kB
+20480kB of 964608kB
+#..............
+962560kB of 964608kB
+964608kB of 964608kB
+Copying ISO contents for modification
+Setting up guestfs handle for centos7
+Adding ISO image /var/lib/oz/isos/CentOS-77x86_64-iso.iso
+Launching guestfs
+Mounting ISO
+Checking if there is enough space on the filesystem
+Extracting ISO contents
+Putting the kickstart in place
+Modifying isolinux.cfg
+Generating new ISO
+I: -input-charset not specified, using utf-8 (detected in locale settings)
+
+genisoimage 1.1.11 (Linux)
+Scanning /var/lib/oz/isocontent/centos7-iso
+Scanning /var/lib/oz/isocontent/centos7-iso/Packages
+Excluded: /var/lib/oz/isocontent/centos7-iso/Packages/TRANS.TBL
+Excluded: /var/lib/oz/isocontent/centos7-iso/TRANS.TBL
+Scanning /var/lib/oz/isocontent/centos7-iso/EFI
+Excluded: /var/lib/oz/isocontent/centos7-iso/EFI/TRANS.TBL
+Scanning /var/lib/oz/isocontent/centos7-iso/EFI/BOOT
+Excluded: /var/lib/oz/isocontent/centos7-iso/EFI/BOOT/TRANS.TBL
+Scanning /var/lib/oz/isocontent/centos7-iso/EFI/BOOT/fonts
+Excluded: /var/lib/oz/isocontent/centos7-iso/EFI/BOOT/fonts/TRANS.TBL
+Scanning /var/lib/oz/isocontent/centos7-iso/isolinux
+Excluded: /var/lib/oz/isocontent/centos7-iso/isolinux/TRANS.TBL
+Excluded by match: /var/lib/oz/isocontent/centos7-iso/isolinux/boot.cat
+Scanning /var/lib/oz/isocontent/centos7-iso/repodata
+Excluded: /var/lib/oz/isocontent/centos7-iso/repodata/TRANS.TBL
+Scanning /var/lib/oz/isocontent/centos7-iso/LiveOS
+Excluded: /var/lib/oz/isocontent/centos7-iso/LiveOS/TRANS.TBL
+Scanning /var/lib/oz/isocontent/centos7-iso/images
+Excluded: /var/lib/oz/isocontent/centos7-iso/images/TRANS.TBL
+Scanning /var/lib/oz/isocontent/centos7-iso/images/pxeboot
+Excluded: /var/lib/oz/isocontent/centos7-iso/images/pxeboot/TRANS.TBL
+Using RPM_G000.;1 for  /RPM-GPG-KEY-CentOS-Testing-7 (RPM-GPG-KEY-CentOS-7)
+Using PYTHO000.RPM;1 for  /var/lib/oz/isocontent/centos7-iso/Packages/python-pyudev-0.15-9.el7.noarch.rpm (python-pycurl-7.19.0-19.el7.x86_64.rpm)
+Using LIBGL000.RPM;1 for  /var/lib/oz/isocontent/centos7-iso/Packages/libglvnd-egl-1.0.1-0.8.git5baa1e5.el7.x86_64.rpm (libglvnd-glx-1.0.1-0.8.git5baa1e5.el7.x86_64.rpm)
+Using NETWO000.RPM;1 for  /var/lib/oz/isocontent/centos7-iso/Packages/NetworkManager-1.18.0-5.el7.x86_64.rpm (NetworkManager-team-1.18.0-5.el7.x86_64.rpm)
+#..............
+Using PCIUT000.RPM;1 for  /var/lib/oz/isocontent/centos7-iso/Packages/pciutils-3.5.1-3.el7.x86_64.rpm (pciutils-libs-3.5.1-3.el7.x86_64.rpm)
+Using CRYPT000.RPM;1 for  /var/lib/oz/isocontent/centos7-iso/Packages/cryptsetup-libs-2.0.3-5.el7.x86_64.rpm (cryptsetup-2.0.3-5.el7.x86_64.rpm)
+Using KERNE000.RPM;1 for  /var/lib/oz/isocontent/centos7-iso/Packages/kernel-tools-3.10.0-1062.el7.x86_64.rpm (kernel-tools-libs-3.10.0-1062.el7.x86_64.rpm)
+Using E2FSP000.RPM;1 for  /var/lib/oz/isocontent/centos7-iso/Packages/e2fsprogs-1.42.9-16.el7.x86_64.rpm (e2fsprogs-libs-1.42.9-16.el7.x86_64.rpm)
+Writing:   Initial Padblock                        Start Block 0
+Done with: Initial Padblock                        Block(s)    16
+Writing:   Primary Volume Descriptor               Start Block 16
+Done with: Primary Volume Descriptor               Block(s)    1
+Writing:   Eltorito Volume Descriptor              Start Block 17
+Size of boot image is 4 sectors -&gt; No emulation
+Done with: Eltorito Volume Descriptor              Block(s)    1
+Writing:   Joliet Volume Descriptor                Start Block 18
+Done with: Joliet Volume Descriptor                Block(s)    1
+Writing:   End Volume Descriptor                   Start Block 19
+Done with: End Volume Descriptor                   Block(s)    1
+Writing:   Version block                           Start Block 20
+Done with: Version block                           Block(s)    1
+Writing:   Path table                              Start Block 21
+Done with: Path table                              Block(s)    4
+Writing:   Joliet path table                       Start Block 25
+Done with: Joliet path table                       Block(s)    4
+Writing:   Directory tree                          Start Block 29
+Done with: Directory tree                          Block(s)    48
+Writing:   Joliet directory tree                   Start Block 77
+Done with: Joliet directory tree                   Block(s)    33
+Writing:   Directory tree cleanup                  Start Block 110
+Done with: Directory tree cleanup                  Block(s)    0
+Writing:   Extension record                        Start Block 110
+Done with: Extension record                        Block(s)    1
+Writing:   The File(s)                             Start Block 111
+0.98% done, estimate finish Thu Jan  9 18:11:57 2020
+1.95% done, estimate finish Thu Jan  9 18:11:57 2020
+#..............
+98.63% done, estimate finish Thu Jan  9 18:12:00 2020
+99.60% done, estimate finish Thu Jan  9 18:12:00 2020
+Total translation table size: 124656
+Total rockridge attributes bytes: 55185
+Total directory bytes: 92160
+Path table size(bytes): 140
+Done with: The File(s)                             Block(s)    511779
+Writing:   Ending Padblock                         Start Block 511890
+Done with: Ending Padblock                         Block(s)    150
+Max brk space used ac000
+512040 extents written (1000 MB)
+
+
+Cleaning up old ISO data
+Generating 10GB diskimage for centos7
+Waiting for volume to be created, 90/90
+Running install for centos7
+Generate XML for guest centos7 with bootdev cdrom
+Generated XML:
+&lt;domain type=&quot;kvm&quot;&gt;
+&lt;name&gt;centos7&lt;/name&gt;
+&lt;memory&gt;1048576&lt;/memory&gt;
+&lt;currentMemory&gt;1048576&lt;/currentMemory&gt;
+&lt;uuid&gt;50507349-dbd5-4fc5-8c54-7d6e6ea42de6&lt;/uuid&gt;
+&lt;clock offset=&quot;utc&quot;/&gt;
+&lt;vcpu&gt;1&lt;/vcpu&gt;
+&lt;features&gt;
+    &lt;acpi/&gt;
+    &lt;apic/&gt;
+    &lt;pae/&gt;
+&lt;/features&gt;
+&lt;os&gt;
+    &lt;type&gt;hvm&lt;/type&gt;
+    &lt;boot dev=&quot;cdrom&quot;/&gt;
+&lt;/os&gt;
+&lt;on_poweroff&gt;destroy&lt;/on_poweroff&gt;
+&lt;on_reboot&gt;destroy&lt;/on_reboot&gt;
+&lt;on_crash&gt;destroy&lt;/on_crash&gt;
+&lt;devices&gt;
+    &lt;graphics type=&quot;vnc&quot; port=&quot;-1&quot;/&gt;
+    &lt;interface type=&quot;bridge&quot;&gt;
+    &lt;source bridge=&quot;virbr0&quot;/&gt;
+    &lt;mac address=&quot;52:54:00:89:09:e6&quot;/&gt;
+    &lt;model type=&quot;virtio&quot;/&gt;
+    &lt;/interface&gt;
+    &lt;input bus=&quot;ps2&quot; type=&quot;mouse&quot;/&gt;
+    &lt;serial type=&quot;pty&quot;&gt;
+    &lt;target port=&quot;0&quot;/&gt;
+    &lt;/serial&gt;
+    &lt;serial type=&quot;tcp&quot;&gt;
+    &lt;source host=&quot;127.0.0.1&quot; mode=&quot;bind&quot; service=&quot;44993&quot;/&gt;
+    &lt;protocol type=&quot;raw&quot;/&gt;
+    &lt;target port=&quot;1&quot;/&gt;
+    &lt;/serial&gt;
+    &lt;disk device=&quot;disk&quot; type=&quot;file&quot;&gt;
+    &lt;target bus=&quot;virtio&quot; dev=&quot;vda&quot;/&gt;
+    &lt;source file=&quot;/var/lib/libvirt/images/centos7.dsk&quot;/&gt;
+    &lt;driver type=&quot;raw&quot; name=&quot;qemu&quot;/&gt;
+    &lt;/disk&gt;
+    &lt;disk device=&quot;cdrom&quot; type=&quot;file&quot;&gt;
+    &lt;source file=&quot;/var/lib/libvirt/images/centos7-iso-oz.iso&quot;/&gt;
+    &lt;target dev=&quot;hdc&quot;/&gt;
+    &lt;/disk&gt;
+&lt;/devices&gt;
+&lt;/domain&gt;
+
+Waiting for centos7 to finish installing, 1200/1200
+Waiting for centos7 to finish installing, 1190/1200
+#..............
+Waiting for centos7 to finish installing, 750/1200
+Waiting for centos7 to finish installing, 740/1200
+Waiting for centos7 to finish shutdown, 90/90
+Install of centos7 succeeded
+Generate XML for guest centos7 with bootdev hd
+Generated XML:
+&lt;domain type=&quot;kvm&quot;&gt;
+&lt;name&gt;centos7&lt;/name&gt;
+&lt;memory&gt;1048576&lt;/memory&gt;
+&lt;currentMemory&gt;1048576&lt;/currentMemory&gt;
+&lt;uuid&gt;50507349-dbd5-4fc5-8c54-7d6e6ea42de6&lt;/uuid&gt;
+&lt;clock offset=&quot;utc&quot;/&gt;
+&lt;vcpu&gt;1&lt;/vcpu&gt;
+&lt;features&gt;
+    &lt;acpi/&gt;
+    &lt;apic/&gt;
+    &lt;pae/&gt;
+&lt;/features&gt;
+&lt;os&gt;
+    &lt;type&gt;hvm&lt;/type&gt;
+    &lt;boot dev=&quot;hd&quot;/&gt;
+&lt;/os&gt;
+&lt;on_poweroff&gt;destroy&lt;/on_poweroff&gt;
+&lt;on_reboot&gt;destroy&lt;/on_reboot&gt;
+&lt;on_crash&gt;destroy&lt;/on_crash&gt;
+&lt;devices&gt;
+    &lt;graphics type=&quot;vnc&quot; port=&quot;-1&quot;/&gt;
+    &lt;interface type=&quot;bridge&quot;&gt;
+    &lt;source bridge=&quot;virbr0&quot;/&gt;
+    &lt;mac address=&quot;52:54:00:89:09:e6&quot;/&gt;
+    &lt;model type=&quot;virtio&quot;/&gt;
+    &lt;/interface&gt;
+    &lt;input bus=&quot;ps2&quot; type=&quot;mouse&quot;/&gt;
+    &lt;serial type=&quot;pty&quot;&gt;
+    &lt;target port=&quot;0&quot;/&gt;
+    &lt;/serial&gt;
+    &lt;serial type=&quot;tcp&quot;&gt;
+    &lt;source host=&quot;127.0.0.1&quot; mode=&quot;bind&quot; service=&quot;44993&quot;/&gt;
+    &lt;protocol type=&quot;raw&quot;/&gt;
+    &lt;target port=&quot;1&quot;/&gt;
+    &lt;/serial&gt;
+    &lt;disk device=&quot;disk&quot; type=&quot;file&quot;&gt;
+    &lt;target bus=&quot;virtio&quot; dev=&quot;vda&quot;/&gt;
+    &lt;source file=&quot;/var/lib/libvirt/images/centos7.dsk&quot;/&gt;
+    &lt;driver type=&quot;raw&quot; name=&quot;qemu&quot;/&gt;
+    &lt;/disk&gt;
+&lt;/devices&gt;
+&lt;/domain&gt;
+
+Cleaning up after install
+Customizing image
+No additional packages, files, or commands to install, and icicle generation not requested, skipping customization
+Libvirt XML was written to centos7Jan_09_2020-18:19:42
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../web/_web.html" class="btn btn-neutral float-right" title="Web" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="virt-builder.html" class="btn btn-neutral float-left" title="Despliegue automatizado de VMs con virt-builder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

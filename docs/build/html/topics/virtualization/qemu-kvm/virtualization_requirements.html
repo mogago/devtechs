@@ -1,0 +1,469 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Requerimientos de virtualización &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Web" href="../../web/_web.html" />
+    <link rel="prev" title="QEMU/KVM Virtualization" href="_qemu-kvm.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_qemu-kvm.html">QEMU/KVM Virtualization</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Requerimientos de virtualización</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requerimientos-de-cpu">Requerimientos de CPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalando-herramientas">Instalando herramientas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#en-ubuntu-debian-con-apt">En UBUNTU/DEBIAN (con <code class="docutils literal notranslate"><span class="pre">apt</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#en-centos-rhel-con-yum">En CENTOS/RHEL (con <code class="docutils literal notranslate"><span class="pre">yum</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#iniciando-servicios">Iniciando servicios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validando-capacidades-del-sistema">Validando capacidades del sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#validando-con-virt-host-validate">Validando con <code class="docutils literal notranslate"><span class="pre">virt-host-validate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#validando-con-virsh">Validando con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_qemu-kvm.html">QEMU/KVM Virtualization</a> &raquo;</li>
+        
+      <li>Requerimientos de virtualización</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/qemu-kvm/virtualization_requirements.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="requerimientos-de-virtualizacion">
+<h1><a class="toc-backref" href="#id1">Requerimientos de virtualización</a><a class="headerlink" href="#requerimientos-de-virtualizacion" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#requerimientos-de-virtualizacion" id="id1">Requerimientos de virtualización</a><ul>
+<li><a class="reference internal" href="#requerimientos-de-cpu" id="id2">Requerimientos de CPU</a></li>
+<li><a class="reference internal" href="#instalando-herramientas" id="id3">Instalando herramientas</a><ul>
+<li><a class="reference internal" href="#en-ubuntu-debian-con-apt" id="id4">En UBUNTU/DEBIAN (con <code class="docutils literal notranslate"><span class="pre">apt</span></code>)</a></li>
+<li><a class="reference internal" href="#en-centos-rhel-con-yum" id="id5">En CENTOS/RHEL (con <code class="docutils literal notranslate"><span class="pre">yum</span></code>)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#iniciando-servicios" id="id6">Iniciando servicios</a></li>
+<li><a class="reference internal" href="#validando-capacidades-del-sistema" id="id7">Validando capacidades del sistema</a><ul>
+<li><a class="reference internal" href="#validando-con-virt-host-validate" id="id8">Validando con <code class="docutils literal notranslate"><span class="pre">virt-host-validate</span></code></a></li>
+<li><a class="reference internal" href="#validando-con-virsh" id="id9">Validando con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Según la cantidad de VMs y la carga de trabajo que deseemos correr podemos determinar los requerimientos físicos del equipo encargado de la virtualización y el aprovisionamiento de recursos, es decir, el equipo que tendrá el <strong>hypervisor QEMU/KVM</strong>. En base a esto decidiremos cuántos CPUs, memoria RAM y almacenamiento se asigna a cada VM.</p>
+<div class="section" id="requerimientos-de-cpu">
+<h2><a class="toc-backref" href="#id2">Requerimientos de CPU</a><a class="headerlink" href="#requerimientos-de-cpu" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Marcas fabricantes de CPUs han integrado <strong>extensiones de virtualización</strong> dentro de sus procesadores de <strong>arquitectura x86</strong>. A través de estas extensiones, KVM emplea una tecnología llamada <strong>hardware-accelarated virtualization</strong>; que para CPUs de Intel recibe el nombre de <strong>VT-x (Virtual Machine Extension)</strong>, mientras que en AMD es llamado <strong>AMD-V (AMD Virtualization)</strong>. Gracias a esto, es posible ejecutar el código de un Sistema Operativo (SO) guest en el CPU del host directamente. <a class="reference external" href="https://en.wikipedia.org/wiki/X86_virtualization#Intel_virtualization_(VT-x)">Referencia de virtualización x86</a>.</p>
+<p>Desde un sistema Linux podemos descubrir si nuestros procesadores cuentan con esta tecnología buscando un flag especial que lo compruebe: para Intel VT-x es <code class="docutils literal notranslate"><span class="pre">vmx</span></code> y para AMD-V es <code class="docutils literal notranslate"><span class="pre">svm</span></code>. Además si el CPU tiene una <strong>arquitectura de 64 bits</strong> veremos un flag extra de interés: <code class="docutils literal notranslate"><span class="pre">lm</span></code>.</p>
+<p>Para buscar los flags ejecutar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ grep --color -Ew <span class="s1">&#39;svm|vmx|lm&#39;</span> /proc/cpuinfo
+flags           : fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat
+<span class="hll">pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx rdtscp lm constant_tsc
+</span>arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq
+<span class="hll">dtes64 monitor ds_cpl vmx est tm2 ssse3 cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic popcnt
+</span>tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm cpuid_fault epb pti ssbd ibrs ibpb
+stibp tpr_shadow vnmi flexpriority ept vpid fsgsbase smep erms xsaveopt dtherm ida arat
+pln pts md_clear flush_l1d
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">svm</span></code>: CPU tiene AMD-V</li>
+<li><code class="docutils literal notranslate"><span class="pre">vmx</span></code>: CPU tiene VT-x</li>
+<li><code class="docutils literal notranslate"><span class="pre">lm</span></code>: soporte de 64-bit</li>
+</ul>
+<p>En el ejemplo de arriba vemos los flags de <code class="docutils literal notranslate"><span class="pre">vmx</span></code> y <code class="docutils literal notranslate"><span class="pre">lm</span></code>, significa que estamos empleando un procesador de 64-bits marca Intel en el host.</p>
+<p>Otro componente necesario para tener un sistema de virtualización funcional son los módulos de kernel responsables de soportar virtualización. Estos módulos pueden encontrarse en un sistema Linux con la herramienta <code class="docutils literal notranslate"><span class="pre">lsmod</span></code> (<a class="reference external" href="https://en.wikipedia.org/wiki/Lsmod">lsmod o loadble kernel modules</a>):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lsmod <span class="p">|</span> grep kvm
+
+kvm_intel             <span class="m">217088</span>  <span class="m">0</span>
+kvm                   <span class="m">610304</span>  <span class="m">1</span> kvm_intel
+</pre></div>
+</div>
+<p>En sistemas AMD veremos <code class="docutils literal notranslate"><span class="pre">kvm_amd</span></code> en vez de <code class="docutils literal notranslate"><span class="pre">kvm_intel</span></code>.</p>
+<p>En el caso que no aparezca algún módulo, deberemos cargarlo manualmenete con la herramienta de Linux <code class="docutils literal notranslate"><span class="pre">modprobe</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ modprobe kvm
+$ modprobe kvm_intel  <span class="c1"># Intel processors</span>
+$ modprobe kvm_amd    <span class="c1"># AMD processors</span>
+</pre></div>
+</div>
+<p>Más información en <a class="reference external" href="https://www.linux-kvm.org/page/Choose_the_right_kvm_%26_kernel_version">Three main components - KVM</a>.</p>
+</div>
+<div class="section" id="instalando-herramientas">
+<h2><a class="toc-backref" href="#id3">Instalando herramientas</a><a class="headerlink" href="#instalando-herramientas" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Instalaremos varios programas útiles para la virtualización:</p>
+<div class="section" id="en-ubuntu-debian-con-apt">
+<h3><a class="toc-backref" href="#id4">En UBUNTU/DEBIAN (con <code class="docutils literal notranslate"><span class="pre">apt</span></code>)</a><a class="headerlink" href="#en-ubuntu-debian-con-apt" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># QEMU/KVM, Virtual Machine Manager, Libvirt, bridge-utils (brctl)</span>
+$ sudo apt-get install -y qemu-kvm virt-manager libvirt-bin bridge-utils
+</pre></div>
+</div>
+<p>Mirando las dependencias de los paquetes instalados veremos que se han instalado otros paquetes importantes como: <code class="docutils literal notranslate"><span class="pre">virt-viewer</span></code>, <code class="docutils literal notranslate"><span class="pre">virtinst</span></code>, <code class="docutils literal notranslate"><span class="pre">libvirt-daemon-system</span></code>, <code class="docutils literal notranslate"><span class="pre">libvirt-clients</span></code></p>
+<p>Comandos útiles con <code class="docutils literal notranslate"><span class="pre">apt</span></code>:</p>
+<ul class="simple">
+<li>Paquetes instalados: <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">list</span> <span class="pre">--installed</span></code></li>
+<li>Dependencia de paquetes: <code class="docutils literal notranslate"><span class="pre">apt-cache</span> <span class="pre">depends</span> <span class="pre">vim</span></code></li>
+<li>Dependencia de paquetes reversa: <code class="docutils literal notranslate"><span class="pre">apt-cache</span> <span class="pre">rdepends</span> <span class="pre">vim</span></code> (o para ver los que tenemos instalados <code class="docutils literal notranslate"><span class="pre">apt-cache</span> <span class="pre">rdepends</span> <span class="pre">--installed</span> <span class="pre">vim</span></code>)</li>
+</ul>
+</div>
+<div class="section" id="en-centos-rhel-con-yum">
+<h3><a class="toc-backref" href="#id5">En CENTOS/RHEL (con <code class="docutils literal notranslate"><span class="pre">yum</span></code>)</a><a class="headerlink" href="#en-centos-rhel-con-yum" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo yum install -y qemu-kvm virt-manager libvirt virt-install virt-viewer
+</pre></div>
+</div>
+<p><a class="reference external" href="https://access.redhat.com/sites/default/files/attachments/rh_yum_cheatsheet_1214_jcs_print-1.pdf">Comandos útiles con yum</a>:</p>
+<ul class="simple">
+<li>Paquetes instalados: <code class="docutils literal notranslate"><span class="pre">yum</span> <span class="pre">list</span> <span class="pre">installed</span></code></li>
+<li>Dependencia de paquetes: <code class="docutils literal notranslate"><span class="pre">yum</span> <span class="pre">deplist</span> <span class="pre">nfs-utils</span></code></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">El paquete <code class="docutils literal notranslate"><span class="pre">bridge-utils</span></code> viene pre-instalado en algunas distribuciones como CentOS 7 (GNOME)</p>
+</div>
+</div>
+</div>
+<div class="section" id="iniciando-servicios">
+<h2><a class="toc-backref" href="#id6">Iniciando servicios</a><a class="headerlink" href="#iniciando-servicios" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Habiendo instalado todos los paquetes de virtualización, habilitaremos el servicio de <code class="docutils literal notranslate"><span class="pre">libvirtd</span></code>, que es el daemon de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ systemctl <span class="nb">enable</span> libvirtd <span class="o">&amp;&amp;</span> systemctl start libvirtd
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">libvirt</span></code> mostrará una API a clientes como <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> y <code class="docutils literal notranslate"><span class="pre">virsh</span></code> para poder comunicarse con <code class="docutils literal notranslate"><span class="pre">qemu-kvm</span></code>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Para ver la versión de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> en uso ejecutar: <code class="docutils literal notranslate"><span class="pre">libvirtd</span> <span class="pre">--version</span></code></p>
+</div>
+</div>
+<div class="section" id="validando-capacidades-del-sistema">
+<h2><a class="toc-backref" href="#id7">Validando capacidades del sistema</a><a class="headerlink" href="#validando-capacidades-del-sistema" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>A continuación se presentan dos herramientas útiles para verificar que nuestro sistema es apto para servir como virtualizador y ver sus capacidades:</p>
+<div class="section" id="validando-con-virt-host-validate">
+<h3><a class="toc-backref" href="#id8">Validando con <code class="docutils literal notranslate"><span class="pre">virt-host-validate</span></code></a><a class="headerlink" href="#validando-con-virt-host-validate" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La herramienta <code class="docutils literal notranslate"><span class="pre">virt-host-validate</span></code> ejecutará una series de pruebas para medir las capacidades del sistema y evaluar si el host está configurado correctamente para servir como un host de virtualización KVM.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virt-host-validate
+
+QEMU: Checking <span class="k">for</span> hardware virtualization              : PASS
+QEMU: Checking <span class="k">if</span> device /dev/vhost-net exists          : PASS
+QEMU: Checking <span class="k">if</span> device /dev/net/tun exists            : PASS
+QEMU: Checking <span class="k">for</span> cgroup <span class="s1">&#39;memory&#39;</span> controller support   : PASS
+QEMU: Checking <span class="k">for</span> cgroup <span class="s1">&#39;cpu&#39;</span> controller support      : PASS
+LXC: Checking <span class="k">for</span> Linux &gt;<span class="o">=</span> <span class="m">2</span>.6.26                       : PASS
+LXC: Checking <span class="k">for</span> namespace user                        : PASS
+LXC: Checking <span class="k">for</span> cgroup <span class="s1">&#39;memory&#39;</span> controller support    : PASS
+</pre></div>
+</div>
+<p>Si nuestro CPU no es capaz de realizar virtualización acelerada por hardware veremos un error en la revisión de pasos como se muestra en el siguiente ejemplo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virt-host-validate
+<span class="hll">
+</span>QEMU: Checking <span class="k">for</span> hardware virtualization              : FAIL <span class="o">(</span>Only emulated CPUs are available, performance will be significantly limited<span class="o">)</span>
+QEMU: Checking <span class="k">if</span> device /dev/vhost-net exists          : PASS
+QEMU: Checking <span class="k">if</span> device /dev/net/tun exists            : PASS
+QEMU: Checking <span class="k">for</span> cgroup <span class="s1">&#39;memory&#39;</span> controller support   : PASS
+QEMU: Checking <span class="k">for</span> cgroup <span class="s1">&#39;cpu&#39;</span> controller support      : PASS
+LXC: Checking <span class="k">for</span> Linux &gt;<span class="o">=</span> <span class="m">2</span>.6.26                       : PASS
+LXC: Checking <span class="k">for</span> namespace user                        : PASS
+LXC: Checking <span class="k">for</span> cgroup <span class="s1">&#39;memory&#39;</span> controller support    : PASS
+</pre></div>
+</div>
+<p>El mensaje nos indica que solo estará disponible la emulación de CPU, y el rendimiento se verá afectado por esto. En otras palabras el sistema solo tiene soporte para <code class="docutils literal notranslate"><span class="pre">qemu</span></code>, que es lento comparado con <code class="docutils literal notranslate"><span class="pre">qemu-kvm</span></code>.</p>
+<p>También se validan otros parámetros del sistema como:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">/dev/kvm</span></code>: facilita el acceso directo de la VMs al hardware (el usuario actual debe tener permisos de acceso)</li>
+<li><code class="docutils literal notranslate"><span class="pre">/dev/vhost-net</span></code>: sirve como la interface para configurar la instancia vhost-net.</li>
+<li><code class="docutils literal notranslate"><span class="pre">/dev/net/tun</span></code>: usado para crear <strong>dispositivos tun/tap</strong> para facilitar la conectividad de red a VMs.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Asegurarnos que <code class="docutils literal notranslate"><span class="pre">virt-host-validate</span></code> pasa todas las pruebas satisfactoriamente para proceder con la creación de VMs.</p>
+</div>
+</div>
+<div class="section" id="validando-con-virsh">
+<h3><a class="toc-backref" href="#id9">Validando con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#validando-con-virsh" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Podemos usar <code class="docutils literal notranslate"><span class="pre">virsh</span></code> para obtener información sobre las características del host (CPU, memoria RAM) que obtendríamos normalmente usando comandos por separado con otras herramientas:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh nodeinfo
+
+CPU model:           x86_64
+CPU<span class="o">(</span>s<span class="o">)</span>:              <span class="m">4</span>
+CPU frequency:       <span class="m">1296</span> MHz
+CPU socket<span class="o">(</span>s<span class="o">)</span>:       <span class="m">1</span>
+Core<span class="o">(</span>s<span class="o">)</span> per socket:  <span class="m">2</span>
+Thread<span class="o">(</span>s<span class="o">)</span> per core:  <span class="m">2</span>
+NUMA cell<span class="o">(</span>s<span class="o">)</span>:        <span class="m">1</span>
+Memory size:         <span class="m">8068236</span> KiB
+</pre></div>
+</div>
+<p>Otro comando útil de <code class="docutils literal notranslate"><span class="pre">virsh</span></code> es <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">domcapabilities</span></code>. Este comando nos imprime un documento XML que describe las capacidades del dominio para el hypervisor al que estamos conectados. Dentro del archivo XML podemos extraer información como el número máximo de <code class="docutils literal notranslate"><span class="pre">vcpu</span></code> que se pueden otorgar a una VM:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh domcapabilities <span class="p">|</span> grep -i max
+    &lt;vcpu <span class="nv">max</span><span class="o">=</span><span class="s1">&#39;255&#39;</span>/&gt;
+</pre></div>
+</div>
+<p>En este host se pueden definir un máximo de 255 vcpus para una VM. También podemos obtener los tipos de dispositivos que se pueden emplear:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh domcapabilities <span class="p">|</span> grep diskDevice -A <span class="m">5</span>
+
+    &lt;enum <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;diskDevice&#39;</span>&gt;
+        &lt;value&gt;disk&lt;/value&gt;
+        &lt;value&gt;cdrom&lt;/value&gt;
+        &lt;value&gt;floppy&lt;/value&gt;
+        &lt;value&gt;lun&lt;/value&gt;
+    &lt;/enum&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p><code class="docutils literal notranslate"><span class="pre">virsh</span></code> (<strong>o virtualization shell</strong>) es una herramienta de interfaz de línea de comandos para la administración de guest y el hypervisor. Emplea la API de administración <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> y posee muchas funcionalidades que pueden clasificarse en:</p>
+<ul class="simple">
+<li>Guest management commands (for example <code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">stop</span></code>)</li>
+<li>Guest monitoring commands (for example <code class="docutils literal notranslate"><span class="pre">memstat</span></code>, <code class="docutils literal notranslate"><span class="pre">cpustat</span></code>)</li>
+<li>Host and hypervisors commands (for example <code class="docutils literal notranslate"><span class="pre">capabilities</span></code>, <code class="docutils literal notranslate"><span class="pre">nodeinfo</span></code>)</li>
+<li>Virtual networking commands (for example <code class="docutils literal notranslate"><span class="pre">net-list</span></code>, <code class="docutils literal notranslate"><span class="pre">net-define</span></code>)</li>
+<li>Storage management commands (for example <code class="docutils literal notranslate"><span class="pre">pool-list</span></code>, <code class="docutils literal notranslate"><span class="pre">pool-define</span></code>)</li>
+<li>Snapshot commands (<code class="docutils literal notranslate"><span class="pre">create-snapshot-as</span></code>)</li>
+</ul>
+<p>Mayor referencia en:</p>
+<ul class="last simple">
+<li><a class="reference external" href="https://help.ubuntu.com/community/KVM/Virsh">KVM-virsh - Ubuntu Help</a></li>
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/virtualization/chap-virtualization-managing_guests_with_virsh">Managing guests using virsh - RedHat Virtualization Guide</a></li>
+<li><a class="reference external" href="https://libvirt.org/manpages/virsh.html">virsh - libvirt guide</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../web/_web.html" class="btn btn-neutral float-right" title="Web" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_qemu-kvm.html" class="btn btn-neutral float-left" title="QEMU/KVM Virtualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

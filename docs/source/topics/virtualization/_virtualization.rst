@@ -27,7 +27,7 @@ Tutoriales:
 
 1. Revisar los requerimientos para virtualización QEMU/KVM
 2. Instalación de paquetes para virtualización QEMU/KVM (yum, apt) e iniciar servicios
-3. Crear una conexión en virt-manager o virsh
+3. Crear una conexión en virt-manager
 
 - CH4:
     - polkit (Introducing virt-manager)
@@ -63,3 +63,5 @@ Tutoriales:
 3. Creación de VMs usando ``virt-install`` (+ ``qemu-img`` para crear un disco virtual)
 4. Creación de VMs usando ``virt-builder``
 5. Creación de VMs usando ``oz``
+
+(*) Falta complementar material de ``qemu-img``

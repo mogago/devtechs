@@ -76,6 +76,7 @@ Welcome to DevTechs's documentation!
 
     topics/virtualization/_virtualization
     topics/virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book
+    topics/virtualization/qemu-kvm/_qemu-kvm
 
 .. toctree::
     :maxdepth: 2

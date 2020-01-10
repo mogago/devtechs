@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Creando VMs con virt-install &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Web" href="../../web/_web.html" />
+    <link rel="prev" title="Creando VMs con virt-manager" href="virt-manager-new-vm.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_qemu-kvm.html">QEMU/KVM Virtualization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html">Requerimientos de virtualización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#opciones-principales-del-comando-virt-install">Opciones principales del comando <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opciones-generales">Opciones generales</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#almacenamiento-guest">Almacenamiento guest</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metodo-de-instalacion">Método de instalación</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ejemplos-de-creacion-de-vms">Ejemplos de creación de VMs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usando-una-imagen-iso">Usando una imagen ISO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#importando-una-imagen-de-disco">Importando una imagen de disco</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#importando-una-imagen-de-red">Importando una imagen de red</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usando-un-servidor-pxe">Usando un servidor PXE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usando-un-archivo-kickstart">Usando un archivo kickstart</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-de-red-de-la-vm">Configuración de red de la VM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#red-default-con-nat">Red default con NAT</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#red-bridged-con-dhcp">Red bridged con DHCP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#red-bridged-con-direccion-ip-estatica">Red bridged con dirección IP estática</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sin-red">Sin red</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_qemu-kvm.html">QEMU/KVM Virtualization</a> &raquo;</li>
+        
+      <li>Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/qemu-kvm/virt-install-new-vm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creando-vms-con-virt-install">
+<h1><a class="toc-backref" href="#id1">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a><a class="headerlink" href="#creando-vms-con-virt-install" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#creando-vms-con-virt-install" id="id1">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a><ul>
+<li><a class="reference internal" href="#opciones-principales-del-comando-virt-install" id="id2">Opciones principales del comando <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a><ul>
+<li><a class="reference internal" href="#opciones-generales" id="id3">Opciones generales</a></li>
+<li><a class="reference internal" href="#almacenamiento-guest" id="id4">Almacenamiento guest</a></li>
+<li><a class="reference internal" href="#metodo-de-instalacion" id="id5">Método de instalación</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ejemplos-de-creacion-de-vms" id="id6">Ejemplos de creación de VMs</a><ul>
+<li><a class="reference internal" href="#usando-una-imagen-iso" id="id7">Usando una imagen ISO</a></li>
+<li><a class="reference internal" href="#importando-una-imagen-de-disco" id="id8">Importando una imagen de disco</a></li>
+<li><a class="reference internal" href="#importando-una-imagen-de-red" id="id9">Importando una imagen de red</a></li>
+<li><a class="reference internal" href="#usando-un-servidor-pxe" id="id10">Usando un servidor PXE</a></li>
+<li><a class="reference internal" href="#usando-un-archivo-kickstart" id="id11">Usando un archivo kickstart</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-de-red-de-la-vm" id="id12">Configuración de red de la VM</a><ul>
+<li><a class="reference internal" href="#red-default-con-nat" id="id13">Red default con NAT</a></li>
+<li><a class="reference internal" href="#red-bridged-con-dhcp" id="id14">Red bridged con DHCP</a></li>
+<li><a class="reference internal" href="#red-bridged-con-direccion-ip-estatica" id="id15">Red bridged con dirección IP estática</a></li>
+<li><a class="reference internal" href="#sin-red" id="id16">Sin red</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#referencias" id="id17">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">virt-install</span></code> es una herramienta de línea de comandos con la cual podemos crear guest VMs e instalar un SO dentro de ellas. Puede usarse dentro de un script para automatizar la creación de VMs o trabajar con la herramienta interactivamente. Además, podemos iniciar la instalación de SOs en las VMs de manera <em>unattended</em> a través de archivos <strong>kickstart</strong>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">virt-install</span></code> abrirá una ventana <code class="docutils literal notranslate"><span class="pre">virt-viewer</span></code> una vez que se haya creado la VM para acceder a la misma.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Se requiere de privilegio root para ejecutar algunos parámetros con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code>.</p>
+</div>
+<div class="section" id="opciones-principales-del-comando-virt-install">
+<h2><a class="toc-backref" href="#id2">Opciones principales del comando <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a><a class="headerlink" href="#opciones-principales-del-comando-virt-install" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Ver la guía de ayuda de <code class="docutils literal notranslate"><span class="pre">virt-install</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virt-install --help
+</pre></div>
+</div>
+<p>Ver una lista completa de opciones para un argumento:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># virt-install --option=?</span>
+$ virt-install --disk<span class="o">=</span>?
+
+    --disk options:
+        address.base
+        address.bus
+        address.controller
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<div class="section" id="opciones-generales">
+<h3><a class="toc-backref" href="#id3">Opciones generales</a><a class="headerlink" href="#opciones-generales" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">name</span></code>: nombre de la VM.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">memory</span></code>: cantidad de RAM para asignar al guest (en MiB).</li>
+</ul>
+</div>
+<div class="section" id="almacenamiento-guest">
+<h3><a class="toc-backref" href="#id4">Almacenamiento guest</a><a class="headerlink" href="#almacenamiento-guest" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Usar una de las siguientes 2 opciones:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">disk</span></code>: configuración del almacenamiento de la VM. (<code class="docutils literal notranslate"><span class="pre">--disk</span> <span class="pre">none</span></code> crea la VM sin espacio de disco).</li>
+<li><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">filesystem</span></code>: ruta del filesystem para la VM guest.</li>
+</ul>
+</div>
+<div class="section" id="metodo-de-instalacion">
+<h3><a class="toc-backref" href="#id5">Método de instalación</a><a class="headerlink" href="#metodo-de-instalacion" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Usar uno de los siguientes métodos:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">location</span></code>: ubicación del medio de instalación.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">cdrom</span></code>: archivo o dispositivo usado como cd-rom virtual. Puede ser la ruta a una imagen ISO o a una URL de donde extraer la imagen ISO. Pero no puede ser un dispositivo CD-ROM físico del host.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">pxe</span></code>: usar el protocolo de booteo PXE para cargar el initial ramdisk y el kernel al iniciar la instlación del guest.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">import</span></code>: no realiza la instalación del SO y construye el guest a partir de una imagen de disco existente. El inicio usado para el booteo sera el primer dispositivo pasado por la opción <code class="docutils literal notranslate"><span class="pre">disk</span></code> o <code class="docutils literal notranslate"><span class="pre">filesystem</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--</span> <span class="pre">boot</span></code>: configuración de arranque de la VM luego de la instalación. Esta opción permite especificar un orden de arranque de dispositivos, arrancar siempre del kernel e initrd con argumentos opcionales de kernel y habilitar un menú de arranque de la BIOS.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="ejemplos-de-creacion-de-vms">
+<h2><a class="toc-backref" href="#id6">Ejemplos de creación de VMs</a><a class="headerlink" href="#ejemplos-de-creacion-de-vms" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="usando-una-imagen-iso">
+<h3><a class="toc-backref" href="#id7">Usando una imagen ISO</a><a class="headerlink" href="#usando-una-imagen-iso" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Crear una VM desde una imagen ISO:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install <span class="se">\</span>
+--name ubuntu18-desktop-guest-1 <span class="se">\</span>
+--memory <span class="m">2048</span> <span class="se">\</span>
+--vcpus <span class="m">2</span> <span class="se">\</span>
+--disk <span class="nv">size</span><span class="o">=</span><span class="m">10</span> <span class="se">\</span>
+--cdrom ~/Downloads/ubuntu-18.04.2-live-server-amd64.iso <span class="se">\</span>
+--os-variant ubuntu18.04
+</pre></div>
+</div>
+<p>El argumento <code class="docutils literal notranslate"><span class="pre">--cdrom</span></code> debe especificar la ruta a la imagen <code class="docutils literal notranslate"><span class="pre">.iso</span></code>.</p>
+</div>
+<div class="section" id="importando-una-imagen-de-disco">
+<h3><a class="toc-backref" href="#id8">Importando una imagen de disco</a><a class="headerlink" href="#importando-una-imagen-de-disco" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Crear una VM de una imagen de disco importada:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install <span class="se">\</span>
+--name centos7-guest-1 <span class="se">\</span>
+--memory <span class="m">1024</span> <span class="se">\</span>
+--vcpus <span class="m">1</span> <span class="se">\</span>
+--disk ~/Downloads/centos7-min0.qcow2 <span class="se">\</span>
+--import <span class="se">\</span>
+--os-variant centos7.0
+</pre></div>
+</div>
+<p>El argumento <code class="docutils literal notranslate"><span class="pre">--disk</span></code> debe especificar la ruta a la imagen de la VM (en este caso es formato <code class="docutils literal notranslate"><span class="pre">.qcow2</span></code>).</p>
+</div>
+<div class="section" id="importando-una-imagen-de-red">
+<h3><a class="toc-backref" href="#id9">Importando una imagen de red</a><a class="headerlink" href="#importando-una-imagen-de-red" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Crear una VM de una imagen de disco importada de internet:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install <span class="se">\</span>
+--name ubuntu18-guest-2 <span class="se">\</span>
+--memory <span class="m">2048</span> <span class="se">\</span>
+--vcpus <span class="m">2</span> <span class="se">\</span>
+--disk <span class="nv">size</span><span class="o">=</span><span class="m">8</span> <span class="se">\</span>
+--location http://archive.ubuntu.com/ubuntu/dists/bionic/main/installer-i386/ <span class="se">\</span>
+--os-variant ubuntu18.04
+</pre></div>
+</div>
+<p>El argumento <code class="docutils literal notranslate"><span class="pre">--location</span></code> define la ruta del árbol de instalación del SO.</p>
+</div>
+<div class="section" id="usando-un-servidor-pxe">
+<h3><a class="toc-backref" href="#id10">Usando un servidor PXE</a><a class="headerlink" href="#usando-un-servidor-pxe" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Dos parámetros obligatorios que deben ingresarse para hacer una instalación con el protocolo de booteo PXE son <code class="docutils literal notranslate"><span class="pre">--pxe</span></code> y  <code class="docutils literal notranslate"><span class="pre">--network</span></code> especificando una red bridged.</p>
+<p>Podemos crear una VM usando PXE con el siguiente comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install <span class="se">\</span>
+--name ubuntu18-guest-3 <span class="se">\</span>
+--memory <span class="m">2048</span> <span class="se">\</span>
+--vcpus <span class="m">2</span> <span class="se">\</span>
+--disk <span class="nv">size</span><span class="o">=</span><span class="m">8</span> <span class="se">\</span>
+--network<span class="o">=</span>bridge:br0 <span class="se">\</span>
+--pxe <span class="se">\</span>
+--os-variant ubuntu18.04
+</pre></div>
+</div>
+</div>
+<div class="section" id="usando-un-archivo-kickstart">
+<h3><a class="toc-backref" href="#id11">Usando un archivo kickstart</a><a class="headerlink" href="#usando-un-archivo-kickstart" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para SOs como Red Hat Enterprise Linux o CentOS podemos pasar un archivo kickstart para automatizar la instalación del SO al arrancar la VM:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virt-install <span class="se">\</span>
+--name guest1-rhel7 <span class="se">\</span>
+--memory <span class="m">2048</span> <span class="se">\</span>
+--vcpus <span class="m">2</span> <span class="se">\</span>
+--disk <span class="nv">size</span><span class="o">=</span><span class="m">8</span> <span class="se">\</span>
+--location http://example.com/path/to/os <span class="se">\</span>
+--os-variant rhel7 <span class="se">\</span>
+--initrd-inject /path/to/ks.cfg <span class="se">\</span>
+--extra-args<span class="o">=</span><span class="s2">&quot;ks=file:/ks.cfg console=tty0 console=ttyS0,115200n8&quot;</span>
+</pre></div>
+</div>
+<p>Los últimos dos parámetros <code class="docutils literal notranslate"><span class="pre">--initrd-inject</span></code> y <code class="docutils literal notranslate"><span class="pre">--extra-args</span></code> declaran que la VM usará un archivo kickstart para instalar el SO.</p>
+</div>
+</div>
+<div class="section" id="configuracion-de-red-de-la-vm">
+<h2><a class="toc-backref" href="#id12">Configuración de red de la VM</a><a class="headerlink" href="#configuracion-de-red-de-la-vm" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Cuando creamos una VM podemos especificar la red para la VM. A continuación se lista una serie de tipos de red que pueden ser usados para los guests:</p>
+<div class="section" id="red-default-con-nat">
+<h3><a class="toc-backref" href="#id13">Red default con NAT</a><a class="headerlink" href="#red-default-con-nat" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La red default usa un switch de red virtual NAT (network address translation) de <code class="docutils literal notranslate"><span class="pre">libvirtd</span></code>.  El paquete <code class="docutils literal notranslate"><span class="pre">libvirt-daemon-config-network</span></code> debe estar instalado antes de crear una VM con la red default.</p>
+<p>Para configurar una VM con red NAT usar el siguiente parámetro en el comando <code class="docutils literal notranslate"><span class="pre">virt-install</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--network default <span class="se">\</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Cuando no se especifica un valor del parámetro <code class="docutils literal notranslate"><span class="pre">--network</span></code>, por defecto se crea la VM con la red default con NAT.</p>
+</div>
+</div>
+<div class="section" id="red-bridged-con-dhcp">
+<h3><a class="toc-backref" href="#id14">Red bridged con DHCP</a><a class="headerlink" href="#red-bridged-con-dhcp" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Podemos configurar una red bridged con un servidor DHCP externo. Esta configuración es útil para casos en los que el host tiene una configuración de red estátoca y el guest requiere conectividad entrante y saliente con la LAN. También es útil para migraciones live de una VM.</p>
+<p>Para establecer una red bridged con DHCP para la VM guest, debemos tener creado el bridge previamente y agregar el parámetro:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># --network &lt;bridge&gt; \</span>
+--network br0 <span class="se">\</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="red-bridged-con-direccion-ip-estatica">
+<h3><a class="toc-backref" href="#id15">Red bridged con dirección IP estática</a><a class="headerlink" href="#red-bridged-con-direccion-ip-estatica" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una red bridged también puede usarse para configurar una dirección IP estática en el guest. Para usar una red bridged con dirección IP estática en la VM usar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--network br0 <span class="se">\</span>
+--extra-args <span class="s2">&quot;ip=192.168.1.2::192.168.1.1:255.255.255.0:test.example.com:eth0:none&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="sin-red">
+<h3><a class="toc-backref" href="#id16">Sin red</a><a class="headerlink" href="#sin-red" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para que nuestra VM no tenga una interfaz de red agregar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--network<span class="o">=</span>none <span class="se">\</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id17">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/chap-Using_qemu_img">Using qemu-img - RedHat Documents</a></li>
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/chap-Network_configuration#sect-Network_configuration-Network_Address_Translation_NAT_with_libvirt">Network Address Translation (NAT) with libvirt - RedHat Documents</a></li>
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-network_configuration-bridged_networking#sect-Network_configuration-Bridged_networking_with_virt_manager">Bridged Networking with Virtual Machine Manager - RedHat Documents</a></li>
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-network_configuration-bridged_networking#sect-Network_configuration-Bridged_networking_with_libvirt">Bridged Networking with libvirt - RedHat Documents</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../web/_web.html" class="btn btn-neutral float-right" title="Web" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="virt-manager-new-vm.html" class="btn btn-neutral float-left" title="Creando VMs con virt-manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

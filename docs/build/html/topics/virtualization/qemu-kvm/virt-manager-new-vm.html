@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Creando VMs con virt-manager &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Creando VMs con virt-install" href="virt-install-new-vm.html" />
+    <link rel="prev" title="Requerimientos de virtualización" href="virtualization_requirements.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_qemu-kvm.html">QEMU/KVM Virtualization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html">Requerimientos de virtualización</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-vm-con-metodo-local-installation-media">Creación de VM con método Local installation media</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-vm-con-metodo-importing-existing-disk-image">Creación de VM con método Importing existing disk image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-vm-con-metodo-network-boot-pxe">Creación de VM con método Network Boot (PXE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-vm-con-metodo-network-install-http-ftp-o-nfs">Creación de VM con método Network Install (HTTP, FTP o NFS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_qemu-kvm.html">QEMU/KVM Virtualization</a> &raquo;</li>
+        
+      <li>Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/qemu-kvm/virt-manager-new-vm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creando-vms-con-virt-manager">
+<h1><a class="toc-backref" href="#id14">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><a class="headerlink" href="#creando-vms-con-virt-manager" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#creando-vms-con-virt-manager" id="id14">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><ul>
+<li><a class="reference internal" href="#creacion-de-vm-con-metodo-local-installation-media" id="id15">Creación de VM con método Local installation media</a></li>
+<li><a class="reference internal" href="#creacion-de-vm-con-metodo-importing-existing-disk-image" id="id16">Creación de VM con método Importing existing disk image</a></li>
+<li><a class="reference internal" href="#creacion-de-vm-con-metodo-network-boot-pxe" id="id17">Creación de VM con método Network Boot (PXE)</a></li>
+<li><a class="reference internal" href="#creacion-de-vm-con-metodo-network-install-http-ftp-o-nfs" id="id18">Creación de VM con método Network Install (HTTP, FTP o NFS)</a></li>
+<li><a class="reference internal" href="#referencias" id="id19">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>El programa <strong>virt-manager (Virtual Machine Manager)</strong> es una interfaz de usuario de escritorio para administrar VMs a través de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code>. Se enfoca principalmente en VMs de KVM pero también es compatible con Xen y LXC. A través de un wizard, <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> nos permite crear, monitorear y configurar VMs. Se presenta una consola gráfica del guest domain mediante un VNC embebido y un cliente SPICE viewer.</p>
+<p>A continuación se tratarán los 4 métodos de creación de una VM guest disponibles a través de <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> usando su wizard integrado.</p>
+<div class="section" id="creacion-de-vm-con-metodo-local-installation-media">
+<h2><a class="toc-backref" href="#id15">Creación de VM con método Local installation media</a><a class="headerlink" href="#creacion-de-vm-con-metodo-local-installation-media" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Este método de instalación requiere que el medio de instalación sea insertado en la bandeja de CD-ROM del sistema físico, se encuentre disponible localmente en formato ISO o disponible a través de la red. Podemos guardar los archivos ISO es <code class="docutils literal notranslate"><span class="pre">/var/lib/libvirt/images</span></code>, que sirve como el pool de almacenamiento por defecto de <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>.</p>
+<ol class="arabic simple">
+<li>Ejecutemos Virtual Machine Manager desde un terminal con el comando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> o buscando la aplicación de escritorio (<span class="guilabel">Alt + F2</span> o <span class="guilabel">Alt + Fn + F2</span>).</li>
+</ol>
+<p>Por defecto nos encontraremos con una ventana en la que ya se encuentra configurada una conexión a un hypervisor local QEMU/KVM.</p>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/virt-manager-blank.png" src="../../../_images/virt-manager-blank.png" />
+<p class="caption"><span class="caption-text">virt-manager (Virtual Machine Manager)</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Desde <strong>Virtual Machine Manager</strong> clic en el botón <span class="guilabel">Create a new virtual machine</span> en la barra de herramientas o seleccionar <span class="guilabel">File</span> | <span class="guilabel">New Virtual Machine</span> para abrir el wizard. Esto nos permitirá crear una nueva VM desde <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>.</li>
+</ol>
+<p>Los pasos que se siguen en el wizard para la creación de una VM son:</p>
+<ol class="arabic simple">
+<li>Escoger el medio de instalación</li>
+<li>Configurar el medio de instalación</li>
+<li>Configurar la memoria y CPU</li>
+<li>Configurar el almacenamiento de la VM</li>
+<li>Nombrar el SO guest y configurar networking.</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>En el primer paso seleccionar <span class="guilabel">Local installation media (ISO o CDROM)</span> como método de instalación del SO guest:</li>
+</ol>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/virt-manager-step1.png" src="../../../_images/virt-manager-step1.png" />
+<p class="caption"><span class="caption-text">virt-manager Step 1</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Especificar la ubicación de la imagen ISO que emplearemos escribiendo la ruta manualemente o con el boton <span class="guilabel">Browse</span>. En el caso de que estemos usando un CDROM o DVD físico seleccionar la opción <span class="guilabel">Use CDROM or DVD</span>:</li>
+</ol>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/virt-manager-step2.png" src="../../../_images/virt-manager-step2.png" />
+<p class="caption"><span class="caption-text">virt-manager Step 2</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> detecta el SO basado en el medio de instalación automáticamente. <code class="docutils literal notranslate"><span class="pre">libosinfo-bin</span></code> provee una base de datos con más de 300 SOs (Windows, Linux, …).</p>
+<ol class="arabic simple">
+<li>Instalar <code class="docutils literal notranslate"><span class="pre">libosinfo-bin</span></code>: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">libosinfo-bin</span></code></li>
+<li>Con el comando <code class="docutils literal notranslate"><span class="pre">osinfo-query</span> <span class="pre">os</span></code> obtenemos detalled de varios SOs:</li>
+</ol>
+<table border="1" class="last docutils">
+<colgroup>
+<col width="19%" />
+<col width="22%" />
+<col width="11%" />
+<col width="48%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Short ID</td>
+<td>Name</td>
+<td>Version</td>
+<td>ID</td>
+</tr>
+<tr class="row-even"><td>ubuntu18.04</td>
+<td>Ubuntu 18.04 LTS</td>
+<td>18.04</td>
+<td><a class="reference external" href="http://ubuntu.com/ubuntu/18.04">http://ubuntu.com/ubuntu/18.04</a></td>
+</tr>
+<tr class="row-odd"><td>centos7.0</td>
+<td>CentOS 7.0</td>
+<td>7.0</td>
+<td><a class="reference external" href="http://centos.org/centos/7.0">http://centos.org/centos/7.0</a></td>
+</tr>
+<tr class="row-even"><td>alpinelinux3.8</td>
+<td>Alpine Linux 3.8</td>
+<td>3.8</td>
+<td><a class="reference external" href="http://alpinelinux.org/alpinelinux/3.8">http://alpinelinux.org/alpinelinux/3.8</a></td>
+</tr>
+<tr class="row-odd"><td>cirros0.4.0</td>
+<td>CirrOS 0.4.0</td>
+<td>0.4.0</td>
+<td><a class="reference external" href="http://cirros-cloud.net/cirros/0.4.0">http://cirros-cloud.net/cirros/0.4.0</a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol class="arabic simple" start="5">
+<li>Especificar la memoria y el CPU que deseemos asignar a la VM:</li>
+</ol>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/virt-manager-step3.png" src="../../../_images/virt-manager-step3.png" />
+<p class="caption"><span class="caption-text">virt-manager Step 3</span></p>
+</div>
+<p>El wizard muestra la cantidad máxima de CPUs y memoria que podemos asignar.</p>
+<ol class="arabic simple" start="6">
+<li>Configurar el almacenamiento para la VM:</li>
+</ol>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/virt-manager-step4.png" src="../../../_images/virt-manager-step4.png" />
+<p class="caption"><span class="caption-text">virt-manager Step 4</span></p>
+</div>
+<p>Por defecto se creará un disco virtual en la dirección <code class="docutils literal notranslate"><span class="pre">/var/lib/libvirt/qemu</span></code> dentro del pool de almacenamiento predeterminado. Si deseamos usar otro pool personalizado seleccionar la opción <span class="guilabel">Select managed or other existing storage</span> e ingresar la ruta del disco manualmente o seleccionar el botón <span class="guilabel">Browse</span> donde tendremos la posibilidad de  seleccionar un volumen existente o crear uno nuevo del pool de almacenamiento definido.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Mantener deseleccionada la opción <span class="guilabel">Allocate entire disk now</span> resultará en un <strong>disco thin-provisioned</strong> y seleccionarla generará un <strong>disco thick provisioned</strong> (también llamado <strong>disco pre-allocated</strong>).</p>
+</div>
+<ol class="arabic simple" start="7">
+<li>El último paso es nombrar el guest y la configuración de networking. Para el nombre solo se permite letras, números, punto (.), guión bajo (_) y guión (-).</li>
+</ol>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/virt-manager-step5.png" src="../../../_images/virt-manager-step5.png" />
+<p class="caption"><span class="caption-text">virt-manager Step 5</span></p>
+</div>
+<p>Notar que el disco virtual en este caso tiene formato <code class="docutils literal notranslate"><span class="pre">.qcow2</span></code> y se almacena en el directorio <code class="docutils literal notranslate"><span class="pre">/var/lib/libvirt/images</span></code>.</p>
+<p>Expandir el menú <span class="guilabel">Network selection</span> mostrará la configuración de red virtual. Por defecto, KVM provee NAT-like bridged networking. Las VMs conectadas a esta NAT no aparecen en la red como sus propios dispositivos, pero tendrán acceso a la red a través del SO host.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Si estamos pensando en correr software o un servidor web en nuestra VM y queremos que sea accesible por otros dispositivos en la red, debemos usar otra configuración de networking virtual como <strong>Linux bridge</strong> o <strong>macvtap</strong>.</p>
+</div>
+<p>Si deseamos seguir configurando el hardware de la VM, seleccionar la opción <span class="guilabel">Customize configuration before install</span> antes de seleccionar <span class="guilabel">Finish</span>. Accederemos a un wizard para agregar, remover o editar configuraciones de hardware de la VM.</p>
+<ol class="arabic simple" start="8">
+<li>Finalizado el proceso de creación de la VM, se creará una nueva ventana iniciando el proceso de instalación del SO guest. Además podremos ver la VM en la ventana principal de <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>:</li>
+</ol>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/virt-manager-vm-running.png" src="../../../_images/virt-manager-vm-running.png" />
+<p class="caption"><span class="caption-text">virt-manager VM running</span></p>
+</div>
+</div>
+<div class="section" id="creacion-de-vm-con-metodo-importing-existing-disk-image">
+<h2><a class="toc-backref" href="#id16">Creación de VM con método Importing existing disk image</a><a class="headerlink" href="#creacion-de-vm-con-metodo-importing-existing-disk-image" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Con este método de instalación podes importar una imagen de disco previamente instalada y configurada con un SO booteable. Este método ayuda a desplegar VMs rápidamente y para transferir una VM a otro host de forma offline. Podemos usar nuestra propias imágenes de disco o importar un disco pre-configurado de alguna distribución de Linux pública:</p>
+<p>Los pasos para crear una VM con este método son similares al proceso de <a class="reference internal" href="#creacion-de-vm-con-metodo-local-installation-media">Creación de VM con método Local installation media</a>. Solo haremos los siguientes cambios en Step 1 y Step 2:</p>
+<ol class="arabic simple">
+<li>Iniciar el wizard para crear una nueva VM desde <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>, seleccionar <span class="guilabel">Import existing disk image</span> como método de instalación del SO.</li>
+</ol>
+<div class="figure align-center" id="id8">
+<img alt="../../../_images/virt-manager-import-step1.png" src="../../../_images/virt-manager-import-step1.png" />
+<p class="caption"><span class="caption-text">virt-manager - método Importing existing disk image</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Ingresar la ruta de la imagen, la cual deberá estar dentro de uno de los pools de almacenamiento:</li>
+</ol>
+<div class="figure align-center" id="id9">
+<img alt="../../../_images/virt-manager-import-step2.png" src="../../../_images/virt-manager-import-step2.png" />
+<p class="caption"><span class="caption-text">virt-manager - Step 2</span></p>
+</div>
+<p>Este método no usa el paso de asignación de tamaño de almacenamiento pues el disco ya ha sido creado previamente y nosotros solo estamos importando este archivo de disco virtual.</p>
+</div>
+<div class="section" id="creacion-de-vm-con-metodo-network-boot-pxe">
+<h2><a class="toc-backref" href="#id17">Creación de VM con método Network Boot (PXE)</a><a class="headerlink" href="#creacion-de-vm-con-metodo-network-boot-pxe" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El método Network Boot Preboot eXecution Environment(PXE) emplea un servidor dentro de la misma subred donde instalaremos la VM guest.</p>
+<p>La red NAT por defecto creada por <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> no es compatible con este tipo de instalación, ya que, una VM conectada a NAT no aparece en la red como su propio dispositivo; y por tanto, el servidor PXE no puede verlo. Para usar una instalación de un guest OS mediante PXE, necesitamos usar o bien un <strong>bridge de red de software</strong> o una <strong>red basada en macvtap</strong> en el sistema host. En este ejemplo usaremos la macvtap.</p>
+<p>Los pasos para crear una VM con este método son similares al proceso de <a class="reference internal" href="#creacion-de-vm-con-metodo-local-installation-media">Creación de VM con método Local installation media</a>. Solo haremos los siguientes cambios en Step 1 y Step 5:</p>
+<ol class="arabic simple">
+<li>Iniciar el wizard para crear una nueva VM desde <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>, seleccionar <span class="guilabel">Network Boot (PXE)</span> como método de instalación del SO.</li>
+</ol>
+<div class="figure align-center" id="id10">
+<img alt="../../../_images/virt-manager-pxe-step1.png" src="../../../_images/virt-manager-pxe-step1.png" />
+<p class="caption"><span class="caption-text">virt-manager - método Network Boot (PXE)</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>En el paso 5 seleccionar expandir el menú <span class="guilabel">Network selection</span>, usar <span class="guilabel">Host device &lt;interface&gt;:macvtap</span> de la lista desplegable y seleccionar <span class="guilabel">Source mode</span> en <span class="guilabel">Bridge</span>. Clic en <span class="guilabel">Finish</span>.</li>
+</ol>
+<div class="figure align-center" id="id11">
+<img alt="../../../_images/virt-manager-pxe-step5.png" src="../../../_images/virt-manager-pxe-step5.png" />
+<p class="caption"><span class="caption-text">virt-manager - Step 5</span></p>
+</div>
+</div>
+<div class="section" id="creacion-de-vm-con-metodo-network-install-http-ftp-o-nfs">
+<h2><a class="toc-backref" href="#id18">Creación de VM con método Network Install (HTTP, FTP o NFS)</a><a class="headerlink" href="#creacion-de-vm-con-metodo-network-install-http-ftp-o-nfs" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El método de instalación por red consiste en pasar una URL con un mirror del SO que deseemos instalar. Esta dirección web contendrá el árbol de instalación del SO. Se repiten los pasos de la sección <a class="reference internal" href="#creacion-de-vm-con-metodo-local-installation-media">Creación de VM con método Local installation media</a>, solo haremos cambios en Step 1 y Step 5.</p>
+<ol class="arabic simple">
+<li>Seleccionar la opción <span class="guilabel">Network Install (HTTP, FTP o NFS)</span> como método de instalación del SO:</li>
+</ol>
+<div class="figure align-center" id="id12">
+<img alt="../../../_images/virt-manager-network-step1.png" src="../../../_images/virt-manager-network-step1.png" />
+<p class="caption"><span class="caption-text">virt-manager - método Network Install (HTTP, FTP o NFS)</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Opcionalmente podemos pasar <strong>opciones de kernel</strong>, si es que existen. Para pasar un <strong>archivo kisckstart</strong> como opción de kernel podremos especificarlo a través de una URL comenzando con <code class="docutils literal notranslate"><span class="pre">ks=</span></code>:</li>
+</ol>
+<div class="figure align-center" id="id13">
+<img alt="../../../_images/virt-manager-network-step2.png" src="../../../_images/virt-manager-network-step2.png" />
+<p class="caption"><span class="caption-text">virt-manager - Step 2</span></p>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id19">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/sect-creating_guests_with_virt_manager">CREATING GUESTS WITH VIRT-MANAGER - Red Hat Documents</a></li>
+<li><a class="reference external" href="https://virt-manager.org/">Virtual Machine Manager Homepage</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="virt-install-new-vm.html" class="btn btn-neutral float-right" title="Creando VMs con virt-install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="virtualization_requirements.html" class="btn btn-neutral float-left" title="Requerimientos de virtualización" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

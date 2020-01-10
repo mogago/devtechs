@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>QEMU/KVM Virtualization &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Requerimientos de virtualización" href="virtualization_requirements.html" />
+    <link rel="prev" title="Chapter 4. Getting Started with libvirt and Creating Your First Virtual Machines" href="../mastering-kvm-virtualization-book/chapter04.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">QEMU/KVM Virtualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html">Requerimientos de virtualización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-builder.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">virt-builder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="oz.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>QEMU/KVM Virtualization</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/qemu-kvm/_qemu-kvm.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="qemu-kvm-virtualization">
+<h1>QEMU/KVM Virtualization<a class="headerlink" href="#qemu-kvm-virtualization" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Índice</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="virtualization_requirements.html">Requerimientos de virtualización</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html#requerimientos-de-cpu">Requerimientos de CPU</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html#instalando-herramientas">Instalando herramientas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html#iniciando-servicios">Iniciando servicios</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html#validando-capacidades-del-sistema">Validando capacidades del sistema</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virt-manager-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html#creacion-de-vm-con-metodo-local-installation-media">Creación de VM con método Local installation media</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html#creacion-de-vm-con-metodo-importing-existing-disk-image">Creación de VM con método Importing existing disk image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html#creacion-de-vm-con-metodo-network-boot-pxe">Creación de VM con método Network Boot (PXE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html#creacion-de-vm-con-metodo-network-install-http-ftp-o-nfs">Creación de VM con método Network Install (HTTP, FTP o NFS)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html#referencias">Referencias</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virt-install-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html#opciones-principales-del-comando-virt-install">Opciones principales del comando <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html#ejemplos-de-creacion-de-vms">Ejemplos de creación de VMs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html#configuracion-de-red-de-la-vm">Configuración de red de la VM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html#referencias">Referencias</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="virt-builder.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">virt-builder</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="oz.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">oz</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="oz.html#introduccion-a-oz">Introducción a <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="oz.html#usando-oz">Usando <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="oz.html#archivo-de-configuracion-de-oz">Archivo de configuración de <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="oz.html#referencias">Referencias</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oz.html#log-de-oz-install">Log de oz-install</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="virtualization_requirements.html" class="btn btn-neutral float-right" title="Requerimientos de virtualización" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../mastering-kvm-virtualization-book/chapter04.html" class="btn btn-neutral float-left" title="Chapter 4. Getting Started with libvirt and Creating Your First Virtual Machines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
