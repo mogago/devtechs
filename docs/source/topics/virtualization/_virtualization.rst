@@ -2,9 +2,6 @@
 Virtualization 
 ==============
 
-- QEMU/KVM
-- Virtual Networks
-
 MASTERING KVM VIRTUALIZATION:
 
 - CH3: 
@@ -65,3 +62,12 @@ Tutoriales:
 5. Creación de VMs usando ``oz``
 
 (*) Falta complementar material de ``qemu-img``
+
+- CH 5:
+
+    - Ejemplo de virtual Networking con Linux bridges e interfaces TAP (Virtual Networking)
+    - Virtual Networking usando libvirt: con clientes ``virt-manager`` y ``virsh``
+        - Isolated
+        - Routed
+        - NATed
+        - Bridged

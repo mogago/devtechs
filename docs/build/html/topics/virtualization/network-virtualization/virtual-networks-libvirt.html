@@ -1,0 +1,835 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Redes virtuales con Libvirt &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Web" href="../../web/_web.html" />
+    <link rel="prev" title="Linux Bridges" href="linux-bridges.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_network-virtualization.html">Network Virtualization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux-bridges.html">Linux Bridges</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Redes virtuales con Libvirt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#red-virtual-isolated">Red virtual Isolated</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usando-virt-manager">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usando-virsh">Usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#red-virtual-routed">Red virtual Routed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#red-virtual-nated">Red virtual NATed</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#siguientes-pasos-con-virsh">Siguientes pasos con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#crear-una-red-temporal-con-virsh">Crear una red temporal con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listar-redes-con-virsh">Listar redes con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#iniciar-una-red-con-virsh">Iniciar una red con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configurar-auto-start-de-una-red-con-virsh">Configurar auto-start de una red con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#agregar-una-interfaz-de-red-virtual-a-una-vm">Agregar una interfaz de red virtual a una VM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ver-propiedades-de-la-red">Ver propiedades de la red</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#propiedades-de-red-con-virt-manager">Propiedades de red con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#propiedades-de-red-con-virsh-net-dumpxml">Propiedades de red con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-dumpxml</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#propiedades-de-red-con-virsh-net-info">Propiedades de red con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-info</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interfaces-conectadas-al-bridge">Interfaces conectadas al bridge</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#editando-una-red-virtual">Editando una red virtual</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_network-virtualization.html">Network Virtualization</a> &raquo;</li>
+        
+      <li>Redes virtuales con Libvirt</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/network-virtualization/virtual-networks-libvirt.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="redes-virtuales-con-libvirt">
+<h1><a class="toc-backref" href="#id26">Redes virtuales con Libvirt</a><a class="headerlink" href="#redes-virtuales-con-libvirt" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#redes-virtuales-con-libvirt" id="id26">Redes virtuales con Libvirt</a><ul>
+<li><a class="reference internal" href="#red-virtual-isolated" id="id27">Red virtual Isolated</a><ul>
+<li><a class="reference internal" href="#usando-virt-manager" id="id28">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li><a class="reference internal" href="#usando-virsh" id="id29">Usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#red-virtual-routed" id="id30">Red virtual Routed</a><ul>
+<li><a class="reference internal" href="#id1" id="id31">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li><a class="reference internal" href="#id2" id="id32">Usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#red-virtual-nated" id="id33">Red virtual NATed</a><ul>
+<li><a class="reference internal" href="#id3" id="id34">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#siguientes-pasos-con-virsh" id="id35">Siguientes pasos con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><ul>
+<li><a class="reference internal" href="#crear-una-red-temporal-con-virsh" id="id36">Crear una red temporal con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li><a class="reference internal" href="#listar-redes-con-virsh" id="id37">Listar redes con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li><a class="reference internal" href="#iniciar-una-red-con-virsh" id="id38">Iniciar una red con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li><a class="reference internal" href="#configurar-auto-start-de-una-red-con-virsh" id="id39">Configurar auto-start de una red con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#agregar-una-interfaz-de-red-virtual-a-una-vm" id="id40">Agregar una interfaz de red virtual a una VM</a><ul>
+<li><a class="reference internal" href="#id4" id="id41">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li><a class="reference internal" href="#id5" id="id42">Usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#ver-propiedades-de-la-red" id="id43">Ver propiedades de la red</a><ul>
+<li><a class="reference internal" href="#propiedades-de-red-con-virt-manager" id="id44">Propiedades de red con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li><a class="reference internal" href="#propiedades-de-red-con-virsh-net-dumpxml" id="id45">Propiedades de red con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-dumpxml</span></code></a></li>
+<li><a class="reference internal" href="#propiedades-de-red-con-virsh-net-info" id="id46">Propiedades de red con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-info</span></code></a></li>
+<li><a class="reference internal" href="#interfaces-conectadas-al-bridge" id="id47">Interfaces conectadas al bridge</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#editando-una-red-virtual" id="id48">Editando una red virtual</a></li>
+<li><a class="reference internal" href="#referencias" id="id49">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Podemos crear distintos tipos de redes virtuales con <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> a través de dos herramientas distintas pero con resultados iguales. Una herramienta con interfaz gráfica para conseguir este objetivo es <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> la otra con interfaz de línea de comandos es <code class="docutils literal notranslate"><span class="pre">virsh</span></code>. Algunas de las redes virtuales que podemos crear con <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> son:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#red-virtual-isolated">Red virtual Isolated</a></li>
+<li><a class="reference internal" href="#red-virtual-routed">Red virtual Routed</a></li>
+<li><a class="reference internal" href="#red-virtual-nated">Red virtual NATed</a></li>
+<li>Red virtual bridged</li>
+</ul>
+<p>El procedimiento general para crear una red virtual en <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> es entrar al programa, ir a <span class="guilabel">Edit</span> | <span class="guilabel">Connection details</span> | <span class="guilabel">Virtual Networks</span> | Clic en el signo <span class="guilabel">+</span>. Luego solo deberemos seguir el wizard de creación.</p>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/virt-manager-virtual-networks-tab.png" src="../../../_images/virt-manager-virtual-networks-tab.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Virtual Networks Tab</span></p>
+</div>
+<p>Por otro lado, los pasos generales para crear una red virtual en <code class="docutils literal notranslate"><span class="pre">virsh</span></code> serán escribir en un archivo XML las características que definan la red deseada y luego simplemente crearla en base a este archivo.</p>
+<div class="section" id="red-virtual-isolated">
+<h2><a class="toc-backref" href="#id27">Red virtual Isolated</a><a class="headerlink" href="#red-virtual-isolated" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Red cerrada para las VMs. Solo las VMs agregadas a esta red pueden comunicarse unas con otras. El host también podrá comunicarse con las VMs a añadidas a la red. El tráfico no pasará fuera del host, ni podrán recibir tráfico de fuera del host. Agregar una nueva interfaz a una VM es proceso simple que puede realizarse con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> o <code class="docutils literal notranslate"><span class="pre">virsh</span></code>:</p>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/mode_isolated.png" src="../../../_images/mode_isolated.png" />
+<p class="caption"><span class="caption-text"><a class="reference external" href="https://wiki.libvirt.org/page/VirtualNetworking#Isolated_mode">Isolated mode - Libvirt Wiki</a></span></p>
+</div>
+<div class="section" id="usando-virt-manager">
+<h3><a class="toc-backref" href="#id28">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><a class="headerlink" href="#usando-virt-manager" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Los pasos para crear una red virtual aislada con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> son los siguientes:</p>
+<ol class="arabic simple">
+<li>Ingresar un nombre para la red virtual:</li>
+</ol>
+<div class="figure align-center" id="id8">
+<img alt="../../../_images/virt-manager-isolated-step1.png" src="../../../_images/virt-manager-isolated-step1.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Isolated virtual network - step 1</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>No realizaremos configuración IPv4:</li>
+</ol>
+<div class="figure align-center" id="id9">
+<img alt="../../../_images/virt-manager-isolated-step2.png" src="../../../_images/virt-manager-isolated-step2.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Isolated virtual network - step 2</span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>No haremos una configuración para IPv6:</li>
+</ol>
+<div class="figure align-center" id="id10">
+<img alt="../../../_images/virt-manager-isolated-step3.png" src="../../../_images/virt-manager-isolated-step3.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Isolated virtual network - step 3</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Solo mantener seleccionada la opción <span class="guilabel">Isoated virtual network</span> y dejar <span class="guilabel">DNS Domain Name</span> en blanco. Clic en <span class="guilabel">Finish</span> para crear la red virtual aislada:</li>
+</ol>
+<div class="figure align-center" id="id11">
+<img alt="../../../_images/virt-manager-isolated-step4.png" src="../../../_images/virt-manager-isolated-step4.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Isolated virtual network - step 4</span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Revisar los detalles de la red virtual creada en la pestaña <span class="guilabel">Virtual Networks</span>:</li>
+</ol>
+<div class="figure align-center" id="id12">
+<img alt="../../../_images/virt-manager-virtual-network-isolated.png" src="../../../_images/virt-manager-virtual-network-isolated.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Isolated virtual network creada</span></p>
+</div>
+</div>
+<div class="section" id="usando-virsh">
+<h3><a class="toc-backref" href="#id29">Usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#usando-virsh" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para crear una red virtual isolated con <code class="docutils literal notranslate"><span class="pre">virsh</span></code> realizaremos los siguientes pasos:</p>
+<ol class="arabic simple">
+<li>Crear un archivo XML con el contenido que defina la red:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat isolated.xml
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
+        <span class="nt">&lt;name&gt;</span>isolated<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+</div>
+<p>Según la sintáxis:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">&lt;network&gt;</span></code>: define la red virtual</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>: define el nombre de la red virtual</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li>Guardar el archivo XML. Para crear una red usando el archivo XML, usar la opción <code class="docutils literal notranslate"><span class="pre">net-define</span></code> del comando <code class="docutils literal notranslate"><span class="pre">virsh</span></code> seguido por la ruta del archivo XML:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-define isolated.xml
+
+Network isolated defined from isolated.xml
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Una vez que hemos definido una red con <code class="docutils literal notranslate"><span class="pre">net-define</span></code>, el archivo de configuración será guardado en <code class="docutils literal notranslate"><span class="pre">/etc/libvirt/qemu/networks/</span></code> como un archivo XML con el mismo nombre que nuestra red virtual:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo cat /etc/libvirt/qemu/networks/isolated.xml
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!--</span>
+<span class="c">WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE</span>
+<span class="c">OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:</span>
+<span class="c">virsh net-edit isolated</span>
+<span class="c">or other application using the libvirt API.</span>
+<span class="c">--&gt;</span>
+
+<span class="nt">&lt;network&gt;</span>
+    <span class="nt">&lt;name&gt;</span>isolated<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;uuid&gt;</span>13fd5536-cad8-43a3-a066-91243719f95b<span class="nt">&lt;/uuid&gt;</span>
+    <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&#39;virbr1&#39;</span> <span class="na">stp=</span><span class="s">&#39;on&#39;</span> <span class="na">delay=</span><span class="s">&#39;0&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;mac</span> <span class="na">address=</span><span class="s">&#39;52:54:00:c4:d1:d7&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">libvirt</span></code> añadió el resto de parámetros requeridos, podremos agregarlos nosotros en el archivo XML cuando lo necesitemos al momento de crear el bridge.</p>
+<p>Como vemos en el comentario del archivo, cualquier cambio para editar la red virtual deberá ser a través de <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-edit</span></code> u otra aplicación que usa la API de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code>.</p>
+</div>
+</div>
+<div class="section" id="red-virtual-routed">
+<h2><a class="toc-backref" href="#id30">Red virtual Routed</a><a class="headerlink" href="#red-virtual-routed" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En <strong>modo routed</strong>, la red virtual es conectada a la red física usando las rutas IP especificadas en el hypervisor. Estas rutas IP son usadas para enrutar el tráfico desde las VMs a la red conectada al hypervisor. La clave será configurar la ruta IP correcta en nuestro dispositivo router o gateway para que el paquete de respuesta alcance de vuelta al hypervisor. Si no existen rutas definidas, el paquete de respuesta nunca alcanzará al host.</p>
+<p>En este modo todas las VMs están en una subred enrutada a través del switch virtual. Hasta este punto, los otros hosts en la red física no conocen que esta red existe o cómo llegar a ella. Por lo tanto, es necesario configurar rutas estáticas en la red física. En la siguiente gráfica el host actúa como router, permitiendo que equipos externos puedan comunicarse con la VM:</p>
+<div class="figure align-center" id="id13">
+<img alt="../../../_images/mode_routed.png" src="../../../_images/mode_routed.png" />
+<p class="caption"><span class="caption-text"><a class="reference external" href="https://wiki.libvirt.org/page/VirtualNetworking#Routed_mode">Routed mode - Libvirt Wiki</a></span></p>
+</div>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id31">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Los pasos para crear una red modo routed usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> serán los siguientes:</p>
+<ol class="arabic simple">
+<li>Ingresar un nombre para la red virtual:</li>
+</ol>
+<div class="figure align-center" id="id14">
+<img alt="../../../_images/virt-manager-routed-step1.png" src="../../../_images/virt-manager-routed-step1.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Routed virtual network - step 1</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>En la siguiente pantalla habilitar IPv4 (<span class="guilabel">Enable IPv4 network address space definition</span>) y <span class="guilabel">DHCP</span> (<span class="guilabel">Enable DHCPv4</span>). Deshabilitar <span class="guilabel">Static Route</span>.</li>
+</ol>
+<p>Definimos <code class="docutils literal notranslate"><span class="pre">10.10.10.0/24</span></code> como nuestra red. <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> asignará automáticamente un gateway para nuestra red. Usualmente será la primera IP en el rango definido (<code class="docutils literal notranslate"><span class="pre">10.10.10.1</span></code> en nuestro caso) y será asignado a la interfaz bridge. Podemos definir el rango DHCP según deseemos:</p>
+<div class="figure align-center" id="id15">
+<img alt="../../../_images/virt-manager-routed-step2.png" src="../../../_images/virt-manager-routed-step2.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Routed virtual network - step 2</span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>No haremos una configuración para IPv6:</li>
+</ol>
+<div class="figure align-center" id="id16">
+<img alt="../../../_images/virt-manager-isolated-step3.png" src="../../../_images/virt-manager-isolated-step3.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Routed virtual network - step 3</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>En el último paso, seleccionar la opción <span class="guilabel">Forwarding to physical network</span> y seleccionar la <strong>interfaz host</strong> donde deseamos que el tráfico sea <strong>reenviado (forward)</strong> desde la red virtual. Y seleccionar el <span class="guilabel">Mode</span> como <span class="guilabel">Routed</span></li>
+</ol>
+<div class="figure align-center" id="id17">
+<img alt="../../../_images/virt-manager-routed-step4.png" src="../../../_images/virt-manager-routed-step4.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Routed virtual network - Step 4</span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Revisar los detalles de la red virtual creada en la pestaña <span class="guilabel">Virtual Networks</span>:</li>
+</ol>
+<div class="figure align-center" id="id18">
+<img alt="../../../_images/virt-manager-virtual-network-routed.png" src="../../../_images/virt-manager-virtual-network-routed.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Routed virtual network creada</span></p>
+</div>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id32">Usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#id2" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para crear una red virtual routed con <code class="docutils literal notranslate"><span class="pre">virsh</span></code> realizaremos los siguientes pasos:</p>
+<ol class="arabic simple">
+<li>Crear un archivo XML con el contenido que defina la red:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat routed.xml
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
+    <span class="nt">&lt;name&gt;</span>routed<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;forward</span> <span class="na">dev=</span><span class="s">&#39;wlp2s0&#39;</span> <span class="na">mode=</span><span class="s">&#39;route&#39;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;interface</span> <span class="na">dev=</span><span class="s">&#39;wlp2s0&#39;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/forward&gt;</span>
+    <span class="nt">&lt;ip</span> <span class="na">address=</span><span class="s">&#39;192.168.10.1&#39;</span> <span class="na">netmask=</span><span class="s">&#39;255.255.255.0&#39;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;dhcp&gt;</span>
+            <span class="nt">&lt;range</span> <span class="na">start=</span><span class="s">&#39;192.168.10.128&#39;</span> <span class="na">end=</span><span class="s">&#39;192.168.10.254&#39;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;/dhcp&gt;</span>
+    <span class="nt">&lt;/ip&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+</div>
+<p>Según la sintáxis:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">&lt;network&gt;</span></code>: define la red virtual</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;</span></code>: define el nombre de la red virtual</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;forward&gt;</span></code>: configura el modo y el dispositivo de forwarding</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;ip&gt;</span></code>: configura la dirección de red</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;dhcp&gt;&lt;range&gt;</span></code>: configura el rango DHCP de direcciones IP</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li>Guardar el archivo XML. Para crear una red usando el archivo XML, usar la opción <code class="docutils literal notranslate"><span class="pre">net-define</span></code> del comando <code class="docutils literal notranslate"><span class="pre">virsh</span></code> seguido por la ruta del archivo XML:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-define routed.xml
+
+Network routed defined from routed.xml
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Una vez que hemos definido una red con <code class="docutils literal notranslate"><span class="pre">net-define</span></code>, el archivo de configuración será guardado en <code class="docutils literal notranslate"><span class="pre">/etc/libvirt/qemu/networks/</span></code> como un archivo XML con el mismo nombre que nuestra red virtual:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo cat /etc/libvirt/qemu/networks/routed.xml
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="c">&lt;!--</span>
+<span class="c">WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE</span>
+<span class="c">OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:</span>
+<span class="c">virsh net-edit routed</span>
+<span class="c">or other application using the libvirt API.</span>
+<span class="c">--&gt;</span>
+
+<span class="nt">&lt;network&gt;</span>
+<span class="nt">&lt;name&gt;</span>routed<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;uuid&gt;</span>43d8bf8b-3558-4ed0-85d3-66b8de7783ff<span class="nt">&lt;/uuid&gt;</span>
+<span class="nt">&lt;forward</span> <span class="na">dev=</span><span class="s">&#39;wlp2s0&#39;</span> <span class="na">mode=</span><span class="s">&#39;route&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;interface</span> <span class="na">dev=</span><span class="s">&#39;wlp2s0&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/forward&gt;</span>
+<span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&#39;virbr2&#39;</span> <span class="na">stp=</span><span class="s">&#39;on&#39;</span> <span class="na">delay=</span><span class="s">&#39;0&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;mac</span> <span class="na">address=</span><span class="s">&#39;52:54:00:76:20:86&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;ip</span> <span class="na">address=</span><span class="s">&#39;192.168.10.1&#39;</span> <span class="na">netmask=</span><span class="s">&#39;255.255.255.0&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;dhcp&gt;</span>
+        <span class="nt">&lt;range</span> <span class="na">start=</span><span class="s">&#39;192.168.10.128&#39;</span> <span class="na">end=</span><span class="s">&#39;192.168.10.254&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/dhcp&gt;</span>
+<span class="nt">&lt;/ip&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="red-virtual-nated">
+<h2><a class="toc-backref" href="#id33">Red virtual NATed</a><a class="headerlink" href="#red-virtual-nated" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El <strong>modo NATed</strong> es el modo comúnmente usado en virtual networking cuando deseamos configurar un ambiente de pruebas en una máquina. Bajo este modo las VMs pueden comunicarse con el mundo exterior sin usar ninguna configuración adicional. También es posible la comunicación entre el hypervisor y las VMs. La gran desventaja de esta red virtual es que ninguno de los sistemas del exterior del hypervisor pueden llegar a las VMs.</p>
+<p>La red virtual NATed es creada con ayuda de <strong>iptables</strong>, específicamente usando la opción <strong>masquerading</strong>. Entonces, si paramos el servicio de <code class="docutils literal notranslate"><span class="pre">iptables</span></code> mientras las VMs están siendo usadas puede ocasionar una error de red en las VMs.</p>
+<div class="figure align-center" id="id19">
+<img alt="../../../_images/mode_routed.png" src="../../../_images/mode_routed.png" />
+<p class="caption"><span class="caption-text"><a class="reference external" href="https://wiki.libvirt.org/page/VirtualNetworking#Network_Address_Translation_.28NAT.29">NATed mode - Libvirt Wiki</a></span></p>
+</div>
+<div class="section" id="id3">
+<h3><a class="toc-backref" href="#id34">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><a class="headerlink" href="#id3" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Los pasos para crear una red virtual en modo NATed a través de <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> son similares al modo Routed, a excepción del último paso:</p>
+<ol class="arabic simple">
+<li>Ingresar un nombre para la red virtual:</li>
+</ol>
+<div class="figure align-center" id="id20">
+<img alt="../../../_images/virt-manager-nated-step1.png" src="../../../_images/virt-manager-nated-step1.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - NATed virtual network - step 1</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>En la siguiente pantalla habilitar IPv4 (<span class="guilabel">Enable IPv4 network address space definition</span>) y <span class="guilabel">DHCP</span> (<span class="guilabel">Enable DHCPv4</span>). Deshabilitar <span class="guilabel">Static Route</span>.</li>
+</ol>
+<p>Definimos <code class="docutils literal notranslate"><span class="pre">192.168.120.0</span></code> como nuestra red. <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> asignará automáticamente un gateway para nuestra red. Usualmente será la primera IP en el rango definido (<code class="docutils literal notranslate"><span class="pre">192.168.120.1</span></code> en nuestro caso) y será asignado a la interfaz bridge. Podemos definir el rango DHCP según deseemos:</p>
+<div class="figure align-center" id="id21">
+<img alt="../../../_images/virt-manager-nated-step2.png" src="../../../_images/virt-manager-nated-step2.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - NATed virtual network - step 2</span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>No haremos una configuración para IPv6:</li>
+</ol>
+<div class="figure align-center" id="id22">
+<img alt="../../../_images/virt-manager-isolated-step3.png" src="../../../_images/virt-manager-isolated-step3.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - NATed virtual network - step 3</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>En el último paso, seleccionar la opción <span class="guilabel">Forwarding to physical network</span> y seleccionar la <strong>interfaz host</strong> hacia donde deseamos que el tráfico sea <strong>NATeado</strong> desde la red virtual. Y seleccionar el <span class="guilabel">Mode</span> como <span class="guilabel">NAT</span></li>
+</ol>
+<div class="figure align-center" id="id23">
+<img alt="../../../_images/virt-manager-nated-step4.png" src="../../../_images/virt-manager-nated-step4.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - NATed virtual network - step 3</span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Revisar los detalles de la red virtual creada en la pestaña <span class="guilabel">Virtual Networks</span>:</li>
+</ol>
+<div class="figure align-center" id="id24">
+<img alt="../../../_images/virt-manager-virtual-network-nated.png" src="../../../_images/virt-manager-virtual-network-nated.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - NATed virtual network creada</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="siguientes-pasos-con-virsh">
+<h2><a class="toc-backref" href="#id35">Siguientes pasos con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#siguientes-pasos-con-virsh" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="crear-una-red-temporal-con-virsh">
+<h3><a class="toc-backref" href="#id36">Crear una red temporal con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#crear-una-red-temporal-con-virsh" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-create</span></code> es similar a <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-define</span></code>. La diferencia es que no creará una <strong>red virtual persistent</strong>, en cambio, una vez que sea destruida será removida.</p>
+</div>
+<div class="section" id="listar-redes-con-virsh">
+<h3><a class="toc-backref" href="#id37">Listar redes con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#listar-redes-con-virsh" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Una vez que la red se ha creado podemos listar todas las redes usando el comando <code class="docutils literal notranslate"><span class="pre">net-list</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-list --all
+
+Name                 State      Autostart     Persistent
+----------------------------------------------------------
+default              active     yes           yes
+isolated             inactive   no            yes
+</pre></div>
+</div>
+</div>
+<div class="section" id="iniciar-una-red-con-virsh">
+<h3><a class="toc-backref" href="#id38">Iniciar una red con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#iniciar-una-red-con-virsh" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para iniciar una red virtual usamos <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-start</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-start routed
+
+Network routed started
+</pre></div>
+</div>
+</div>
+<div class="section" id="configurar-auto-start-de-una-red-con-virsh">
+<h3><a class="toc-backref" href="#id39">Configurar auto-start de una red con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#configurar-auto-start-de-una-red-con-virsh" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para activar <strong>auto-start</strong> de una red virtual usamos <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-autostart</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-autostart routed
+
+Network routed marked as autostarted
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="agregar-una-interfaz-de-red-virtual-a-una-vm">
+<h2><a class="toc-backref" href="#id40">Agregar una interfaz de red virtual a una VM</a><a class="headerlink" href="#agregar-una-interfaz-de-red-virtual-a-una-vm" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para usar una red virtual que hemos creado debemos asociar la interfaz de red virtual de una VM al bridge de la red virtual creada.</p>
+<div class="section" id="id4">
+<h3><a class="toc-backref" href="#id41">Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><a class="headerlink" href="#id4" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Podemos agregar una nueva interfaz virtual (o NIC virtual o vNIC) a una VM en <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> haciendo clic derecho en la VM | <span class="guilabel">Open</span> | <span class="guilabel">Show virtual hardware details</span> | <span class="guilabel">+ Add Hardware</span> | <span class="guilabel">Network</span> | en <span class="guilabel">Network source</span> elegir la red a la que deseamos conectar nuestra VM. La dirección MAC será generada or <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> y el <span class="guilabel">Device model</span> como <code class="docutils literal notranslate"><span class="pre">virtio</span></code>. Clic en <span class="guilabel">Finish</span>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Los dispositivos <code class="docutils literal notranslate"><span class="pre">virtio</span></code> están disponibles desde la versión de kernel de Linux 2.6.25.</p>
+</div>
+<div class="figure align-center" id="id25">
+<img alt="../../../_images/virt-manager-new-interface.png" src="../../../_images/virt-manager-new-interface.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Crear nueva interfaz de red virtual</span></p>
+</div>
+</div>
+<div class="section" id="id5">
+<h3><a class="toc-backref" href="#id42">Usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#id5" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para agregar una nueva interfaz virtual (o NIC virtual o vNIC) a una VM usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code> sigamos los siguientes pasos:</p>
+<ol class="arabic simple">
+<li>Obtener el nombre de dominio de la VM (en este caso llamada <code class="docutils literal notranslate"><span class="pre">centos7.0</span></code>) y usar el comando <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">attach-interface</span></code> con ciertos parámetros:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh attach-interface --domain centos7.0 --source isolated --type network --model virtio --config --live
+
+Interface attached successfully
+</pre></div>
+</div>
+<p>Hemos conectado un interfaz virtual modelo <code class="docutils literal notranslate"><span class="pre">virtio</span></code> a la VM. La intefaz está usando un red virtual aislada. Hay dos opciones nuevas usadas en este comando:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">--config</span></code>: hace que el cambio sea persistente en la VM (es decir, no se borrará la próxima vez que arranquemos la VM). Quitar esta opción si queremos que el cambio sea temporal hasta el próximo arranque de la VM.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--live</span></code>: informará a <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> que estamos añadiendo la NIC a una VM que está corriendo. Quitar <code class="docutils literal notranslate"><span class="pre">--live</span></code> si la VM no está corriendo.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Una opción extra es <code class="docutils literal notranslate"><span class="pre">--mac</span></code> que puede usarse para añadir una dirección MAC personalizada.</p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Veamos las interfaces añadidas a la VM con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">domiflist</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh domiflist centos7.0
+Interface  Type       Source     Model       MAC
+-------------------------------------------------------
+vnet0      network    default    virtio      <span class="m">52</span>:54:00:a9:f4:12
+vnet1      network    isolated   virtio      <span class="m">52</span>:54:00:18:e3:75
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Para eliminar la interfaz añadida a la VM usando <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">detach-interface</span></code>.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virsh detach-interface --domain centos7.0-2 --type network --mac <span class="m">52</span>:54:00:18:e3:75 --config --live
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="first admonition-title">Prudencia</p>
+<p class="last">Tener cuidado al usar el parámetro <code class="docutils literal notranslate"><span class="pre">--live</span></code> al momento de quitar una interfaz de red virtual pues podría perder conectividad de red.</p>
+</div>
+</div>
+</div>
+<div class="section" id="ver-propiedades-de-la-red">
+<h2><a class="toc-backref" href="#id43">Ver propiedades de la red</a><a class="headerlink" href="#ver-propiedades-de-la-red" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para ver las propiedades de una red virtual que hemos creados tenemos distintas opciones , ya sea por <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> o <code class="docutils literal notranslate"><span class="pre">virsh</span></code>.</p>
+<p>Por ejemplo cuando nosotros creamos una red virtual, por debajo, se crea un bridge. Si queremos ver el nombre del bridge creado usaremos cualquiera de estas opciones:</p>
+<div class="section" id="propiedades-de-red-con-virt-manager">
+<h3><a class="toc-backref" href="#id44">Propiedades de red con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><a class="headerlink" href="#propiedades-de-red-con-virt-manager" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>: <span class="guilabel">Connection details</span> | <span class="guilabel">Virtual Networks</span> | sección <span class="guilabel">Device</span> de la red seleccionada.</li>
+</ul>
+</div>
+<div class="section" id="propiedades-de-red-con-virsh-net-dumpxml">
+<h3><a class="toc-backref" href="#id45">Propiedades de red con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-dumpxml</span></code></a><a class="headerlink" href="#propiedades-de-red-con-virsh-net-dumpxml" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Cuando generamos una red con <code class="docutils literal notranslate"><span class="pre">virsh</span></code> en base al archivo XML que hemos creado, <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> crea su propio archivo XML en la dirección <code class="docutils literal notranslate"><span class="pre">/etc/libvirt/qemu/networks/</span></code> con el mismo nombre de nuestra red virtual y parámetros adicionales para generar la red.</p>
+<p>Usar el comando <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-dumpxml</span></code> para obtener detalles de la red y el Linux bridge asociado:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-dumpxml isolated
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
+    <span class="nt">&lt;name&gt;</span>isolated<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;uuid&gt;</span>13fd5536-cad8-43a3-a066-91243719f95b<span class="nt">&lt;/uuid&gt;</span>
+    <span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&#39;virbr1&#39;</span> <span class="na">stp=</span><span class="s">&#39;on&#39;</span> <span class="na">delay=</span><span class="s">&#39;0&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;mac</span> <span class="na">address=</span><span class="s">&#39;52:54:00:c4:d1:d7&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+</div>
+<p>Encontraremos que <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> ha añadido unos cuantos parámetros adicionales:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">&lt;uuid&gt;</span></code>: un ID único de nuestro bridge</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;bridge&gt;</span></code>: usado para definir los detalles del bridge. Nombre del bridge, estado de STP y Delay. Estos son los mismos comandos que podemos controlar usando el comando <code class="docutils literal notranslate"><span class="pre">brctl</span></code> (<code class="docutils literal notranslate"><span class="pre">stp</span></code> configura el STP y <code class="docutils literal notranslate"><span class="pre">setfd</span></code> configura el DELAY).</li>
+<li><code class="docutils literal notranslate"><span class="pre">&lt;mac&gt;</span></code>: la dirección MAC del bridge asignada al momento de crearlo</li>
+</ul>
+</div>
+<div class="section" id="propiedades-de-red-con-virsh-net-info">
+<h3><a class="toc-backref" href="#id46">Propiedades de red con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-info</span></code></a><a class="headerlink" href="#propiedades-de-red-con-virsh-net-info" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-info routed
+
+Name:           routed
+UUID:           43d8bf8b-3558-4ed0-85d3-66b8de7783ff
+Active:         yes
+Persistent:     yes
+Autostart:      yes
+<span class="hll">Bridge:         virbr2
+</span></pre></div>
+</div>
+</div>
+<div class="section" id="interfaces-conectadas-al-bridge">
+<h3><a class="toc-backref" href="#id47">Interfaces conectadas al bridge</a><a class="headerlink" href="#interfaces-conectadas-al-bridge" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Ahora que conocemos el nombre del bridge veamos las interfaces conectadas a este:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ brctl show virbr1
+bridge name     bridge id               STP enabled     interfaces
+virbr1          <span class="m">8000</span>.525400c4d1d7       yes             virbr1-nic
+                                                        vnet1
+                                                        vnet3
+</pre></div>
+</div>
+<ul class="simple">
+<li>La interfaz <code class="docutils literal notranslate"><span class="pre">vibr1-nic</span></code> es creada por <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> cuando inicia el bridge <code class="docutils literal notranslate"><span class="pre">virbr1</span></code>. El propósito de esta interfaz es proveer una dirección MAC consistente y confiable para el bridge <code class="docutils literal notranslate"><span class="pre">virbr1</span></code>. El bridge copia la dirección MAC de la primera interfaz que es añadida al bridge. <code class="docutils literal notranslate"><span class="pre">virbr1-nic</span></code> siempre es la primera interfaz añadida al bridge por <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> y no es eliminada hasta que se borre el bridge.</li>
+<li><code class="docutils literal notranslate"><span class="pre">vnet1</span></code> y <code class="docutils literal notranslate"><span class="pre">vnet3</span></code> son las interfaces de red virtuales añadidas a sus respectivas VMs.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="editando-una-red-virtual">
+<h2><a class="toc-backref" href="#id48">Editando una red virtual</a><a class="headerlink" href="#editando-una-red-virtual" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Editemos una red virtual modo routed y modifiquemos su configuración de enrutamiento para que los paquetes de las VMs sean reenviados a otra interfaz en el host según la reglas de rutas IP especificadas en el host.</p>
+<p>Antes de editar la red virtual, primero debemos pararla:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-destroy routed
+
+Network routed destroyed
+</pre></div>
+</div>
+<p>Editar la red usando <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">net-edit</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-edit routed
+
+Network routed XML configuration edited.
+</pre></div>
+</div>
+<p>Este comando hará una copia temporal del archivo de configuración usado por routed en <code class="docutils literal notranslate"><span class="pre">/tmp</span></code> y luego abrirá el editor de texto predeterminado. Editaremos la etiqueta <code class="docutils literal notranslate"><span class="pre">&lt;forward&gt;</span></code>:</p>
+<ul class="simple">
+<li>Configuración antigua:</li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;forward</span> <span class="na">dev=</span><span class="s">&#39;wlp2s0&#39;</span> <span class="na">mode=</span><span class="s">&#39;route&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;interface</span> <span class="na">dev=</span><span class="s">&#39;wlp2s0&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/forward&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Configuración nueva:</li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;forward</span> <span class="na">mode=</span><span class="s">&#39;route&#39;</span> <span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Verificar la configuración con <code class="docutils literal notranslate"><span class="pre">net-dumpxml</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-dumpxml routed
+</pre></div>
+</div>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;network&gt;</span>
+<span class="nt">&lt;name&gt;</span>routed<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;uuid&gt;</span>43d8bf8b-3558-4ed0-85d3-66b8de7783ff<span class="nt">&lt;/uuid&gt;</span>
+<span class="nt">&lt;forward</span> <span class="na">mode=</span><span class="s">&#39;route&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;bridge</span> <span class="na">name=</span><span class="s">&#39;virbr2&#39;</span> <span class="na">stp=</span><span class="s">&#39;on&#39;</span> <span class="na">delay=</span><span class="s">&#39;0&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;mac</span> <span class="na">address=</span><span class="s">&#39;52:54:00:76:20:86&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;ip</span> <span class="na">address=</span><span class="s">&#39;192.168.10.1&#39;</span> <span class="na">netmask=</span><span class="s">&#39;255.255.255.0&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;dhcp&gt;</span>
+        <span class="nt">&lt;range</span> <span class="na">start=</span><span class="s">&#39;192.168.10.128&#39;</span> <span class="na">end=</span><span class="s">&#39;192.168.10.254&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/dhcp&gt;</span>
+<span class="nt">&lt;/ip&gt;</span>
+<span class="nt">&lt;/network&gt;</span>
+</pre></div>
+</div>
+<p>Luego de verificar la configuración, iniciar la red virtual con <code class="docutils literal notranslate"><span class="pre">net-start</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh net-start routed
+
+Network routed started
+</pre></div>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id49">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://wiki.libvirt.org/page/VirtualNetworking#Isolated_mode">Isolated mode - Libvirt Wiki</a></li>
+<li><a class="reference external" href="https://wiki.libvirt.org/page/VirtualNetworking#Routed_mode">Routed mode - Libvirt Wiki</a></li>
+<li><a class="reference external" href="https://wiki.libvirt.org/page/VirtualNetworking#Network_Address_Translation_.28NAT.29">NATed mode - Libvirt Wiki</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../web/_web.html" class="btn btn-neutral float-right" title="Web" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="linux-bridges.html" class="btn btn-neutral float-left" title="Linux Bridges" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,754 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Linux Bridges &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Redes virtuales con Libvirt" href="virtual-networks-libvirt.html" />
+    <link rel="prev" title="Network Virtualization" href="_network-virtualization.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_network-virtualization.html">Network Virtualization</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Linux Bridges</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#iniciando-con-linux-bridges">Iniciando con Linux Bridges</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#instalando-herramientas-y-cargando-modulos">Instalando herramientas y cargando módulos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creando-un-linux-bridge">Creando un Linux Bridge</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#linux-bridges-con-interfaces-tap">Linux Bridges con Interfaces TAP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#teoria-de-dispositivos-tap">Teoría de dispositivos TAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cargando-modulos-tun-tap">Cargando módulos TUN/TAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creando-un-dispositivo-tap">Creando un dispositivo TAP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conectando-un-dispositivo-tap-al-bridge">Conectando un dispositivo TAP al bridge</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deshacer-configuracion-de-linux-bridge-con-interfaces-tap">Deshacer configuración de Linux Bridge con interfaces TAP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-adicional-del-linux-bridge">Configuración adicional del Linux Bridge</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux-bridges-con-network-namespaces-e-interfaces-veth">Linux Bridges con Network Namespaces e Interfaces veth</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interfaces-veth">Interfaces veth</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#conectando-una-interfaz-veth-al-bridge">Conectando una interfaz veth al bridge</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="virtual-networks-libvirt.html">Redes virtuales con Libvirt</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_network-virtualization.html">Network Virtualization</a> &raquo;</li>
+        
+      <li>Linux Bridges</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/network-virtualization/linux-bridges.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="linux-bridges">
+<h1><a class="toc-backref" href="#id3">Linux Bridges</a><a class="headerlink" href="#linux-bridges" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#linux-bridges" id="id3">Linux Bridges</a><ul>
+<li><a class="reference internal" href="#iniciando-con-linux-bridges" id="id4">Iniciando con Linux Bridges</a><ul>
+<li><a class="reference internal" href="#instalando-herramientas-y-cargando-modulos" id="id5">Instalando herramientas y cargando módulos</a></li>
+<li><a class="reference internal" href="#creando-un-linux-bridge" id="id6">Creando un Linux Bridge</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#linux-bridges-con-interfaces-tap" id="id7">Linux Bridges con Interfaces TAP</a><ul>
+<li><a class="reference internal" href="#teoria-de-dispositivos-tap" id="id8">Teoría de dispositivos TAP</a></li>
+<li><a class="reference internal" href="#cargando-modulos-tun-tap" id="id9">Cargando módulos TUN/TAP</a></li>
+<li><a class="reference internal" href="#creando-un-dispositivo-tap" id="id10">Creando un dispositivo TAP</a></li>
+<li><a class="reference internal" href="#conectando-un-dispositivo-tap-al-bridge" id="id11">Conectando un dispositivo TAP al bridge</a></li>
+<li><a class="reference internal" href="#deshacer-configuracion-de-linux-bridge-con-interfaces-tap" id="id12">Deshacer configuración de Linux Bridge con interfaces TAP</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-adicional-del-linux-bridge" id="id13">Configuración adicional del Linux Bridge</a></li>
+<li><a class="reference internal" href="#linux-bridges-con-network-namespaces-e-interfaces-veth" id="id14">Linux Bridges con Network Namespaces e Interfaces veth</a><ul>
+<li><a class="reference internal" href="#namespaces" id="id15">Namespaces</a><ul>
+<li><a class="reference internal" href="#teoria-de-network-namespaces" id="id16">Teoría de Network Namespaces</a></li>
+<li><a class="reference internal" href="#creando-y-listando-network-namespaces" id="id17">Creando y listando network namespaces</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#interfaces-veth" id="id18">Interfaces veth</a><ul>
+<li><a class="reference internal" href="#asignando-interfaces-veth-a-network-namespaces" id="id19">Asignando interfaces veth a network namespaces</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#conectando-una-interfaz-veth-al-bridge" id="id20">Conectando una interfaz veth al bridge</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="iniciando-con-linux-bridges">
+<h2><a class="toc-backref" href="#id4">Iniciando con Linux Bridges</a><a class="headerlink" href="#iniciando-con-linux-bridges" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Un <strong>virtual network switch</strong> o <strong>bridge</strong> es equivalente a un switch físico con la diferencia de que un <strong>Linux bridge</strong> posee un número ilimitado de puertos virtuales. Podemos conectar VMs a estos puertos virtuales. Del mismo modo que un switch físico, el bridge aprende direcciones MAC de paquetes recibidos y los guarda en una <strong>MAC table</strong>, la cual usa para tomar decisiones de forwarding de tramas.</p>
+<div class="section" id="instalando-herramientas-y-cargando-modulos">
+<h3><a class="toc-backref" href="#id5">Instalando herramientas y cargando módulos</a><a class="headerlink" href="#instalando-herramientas-y-cargando-modulos" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li>Para administrar bridges necesitamos una herramienta llamada <code class="docutils literal notranslate"><span class="pre">brctl</span></code> que se obtiene instalando el paquete <code class="docutils literal notranslate"><span class="pre">bridge-utils</span></code>. Para instalarlo ejecutaremos:</li>
+</ol>
+<ul class="simple">
+<li>Con <code class="docutils literal notranslate"><span class="pre">apt</span></code>: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">bridge-utils</span></code></li>
+<li>Con <code class="docutils literal notranslate"><span class="pre">yum</span></code>: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">yum</span> <span class="pre">install</span> <span class="pre">-y</span> <span class="pre">bridge-utils</span></code></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li>Luego debemos asegurarnos que el módulo de bridge esté cargado:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lsmod <span class="p">|</span> grep bridge
+
+bridge                <span class="m">155648</span>  <span class="m">0</span>
+</pre></div>
+</div>
+<p>Si el módulo no estuviese cargado usar <code class="docutils literal notranslate"><span class="pre">modprobe</span> <span class="pre">bridge</span></code> para cargarlo al kernel.</p>
+</div>
+<div class="section" id="creando-un-linux-bridge">
+<h3><a class="toc-backref" href="#id6">Creando un Linux Bridge</a><a class="headerlink" href="#creando-un-linux-bridge" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li>Para crear un bridge llamado <code class="docutils literal notranslate"><span class="pre">brtest</span></code> usamos el comando <code class="docutils literal notranslate"><span class="pre">brctl</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo brctl addbr brtest
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Para listar los bridges disponibles con información como el ID del bridge, estado del Spanning Tree Protocol (STP), y las interfaces conectadas al bridge, ejecutamos:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ brctl show
+
+bridge name     bridge id               STP enabled     interfaces
+brtest          <span class="m">8000</span>.000000000000       no
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Un Linux bridge también se mostrará como un dispositivo de red. Para ver los detalles de red del bridge creado usaremos el comando <code class="docutils literal notranslate"><span class="pre">ip</span></code> o <code class="docutils literal notranslate"><span class="pre">ifconfig</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip link show brtest
+
+<span class="m">18</span>: brtest: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">66</span>:43:4a:a2:9f:3e brd ff:ff:ff:ff:ff:ff
+
+$ ifconfig brtest
+
+brtest: <span class="nv">flags</span><span class="o">=</span><span class="m">4098</span>&lt;BROADCAST,MULTICAST&gt;  mtu <span class="m">1500</span>
+        ether <span class="m">66</span>:43:4a:a2:9f:3e  txqueuelen <span class="m">1000</span>  <span class="o">(</span>Ethernet<span class="o">)</span>
+        RX packets <span class="m">0</span>  bytes <span class="m">0</span> <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
+        RX errors <span class="m">0</span>  dropped <span class="m">0</span>  overruns <span class="m">0</span>  frame <span class="m">0</span>
+        TX packets <span class="m">0</span>  bytes <span class="m">0</span> <span class="o">(</span><span class="m">0</span>.0 B<span class="o">)</span>
+        TX errors <span class="m">0</span>  dropped <span class="m">0</span> overruns <span class="m">0</span>  carrier <span class="m">0</span>  collisions <span class="m">0</span>
+</pre></div>
+</div>
+<p>El Linux bridge está listo. Ahora creamos y conectaremos un dispositivo TAP a él.</p>
+</div>
+</div>
+<div class="section" id="linux-bridges-con-interfaces-tap">
+<h2><a class="toc-backref" href="#id7">Linux Bridges con Interfaces TAP</a><a class="headerlink" href="#linux-bridges-con-interfaces-tap" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="teoria-de-dispositivos-tap">
+<h3><a class="toc-backref" href="#id8">Teoría de dispositivos TAP</a><a class="headerlink" href="#teoria-de-dispositivos-tap" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Podemos conectar a los puertos del bridge dispositivos de red espaciales llamados <strong>TAP devices</strong>. El equivalente de networking físico de un dispositivo TAP sería un <strong>cable de red</strong> encargado de portar los frames de Ethernet entre la VM y el bridge. Los dispositivos TAP forman parte de una tecnología mayor conocida como la implementación TUN/TAP.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<ul class="last simple">
+<li><strong>TUN</strong>, que representa «tunnel», simula a dispositivo de <strong>capa de red</strong> y trabaja con paquetes de la <strong>capa 3</strong> del modelo de referencia OSI, como los <strong>paquetes IP</strong>. TUN es usado con enrutamiento.</li>
+<li><strong>TAP</strong>  (a saber, un network tap) simula un dispositivo de <strong>capa de enlace</strong> y opera con paquetes de la <strong>capa 2</strong> del modelo de referencia OSI, como los <strong>Ethernet frames (tramas)</strong>. TAP es usado para crear un network bridge.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="cargando-modulos-tun-tap">
+<h3><a class="toc-backref" href="#id9">Cargando módulos TUN/TAP</a><a class="headerlink" href="#cargando-modulos-tun-tap" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Igual que se verificó con Linux Bridges, verificar que el módulo TUN/TAP esté cargando en el kernel:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lsmod <span class="p">|</span> grep tap
+
+Module  Size    Used by
+tap     <span class="m">24576</span>   <span class="m">1</span> vhost_net
+</pre></div>
+</div>
+<p>Si no estuviese cargado alguno de los módulos usar <code class="docutils literal notranslate"><span class="pre">modprobe</span> <span class="pre">tun</span></code> y/o <code class="docutils literal notranslate"><span class="pre">modprobe</span> <span class="pre">tap</span></code> para cargarlo al kernel.</p>
+</div>
+<div class="section" id="creando-un-dispositivo-tap">
+<h3><a class="toc-backref" href="#id10">Creando un dispositivo TAP</a><a class="headerlink" href="#creando-un-dispositivo-tap" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Crear un dispositivo TAP llamado <code class="docutils literal notranslate"><span class="pre">tap-vnic</span></code> con el comando <code class="docutils literal notranslate"><span class="pre">ip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip tuntap add dev tap-vnic mode tap
+</pre></div>
+</div>
+<p>Veamos la interfaz TAP creada con el comando <code class="docutils literal notranslate"><span class="pre">ip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip link show tap-vnic
+
+<span class="m">19</span>: tap-vnic: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+link/ether <span class="m">76</span>:0e:4c:78:0d:be brd ff:ff:ff:ff:ff:ff
+</pre></div>
+</div>
+</div>
+<div class="section" id="conectando-un-dispositivo-tap-al-bridge">
+<h3><a class="toc-backref" href="#id11">Conectando un dispositivo TAP al bridge</a><a class="headerlink" href="#conectando-un-dispositivo-tap-al-bridge" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Hasta el momento tenemos creado un brdige llamado <code class="docutils literal notranslate"><span class="pre">tap-vnic</span></code> y un dispositivo TAP llamado <code class="docutils literal notranslate"><span class="pre">tap-vnic</span></code>. Ahora añadamos el TAP al bridge:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo brctl addif brtest tap-vnic
+
+$ brctl show
+
+bridge name     bridge id               STP enabled     interfaces
+brtest          <span class="m">8000</span>.760e4c780dbe       no              tap-vnic
+</pre></div>
+</div>
+<p>Ahora vemos a la interfaz <code class="docutils literal notranslate"><span class="pre">tap-vnic</span></code> añadida al bridge <code class="docutils literal notranslate"><span class="pre">brtest</span></code>. <code class="docutils literal notranslate"><span class="pre">tap-vnic</span></code> puede funcionar como la interfaz entre nuestra VM y el bridge <code class="docutils literal notranslate"><span class="pre">brtest</span></code>, que a su vez permite a la VM comunicarse con otras VMs añadidas a este bridge:</p>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/linux-bridges-tap-ifaces.png" src="../../../_images/linux-bridges-tap-ifaces.png" />
+<p class="caption"><span class="caption-text">Conexión entre VMs con Linux bridge e interfaces TAP</span></p>
+</div>
+<p>Observaremos ciertos cambios luego de haber conectado la interfaz al bridge:</p>
+<ul class="simple">
+<li>La dirección MAC del bridge luego de añadir el dispositivo TAP ha cambiado:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip link show brtest
+
+<span class="m">18</span>: brtest: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">76</span>:0e:4c:78:0d:be brd ff:ff:ff:ff:ff:ff
+</pre></div>
+</div>
+<ul class="simple">
+<li>Es posible ver la tabla MAC del bridge <code class="docutils literal notranslate"><span class="pre">brtest</span></code> con el comando <code class="docutils literal notranslate"><span class="pre">brctl</span> <span class="pre">showmacs</span> <span class="pre">brtest</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ brctl showmacs brtest
+
+port no     mac addr                is local?       ageing timer
+<span class="m">1</span>           <span class="m">76</span>:0e:4c:78:0d:be       yes             <span class="m">0</span>.00
+<span class="m">1</span>           <span class="m">76</span>:0e:4c:78:0d:be       yes             <span class="m">0</span>.00
+</pre></div>
+</div>
+<ul class="simple">
+<li>Además podemos agregar una dirección IP al bridge:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip addr add <span class="m">192</span>.168.99.1/24 dev brtest
+
+$ ip addr show brtest
+<span class="m">18</span>: brtest: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether <span class="m">76</span>:0e:4c:78:0d:be brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">192</span>.168.99.1/24 scope global brtest
+    valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+</div>
+<div class="section" id="deshacer-configuracion-de-linux-bridge-con-interfaces-tap">
+<h3><a class="toc-backref" href="#id12">Deshacer configuración de Linux Bridge con interfaces TAP</a><a class="headerlink" href="#deshacer-configuracion-de-linux-bridge-con-interfaces-tap" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Primero desconectaremos el dispositivo TAP del bridge:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo brctl delif brtest tap-vnic
+
+$ brctl show brtest
+
+bridge name     bridge id               STP enabled     interfaces
+brtest          <span class="m">8000</span>.000000000000       no
+</pre></div>
+</div>
+<ul class="simple">
+<li>Luego eliminaremos el dispositivo TAP usando el comando <code class="docutils literal notranslate"><span class="pre">ip</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip tuntap del dev tap-vnic mode tap
+</pre></div>
+</div>
+<ul class="simple">
+<li>Finalmente eliminamos el bridge:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo brctl delbr brtest
+</pre></div>
+</div>
+<p>Todos estos pasos que hemos realizado son los mismos que <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> lleva acabo en el backend mientras habilita o deshabilita networking para una VM.</p>
+</div>
+</div>
+<div class="section" id="configuracion-adicional-del-linux-bridge">
+<h2><a class="toc-backref" href="#id13">Configuración adicional del Linux Bridge</a><a class="headerlink" href="#configuracion-adicional-del-linux-bridge" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Asignar una dirección MAC a la interfaz de red del bridge con el comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">link</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> brtest address <span class="m">02</span>:01:02:03:04:05
+
+$ ip link show brtest
+
+<span class="m">16</span>: brtest: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">02</span>:01:02:03:04:04 brd ff:ff:ff:ff:ff:ff
+</pre></div>
+</div>
+<ul class="simple">
+<li>Activar STP en el Linux Bridge (sin STP no existe Ping entre PCs conectadas a través de un Linux Bridge con veth pairs):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo brctl stp brtest on
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Para ver todas las opciones disponibles de <code class="docutils literal notranslate"><span class="pre">brctl</span></code> usar: <code class="docutils literal notranslate"><span class="pre">brctl</span> <span class="pre">--help</span></code></p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ brctl --help
+Usage: brctl <span class="o">[</span>commands<span class="o">]</span>
+commands:
+        addbr           &lt;bridge&gt;                add bridge
+        delbr           &lt;bridge&gt;                delete bridge
+        addif           &lt;bridge&gt; &lt;device&gt;       add interface to bridge
+        delif           &lt;bridge&gt; &lt;device&gt;       delete interface from bridge
+        hairpin         &lt;bridge&gt; &lt;port&gt; <span class="o">{</span>on<span class="p">|</span>off<span class="o">}</span>        turn hairpin on/off
+        setageing       &lt;bridge&gt; &lt;time&gt;         <span class="nb">set</span> ageing <span class="nb">time</span>
+        setbridgeprio   &lt;bridge&gt; &lt;prio&gt;         <span class="nb">set</span> bridge priority
+        setfd           &lt;bridge&gt; &lt;time&gt;         <span class="nb">set</span> bridge forward delay
+        sethello        &lt;bridge&gt; &lt;time&gt;         <span class="nb">set</span> hello <span class="nb">time</span>
+        setmaxage       &lt;bridge&gt; &lt;time&gt;         <span class="nb">set</span> max message age
+        setpathcost     &lt;bridge&gt; &lt;port&gt; &lt;cost&gt;  <span class="nb">set</span> path cost
+        setportprio     &lt;bridge&gt; &lt;port&gt; &lt;prio&gt;  <span class="nb">set</span> port priority
+        show            <span class="o">[</span> &lt;bridge&gt; <span class="o">]</span>            show a list of bridges
+        showmacs        &lt;bridge&gt;                show a list of mac addrs
+        showstp         &lt;bridge&gt;                show bridge stp info
+        stp             &lt;bridge&gt; <span class="o">{</span>on<span class="p">|</span>off<span class="o">}</span>       turn stp on/off
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="linux-bridges-con-network-namespaces-e-interfaces-veth">
+<h2><a class="toc-backref" href="#id14">Linux Bridges con Network Namespaces e Interfaces veth</a><a class="headerlink" href="#linux-bridges-con-network-namespaces-e-interfaces-veth" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="namespaces">
+<h3><a class="toc-backref" href="#id15">Namespaces</a><a class="headerlink" href="#namespaces" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="section" id="teoria-de-network-namespaces">
+<h4><a class="toc-backref" href="#id16">Teoría de Network Namespaces</a><a class="headerlink" href="#teoria-de-network-namespaces" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Una instalación de Linux comparte un único conjunto de interfaces de red y entradas de tablas de enrutamiento. Con <strong>network namespaces</strong> podemos tener instancias diferentes y separadas de las interfaces de red y tablas de enrutamiento que operan independientemente una de otra. (Referencia: <a class="reference external" href="https://blog.scottlowe.org/2013/09/04/introducing-linux-network-namespaces/">Introducing Linux Network Namespaces</a>)</p>
+</div>
+<div class="section" id="creando-y-listando-network-namespaces">
+<h4><a class="toc-backref" href="#id17">Creando y listando network namespaces</a><a class="headerlink" href="#creando-y-listando-network-namespaces" title="Enlazar permanentemente con este título">¶</a></h4>
+<ul class="simple">
+<li>Para crear un network namespace usamos el comando <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">netns</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip netns add mynetns
+</pre></div>
+</div>
+<ul class="simple">
+<li>Para listar los network namespaces creados usamos:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip netns show
+
+mynetns
+</pre></div>
+</div>
+<p>Luego de haber creado un network namespace el siguiente paso será asignar interfaces (virtuales o físicas) al namespace para luego configurarlas y lograr conectividad de red.</p>
+</div>
+</div>
+<div class="section" id="interfaces-veth">
+<h3><a class="toc-backref" href="#id18">Interfaces veth</a><a class="headerlink" href="#interfaces-veth" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="section" id="asignando-interfaces-veth-a-network-namespaces">
+<h4><a class="toc-backref" href="#id19">Asignando interfaces veth a network namespaces</a><a class="headerlink" href="#asignando-interfaces-veth-a-network-namespaces" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Una opción para asignar interfaces a network namespaces son las interfaces virtuales también conocidas como <strong>interfaces virtual Ethernet (veth)</strong> a un network namespace.</p>
+<p>Las interfaces veth están construidas en pares, de forma que lo que entre por una interfaz veth salga por su otra interfaz veth par (<strong>peer</strong>). De esta forma podemos usar las interfaces veth para conectar un network namespace con el mundo exterior.</p>
+<p>Para crear un veth pair usamos el comando <code class="docutils literal notranslate"><span class="pre">ip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link add vethA <span class="nb">type</span> veth peer name vethB
+</pre></div>
+</div>
+<p>Otra opción equivalente es agregando <code class="docutils literal notranslate"><span class="pre">dev</span></code> al comando: <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">ip</span> <span class="pre">link</span> <span class="pre">add</span> <span class="pre">dev</span> <span class="pre">veth1</span> <span class="pre">type</span> <span class="pre">veth</span> <span class="pre">peer</span> <span class="pre">name</span> <span class="pre">veth2</span></code></p>
+<p>Podemos ver el par de interfaces veth creado con el comando <code class="docutils literal notranslate"><span class="pre">ip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip link
+
+<span class="m">8</span>: vethB@vethA: &lt;BROADCAST,MULTICAST,M-DOWN&gt; mtu <span class="m">1500</span> qdisc noop state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">96</span>:58:a7:73:a7:b1 brd ff:ff:ff:ff:ff:ff
+<span class="m">9</span>: vethA@vethB: &lt;BROADCAST,MULTICAST,M-DOWN&gt; mtu <span class="m">1500</span> qdisc noop state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether 1e:da:c1:92:7b:99 brd ff:ff:ff:ff:ff:ff
+</pre></div>
+</div>
+<p>Como vemos, ambas interfaces pertenecen al namespace «<strong>default</strong>» o «<strong>global</strong>», junto con las interfaces físicas.</p>
+<p>Digamos que ahora queremos conectar el namespace global al namespace creado por nosotros (<code class="docutils literal notranslate"><span class="pre">mynetns</span></code>). Para hacerlo, movemos una de las interfaces veth a nuestro namespace <code class="docutils literal notranslate"><span class="pre">mynetns</span></code> con el comando <code class="docutils literal notranslate"><span class="pre">ip</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> vethA netns mynetns
+</pre></div>
+</div>
+<p>Si fuésemos a listar las interfaces físicas de nuestro sistema, veremos que la interfaz <code class="docutils literal notranslate"><span class="pre">vethA</span></code> ha desaparecido de la lista:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip link
+
+<span class="m">8</span>: vethB@if9: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">96</span>:58:a7:73:a7:b1 brd ff:ff:ff:ff:ff:ff link-netnsid <span class="m">0</span>
+</pre></div>
+</div>
+<p>Ahora la interfaz <code class="docutils literal notranslate"><span class="pre">vethA</span></code> se encuentra en el namespace <code class="docutils literal notranslate"><span class="pre">mynetns</span></code>, como lo podemos comprobar con:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip netns <span class="nb">exec</span> mynetns ip link show
+
+<span class="m">1</span>: lo: &lt;LOOPBACK&gt; mtu <span class="m">65536</span> qdisc noop state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+<span class="m">9</span>: vethA@if8: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether 1e:da:c1:92:7b:99 brd ff:ff:ff:ff:ff:ff link-netnsid <span class="m">0</span>
+</pre></div>
+</div>
+<p>Podemos dividir el comando en dos partes:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">netns</span> <span class="pre">exec</span> <span class="pre">mynetns</span></code>: ejecutar un comando en un network namespace diferente (<code class="docutils literal notranslate"><span class="pre">mynetns</span></code>)</li>
+<li><code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">link</span> <span class="pre">show</span></code>: comando a ejecutar en el network namespace</li>
+</ul>
+<p>En general, podemos ejecutar cualquier comando para la configuración de red dentro del namespace (<code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">addr</span></code>, <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">route</span></code>, <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">link</span></code>, <code class="docutils literal notranslate"><span class="pre">ifconfig</span></code>, <code class="docutils literal notranslate"><span class="pre">ping</span></code>) con el siguiente formato:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip netns <span class="nb">exec</span> &lt;netns&gt; &lt;comando a correr en el netns&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="conectando-una-interfaz-veth-al-bridge">
+<h3><a class="toc-backref" href="#id20">Conectando una interfaz veth al bridge</a><a class="headerlink" href="#conectando-una-interfaz-veth-al-bridge" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para lograr la comunicación de dos network namespaces (o VMs) podemos conectar estos dispositivos a un bridge. Para esto, conectaremos cada network namespace (o VM) con un veth pair al bridge. Sigamos el siguiente esquema como ejemplo:</p>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/linux-bridges-veth.png" src="../../../_images/linux-bridges-veth.png" />
+<p class="caption"><span class="caption-text">Conexión entre network namespaces con un Linux bridge e interfaces veth</span></p>
+</div>
+<ol class="arabic simple">
+<li>Primero crearemos los namespaces <code class="docutils literal notranslate"><span class="pre">PC1</span></code> y <code class="docutils literal notranslate"><span class="pre">PC2</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip netns add PC1
+$ sudo ip netns add PC2
+
+$ ip netns show
+PC2
+PC1
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Luego crearemos el bridge <code class="docutils literal notranslate"><span class="pre">SW-A</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo brctl addbr SW-A
+
+$ brctl show
+bridge name     bridge id               STP enabled     interfaces
+SW-A            <span class="m">8000</span>.000000000000       no
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Posteriormente creamos dos veth pair:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link add veth1-A <span class="nb">type</span> veth peer name vethA-1
+$ sudo ip link add veth2-A <span class="nb">type</span> veth peer name vethA-2
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Asignamos una interfaz de cada veth pair a un network namespace:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> veth1-A netns PC1
+$ sudo ip link <span class="nb">set</span> veth2-A netns PC2
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Asignamos el otro extremo de cada veth pair al único bridge creado:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo brctl addif SW-A vethA-1
+$ sudo brctl addif SW-A vethA-2
+
+$ brctl show
+bridge name     bridge id               STP enabled     interfaces
+SW-A            <span class="m">8000</span>.168a27b2ea41       no              vethA-1
+                                                        vethA-2
+</pre></div>
+</div>
+<p>Como vemos, hemos conectado un extremo de cada veth pair al bridge <code class="docutils literal notranslate"><span class="pre">SW-A</span></code>.</p>
+<ol class="arabic simple" start="6">
+<li>Asignar una dirección IP dentro del mismo rango de red a cada interfaz del veth pair conectada a cada namespace:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip netns <span class="nb">exec</span> PC1 ip addr add <span class="m">192</span>.168.99.1/24 dev veth1-A
+$ sudo ip netns <span class="nb">exec</span> PC2 ip addr add <span class="m">192</span>.168.99.2/24 dev veth2-A
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>Prender las interfaces conectadas a los network namespace y al bridge:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Interfaces conectadas a namespaces PC1 y PC2</span>
+$ sudo ip netns <span class="nb">exec</span> PC1 ip link <span class="nb">set</span> dev veth1-A up
+$ sudo ip netns <span class="nb">exec</span> PC2 ip link <span class="nb">set</span> dev veth2-A up
+
+<span class="c1"># Interfaz propia del bridge</span>
+$ sudo ip link <span class="nb">set</span> dev SW-A up
+
+<span class="c1"># Interfaces conectadas al bridge</span>
+$ sudo ip link <span class="nb">set</span> dev vethA-1 up
+$ sudo ip link <span class="nb">set</span> dev vethA-2 up
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li>Revisamos la configuración de las interfaces de los network namespace y el bridge:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configuración de red de network namespace PC1</span>
+$ sudo ip netns <span class="nb">exec</span> PC1 ip addr show
+<span class="m">1</span>: lo: &lt;LOOPBACK&gt; mtu <span class="m">65536</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+<span class="m">12</span>: veth1-A@if11: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UP group default qlen <span class="m">1000</span>
+    link/ether 7e:81:4e:49:c2:a8 brd ff:ff:ff:ff:ff:ff link-netnsid <span class="m">0</span>
+    inet <span class="m">192</span>.168.99.1/24 scope global veth1-A
+        valid_lft forever preferred_lft forever
+    inet6 fe80::7c81:4eff:fe49:c2a8/64 scope link
+        valid_lft forever preferred_lft forever
+
+<span class="c1"># Configuración de red de network namespace PC2</span>
+$ sudo ip netns <span class="nb">exec</span> PC2 ip addr show
+<span class="m">1</span>: lo: &lt;LOOPBACK&gt; mtu <span class="m">65536</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+<span class="m">14</span>: veth2-A@if13: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">82</span>:84:81:8a:a2:ac brd ff:ff:ff:ff:ff:ff link-netnsid <span class="m">0</span>
+    inet <span class="m">192</span>.168.99.2/24 scope global veth2-A
+        valid_lft forever preferred_lft forever
+    inet6 fe80::8084:81ff:fe8a:a2ac/64 scope link
+        valid_lft forever preferred_lft forever
+
+<span class="c1"># Configuración de red del bridge SW-A</span>
+$ ip link
+<span class="m">10</span>: SW-A: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UP mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">16</span>:8a:27:b2:ea:41 brd ff:ff:ff:ff:ff:ff
+<span class="m">11</span>: vethA-1@if12: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue master SW-A state UP mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether a6:96:81:e7:bb:3b brd ff:ff:ff:ff:ff:ff link-netnsid <span class="m">1</span>
+<span class="m">13</span>: vethA-2@if14: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue master SW-A state UP mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">16</span>:8a:27:b2:ea:41 brd ff:ff:ff:ff:ff:ff link-netnsid <span class="m">2</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>Probar conectividad entre network namespaces <code class="docutils literal notranslate"><span class="pre">PC1</span></code> y <code class="docutils literal notranslate"><span class="pre">PC2</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip netns <span class="nb">exec</span> PC1 ping -c3 <span class="m">192</span>.168.99.2
+PING <span class="m">192</span>.168.99.2 <span class="o">(</span><span class="m">192</span>.168.99.2<span class="o">)</span> <span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from <span class="m">192</span>.168.99.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.067 ms
+<span class="m">64</span> bytes from <span class="m">192</span>.168.99.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.078 ms
+<span class="m">64</span> bytes from <span class="m">192</span>.168.99.2: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.065 ms
+
+--- <span class="m">192</span>.168.99.2 ping statistics ---
+<span class="m">3</span> packets transmitted, <span class="m">3</span> received, <span class="m">0</span>% packet loss, <span class="nb">time</span> 2033ms
+rtt min/avg/max/mdev <span class="o">=</span> <span class="m">0</span>.065/0.070/0.078/0.005 ms
+
+$ sudo ip netns <span class="nb">exec</span> PC2 ping -c3 <span class="m">192</span>.168.99.1
+PING <span class="m">192</span>.168.99.1 <span class="o">(</span><span class="m">192</span>.168.99.1<span class="o">)</span> <span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from <span class="m">192</span>.168.99.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.057 ms
+<span class="m">64</span> bytes from <span class="m">192</span>.168.99.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">2</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.077 ms
+<span class="m">64</span> bytes from <span class="m">192</span>.168.99.1: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">3</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">64</span> <span class="nv">time</span><span class="o">=</span><span class="m">0</span>.108 ms
+
+--- <span class="m">192</span>.168.99.1 ping statistics ---
+<span class="m">3</span> packets transmitted, <span class="m">3</span> received, <span class="m">0</span>% packet loss, <span class="nb">time</span> 2029ms
+rtt min/avg/max/mdev <span class="o">=</span> <span class="m">0</span>.057/0.080/0.108/0.023 ms
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="virtual-networks-libvirt.html" class="btn btn-neutral float-right" title="Redes virtuales con Libvirt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_network-virtualization.html" class="btn btn-neutral float-left" title="Network Virtualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
