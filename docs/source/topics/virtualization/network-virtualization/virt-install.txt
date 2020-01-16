@@ -1,0 +1,17 @@
+sudo virt-install \
+--name centos7-guest-1 \
+--memory 2048 \
+--vcpus 2 \
+--disk /var/lib/libvirt/images/centos7-gnome.qcow2 \
+--network default \
+--import \
+--os-variant centos7.0
+
+sudo virt-install \
+--name ubuntu18-guest-1 \
+--memory 2048 \
+--vcpus 2 \
+--disk /var/lib/libvirt/images/ubuntu18-desktop.qcow2 \
+--network default \
+--import \
+--os-variant ubuntu18.04

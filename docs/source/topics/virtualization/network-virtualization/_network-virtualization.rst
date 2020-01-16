@@ -8,3 +8,4 @@ Network Virtualization
 
     linux-bridges
     virtual-networks-libvirt
+    bridged-network

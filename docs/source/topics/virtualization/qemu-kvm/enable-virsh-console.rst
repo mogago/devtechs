@@ -1,4 +1,4 @@
-Habilitando ``virsh-console``
+Habilitando ``virsh console``
 =============================
 
 La funcionalidad ``virsh console`` permite conectarnos desde la consola del host a la consola de la VM guest.

@@ -1,0 +1,510 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bridged Network &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Storage Virtualization" href="../storage-virtualization/_storage-virtualization.html" />
+    <link rel="prev" title="Redes virtuales con Libvirt" href="virtual-networks-libvirt.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_network-virtualization.html">Network Virtualization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="linux-bridges.html">Linux Bridges</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual-networks-libvirt.html">Redes virtuales con Libvirt</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Bridged Network</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#host-configuration">Host configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metodo-1-usando-iproute2">Método 1 - Usando <code class="docutils literal notranslate"><span class="pre">iproute2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metodo-2-usando-bridge-utils">Método 2 - Usando <code class="docutils literal notranslate"><span class="pre">bridge-utils</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metodo-3-usando-virt-manager">Método 3 - Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-final-del-host">Configuración final del host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#guest-configuration">Guest configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_network-virtualization.html">Network Virtualization</a> &raquo;</li>
+        
+      <li>Bridged Network</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/network-virtualization/bridged-network.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bridged-network">
+<h1><a class="toc-backref" href="#id8">Bridged Network</a><a class="headerlink" href="#bridged-network" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#bridged-network" id="id8">Bridged Network</a><ul>
+<li><a class="reference internal" href="#host-configuration" id="id9">Host configuration</a><ul>
+<li><a class="reference internal" href="#metodo-1-usando-iproute2" id="id10">Método 1 - Usando <code class="docutils literal notranslate"><span class="pre">iproute2</span></code></a></li>
+<li><a class="reference internal" href="#metodo-2-usando-bridge-utils" id="id11">Método 2 - Usando <code class="docutils literal notranslate"><span class="pre">bridge-utils</span></code></a></li>
+<li><a class="reference internal" href="#metodo-3-usando-virt-manager" id="id12">Método 3 - Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-final-del-host" id="id13">Configuración final del host</a></li>
+<li><a class="reference internal" href="#guest-configuration" id="id14">Guest configuration</a></li>
+<li><a class="reference internal" href="#referencias" id="id15">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Usando una <strong>Bridged Network</strong> podemos lograr que una VM sea vista por la red como un dispositivo más, sin depender del host donde se encuentra. Es decir, con una <strong>interfaz bridge</strong> la VM podrá pertenecer al mismo segmento de red que el host y tener una IP dentro de ella.</p>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/bridged-network.png" src="../../../_images/bridged-network.png" />
+<p class="caption"><span class="caption-text">Esquema de Bridged Network</span></p>
+</div>
+<div class="section" id="host-configuration">
+<h2><a class="toc-backref" href="#id9">Host configuration</a><a class="headerlink" href="#host-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="metodo-1-usando-iproute2">
+<h3><a class="toc-backref" href="#id10">Método 1 - Usando <code class="docutils literal notranslate"><span class="pre">iproute2</span></code></a><a class="headerlink" href="#metodo-1-usando-iproute2" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En el <strong>host</strong> (máquina física) debemos realizar el siguiente procedimiento:</p>
+<ul class="simple">
+<li>Crear el bridge con <code class="docutils literal notranslate"><span class="pre">ip</span> <span class="pre">link</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link add name br0 <span class="nb">type</span> bridge
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip link
+
+<span class="m">31</span>: br0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu <span class="m">1500</span> qdisc noqueue state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">00</span>:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+</pre></div>
+</div>
+<ul class="simple">
+<li>Prender la interfaz del bridge</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> dev br0 up
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip link
+
+<span class="m">31</span>: br0: &lt;NO-CARRIER,BROADCAST,MULTICAST,UP&gt; mtu <span class="m">1500</span> qdisc noqueue state DOWN mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">00</span>:00:00:00:00:00 brd ff:ff:ff:ff:ff:ff
+</pre></div>
+</div>
+<ul class="simple">
+<li>Prender la interfaz física que asociaremos al bridge (sin ninguna configuración/IP):</li>
+</ul>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">La interfaz física no deberá tener asignada una IP y no deberá estar siendo usada por otro bridge. <strong>Recomendación</strong>: en una laptop podemos tener la salida a internet por la interfaz inalámbrica y usar la interfaz cableada para asociarla al bridge.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> dev enp3s0 up
+</pre></div>
+</div>
+<ul class="simple">
+<li>Asociar la interfaz física (<code class="docutils literal notranslate"><span class="pre">enp3s0</span></code>) al bridge creado (<code class="docutils literal notranslate"><span class="pre">br0</span></code>):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> dev enp3s0 master br0
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip link
+
+<span class="m">2</span>: enp3s0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel master br0 state UP mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:9e:01:54:38:4c brd ff:ff:ff:ff:ff:ff
+</pre></div>
+</div>
+<ul class="simple">
+<li>Para remover la configuración realizada usar:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Desasociar la interfaz al bridge:</span>
+$ sudo ip link <span class="nb">set</span> dev enp3s0 nomaster
+<span class="c1"># Eliminar el bridge:</span>
+$ sudo ip link delete br0
+</pre></div>
+</div>
+</div>
+<div class="section" id="metodo-2-usando-bridge-utils">
+<h3><a class="toc-backref" href="#id11">Método 2 - Usando <code class="docutils literal notranslate"><span class="pre">bridge-utils</span></code></a><a class="headerlink" href="#metodo-2-usando-bridge-utils" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Crear un nuevo bridge:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo brctl addbr br0
+</pre></div>
+</div>
+<ul class="simple">
+<li>Añadir la interfaz física al bridge:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo brctl addif br0 enp3s0
+</pre></div>
+</div>
+<ul class="simple">
+<li>Verificar el bridge y las intefaces conectadas a él:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ brctl show
+bridge name bridge id                   STP enabled interfaces
+br2             <span class="m">8000</span>.94c691b241ed   no                  enp3s0
+</pre></div>
+</div>
+<ul class="simple">
+<li>Prender el bridge:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo ip link <span class="nb">set</span> dev br0 up
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip link
+
+<span class="m">2</span>: enp3s0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel master br0 state UP mode DEFAULT group default qlen <span class="m">1000</span>
+    link/ether <span class="m">94</span>:c6:91:b2:41:ed brd ff:ff:ff:ff:ff:ff
+
+<span class="m">23</span>: br0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">94</span>:c6:91:b2:41:ed brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::96c6:91ff:feb2:41ed/64 scope link
+    valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+<ul class="simple">
+<li>Para remover la configuración utilizada:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apagar la interfaz del bridge:</span>
+$ sudo ip link <span class="nb">set</span> dev br0 down
+<span class="c1"># Eliminar el bridge:</span>
+$ sudo brctl delbr br0
+</pre></div>
+</div>
+</div>
+<div class="section" id="metodo-3-usando-virt-manager">
+<h3><a class="toc-backref" href="#id12">Método 3 - Usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><a class="headerlink" href="#metodo-3-usando-virt-manager" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Abrir <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>, ir a la pestaña <span class="guilabel">Edit</span>, opción <span class="guilabel">Connection Details</span> :</li>
+</ul>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/bridge-kvm-1.png" src="../../../_images/bridge-kvm-1.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Bridged Network - Step 1</span></p>
+</div>
+<ul class="simple">
+<li>En la nueva ventana, clic en el botón <span class="guilabel">+</span>:</li>
+</ul>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/bridge-kvm-2.png" src="../../../_images/bridge-kvm-2.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Bridged Network - Step 2</span></p>
+</div>
+<ul class="simple">
+<li><span class="guilabel">Interfaz type:</span> <strong>Bridge</strong></li>
+</ul>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/bridge-kvm-3.png" src="../../../_images/bridge-kvm-3.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Bridged Network - Step 3</span></p>
+</div>
+<ul class="simple">
+<li>Configurar la interfaz de red, especificando las interfaces que se conectarán al bridge:</li>
+</ul>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/bridge-kvm-4.png" src="../../../_images/bridge-kvm-4.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Bridged Network - Step 4</span></p>
+</div>
+<ul class="simple">
+<li>Verificar que la interfaz se haya creado:</li>
+</ul>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/bridge-kvm-5.png" src="../../../_images/bridge-kvm-5.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Bridged Network - Step 5</span></p>
+</div>
+<ul class="simple">
+<li>En una VM creada o que vayamos a crear se podrá elegir como <span class="guilabel">Network Source:</span> <strong>Bridge br0: Host device enp3s0</strong></li>
+</ul>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/bridge-kvm-6.png" src="../../../_images/bridge-kvm-6.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Bridged Network - Step 6</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="configuracion-final-del-host">
+<h2><a class="toc-backref" href="#id13">Configuración final del host</a><a class="headerlink" href="#configuracion-final-del-host" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Iniciar la VM usando <code class="docutils literal notranslate"><span class="pre">virt-install</span></code> y el tag <code class="docutils literal notranslate"><span class="pre">--network</span> <span class="pre">bridge=br0</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo virt-install --name<span class="o">=</span>vc3 <span class="se">\</span>
+--vcpus<span class="o">=</span><span class="m">2</span> <span class="se">\</span>
+--memory<span class="o">=</span><span class="m">4096</span> <span class="se">\</span>
+--network <span class="nv">bridge</span><span class="o">=</span>br0 <span class="se">\</span>
+--disk <span class="nv">path</span><span class="o">=</span>/var/lib/libvirt/images/vc3.qcow2 <span class="se">\</span>
+--import <span class="se">\</span>
+--os-variant<span class="o">=</span>ubuntu18.04 <span class="p">&amp;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Si abrimos la aplicación de <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> veremos que el nombre de la interfaz que posee la VM es: <span class="guilabel">Bridge br0: Host device vnet0</span></li>
+<li>Luego de asociar la interfaz física al bridge se tendrá <a class="reference external" href="https://superuser.com/questions/694661/losing-internet-access-when-creating-ethernet-bridge-for-openvpn">problemas de conexión a internet desde el host</a>. Esto se debe a que ahora la interfaz física es un puerto del switch y su configuración IP individual no importa.</li>
+</ul>
+<p>No tenemos conexión a Internet pues la interfaz <code class="docutils literal notranslate"><span class="pre">br0</span></code> no tiene IP. Por tanto, hay que remover la configuración IP de la interfaz física <code class="docutils literal notranslate"><span class="pre">enp3s0</span></code> y realizar una configuraración IP en el bridge <code class="docutils literal notranslate"><span class="pre">br0</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Remover configuración a interfaz física:</span>
+$ sudo dhclient -r enp3s0
+<span class="c1"># Agregar configuración a interfaz bridge:</span>
+$ sudo dhclient -v br0
+</pre></div>
+</div>
+</div>
+<div class="section" id="guest-configuration">
+<h2><a class="toc-backref" href="#id14">Guest configuration</a><a class="headerlink" href="#guest-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En el <strong>guest</strong> (VM) la configuración de red será automática según la red a la que se encuentre conectada nuestra interfaz física y el servidor DHCP que exista en la red:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ip addr
+
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+    valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+    valid_lft forever preferred_lft forever
+<span class="m">2</span>: ens3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc fq_codel state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">52</span>:54:00:3f:78:e2 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">192</span>.168.1.24/24 brd <span class="m">192</span>.168.1.255 scope global dynamic ens3
+    valid_lft 85847sec preferred_lft 85847sec
+    inet6 <span class="m">2800</span>:200:e840:125c:5054:ff:fe3f:78e2/64 scope global dynamic mngtmpaddr noprefixroute
+    valid_lft 3598sec preferred_lft 3598sec
+    inet6 fe80::5054:ff:fe3f:78e2/64 scope link
+    valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+<p>Podremos crear varias VMs y el servidor DHCP dentro de la red le asignará una IP a cada una de ellas al momento de bootear la VM.</p>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id15">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?v=Q1PebvpQUvI">Tutorial Youtube - Setting Up Network Bridge</a></li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Network_bridge">Tutorial Network Bridge</a></li>
+<li><a class="reference external" href="https://developers.redhat.com/blog/2018/10/22/introduction-to-linux-interfaces-for-virtual-networking/#bridge">Bridge Interface</a></li>
+<li><a class="reference external" href="https://superuser.com/questions/694661/losing-internet-access-when-creating-ethernet-bridge-for-openvpn">Losing internet access on host with network bridge</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../storage-virtualization/_storage-virtualization.html" class="btn btn-neutral float-right" title="Storage Virtualization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="virtual-networks-libvirt.html" class="btn btn-neutral float-left" title="Redes virtuales con Libvirt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
