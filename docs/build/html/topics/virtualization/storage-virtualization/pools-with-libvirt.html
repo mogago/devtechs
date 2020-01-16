@@ -1,0 +1,812 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Pools con clientes de libvirt &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Volúmenes con clientes de libvirt" href="volumes-with-libvirt.html" />
+    <link rel="prev" title="Almacenamiento virtual con Libvirt" href="virtual-storage-libvirt.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_storage-virtualization.html">Storage Virtualization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="virtual-storage-libvirt.html">Almacenamiento virtual con Libvirt</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Pools con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creando-pools">Creando pools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creando-pools-con-virt-manager">Creando pools con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creando-pools-con-virsh">Creando pools con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuraciones-especificas-de-pools">Configuraciones específicas de pools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pool-basado-en-directorio">Pool basado en directorio</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pool-basado-en-disco">Pool basado en disco</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pool-basado-en-filesystem">Pool basado en filesystem</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="volumes-with-libvirt.html">Volúmenes con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu-img.html">Imágenes de disco con <code class="docutils literal notranslate"><span class="pre">qemu-img</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual-disk.html">Creando un disco virtual</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_storage-virtualization.html">Storage Virtualization</a> &raquo;</li>
+        
+      <li>Pools con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/storage-virtualization/pools-with-libvirt.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pools-con-clientes-de-libvirt">
+<span id="poolswithlibvirt"></span><h1><a class="toc-backref" href="#id4">Pools con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a><a class="headerlink" href="#pools-con-clientes-de-libvirt" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#pools-con-clientes-de-libvirt" id="id4">Pools con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a><ul>
+<li><a class="reference internal" href="#creando-pools" id="id5">Creando pools</a><ul>
+<li><a class="reference internal" href="#creando-pools-con-virt-manager" id="id6">Creando pools con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li><a class="reference internal" href="#creando-pools-con-virsh" id="id7">Creando pools con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuraciones-especificas-de-pools" id="id8">Configuraciones específicas de pools</a><ul>
+<li><a class="reference internal" href="#pool-basado-en-directorio" id="id9">Pool basado en directorio</a></li>
+<li><a class="reference internal" href="#pool-basado-en-disco" id="id10">Pool basado en disco</a></li>
+<li><a class="reference internal" href="#pool-basado-en-filesystem" id="id11">Pool basado en filesystem</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#referencias" id="id12">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Un pool de almacenamiento es un archivo, directorio o dispositivo de almacenamiento, administrado por <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> para proveer almacenamiento a VMs. Los pools se dividen en volúmenes de almacenamiento que guardan imáges de VMs o son conectados a VMs como almacenamiento adicional. Varios guest pueden compartir el mismo pool de almacenamiento, permitiendo una mejor asignación de recursos.</p>
+<p>Los pools de almacenamiento pueden ser locales o basados en red (compartidos):</p>
+<ul class="simple">
+<li><strong>Pools de almacenamiento locales</strong>: conectados al servidor host directamente. Incluye directorios locales, discos conectados directamente, particiones físicas, y Logical Volume Management (LVM) volume groups en dispositivos locales.</li>
+<li><strong>Pools de almacenamiento en red (compartidos)</strong>: pools de almacenamiento en red incluyen dispositivos de red compartidos a través de la red usando protocolos estándar. Se requiere este almacenamiento cuando migramos VMs a otro host.</li>
+</ul>
+<p>Lista de pools soportados por <code class="docutils literal notranslate"><span class="pre">libvirt</span></code>:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">-dir</span></code>: usa el directorio filesystem para guardar discos virtuales</li>
+<li><code class="docutils literal notranslate"><span class="pre">-disk</span></code>: usa discos duros físicos para crear discos virtuales</li>
+<li><code class="docutils literal notranslate"><span class="pre">-fs</span></code>: usa particiones pre-formateadas para guardar discos virtuales</li>
+<li><code class="docutils literal notranslate"><span class="pre">-netfs</span></code>: usa almacenamiento compartido por red como NFS para discos virtuales</li>
+<li><code class="docutils literal notranslate"><span class="pre">-gluster</span></code>: permite usar el filesystem gluster para guardar discos virtuales</li>
+<li><code class="docutils literal notranslate"><span class="pre">-iscsi</span></code>: usa almacenamiento compartido por red ISCSI para guardar disco virtuales</li>
+<li><code class="docutils literal notranslate"><span class="pre">-scsi</span></code>: usa almacenamiento local SCSI para guardar discos virtuales</li>
+<li><code class="docutils literal notranslate"><span class="pre">-lvm</span></code>: depende de grupos de volúmenes LVM para guardar discos virtuales</li>
+<li><code class="docutils literal notranslate"><span class="pre">-rbd</span></code>: permite conectar almacenamiento <strong>Ceph</strong> para discos virtuales</li>
+</ul>
+<div class="section" id="creando-pools">
+<h2><a class="toc-backref" href="#id5">Creando pools</a><a class="headerlink" href="#creando-pools" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="creando-pools-con-virt-manager">
+<h3><a class="toc-backref" href="#id6">Creando pools con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><a class="headerlink" href="#creando-pools-con-virt-manager" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>A continuación se listan los pasos para la creación de un pool de almacenamiento, de forma general, usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>:</p>
+<ol class="arabic simple">
+<li>Preparar el medio en el que se creará el pool de almacenamiento.</li>
+</ol>
+<p>Según el tipo de pool que se use, el procedimiento será distinto. Para ver el procedimiento a seguir de un tipo de pool en específico, buscarlo en <a class="reference internal" href="#configuraciones-especificas-de-pools">Configuraciones específicas de pools</a>.</p>
+<ol class="arabic simple" start="2">
+<li>Abrir la configuración de almacenamiento</li>
+</ol>
+<p>En <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> ir a <span class="guilabel">Edit</span> | <span class="guilabel">Connection details</span> | pestaña <span class="guilabel">Storage</span></p>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/storage-tab-connection-details1.png" src="../../../_images/storage-tab-connection-details1.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - <span class="guilabel">Connection details</span> - pestaña <span class="guilabel">Storage</span></span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Crear un nuevo pool de almacenamiento</li>
+</ol>
+<ol class="loweralpha simple">
+<li>Agregar un nuevo pool de almacenamiento (Paso 1):</li>
+</ol>
+<p>Hacer clic en el botón <span class="guilabel">+</span> (<span class="guilabel">Add pool</span>) bajo la lista de pools. Aparecerá un wizard.</p>
+<p>Dar un nombre al pool en el campo <span class="guilabel">Name</span>. Seleccionar un tipo de pool de la lista en el campo <span class="guilabel">Type</span>.</p>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/new-pool-step1.png" src="../../../_images/new-pool-step1.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Create storage pool - Step 1</span></p>
+</div>
+<ol class="loweralpha simple" start="2">
+<li>Agregar un nuevo pool de almacenamiento (Paso 2):</li>
+</ol>
+<p>Configurar al pool de almacenamiento con los parámetros específicos del tipo de pool. Para más detalles ir a <a class="reference internal" href="#configuraciones-especificas-de-pools">Configuraciones específicas de pools</a>.</p>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/new-pool-step2.png" src="../../../_images/new-pool-step2.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Create storage pool - Step 1</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Para un tipo de pools aparece un check box con la opción <span class="guilabel">Build Pool</span>. Si deseamos construir un pool desde el almacenamiento, seleccionar esta opción.</p>
+</div>
+<p>Luego de verificar la configuración clic en el botón <span class="guilabel">Finish</span> para crear el pool.</p>
+</div>
+<div class="section" id="creando-pools-con-virsh">
+<h3><a class="toc-backref" href="#id7">Creando pools con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#creando-pools-con-virsh" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>A continuación se listan los pasos para la creación de un pool de almacenamiento, en este caso de tipo <strong>basado en partición</strong>, usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code>:</p>
+<ol class="arabic simple">
+<li>Asegurarse de cumplir los prerequisitos</li>
+</ol>
+<p>Los prerequisitos y recomendaciones para los distintos tipos de pool varían. Para ver más a detalle cada tipo de pool ir a <a class="reference internal" href="#configuraciones-especificas-de-pools">Configuraciones específicas de pools</a>.</p>
+<ol class="arabic simple" start="2">
+<li>Definir el pool</li>
+</ol>
+<p>Los pools de almacenamiento pueden ser <strong>persistentes (persistent)</strong> o <strong>transitorio (transient)</strong>. Un pool persistente sigue exstiendo luego de reiniciar el sistema host, mientras que el pool transitorio dura hasta que el sistema se reinicia.</p>
+<p>En <code class="docutils literal notranslate"><span class="pre">virsh</span></code>, podemos definir un pool de 2 formas:</p>
+<ul class="simple">
+<li>Definir el pool usando un archivo XML</li>
+</ul>
+<ol class="loweralpha simple">
+<li>Crear un archivo XML temporal (<code class="docutils literal notranslate"><span class="pre">~/guest_images_fspool.xml</span></code>) con la información requerida para el nuevo dispositivo. Según el tipo de pool, los campos dentro del XML cambiarán.</li>
+</ol>
+<p>Se muestra un ejemplo de un archivo XML con la definición de un pool tipo basado en partición:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;pool</span> <span class="na">type=</span><span class="s">&#39;fs&#39;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;name&gt;</span>guest_images_fs<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;source&gt;</span>
+    <span class="nt">&lt;device</span> <span class="na">path=</span><span class="s">&#39;/dev/sda3&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/source&gt;</span>
+<span class="nt">&lt;target&gt;</span>
+    <span class="nt">&lt;path&gt;</span>/guest_images<span class="nt">&lt;/path&gt;</span>
+<span class="nt">&lt;/target&gt;</span>
+<span class="nt">&lt;/pool&gt;</span>
+</pre></div>
+</div>
+<ol class="loweralpha simple" start="2">
+<li>Usar el comando <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-define</span></code> o <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-create</span></code> para crear un pool persistente o transitorio, respectivamente:</li>
+</ol>
+<p>Persistent (permanente):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh pool-define ~/guest_images_fspool.xml
+
+Pool guest_images_fs defined from ~/guest_images_fspool.xml
+</pre></div>
+</div>
+<p>Transient (temporal):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh pool-create ~/guest_images_fspool.xml
+
+Pool guest_images_fs created from ~/guest_images_fspool.xml
+</pre></div>
+</div>
+<ol class="loweralpha simple" start="3">
+<li>Eliminar el archivo XML del paso <code class="docutils literal notranslate"><span class="pre">a</span></code>.</li>
+</ol>
+<ul class="simple">
+<li>Crear el pool usando <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-define-as</span></code> o <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-create-as</span></code> para crear un pool persistente o transitorio, respectivamente.</li>
+</ul>
+<p>Los siguientes comandos crean un pool de almacenamiento (persistent o transient) llamado <code class="docutils literal notranslate"><span class="pre">guest_images_fs</span></code> mapeado a <code class="docutils literal notranslate"><span class="pre">/dev/sda3</span></code> desde el directorio <code class="docutils literal notranslate"><span class="pre">/guest</span> <span class="pre">images</span></code>:</p>
+<p>Persistent (permanente):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh pool-define-as guest_images_fs fs - - /dev/sda3 - <span class="s2">&quot;/guest_images&quot;</span>
+
+Pool guest_images_fs defined
+</pre></div>
+</div>
+<p>Transient (temporal):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh pool-create-as guest_images_fs fs - - /dev/sda3 - <span class="s2">&quot;/guest_images&quot;</span>
+
+Pool guest_images_fs created
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En <code class="docutils literal notranslate"><span class="pre">virsh</span></code>, algunas opciones de nombre son opcionales. Si no serán usados, reemplazarlos por un <code class="docutils literal notranslate"><span class="pre">-</span></code>.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Verificar que el pool ha sido creado</li>
+</ol>
+<p>Listar los pools con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-list</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh pool-list --all
+Name                 State      Autostart
+-------------------------------------------
+default              active     yes
+guest_images_fs      active     no
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Definir el target path del pool</li>
+</ol>
+<p>Usar el comando <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-build</span></code> para crear un <strong>pool target path</strong> para pool file system pre-formateado, inicializar el dispositivo origen y definir el formato de los datos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh pool-build guest_images_fs
+Pool guest_images_fs built
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Hacer build del target path solo es necesario para pools basados en disco (<span class="guilabel">disk: Physical Disk Device</span>), file system (<span class="guilabel">fs: Pre-Formatted Block Device</span>) y lógicos (<span class="guilabel">logical: LVM Volume Group</span>). Si <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> detecta que el formato del dispositivo fuente difiere del tipo de pool, el build falla; a menos que se use la opción <code class="docutils literal notranslate"><span class="pre">overwrite</span></code>.</p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Iniciar el pool</li>
+</ol>
+<p>Para poder iniciar un pool y usarlo, ejecutar el comando <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-start</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh pool-start guest_images_fs
+
+Pool guest_images_fs started
+
+$ virsh pool-list --all
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+guest_images_fs      active     no
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Activar autostart</li>
+</ol>
+<p>Para que un pool inicie automáticamente cuando el servicio de <code class="docutils literal notranslate"><span class="pre">libvirtd</span></code> inicie usar <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-autostart</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virsh pool-autostart guest_images_fs
+
+Pool guest_images_fs marked as autostarted
+
+<span class="c1"># virsh pool-list --all</span>
+Name                 State      Autostart
+-----------------------------------------
+default              active     yes
+guest_images_fs      active     yes
+
+
+$ virsh pool-info guest_images_fs
+
+Name:           guest_images_fs
+UUID:           2908eed7-a00b-4629-9ad7-f9bbe00bf2f4
+State:          running
+Persistent:     no
+Autostart:      yes
+Capacity:       <span class="m">82</span>,00 GiB
+Allocation:     <span class="m">38</span>,62 GiB
+Available:      <span class="m">43</span>,38 GiB
+
+$ mount <span class="p">|</span> grep /guest_images
+/dev/sda3 on /guest_images <span class="nb">type</span> ext4 <span class="o">(</span>rw<span class="o">)</span>
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Como vemos en el último comando con este tipo de pool (basado en filesystem) se tiene montada una partición del disco (<strong>source</strong>) en nuestro directorio del pool (<strong>target path</strong>).</p>
+</div>
+</div>
+</div>
+<div class="section" id="configuraciones-especificas-de-pools">
+<h2><a class="toc-backref" href="#id8">Configuraciones específicas de pools</a><a class="headerlink" href="#configuraciones-especificas-de-pools" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Según el tipo de pool de almacenamiento que se planea crear, el procedimiento para preparar el medio donde el pool será creado varía.</p>
+<div class="section" id="pool-basado-en-directorio">
+<h3><a class="toc-backref" href="#id9">Pool basado en directorio</a><a class="headerlink" href="#pool-basado-en-directorio" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><strong>Parámetros:</strong></p>
+<p>Tabla con los parámetros requeridos para crear un <strong>pool basado en directorio</strong> con 3 distintos métodos: XML, <code class="docutils literal notranslate"><span class="pre">pool-define-as</span></code>, <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="26%" />
+<col width="23%" />
+<col width="37%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Descripción</td>
+<td>XML</td>
+<td><code class="docutils literal notranslate"><span class="pre">pool-define-as</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></td>
+</tr>
+<tr class="row-even"><td>Tipo de pool</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;pool</span> <span class="pre">type='dir'&gt;</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">[type]</span></code> dir</td>
+<td><span class="guilabel">Type: dir: Filesystem Directory</span></td>
+</tr>
+<tr class="row-odd"><td>Nombre de pool</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;nombre_pool&lt;/name&gt;</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">[name]</span></code> <em>nombre_pool</em></td>
+<td><span class="guilabel">Name</span></td>
+</tr>
+<tr class="row-even"><td><p class="first">Target path
+del pool.</p>
+<p class="last">Ruta usada
+para el pool.</p>
+</td>
+<td><div class="first last highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;target&gt;</span>
+  <span class="nt">&lt;path&gt;</span>target_path<span class="nt">&lt;/path&gt;</span>
+<span class="nt">&lt;/target&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">--target</span></code> <em>target_path</em></td>
+<td><span class="guilabel">Target Path</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<ul class="simple">
+<li>Pool con archivo XML. Archivo XML para definir un pool basado en el directorio <code class="docutils literal notranslate"><span class="pre">/guest_images</span></code>:</li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;pool</span> <span class="na">type=</span><span class="s">&#39;dir&#39;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;name&gt;</span>mydirectorypool<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;target&gt;</span>
+    <span class="nt">&lt;path&gt;</span>/guest_images<span class="nt">&lt;/path&gt;</span>
+<span class="nt">&lt;/target&gt;</span>
+<span class="nt">&lt;/pool&gt;</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">Pool con <code class="docutils literal notranslate"><span class="pre">pool-define-as</span></code></p>
+<blockquote>
+<div><p>$ sudo virsh pool-define-as dirpool dir –target «/guest_images»
+Pool FS_directory defined</p>
+</div></blockquote>
+</li>
+<li><p class="first">Pool con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></p>
+</li>
+</ul>
+<p>Pasos a realizar con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> para crear un nuevo pool: ir a <span class="guilabel">Edit</span> | <span class="guilabel">Connection details</span> | pestaña <span class="guilabel">Storage</span> | clic en el botón <span class="guilabel">+</span> (<span class="guilabel">Add pool</span>) bajo la lista de pools.</p>
+<p><a class="reference internal" href="../../../_images/directory-pool-1.png"><img alt="pic1" src="../../../_images/directory-pool-1.png" style="width: 46%;" /></a> <a class="reference internal" href="../../../_images/directory-pool-2.png"><img alt="pic2" src="../../../_images/directory-pool-2.png" style="width: 52%;" /></a></p>
+</div>
+<div class="section" id="pool-basado-en-disco">
+<h3><a class="toc-backref" href="#id10">Pool basado en disco</a><a class="headerlink" href="#pool-basado-en-disco" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><strong>Recomendaciones:</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Prudencia</p>
+<ul class="last simple">
+<li>Según la versión de libvirt, dedicar un disco a un pool de almacenamiento puede reformatear y eliminar todos los datos guardados en el disco.</li>
+<li>Los guests no deben tener acceso para escribir en todo el disco o bloque (por ejemplo <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>); en cambio, usar particiones (por ejemplo, <code class="docutils literal notranslate"><span class="pre">/dev/sdb1</span></code>) o volúmenes LVM.</li>
+</ul>
+</div>
+<p><strong>Pre-requisitos:</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Estos requisitos solo son válidos si no vamos a usar <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-build</span></code>.</p>
+</div>
+<p>Antes de crear un pool basado en disco en el disco del host, el disco debe ser renombrado con un disk label <em>GUID Partition Table (GPT)</em>. Los labels de disco GPT permiten crear hasta 128 particiones en cada dispositivo.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ parted /dev/sdb
+GNU Parted <span class="m">2</span>.1
+Using /dev/sdb
+Welcome to GNU Parted! Type <span class="s1">&#39;help&#39;</span> to view a list of commands.
+<span class="o">(</span>parted<span class="o">)</span> mklabel
+New disk label type? gpt
+<span class="o">(</span>parted<span class="o">)</span> quit
+Information: You may need to update /etc/fstab.
+</pre></div>
+</div>
+<p>Ahora ya estamos listo para seguir con la definición del pool.</p>
+<p><strong>Parámetros:</strong></p>
+<p>Tabla con los parámetros requeridos para crear un <strong>pool basado en disco</strong> con 3 distintos métodos: XML, <code class="docutils literal notranslate"><span class="pre">pool-define-as</span></code>, <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="24%" />
+<col width="25%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Descripción</th>
+<th class="head">XML</th>
+<th class="head"><code class="docutils literal notranslate"><span class="pre">pool-define-as</span></code></th>
+<th class="head"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Tipo de pool</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;pool</span> <span class="pre">type='disk'&gt;</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">[type]</span></code> disk</td>
+<td><span class="guilabel">Type: disk: Physical Disk Device</span></td>
+</tr>
+<tr class="row-odd"><td>Nombre de pool</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;nombre_pool&lt;/name&gt;</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">[name]</span></code> <em>nombre_pool</em></td>
+<td><span class="guilabel">Name</span></td>
+</tr>
+<tr class="row-even"><td><p class="first">Source path
+del pool.</p>
+<p class="last">Ruta del dispositivo
+de almacenamiento.</p>
+</td>
+<td><div class="first last highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;source&gt;</span>
+  <span class="nt">&lt;device</span> <span class="na">path=</span><span class="s">/dev/sdb/</span><span class="nt">&gt;</span>
+<span class="nt">&lt;/source&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">--source-dev</span></code> <em>path_to_disk</em></td>
+<td><span class="guilabel">Source Path</span></td>
+</tr>
+<tr class="row-odd"><td><p class="first">Target path
+del pool.</p>
+<p class="last">Ruta usada
+para el pool.</p>
+</td>
+<td><div class="first last highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;target&gt;</span>
+  <span class="nt">&lt;path&gt;</span>target_path<span class="nt">&lt;/path&gt;</span>
+<span class="nt">&lt;/target&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">--target</span></code> <em>target_path</em></td>
+<td><span class="guilabel">Target Path</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<ul class="simple">
+<li>Pool con archivo XML. Archivo XML para definir un pool basado en el disco <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>:</li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;pool</span> <span class="na">type=</span><span class="s">&#39;disk&#39;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;name&gt;</span>phy_disk<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;source&gt;</span>
+    <span class="nt">&lt;device</span> <span class="na">path=</span><span class="s">&#39;/dev/sdb&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;format</span> <span class="na">type=</span><span class="s">&#39;gpt&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/source&gt;</span>
+<span class="nt">&lt;target&gt;</span>
+    <span class="nt">&lt;path&gt;</span>/dev<span class="nt">&lt;/path&gt;</span>
+<span class="nt">&lt;/target&gt;</span>
+<span class="nt">&lt;/pool&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Pool con <code class="docutils literal notranslate"><span class="pre">pool-define-as</span></code></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virsh pool-define-as phy_disk disk gpt --source-dev<span class="o">=</span>/dev/sdb --target /dev
+
+Pool phy_disk defined
+</pre></div>
+</div>
+<ul class="simple">
+<li>Pool con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></li>
+</ul>
+<p>Pasos a realizar con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> para crear un nuevo pool: ir a <span class="guilabel">Edit</span> | <span class="guilabel">Connection details</span> | pestaña <span class="guilabel">Storage</span> | clic en el botón <span class="guilabel">+</span> (<span class="guilabel">Add pool</span>) bajo la lista de pools.</p>
+<p><a class="reference internal" href="../../../_images/disk-pool-1.png"><img alt="pic3" src="../../../_images/disk-pool-1.png" style="width: 46%;" /></a> <a class="reference internal" href="../../../_images/disk-pool-2.png"><img alt="pic4" src="../../../_images/disk-pool-2.png" style="width: 52%;" /></a></p>
+</div>
+<div class="section" id="pool-basado-en-filesystem">
+<h3><a class="toc-backref" href="#id11">Pool basado en filesystem</a><a class="headerlink" href="#pool-basado-en-filesystem" title="Enlazar permanentemente con este título">¶</a></h3>
+<p><strong>Recomendaciones:</strong></p>
+<div class="admonition caution">
+<p class="first admonition-title">Prudencia</p>
+<p class="last">No usar este procedimiento para asignar un disco completo como pool (por ejemplo <code class="docutils literal notranslate"><span class="pre">/dev/sdb</span></code>). No se le debe dar acceso de escritura a los guests a discos completos. Usar este método solo para asignar particiones (por ejemplo <code class="docutils literal notranslate"><span class="pre">/dev/sdb1</span></code>) a pools.</p>
+</div>
+<p><strong>Pre-requisitos:</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Estos requisitos solo son válidos si no vamos a usar <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-build</span></code>.</p>
+</div>
+<p>Para crear un pool de una partición, formatear el filesystem a <strong>ext4</strong>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo mkfs.ext4 /dev/sdc1
+</pre></div>
+</div>
+<p>Ahora ya estamos listo para seguir con la definición del pool.</p>
+<p><strong>Parámetros:</strong></p>
+<p>Tabla con los parámetros requeridos para crear un <strong>pool basado en filesystem</strong> con 3 distintos métodos: XML, <code class="docutils literal notranslate"><span class="pre">pool-define-as</span></code>, <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="23%" />
+<col width="27%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Descripción</th>
+<th class="head">XML</th>
+<th class="head"><code class="docutils literal notranslate"><span class="pre">pool-define-as</span></code></th>
+<th class="head"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Descripción</td>
+<td>XML</td>
+<td><code class="docutils literal notranslate"><span class="pre">pool-define-as</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></td>
+</tr>
+<tr class="row-odd"><td>Tipo de pool</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;pool</span> <span class="pre">type='fs'&gt;</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">[type]</span></code> fs</td>
+<td><span class="guilabel">Type: fs: Pre-Formated Block Device</span></td>
+</tr>
+<tr class="row-even"><td>Nombre de pool</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;nombre_pool&lt;/name&gt;</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">[name]</span></code> <em>nombre_pool</em></td>
+<td><span class="guilabel">Name</span></td>
+</tr>
+<tr class="row-odd"><td><p class="first">Source path
+del pool.</p>
+<p class="last">Ruta de la partición.</p>
+</td>
+<td><div class="first last highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;source&gt;</span>
+  <span class="nt">&lt;device</span> <span class="na">path=</span><span class="s">/dev/sdc1</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">--source-dev</span></code> <em>path_to_partition</em></td>
+<td><span class="guilabel">Source Path</span></td>
+</tr>
+<tr class="row-even"><td><p class="first">Tipo de filesystem</p>
+<p class="last">(p. ej. ext4)</p>
+</td>
+<td><div class="first last highlight-xml notranslate"><div class="highlight"><pre><span></span>  <span class="nt">&lt;format</span> <span class="na">type=</span><span class="s">&#39;fs_type&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/source&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">--source-format</span></code> <em>fs-format</em></td>
+<td>N/A</td>
+</tr>
+<tr class="row-odd"><td><p class="first">Target path
+del pool.</p>
+<p class="last">Ruta usada
+para el pool.</p>
+</td>
+<td><div class="first last highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;target&gt;</span>
+  <span class="nt">&lt;path&gt;</span>target_path<span class="nt">&lt;/path&gt;</span>
+<span class="nt">&lt;/target&gt;</span>
+</pre></div>
+</div>
+</td>
+<td><code class="docutils literal notranslate"><span class="pre">--target</span></code> <em>target_path</em></td>
+<td><span class="guilabel">Target Path</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ejemplos:</strong></p>
+<ul class="simple">
+<li>Pool con archivo XML. Archivo XML para definir un pool basado en partición <code class="docutils literal notranslate"><span class="pre">/dev/sdc1</span></code>:</li>
+</ul>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;pool</span> <span class="na">type=</span><span class="s">&#39;fs&#39;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;name&gt;</span>guest_images_fs<span class="nt">&lt;/name&gt;</span>
+<span class="nt">&lt;source&gt;</span>
+    <span class="nt">&lt;device</span> <span class="na">path=</span><span class="s">&#39;/dev/sdc1&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;format</span> <span class="na">type=</span><span class="s">&#39;auto&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/source&gt;</span>
+<span class="nt">&lt;target&gt;</span>
+    <span class="nt">&lt;path&gt;</span>/guest_images<span class="nt">&lt;/path&gt;</span>
+<span class="nt">&lt;/target&gt;</span>
+<span class="nt">&lt;/pool&gt;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Pool con <code class="docutils literal notranslate"><span class="pre">pool-define-as</span></code></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh pool-define-as guest_images_fs fs --source-dev /dev/sdc1 --target /guest_images
+
+Pool guest_images_fs defined
+</pre></div>
+</div>
+<ul class="simple">
+<li>Pool con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></li>
+</ul>
+<p>Pasos a realizar con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> para crear un nuevo pool: ir a <span class="guilabel">Edit</span> | <span class="guilabel">Connection details</span> | pestaña <span class="guilabel">Storage</span> | clic en el botón <span class="guilabel">+</span> (<span class="guilabel">Add pool</span>) bajo la lista de pools.</p>
+<p><a class="reference internal" href="../../../_images/partition-pool-1.png"><img alt="pic5" src="../../../_images/partition-pool-1.png" style="width: 46%;" /></a> <a class="reference internal" href="../../../_images/partition-pool-2.png"><img alt="pic6" src="../../../_images/partition-pool-2.png" style="width: 52%;" /></a></p>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id12">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/storage_pools#storage_pool_params_directory-based">USING STORAGE POOLS - Red Had Documentation</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="volumes-with-libvirt.html" class="btn btn-neutral float-right" title="Volúmenes con clientes de libvirt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="virtual-storage-libvirt.html" class="btn btn-neutral float-left" title="Almacenamiento virtual con Libvirt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

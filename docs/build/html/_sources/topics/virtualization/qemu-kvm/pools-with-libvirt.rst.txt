@@ -1,0 +1,39 @@
+Pools con clientes de ``libvirt``
+=================================
+
+.. contents:: Table of Contents
+
+Un pool de almacenamiento es un archivo, directorio o dispositivo de almacenamiento, administrado por ``libvirt`` para proveer almacenamiento a VMs. Los pools se dividen en volúmenes de almacenamiento que guardan imáges de VMs o son conectados a VMs como almacenamiento adicional. Varios guest pueden compartir el mismo pool de almacenamiento, permitiendo una mejor asignación de recursos.
+
+Los pools de almacenamiento pueden ser locales o basados en red (compartidos):
+
+- **Pools de almacenamiento locales**: conectados al servidor host directamente. Incluye directorios locales, discos conectados directamente, particiones físicas, y Logical Volume Management (LVM) volume groups en dispositivos locales.
+
+- **Pools de almacenamiento en red (compartidos)**: pools de almacenamiento en red incluyen dispositivos de red compartidos a través de la red usando protocolos estándar. Se requiere este almacenamiento cuando migramos VMs a otro host.
+
+Lista de pools soportados por ``libvirt``:
+
+- ``-dir``: usa el directorio filesystem para guardar discos virtuales
+- ``-disk``: usa discos duros físicos para crear discos virtuales
+- ``-fs``: usa particiones pre-formateadas para guardar discos virtuales
+- ``-netfs``: usa almacenamiento compartido por red como NFS para discos virtuales
+- ``-gluster``: permite usar el filesystem gluster para guardar discos virtuales
+- ``-iscsi``: usa almacenamiento compartido por red ISCSI para guardar disco virtuales
+- ``-scsi``: usa almacenamiento local SCSI para guardar discos virtuales
+- ``-lvm``: depende de grupos de volúmenes LVM para guardar discos virtuales
+- ``-rbd``: permite conectar almacenamiento **Ceph** para discos virtuales
+
+Preparando el medio
+-------------------
+
+Según el tipo de pool de almacenamiento que se planea crear, el procedimiento para preparar el medio donde el pool de almacenamiento será credo varía.
+
+Creando pools
+-------------
+
+Creando pools con ``virt-manager``
+''''''''''''''''''''''''''''''''''
+
+1. Preparar el medio en el que se creará el pool de almacenamiento. Según el tipo de pool que se use, el procedimiento será distinto.
+
+

@@ -95,6 +95,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../gnulinux/_gnulinux.html">GNU/Linux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
 </ul>
 <p class="caption"><span class="caption-text">Markdown</span></p>
 <ul>
@@ -130,6 +131,7 @@
 <li class="toctree-l1"><a class="reference internal" href="mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
 <li class="toctree-l1"><a class="reference internal" href="qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Web</span></p>
 <ul>
@@ -318,15 +320,104 @@
 <ul>
 <li><p class="first">CH 5:</p>
 <blockquote>
+<div><p>NETWORKING:
+- Ejemplo de virtual Networking con Linux bridges e interfaces TAP (Virtual Networking)
+- Virtual Networking usando libvirt: con clientes <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> y <code class="docutils literal notranslate"><span class="pre">virsh</span></code></p>
+<blockquote>
 <div><ul class="simple">
-<li>Ejemplo de virtual Networking con Linux bridges e interfaces TAP (Virtual Networking)</li>
-<li><dl class="first docutils">
-<dt>Virtual Networking usando libvirt: con clientes <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> y <code class="docutils literal notranslate"><span class="pre">virsh</span></code></dt>
-<dd><ul class="first last">
 <li>Isolated</li>
 <li>Routed</li>
 <li>NATed</li>
 <li>Bridged</li>
+</ul>
+</div></blockquote>
+<p>STORAGE:
+- Unmanaged storage
+- Creación de un disco virtual (<code class="docutils literal notranslate"><span class="pre">dd</span></code>): discos preallocated y thin-provisioned
+- Información de una imagen (raw .img, qcow2, …) con <code class="docutils literal notranslate"><span class="pre">qemu-img</span> <span class="pre">info</span></code>
+- Conexión de un disco a una VM (Unmanaged storage):</p>
+<blockquote>
+<div><ul class="simple">
+<li>usando <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>: add new virtual hardware</li>
+<li>usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code>: <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">attach</span> <span class="pre">disk</span></code> (discos conectados a una VM: <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">domblklist</span></code>)</li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li>Managed storage (tipos de pools soportados por libvirt)</li>
+<li><dl class="first docutils">
+<dt>Administración y configuración de almacenamiento (pools):</dt>
+<dd><ul class="first last">
+<li>con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>: Pestaña Storage de Connection Details.</li>
+<li>con <code class="docutils literal notranslate"><span class="pre">virsh</span></code>: listar pools (<code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-list</span></code>), obtener información de un pool (<code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-info</span></code>)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Creando pools de almacenamiento (XML de pools guardadas bajo <code class="docutils literal notranslate"><span class="pre">/etc/libvirt/storage</span></code>):</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Pool con almacenamiento basado en archivos</dt>
+<dd><ul class="first last">
+<li>con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>: <code class="docutils literal notranslate"><span class="pre">dir:</span> <span class="pre">Filesystem</span> <span class="pre">Directory</span></code></li>
+<li>con <code class="docutils literal notranslate"><span class="pre">virsh</span></code>: <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-define-as</span></code>, <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-build</span></code>, <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-start</span></code></li>
+<li>extra (start y autostart del pool): <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-start</span></code>, <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-autostart</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Pool con LVM Volume group</dt>
+<dd><ul class="first last">
+<li>con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>: <code class="docutils literal notranslate"><span class="pre">logical:</span> <span class="pre">LVM</span> <span class="pre">Volume</span> <span class="pre">Group</span></code></li>
+<li>con <code class="docutils literal notranslate"><span class="pre">virsh</span></code>: <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-define-as</span></code>, <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-build</span></code>, <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-start</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Pool con iSCSI</dt>
+<dd><ul class="first last">
+<li>con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>: <code class="docutils literal notranslate"><span class="pre">iscsi:</span> <span class="pre">iSCSI</span> <span class="pre">Target</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Creando una biblioteca de imágenes ISO:</dt>
+<dd><ul class="first last">
+<li>con <code class="docutils literal notranslate"><span class="pre">virsh</span></code>: <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-define-as</span></code>, <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-build</span></code>, <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-start</span></code></li>
+<li>extra (actualizar contenidos del pool): <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-refresh</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Eliminando un pool</dt>
+<dd><ul class="first last">
+<li>con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>: Pestaña Storage de Connection Details.</li>
+<li>con <code class="docutils literal notranslate"><span class="pre">virsh</span></code>: <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-destroy</span></code>, <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">pool-undefine</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Crear volúmenes de almacenamiento:</dt>
+<dd><ul class="first last">
+<li>con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>: Pestaña Storage de Connection Details.</li>
+<li>con <code class="docutils literal notranslate"><span class="pre">virsh</span></code>: <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">vol-create-as</span></code>, <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">vol-info</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Eliminando un volumen</dt>
+<dd><ul class="first last">
+<li>con <code class="docutils literal notranslate"><span class="pre">virsh</span></code>: <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">vol-delete</span></code></li>
 </ul>
 </dd>
 </dl>
@@ -335,6 +426,16 @@
 </div></blockquote>
 </li>
 </ul>
+<p>Tutoriales (almacenamiento):</p>
+<ol class="arabic simple">
+<li>Creación de volúmenes de almacenamiento con virt-manager y virsh</li>
+<li><dl class="first docutils">
+<dt>Unmanaged y Managed Storage en libvirt</dt>
+<dd>1.1 Unmanaged storage: crear un disco no asociado con libvirt y unirlo a una VM (métodos de creación de un volumen: virt-manager, virsh, qemu-img, dd
+1.2 Managed storage: creación, eliminación de pools (basado en archivos, LVM volume group): virt-manager, virsh</dd>
+</dl>
+</li>
+</ol>
 </div>
 
 

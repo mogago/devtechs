@@ -29,6 +29,7 @@ Welcome to DevTechs's documentation!
     topics/gnulinux/_gnulinux
     topics/gnulinux/ssh
     topics/gnulinux/user-management
+    topics/gnulinux/new-disk-dd
 
 .. toctree::
     :maxdepth: 2
@@ -78,6 +79,7 @@ Welcome to DevTechs's documentation!
     topics/virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book
     topics/virtualization/qemu-kvm/_qemu-kvm
     topics/virtualization/network-virtualization/_network-virtualization
+    topics/virtualization/storage-virtualization/_storage-virtualization
 
 .. toctree::
     :maxdepth: 2

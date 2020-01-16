@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Creando volúmenes con clientes de libvirt &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Network Virtualization" href="../network-virtualization/_network-virtualization.html" />
+    <link rel="prev" title="Despliegue automatizado de VMs con oz" href="oz.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_qemu-kvm.html">QEMU/KVM Virtualization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html">Requerimientos de virtualización</a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="virt-builder.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">virt-builder</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="oz.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Creando volúmenes con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creando-volumenes-con-virt-manager">Creando volúmenes con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creando-volumenes-con-virsh">Creando volúmenes con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#con-un-archivo-xml">Con un archivo XML</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#con-virsh-vol-create-as">Con <code class="docutils literal notranslate"><span class="pre">virsh-vol-create-as</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#clonando-un-volumen-existente">Clonando un volumen existente</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#obtener-informacion-de-un-volumen-con-virsh">Obtener información de un volumen con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#listar-volumenes-con-virsh">Listar volúmenes con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_qemu-kvm.html">QEMU/KVM Virtualization</a> &raquo;</li>
+        
+      <li>Creando volúmenes con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/qemu-kvm/creating-volumes-libvirt.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creando-volumenes-con-clientes-de-libvirt">
+<h1><a class="toc-backref" href="#id3">Creando volúmenes con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a><a class="headerlink" href="#creando-volumenes-con-clientes-de-libvirt" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#creando-volumenes-con-clientes-de-libvirt" id="id3">Creando volúmenes con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a><ul>
+<li><a class="reference internal" href="#creando-volumenes-con-virt-manager" id="id4">Creando volúmenes con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li><a class="reference internal" href="#creando-volumenes-con-virsh" id="id5">Creando volúmenes con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><ul>
+<li><a class="reference internal" href="#con-un-archivo-xml" id="id6">Con un archivo XML</a></li>
+<li><a class="reference internal" href="#con-virsh-vol-create-as" id="id7">Con <code class="docutils literal notranslate"><span class="pre">virsh-vol-create-as</span></code></a></li>
+<li><a class="reference internal" href="#clonando-un-volumen-existente" id="id8">Clonando un volumen existente</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#obtener-informacion-de-un-volumen-con-virsh" id="id9">Obtener información de un volumen con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li><a class="reference internal" href="#listar-volumenes-con-virsh" id="id10">Listar volúmenes con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>A través de los clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> (<code class="docutils literal notranslate"><span class="pre">virsh</span></code> y <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>) podemos crear, configurar y eliminar volúmenes de almacenamiento.</p>
+<p>Los pools de almacenamiento se dividen en <strong>volúmenes de almacenamiento (storage volumes)</strong>. Los volúmenes de almacenamiento son abstracciones de particiones físicas, volúmenes lógicos LVM, imágenes de disco basada en archivo y demás tipos de almacenamiento soportados por <code class="docutils literal notranslate"><span class="pre">libvirt</span></code>. Los volúmenes de almacenamiento se presentan a las VMs guest como dispositivos de almacenamiento locales sin importar el hardware subyacente.</p>
+<p>Luego de la creación de un volumen, ya sea con <code class="docutils literal notranslate"><span class="pre">virsh</span></code> o con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code>, podemos añadirlos como dispositivos de almacenamiento a las VMs guest usando estas mismas herramientas.</p>
+<div class="section" id="creando-volumenes-con-virt-manager">
+<h2><a class="toc-backref" href="#id4">Creando volúmenes con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><a class="headerlink" href="#creando-volumenes-con-virt-manager" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>En <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> ir a <span class="guilabel">Edit</span> | <span class="guilabel">Connection details</span> | pestaña <span class="guilabel">Storge</span>. El panel izquierdo de la ventana muestra una lista de pools de almacenamiento.</li>
+<li>Seleccionar el pool de almacenamiento donde queramos crear el volumen de almacenamiento. Se listarán a la derecha todos los volúmenes configurados para ese pool.</li>
+</ol>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/storage-tab-connection-details.png" src="../../../_images/storage-tab-connection-details.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - <span class="guilabel">Connection details</span> - pestaña <span class="guilabel">Storage</span></span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Añadir un nuevo volumen haciendo clic en el botón <span class="guilabel">+</span> que se encuentra sobre la lista de volúmenes.</li>
+</ol>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/create-storage-volume.png" src="../../../_images/create-storage-volume.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Crear un volumen de almacenamiento</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Ingresar los datos del volumen de almacenamiento:</li>
+</ol>
+<ul class="simple">
+<li>Ingresar un nombre para el volumen de almacenamiento.</li>
+<li>Seleccionar un formato para el volumen de almacenamiento de la lista de <span class="guilabel">Formats</span>: raw, qcow, qcow2, qed, vmdk, vpc, vdi</li>
+<li>Ingresar el tamaño máximo para el volumen de almacenamiento en el campo <span class="guilabel">Max Capacity</span>.</li>
+</ul>
+<p>Clic en <span class="guilabel">Finish</span>, luego aparecerá el nuevo volumen la lista de volúmenes del pool seleccionado.</p>
+</div>
+<div class="section" id="creando-volumenes-con-virsh">
+<h2><a class="toc-backref" href="#id5">Creando volúmenes con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#creando-volumenes-con-virsh" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para crear un volumen de almacenamiento dentro de un pool de almacenamiento usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code> podemos usar cualquiera de los siguientes métodos:</p>
+<div class="section" id="con-un-archivo-xml">
+<h3><a class="toc-backref" href="#id6">Con un archivo XML</a><a class="headerlink" href="#con-un-archivo-xml" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li>Crear un archivo XML temporal que contenga la información de volumen requerida para el nuevo dispositivo, conteniendo campos como:</li>
+</ol>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">name</span></code> - nombre del volumen de almacenamiento</li>
+<li><code class="docutils literal notranslate"><span class="pre">allocation</span></code> - asignación de almacenamiento total para el volumen</li>
+<li><code class="docutils literal notranslate"><span class="pre">capacity</span></code> - capacidad lógica del volumen. Si el volumen es disperso (sparse o thin-provisioned), este valor puede difererir del valor de <code class="docutils literal notranslate"><span class="pre">allocation</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">target</span></code> - ruta del volumen en el sistema host</li>
+</ul>
+<p>Ejemplo de archivo XML con la definición del volumen de almacenamiento.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;volume&gt;</span>
+    <span class="nt">&lt;name&gt;</span>volume1<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;allocation&gt;</span>0<span class="nt">&lt;/allocation&gt;</span>
+    <span class="nt">&lt;capacity&gt;</span>10G<span class="nt">&lt;/capacity&gt;</span>
+    <span class="nt">&lt;target&gt;</span>
+        <span class="nt">&lt;path&gt;</span>/var/lib/libvirt/images/sparse.img<span class="nt">&lt;/path&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+<span class="nt">&lt;/volume&gt;</span>
+</pre></div>
+</div>
+<p>Guardarmos el archivo en ~/volume.xml</p>
+<ol class="arabic simple" start="2">
+<li>Usar el comando <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">vol-create</span></code> para crear el volumen de almacenamiento basado en el archivo XML:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virsh vol-create pool1 ~/volume.xml
+
+Vol volume1 created
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Eliminar el archivo XML que creamos en el primer paso.</li>
+</ol>
+</div>
+<div class="section" id="con-virsh-vol-create-as">
+<h3><a class="toc-backref" href="#id7">Con <code class="docutils literal notranslate"><span class="pre">virsh-vol-create-as</span></code></a><a class="headerlink" href="#con-virsh-vol-create-as" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para crear un volumen de almacenamiento usamos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virsh vol-create-as pool1 volume1 10G --allocation <span class="m">0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="clonando-un-volumen-existente">
+<h3><a class="toc-backref" href="#id8">Clonando un volumen existente</a><a class="headerlink" href="#clonando-un-volumen-existente" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Con el comando virsh vol-clone podemos clonar un volumen de almacenamiento existente. Se debe especificar el pool de almacenamiento que contiene el volumen ha clonar y el nombre del nuevo volumen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo virsh vol-clone --pool pool1 volume1 clone1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="obtener-informacion-de-un-volumen-con-virsh">
+<h2><a class="toc-backref" href="#id9">Obtener información de un volumen con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#obtener-informacion-de-un-volumen-con-virsh" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para obtener información extra de un volumen de almacenamiento ubicando en un pool usar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh vol-info --pool pool1 volume1
+Name:           volume1
+Type:           file
+Capacity:       <span class="m">10</span>,00 GiB
+Allocation:     <span class="m">0</span>,00 B
+</pre></div>
+</div>
+</div>
+<div class="section" id="listar-volumenes-con-virsh">
+<h2><a class="toc-backref" href="#id10">Listar volúmenes con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#listar-volumenes-con-virsh" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para listar todos los volúmenes de almacenamiento ubicados en un pool usar:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh vol-list default
+
+Name            Path
+----------------------------------------
+volume1         /home/vms/pool1/volume1
+volume2         /home/vms/pool1/volume2
+clone1          /home/vms/pool1/clone1
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../network-virtualization/_network-virtualization.html" class="btn btn-neutral float-right" title="Network Virtualization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="oz.html" class="btn btn-neutral float-left" title="Despliegue automatizado de VMs con oz" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

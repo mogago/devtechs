@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Almacenamiento virtual con Libvirt &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Pools con clientes de libvirt" href="pools-with-libvirt.html" />
+    <link rel="prev" title="Storage Virtualization" href="_storage-virtualization.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_storage-virtualization.html">Storage Virtualization</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Almacenamiento virtual con Libvirt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#procedimiento-para-la-creacion-y-asignacion-de-almacenamiento">Procedimiento para la creación y asignación de almacenamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teoria-de-almacenamiento-virtualizado">Teoría de almacenamiento virtualizado</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#discos-virtuales">Discos virtuales</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pools-with-libvirt.html">Pools con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="volumes-with-libvirt.html">Volúmenes con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="add-storage-guests.html">Añadir dispositivos de almacenamiento a Guests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qemu-img.html">Imágenes de disco con <code class="docutils literal notranslate"><span class="pre">qemu-img</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual-disk.html">Creando un disco virtual</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_storage-virtualization.html">Storage Virtualization</a> &raquo;</li>
+        
+      <li>Almacenamiento virtual con Libvirt</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/storage-virtualization/virtual-storage-libvirt.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="almacenamiento-virtual-con-libvirt">
+<h1><a class="toc-backref" href="#id1">Almacenamiento virtual con Libvirt</a><a class="headerlink" href="#almacenamiento-virtual-con-libvirt" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#almacenamiento-virtual-con-libvirt" id="id1">Almacenamiento virtual con Libvirt</a><ul>
+<li><a class="reference internal" href="#procedimiento-para-la-creacion-y-asignacion-de-almacenamiento" id="id2">Procedimiento para la creación y asignación de almacenamiento</a></li>
+<li><a class="reference internal" href="#teoria-de-almacenamiento-virtualizado" id="id3">Teoría de almacenamiento virtualizado</a><ul>
+<li><a class="reference internal" href="#discos-virtuales" id="id4">Discos virtuales</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#referencias" id="id5">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>El almacenamiento virtual es abstraído del almacenamiento físico y es asignado a una VM. El almacenamiento es conectado a una VM usando drivers block device emulados o paravirtualizados.</p>
+<p>Hay 2 conceptos básicos en la virtualización del almacenamiento: pools y volúmenes. Un <strong>pool de almacenamiento</strong> es una cantidad de almacenamiento reservado para uso de VMs. Los pools de almacenamiento son divididos en volúmenes de almacenamiento. Cada <strong>volumen de almacenamiento</strong> es asignado a una VM guest como un <strong>block device</strong> en un <strong>bus guest</strong>.</p>
+<p>Los pools de almacenamiento son administrados usando <code class="docutils literal notranslate"><span class="pre">libvirt</span></code>. La API de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> puede usarse para consultar la lista de volúmenes dentro de un pool de almacenamiento u obtener información sobre la capcacidad, asignación y almacenamiento disponible en el pool. También podemos consulatar información sobre la capacidad y asignación de un volumen que podrían ser diferentes si se trata de <strong>volúmenes sparse (thin-provisioning)</strong>.</p>
+<p>Para pools de almacenamiento soportado, la API de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> puede emplearse para crear, clonar, redimensionar y eliminar volúmenes. También podemos subir, descargar o limpiar datos de volúmenes de almacenamiento. Una vez que un pool es iniciado, el volumen puede ser asignado a un guest usando el nombre del pool y del volumen en lugar de la ruta del host al volumen en el XML del dominio.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Los pools de almacenamiento pueden ser parados (destroyed), removiendo la abstracción de los datos, pero manteniendo los datos intactos.</p>
+</div>
+<div class="section" id="procedimiento-para-la-creacion-y-asignacion-de-almacenamiento">
+<h2><a class="toc-backref" href="#id2">Procedimiento para la creación y asignación de almacenamiento</a><a class="headerlink" href="#procedimiento-para-la-creacion-y-asignacion-de-almacenamiento" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Crear pools de almacenamiento. Referencia: <a class="reference internal" href="pools-with-libvirt.html#poolswithlibvirt"><span class="std std-ref">Pools con clientes de libvirt</span></a></p>
+</li>
+<li><p class="first">Crear volúmenes de almacenamiento. Referencia: <a class="reference internal" href="volumes-with-libvirt.html#volumeswithlibvirt"><span class="std std-ref">Volúmenes con clientes de libvirt</span></a></p>
+<blockquote>
+<div><ul class="simple">
+<li>Creación de volúmenes con: <a class="reference internal" href="volumes-with-libvirt.html#volumeswithlibvirt"><span class="std std-ref">Volúmenes con clientes de libvirt</span></a></li>
+<li>Creación de imágenes de disco con: <a class="reference internal" href="qemu-img.html#qemuimg"><span class="std std-ref">Imágenes de disco con qemu-img</span></a></li>
+<li>Creación de imágenes de disco con: <a class="reference internal" href="../../gnulinux/new-disk-dd.html#newdiskdd"><span class="std std-ref">Creando una imagen de disco con dd</span></a></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Asignar dispositivos de almacenamiento a VMs. Referencia: <a class="reference internal" href="add-storage-guests.html#addstorageguests"><span class="std std-ref">Añadir dispositivos de almacenamiento a Guests</span></a></p>
+</li>
+</ol>
+</div>
+<div class="section" id="teoria-de-almacenamiento-virtualizado">
+<h2><a class="toc-backref" href="#id3">Teoría de almacenamiento virtualizado</a><a class="headerlink" href="#teoria-de-almacenamiento-virtualizado" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El almacenamiento virtualizado suele dividir en dos tipos:</p>
+<ul class="simple">
+<li><strong>Unmanaged storage</strong>: almacenamiento que no es controlado ni monitoreado directamente por <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> y es usado con VMs. Es decir, usar cualquier archivo o bloque disponible en el sistema host como un disco virtual.</li>
+<li><strong>Managed storage</strong>: almacenamiento controlado y monitoreado por <code class="docutils literal notranslate"><span class="pre">libvirt</span></code> en términos de pools y volúmenes de almacenamiento.</li>
+</ul>
+<div class="section" id="discos-virtuales">
+<h3><a class="toc-backref" href="#id4">Discos virtuales</a><a class="headerlink" href="#discos-virtuales" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Los discos usados para almacenamiento virtual y que son asignados a las VMs son llamados <strong>discos virtuales</strong>. Estos pueden ser de 2 tipos:</p>
+<ul class="simple">
+<li><strong>Preallocated</strong>: un disco virtual preallocated tiene almacenamiento reservado del mismo tamaño que el disco virtual. Al momento de la creación del disco, se asigna todo el espacio requerido y se presenta a la VM sin una capa adicional en medio. Gracias a esto, el rendimiento es mejor que un disco thin-provisioned, pues no requiere asignación de almacenamiento extra durante su uso.</li>
+<li><strong>Thin-provisioned</strong>: el espacio será asignado al volumen según se necesite. Esto nos permite realizar un overcommitment (sobre-dimensionamiento), bajo la suposición que que todos los discos no serán usados, permitiendo una asignación del recurso de almacenamiento más optimizada. El rendimiento en cargas intensivas de I/O, sin embargo, no es tan bueno como el de un disco pre-allocated.</li>
+</ul>
+<p><strong>Información útil:</strong></p>
+<ul class="simple">
+<li>Para ver la creación de los 2 tipos de discos virtuales con el comando <code class="docutils literal notranslate"><span class="pre">dd</span></code> ir a: <a class="reference internal" href="../../gnulinux/new-disk-dd.html#newdiskdd"><span class="std std-ref">Creando una imagen de disco con dd</span></a></li>
+<li>Para identificar qué método de asignación usa cierto disco virtual usar <code class="docutils literal notranslate"><span class="pre">qemu-img</span> <span class="pre">info</span></code>. Más info: <a class="reference internal" href="qemu-img.html#qemuimg"><span class="std std-ref">Imágenes de disco con qemu-img</span></a></li>
+<li>Más información sobre la comparación de discos virtuales preallocated y thin-provisioned: <a class="reference external" href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Virtualization/3.3/html/Administration_Guide/Understanding_virtual_disks.html">Understanding Virtual Disks - Red Hat Documentation</a></li>
+</ul>
+<p><strong>Comparemos dos disco virtuales:</strong></p>
+<p>El parámetro <code class="docutils literal notranslate"><span class="pre">info</span></code> del comando <code class="docutils literal notranslate"><span class="pre">qemu-img</span></code> muestra información sobre una imagen de disco virtual, incluyendo su ruta absoluta, formato de archivo, tamaño virtual y tamaño de disco. Mirando el tamaño de disco y el tamaño virtual, uno puede identificar qué política de asignación de disco está en uso. Veamos la información de los dos discos virtuales que creamos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo qemu-img info /var/lib/libvirt/images/preallocated-disk.img
+
+image: /var/lib/libvirt/images/preallocated-disk.img
+file format: raw
+virtual size: 10G <span class="o">(</span><span class="m">10737418240</span> bytes<span class="o">)</span>
+disk size: 10G
+
+$ sudo qemu-img info /var/lib/libvirt/images/thinprovisioned-disk.img
+
+image: /var/lib/libvirt/images/thinprovisioned-disk.img
+file format: raw
+virtual size: 10G <span class="o">(</span><span class="m">10737418240</span> bytes<span class="o">)</span>
+disk size: <span class="m">0</span>
+</pre></div>
+</div>
+<p>Comparemos el parámetro <code class="docutils literal notranslate"><span class="pre">disk</span> <span class="pre">size</span></code> de cada disco. Nos muestra 10G para <code class="docutils literal notranslate"><span class="pre">preallocated-disk.img</span></code>, mientras que para <code class="docutils literal notranslate"><span class="pre">thinprovisioned-disk.img</span></code> es <code class="docutils literal notranslate"><span class="pre">0</span></code>. La diferencia es porque el segundo disco usa un formato thin-provisioned.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">virtual</span> <span class="pre">size</span></code>: espacio que el guest observa</li>
+<li><code class="docutils literal notranslate"><span class="pre">disk</span> <span class="pre">size</span></code>: espacio reservado en el host</li>
+</ul>
+<p>Si <code class="docutils literal notranslate"><span class="pre">virtual</span> <span class="pre">size</span></code> es igual a <code class="docutils literal notranslate"><span class="pre">disk</span> <span class="pre">size</span></code>, entonces el disco es preallocated. Si son diferentes el formato del disco es thin-provisioned.</p>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id5">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/chap-managing_virtual_storage">MANAGING STORAGE FOR VIRTUAL MACHINES - Red Hat Documentation</a></li>
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Virtualization/3.3/html/Administration_Guide/Understanding_virtual_disks.html">Understanding Virtual Disks - Red Hat Documentation</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pools-with-libvirt.html" class="btn btn-neutral float-right" title="Pools con clientes de libvirt" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_storage-virtualization.html" class="btn btn-neutral float-left" title="Storage Virtualization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Agregar dispositivos de almacenamiento a Guests &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Imágenes de disco con qemu-img" href="qemu-img.html" />
+    <link rel="prev" title="Volúmenes con clientes de libvirt" href="volumes-with-libvirt.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_storage-virtualization.html">Storage Virtualization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="virtual-storage-libvirt.html">Almacenamiento virtual con Libvirt</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pools-with-libvirt.html">Pools con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="volumes-with-libvirt.html">Volúmenes con clientes de <code class="docutils literal notranslate"><span class="pre">libvirt</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Agregar dispositivos de almacenamiento a Guests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#agregando-almacenamiento-con-virt-manager">Agregando almacenamiento con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agregando-almacenamiento-con-virsh">Agregando almacenamiento con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eliminando-almacenamiento-con-virsh">Eliminando almacenamiento con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="qemu-img.html">Imágenes de disco con <code class="docutils literal notranslate"><span class="pre">qemu-img</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="virtual-disk.html">Creando un disco virtual</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_storage-virtualization.html">Storage Virtualization</a> &raquo;</li>
+        
+      <li>Agregar dispositivos de almacenamiento a Guests</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/virtualization/storage-virtualization/add-storage-guests.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="agregar-dispositivos-de-almacenamiento-a-guests">
+<span id="addstorageguests"></span><h1><a class="toc-backref" href="#id7">Agregar dispositivos de almacenamiento a Guests</a><a class="headerlink" href="#agregar-dispositivos-de-almacenamiento-a-guests" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#agregar-dispositivos-de-almacenamiento-a-guests" id="id7">Agregar dispositivos de almacenamiento a Guests</a><ul>
+<li><a class="reference internal" href="#agregando-almacenamiento-con-virt-manager" id="id8">Agregando almacenamiento con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
+<li><a class="reference internal" href="#agregando-almacenamiento-con-virsh" id="id9">Agregando almacenamiento con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li><a class="reference internal" href="#eliminando-almacenamiento-con-virsh" id="id10">Eliminando almacenamiento con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a></li>
+<li><a class="reference internal" href="#referencias" id="id11">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Podemos añadir dispositivos de almacenamiento a las VMs usando <code class="docutils literal notranslate"><span class="pre">virsh</span></code> o <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></p>
+<div class="section" id="agregando-almacenamiento-con-virt-manager">
+<h2><a class="toc-backref" href="#id8">Agregando almacenamiento con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><a class="headerlink" href="#agregando-almacenamiento-con-virt-manager" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Abrir <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> y seleccionar la máquina virtual a la que deseamos agregarle el volumen de almacenamiento:</li>
+</ol>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/vm-list.png" src="../../../_images/vm-list.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Lista de VMs</span></p>
+</div>
+<p>Clic derecho en nuestra VM | <span class="guilabel">Open</span> | <span class="guilabel">Show virtual hardware details</span> | <span class="guilabel">+ Add Hardware</span></p>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/virtual-hardware-details.png" src="../../../_images/virtual-hardware-details.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Show virtual hardware details</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>En la ventana de «Add New Virtual Hardware», tenemos dos opciones:</li>
+</ol>
+<ul class="simple">
+<li>Seleccionar <span class="guilabel">Create a disk image for the virtual machine</span> para crear rápidamente un nuevo disco:</li>
+</ul>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/add-new-virtual-hardware-create-1.png" src="../../../_images/add-new-virtual-hardware-create-1.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Add new virtual hardware - Crear un nuevo disco</span></p>
+</div>
+<p>Al hacer clic en <span class="guilabel">Finish</span> se habrá el nuevo dispositivo de almacenamiento:</p>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/add-new-virtual-hardware-create-1.png" src="../../../_images/add-new-virtual-hardware-create-1.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Nuevo Virtual Disk</span></p>
+</div>
+<ul class="simple">
+<li>Seleccionar <span class="guilabel">Select or create custom storage</span> para crear o seleccionar un almacenamiento personalizado:</li>
+</ul>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/add-new-virtual-hardware-select.png" src="../../../_images/add-new-virtual-hardware-select.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Add new virtual hardware - Seleccionar o crear un almacenamiento personalizado</span></p>
+</div>
+<p>Si hacemos clic en <span class="guilabel">Manage</span> podemos crear un nuevo pool/volumen o seleccionar un volumen existente. Clic en <span class="guilabel">Choose Volume</span>.</p>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/choose-storage.png" src="../../../_images/choose-storage.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">virt-manager</span></code> - Seleccionar/crear almacenamiento</span></p>
+</div>
+</div>
+<div class="section" id="agregando-almacenamiento-con-virsh">
+<h2><a class="toc-backref" href="#id9">Agregando almacenamiento con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#agregando-almacenamiento-con-virsh" title="Enlazar permanentemente con este título">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">virsh</span></code> provee la opción <code class="docutils literal notranslate"><span class="pre">attach-disk</span></code> para conectar un nuevo dispositivo de disco a una VM. Hay muchos parámetros que provee esta opción:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>attach-disk domain <span class="nb">source</span> target <span class="o">[[[</span>--live<span class="o">]</span> <span class="o">[</span>--config<span class="o">]</span> <span class="p">|</span>
+<span class="o">[</span>--current<span class="o">]]</span> <span class="p">|</span> <span class="o">[</span>--persistent<span class="o">]]</span> <span class="o">[</span>--targetbus bus<span class="o">]</span> <span class="o">[</span>--driver
+driver<span class="o">]</span> <span class="o">[</span>--subdriver subdriver<span class="o">]</span> <span class="o">[</span>--iothread iothread<span class="o">]</span> <span class="o">[</span>--cache
+cache<span class="o">]</span> <span class="o">[</span>--io io<span class="o">]</span> <span class="o">[</span>--type type<span class="o">]</span> <span class="o">[</span>--mode mode<span class="o">]</span> <span class="o">[</span>--sourcetype
+sourcetype<span class="o">]</span> <span class="o">[</span>--serial serial<span class="o">]</span> <span class="o">[</span>--wwn wwn<span class="o">]</span> <span class="o">[</span>--rawio<span class="o">]</span> <span class="o">[</span>--address
+address<span class="o">]</span> <span class="o">[</span>--multifunction<span class="o">]</span> <span class="o">[</span>--print-xml<span class="o">]</span>
+</pre></div>
+</div>
+<p>Lo siguiente es suficiente para realizar una conexión de un disco en caliente a una VM:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh attach-disk centos7.0 /var/lib/libvirt/images/virtual-disk.img vdc --live --config
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">centos7.0</span></code> es la VM a la que conectaremos el disco.</li>
+<li><code class="docutils literal notranslate"><span class="pre">/var/lib/libvirt/images/virtual-disk.img</span></code> es la ruta a la imagen de disco.</li>
+<li><code class="docutils literal notranslate"><span class="pre">vdb</span></code> es el nombre del disco objetivo que será visible en el SO guest.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--live</span></code> significa que la acción se realizará mientras está corriendo la VM.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--config</span></code> significa que la conexión del disco será permanente luego de un reinicio.</li>
+</ul>
+<p>Usar el comando <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">domblklist</span></code> para identificar cuántos vDisks están conectados a una VM:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh domblklist centos7.0 --details
+
+Type       Device     Target     Source
+------------------------------------------------
+file       disk       vda        /var/lib/libvirt/images/centos7-guest-temp.qcow2
+file       disk       vdb        /var/lib/libvirt/images/thinprovisioned-disk.img
+</pre></div>
+</div>
+<p>Significa que los dos vDisks conectados a la VM son imágenes de archivos. Son visibles al SO guest como <code class="docutils literal notranslate"><span class="pre">vda</span></code> y <code class="docutils literal notranslate"><span class="pre">vdb</span></code>. En la última columna se ve la ruta de la imagen de disco en el sistema host.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Otra opción para añadir un dispositivo de almacenamiento con <code class="docutils literal notranslate"><span class="pre">virsh</span></code> es a través de un archivo XML:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;disk</span> <span class="na">type=</span><span class="s">&#39;file&#39;</span> <span class="na">device=</span><span class="s">&#39;disk&gt;&#39;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;driver</span> <span class="na">name=</span><span class="s">&#39;qemu&#39;</span> <span class="na">type=</span><span class="s">&#39;raw&#39;</span> <span class="na">cache=</span><span class="s">&#39;none&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;source</span> <span class="na">file=</span><span class="s">&#39;/var/lib/libvirt/images/FileName.img&#39;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;target</span> <span class="na">dev=</span><span class="s">&#39;vdb&#39;</span> <span class="na">bus=</span><span class="s">&#39;virtio&#39;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/disk&gt;</span>
+</pre></div>
+</div>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh attach-disk --config Guest1 ~/NewStorage.xml
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="eliminando-almacenamiento-con-virsh">
+<h2><a class="toc-backref" href="#id10">Eliminando almacenamiento con <code class="docutils literal notranslate"><span class="pre">virsh</span></code></a><a class="headerlink" href="#eliminando-almacenamiento-con-virsh" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para eliminar un dispositivo de almacenamiento de una VM (<code class="docutils literal notranslate"><span class="pre">guest1</span></code>) con <code class="docutils literal notranslate"><span class="pre">virsh</span></code> usamos el comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh detach-disk guest1 vdb
+</pre></div>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id11">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/storage_vols#sect-Storage_Volumes-Adding_storage_devices_to_guests">Adding Storage Devices to Guests</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="qemu-img.html" class="btn btn-neutral float-right" title="Imágenes de disco con qemu-img" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="volumes-with-libvirt.html" class="btn btn-neutral float-left" title="Volúmenes con clientes de libvirt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

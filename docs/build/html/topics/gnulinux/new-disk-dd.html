@@ -1,0 +1,303 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Creando una imagen de disco con dd &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../search.html" />
+    <link rel="next" title="Markdown" href="../markdown/_markdown.html" />
+    <link rel="prev" title="Creación de un usuario" href="add-new-user.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="user-management.html">User Management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack/_openstack.html">OpenStack</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/topics/gnulinux/new-disk-dd.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="creando-una-imagen-de-disco-con-dd">
+<span id="newdiskdd"></span><h1>Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code><a class="headerlink" href="#creando-una-imagen-de-disco-con-dd" title="Enlazar permanentemente con este título">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">dd</span></code> es una herramienta para convertir y copiar archivos.</p>
+<p>En SOs Unix-like, drivers de dispositivos para hardware (como discos duros) y archivos de dispositivos especiales (como <code class="docutils literal notranslate"><span class="pre">/dev/zero</span></code> o <code class="docutils literal notranslate"><span class="pre">/dev/random</span></code>) aparecen en el filesystem como archivos normales. <code class="docutils literal notranslate"><span class="pre">dd</span></code> puede leer y/o escribir desde/en esos archivos, siempre que la función se implemente en su driver respectivo.</p>
+<p>Gracias a este funcionamiento, <code class="docutils literal notranslate"><span class="pre">dd</span></code> puede usarse para tareas como respaldar del sector de arranque de un disco duro, obtener una cantidad fija de datos aleatorios. También se puede realizar conversiones de datos según son copiados.</p>
+<p>Por defecto, <code class="docutils literal notranslate"><span class="pre">dd</span></code> lee de un archivo input file (<code class="docutils literal notranslate"><span class="pre">if</span></code>) y escribe en un output file (<code class="docutils literal notranslate"><span class="pre">of</span></code>). Un <strong>bloque (block)</strong> es la unidad de medida de bytes que son leídos y escritos o convertidos de una sola vez; para especificar el tamaño del bloque se usa la opción <code class="docutils literal notranslate"><span class="pre">bs</span></code>.</p>
+<p>En este caso se usará <code class="docutils literal notranslate"><span class="pre">dd</span></code> para crear una imagen de disco vacía desde el directorio <code class="docutils literal notranslate"><span class="pre">/dev/zero</span></code>:</p>
+<ul class="simple">
+<li>Creando un disco preallocated:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>disk1.img <span class="nv">bs</span><span class="o">=</span>1G <span class="nv">count</span><span class="o">=</span><span class="m">10</span>
+
+<span class="m">0</span>+0 records in
+<span class="m">10</span>+0 records out
+<span class="m">10737418240</span> bytes <span class="o">(</span><span class="m">11</span> GB, <span class="m">10</span> GiB<span class="o">)</span> copied, <span class="m">27</span>,016 s, <span class="m">397</span> MB/s
+
+$ qemu-img info disk1.img
+image: disk1.img
+file format: raw
+virtual size: 10G <span class="o">(</span><span class="m">10737418240</span> bytes<span class="o">)</span>
+disk size: 10G
+</pre></div>
+</div>
+<ul class="simple">
+<li>Creando un disco thin-provisioned:</li>
+</ul>
+<p>Con la opción <code class="docutils literal notranslate"><span class="pre">seek</span></code> logramos que la imagen de disco creada sea thin-provisioned.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>disk2.img <span class="nv">bs</span><span class="o">=</span>1G <span class="nv">seek</span><span class="o">=</span><span class="m">10</span> <span class="nv">count</span><span class="o">=</span><span class="m">0</span>
+
+<span class="m">0</span>+0 records in
+<span class="m">0</span>+0 records out
+<span class="m">0</span> bytes copied, <span class="m">0</span>,000124988 s, <span class="m">0</span>,0 kB/s
+
+$ qemu-img info disk2.img
+image: disk2.img
+file format: raw
+virtual size: 10G <span class="o">(</span><span class="m">10737418240</span> bytes<span class="o">)</span>
+disk size: <span class="m">0</span>
+</pre></div>
+</div>
+<div class="section" id="referencias">
+<h2>Referencias<a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://en.wikipedia.org/wiki/Dd_(Unix)">dd (Unix) - Wikipedia</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../markdown/_markdown.html" class="btn btn-neutral float-right" title="Markdown" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="add-new-user.html" class="btn btn-neutral float-left" title="Creación de un usuario" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

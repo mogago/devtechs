@@ -1,0 +1,161 @@
+Volúmenes con clientes de ``libvirt``
+=====================================
+
+.. contents:: Table of Contents
+
+A través de los clientes de ``libvirt`` (``virsh`` y ``virt-manager``) podemos crear, configurar y eliminar volúmenes de almacenamiento.
+
+Los pools de almacenamiento se dividen en **volúmenes de almacenamiento (storage volumes)**. Los volúmenes de almacenamiento son abstracciones de particiones físicas, volúmenes lógicos LVM, imágenes de disco basada en archivo y demás tipos de almacenamiento soportados por ``libvirt``. Los volúmenes de almacenamiento se presentan a las VMs guest como dispositivos de almacenamiento locales sin importar el hardware subyacente.
+
+Luego de la creación de un volumen, ya sea con ``virsh`` o con ``virt-manager``, podemos añadirlos como dispositivos de almacenamiento a las VMs guest usando estas mismas herramientas.
+
+Creando volúmenes
+-----------------
+
+Creando volúmenes con ``virt-manager``
+''''''''''''''''''''''''''''''''''''''
+
+1. En ``virt-manager`` ir a :guilabel:`Edit` | :guilabel:`Connection details` | pestaña :guilabel:`Storge`. El panel izquierdo de la ventana muestra una lista de pools de almacenamiento.
+
+2. Seleccionar el pool de almacenamiento donde queramos crear el volumen de almacenamiento. Se listarán a la derecha todos los volúmenes configurados para ese pool.
+
+.. figure:: images/volumes-with-libvirt/storage-tab-connection-details.png
+    :align: center
+
+    ``virt-manager`` - :guilabel:`Connection details` - pestaña :guilabel:`Storage`
+
+3. Añadir un nuevo volumen haciendo clic en el botón :guilabel:`+` que se encuentra sobre la lista de volúmenes.
+
+.. figure:: images/volumes-with-libvirt/create-volume.png
+    :align: center
+
+    ``virt-manager`` - Crear un volumen de almacenamiento
+
+4. Ingresar los datos del volumen de almacenamiento:
+
+- Ingresar un nombre para el volumen de almacenamiento.
+- Seleccionar un formato para el volumen de almacenamiento de la lista de :guilabel:`Formats`: raw, qcow, qcow2, qed, vmdk, vpc, vdi
+- Ingresar el tamaño máximo para el volumen de almacenamiento en el campo :guilabel:`Max Capacity`.
+
+Clic en :guilabel:`Finish`, luego aparecerá el nuevo volumen la lista de volúmenes del pool seleccionado.
+
+Creando volúmenes con ``virsh``
+'''''''''''''''''''''''''''''''
+
+Para crear un volumen de almacenamiento dentro de un pool de almacenamiento usando ``virsh`` podemos usar cualquiera de los siguientes métodos:
+
+Con un archivo XML
+""""""""""""""""""
+
+1. Crear un archivo XML temporal que contenga la información de volumen requerida para el nuevo dispositivo, conteniendo campos como:
+
+- ``name`` - nombre del volumen de almacenamiento
+- ``allocation`` - asignación de almacenamiento total para el volumen
+- ``capacity`` - capacidad lógica del volumen. Si el volumen es disperso (sparse o thin-provisioned), este valor puede difererir del valor de ``allocation``.
+- ``target`` - ruta del volumen en el sistema host
+
+Ejemplo de archivo XML con la definición del volumen de almacenamiento.
+
+.. code-block:: xml
+
+    <volume>
+        <name>volume1</name>
+        <allocation>0</allocation>
+        <capacity>10G</capacity>
+        <target>
+            <path>/var/lib/libvirt/images/sparse.img</path>
+        </target>
+    </volume>
+
+Guardarmos el archivo en ~/volume.xml
+
+2. Usar el comando ``virsh vol-create`` para crear el volumen de almacenamiento basado en el archivo XML:
+
+.. code-block:: bash
+
+    $ sudo virsh vol-create pool1 ~/volume.xml
+    
+    Vol volume1 created
+
+3. Eliminar el archivo XML que creamos en el primer paso.
+
+Con ``virsh-vol-create-as``
+"""""""""""""""""""""""""""
+
+Para crear un volumen de almacenamiento usamos:
+
+.. code-block:: bash
+
+    $ sudo virsh vol-create-as pool1 volume1 10G --allocation 0
+
+Clonando un volumen existente
+"""""""""""""""""""""""""""""
+
+Con el comando virsh vol-clone podemos clonar un volumen de almacenamiento existente. Se debe especificar el pool de almacenamiento que contiene el volumen ha clonar y el nombre del nuevo volumen:
+
+.. code-block:: bash
+
+    $ sudo virsh vol-clone --pool pool1 volume1 clone1
+
+Obtener información de un volumen con ``virsh``
+-----------------------------------------------
+
+Para obtener información extra de un volumen de almacenamiento ubicando en un pool usar:
+
+.. code-block:: bash
+
+    $ virsh vol-info --pool pool1 volume1
+    Name:           volume1
+    Type:           file
+    Capacity:       10,00 GiB
+    Allocation:     0,00 B
+
+Listar volúmenes con ``virsh``
+------------------------------
+
+Para listar todos los volúmenes de almacenamiento ubicados en un pool usar:
+
+.. code-block:: bash
+
+    $ virsh vol-list default
+
+    Name            Path                                    
+    ----------------------------------------
+    volume1         /home/vms/pool1/volume1
+    volume2         /home/vms/pool1/volume2
+    clone1          /home/vms/pool1/clone1
+
+Eliminando volúmenes
+--------------------
+
+Eliminando volúmenes con ``virt-manager``
+'''''''''''''''''''''''''''''''''''''''''
+
+1. En ``virt-manager`` ir a :guilabel:`Edit` | :guilabel:`Connection details` | pestaña :guilabel:`Storge`. El panel izquierdo de la ventana muestra una lista de pools de almacenamiento.
+
+2. Seleccionar el pool de almacenamiento donde se encuentra el volumen de almacenamiento que vamos a eliminar.
+
+3. Seleccionar el volumen de almacenamiento y hacer clic en el botón :guilabel:`Delete volume` (ícono de tacho de basura o una :guilabel:`X`) que se encuentra sobre la lista de volúmenes.
+
+.. figure:: images/volumes-with-libvirt/delete-volume.png
+    :align: center
+
+    ``virt-manager`` - Eliminar un volumen de almacenamiento
+
+Eliminando volúmenes con ``virsh``
+''''''''''''''''''''''''''''''''''
+
+Para eliminar un volumen de almacenamiento especificamos el nombre de dicho volumen y el pool de almacenamiento que lo contiene:
+
+.. code-block:: bash
+
+    $ sudo virsh vol-delete volume1 --pool pool1
+
+    Vol volume1 deleted
+
+Referencias
+-----------
+
+- `USING STORAGE VOLUMES - Red Hat Documents`_
+
+.. _`USING STORAGE VOLUMES - Red Hat Documents`: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/virtualization_deployment_and_administration_guide/storage_vols
