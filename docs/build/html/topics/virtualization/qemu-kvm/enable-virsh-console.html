@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>QEMU/KVM Virtualization &mdash; documentación de DevTechs - </title>
+  <title>Habilitando virsh-console &mdash; documentación de DevTechs - </title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
-    <link rel="next" title="Requerimientos de virtualización" href="virtualization_requirements.html" />
-    <link rel="prev" title="Chapter5. Network and Storage" href="../mastering-kvm-virtualization-book/chapter05.html" /> 
+    <link rel="next" title="Network Virtualization" href="../network-virtualization/_network-virtualization.html" />
+    <link rel="prev" title="Despliegue automatizado de VMs con oz" href="oz.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -129,14 +129,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../_virtualization.html">Virtualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">QEMU/KVM Virtualization</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="_qemu-kvm.html">QEMU/KVM Virtualization</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html">Requerimientos de virtualización</a></li>
 <li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="qemu-system-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">qemu-system-x86_64</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="virt-builder.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">virt-builder</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="oz.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="enable-virsh-console.html">Habilitando <code class="docutils literal notranslate"><span class="pre">virsh-console</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Habilitando <code class="docutils literal notranslate"><span class="pre">virsh-console</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
@@ -190,13 +190,15 @@
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
-      <li>QEMU/KVM Virtualization</li>
+          <li><a href="_qemu-kvm.html">QEMU/KVM Virtualization</a> &raquo;</li>
+        
+      <li>Habilitando <code class="docutils literal notranslate"><span class="pre">virsh-console</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/topics/virtualization/qemu-kvm/_qemu-kvm.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/topics/virtualization/qemu-kvm/enable-virsh-console.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -209,50 +211,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="qemu-kvm-virtualization">
-<h1>QEMU/KVM Virtualization<a class="headerlink" href="#qemu-kvm-virtualization" title="Enlazar permanentemente con este título">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Índice</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="virtualization_requirements.html">Requerimientos de virtualización</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html#requerimientos-de-cpu">Requerimientos de CPU</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html#instalando-herramientas">Instalando herramientas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html#iniciando-servicios">Iniciando servicios</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virtualization_requirements.html#validando-capacidades-del-sistema">Validando capacidades del sistema</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="virt-manager-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-manager</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html#creacion-de-vm-con-metodo-local-installation-media">Creación de VM con método Local installation media</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html#creacion-de-vm-con-metodo-importing-existing-disk-image">Creación de VM con método Importing existing disk image</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html#creacion-de-vm-con-metodo-network-boot-pxe">Creación de VM con método Network Boot (PXE)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html#creacion-de-vm-con-metodo-network-install-http-ftp-o-nfs">Creación de VM con método Network Install (HTTP, FTP o NFS)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virt-manager-new-vm.html#referencias">Referencias</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="virt-install-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html#opciones-principales-del-comando-virt-install">Opciones principales del comando <code class="docutils literal notranslate"><span class="pre">virt-install</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html#ejemplos-de-creacion-de-vms">Ejemplos de creación de VMs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html#configuracion-de-red-de-la-vm">Configuración de red de la VM</a></li>
-<li class="toctree-l2"><a class="reference internal" href="virt-install-new-vm.html#referencias">Referencias</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="qemu-system-new-vm.html">Creando VMs con <code class="docutils literal notranslate"><span class="pre">qemu-system-x86_64</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="qemu-system-new-vm.html#ejemplos-de-sintaxis">Ejemplos de sintáxis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="qemu-system-new-vm.html#referencias">Referencias</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="virt-builder.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">virt-builder</span></code></a></li>
-<li class="toctree-l1"><a class="reference internal" href="oz.html">Despliegue automatizado de VMs con <code class="docutils literal notranslate"><span class="pre">oz</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="oz.html#introduccion-a-oz">Introducción a <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="oz.html#usando-oz">Usando <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="oz.html#archivo-de-configuracion-de-oz">Archivo de configuración de <code class="docutils literal notranslate"><span class="pre">oz</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="oz.html#referencias">Referencias</a></li>
-<li class="toctree-l2"><a class="reference internal" href="oz.html#log-de-oz-install">Log de oz-install</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="enable-virsh-console.html">Habilitando <code class="docutils literal notranslate"><span class="pre">virsh-console</span></code></a></li>
-</ul>
+  <div class="section" id="habilitando-virsh-console">
+<h1>Habilitando <code class="docutils literal notranslate"><span class="pre">virsh-console</span></code><a class="headerlink" href="#habilitando-virsh-console" title="Enlazar permanentemente con este título">¶</a></h1>
+<p>La funcionalidad <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">console</span></code> permite conectarnos desde la consola del host a la consola de la VM guest.</p>
+<p>Al principio, cuando intentemos conectarnos al terminal del guest no tendremos repuesta:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh console ubuntu18
+Connected to domain ubuntu18Escape character is ^<span class="o">]</span>
+...
+</pre></div>
 </div>
+<p>Para habilitar la consola del guest seguir los siguientes pasos:</p>
+<ol class="arabic simple">
+<li>Desde la VM guest ejecutar:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo systemctl <span class="nb">enable</span> serial-getty@ttyS0.service
+
+sudo systemctl start serial-getty@ttyS0.service
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Hasta aquí podría bastar para acceder a la consola con <code class="docutils literal notranslate"><span class="pre">virsh</span> <span class="pre">console</span></code>.</p>
+</div>
+<ol class="arabic simple" start="2">
+<li>En la VM, reemplazar las siguientes línea del archivo <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code>:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;quiet&quot;</span>
+<span class="c1">#GRUB_TERMINAL=console</span>
+</pre></div>
+</div>
+<p>Por las siguientes líneas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GRUB_CMDLINE_LINUX_DEFAULT</span><span class="o">=</span><span class="s2">&quot;console=tty0 console=ttyS0&quot;</span>
+<span class="n">GRUB_TERMINAL</span><span class="o">=</span><span class="s2">&quot;serial console&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>En la VM, actualizar el guest con:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo update-grub
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>En el host, acceder a la consola de la VM con:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh console ubuntu18
+</pre></div>
+</div>
+<p>O iniciar la VM con la consola adjunta:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ virsh start ubuntu18 --console
+</pre></div>
+</div>
+<p>Referencias:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://serverfault.com/questions/364895/virsh-vm-console-does-not-show-any-output/705062#705062">Solución - virsh VM console does not show any output</a></li>
+</ul>
 </div>
 
 
@@ -263,10 +275,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="virtualization_requirements.html" class="btn btn-neutral float-right" title="Requerimientos de virtualización" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../network-virtualization/_network-virtualization.html" class="btn btn-neutral float-right" title="Network Virtualization" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../mastering-kvm-virtualization-book/chapter05.html" class="btn btn-neutral float-left" title="Chapter5. Network and Storage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="oz.html" class="btn btn-neutral float-left" title="Despliegue automatizado de VMs con oz" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
