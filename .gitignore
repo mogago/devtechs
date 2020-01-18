@@ -20,7 +20,7 @@ docs/build/html/topics/sdn/sdn-with-openstack-book/*
 # archivos .rst creados por mí (fuente)
 docs/source/topics/sdn/sdn-with-openstack-book/*
 
-# MASTERING KVM VIRTUALIZATION
+# MASTERING KVM VIRTUALIZATION (BOOK)
 # archivos .doctree para cada archivo dentro del directorio mastering-kvm-virtualization-book (misma organización que la fuente)
 docs/build/doctrees/topics/virtualization/mastering-kvm-virtualization-book/*
 # imágenes dentro de build/html (directorio de imágenes de toda la página, comparten el mismo directorio)
@@ -35,3 +35,18 @@ docs/build/html/_sources/topics/virtualization/mastering-kvm-virtualization-book
 docs/build/html/topics/virtualization/mastering-kvm-virtualization-book/*
 # archivos .rst creados por mí (fuente)
 docs/source/topics/virtualization/mastering-kvm-virtualization-book/*
+
+# OPENSTACK ESSENTIALS (VIDEO)
+# archivos .doctree para cada archivo dentro del directorio openstack-essentials (misma organización que la fuente)
+docs/build/doctrees/topics/openstack/openstack-essentials/*
+# imágenes dentro de build/html (directorio de imágenes de toda la página, comparten el mismo directorio)
+docs/build/html/_images/lesson1-*.png
+docs/build/html/_images/lesson2-*.png
+docs/build/html/_images/lesson3-*.png
+docs/build/html/_images/lesson4-*.png
+# archivos .txt para cada archivo dentro del directorio openstack-essentials (misma organización que la fuente)
+docs/build/html/_sources/topics/openstack/openstack-essentials/*
+# archivos .html para cada archivo dentro del directorio openstack-essentials (misma organización que la fuente)
+docs/build/html/topics/openstack/openstack-essentials/*
+# archivos .rst creados por mí (fuente)
+docs/source/topics/openstack/openstack-essentials/*
