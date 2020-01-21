@@ -1,0 +1,1016 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Instalando Arch &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Markdown" href="../../markdown/_markdown.html" />
+    <link rel="prev" title="ArchLinux" href="_archlinux.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_archlinux.html">ArchLinux</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Instalando Arch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creando-y-configurando-el-sistema">Creando y configurando el sistema</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creando-la-vm-en-virtualbox">Creando la VM en VirtualBox</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configurando-la-vm">Configurando la VM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#proceso-de-instalacion-de-arch-linux">Proceso de instalación de Arch Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pre-instalacion">Pre-instalación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#instalacion">Instalación</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configurar-el-sistema">Configurar el sistema</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#reconfigurando-la-vm-e-iniciando-el-sistema">Reconfigurando la VM e iniciando el sistema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_archlinux.html">ArchLinux</a> &raquo;</li>
+        
+      <li>Instalando Arch</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/gnulinux/archlinux/installing-arch.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="instalando-arch">
+<h1><a class="toc-backref" href="#id26">Instalando Arch</a><a class="headerlink" href="#instalando-arch" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#instalando-arch" id="id26">Instalando Arch</a><ul>
+<li><a class="reference internal" href="#creando-y-configurando-el-sistema" id="id27">Creando y configurando el sistema</a><ul>
+<li><a class="reference internal" href="#creando-la-vm-en-virtualbox" id="id28">Creando la VM en VirtualBox</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configurando-la-vm" id="id29">Configurando la VM</a></li>
+<li><a class="reference internal" href="#proceso-de-instalacion-de-arch-linux" id="id30">Proceso de instalación de Arch Linux</a><ul>
+<li><a class="reference internal" href="#pre-instalacion" id="id31">Pre-instalación</a></li>
+<li><a class="reference internal" href="#instalacion" id="id32">Instalación</a></li>
+<li><a class="reference internal" href="#configurar-el-sistema" id="id33">Configurar el sistema</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#reconfigurando-la-vm-e-iniciando-el-sistema" id="id34">Reconfigurando la VM e iniciando el sistema</a></li>
+<li><a class="reference internal" href="#referencias" id="id35">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>El siguiente procedimiento se basa en la <a class="reference external" href="https://wiki.archlinux.org/index.php/Installation_guide">guía de instalación oficial de la Wiki de Arch Linux</a>. Los pasos describen <strong>cómo instalar el sistema operativo (SO) Arch Linux desde un sistema live que haya arrancado con la imagen de instalación oficial</strong>.</p>
+<p>Los requerimientos necesarios en el sistema donde instalaremos Arch Linux es que debe ser compatible con la arquitectura x86_64, debe contar con un mínimo de 512 MiB de RAM, deben haber 800 MiB libres de espacio en el disco (lo que ocupa aproximadamente una instalación básica de Arch Linux) y conectividad a Internet para obtener paquetes de repositorios externos.</p>
+<p>Para obtener una imagen .iso de Arch Linux podemos descargar un torrent desde la <a class="reference external" href="https://www.archlinux.org/download/">página de descargas de Arch Linux</a>.</p>
+<div class="section" id="creando-y-configurando-el-sistema">
+<h2><a class="toc-backref" href="#id27">Creando y configurando el sistema</a><a class="headerlink" href="#creando-y-configurando-el-sistema" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En este caso se usará una máquina virtual (VM) para la instalación de Arch Linux, simulando que tenemos un disco físico con el SO Arch Linux dentro de él. Además, simularemos que tenemos un disco físico vacío donde instalaremos nuestro SO. El concepto del esquema físico simulado que pensamos es:</p>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/archlinux-instalacion-iso-fisica.png" src="../../../_images/archlinux-instalacion-iso-fisica.png" />
+<p class="caption"><span class="caption-text">Esquema de instalación de SO con sistema físico</span></p>
+</div>
+<p>El esquema real que usaremos para la instalación será con una máquina virtual y la imagen .iso de Arch Linux:</p>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/archlinux-instalacion-iso-virtual.png" src="../../../_images/archlinux-instalacion-iso-virtual.png" />
+<p class="caption"><span class="caption-text">Esquema de instalación de SO con sistema virtual</span></p>
+</div>
+<div class="section" id="creando-la-vm-en-virtualbox">
+<h3><a class="toc-backref" href="#id28">Creando la VM en VirtualBox</a><a class="headerlink" href="#creando-la-vm-en-virtualbox" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El procedimiento de creación de la VM será usando VirtualBox:</p>
+<ol class="arabic simple">
+<li>Crear una nueva VM en VirtualBox presionando el botón <span class="guilabel">New</span>:</li>
+</ol>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/VirtualBox-1.png" src="../../../_images/VirtualBox-1.png" />
+<p class="caption"><span class="caption-text">Creando la VM en VirtualBox - Botón <span class="guilabel">New</span></span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Escribir un nombre en <span class="guilabel">Name</span> y una ubicación para la VM:</li>
+</ol>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/VirtualBox-2.png" src="../../../_images/VirtualBox-2.png" />
+<p class="caption"><span class="caption-text">Creando la VM en VirtualBox - Name and operating system</span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Asignar la cantidad de memoria RAM deseada a la VM:</li>
+</ol>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/VirtualBox-3.png" src="../../../_images/VirtualBox-3.png" />
+<p class="caption"><span class="caption-text">Creando la VM en VirtualBox - Memory size</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Crear un nuevo disco virtual, seleccionar la opción <span class="guilabel">Create a virtual hard disk now</span> :</li>
+</ol>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/VirtualBox-4.png" src="../../../_images/VirtualBox-4.png" />
+<p class="caption"><span class="caption-text">Creando la VM en VirtualBox - Hard disk</span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Seleccionar el tipo de disco duro como <span class="guilabel">VDI (VirtualBox Disk Image)</span>, formato nativo de VirtualBox:</li>
+</ol>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/VirtualBox-5.png" src="../../../_images/VirtualBox-5.png" />
+<p class="caption"><span class="caption-text">Creando la VM en VirtualBox - Hard disk file type</span></p>
+</div>
+<ol class="arabic simple" start="6">
+<li>Seleccionar el tipo de asignación que se le dará al disco como <span class="guilabel">Dynamically allocated</span>:</li>
+</ol>
+<div class="figure align-center" id="id8">
+<img alt="../../../_images/VirtualBox-6.png" src="../../../_images/VirtualBox-6.png" />
+<p class="caption"><span class="caption-text">Creando la VM en VirtualBox - Storage on physical hard disk</span></p>
+</div>
+<ol class="arabic simple" start="7">
+<li>Asignar un tamaño virtual al disco:</li>
+</ol>
+<div class="figure align-center" id="id9">
+<img alt="../../../_images/VirtualBox-7.png" src="../../../_images/VirtualBox-7.png" />
+<p class="caption"><span class="caption-text">Creando la VM en VirtualBox - File location and size</span></p>
+</div>
+<ol class="arabic simple" start="8">
+<li>Clic en el botón <span class="guilabel">Create</span>.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="configurando-la-vm">
+<h2><a class="toc-backref" href="#id29">Configurando la VM</a><a class="headerlink" href="#configurando-la-vm" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Luego de haber creado la VM, la veremos listada en la ventana principal de VirtualBox. Ahora deberemos configurarla:</p>
+<ol class="arabic simple">
+<li>Seleccionar la VM recién creada y hacer clic en el botón <span class="guilabel">Settings</span>:</li>
+</ol>
+<div class="figure align-center" id="id10">
+<img alt="../../../_images/VirtualBox-8.png" src="../../../_images/VirtualBox-8.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox - Botón <span class="guilabel">Settings</span></span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>En la nueva ventana, clic en la sección <span class="guilabel">System</span>, pestaña <span class="guilabel">Processor</span>. Seleccionar la cantidad de CPUs que deseamos asignar a nuestra VM:</li>
+</ol>
+<div class="figure align-center" id="id11">
+<img alt="../../../_images/VirtualBox-9.png" src="../../../_images/VirtualBox-9.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox - sección <span class="guilabel">System</span>, pestaña <span class="guilabel">Processor</span></span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Clic en la sección <span class="guilabel">Display</span>, pestaña <span class="guilabel">Screen</span>. En cantidad de <span class="guilabel">Video Memory</span> asignar 128 MB y elegir <code class="docutils literal notranslate"><span class="pre">VBoxVGA</span></code> como <span class="guilabel">Graphics Controller</span>:</li>
+</ol>
+<div class="figure align-center" id="id12">
+<img alt="../../../_images/VirtualBox-10.png" src="../../../_images/VirtualBox-10.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox - sección <span class="guilabel">Display</span>, pestaña <span class="guilabel">Screen</span></span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Para tener conexión a Internet desde nuestra VM, clic en la sección <span class="guilabel">Network</span>, pestaña <span class="guilabel">Adapter1</span>. Seleccionar <code class="docutils literal notranslate"><span class="pre">NAT</span></code> como la red a la cual conectaremos la VM:</li>
+</ol>
+<div class="figure align-center" id="id13">
+<img alt="../../../_images/VirtualBox-11.png" src="../../../_images/VirtualBox-11.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox - sección <span class="guilabel">Network</span>, pestaña <span class="guilabel">Adapter1</span></span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Clic en la sección <span class="guilabel">Storage</span>. Seleccionar el ícono de un disco con un <span class="guilabel">+</span> (<span class="guilabel">Adds optical drive</span>):</li>
+</ol>
+<div class="figure align-center" id="id14">
+<img alt="../../../_images/VirtualBox-12.png" src="../../../_images/VirtualBox-12.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox - <span class="guilabel">Adds optical drive</span></span></p>
+</div>
+<ol class="arabic simple" start="6">
+<li>En la ventana emergente seleccionar el botón <span class="guilabel">Choose disk</span>:</li>
+</ol>
+<div class="figure align-center" id="id15">
+<img alt="../../../_images/VirtualBox-13.png" src="../../../_images/VirtualBox-13.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox - botón <span class="guilabel">Choose disk</span>:</span></p>
+</div>
+<ol class="arabic simple" start="7">
+<li>En la nueva ventana seleccionar el botón <span class="guilabel">Add…</span> (<span class="guilabel">Add Disk Image</span>)</li>
+</ol>
+<div class="figure align-center" id="id16">
+<img alt="../../../_images/VirtualBox-14.png" src="../../../_images/VirtualBox-14.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox - botón <span class="guilabel">Add…</span>:</span></p>
+</div>
+<ol class="arabic simple" start="8">
+<li>Buscar la imagen .iso del SO en el navegador de archivos y clic en <span class="guilabel">Open</span>:</li>
+</ol>
+<div class="figure align-center" id="id17">
+<img alt="../../../_images/VirtualBox-15.png" src="../../../_images/VirtualBox-15.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox - seleccionar la imagen .iso</span></p>
+</div>
+<ol class="arabic simple" start="9">
+<li>En la ventana previa ahora aparecerá cargada la imagen .iso. Clic en <span class="guilabel">Choose</span>:</li>
+</ol>
+<div class="figure align-center" id="id18">
+<img alt="../../../_images/VirtualBox-16.png" src="../../../_images/VirtualBox-16.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox - seleccionar la imagen .iso</span></p>
+</div>
+<ol class="arabic simple" start="10">
+<li>Verificar que la imagen .iso se haya cargado en la parte de dispositivos de almacenamiento. Clic en <span class="guilabel">OK</span>:</li>
+</ol>
+<div class="figure align-center" id="id19">
+<img alt="../../../_images/VirtualBox-17.png" src="../../../_images/VirtualBox-17.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox</span></p>
+</div>
+<ol class="arabic simple" start="11">
+<li>Finalmente, seleccionar la VM y clic en el botón <span class="guilabel">Start</span>:</li>
+</ol>
+<div class="figure align-center" id="id20">
+<img alt="../../../_images/VirtualBox-18.png" src="../../../_images/VirtualBox-18.png" />
+<p class="caption"><span class="caption-text">Configurando la VM en VirtualBox - botón <span class="guilabel">Start</span></span></p>
+</div>
+</div>
+<div class="section" id="proceso-de-instalacion-de-arch-linux">
+<h2><a class="toc-backref" href="#id30">Proceso de instalación de Arch Linux</a><a class="headerlink" href="#proceso-de-instalacion-de-arch-linux" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Al iniciar nuestro sistema desde la imagen de Arch Linux veremos la pantalla de arranque de Arch Linux, seleccionar la opción <span class="guilabel">Boot Arch Linux (x86_64)</span>:</p>
+<div class="figure align-center" id="id21">
+<img alt="../../../_images/installing-1.png" src="../../../_images/installing-1.png" />
+<p class="caption"><span class="caption-text">Pantalla de arranque de la imagen de Arch Linux - opción <span class="guilabel">Boot Arch Linux (x86_64)</span></span></p>
+</div>
+<p>Cuando haya terminado de cargar el arranque de la imagen iniciaremos sesión automáticamente como usuarios <code class="docutils literal notranslate"><span class="pre">root</span></code> bajo el prompt:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>root@archiso ~ <span class="s1">&#39;#&#39;</span>
+</pre></div>
+</div>
+<p>A partir de esto momento seguiremos los pasos indicados en la <a class="reference external" href="https://wiki.archlinux.org/index.php/Installation_guide">guía de instalación oficial de la Wiki de Arch Linux</a></p>
+<div class="section" id="pre-instalacion">
+<h3><a class="toc-backref" href="#id31">Pre-instalación</a><a class="headerlink" href="#pre-instalacion" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Para realizar los pasos de la guía remotamente desde el terminal del host realizar lo siguiente:</p>
+<ol class="arabic simple">
+<li>En VirtualBox, sin apagar la VM, cambiar el tipo de red a la que está conectada el Adadptador 1 de la VM: de <code class="docutils literal notranslate"><span class="pre">NAT</span></code> a <code class="docutils literal notranslate"><span class="pre">Bridge</span> <span class="pre">Adapter</span></code>:</li>
+</ol>
+<div class="figure align-center" id="id22">
+<img alt="../../../_images/virtualbox-bridge-adapter.png" src="../../../_images/virtualbox-bridge-adapter.png" />
+<p class="caption"><span class="caption-text">VM conectada por Bridge Adapter</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>En la VM, pedir configuración de red por DHCP:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> dhclient -v enp0s3
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Crear un nuevo usuario en la VM:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> useradd -md /home/user1 -s /bin/bash user1
+<span class="s1">&#39;#&#39;</span> passwd user1
+<span class="s1">&#39;#&#39;</span> usermod -aG wheel user1
+<span class="s1">&#39;#&#39;</span> visudo /etc/sudoers
+
+    root <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
+
+    <span class="c1">## Uncomment to allow members of group wheel to execute any command</span>
+    %wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Instalar sudo y SSH en la VM:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -Sy
+<span class="s1">&#39;#&#39;</span> pacman -S openssh
+<span class="s1">&#39;#&#39;</span> pacman -S sudo
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Habilitar openSSH server</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl restart sshd
+<span class="s1">&#39;#&#39;</span> systemctl status sshd
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Desde un terminal en el host conectarnos por SSH a la VM y cambiar a <code class="docutils literal notranslate"><span class="pre">root</span></code>:</li>
+</ol>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ssh user1@192.168.1.24
+<span class="o">[</span>user1@archiso ~<span class="o">]</span>$ sudo su
+root@archiso /home/user1 <span class="s1">&#39;#&#39;</span> <span class="nb">cd</span> ~
+root@archiso ~ <span class="s1">&#39;#&#39;</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple">
+<li>Configurar la distribución del teclado (keyboard layout) a español latino:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ls /usr/share/kbd/keymaps/**/*.map.gz <span class="p">|</span> grep la-
+<span class="s1">&#39;#&#39;</span> loadkeys la-latin1
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Comprobar conectividad a Internet:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ping archlinux.org
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Actualizar el reloj del sistema</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> timedatectl set-ntp <span class="nb">true</span>
+<span class="s1">&#39;#&#39;</span> timedatectl list-timezones <span class="p">|</span> grep Lima
+
+    America/Lima
+
+<span class="s1">&#39;#&#39;</span> timedatectl set-timezone America/Lima
+<span class="s1">&#39;#&#39;</span> timedatectl status
+
+                          Local time: Mon <span class="m">2020</span>-01-20 <span class="m">15</span>:58:09 -05
+                      Universal time: Mon <span class="m">2020</span>-01-20 <span class="m">20</span>:58:09 UTC
+                            RTC time: Mon <span class="m">2020</span>-01-20 <span class="m">20</span>:58:09
+                           Time zone: America/Lima <span class="o">(</span>-05, -0500<span class="o">)</span>
+           System clock synchronized: yes
+    systemd-timesyncd.service active: yes
+                     RTC in <span class="nb">local</span> TZ: no
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Listar dispositivos y particiones identificados en el sistema (con <code class="docutils literal notranslate"><span class="pre">lblk</span></code> o <code class="docutils literal notranslate"><span class="pre">fdisk</span></code>):</li>
+</ol>
+<ul class="simple">
+<li>Con <code class="docutils literal notranslate"><span class="pre">lsblk</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lsblk
+NAME  MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0   <span class="m">7</span>:0    <span class="m">0</span> <span class="m">541</span>.5M  <span class="m">1</span> loop /run/archiso/sfs/airootfs
+sda     <span class="m">8</span>:0    <span class="m">0</span>    12G  <span class="m">0</span> disk
+sr0    <span class="m">11</span>:0    <span class="m">1</span>   656M  <span class="m">0</span> rom  /run/archiso/bootmnt
+sr1    <span class="m">11</span>:1    <span class="m">1</span>  1024M  <span class="m">0</span> rom
+</pre></div>
+</div>
+<ul class="simple">
+<li>Con <code class="docutils literal notranslate"><span class="pre">fdisk</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo fdisk -l
+Disk /dev/sda: <span class="m">12</span> GiB, <span class="m">12884901888</span> bytes, <span class="m">25165824</span> sectors
+Disk model: VBOX HARDDISK
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+
+Disk /dev/loop0: <span class="m">541</span>.5 MiB, <span class="m">567787520</span> bytes, <span class="m">1108960</span> sectors
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+</pre></div>
+</div>
+<p>Vemos que tenemos un único disco de 12 GiB (<code class="docutils literal notranslate"><span class="pre">sda</span></code>), en el que haremos las particiones e instalaremos el sistema.</p>
+<ol class="arabic simple" start="5">
+<li>Particionar disco(s) (con <code class="docutils literal notranslate"><span class="pre">fdisk</span></code> o <code class="docutils literal notranslate"><span class="pre">cfdisk</span></code>) (<a class="reference external" href="https://www.howtogeek.com/106873/how-to-use-fdisk-to-manage-partitions-on-linux/">Guía - How to use fdisk to Manager Partitions on Linux</a>):</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">fdisk</span></code> y <code class="docutils literal notranslate"><span class="pre">cfdisk</span></code> hacen lo mismo, pero <code class="docutils literal notranslate"><span class="pre">cfdisk</span></code> es más interactivo</p>
+</div>
+<p>Queremos el siguiente esquema de particiones:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Label Type: DOS (para sistemas legacy BIOS) / GPT (para sistemas UEFI)</li>
+</ul>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Partición 1:</dt>
+<dd><ul class="first last">
+<li>Size: 10GB/12GB</li>
+<li>Primary</li>
+<li>Type: Linux (83)(default)</li>
+<li>Bootable (<code class="docutils literal notranslate"><span class="pre">Boot</span> <span class="pre">*</span></code>)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Partición 2:</dt>
+<dd><ul class="first last">
+<li>Size: 1GB/12GB</li>
+<li>Primary</li>
+<li>Type: Linux swap (82)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>5.1 Usar el comando fdisk sobre la partición del disco seleccionado para la instalación del SO:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ fdisk /dev/sda
+
+Welcome to fdisk <span class="o">(</span>util-linux <span class="m">2</span>.34<span class="o">)</span>.
+Changes will remain in memory only, <span class="k">until</span> you decide to write them.
+Be careful before using the write command.
+
+Device does not contain a recognized partition table.
+Created a new DOS disklabel with disk identifier 0x82871abf.
+</pre></div>
+</div>
+<p>5.2 Imprimir la tabla de particiones con la opción <code class="docutils literal notranslate"><span class="pre">p</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: p
+Disk /dev/sda: <span class="m">12</span> GiB, <span class="m">12884901888</span> bytes, <span class="m">25165824</span> sectors
+Disk model: VBOX HARDDISK
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+Disklabel type: dos
+Disk identifier: 0x82871abf
+</pre></div>
+</div>
+<p>5.3 Crear una nueva partición con la opción <code class="docutils literal notranslate"><span class="pre">n</span></code>. En este caso creamos una partición primaria de 10GiB de tamaño y tipo Linux (por defecto):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: n
+Partition <span class="nb">type</span>
+   p   primary <span class="o">(</span><span class="m">0</span> primary, <span class="m">0</span> extended, <span class="m">4</span> free<span class="o">)</span>
+   e   extended <span class="o">(</span>container <span class="k">for</span> logical partitions<span class="o">)</span>
+Select <span class="o">(</span>default p<span class="o">)</span>: p
+Partition number <span class="o">(</span><span class="m">1</span>-4, default <span class="m">1</span><span class="o">)</span>: <span class="m">1</span>
+First sector <span class="o">(</span><span class="m">2048</span>-25165823, default <span class="m">2048</span><span class="o">)</span>:
+Last sector, +/-sectors or +/-size<span class="o">{</span>K,M,G,T,P<span class="o">}</span> <span class="o">(</span><span class="m">2048</span>-25165823, default <span class="m">25165823</span><span class="o">)</span>: +10G
+
+Created a new partition <span class="m">1</span> of <span class="nb">type</span> <span class="s1">&#39;Linux&#39;</span> and of size <span class="m">10</span> GiB.
+</pre></div>
+</div>
+<p>5.4 Crear otra nueva partición con la opción <code class="docutils literal notranslate"><span class="pre">n</span></code>. En este caso creamos una partición primaria de 1GiB de tamaño y tipo Linux (por defecto):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: n
+Partition <span class="nb">type</span>
+   p   primary <span class="o">(</span><span class="m">1</span> primary, <span class="m">0</span> extended, <span class="m">3</span> free<span class="o">)</span>
+   e   extended <span class="o">(</span>container <span class="k">for</span> logical partitions<span class="o">)</span>
+Select <span class="o">(</span>default p<span class="o">)</span>: p
+Partition number <span class="o">(</span><span class="m">2</span>-4, default <span class="m">2</span><span class="o">)</span>:
+First sector <span class="o">(</span><span class="m">20973568</span>-25165823, default <span class="m">20973568</span><span class="o">)</span>:
+Last sector, +/-sectors or +/-size<span class="o">{</span>K,M,G,T,P<span class="o">}</span> <span class="o">(</span><span class="m">20973568</span>-25165823, default <span class="m">25165823</span><span class="o">)</span>: +1G
+</pre></div>
+</div>
+<p>5.5 Cambiaremos el tipo de la última partición con la opción <code class="docutils literal notranslate"><span class="pre">t</span></code>, de Linux (83) a swap (82):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Created</span> <span class="n">a</span> <span class="n">new</span> <span class="n">partition</span> <span class="mi">2</span> <span class="n">of</span> <span class="nb">type</span> <span class="s1">&#39;Linux&#39;</span> <span class="ow">and</span> <span class="n">of</span> <span class="n">size</span> <span class="mi">1</span> <span class="n">GiB</span><span class="o">.</span>
+
+<span class="n">Command</span> <span class="p">(</span><span class="n">m</span> <span class="k">for</span> <span class="n">help</span><span class="p">):</span> <span class="n">t</span>
+<span class="n">Partition</span> <span class="n">number</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span> <span class="n">default</span> <span class="mi">2</span><span class="p">):</span> <span class="mi">2</span>
+<span class="n">Hex</span> <span class="n">code</span> <span class="p">(</span><span class="nb">type</span> <span class="n">L</span> <span class="n">to</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">codes</span><span class="p">):</span> <span class="n">L</span>
+
+ <span class="mi">0</span>  <span class="n">Empty</span>           <span class="mi">24</span>  <span class="n">NEC</span> <span class="n">DOS</span>         <span class="mi">81</span>  <span class="n">Minix</span> <span class="o">/</span> <span class="n">old</span> <span class="n">Lin</span> <span class="n">bf</span>  <span class="n">Solaris</span>
+ <span class="mi">1</span>  <span class="n">FAT12</span>           <span class="mi">27</span>  <span class="n">Hidden</span> <span class="n">NTFS</span> <span class="n">Win</span> <span class="mi">82</span>  <span class="n">Linux</span> <span class="n">swap</span> <span class="o">/</span> <span class="n">So</span> <span class="n">c1</span>  <span class="n">DRDOS</span><span class="o">/</span><span class="n">sec</span> <span class="p">(</span><span class="n">FAT</span><span class="o">-</span>
+ <span class="mi">2</span>  <span class="n">XENIX</span> <span class="n">root</span>      <span class="mi">39</span>  <span class="n">Plan</span> <span class="mi">9</span>          <span class="mi">83</span>  <span class="n">Linux</span>           <span class="n">c4</span>  <span class="n">DRDOS</span><span class="o">/</span><span class="n">sec</span> <span class="p">(</span><span class="n">FAT</span><span class="o">-</span>
+ <span class="mi">3</span>  <span class="n">XENIX</span> <span class="n">usr</span>       <span class="mi">3</span><span class="n">c</span>  <span class="n">PartitionMagic</span>  <span class="mi">84</span>  <span class="n">OS</span><span class="o">/</span><span class="mi">2</span> <span class="n">hidden</span> <span class="ow">or</span>  <span class="n">c6</span>  <span class="n">DRDOS</span><span class="o">/</span><span class="n">sec</span> <span class="p">(</span><span class="n">FAT</span><span class="o">-</span>
+ <span class="mi">4</span>  <span class="n">FAT16</span> <span class="o">&lt;</span><span class="mi">32</span><span class="n">M</span>      <span class="mi">40</span>  <span class="n">Venix</span> <span class="mi">80286</span>     <span class="mi">85</span>  <span class="n">Linux</span> <span class="n">extended</span>  <span class="n">c7</span>  <span class="n">Syrinx</span>
+ <span class="mi">5</span>  <span class="n">Extended</span>        <span class="mi">41</span>  <span class="n">PPC</span> <span class="n">PReP</span> <span class="n">Boot</span>   <span class="mi">86</span>  <span class="n">NTFS</span> <span class="n">volume</span> <span class="nb">set</span> <span class="n">da</span>  <span class="n">Non</span><span class="o">-</span><span class="n">FS</span> <span class="n">data</span>
+ <span class="mi">6</span>  <span class="n">FAT16</span>           <span class="mi">42</span>  <span class="n">SFS</span>             <span class="mi">87</span>  <span class="n">NTFS</span> <span class="n">volume</span> <span class="nb">set</span> <span class="n">db</span>  <span class="n">CP</span><span class="o">/</span><span class="n">M</span> <span class="o">/</span> <span class="n">CTOS</span> <span class="o">/</span> <span class="o">.</span>
+ <span class="mi">7</span>  <span class="n">HPFS</span><span class="o">/</span><span class="n">NTFS</span><span class="o">/</span><span class="n">exFAT</span> <span class="mi">4</span><span class="n">d</span>  <span class="n">QNX4</span><span class="o">.</span><span class="n">x</span>          <span class="mi">88</span>  <span class="n">Linux</span> <span class="n">plaintext</span> <span class="n">de</span>  <span class="n">Dell</span> <span class="n">Utility</span>
+ <span class="mi">8</span>  <span class="n">AIX</span>             <span class="mi">4</span><span class="n">e</span>  <span class="n">QNX4</span><span class="o">.</span><span class="n">x</span> <span class="mi">2</span><span class="n">nd</span> <span class="n">part</span> <span class="mi">8</span><span class="n">e</span>  <span class="n">Linux</span> <span class="n">LVM</span>       <span class="n">df</span>  <span class="n">BootIt</span>
+ <span class="mi">9</span>  <span class="n">AIX</span> <span class="n">bootable</span>    <span class="mi">4</span><span class="n">f</span>  <span class="n">QNX4</span><span class="o">.</span><span class="n">x</span> <span class="mi">3</span><span class="n">rd</span> <span class="n">part</span> <span class="mi">93</span>  <span class="n">Amoeba</span>          <span class="n">e1</span>  <span class="n">DOS</span> <span class="n">access</span>
+ <span class="n">a</span>  <span class="n">OS</span><span class="o">/</span><span class="mi">2</span> <span class="n">Boot</span> <span class="n">Manag</span> <span class="mi">50</span>  <span class="n">OnTrack</span> <span class="n">DM</span>      <span class="mi">94</span>  <span class="n">Amoeba</span> <span class="n">BBT</span>      <span class="n">e3</span>  <span class="n">DOS</span> <span class="n">R</span><span class="o">/</span><span class="n">O</span>
+ <span class="n">b</span>  <span class="n">W95</span> <span class="n">FAT32</span>       <span class="mi">51</span>  <span class="n">OnTrack</span> <span class="n">DM6</span> <span class="n">Aux</span> <span class="mi">9</span><span class="n">f</span>  <span class="n">BSD</span><span class="o">/</span><span class="n">OS</span>          <span class="n">e4</span>  <span class="n">SpeedStor</span>
+ <span class="n">c</span>  <span class="n">W95</span> <span class="n">FAT32</span> <span class="p">(</span><span class="n">LBA</span><span class="p">)</span> <span class="mi">52</span>  <span class="n">CP</span><span class="o">/</span><span class="n">M</span>            <span class="n">a0</span>  <span class="n">IBM</span> <span class="n">Thinkpad</span> <span class="n">hi</span> <span class="n">ea</span>  <span class="n">Rufus</span> <span class="n">alignment</span>
+ <span class="n">e</span>  <span class="n">W95</span> <span class="n">FAT16</span> <span class="p">(</span><span class="n">LBA</span><span class="p">)</span> <span class="mi">53</span>  <span class="n">OnTrack</span> <span class="n">DM6</span> <span class="n">Aux</span> <span class="n">a5</span>  <span class="n">FreeBSD</span>         <span class="n">eb</span>  <span class="n">BeOS</span> <span class="n">fs</span>
+ <span class="n">f</span>  <span class="n">W95</span> <span class="n">Ext</span><span class="s1">&#39;d (LBA) 54  OnTrackDM6      a6  OpenBSD         ee  GPT</span>
+<span class="mi">10</span>  <span class="n">OPUS</span>            <span class="mi">55</span>  <span class="n">EZ</span><span class="o">-</span><span class="n">Drive</span>        <span class="n">a7</span>  <span class="n">NeXTSTEP</span>        <span class="n">ef</span>  <span class="n">EFI</span> <span class="p">(</span><span class="n">FAT</span><span class="o">-</span><span class="mi">12</span><span class="o">/</span><span class="mi">16</span><span class="o">/</span>
+<span class="mi">11</span>  <span class="n">Hidden</span> <span class="n">FAT12</span>    <span class="mi">56</span>  <span class="n">Golden</span> <span class="n">Bow</span>      <span class="n">a8</span>  <span class="n">Darwin</span> <span class="n">UFS</span>      <span class="n">f0</span>  <span class="n">Linux</span><span class="o">/</span><span class="n">PA</span><span class="o">-</span><span class="n">RISC</span> <span class="n">b</span>
+<span class="mi">12</span>  <span class="n">Compaq</span> <span class="n">diagnost</span> <span class="mi">5</span><span class="n">c</span>  <span class="n">Priam</span> <span class="n">Edisk</span>     <span class="n">a9</span>  <span class="n">NetBSD</span>          <span class="n">f1</span>  <span class="n">SpeedStor</span>
+<span class="mi">14</span>  <span class="n">Hidden</span> <span class="n">FAT16</span> <span class="o">&lt;</span><span class="mi">3</span> <span class="mi">61</span>  <span class="n">SpeedStor</span>       <span class="n">ab</span>  <span class="n">Darwin</span> <span class="n">boot</span>     <span class="n">f4</span>  <span class="n">SpeedStor</span>
+<span class="mi">16</span>  <span class="n">Hidden</span> <span class="n">FAT16</span>    <span class="mi">63</span>  <span class="n">GNU</span> <span class="n">HURD</span> <span class="ow">or</span> <span class="n">Sys</span> <span class="n">af</span>  <span class="n">HFS</span> <span class="o">/</span> <span class="n">HFS</span><span class="o">+</span>      <span class="n">f2</span>  <span class="n">DOS</span> <span class="n">secondary</span>
+<span class="mi">17</span>  <span class="n">Hidden</span> <span class="n">HPFS</span><span class="o">/</span><span class="n">NTF</span> <span class="mi">64</span>  <span class="n">Novell</span> <span class="n">Netware</span>  <span class="n">b7</span>  <span class="n">BSDI</span> <span class="n">fs</span>         <span class="n">fb</span>  <span class="n">VMware</span> <span class="n">VMFS</span>
+<span class="mi">18</span>  <span class="n">AST</span> <span class="n">SmartSleep</span>  <span class="mi">65</span>  <span class="n">Novell</span> <span class="n">Netware</span>  <span class="n">b8</span>  <span class="n">BSDI</span> <span class="n">swap</span>       <span class="n">fc</span>  <span class="n">VMware</span> <span class="n">VMKCORE</span>
+<span class="mi">1</span><span class="n">b</span>  <span class="n">Hidden</span> <span class="n">W95</span> <span class="n">FAT3</span> <span class="mi">70</span>  <span class="n">DiskSecure</span> <span class="n">Mult</span> <span class="n">bb</span>  <span class="n">Boot</span> <span class="n">Wizard</span> <span class="n">hid</span> <span class="n">fd</span>  <span class="n">Linux</span> <span class="n">raid</span> <span class="n">auto</span>
+<span class="mi">1</span><span class="n">c</span>  <span class="n">Hidden</span> <span class="n">W95</span> <span class="n">FAT3</span> <span class="mi">75</span>  <span class="n">PC</span><span class="o">/</span><span class="n">IX</span>           <span class="n">bc</span>  <span class="n">Acronis</span> <span class="n">FAT32</span> <span class="n">L</span> <span class="n">fe</span>  <span class="n">LANstep</span>
+<span class="mi">1</span><span class="n">e</span>  <span class="n">Hidden</span> <span class="n">W95</span> <span class="n">FAT1</span> <span class="mi">80</span>  <span class="n">Old</span> <span class="n">Minix</span>       <span class="n">be</span>  <span class="n">Solaris</span> <span class="n">boot</span>    <span class="n">ff</span>  <span class="n">BBT</span>
+<span class="n">Hex</span> <span class="n">code</span> <span class="p">(</span><span class="nb">type</span> <span class="n">L</span> <span class="n">to</span> <span class="nb">list</span> <span class="nb">all</span> <span class="n">codes</span><span class="p">):</span> <span class="mi">82</span>
+
+<span class="n">Changed</span> <span class="nb">type</span> <span class="n">of</span> <span class="n">partition</span> <span class="s1">&#39;Linux&#39;</span> <span class="n">to</span> <span class="s1">&#39;Linux swap / Solaris&#39;</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>5.6 Listar las particiones con la opción <code class="docutils literal notranslate"><span class="pre">p</span></code> y asegurarnos que están conformes con nuestros requerimientos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: p
+
+Disk /dev/sda: <span class="m">12</span> GiB, <span class="m">12884901888</span> bytes, <span class="m">25165824</span> sectors
+Disk model: VBOX HARDDISK
+Units: sectors of <span class="m">1</span> * <span class="nv">512</span> <span class="o">=</span> <span class="m">512</span> bytes
+Sector size <span class="o">(</span>logical/physical<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span class="m">512</span> bytes / <span class="m">512</span> bytes
+Disklabel type: dos
+Disk identifier: 0x82871abf
+
+Device     Boot    Start      End  Sectors Size Id Type
+/dev/sda1           <span class="m">2048</span> <span class="m">20973567</span> <span class="m">20971520</span>  10G <span class="m">83</span> Linux
+/dev/sda2       <span class="m">20973568</span> <span class="m">23070719</span>  <span class="m">2097152</span>   1G <span class="m">82</span> Linux swap / Solaris
+</pre></div>
+</div>
+<p>5.7 Escribir los cambios hechos al disco con la opción <code class="docutils literal notranslate"><span class="pre">w</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: w
+The partition table has been altered.
+Calling ioctl<span class="o">()</span> to re-read partition table.
+Syncing disks.
+</pre></div>
+</div>
+<p>5.8 Listar los discos y particiones para confirmar que hemos creado las particiones correctamente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> lsblk
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+loop0    <span class="m">7</span>:0    <span class="m">0</span> <span class="m">541</span>.5M  <span class="m">1</span> loop /run/archiso/sfs/airootfs
+sda      <span class="m">8</span>:0    <span class="m">0</span>    12G  <span class="m">0</span> disk
+├─sda1   <span class="m">8</span>:1    <span class="m">0</span>    10G  <span class="m">0</span> part
+└─sda2   <span class="m">8</span>:2    <span class="m">0</span>     1G  <span class="m">0</span> part
+sr0     <span class="m">11</span>:0    <span class="m">1</span>   656M  <span class="m">0</span> rom  /run/archiso/bootmnt
+sr1     <span class="m">11</span>:1    <span class="m">1</span>  1024M  <span class="m">0</span> rom
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Formatear la partición Linux para crear un filesystem tipo <code class="docutils literal notranslate"><span class="pre">ext4</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> mkfs.ext4 /dev/sda1
+
+mke2fs <span class="m">1</span>.45.4 <span class="o">(</span><span class="m">23</span>-Sep-2019<span class="o">)</span>
+Creating filesystem with <span class="m">2621440</span> 4k blocks and <span class="m">655360</span> inodes
+Filesystem UUID: b6a91f40-6a90-4093-88ff-ca45d4eea178
+Superblock backups stored on blocks:
+        <span class="m">32768</span>, <span class="m">98304</span>, <span class="m">163840</span>, <span class="m">229376</span>, <span class="m">294912</span>, <span class="m">819200</span>, <span class="m">884736</span>, <span class="m">1605632</span>
+
+Allocating group tables: <span class="k">done</span>
+Writing inode tables: <span class="k">done</span>
+Creating journal <span class="o">(</span><span class="m">16384</span> blocks<span class="o">)</span>: <span class="k">done</span>
+Writing superblocks and filesystem accounting information: <span class="k">done</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>Formatear la partición swap:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> mkswap /dev/sda2
+Setting up swapspace version <span class="m">1</span>, <span class="nv">size</span> <span class="o">=</span> <span class="m">1024</span> MiB <span class="o">(</span><span class="m">1073737728</span> bytes<span class="o">)</span>
+no label, <span class="nv">UUID</span><span class="o">=</span>d4b01b51-459a-4171-a6df-676646f4ff94
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> swapon /dev/sda2
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li>Montar el filesystem de la partición Linux:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> mount /dev/sda1 /mnt/
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalacion">
+<h3><a class="toc-backref" href="#id32">Instalación</a><a class="headerlink" href="#instalacion" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li>Seleccionar los mirrors. En el archivo <code class="docutils literal notranslate"><span class="pre">/etc/pacman.d/mirrorlist</span></code> definimos la lista de servidores mirror de donde se descargarán los paquetes. Eliminar servidores que no deseemos con un editor de texto (<code class="docutils literal notranslate"><span class="pre">vim</span></code> o <code class="docutils literal notranslate"><span class="pre">nano</span></code>):</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En el archivo <code class="docutils literal notranslate"><span class="pre">/etc/pacman.d/mirrorlist</span></code> donde se listan los mirrors, cuanto más arriba se posicione un mirror en la lista, más prioridad tendrá al descargar un paquete.</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> vim /etc/pacman.d/mirrorlist
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/pacman.d/mirrorlist
+<span class="c1">##</span>
+<span class="c1">## Arch Linux repository mirrorlist</span>
+<span class="c1">## Filtered by mirror score from mirror status page</span>
+<span class="c1">## Generated on 2020-01-01</span>
+<span class="c1">##</span>
+
+<span class="c1">## United States</span>
+<span class="nv">Server</span> <span class="o">=</span> http://mirror.dal10.us.leaseweb.net/archlinux/<span class="nv">$repo</span>/os/<span class="nv">$arch</span>
+<span class="c1">## United States</span>
+<span class="nv">Server</span> <span class="o">=</span> http://archlinux.surlyjake.com/archlinux/<span class="nv">$repo</span>/os/<span class="nv">$arch</span>
+<span class="c1">## United States</span>
+<span class="nv">Server</span> <span class="o">=</span> http://ca.us.mirror.archlinux-br.org/<span class="nv">$repo</span>/os/<span class="nv">$arch</span>
+<span class="c1">## United States</span>
+<span class="nv">Server</span> <span class="o">=</span> http://mirror.kaminski.io/archlinux/<span class="nv">$repo</span>/os/<span class="nv">$arch</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Instalar paquetes esenciales del sistema Arch Linux</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacstrap /mnt base linux linux-firmware
+</pre></div>
+</div>
+</div>
+<div class="section" id="configurar-el-sistema">
+<h3><a class="toc-backref" href="#id33">Configurar el sistema</a><a class="headerlink" href="#configurar-el-sistema" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li>Generar un archivo fstab (filesystem table) para montar correctamente las particiones:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> genfstab -U /mnt &gt;&gt; sudo /mnt/etc/fstab
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Cambiar root (<code class="docutils literal notranslate"><span class="pre">chroot</span></code>) en el nuevo sistema:</li>
+</ol>
+<p>Más <a class="reference external" href="https://wiki.archlinux.org/index.php/Chroot">información de chroot de Wiki de Arch</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>root@archiso ~ <span class="s1">&#39;#&#39;</span> arch-chroot /mnt
+<span class="o">[</span>root@archiso /<span class="o">]</span><span class="s1">&#39;#&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic" start="3">
+<li><p class="first">Configurar el time zone:</p>
+<blockquote>
+<div><p>“#” ln -sf /usr/share/zoneinfo/America/Lima /etc/localetime
+“#” hwclock –systohc</p>
+</div></blockquote>
+</li>
+<li><p class="first">Instalar un editor de texto en el entorno chroot (<a class="reference external" href="https://superuser.com/questions/1499709/nano-command-not-found-after-entering-chroot-during-arch-install">comandos no encontrados en chroot</a>):</p>
+</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S vim
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Localización.</li>
+</ol>
+<p>5.1 Descomentar la línea <code class="docutils literal notranslate"><span class="pre">es_PE.UTF-8</span> <span class="pre">UTF-8</span></code> del archivo <code class="docutils literal notranslate"><span class="pre">/etc/locale.gen</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> vim /etc/locale.gen
+
+<span class="s1">&#39;#&#39;</span> cat /etc/locale.gen
+
+    ...
+    <span class="c1">#en_SG.UTF-8 UTF-8</span>
+<span class="hll">    en_US.UTF-8 UTF-8
+</span>    <span class="c1">#en_US ISO-8859-1</span>
+    ...
+    <span class="c1">#es_PA ISO-8859-1</span>
+<span class="hll">    es_PE.UTF-8 UTF-8
+</span>    <span class="c1">#es_PE ISO-8859-1</span>
+    ...
+</pre></div>
+</div>
+<p>5.2</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> locale-gen
+
+Generating locales...
+en_US.UTF-8... <span class="k">done</span>
+es_PE.UTF-8... <span class="k">done</span>
+Generation complete.
+</pre></div>
+</div>
+<p>5.3 Crear el archivo <code class="docutils literal notranslate"><span class="pre">locale.conf</span></code> con la variable <code class="docutils literal notranslate"><span class="pre">LANG</span></code> (<code class="docutils literal notranslate"><span class="pre">LANG=en_US.UTF-8</span></code> para idioma inglés y <code class="docutils literal notranslate"><span class="pre">LANG=es_PE.UTF-8</span></code> para español):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">echo</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 &gt; /etc/locale.conf <span class="c1"># export LANG=en_US.UTF-8</span>
+
+<span class="s1">&#39;#&#39;</span> cat /etc/locale.conf
+
+    <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+</pre></div>
+</div>
+<p>5.4 Para realizar los cambios hechos anteriormente del keyboard layout, editar el archivo <code class="docutils literal notranslate"><span class="pre">/etc/vconsole.conf</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> vim /etc/vconsole.conf
+
+<span class="s1">&#39;#&#39;</span> cat /etc/vconsole.conf
+
+    <span class="nv">KEYMAP</span><span class="o">=</span>la-latin1
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Configuración de red</li>
+</ol>
+<p>6.1 Crear el archivo <code class="docutils literal notranslate"><span class="pre">/etc/hostname</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">echo</span> arch &gt; /etc/hostname
+<span class="s1">&#39;#&#39;</span> cat /etc/hostname
+
+    arch
+</pre></div>
+</div>
+<p>6.2 Editar el archivo <code class="docutils literal notranslate"><span class="pre">/etc/hosts/</span></code> y agregar 3 líneas:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> vim /etc/hosts
+<span class="s1">&#39;#&#39;</span> cat /etc/hosts
+
+    <span class="m">127</span>.0.0.1       localhost
+    ::1                 localhost
+    <span class="m">127</span>.0.1.1       arch.localdomain        arch
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>Configurar una contraseña root:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> passwd
+
+    New password:
+    Retype new password:
+    passwd: password updated successfully
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li>Bootloader:</li>
+</ol>
+<p>8.1 Descargar los paquetes de grub:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S grub
+</pre></div>
+</div>
+<p>8.2 Instalemos grub en el disco:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> grub-install /dev/sda
+
+Installing <span class="k">for</span> i386-pc platform.
+Installation finished. No error reported.
+</pre></div>
+</div>
+<p>8.3 Crearemos un archivo de configuración de grub:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> grub-mkconfig -o /boot/grub/grub.cfg
+
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-linux
+Found initrd image: /boot/initramfs-linux.img
+Found fallback initrd image<span class="o">(</span>s<span class="o">)</span> in /boot: initramfs-linux-fallback.img
+<span class="k">done</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li>Habilitar el servicio de DHCP <code class="docutils literal notranslate"><span class="pre">dhcpcd</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S dhcpcd
+
+<span class="s1">&#39;#&#39;</span> systemctl <span class="nb">enable</span> dhcpcd
+Created symlink /etc/systemd/system/multi-user.target.wants/dhcpcd.service → /usr/lib/systemd/system/dhcpcd.service.
+</pre></div>
+</div>
+<p>Cuando reiniciemos nuestro SO recién instalado, debería habilitar DHCP automáticamente.</p>
+<ol class="arabic simple" start="10">
+<li>Crear un nuevo usuario con permisos de sudo:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> useradd -md /home/user1 -s /bin/bash user1
+<span class="s1">&#39;#&#39;</span> passwd user1
+<span class="s1">&#39;#&#39;</span> usermod -aG wheel user1
+
+<span class="s1">&#39;#&#39;</span> pacman -S sudo
+<span class="s1">&#39;#&#39;</span> visudo /etc/sudoers
+
+        root <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
+
+        <span class="c1">## Uncomment to allow members of group wheel to execute any command</span>
+        %wheel <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> ALL
+</pre></div>
+</div>
+<p>Agregar al usuario a demás grupos:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> usermod -aG audio,video,optical,storage
+</pre></div>
+</div>
+<ol class="arabic simple" start="11">
+<li>Salir de chroot y apagar la VM:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@archiso /<span class="o">]</span><span class="s1">&#39;#&#39;</span> <span class="nb">exit</span>
+<span class="o">[</span>user1@archiso ~<span class="o">]</span>$ sudo shutdown now
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reconfigurando-la-vm-e-iniciando-el-sistema">
+<h2><a class="toc-backref" href="#id34">Reconfigurando la VM e iniciando el sistema</a><a class="headerlink" href="#reconfigurando-la-vm-e-iniciando-el-sistema" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Cuando la VM se haya apagado, debemos remover el medio de instalación. En VirtuaBox, ir a <span class="guilabel">Settings</span> de la VM, sección <span class="guilabel">Storage</span> y remover el disco .iso con el botón inferior:</li>
+</ol>
+<div class="figure align-center" id="id23">
+<img alt="../../../_images/VirtualBox-remove-disk.png" src="../../../_images/VirtualBox-remove-disk.png" />
+<p class="caption"><span class="caption-text">Arch Linux instalado - Remover imagen .iso</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Iniciar la VM y veremos que inicia el Grub con las opciones de arranque. Seleccionar <span class="guilabel">Arch Linux</span>:</li>
+</ol>
+<div class="figure align-center" id="id24">
+<img alt="../../../_images/archlinux-installed-1.png" src="../../../_images/archlinux-installed-1.png" />
+<p class="caption"><span class="caption-text">Arch Linux instalado - Grub</span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Veremos la pantalla de inicio del SO de Arch Linux:</li>
+</ol>
+<div class="figure align-center" id="id25">
+<img alt="../../../_images/archlinux-installed-2.png" src="../../../_images/archlinux-installed-2.png" />
+<p class="caption"><span class="caption-text">Arch Linux instalado - Grub</span></p>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id35">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Installation_guide">guía de instalación oficial de la Wiki de Arch Linux</a></li>
+<li><a class="reference external" href="https://www.archlinux.org/download/">página de descargas de Arch Linux</a></li>
+<li><a class="reference external" href="https://www.howtogeek.com/106873/how-to-use-fdisk-to-manage-partitions-on-linux/">Guía - How to use fdisk to Manager Partitions on Linux</a></li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Chroot">información de chroot de Wiki de Arch</a></li>
+<li><a class="reference external" href="https://superuser.com/questions/1499709/nano-command-not-found-after-entering-chroot-during-arch-install">comandos no encontrados en chroot</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=HpskN_jKyhc">Videotutorial - Arch Linux Installation Guide (2019)</a></li>
+<li><a class="reference external" href="https://blog.desdelinux.net/arch-linux-guia-basica-de-instalacion-actualizada/">Arch Linux Guía básica de instalación actualizada</a></li>
+</ul>
+<ul class="simple">
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Install_Arch_Linux_on_a_USB_key">Wiki Arch Linux - Install Arch Linux on a USB key</a></li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Install_Arch_Linux_from_existing_Linux">Wiki Arch Linux - Install Arch Linux from existing Linux</a></li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Network_configuration">Wiki Arch Linux - Network configuration</a></li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Users_and_groups">Wiki Arch Linux - Users and groups</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../markdown/_markdown.html" class="btn btn-neutral float-right" title="Markdown" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_archlinux.html" class="btn btn-neutral float-left" title="ArchLinux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

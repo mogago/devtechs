@@ -229,7 +229,7 @@ Para solucionar esto ejecutaremos:
 
     $ git show 94ffa02
     commit 94ffa02184f7d4e69d0086c82f1738507bf507c6 (HEAD -> master)
-    Author: Gabriel Omar <newuser1@mail.com>
+    Author: Gabriel <newuser1@mail.com>
     Date:   Wed Jan 1 23:33:41 2020 -0500
 
         Added contact us page

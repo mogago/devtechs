@@ -1,0 +1,384 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Instalar un Desktop Environment en Arch &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Markdown" href="../../markdown/_markdown.html" />
+    <link rel="prev" title="Instalando Arch" href="installing-arch.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_archlinux.html">ArchLinux</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installing-arch.html">Instalando Arch</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Instalar un Desktop Environment en Arch</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pre-requisitos">Pre-requisitos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalando-el-desktop-environment">Instalando el Desktop Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_archlinux.html">ArchLinux</a> &raquo;</li>
+        
+      <li>Instalar un Desktop Environment en Arch</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/gnulinux/archlinux/desktop-env.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="instalar-un-desktop-environment-en-arch">
+<h1><a class="toc-backref" href="#id2">Instalar un Desktop Environment en Arch</a><a class="headerlink" href="#instalar-un-desktop-environment-en-arch" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#instalar-un-desktop-environment-en-arch" id="id2">Instalar un Desktop Environment en Arch</a><ul>
+<li><a class="reference internal" href="#pre-requisitos" id="id3">Pre-requisitos</a></li>
+<li><a class="reference internal" href="#instalando-el-desktop-environment" id="id4">Instalando el Desktop Environment</a></li>
+<li><a class="reference internal" href="#referencias" id="id5">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Con el sistema operativo de Arch Linux instalado podemos agregarle un entorno de escritorio (dekstop environment) para tener una interfaz de usuario gráfica.</p>
+<p>Existen varias alternativas de entornos de escritorio, pero los pasos de instalación son casi los mismos en todos.</p>
+<div class="section" id="pre-requisitos">
+<h2><a class="toc-backref" href="#id3">Pre-requisitos</a><a class="headerlink" href="#pre-requisitos" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Usuario creado</li>
+</ol>
+<p>Como pre-requisito, debemos tener un usuario creado con permisos de sudo.</p>
+<ol class="arabic simple" start="2">
+<li><strong>Display server (X server)</strong></li>
+</ol>
+<p>Enlace entre software y hardware, permite a la PC mostrar las imágenes en pantalla y configurar la tarjeta gráfica de nuestra PC. La solución más popular en Linux es <code class="docutils literal notranslate"><span class="pre">xorg</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S xorg
+</pre></div>
+</div>
+<p>Este comando instala 49 miembros en total (112 paquetes).</p>
+<ol class="arabic simple" start="3">
+<li><strong>Graphics driver</strong></li>
+</ol>
+<p>El display server es inútil sin un graphics driver. Podemos instalar el driver específico de nuestro fabricante. Además podemos instalar un driver básico (<code class="docutils literal notranslate"><span class="pre">xf86-video-vesa</span></code>) si no estamos seguros de cual es nuestro fabricante de forma temporal, o si estamos en una VM, o como respaldo por si falla nuestro driver principal:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Vesa</span>
+<span class="s1">&#39;#&#39;</span> pacman -S xf86-video-vesa
+<span class="c1"># AMD</span>
+<span class="s1">&#39;#&#39;</span> pacman -S xf86-video-amdgpu
+<span class="c1"># Intel</span>
+<span class="s1">&#39;#&#39;</span> pacman -S xf86-video-intel
+<span class="c1">#Nvidia</span>
+<span class="s1">&#39;#&#39;</span> pacman -S xf86-video-nouveau
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><strong>Display manager</strong></li>
+</ol>
+<p>Es esencialmente nuestra pantalla de logueo. Inicia el <strong>xorg display server</strong> automáticamente para que no tenga que ser iniciado por línea de comandos cada vez que iniciamos el sistema. Nos provee con una lista de desktop environments instalados. La mayoría de desktop environments tiene un display manager recomendado a ser usado con él:</p>
+<ul class="simple">
+<li>KDE Plasma 5 - <code class="docutils literal notranslate"><span class="pre">sddm</span></code></li>
+<li>GNOME - <code class="docutils literal notranslate"><span class="pre">gdm</span></code></li>
+<li>LXDE - <code class="docutils literal notranslate"><span class="pre">lxdm</span></code></li>
+<li>Universal Display Manager - <code class="docutils literal notranslate"><span class="pre">lightdm</span></code>, <code class="docutils literal notranslate"><span class="pre">mdm-display-manager</span></code>, <code class="docutils literal notranslate"><span class="pre">slim</span></code>, <code class="docutils literal notranslate"><span class="pre">xorg-xdm</span></code></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En teoría podemos cualquier display manager podría funcionar con cualquier desktop environment, sin embargo, es más fácil instalar el que corresponde a nuestro desktop environment.</p>
+</div>
+<p>Para instalar GNOME:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S gdm
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalando-el-desktop-environment">
+<h2><a class="toc-backref" href="#id4">Instalando el Desktop Environment</a><a class="headerlink" href="#instalando-el-desktop-environment" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Para instalar el desktop environment necesitamos instalar el grupo que contiene los paquetes para el desktop environment mismo. Los grupos que contienen los respectivos desktop environments son:</li>
+</ol>
+<ul class="simple">
+<li>KDE Plasma 5 - <code class="docutils literal notranslate"><span class="pre">plasma</span></code></li>
+<li>Cinnamon - <code class="docutils literal notranslate"><span class="pre">cinnamon</span></code></li>
+<li>GNOME - <code class="docutils literal notranslate"><span class="pre">gnome</span></code></li>
+<li>LXDE - <code class="docutils literal notranslate"><span class="pre">lxde</span></code></li>
+<li>MATE - <code class="docutils literal notranslate"><span class="pre">mate</span></code></li>
+<li>Xfce - <code class="docutils literal notranslate"><span class="pre">xfce4</span></code></li>
+</ul>
+<p>El grupo que contiene los paquetes del desktop environment GNOME es <code class="docutils literal notranslate"><span class="pre">gnome</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S gnome
+</pre></div>
+</div>
+<p>Por defecto, solo instala el desktop environment mínimo y no muchas aplicaciones.</p>
+<ol class="arabic simple" start="2">
+<li>La mayoría desktop environments tienen otro grupo con un conjunto de aplicaciones que podemos instalar junto con el desktop environment. Obtenemos programas como administradores de archivos, un terminal y media player.</li>
+</ol>
+<ul class="simple">
+<li>KDE Plasma 5 - <code class="docutils literal notranslate"><span class="pre">kde-applications</span></code></li>
+<li>Cinnamon - N/A (<code class="docutils literal notranslate"><span class="pre">nemo-fileroller</span></code>)</li>
+<li>GNOME - <code class="docutils literal notranslate"><span class="pre">gnome-extra</span></code></li>
+<li>LXDE - N/A</li>
+<li>MATE - <code class="docutils literal notranslate"><span class="pre">mate-extra</span></code></li>
+<li>Xfce - <code class="docutils literal notranslate"><span class="pre">xfce4-goodies</span></code></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S gnome-extra
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Habilitar el boot manager para que inicie automáticamente en el arranque del sistema:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl <span class="nb">enable</span> gdm
+Created symlink /etc/systemd/system/display-manager.service → /usr/lib/systemd/system/gdm.service.
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Reiniciar el sistema</li>
+</ol>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/archlinux-gnome.png" src="../../../_images/archlinux-gnome.png" />
+<p class="caption"><span class="caption-text">Arch Linux - GNOME Desktop environment</span></p>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id5">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?v=P4IV5BYPiPs">How to Install a Desktop Environment in Arch Linux</a></li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/General_recommendations#Graphical_user_interface">Graphical user interface</a></li>
+<li><a class="reference external" href="https://wiki.archlinux.org/index.php/Desktop_environment:https://wiki.archlinux.org/index.php/Desktop_environment">Desktop environment</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../markdown/_markdown.html" class="btn btn-neutral float-right" title="Markdown" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installing-arch.html" class="btn btn-neutral float-left" title="Instalando Arch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

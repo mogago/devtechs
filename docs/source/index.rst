@@ -30,6 +30,7 @@ Welcome to DevTechs's documentation!
     topics/gnulinux/ssh
     topics/gnulinux/user-management
     topics/gnulinux/new-disk-dd
+    topics/gnulinux/archlinux/_archlinux
 
 .. toctree::
     :maxdepth: 2
