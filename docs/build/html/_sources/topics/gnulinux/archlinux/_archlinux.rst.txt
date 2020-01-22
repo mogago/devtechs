@@ -7,4 +7,6 @@ ArchLinux
     :caption: Índice
 
     installing-arch
+    installing-arch-usb
     desktop-env
+    

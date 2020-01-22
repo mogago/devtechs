@@ -1,3 +1,5 @@
+.. _installingarch:
+
 Instalando Arch
 ===============
 
@@ -243,7 +245,7 @@ Pre-instalación
         root@archiso /home/user1 '#' cd ~
         root@archiso ~ '#'
 
-1. Configurar la distribución del teclado (keyboard layout) a español latino:
+1. Configurar la distribución del teclado (keyboard layout) a español:
 
 .. code-block:: bash
 
@@ -282,7 +284,7 @@ Pre-instalación
 
 .. code-block:: bash
 
-    $ lsblk
+    '#' lsblk
     NAME  MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
     loop0   7:0    0 541.5M  1 loop /run/archiso/sfs/airootfs
     sda     8:0    0    12G  0 disk 
@@ -293,7 +295,7 @@ Pre-instalación
 
 .. code-block:: bash
 
-    $ sudo fdisk -l
+    '#' fdisk -l
     Disk /dev/sda: 12 GiB, 12884901888 bytes, 25165824 sectors
     Disk model: VBOX HARDDISK   
     Units: sectors of 1 * 512 = 512 bytes
@@ -307,15 +309,15 @@ Pre-instalación
 
 Vemos que tenemos un único disco de 12 GiB (``sda``), en el que haremos las particiones e instalaremos el sistema.
 
-5. Particionar disco(s) (con ``fdisk`` o ``cfdisk``) (`Guía - How to use fdisk to Manager Partitions on Linux`_):
+5. Particionar disco(s) (con ``fdisk`` o ``cfdisk``) (`Guía - How to use fdisk to Manage Partitions on Linux`_):
 
-.. _Guía - How to use fdisk to Manager Partitions on Linux: https://www.howtogeek.com/106873/how-to-use-fdisk-to-manage-partitions-on-linux/
+.. _Guía - How to use fdisk to Manage Partitions on Linux: https://www.howtogeek.com/106873/how-to-use-fdisk-to-manage-partitions-on-linux/
 
 .. Note::
 
     ``fdisk`` y ``cfdisk`` hacen lo mismo, pero ``cfdisk`` es más interactivo
 
-Queremos el siguiente esquema de particiones:
+Deseamos el siguiente esquema de particiones:
 
     * Label Type: DOS (para sistemas legacy BIOS) / GPT (para sistemas UEFI)
 
@@ -333,7 +335,7 @@ Queremos el siguiente esquema de particiones:
 
 .. code-block:: bash
 
-    $ fdisk /dev/sda 
+    '#' fdisk /dev/sda 
 
     Welcome to fdisk (util-linux 2.34).                                      
     Changes will remain in memory only, until you decide to write them.
@@ -556,6 +558,8 @@ Más `información de chroot de Wiki de Arch`_.
 
 3. Configurar el time zone:
 
+.. code-block:: bash
+
     '#' ln -sf /usr/share/zoneinfo/America/Lima /etc/localetime
     '#' hwclock --systohc
 
@@ -588,7 +592,7 @@ Más `información de chroot de Wiki de Arch`_.
         #es_PE ISO-8859-1
         ...
 
-5.2 
+5.2 Generar archivos de locación en base al archivo ``/etc/locale.gen``:
 
 .. code-block:: bash
 
@@ -749,7 +753,7 @@ Referencias
 
 - `guía de instalación oficial de la Wiki de Arch Linux`_
 - `página de descargas de Arch Linux`_
-- `Guía - How to use fdisk to Manager Partitions on Linux`_
+- `Guía - How to use fdisk to Manage Partitions on Linux`_
 - `información de chroot de Wiki de Arch`_
 - `comandos no encontrados en chroot`_
 - `Videotutorial - Arch Linux Installation Guide (2019)`_
