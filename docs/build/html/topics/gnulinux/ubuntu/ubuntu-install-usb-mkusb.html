@@ -1,0 +1,443 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Instalando Ubuntu en un USB con mkusb &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Markdown" href="../../markdown/_markdown.html" />
+    <link rel="prev" title="Ubuntu" href="_ubuntu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_ubuntu.html">Ubuntu</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Instalando Ubuntu en un USB con mkusb</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instalando-mkusb">Instalando <code class="docutils literal notranslate"><span class="pre">mkusb</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#en-ubuntu-linux-mint-elementary-os">En Ubuntu, Linux Mint, Elementary OS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#en-debian">En Debian</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#instalando-el-so-con-mkusb">Instalando el SO con <code class="docutils literal notranslate"><span class="pre">mkusb</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_ubuntu.html">Ubuntu</a> &raquo;</li>
+        
+      <li>Instalando Ubuntu en un USB con mkusb</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/gnulinux/ubuntu/ubuntu-install-usb-mkusb.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="instalando-ubuntu-en-un-usb-con-mkusb">
+<h1><a class="toc-backref" href="#id18">Instalando Ubuntu en un USB con mkusb</a><a class="headerlink" href="#instalando-ubuntu-en-un-usb-con-mkusb" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#instalando-ubuntu-en-un-usb-con-mkusb" id="id18">Instalando Ubuntu en un USB con mkusb</a><ul>
+<li><a class="reference internal" href="#instalando-mkusb" id="id19">Instalando <code class="docutils literal notranslate"><span class="pre">mkusb</span></code></a><ul>
+<li><a class="reference internal" href="#en-ubuntu-linux-mint-elementary-os" id="id20">En Ubuntu, Linux Mint, Elementary OS</a></li>
+<li><a class="reference internal" href="#en-debian" id="id21">En Debian</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#instalando-el-so-con-mkusb" id="id22">Instalando el SO con <code class="docutils literal notranslate"><span class="pre">mkusb</span></code></a></li>
+<li><a class="reference internal" href="#referencias" id="id23">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>En el método de creación de un <strong>Linux live USB</strong>, todo cambios que hagamos al sistema se perderá luego de un reinicio. Por otro lado, el método <strong>Persistent Storage Live USB</strong> guarda cualquier cambio que hagamos al live system, permaneciendo luego de un reinicio del sistema.</p>
+<p>Esta documentación muestra cómo crear un persistent live USB con la distribución de Ubuntu (y cualquiera de sus flavors Xubuntu, Kubuntu, Ubuntu Mate, Lubuntu, etc), Linux Mint, Debian o Elementary OS. Esto lo realizaremos usando la herramienta <code class="docutils literal notranslate"><span class="pre">mkusb</span></code>, la cual puede ser instalada desde Ubuntu, Linux Mint o Debian.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> puede crear persistent live drives que funcionan con los modos <strong>UEFI</strong> y <strong>BIOS</strong>. La partición permanente que crea mkusb usa <code class="docutils literal notranslate"><span class="pre">casper-rw</span></code>, lo cual le permite tener un tamaño mayor a 4GB.</p>
+<p><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> además tiene otras funcionalidades como crear live USB booteables regulares de Linux, vaciar un dispositivo, y otras más. La interfaz gráfica de <code class="docutils literal notranslate"><span class="pre">mkusb</span></code> usa Zenity.</p>
+<div class="section" id="instalando-mkusb">
+<h2><a class="toc-backref" href="#id19">Instalando <code class="docutils literal notranslate"><span class="pre">mkusb</span></code></a><a class="headerlink" href="#instalando-mkusb" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="en-ubuntu-linux-mint-elementary-os">
+<h3><a class="toc-backref" href="#id20">En Ubuntu, Linux Mint, Elementary OS</a><a class="headerlink" href="#en-ubuntu-linux-mint-elementary-os" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Instalar <code class="docutils literal notranslate"><span class="pre">mkusb</span></code> en Ubuntu, Linux Mint, Elementary OS y otras distribuciones/flavors basados en Ubuntu mediante su PPA oficial:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo add-apt-repository ppa:/mkusb/ppa
+$ sudo apt update
+$ sudo apt install --install-recommends mkusb mkusb-nox usb-pack-efi
+</pre></div>
+</div>
+</div>
+<div class="section" id="en-debian">
+<h3><a class="toc-backref" href="#id21">En Debian</a><a class="headerlink" href="#en-debian" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>A diferencia de la mayoría de repositorios PPA en Debian, podemos usar el mismo PPA usando para Ubuntu. Esto debido a que <code class="docutils literal notranslate"><span class="pre">mkusb</span></code> es un conjunto de scripts que no depende de versiones de paquetes de Ubuntu.</p>
+<p>Agregar el PPA de <code class="docutils literal notranslate"><span class="pre">mksub</span></code> manualmente e instalar el programa en Debian:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">&quot;deb http://ppa.launchpad.net/mkusb/ppa/ubuntu bionic main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mkusb.list
+
+$ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 54B8C8AC
+$ sudo apt update
+$ sudo apt install --install-recommends mkusb mkusb-nox usb-pack-efi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="instalando-el-so-con-mkusb">
+<h2><a class="toc-backref" href="#id22">Instalando el SO con <code class="docutils literal notranslate"><span class="pre">mkusb</span></code></a><a class="headerlink" href="#instalando-el-so-con-mkusb" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Abrir la aplicación <code class="docutils literal notranslate"><span class="pre">mkusb</span></code>. Nos preguntará si deseamos que <code class="docutils literal notranslate"><span class="pre">mkusb</span></code> corra en la versión <code class="docutils literal notranslate"><span class="pre">dus</span></code> (una interfaz renovada de <code class="docutils literal notranslate"><span class="pre">mkusb</span></code>):</li>
+</ol>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/mkusb-1.png" src="../../../_images/mkusb-1.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - Correr la versión <code class="docutils literal notranslate"><span class="pre">dus</span></code></span></p>
+</div>
+<p>Seleccionar <span class="guilabel">Yes</span>.</p>
+<ol class="arabic simple" start="2">
+<li>Aparecerá una ventana con un terminal y otra ventana pidiendo la contraseña <code class="docutils literal notranslate"><span class="pre">sudo</span></code>:</li>
+</ol>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/mkusb-2.png" src="../../../_images/mkusb-2.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - Ingresar contraseña root</span></p>
+</div>
+<p>Ingresar la contraseña y clic en <span class="guilabel">OK</span>. Luego aparecerá una ventana de advertencia.</p>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/mkusb-3.png" src="../../../_images/mkusb-3.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code></span></p>
+</div>
+<p>Clic en <span class="guilabel">OK</span>.</p>
+<ol class="arabic simple" start="3">
+<li>Luego <code class="docutils literal notranslate"><span class="pre">mkusb</span></code> mostrará otra ventana con una acciones a realizar:</li>
+</ol>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/mkusb-4.png" src="../../../_images/mkusb-4.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - lista de acciones</span></p>
+</div>
+<p>Seleccionar <span class="guilabel">Install (make a boot device)</span> y luego clic en <span class="guilabel">OK</span>.</p>
+<ol class="arabic simple" start="4">
+<li>La siguiente pantalla mostrará otra lista de opciones:</li>
+</ol>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/mkusb-5.png" src="../../../_images/mkusb-5.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - lista de acciones 2</span></p>
+</div>
+<p>Seleccionar <span class="guilabel">Persistent live - only Debian and Ubuntu</span>. Clic en <span class="guilabel">OK</span>.</p>
+<ol class="arabic simple" start="5">
+<li>Nos aparecerá un navegador de archivos para que seleccionemos el archivo ISO o IMG que queremos instalar en el USB:</li>
+</ol>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/mkusb-6.png" src="../../../_images/mkusb-6.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - seleccionar imagen ISO o IMG</span></p>
+</div>
+<p>Seleccionar la imagen de Ubuntu, Debian o Linux Mint de nuestro sistema. Clic en <span class="guilabel">OK</span>.</p>
+<ol class="arabic simple" start="6">
+<li>Luego, <code class="docutils literal notranslate"><span class="pre">mkusb</span></code> presentará una lista de dispositivos de almacenamiento. Seleccionar el dispositivo USB al cual le queremos instalar el SO:</li>
+</ol>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/mkusb-7.png" src="../../../_images/mkusb-7.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - seleccionar dispositivo de almacenamiento USB</span></p>
+</div>
+<p>Clic en <span class="guilabel">OK</span> y vuelve a confirmar que el dispositivo seleccionado es el indicado:</p>
+<div class="figure align-center" id="id8">
+<img alt="../../../_images/mkusb-8.png" src="../../../_images/mkusb-8.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - confirmar selección de dispositivo</span></p>
+</div>
+<p>Clic en <span class="guilabel">Yes</span>.</p>
+<div class="admonition danger">
+<p class="first admonition-title">Peligro</p>
+<p class="last">Seleccionar la unidad de almacenamiento correcta, pues toda la información dentro de esta será eliminada.</p>
+</div>
+<ol class="arabic simple" start="7">
+<li>Luego se nos presenta una lista de configuración del dispositivo:</li>
+</ol>
+<div class="figure align-center" id="id9">
+<img alt="../../../_images/mkusb-9.png" src="../../../_images/mkusb-9.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - opción <span class="guilabel">upefi</span></span></p>
+</div>
+<p>Seleccionar la opción <span class="guilabel">upefi</span> (del paquete <code class="docutils literal notranslate"><span class="pre">usb-pack-efi</span></code> usado por <code class="docutils literal notranslate"><span class="pre">mkusb</span></code>), en el cual Grub puede trabajar en modos BIOS y UEFI.</p>
+<ol class="arabic simple" start="8">
+<li>Seleccionar el porcentaje de espacio disponible permanente que será asignado al sistema operativo instalado (partición llamada <code class="docutils literal notranslate"><span class="pre">casper-rw</span></code>):</li>
+</ol>
+<div class="figure align-center" id="id10">
+<img alt="../../../_images/mkusb-10.png" src="../../../_images/mkusb-10.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - porcentaje de almacenamiento permanente</span></p>
+</div>
+<p>El espacio restante que no sea asignado a la distribución Linux instalada se usará para una partición llamada <code class="docutils literal notranslate"><span class="pre">usbdata</span></code> formateada como NTFS, que puede ser accedida desde cualquier sistema operativo Linux, Windows, macOS. Así, podemos usarlo como un USB de almacenamiento tradicional, guardando datos que sean accesibles desde otros sistemas operativos.</p>
+<ol class="arabic simple" start="9">
+<li>En este último paso debemos aceptar la reconfiguración de nuestro USB con los opciones seleccionadas anteriormente:</li>
+</ol>
+<div class="figure align-center" id="id11">
+<img alt="../../../_images/mkusb-11.png" src="../../../_images/mkusb-11.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - aceptar configuración con <span class="guilabel">Go</span></span></p>
+</div>
+<p>Si estamos de acuerdo con la configuración seleccionar <span class="guilabel">Go</span> para que <code class="docutils literal notranslate"><span class="pre">mkusb</span></code> comience con el proceso de creación del live USB con almacenamiento permanente de Ubuntu, Linux Mint o Debian.</p>
+<p>Veremos algunas pantallas de procesos:</p>
+<div class="figure align-center" id="id12">
+<img alt="../../../_images/mkusb-12.png" src="../../../_images/mkusb-12.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - proceso</span></p>
+</div>
+<div class="figure align-center" id="id13">
+<img alt="../../../_images/mkusb-13.png" src="../../../_images/mkusb-13.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - proceso</span></p>
+</div>
+<div class="figure align-center" id="id14">
+<img alt="../../../_images/mkusb-14.png" src="../../../_images/mkusb-14.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - proceso</span></p>
+</div>
+<ol class="arabic simple" start="10">
+<li>Finalmente, si todo ha sido configurado correctamente, obtenedremos una ventana con un mensaje como el siguiente:</li>
+</ol>
+<div class="figure align-center" id="id15">
+<img alt="../../../_images/mkusb-15.png" src="../../../_images/mkusb-15.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - pantalla de finalización</span></p>
+</div>
+<p>Clic en <span class="guilabel">OK</span> para acabar con el proceso. Volveremos a un menú de <code class="docutils literal notranslate"><span class="pre">mkusb</span></code>, donde simplemente debemos seleccionar la opción <span class="guilabel">Quit</span>:</p>
+<div class="figure align-center" id="id16">
+<img alt="../../../_images/mkusb-16.png" src="../../../_images/mkusb-16.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - opción <span class="guilabel">Quit</span></span></p>
+</div>
+<p>Y en la ventana con el terminal presionar <span class="guilabel">Enter</span> para cerrar la aplicación:</p>
+<div class="figure align-center" id="id17">
+<img alt="../../../_images/mkusb-17.png" src="../../../_images/mkusb-17.png" />
+<p class="caption"><span class="caption-text"><code class="docutils literal notranslate"><span class="pre">mkusb</span></code> - presionar <span class="guilabel">Enter</span></span></p>
+</div>
+<p>Lo único que resta es conectar nuestro USB a una PC y arrancar el sistema desde este dispositivo.</p>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id23">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.linuxuprising.com/2019/03/create-persistent-storage-live-usb-with.html">Create A Persistent Storage Live USB With Ubuntu Linux Mint Or Debian</a></li>
+<li><a class="reference external" href="https://www.linuxuprising.com/2019/08/rufus-creating-persistent-storage-live.html">Rufus Creating A Persistent Storage Live USB With Ubuntu Or Debian From Windows</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../markdown/_markdown.html" class="btn btn-neutral float-right" title="Markdown" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_ubuntu.html" class="btn btn-neutral float-left" title="Ubuntu" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

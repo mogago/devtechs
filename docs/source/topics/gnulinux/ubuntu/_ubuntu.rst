@@ -6,4 +6,4 @@ Ubuntu
     :maxdepth: 2
     :caption: Índice
 
-    ubuntu-usb-mkusb
+    ubuntu-install-usb-mkusb
