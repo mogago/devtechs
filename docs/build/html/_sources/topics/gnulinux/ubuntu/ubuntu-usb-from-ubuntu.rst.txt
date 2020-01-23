@@ -1,0 +1,13 @@
+Instalando Ubuntu en un USB (desde un SO basado en Ubuntu)
+==========================================================
+
+.. contents:: Table of Contents
+
+Nombre de instalación: Persistent Storage Live USB con Ubuntu instalado
+
+In UBUNTU-based distributions:
+
+sudo add-apt-repository ppa:/mkusb/ppa
+sudo apt update
+sudo apt install --install-recommends mkusb mkusb-nox usb-pack-efi
+
