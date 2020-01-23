@@ -429,6 +429,144 @@ sdb      <span class="m">8</span>:16   <span class="m">1</span>  <span class="m"
 sr0     <span class="m">11</span>:0    <span class="m">1</span>  1024M  <span class="m">0</span> rom
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>La herramienta <code class="docutils literal notranslate"><span class="pre">fdisk</span></code> tiene una lista de distintos de particiones para una unidad de almacenamiento tipo USB (no es la misma lista de opciones que para un disco duro):</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> fdisk /dev/sdc
+
+Welcome to fdisk <span class="o">(</span>util-linux <span class="m">2</span>.34<span class="o">)</span>.
+Changes will remain in memory only, <span class="k">until</span> you decide to write them.
+Be careful before using the write command.
+
+Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: m
+
+Help:
+
+GPT
+M   enter protective/hybrid MBR
+
+Generic
+d   delete a partition
+F   list free unpartitioned space
+l   list known partition types
+n   add a new partition
+p   print the partition table
+t   change a partition <span class="nb">type</span>
+v   verify the partition table
+i   print information about a partition
+
+Misc
+m   print this menu
+x   extra functionality <span class="o">(</span>experts only<span class="o">)</span>
+
+Script
+I   load disk layout from sfdisk script file
+O   dump disk layout to sfdisk script file
+
+Save <span class="p">&amp;</span> Exit
+w   write table to disk and <span class="nb">exit</span>
+q   quit without saving changes
+
+Create a new label
+g   create a new empty GPT partition table
+G   create a new empty SGI <span class="o">(</span>IRIX<span class="o">)</span> partition table
+o   create a new empty DOS partition table
+s   create a new empty Sun partition table
+
+Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: l
+<span class="m">1</span> EFI System                     C12A7328-F81F-11D2-BA4B-00A0C93EC93B
+<span class="m">1</span> EFI System                     C12A7328-F81F-11D2-BA4B-00A0C93EC93B
+<span class="m">2</span> MBR partition scheme           024DEE41-33E7-11D3-9D69-0008C781F39F
+<span class="m">3</span> Intel Fast Flash               D3BFE2DE-3DAF-11DF-BA40-E3A556D89593
+<span class="m">4</span> BIOS boot                      <span class="m">21686148</span>-6449-6E6F-744E-656564454649
+<span class="m">5</span> Sony boot partition            F4019732-066E-4E12-8273-346C5641494F
+<span class="m">6</span> Lenovo boot partition          BFBFAFE7-A34F-448A-9A5B-6213EB736C22
+<span class="m">7</span> PowerPC PReP boot              9E1A2D38-C612-4316-AA26-8B49521E5A8B
+<span class="m">8</span> ONIE boot                      7412F7D5-A156-4B13-81DC-867174929325
+<span class="m">9</span> ONIE config                    D4E6E2CD-4469-46F3-B5CB-1BFF57AFC149
+<span class="m">10</span> Microsoft reserved             E3C9E316-0B5C-4DB8-817D-F92DF00215AE
+<span class="m">11</span> Microsoft basic data           EBD0A0A2-B9E5-4433-87C0-68B6B72699C7
+<span class="m">12</span> Microsoft LDM metadata         5808C8AA-7E8F-42E0-85D2-E1E90434CFB3
+<span class="m">13</span> Microsoft LDM data             AF9B60A0-1431-4F62-BC68-3311714A69AD
+<span class="m">14</span> Windows recovery environment   DE94BBA4-06D1-4D40-A16A-BFD50179D6AC
+<span class="m">15</span> IBM General Parallel Fs        37AFFC90-EF7D-4E96-91C3-2D7AE055B174
+<span class="m">16</span> Microsoft Storage Spaces       E75CAF8F-F680-4CEE-AFA3-B001E56EFC2D
+<span class="m">17</span> HP-UX data                     75894C1E-3AEB-11D3-B7C1-7B03A0000000
+<span class="m">18</span> HP-UX service                  E2A1E728-32E3-11D6-A682-7B03A0000000
+<span class="m">19</span> Linux swap                     0657FD6D-A4AB-43C4-84E5-0933C84B4F4F
+<span class="m">20</span> Linux filesystem               0FC63DAF-8483-4772-8E79-3D69D8477DE4
+<span class="m">21</span> Linux server data              3B8F8425-20E0-4F3B-907F-1A25A76F98E8
+<span class="m">22</span> Linux root <span class="o">(</span>x86<span class="o">)</span>               <span class="m">44479540</span>-F297-41B2-9AF7-D131D5F0458A
+<span class="m">23</span> Linux root <span class="o">(</span>ARM<span class="o">)</span>               69DAD710-2CE4-4E3C-B16C-21A1D49ABED3
+<span class="m">24</span> Linux root <span class="o">(</span>x86-64<span class="o">)</span>            4F68BCE3-E8CD-4DB1-96E7-FBCAF984B709
+<span class="m">25</span> Linux root <span class="o">(</span>ARM-64<span class="o">)</span>            B921B045-1DF0-41C3-AF44-4C6F280D3FAE
+<span class="m">26</span> Linux root  <span class="o">(</span>IA-64<span class="o">)</span>             993D8D3D-F80E-4225-855A-9DAF8ED7EA97
+<span class="m">27</span> Linux reserved                 8DA63339-0007-60C0-C436-083AC8230908
+<span class="m">28</span> Linux home                     933AC7E1-2EB4-4F13-B844-0E14E2AEF915
+<span class="m">29</span> Linux RAID                     A19D880F-05FC-4D3B-A006-743F0F84911E
+<span class="m">30</span> Linux extended boot            BC13C2FF-59E6-4262-A352-B275FD6F7172
+<span class="m">31</span> Linux LVM                      E6D6D379-F507-44C2-A23C-238F2A3DF928
+<span class="m">32</span> FreeBSD data                   516E7CB4-6ECF-11D6-8FF8-00022D09712B
+<span class="m">33</span> FreeBSD boot                   83BD6B9D-7F41-11DC-BE0B-001560B84F0F
+<span class="m">34</span> FreeBSD swap                   516E7CB5-6ECF-11D6-8FF8-00022D09712B
+<span class="m">35</span> FreeBSD UFS                    516E7CB6-6ECF-11D6-8FF8-00022D09712B
+<span class="m">36</span> FreeBSD ZFS                    516E7CBA-6ECF-11D6-8FF8-00022D09712B
+<span class="m">37</span> FreeBSD Vinum                  516E7CB8-6ECF-11D6-8FF8-00022D09712B
+<span class="m">38</span> Apple HFS/HFS+                 <span class="m">48465300</span>-0000-11AA-AA11-00306543ECAC
+<span class="m">39</span> Apple UFS                      <span class="m">55465300</span>-0000-11AA-AA11-00306543ECAC
+<span class="m">40</span> Apple RAID                     <span class="m">52414944</span>-0000-11AA-AA11-00306543ECAC
+<span class="m">41</span> Apple RAID offline             <span class="m">52414944</span>-5F4F-11AA-AA11-00306543ECAC
+<span class="m">42</span> Apple boot                     426F6F74-0000-11AA-AA11-00306543ECAC
+<span class="m">43</span> Apple label                    4C616265-6C00-11AA-AA11-00306543ECAC
+<span class="m">44</span> Apple TV recovery              5265636F-7665-11AA-AA11-00306543ECAC
+<span class="m">45</span> Apple Core storage             53746F72-6167-11AA-AA11-00306543ECAC
+<span class="m">46</span> Solaris boot                   6A82CB45-1DD2-11B2-99A6-080020736631
+<span class="m">47</span> Solaris root                   6A85CF4D-1DD2-11B2-99A6-080020736631
+<span class="m">48</span> Solaris /usr <span class="p">&amp;</span> Apple ZFS       6A898CC3-1DD2-11B2-99A6-080020736631
+<span class="m">49</span> Solaris swap                   6A87C46F-1DD2-11B2-99A6-080020736631
+<span class="m">50</span> Solaris backup                 6A8B642B-1DD2-11B2-99A6-080020736631
+<span class="m">51</span> Solaris /var                   6A8EF2E9-1DD2-11B2-99A6-080020736631
+<span class="m">52</span> Solaris /home                  6A90BA39-1DD2-11B2-99A6-080020736631
+<span class="m">53</span> Solaris alternate sector       6A9283A5-1DD2-11B2-99A6-080020736631
+<span class="m">54</span> Solaris reserved <span class="m">1</span>             6A945A3B-1DD2-11B2-99A6-080020736631
+<span class="m">55</span> Solaris reserved <span class="m">2</span>             6A9630D1-1DD2-11B2-99A6-080020736631
+<span class="m">56</span> Solaris reserved <span class="m">3</span>             6A980767-1DD2-11B2-99A6-080020736631
+<span class="m">57</span> Solaris reserved <span class="m">4</span>             6A96237F-1DD2-11B2-99A6-080020736631
+<span class="m">58</span> Solaris reserved <span class="m">5</span>             6A8D2AC7-1DD2-11B2-99A6-080020736631
+<span class="m">59</span> NetBSD swap                    49F48D32-B10E-11DC-B99B-0019D1879648
+<span class="m">60</span> NetBSD FFS                     49F48D5A-B10E-11DC-B99B-0019D1879648
+<span class="m">61</span> NetBSD LFS                     49F48D82-B10E-11DC-B99B-0019D1879648
+<span class="m">62</span> NetBSD concatenated            2DB519C4-B10E-11DC-B99B-0019D1879648
+<span class="m">63</span> NetBSD encrypted               2DB519EC-B10E-11DC-B99B-0019D1879648
+<span class="m">64</span> NetBSD RAID                    49F48DAA-B10E-11DC-B99B-0019D1879648
+<span class="m">65</span> ChromeOS kernel                FE3A2A5D-4F32-41A7-B725-ACCC3285A309
+<span class="m">66</span> ChromeOS root fs               3CB8E202-3B7E-47DD-8A3C-7FF2A13CFCEC
+<span class="m">67</span> ChromeOS reserved              2E0A753D-9E48-43B0-8337-B15192CB1B5E
+<span class="m">68</span> MidnightBSD data               85D5E45A-237C-11E1-B4B3-E89A8F7FC3A7
+<span class="m">69</span> MidnightBSD boot               85D5E45E-237C-11E1-B4B3-E89A8F7FC3A7
+<span class="m">70</span> MidnightBSD swap               85D5E45B-237C-11E1-B4B3-E89A8F7FC3A7
+<span class="m">71</span> MidnightBSD UFS                0394EF8B-237E-11E1-B4B3-E89A8F7FC3A7
+<span class="m">72</span> MidnightBSD ZFS                85D5E45D-237C-11E1-B4B3-E89A8F7FC3A7
+<span class="m">73</span> MidnightBSD Vinum              85D5E45C-237C-11E1-B4B3-E89A8F7FC3A7
+<span class="m">74</span> Ceph Journal                   45B0969E-9B03-4F30-B4C6-B4B80CEFF106
+<span class="m">75</span> Ceph Encrypted Journal         45B0969E-9B03-4F30-B4C6-5EC00CEFF106
+<span class="m">76</span> Ceph OSD                       4FBD7E29-9D25-41B8-AFD0-062C0CEFF05D
+<span class="m">77</span> Ceph crypt OSD                 4FBD7E29-9D25-41B8-AFD0-5EC00CEFF05D
+<span class="m">78</span> Ceph disk in creation          89C57F98-2FE5-4DC0-89C1-F3AD0CEFF2BE
+<span class="m">79</span> Ceph crypt disk in creation    89C57F98-2FE5-4DC0-89C1-5EC00CEFF2BE
+<span class="m">80</span> VMware VMFS                    AA31E02A-400F-11DB-9590-000C2911D1B8
+<span class="m">81</span> VMware Diagnostic              9D275380-40AD-11DB-BF97-000C2911D1B8
+<span class="m">82</span> VMware Virtual SAN             381CFCCC-7288-11E0-92EE-000C2911D0B2
+<span class="m">83</span> VMware Virsto                  77719A0C-A4A0-11E3-A47E-000C29745A24
+<span class="m">84</span> VMware Reserved                9198EFFC-31C0-11DB-8F78-000C2911D1B8
+<span class="m">85</span> OpenBSD data                   824CC7A0-36A8-11E3-890A-952519AD3F61
+<span class="m">86</span> QNX6 file system               CEF5A9AD-73BC-4601-89F3-CDEEEEE321A1
+<span class="m">87</span> Plan <span class="m">9</span> partition               C91818F9-8025-47AF-89D2-F030D7000C2C
+<span class="m">88</span> HiFive Unleashed FSBL          5B193300-FC78-40CD-8002-E86C45580B47
+<span class="m">89</span> HiFive Unleashed BBL           2E54B353-1271-4842-806F-E436D6AF6985
+</pre></div>
+</div>
+</div>
 <p>4.2 Conectar a la PC el medio de almacenamiento USB donde instalaremos el SO.</p>
 <p>4.3 Volver a correr el comando para listar los medios de almacenamiento conectados a la PC y ver cual es el nuevo dispositivo en la lista:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> lsblk
@@ -746,14 +884,15 @@ Syncing disks.
 </pre></div>
 </div>
 <p>5.7 Listar las particiones de la unidad de almacenamiento para confirmar que hemos creado las particiones correctamente:</p>
-<blockquote>
-<div>“#” lsblk /dev/sdc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> lsblk /dev/sdc
 NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
-sdc      8:32   0 111.8G  0 disk
-├─sdc1   8:33   0    10M  0 part
-├─sdc2   8:34   0   500M  0 part
-├─sdc3   8:35   0    70G  0 part
-└─sdc4   8:36   0    40G  0 part</div></blockquote>
+sdc      <span class="m">8</span>:32   <span class="m">0</span> <span class="m">111</span>.8G  <span class="m">0</span> disk
+├─sdc1   <span class="m">8</span>:33   <span class="m">0</span>    10M  <span class="m">0</span> part
+├─sdc2   <span class="m">8</span>:34   <span class="m">0</span>   500M  <span class="m">0</span> part
+├─sdc3   <span class="m">8</span>:35   <span class="m">0</span>    70G  <span class="m">0</span> part
+└─sdc4   <span class="m">8</span>:36   <span class="m">0</span>    40G  <span class="m">0</span> part
+</pre></div>
+</div>
 <ol class="arabic simple" start="6">
 <li>Formatear las particiones creadas:</li>
 </ol>
@@ -899,11 +1038,11 @@ Generation complete.
 </pre></div>
 </div>
 <p>5.3 Crear el archivo <code class="docutils literal notranslate"><span class="pre">locale.conf</span></code> con la variable <code class="docutils literal notranslate"><span class="pre">LANG</span></code> (<code class="docutils literal notranslate"><span class="pre">LANG=en_US.UTF-8</span></code> para idioma inglés y <code class="docutils literal notranslate"><span class="pre">LANG=es_PE.UTF-8</span></code> para español):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">echo</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 &gt; /etc/locale.conf <span class="c1"># export LANG=en_US.UTF-8</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="n">echo</span> <span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="o">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="o">.</span><span class="n">conf</span> <span class="c1"># export LANG=en_US.UTF-8</span>
 
-<span class="s1">&#39;#&#39;</span> cat /etc/locale.conf
+<span class="s1">&#39;#&#39;</span> <span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="o">.</span><span class="n">conf</span>
 
-    <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+    <span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="o">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
 </pre></div>
 </div>
 <p>5.4 Para realizar los cambios hechos anteriormente del keyboard layout, editar el archivo <code class="docutils literal notranslate"><span class="pre">/etc/vconsole.conf</span></code>:</p>
@@ -1003,9 +1142,9 @@ Created symlink /etc/systemd/system/multi-user.target.wants/dhcpcd.service → /
 <ol class="arabic simple" start="11">
 <li>Salir de chroot y apagar el sistema:</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@archiso /<span class="o">]</span><span class="c1"># exit</span>
-root@archiso ~ <span class="c1"># umount /mnt/usb/boot /mnt/usb</span>
-root@archiso ~ <span class="c1"># poweroff</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@archiso /<span class="o">]</span><span class="s1">&#39;#&#39;</span> <span class="nb">exit</span>
+root@archiso ~ <span class="s1">&#39;#&#39;</span> umount /mnt/usb/boot /mnt/usb
+root@archiso ~ <span class="s1">&#39;#&#39;</span> poweroff
 </pre></div>
 </div>
 <p>Al volver a iniciar el sistema, si tenemos el arranque de dispositivos USB con prioridad, arrancará nuestro USB con el sistema operativo Linux.</p>

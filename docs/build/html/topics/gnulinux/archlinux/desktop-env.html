@@ -37,7 +37,7 @@
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
     <link rel="next" title="Markdown" href="../../markdown/_markdown.html" />
-    <link rel="prev" title="Instalando Arch" href="installing-arch.html" /> 
+    <link rel="prev" title="Instalando Arch en un dispositivo USB" href="installing-arch-usb.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,6 +98,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_archlinux.html">ArchLinux</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installing-arch.html">Instalando Arch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installing-arch-usb.html">Instalando Arch en un dispositivo USB</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Instalar un Desktop Environment en Arch</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#pre-requisitos">Pre-requisitos</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#instalando-el-desktop-environment">Instalando el Desktop Environment</a></li>
@@ -270,8 +271,8 @@
 <p class="first admonition-title">Nota</p>
 <p class="last">En teoría podemos cualquier display manager podría funcionar con cualquier desktop environment, sin embargo, es más fácil instalar el que corresponde a nuestro desktop environment.</p>
 </div>
-<p>Para instalar GNOME:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S gdm
+<p>Para instalar KDE Plasma:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S sddm
 </pre></div>
 </div>
 </div>
@@ -289,7 +290,7 @@
 <li>Xfce - <code class="docutils literal notranslate"><span class="pre">xfce4</span></code></li>
 </ul>
 <p>El grupo que contiene los paquetes del desktop environment GNOME es <code class="docutils literal notranslate"><span class="pre">gnome</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S gnome
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S plasma
 </pre></div>
 </div>
 <p>Por defecto, solo instala el desktop environment mínimo y no muchas aplicaciones.</p>
@@ -304,13 +305,13 @@
 <li>MATE - <code class="docutils literal notranslate"><span class="pre">mate-extra</span></code></li>
 <li>Xfce - <code class="docutils literal notranslate"><span class="pre">xfce4-goodies</span></code></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S gnome-extra
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> pacman -S kde-applications
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li>Habilitar el boot manager para que inicie automáticamente en el arranque del sistema:</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl <span class="nb">enable</span> gdm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl <span class="nb">enable</span> sddm
 Created symlink /etc/systemd/system/display-manager.service → /usr/lib/systemd/system/gdm.service.
 </pre></div>
 </div>
@@ -318,8 +319,8 @@ Created symlink /etc/systemd/system/display-manager.service → /usr/lib/systemd
 <li>Reiniciar el sistema</li>
 </ol>
 <div class="figure align-center" id="id1">
-<img alt="../../../_images/archlinux-gnome.png" src="../../../_images/archlinux-gnome.png" />
-<p class="caption"><span class="caption-text">Arch Linux - GNOME Desktop environment</span></p>
+<img alt="../../../_images/archlinux-kde.png" src="../../../_images/archlinux-kde.png" />
+<p class="caption"><span class="caption-text">Arch Linux - KDE Plasma Desktop environment</span></p>
 </div>
 </div>
 <div class="section" id="referencias">
@@ -328,6 +329,12 @@ Created symlink /etc/systemd/system/display-manager.service → /usr/lib/systemd
 <li><a class="reference external" href="https://www.youtube.com/watch?v=P4IV5BYPiPs">How to Install a Desktop Environment in Arch Linux</a></li>
 <li><a class="reference external" href="https://wiki.archlinux.org/index.php/General_recommendations#Graphical_user_interface">Graphical user interface</a></li>
 <li><a class="reference external" href="https://wiki.archlinux.org/index.php/Desktop_environment:https://wiki.archlinux.org/index.php/Desktop_environment">Desktop environment</a></li>
+</ul>
+<p>Errores con GNOME en Arch Linux:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.reddit.com/r/archlinux/comments/90xv9b/gdm_black_screen_possible_solution/">Error - gdm black screen possible solution</a></li>
+<li><a class="reference external" href="https://bbs.archlinux.org/viewtopic.php?id=244965">Error - gkr-pam unable to locate daemon control file</a></li>
+<li>Error - GdmDisplay session never registrered, failing</li>
 </ul>
 </div>
 </div>
@@ -343,7 +350,7 @@ Created symlink /etc/systemd/system/display-manager.service → /usr/lib/systemd
         <a href="../../markdown/_markdown.html" class="btn btn-neutral float-right" title="Markdown" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="installing-arch.html" class="btn btn-neutral float-left" title="Instalando Arch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="installing-arch-usb.html" class="btn btn-neutral float-left" title="Instalando Arch en un dispositivo USB" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

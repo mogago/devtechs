@@ -52,11 +52,11 @@ Es esencialmente nuestra pantalla de logueo. Inicia el **xorg display server** a
 
     En teoría podemos cualquier display manager podría funcionar con cualquier desktop environment, sin embargo, es más fácil instalar el que corresponde a nuestro desktop environment.
 
-Para instalar GNOME:
+Para instalar KDE Plasma:
 
 .. code-block:: bash
 
-    '#' pacman -S gdm
+    '#' pacman -S sddm
 
 Instalando el Desktop Environment
 ---------------------------------
@@ -74,7 +74,7 @@ El grupo que contiene los paquetes del desktop environment GNOME es ``gnome``:
 
 .. code-block:: bash
 
-    '#' pacman -S gnome
+    '#' pacman -S plasma
 
 Por defecto, solo instala el desktop environment mínimo y no muchas aplicaciones.
 
@@ -89,21 +89,21 @@ Por defecto, solo instala el desktop environment mínimo y no muchas aplicacione
 
 .. code-block:: bash
 
-    '#' pacman -S gnome-extra
+    '#' pacman -S kde-applications
 
 3. Habilitar el boot manager para que inicie automáticamente en el arranque del sistema:
 
 .. code-block:: bash
 
-    '#' systemctl enable gdm
+    '#' systemctl enable sddm
     Created symlink /etc/systemd/system/display-manager.service → /usr/lib/systemd/system/gdm.service.
 
 4. Reiniciar el sistema
 
-.. figure:: images/desktop-env/archlinux-gnome.png
+.. figure:: images/desktop-env/archlinux-kde.png
     :align: center
 
-    Arch Linux - GNOME Desktop environment
+    Arch Linux - KDE Plasma Desktop environment
 
 Referencias
 -----------
@@ -115,3 +115,12 @@ Referencias
 .. _How to Install a Desktop Environment in Arch Linux: https://www.youtube.com/watch?v=P4IV5BYPiPs
 .. _Graphical user interface: https://wiki.archlinux.org/index.php/General_recommendations#Graphical_user_interface
 .. _Desktop environment: https://wiki.archlinux.org/index.php/Desktop_environment: https://wiki.archlinux.org/index.php/Desktop_environment
+
+Errores con GNOME en Arch Linux:
+
+- `Error - gdm black screen possible solution`_
+- `Error - gkr-pam unable to locate daemon control file`_
+- Error - GdmDisplay session never registrered, failing
+
+.. _Error - gdm black screen possible solution: https://www.reddit.com/r/archlinux/comments/90xv9b/gdm_black_screen_possible_solution/
+.. _Error - gkr-pam unable to locate daemon control file: https://bbs.archlinux.org/viewtopic.php?id=244965

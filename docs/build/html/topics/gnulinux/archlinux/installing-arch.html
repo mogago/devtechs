@@ -533,6 +533,83 @@ I/O size <span class="o">(</span>minimum/optimal<span class="o">)</span>: <span 
 </pre></div>
 </div>
 <p>Vemos que tenemos un único disco de 12 GiB (<code class="docutils literal notranslate"><span class="pre">sda</span></code>), en el que haremos las particiones e instalaremos el sistema.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>La herramienta <code class="docutils literal notranslate"><span class="pre">fdisk</span></code> tiene una lista de distintos de particiones para una unidad de almacenamiento tipo disco duro:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> fdisk /dev/sda
+
+Welcome to fdisk <span class="o">(</span>util-linux <span class="m">2</span>.31.1<span class="o">)</span>.
+Changes will remain in memory only, <span class="k">until</span> you decide to write them.
+Be careful before using the write command.
+
+Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: m
+
+Help:
+
+DOS <span class="o">(</span>MBR<span class="o">)</span>
+a   toggle a bootable flag
+b   edit nested BSD disklabel
+c   toggle the dos compatibility flag
+
+Generic
+d   delete a partition
+F   list free unpartitioned space
+l   list known partition types
+n   add a new partition
+p   print the partition table
+t   change a partition <span class="nb">type</span>
+v   verify the partition table
+i   print information about a partition
+
+Misc
+m   print this menu
+u   change display/entry units
+x   extra functionality <span class="o">(</span>experts only<span class="o">)</span>
+
+Script
+I   load disk layout from sfdisk script file
+O   dump disk layout to sfdisk script file
+
+Save <span class="p">&amp;</span> Exit
+w   write table to disk and <span class="nb">exit</span>
+q   quit without saving changes
+
+Create a new label
+g   create a new empty GPT partition table
+G   create a new empty SGI <span class="o">(</span>IRIX<span class="o">)</span> partition table
+o   create a new empty DOS partition table
+s   create a new empty Sun partition table
+
+Command <span class="o">(</span>m <span class="k">for</span> <span class="nb">help</span><span class="o">)</span>: l
+
+<span class="m">0</span>  Empty            <span class="m">24</span>  NEC DOS         <span class="m">81</span>  Minix / old Lin bf  Solaris
+<span class="m">1</span>  FAT12            <span class="m">27</span>  Hidden NTFS Win <span class="m">82</span>  Linux swap / So c1  DRDOS/sec <span class="o">(</span>FAT-
+<span class="m">2</span>  XENIX root       <span class="m">39</span>  Plan <span class="m">9</span>          <span class="m">83</span>  Linux           c4  DRDOS/sec <span class="o">(</span>FAT-
+<span class="m">3</span>  XENIX usr        3c  PartitionMagic  <span class="m">84</span>  OS/2 hidden or  c6  DRDOS/sec <span class="o">(</span>FAT-
+<span class="m">4</span>  FAT16 &lt;32M       <span class="m">40</span>  Venix <span class="m">80286</span>     <span class="m">85</span>  Linux extended  c7  Syrinx
+<span class="m">5</span>  Extended         <span class="m">41</span>  PPC PReP Boot   <span class="m">86</span>  NTFS volume <span class="nb">set</span> da  Non-FS data
+<span class="m">6</span>  FAT16            <span class="m">42</span>  SFS             <span class="m">87</span>  NTFS volume <span class="nb">set</span> db  CP/M / CTOS / .
+<span class="m">7</span>  HPFS/NTFS/exFAT  4d  QNX4.x          <span class="m">88</span>  Linux plaintext de  Dell Utility
+<span class="m">8</span>  AIX              4e  QNX4.x 2nd part 8e  Linux LVM       df  BootIt
+<span class="m">9</span>  AIX bootable     4f  QNX4.x 3rd part <span class="m">93</span>  Amoeba          e1  DOS access
+a  OS/2 Boot Manag  <span class="m">50</span>  OnTrack DM      <span class="m">94</span>  Amoeba BBT      e3  DOS R/O
+b  W95 FAT32        <span class="m">51</span>  OnTrack DM6 Aux 9f  BSD/OS          e4  SpeedStor
+c  W95 FAT32 <span class="o">(</span>LBA<span class="o">)</span>  <span class="m">52</span>  CP/M            a0  IBM Thinkpad hi ea  Rufus alignment
+e  W95 FAT16 <span class="o">(</span>LBA<span class="o">)</span>  <span class="m">53</span>  OnTrack DM6 Aux a5  FreeBSD         eb  BeOS fs
+f  W95 Extd <span class="o">(</span>LBA<span class="o">)</span>   <span class="m">54</span>  OnTrackDM6      a6  OpenBSD         ee  GPT
+<span class="m">10</span>  OPUS            <span class="m">55</span>  EZ-Drive        a7  NeXTSTEP        ef  EFI <span class="o">(</span>FAT-12/16/
+<span class="m">11</span>  Hidden FAT12    <span class="m">56</span>  Golden Bow      a8  Darwin UFS      f0  Linux/PA-RISC b
+<span class="m">12</span>  Compaq diagnost 5c  Priam Edisk     a9  NetBSD          f1  SpeedStor
+<span class="m">14</span>  Hidden FAT16 &lt;<span class="m">3</span> <span class="m">61</span>  SpeedStor       ab  Darwin boot     f4  SpeedStor
+<span class="m">16</span>  Hidden FAT16    <span class="m">63</span>  GNU HURD or Sys af  HFS / HFS+      f2  DOS secondary
+<span class="m">17</span>  Hidden HPFS/NTF <span class="m">64</span>  Novell Netware  b7  BSDI fs         fb  VMware VMFS
+<span class="m">18</span>  AST SmartSleep  <span class="m">65</span>  Novell Netware  b8  BSDI swap       <span class="nb">fc</span>  VMware VMKCORE
+1b  Hidden W95 FAT3 <span class="m">70</span>  DiskSecure Mult bb  Boot Wizard hid fd  Linux raid auto
+1c  Hidden W95 FAT3 <span class="m">75</span>  PC/IX           bc  Acronis FAT32 L fe  LANstep
+1e  Hidden W95 FAT1 <span class="m">80</span>  Old Minix       be  Solaris boot    ff  BBT
+</pre></div>
+</div>
+</div>
 <ol class="arabic simple" start="5">
 <li>Particionar disco(s) (con <code class="docutils literal notranslate"><span class="pre">fdisk</span></code> o <code class="docutils literal notranslate"><span class="pre">cfdisk</span></code>) (<a class="reference external" href="https://www.howtogeek.com/106873/how-to-use-fdisk-to-manage-partitions-on-linux/">Guía - How to use fdisk to Manage Partitions on Linux</a>):</li>
 </ol>
@@ -815,11 +892,11 @@ Generation complete.
 </pre></div>
 </div>
 <p>5.3 Crear el archivo <code class="docutils literal notranslate"><span class="pre">locale.conf</span></code> con la variable <code class="docutils literal notranslate"><span class="pre">LANG</span></code> (<code class="docutils literal notranslate"><span class="pre">LANG=en_US.UTF-8</span></code> para idioma inglés y <code class="docutils literal notranslate"><span class="pre">LANG=es_PE.UTF-8</span></code> para español):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">echo</span> <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8 &gt; /etc/locale.conf <span class="c1"># export LANG=en_US.UTF-8</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="n">echo</span> <span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="o">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="o">.</span><span class="n">conf</span> <span class="c1"># export LANG=en_US.UTF-8</span>
 
-<span class="s1">&#39;#&#39;</span> cat /etc/locale.conf
+<span class="s1">&#39;#&#39;</span> <span class="n">cat</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">locale</span><span class="o">.</span><span class="n">conf</span>
 
-    <span class="nv">LANG</span><span class="o">=</span>en_US.UTF-8
+    <span class="n">LANG</span><span class="o">=</span><span class="n">en_US</span><span class="o">.</span><span class="n">UTF</span><span class="o">-</span><span class="mi">8</span>
 </pre></div>
 </div>
 <p>5.4 Para realizar los cambios hechos anteriormente del keyboard layout, editar el archivo <code class="docutils literal notranslate"><span class="pre">/etc/vconsole.conf</span></code>:</p>
