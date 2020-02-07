@@ -40,10 +40,7 @@ docs/source/topics/virtualization/mastering-kvm-virtualization-book/*
 # archivos .doctree para cada archivo dentro del directorio openstack-essentials (misma organización que la fuente)
 docs/build/doctrees/topics/openstack/openstack-essentials/*
 # imágenes dentro de build/html (directorio de imágenes de toda la página, comparten el mismo directorio)
-docs/build/html/_images/lesson1-*.png
-docs/build/html/_images/lesson2-*.png
-docs/build/html/_images/lesson3-*.png
-docs/build/html/_images/lesson4-*.png
+docs/build/html/_images/opstes-*.png
 # archivos .txt para cada archivo dentro del directorio openstack-essentials (misma organización que la fuente)
 docs/build/html/_sources/topics/openstack/openstack-essentials/*
 # archivos .html para cada archivo dentro del directorio openstack-essentials (misma organización que la fuente)
