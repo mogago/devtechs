@@ -1,0 +1,804 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Despliegue de OpenStack Multi-node con Packstack (en VirtualBox) &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Despliegue de OpenStack Multi-node con Packstack (en VirtualBox)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/openstack/openstack-deploy/packstack-multinode-deploy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="despliegue-de-openstack-multi-node-con-packstack-en-virtualbox">
+<h1><a class="toc-backref" href="#id1">Despliegue de OpenStack Multi-node con Packstack (en VirtualBox)</a><a class="headerlink" href="#despliegue-de-openstack-multi-node-con-packstack-en-virtualbox" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#despliegue-de-openstack-multi-node-con-packstack-en-virtualbox" id="id1">Despliegue de OpenStack Multi-node con Packstack (en VirtualBox)</a><ul>
+<li><a class="reference internal" href="#prerequisitos-controller-node" id="id2">Prerequisitos (Controller node)</a></li>
+<li><a class="reference internal" href="#configuracion-de-compute-node-1" id="id3">Configuración de Compute Node 1</a></li>
+<li><a class="reference internal" href="#configuracion-de-compute-node-2" id="id4">Configuración de Compute Node 2</a></li>
+<li><a class="reference internal" href="#descarga-de-paquetes-controller-node" id="id5">Descarga de paquetes (Controller node)</a></li>
+<li><a class="reference internal" href="#instalacion-de-openstack-con-packstack-controller-node" id="id6">Instalación de OpenStack con PackStack (Controller node)</a></li>
+<li><a class="reference internal" href="#configuracion-post-instalacion-controller-node" id="id7">Configuración post-instalación (Controller node)</a></li>
+<li><a class="reference internal" href="#instalacion-de-compute-nodes-controller-node" id="id8">Instalación de Compute Nodes (Controller Node)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Teoría de VirtualBox Bridged Networking:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.virtualbox.org/manual/ch06.html#network_bridged">Bridged Networking - VirtualBox documentation</a></li>
+<li><a class="reference external" href="https://superuser.com/questions/594550/how-does-bridged-networking-work-in-virtualbox">How does bridged networking work in Virtualbox?</a></li>
+<li><a class="reference external" href="https://www.rdoproject.org/networking/neutron-with-existing-external-network/">Neutron with existing external network</a></li>
+</ul>
+<div class="section" id="prerequisitos-controller-node">
+<h2><a class="toc-backref" href="#id2">Prerequisitos (Controller node)</a><a class="headerlink" href="#prerequisitos-controller-node" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Parar servicios de <code class="docutils literal notranslate"><span class="pre">firewalld</span></code> y <code class="docutils literal notranslate"><span class="pre">NetworkManager</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl stop firewalld NetworkManager
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Deshabilitar servicios de <code class="docutils literal notranslate"><span class="pre">firewalld</span></code> y <code class="docutils literal notranslate"><span class="pre">NetworkManager</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl disable firewalld NetworkManager
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Habilitar e iniciar servicio <code class="docutils literal notranslate"><span class="pre">network</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl <span class="nb">enable</span> network
+<span class="s1">&#39;#&#39;</span> systemctl start network
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Deshabilitar SE Linux</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/selinux/config
+
+<span class="nv">SELINUX</span><span class="o">=</span>disabled
+<span class="nv">SELINUXTYPE</span><span class="o">=</span>targeted
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Configuración de interfaz de red bridged:</li>
+</ol>
+<ul class="simple">
+<li><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/s1-networkscripts-interfaces">INTERFACE CONFIGURATION FILES - Red Hat Documentation</a></li>
+<li>BOOTPROTO=»none» o BOOTPROTO=»static»: configuración de IP estática (<a class="reference external" href="https://access.redhat.com/solutions/41630">Difference between setting BOOTPROTO=none and BOOTPROTO=static in an ethernet interface configuration script in RHEL</a>)</li>
+<li>IPADDR: Dirección IP dentro de la red local</li>
+<li>Gateway: Dirección IP del equipo con salida a la red exterior (Internet)</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network-scripts/ifcfg-enp0s3
+
+<span class="nv">TYPE</span><span class="o">=</span><span class="s2">&quot;Ethernet&quot;</span>
+<span class="nv">PROXY_METHOD</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+<span class="nv">BROWSER_ONLY</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">BOOTPROTO</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+<span class="nv">DEFROUTE</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPV4_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6INIT</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6_AUTOCONF</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPV6_DEFROUTE</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPV6_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6_ADDR_GEN_MODE</span><span class="o">=</span><span class="s2">&quot;stable-privacy&quot;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;enp0s3&quot;</span>
+<span class="nv">UUID</span><span class="o">=</span><span class="s2">&quot;18ff926b-73ef-4f82-bb10-8481724746e0&quot;</span>
+<span class="nv">DEVICE</span><span class="o">=</span><span class="s2">&quot;enp0s3&quot;</span>
+<span class="nv">ONBOOT</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPADDR</span><span class="o">=</span><span class="s2">&quot;192.168.1.100&quot;</span>
+<span class="nv">PREFIX</span><span class="o">=</span><span class="s2">&quot;24&quot;</span>
+<span class="nv">GATEWAY</span><span class="o">=</span><span class="s2">&quot;192.168.1.1&quot;</span>
+<span class="nv">DNS1</span><span class="o">=</span><span class="s2">&quot;8.8.8.8&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Configuración de interfaz de red aislada:</li>
+</ol>
+<ul class="simple">
+<li>IPADDR: Dirección IP dentro de la red aislada</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network-scripts/ifcfg-enp0s8
+
+<span class="nv">DEVICE</span><span class="o">=</span><span class="s2">&quot;enp0s8&quot;</span>
+<span class="nv">TYPE</span><span class="o">=</span><span class="s2">&quot;Ethernet&quot;</span>
+<span class="nv">BOOTPROTO</span><span class="o">=</span><span class="s2">&quot;static&quot;</span>
+<span class="nv">IPADDR</span><span class="o">=</span><span class="s2">&quot;10.10.10.100&quot;</span>
+<span class="nv">NETMASK</span><span class="o">=</span><span class="m">255</span>.255.255.0
+<span class="nv">IPV4_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6INIT</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">DNS1</span><span class="o">=</span><span class="s2">&quot;8.8.8.8&quot;</span>
+<span class="nv">ONBOOT</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>Configuración del hostname:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network
+
+<span class="nv">HOSTNAME</span><span class="o">=</span>controllernode1.localdomain
+
+<span class="s1">&#39;#&#39;</span> cat /etc/hostname
+
+controllernode1.localdomain
+
+<span class="s1">&#39;#&#39;</span> hostname controllernode1.localdomain
+
+<span class="s1">&#39;#&#39;</span> cat /etc/hosts
+
+<span class="m">127</span>.0.0.1   controllernode1 controllernode1.localdomain localhost4 localhost4.localdomain4
+::1         controllernode1 controllernode1.localdomain localhost6 localhost6.localdomain6
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li>Reiniciar el servicio de <code class="docutils literal notranslate"><span class="pre">network</span></code> y reiniciar el sistema:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl restart network
+<span class="s1">&#39;#&#39;</span> reboot
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li>Comprobar que SE Linux está desactivado:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> getenforce
+
+Disabled
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li>Clonar la VM Controller Node desde VirtualBox 2 veces. Una VM será el Compute Node 1 y la otra será el Compute Node 2. Luego, en VirtualBox para cada VM:</li>
+</ol>
+<ul class="simple">
+<li>Reconfigurar la memoria RAM y CPUs</li>
+<li>Randomizar las direcciones MAC de los 2 adaptadores</li>
+</ul>
+</div>
+<div class="section" id="configuracion-de-compute-node-1">
+<h2><a class="toc-backref" href="#id3">Configuración de Compute Node 1</a><a class="headerlink" href="#configuracion-de-compute-node-1" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Configuración de interfaz de red bridged:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network-scripts/ifcfg-enp0s3
+
+<span class="nv">TYPE</span><span class="o">=</span><span class="s2">&quot;Ethernet&quot;</span>
+<span class="nv">PROXY_METHOD</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+<span class="nv">BROWSER_ONLY</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">BOOTPROTO</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+<span class="nv">DEFROUTE</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPV4_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6INIT</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6_AUTOCONF</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPV6_DEFROUTE</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPV6_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6_ADDR_GEN_MODE</span><span class="o">=</span><span class="s2">&quot;stable-privacy&quot;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;enp0s3&quot;</span>
+<span class="nv">UUID</span><span class="o">=</span><span class="s2">&quot;02b06617-95a0-4dfa-9293-16e756b2eccc&quot;</span>
+<span class="nv">DEVICE</span><span class="o">=</span><span class="s2">&quot;enp0s3&quot;</span>
+<span class="nv">ONBOOT</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPADDR</span><span class="o">=</span><span class="s2">&quot;192.168.1.101&quot;</span>
+<span class="nv">PREFIX</span><span class="o">=</span><span class="s2">&quot;24&quot;</span>
+<span class="nv">GATEWAY</span><span class="o">=</span><span class="s2">&quot;192.168.1.1&quot;</span>
+<span class="nv">DNS1</span><span class="o">=</span><span class="s2">&quot;8.8.8.8&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Configuración de interfaz de red aislada:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network-scripts/ifcfg-enp0s8
+
+<span class="nv">DEVICE</span><span class="o">=</span><span class="s2">&quot;enp0s8&quot;</span>
+<span class="nv">TYPE</span><span class="o">=</span><span class="s2">&quot;Ethernet&quot;</span>
+<span class="nv">BOOTPROTO</span><span class="o">=</span><span class="s2">&quot;static&quot;</span>
+<span class="nv">IPADDR</span><span class="o">=</span><span class="s2">&quot;10.10.10.101&quot;</span>
+<span class="nv">NETMASK</span><span class="o">=</span><span class="m">255</span>.255.255.0
+<span class="nv">IPV4_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6INIT</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">DNS1</span><span class="o">=</span><span class="s2">&quot;8.8.8.8&quot;</span>
+<span class="nv">ONBOOT</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Configuración del hostname:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> hostname computenode1.localdomain
+
+<span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network
+
+<span class="nv">HOSTNAME</span><span class="o">=</span>computenode1.localdomain
+
+<span class="s1">&#39;#&#39;</span> cat /etc/hostname
+
+computenode1.localdomain
+
+<span class="s1">&#39;#&#39;</span> cat /etc/hosts
+
+<span class="m">127</span>.0.0.1   computenode1 computenode1.localdomain localhost4 localhost4.localdomain4
+::1         computenode1 computenode1.localdomain localhost6 localhost6.localdomain6
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Reiniciar el servicio de <code class="docutils literal notranslate"><span class="pre">network</span></code> y reiniciar el sistema:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl restart network
+<span class="s1">&#39;#&#39;</span> reboot
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuracion-de-compute-node-2">
+<h2><a class="toc-backref" href="#id4">Configuración de Compute Node 2</a><a class="headerlink" href="#configuracion-de-compute-node-2" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Configuración de interfaz de red bridged:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network-scripts/ifcfg-enp0s3
+
+<span class="nv">TYPE</span><span class="o">=</span><span class="s2">&quot;Ethernet&quot;</span>
+<span class="nv">PROXY_METHOD</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+<span class="nv">BROWSER_ONLY</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">BOOTPROTO</span><span class="o">=</span><span class="s2">&quot;none&quot;</span>
+<span class="nv">DEFROUTE</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPV4_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6INIT</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6_AUTOCONF</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPV6_DEFROUTE</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPV6_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6_ADDR_GEN_MODE</span><span class="o">=</span><span class="s2">&quot;stable-privacy&quot;</span>
+<span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;enp0s3&quot;</span>
+<span class="nv">UUID</span><span class="o">=</span><span class="s2">&quot;12b06617-95a0-4dfa-9293-16e756b2eccd&quot;</span>
+<span class="nv">DEVICE</span><span class="o">=</span><span class="s2">&quot;enp0s3&quot;</span>
+<span class="nv">ONBOOT</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="nv">IPADDR</span><span class="o">=</span><span class="s2">&quot;192.168.1.102&quot;</span>
+<span class="nv">PREFIX</span><span class="o">=</span><span class="s2">&quot;24&quot;</span>
+<span class="nv">GATEWAY</span><span class="o">=</span><span class="s2">&quot;192.168.1.1&quot;</span>
+<span class="nv">DNS1</span><span class="o">=</span><span class="s2">&quot;8.8.8.8&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Configuración de interfaz de red aislada:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network-scripts/ifcfg-enp0s8
+
+<span class="nv">DEVICE</span><span class="o">=</span><span class="s2">&quot;enp0s8&quot;</span>
+<span class="nv">TYPE</span><span class="o">=</span><span class="s2">&quot;Ethernet&quot;</span>
+<span class="nv">BOOTPROTO</span><span class="o">=</span><span class="s2">&quot;static&quot;</span>
+<span class="nv">IPADDR</span><span class="o">=</span><span class="s2">&quot;10.10.10.102&quot;</span>
+<span class="nv">NETMASK</span><span class="o">=</span><span class="m">255</span>.255.255.0
+<span class="nv">IPV4_FAILURE_FATAL</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">IPV6INIT</span><span class="o">=</span><span class="s2">&quot;no&quot;</span>
+<span class="nv">DNS1</span><span class="o">=</span><span class="s2">&quot;8.8.8.8&quot;</span>
+<span class="nv">ONBOOT</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Configuración del hostname:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> hostname computenode2.localdomain
+
+<span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network
+
+<span class="nv">HOSTNAME</span><span class="o">=</span>computenode2.localdomain
+
+<span class="s1">&#39;#&#39;</span> cat /etc/hostname
+
+computenode2.localdomain
+
+<span class="s1">&#39;#&#39;</span> cat /etc/hosts
+
+<span class="m">127</span>.0.0.1   computenode2 computenode2.localdomain localhost4 localhost4.localdomain4
+::1         computenode2 computenode2.localdomain localhost6 localhost6.localdomain6
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Reiniciar el servicio de <code class="docutils literal notranslate"><span class="pre">network</span></code> y reiniciar el sistema:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl restart network
+<span class="s1">&#39;#&#39;</span> reboot
+</pre></div>
+</div>
+</div>
+<div class="section" id="descarga-de-paquetes-controller-node">
+<h2><a class="toc-backref" href="#id5">Descarga de paquetes (Controller node)</a><a class="headerlink" href="#descarga-de-paquetes-controller-node" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Descargar OpenStack:</li>
+</ol>
+<ul class="simple">
+<li>Para versiones de OpenStack nuevas (queens,rocky,stein):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> yum install -y centos-release-openstack-queens
+</pre></div>
+</div>
+<ul class="simple">
+<li>Para versiones de OpenStack antiguas (pike,ocata,newton,…):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> yum install -y https://repos.fedorapeople.org/repos/openstack/openstack-ocata/rdo-release-ocata-0.noarch.rpm
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Actualizar paquetes:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> yum update -y
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Descargar Packstack:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> yum install -y openstack-packstack
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalacion-de-openstack-con-packstack-controller-node">
+<h2><a class="toc-backref" href="#id6">Instalación de OpenStack con PackStack (Controller node)</a><a class="headerlink" href="#instalacion-de-openstack-con-packstack-controller-node" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>“#” packstack –allinone –provision-demo=n –os-neutron-ovs-bridge-mappings=extnet:br-ex –os-neutron-ml2-type-drivers=vxlan,flat</p>
+<p><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/8/html/command-line_interface_reference_guide/packstackclient_commands">Cliente de Línea de comandos de Packstack</a>:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">--allinone</span></code>: equivalente a <code class="docutils literal notranslate"><span class="pre">--install-hosts=&lt;local</span> <span class="pre">ipaddr&gt;</span> <span class="pre">--novanetwork-pubif=&lt;dev&gt;</span> <span class="pre">--novacompute-privif=lo</span> <span class="pre">--novanetwork-privif=lo</span> <span class="pre">--os-swift-install=y</span></code>. Esta opción puede usarse para instalar un nodo all-in-one OpenStack en este host.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--provision-demo=n</span></code>: especificar <span class="guilabel">y</span> para aprovisionar el uso de demostración y pruebas [<span class="guilabel">y</span> , <span class="guilabel">n</span>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">--os-neutron-ovs-bridge-mappings=extnet:br-ex</span></code>: Lista separada por comas de mapeos del bridge para el plugin OpenStack Networking Open vSwitch. Cada tupla en la lista debe estar en el formato <code class="docutils literal notranslate"><span class="pre">&lt;physical_network&gt;:&lt;ovs_bridge&gt;</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--os-neutron-ovs-bridge-interfaces=br-ex:enp3s0</span></code>: Lista separada por comas de pares Open vSwitch <code class="docutils literal notranslate"><span class="pre">&lt;bridge&gt;:&lt;interface&gt;</span></code>. La interfaz será añadida al bridge asociado.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--os-neutron-ml2-type-drivers=vxlan,flat</span></code>: añade los tipos de red flat y vxlan a los tipos soportados por la instalación.</li>
+</ul>
+</div>
+<div class="section" id="configuracion-post-instalacion-controller-node">
+<h2><a class="toc-backref" href="#id7">Configuración post-instalación (Controller node)</a><a class="headerlink" href="#configuracion-post-instalacion-controller-node" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Interfaces/OVS-bridges creados luego de la instalación de Packstack:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">ovs-system</span></code>: interfaz creada al instalar OVS (no es un OVS bridge)</li>
+<li><code class="docutils literal notranslate"><span class="pre">br-ex</span></code>: External bridge. Usado para conectarse a la red física externa. Tiene agregado el puerto de la VM con salida a la red externa (enp0s3).</li>
+<li><code class="docutils literal notranslate"><span class="pre">br-int</span></code>: Integration bridge. Bridge del tráfico entre instancias, el túnel y bridges externos.</li>
+<li><code class="docutils literal notranslate"><span class="pre">br-tun</span></code>: Tunnel bridge. Para crear túneles VXLAN o GRE entre nodos.</li>
+</ul>
+<ol class="arabic simple">
+<li>Configurar a la interfaz física <code class="docutils literal notranslate"><span class="pre">enp0s3</span></code> como un puerto en el OVS <code class="docutils literal notranslate"><span class="pre">br-ex</span></code>. Haremos a la interfaz física <code class="docutils literal notranslate"><span class="pre">enp3s0</span></code> solo un puerto capa 2 en el bridge y le daremos la IP al bridge mismo:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network-scripts/ifcfg-enp0s3
+
+<span class="nv">TYPE</span><span class="o">=</span>OVSPort
+<span class="nv">NAME</span><span class="o">=</span>enp0s3
+<span class="nv">DEVICE</span><span class="o">=</span>enp0s3
+<span class="nv">ONBOOT</span><span class="o">=</span>yes
+<span class="nv">DEVICETYPE</span><span class="o">=</span>ovs
+<span class="nv">OVS_BRIDGE</span><span class="o">=</span>br-ex
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Configurar el bridge externo <code class="docutils literal notranslate"><span class="pre">br-ex</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /etc/sysconfig/network-scripts/ifcfg-br-ex
+
+<span class="nv">DEVICE</span><span class="o">=</span>br-ex
+<span class="nv">DEVICETYPE</span><span class="o">=</span>ovs
+<span class="nv">TYPE</span><span class="o">=</span>OVSBridge
+<span class="nv">BOOTPROTO</span><span class="o">=</span>static
+<span class="nv">IPADDR</span><span class="o">=</span><span class="m">192</span>.168.1.100
+<span class="nv">NETMASK</span><span class="o">=</span><span class="m">255</span>.255.255.0
+<span class="nv">GATEWAY</span><span class="o">=</span><span class="m">192</span>.168.1.1
+<span class="nv">IPV4_FAILURE_FATAL</span><span class="o">=</span>no
+<span class="nv">IPV6INIT</span><span class="o">=</span>no
+<span class="nv">DNS1</span><span class="o">=</span><span class="m">8</span>.8.8.8
+<span class="nv">ONBOOT</span><span class="o">=</span>yes
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Reiniciar el servicio <code class="docutils literal notranslate"><span class="pre">network</span></code> para hacer efectivo los cambios:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl restart network
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Crear la red externa con Neutron:</li>
+</ol>
+<ul class="simple">
+<li>Primero usar el archivo Keystone RC con las credenciales admin de OpenStack:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">pwd</span>
+/root
+
+<span class="s1">&#39;#&#39;</span> ls
+anaconda-ks.cfg  keystonerc_admin  packstack-answers-20190920-224100.   txt
+
+<span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_admin
+</pre></div>
+</div>
+<ul class="simple">
+<li>Crear la red externa <code class="docutils literal notranslate"><span class="pre">ext-net</span></code> con Neutron:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Con Neutron (deprecated): neutron net-create external_network --provider:network_type flat --provider:physical_network extnet --router:external</span>
+<span class="s1">&#39;#&#39;</span> openstack network create external_network --provider-network-type flat --provider-physical-network extnet --external
+
++---------------------------+--------------------------------------+
+<span class="p">|</span> Field                     <span class="p">|</span> Value                                <span class="p">|</span>
++---------------------------+--------------------------------------+
+<span class="p">|</span> admin_state_up            <span class="p">|</span> UP                                   <span class="p">|</span>
+<span class="p">|</span> availability_zone_hints   <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> availability_zones        <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> created_at                <span class="p">|</span> <span class="m">2020</span>-02-10T18:48:05Z                 <span class="p">|</span>
+<span class="p">|</span> description               <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> dns_domain                <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> id                        <span class="p">|</span> f5dad5c1-bba9-41c5-844f-bd19a6a124aa <span class="p">|</span>
+<span class="p">|</span> ipv4_address_scope        <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> ipv6_address_scope        <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> is_default                <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> is_vlan_transparent       <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> mtu                       <span class="p">|</span> <span class="m">1500</span>                                 <span class="p">|</span>
+<span class="p">|</span> name                      <span class="p">|</span> external_network                     <span class="p">|</span>
+<span class="p">|</span> port_security_enabled     <span class="p">|</span> True                                 <span class="p">|</span>
+<span class="p">|</span> project_id                <span class="p">|</span> 0c2bc29526f4465c95b8eaefcfae7b7c     <span class="p">|</span>
+<span class="p">|</span> provider:network_type     <span class="p">|</span> flat                                 <span class="p">|</span>
+<span class="p">|</span> provider:physical_network <span class="p">|</span> extnet                               <span class="p">|</span>
+<span class="p">|</span> provider:segmentation_id  <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> qos_policy_id             <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> revision_number           <span class="p">|</span> <span class="m">5</span>                                    <span class="p">|</span>
+<span class="p">|</span> router:external           <span class="p">|</span> External                             <span class="p">|</span>
+<span class="p">|</span> segments                  <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> shared                    <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> status                    <span class="p">|</span> ACTIVE                               <span class="p">|</span>
+<span class="p">|</span> subnets                   <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> tags                      <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> updated_at                <span class="p">|</span> <span class="m">2020</span>-02-10T18:48:05Z                 <span class="p">|</span>
++---------------------------+--------------------------------------+
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Crear una subred pública con un rango de asignación fuera del rango DHCP de nuestra red física y configurar el gateway de nuestra red como el gateway de la red externa:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Con Neutron (deprecated): neutron subnet-create --name public_subnet --enable_dhcp=False --allocation-pool start=192.168.1.150,end=192.168.1.200 --gateway=192.168.1.1 external_network 192.168.1.0/24</span>
+<span class="s1">&#39;#&#39;</span> openstack subnet create --network external_network --allocation-pool <span class="nv">start</span><span class="o">=</span><span class="m">192</span>.168.1.150,end<span class="o">=</span><span class="m">192</span>.168.1.200 --gateway<span class="o">=</span><span class="m">192</span>.168.1.1 --subnet-range <span class="m">192</span>.168.1.0/24 --no-dhcp public_subnet
+
++-------------------+--------------------------------------+
+<span class="p">|</span> Field             <span class="p">|</span> Value                                <span class="p">|</span>
++-------------------+--------------------------------------+
+<span class="p">|</span> allocation_pools  <span class="p">|</span> <span class="m">192</span>.168.1.150-192.168.1.200          <span class="p">|</span>
+<span class="p">|</span> cidr              <span class="p">|</span> <span class="m">192</span>.168.1.0/24                       <span class="p">|</span>
+<span class="p">|</span> created_at        <span class="p">|</span> <span class="m">2020</span>-02-10T18:48:35Z                 <span class="p">|</span>
+<span class="p">|</span> description       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> dns_nameservers   <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> enable_dhcp       <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> gateway_ip        <span class="p">|</span> <span class="m">192</span>.168.1.1                          <span class="p">|</span>
+<span class="p">|</span> host_routes       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> id                <span class="p">|</span> a6ae14ab-2287-4d0d-b8eb-0f503792f32c <span class="p">|</span>
+<span class="p">|</span> ip_version        <span class="p">|</span> <span class="m">4</span>                                    <span class="p">|</span>
+<span class="p">|</span> ipv6_address_mode <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> ipv6_ra_mode      <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> name              <span class="p">|</span> public_subnet                        <span class="p">|</span>
+<span class="p">|</span> network_id        <span class="p">|</span> f5dad5c1-bba9-41c5-844f-bd19a6a124aa <span class="p">|</span>
+<span class="p">|</span> prefix_length     <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> project_id        <span class="p">|</span> 0c2bc29526f4465c95b8eaefcfae7b7c     <span class="p">|</span>
+<span class="p">|</span> revision_number   <span class="p">|</span> <span class="m">0</span>                                    <span class="p">|</span>
+<span class="p">|</span> segment_id        <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> service_types     <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> subnetpool_id     <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> tags              <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> updated_at        <span class="p">|</span> <span class="m">2020</span>-02-10T18:48:35Z                 <span class="p">|</span>
++-------------------+--------------------------------------+
+</pre></div>
+</div>
+<p>Podemos asignar IPs públicas a nuestras intancias desde este rango de asignación.</p>
+</div>
+<div class="section" id="instalacion-de-compute-nodes-controller-node">
+<h2><a class="toc-backref" href="#id8">Instalación de Compute Nodes (Controller Node)</a><a class="headerlink" href="#instalacion-de-compute-nodes-controller-node" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Realizar un backup del answer file generado automáticamente por Packstack cuando se realizó la instalación all-in-node de OpenStack:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cp packstack-answers-20200124-103757.txt packstack-answers-20200124-103757.txt.backup
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Editar el archivo answer file para que los túnesles sean creados desde la segunda interfaz añadida a las VMs CentOS:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Interface for the Open vSwitch tunnel. Packstack overrides the IP</span>
+<span class="c1"># address used for tunnels on this hypervisor to the IP found on the</span>
+<span class="c1"># specified interface (for example, eth1).</span>
+<span class="nv">CONFIG_NEUTRON_OVS_TUNNEL_IF</span><span class="o">=</span>enp0s8
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Seguir editando el archivo y escribir la subred de nuestra segunda NIC, de forma que Packstack haga las modificaciones para usar esta red para túneles.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comma-separated list of subnets (for example,</span>
+<span class="c1"># 192.168.10.0/24,192.168.11.0/24) used for sending tunneling packets.</span>
+<span class="c1"># This is used to configure IP filtering to accept tunneling packets</span>
+<span class="c1"># from these subnets instead of specific IP addresses of peer nodes.</span>
+<span class="c1"># This is useful when you add existing nodes to EXCLUDE_SERVERS</span>
+<span class="c1"># because, in this case, packstack cannot modify the IP filtering of</span>
+<span class="c1"># the existing nodes.</span>
+<span class="nv">CONFIG_NEUTRON_OVS_TUNNEL_SUBNETS</span><span class="o">=</span><span class="m">10</span>.10.10.0/24
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Configurar la direcciones IP de los nodos que tendrán el servicio de Compute. En este caso los 3 nodos (Controller Node, Compute Node 1 y 2):</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># List the servers on which to install the Compute service.</span>
+<span class="nv">CONFIG_COMPUTE_HOSTS</span><span class="o">=</span><span class="m">192</span>.168.1.100,192.168.1.101,192.168.1.102
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Añadir la IP del Controller Node para que su configuración no sea alterada, es decir, excluir este nodo en el proceso de instalación:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comma-separated list of servers to be excluded from the</span>
+<span class="c1"># installation. This is helpful if you are running Packstack a second</span>
+<span class="c1"># time with the same answer file and do not want Packstack to</span>
+<span class="c1"># overwrite these server&#39;s configurations. Leave empty if you do not</span>
+<span class="c1"># need to exclude any servers.</span>
+<span class="nv">EXCLUDE_SERVERS</span><span class="o">=</span><span class="m">192</span>.168.1.100
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Editar las reglas de <code class="docutils literal notranslate"><span class="pre">iptables</span></code> para permitir que los Compute Nodes puedan acceder a los servicios de mensaje AMQP y base de datos MariaDB:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> vi /etc/sysconfig/iptables
+
+...
+-A INPUT -s <span class="m">192</span>.168.1.100/32 -p tcp -m multiport --dports <span class="m">5671</span>,5672 -m comment --comment <span class="s2">&quot;001 amqp incoming amqp_192.168.1.100&quot;</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.1.101/32 -p tcp -m multiport --dports <span class="m">5671</span>,5672 -m comment --comment <span class="s2">&quot;001 amqp incoming amqp_192.168.1.101&quot;</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.1.102/32 -p tcp -m multiport --dports <span class="m">5671</span>,5672 -m comment --comment <span class="s2">&quot;001 amqp incoming amqp_192.168.1.102&quot;</span> -j ACCEPT
+...
+-A INPUT -s <span class="m">192</span>.168.1.100/32 -p tcp -m multiport --dports <span class="m">3306</span> -m comment --comment <span class="s2">&quot;001 mariadb incoming mariadb_192.168.1.100&quot;</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.1.101/32 -p tcp -m multiport --dports <span class="m">3306</span> -m comment --comment <span class="s2">&quot;001 mariadb incoming mariadb_192.168.1.101&quot;</span> -j ACCEPT
+-A INPUT -s <span class="m">192</span>.168.1.102/32 -p tcp -m multiport --dports <span class="m">3306</span> -m comment --comment <span class="s2">&quot;001 mariadb incoming mariadb_192.168.1.102&quot;</span> -j ACCEPT
+...
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>Reiniciar servicio de <code class="docutils literal notranslate"><span class="pre">iptables</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl restart network
+<span class="s1">&#39;#&#39;</span> systemctl restart iptables
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li>Comenzar con la instalación de Packstack en los Compute Nodes usando el answer file editado:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> packstack --answer-file<span class="o">=</span>packstack-answers-20200124-103757.txt
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li>Desde el Controller Node, listar los hypervisors:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack hypervisor list
+
++----+-----------------------------+-----------------+---------------+-------+
+<span class="p">|</span> ID <span class="p">|</span> Hypervisor Hostname         <span class="p">|</span> Hypervisor Type <span class="p">|</span> Host IP       <span class="p">|</span> State <span class="p">|</span>
++----+-----------------------------+-----------------+---------------+-------+
+<span class="p">|</span>  <span class="m">1</span> <span class="p">|</span> controllernode1.localdomain <span class="p">|</span> QEMU            <span class="p">|</span> <span class="m">192</span>.168.1.100 <span class="p">|</span> up    <span class="p">|</span>
+<span class="p">|</span>  <span class="m">2</span> <span class="p">|</span> computenode2.localdomain    <span class="p">|</span> QEMU            <span class="p">|</span> <span class="m">192</span>.168.1.102 <span class="p">|</span> up    <span class="p">|</span>
+<span class="p">|</span>  <span class="m">3</span> <span class="p">|</span> computenode1.localdomain    <span class="p">|</span> QEMU            <span class="p">|</span> <span class="m">192</span>.168.1.101 <span class="p">|</span> up    <span class="p">|</span>
++----+-----------------------------+-----------------+---------------+-------+
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

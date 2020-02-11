@@ -1,0 +1,1932 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuración inicial de OpenStack &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Configuración inicial de OpenStack</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/openstack/openstack-guide/openstack-initial-configuration-cli.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuracion-inicial-de-openstack">
+<h1><a class="toc-backref" href="#id1">Configuración inicial de OpenStack</a><a class="headerlink" href="#configuracion-inicial-de-openstack" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#configuracion-inicial-de-openstack" id="id1">Configuración inicial de OpenStack</a><ul>
+<li><a class="reference internal" href="#usar-credenciales-de-usuario" id="id2">Usar credenciales de usuario</a></li>
+<li><a class="reference internal" href="#crear-un-nuevo-proyecto" id="id3">Crear un nuevo proyecto</a></li>
+<li><a class="reference internal" href="#creacion-de-un-usuario-asignado-a-un-proyecto" id="id4">Creación de un usuario asignado a un proyecto</a></li>
+<li><a class="reference internal" href="#creacion-de-credenciales-cli-para-un-usuario" id="id5">Creación de credenciales CLI para un usuario</a></li>
+<li><a class="reference internal" href="#creacion-de-un-flavor" id="id6">Creación de un flavor</a></li>
+<li><a class="reference internal" href="#crear-una-imagen" id="id7">Crear una imagen</a></li>
+<li><a class="reference internal" href="#ver-configuracion-de-red" id="id8">Ver configuración de red</a></li>
+<li><a class="reference internal" href="#crear-una-red-y-una-subred-internas" id="id9">Crear una red y una subred internas</a></li>
+<li><a class="reference internal" href="#crear-un-router" id="id10">Crear un router</a></li>
+<li><a class="reference internal" href="#listar-las-redes-y-subredes-creadas" id="id11">Listar las redes y subredes creadas</a></li>
+<li><a class="reference internal" href="#editar-el-security-group-de-un-proyecto" id="id12">Editar el security group de un proyecto</a></li>
+<li><a class="reference internal" href="#crear-una-instancia-1" id="id13">Crear una instancia (1)</a></li>
+<li><a class="reference internal" href="#asignar-una-floating-ip-a-una-instancia" id="id14">Asignar una Floating IP a una instancia</a></li>
+<li><a class="reference internal" href="#crear-un-key-pair" id="id15">Crear un key pair</a></li>
+<li><a class="reference internal" href="#crear-un-security-group" id="id16">Crear un security group</a></li>
+<li><a class="reference internal" href="#crear-una-instancia-2" id="id17">Crear una instancia (2)</a></li>
+<li><a class="reference internal" href="#crear-snapshot-de-una-imagen" id="id18">Crear snapshot de una imagen</a></li>
+<li><a class="reference internal" href="#crear-un-volumen" id="id19">Crear un volumen</a></li>
+<li><a class="reference internal" href="#conectar-y-montar-un-volumen-a-una-instancia" id="id20">Conectar y montar un volumen a una instancia</a></li>
+<li><a class="reference internal" href="#crear-backup-de-un-volumen" id="id21">Crear backup de un volumen</a></li>
+<li><a class="reference internal" href="#crear-snapshot-de-un-volumen" id="id22">Crear snapshot de un volumen</a></li>
+<li><a class="reference internal" href="#crear-un-contenedor" id="id23">Crear un contenedor</a></li>
+<li><a class="reference internal" href="#crear-un-objeto" id="id24">Crear un objeto</a></li>
+<li><a class="reference internal" href="#acceder-a-un-objeto" id="id25">Acceder a un objeto</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="usar-credenciales-de-usuario">
+<h2><a class="toc-backref" href="#id2">Usar credenciales de usuario</a><a class="headerlink" href="#usar-credenciales-de-usuario" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En el CLI, usar las credenciales del usuario <code class="docutils literal notranslate"><span class="pre">admin</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_admin
+</pre></div>
+</div>
+</div>
+<div class="section" id="crear-un-nuevo-proyecto">
+<h2><a class="toc-backref" href="#id3">Crear un nuevo proyecto</a><a class="headerlink" href="#crear-un-nuevo-proyecto" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack project create --description <span class="s2">&quot;for testing purposes&quot;</span> testproject
+
++-------------+----------------------------------+
+<span class="p">|</span> Field       <span class="p">|</span> Value                            <span class="p">|</span>
++-------------+----------------------------------+
+<span class="p">|</span> description <span class="p">|</span> <span class="k">for</span> testing purposes             <span class="p">|</span>
+<span class="p">|</span> domain_id   <span class="p">|</span> default                          <span class="p">|</span>
+<span class="p">|</span> enabled     <span class="p">|</span> True                             <span class="p">|</span>
+<span class="p">|</span> id          <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span>
+<span class="p">|</span> is_domain   <span class="p">|</span> False                            <span class="p">|</span>
+<span class="p">|</span> name        <span class="p">|</span> testproject                      <span class="p">|</span>
+<span class="p">|</span> parent_id   <span class="p">|</span> default                          <span class="p">|</span>
+<span class="p">|</span> tags        <span class="p">|</span> <span class="o">[]</span>                               <span class="p">|</span>
++-------------+----------------------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="creacion-de-un-usuario-asignado-a-un-proyecto">
+<h2><a class="toc-backref" href="#id4">Creación de un usuario asignado a un proyecto</a><a class="headerlink" href="#creacion-de-un-usuario-asignado-a-un-proyecto" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Crear un usuario y añadirlo a un proyecto al momento de ser creado:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack user create --project testproject --password-prompt testuser1
+
+User Password:
+Repeat User Password:
++---------------------+----------------------------------+
+<span class="p">|</span> Field               <span class="p">|</span> Value                            <span class="p">|</span>
++---------------------+----------------------------------+
+<span class="p">|</span> default_project_id  <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span>
+<span class="p">|</span> domain_id           <span class="p">|</span> default                          <span class="p">|</span>
+<span class="p">|</span> enabled             <span class="p">|</span> True                             <span class="p">|</span>
+<span class="p">|</span> id                  <span class="p">|</span> 6643474fffb548b4bd4fb3d6a09d9ecd <span class="p">|</span>
+<span class="p">|</span> name                <span class="p">|</span> testuser1                        <span class="p">|</span>
+<span class="p">|</span> options             <span class="p">|</span> <span class="o">{}</span>                               <span class="p">|</span>
+<span class="p">|</span> password_expires_at <span class="p">|</span> None                             <span class="p">|</span>
++---------------------+----------------------------------+
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Asignar los roles <code class="docutils literal notranslate"><span class="pre">_member_</span></code> y <code class="docutils literal notranslate"><span class="pre">admin</span></code> al usuario creado:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack role add --project testproject --user testuser1 _member_
+<span class="s1">&#39;#&#39;</span> openstack role add --project testproject --user testuser1 admin
+
+<span class="s1">&#39;#&#39;</span> openstack role assignment list --project testproject --user testuser1
+
++----------------------------------+----------------------------------+-------+----------------------------------+--------+-----------+
+<span class="p">|</span> Role                             <span class="p">|</span> User                             <span class="p">|</span> Group <span class="p">|</span> Project                          <span class="p">|</span> Domain <span class="p">|</span> Inherited <span class="p">|</span>
++----------------------------------+----------------------------------+-------+----------------------------------+--------+-----------+
+<span class="p">|</span> 75dbe014bfa54197890b46a034f4661e <span class="p">|</span> 6643474fffb548b4bd4fb3d6a09d9ecd <span class="p">|</span>       <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span>        <span class="p">|</span> False     <span class="p">|</span>
+<span class="p">|</span> 9fe2ff9ee4384b1894a90878d3e92bab <span class="p">|</span> 6643474fffb548b4bd4fb3d6a09d9ecd <span class="p">|</span>       <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span>        <span class="p">|</span> False     <span class="p">|</span>
++----------------------------------+----------------------------------+-------+----------------------------------+--------+-----------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="creacion-de-credenciales-cli-para-un-usuario">
+<h2><a class="toc-backref" href="#id5">Creación de credenciales CLI para un usuario</a><a class="headerlink" href="#creacion-de-credenciales-cli-para-un-usuario" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cp keystonerc_admin keystonerc_testuser1
+
+<span class="s1">&#39;#&#39;</span> keystonerc_testuser1
+<span class="s1">&#39;#&#39;</span> cat keystonerc_testuser1
+
+<span class="nb">unset</span> OS_SERVICE_TOKEN
+<span class="hll">    <span class="nb">export</span> <span class="nv">OS_USERNAME</span><span class="o">=</span>testuser1
+</span><span class="hll">    <span class="nb">export</span> <span class="nv">OS_PASSWORD</span><span class="o">=</span>testuser1
+</span>    <span class="nb">export</span> <span class="nv">OS_REGION_NAME</span><span class="o">=</span>RegionOne
+    <span class="nb">export</span> <span class="nv">OS_AUTH_URL</span><span class="o">=</span>http://192.168.1.100:5000/v3
+<span class="hll">    <span class="nb">export</span> <span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;[\u@\h \W(testuser1)]\$ &#39;</span>
+</span>
+<span class="hll"><span class="nb">export</span> <span class="nv">OS_PROJECT_NAME</span><span class="o">=</span>testproject
+</span><span class="nb">export</span> <span class="nv">OS_USER_DOMAIN_NAME</span><span class="o">=</span>Default
+<span class="nb">export</span> <span class="nv">OS_PROJECT_DOMAIN_NAME</span><span class="o">=</span>Default
+<span class="nb">export</span> <span class="nv">OS_IDENTITY_API_VERSION</span><span class="o">=</span><span class="m">3</span>
+
+<span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_testuser1
+</pre></div>
+</div>
+</div>
+<div class="section" id="creacion-de-un-flavor">
+<h2><a class="toc-backref" href="#id6">Creación de un flavor</a><a class="headerlink" href="#creacion-de-un-flavor" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Nuevo flavor llamado <code class="docutils literal notranslate"><span class="pre">m1.tiniest</span></code> con id <code class="docutils literal notranslate"><span class="pre">10</span></code>, RAM de 128 MB y 1GB de almacenamiento:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack flavor create --id <span class="m">10</span> --ram <span class="m">128</span> --disk <span class="m">1</span> --public m1.tiniest
+
++----------------------------+------------+
+<span class="p">|</span> Field                      <span class="p">|</span> Value      <span class="p">|</span>
++----------------------------+------------+
+<span class="p">|</span> OS-FLV-DISABLED:disabled   <span class="p">|</span> False      <span class="p">|</span>
+<span class="p">|</span> OS-FLV-EXT-DATA:ephemeral  <span class="p">|</span> <span class="m">0</span>          <span class="p">|</span>
+<span class="p">|</span> disk                       <span class="p">|</span> <span class="m">1</span>          <span class="p">|</span>
+<span class="p">|</span> id                         <span class="p">|</span> <span class="m">10</span>         <span class="p">|</span>
+<span class="p">|</span> name                       <span class="p">|</span> m1.tiniest <span class="p">|</span>
+<span class="p">|</span> os-flavor-access:is_public <span class="p">|</span> True       <span class="p">|</span>
+<span class="p">|</span> properties                 <span class="p">|</span>            <span class="p">|</span>
+<span class="p">|</span> ram                        <span class="p">|</span> <span class="m">128</span>        <span class="p">|</span>
+<span class="p">|</span> rxtx_factor                <span class="p">|</span> <span class="m">1</span>.0        <span class="p">|</span>
+<span class="p">|</span> swap                       <span class="p">|</span>            <span class="p">|</span>
+<span class="p">|</span> vcpus                      <span class="p">|</span> <span class="m">1</span>          <span class="p">|</span>
++----------------------------+------------+
+
+<span class="s1">&#39;#&#39;</span> openstack flavor list
+
++----+------------+-------+------+-----------+-------+-----------+
+<span class="p">|</span> ID <span class="p">|</span> Name       <span class="p">|</span>   RAM <span class="p">|</span> Disk <span class="p">|</span> Ephemeral <span class="p">|</span> VCPUs <span class="p">|</span> Is Public <span class="p">|</span>
++----+------------+-------+------+-----------+-------+-----------+
+<span class="p">|</span> <span class="m">1</span>  <span class="p">|</span> m1.tiny    <span class="p">|</span>   <span class="m">512</span> <span class="p">|</span>    <span class="m">1</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">1</span> <span class="p">|</span> True      <span class="p">|</span>
+<span class="p">|</span> <span class="m">10</span> <span class="p">|</span> m1.tiniest <span class="p">|</span>   <span class="m">128</span> <span class="p">|</span>    <span class="m">1</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">1</span> <span class="p">|</span> True      <span class="p">|</span>
+<span class="p">|</span> <span class="m">2</span>  <span class="p">|</span> m1.small   <span class="p">|</span>  <span class="m">2048</span> <span class="p">|</span>   <span class="m">20</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">1</span> <span class="p">|</span> True      <span class="p">|</span>
+<span class="p">|</span> <span class="m">3</span>  <span class="p">|</span> m1.medium  <span class="p">|</span>  <span class="m">4096</span> <span class="p">|</span>   <span class="m">40</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">2</span> <span class="p">|</span> True      <span class="p">|</span>
+<span class="p">|</span> <span class="m">4</span>  <span class="p">|</span> m1.large   <span class="p">|</span>  <span class="m">8192</span> <span class="p">|</span>   <span class="m">80</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">4</span> <span class="p">|</span> True      <span class="p">|</span>
+<span class="p">|</span> <span class="m">5</span>  <span class="p">|</span> m1.xlarge  <span class="p">|</span> <span class="m">16384</span> <span class="p">|</span>  <span class="m">160</span> <span class="p">|</span>         <span class="m">0</span> <span class="p">|</span>     <span class="m">8</span> <span class="p">|</span> True      <span class="p">|</span>
++----+------------+-------+------+-----------+-------+-----------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="crear-una-imagen">
+<h2><a class="toc-backref" href="#id7">Crear una imagen</a><a class="headerlink" href="#crear-una-imagen" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Descargar la imagen:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> mkdir /root/images
+<span class="s1">&#39;#&#39;</span> curl -o /root/images/cirros-0.4.0-x86_64-disk.img http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Con <code class="docutils literal notranslate"><span class="pre">wget</span></code>:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> yum install -y wget
+<span class="s1">&#39;#&#39;</span> wget -P /root/images http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Crear una imagen pública con los requerimientos mínimos de almacenamiento y memoria RAM para el uso de esa imagen:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack image create --min-disk <span class="m">1</span> --min-ram <span class="m">128</span> --public --disk-format qcow2 --file /root/images/cirros-0.4.0-x86_64-disk.img cirros
+
++------------------+------------------------------------------------------+
+<span class="p">|</span> Field            <span class="p">|</span> Value                                                <span class="p">|</span>
++------------------+------------------------------------------------------+
+<span class="p">|</span> checksum         <span class="p">|</span> 443b7623e27ecf03dc9e01ee93f67afe                     <span class="p">|</span>
+<span class="p">|</span> container_format <span class="p">|</span> bare                                                 <span class="p">|</span>
+<span class="p">|</span> created_at       <span class="p">|</span> <span class="m">2020</span>-02-11T02:53:24Z                                 <span class="p">|</span>
+<span class="p">|</span> disk_format      <span class="p">|</span> qcow2                                                <span class="p">|</span>
+<span class="p">|</span> file             <span class="p">|</span> /v2/images/56dd3671-de42-40db-9637-7c5bef599d11/file <span class="p">|</span>
+<span class="p">|</span> id               <span class="p">|</span> 56dd3671-de42-40db-9637-7c5bef599d11                 <span class="p">|</span>
+<span class="p">|</span> min_disk         <span class="p">|</span> <span class="m">1</span>                                                    <span class="p">|</span>
+<span class="p">|</span> min_ram          <span class="p">|</span> <span class="m">128</span>                                                  <span class="p">|</span>
+<span class="p">|</span> name             <span class="p">|</span> cirros                                               <span class="p">|</span>
+<span class="p">|</span> owner            <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64                     <span class="p">|</span>
+<span class="p">|</span> protected        <span class="p">|</span> False                                                <span class="p">|</span>
+<span class="p">|</span> schema           <span class="p">|</span> /v2/schemas/image                                    <span class="p">|</span>
+<span class="p">|</span> size             <span class="p">|</span> <span class="m">12716032</span>                                             <span class="p">|</span>
+<span class="p">|</span> status           <span class="p">|</span> active                                               <span class="p">|</span>
+<span class="p">|</span> tags             <span class="p">|</span>                                                      <span class="p">|</span>
+<span class="p">|</span> updated_at       <span class="p">|</span> <span class="m">2020</span>-02-11T02:53:24Z                                 <span class="p">|</span>
+<span class="p">|</span> virtual_size     <span class="p">|</span> None                                                 <span class="p">|</span>
+<span class="p">|</span> visibility       <span class="p">|</span> public                                               <span class="p">|</span>
++------------------+------------------------------------------------------+
+
+<span class="s1">&#39;#&#39;</span> openstack image list
+
++--------------------------------------+--------+--------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name   <span class="p">|</span> Status <span class="p">|</span>
++--------------------------------------+--------+--------+
+<span class="p">|</span> 2995472e-5c8b-4828-af2c-0104b24db391 <span class="p">|</span> cirros <span class="p">|</span> active <span class="p">|</span>
++--------------------------------------+--------+--------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="ver-configuracion-de-red">
+<h2><a class="toc-backref" href="#id8">Ver configuración de red</a><a class="headerlink" href="#ver-configuracion-de-red" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Comprobar que tenemos los agentes de red necesarios para la gestión de redes con OpenStack:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack network agent list
+
++--------------------------------------+--------------------+-----------------------------+-------------------+-------+-------+---------------------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Agent Type         <span class="p">|</span> Host                        <span class="p">|</span> Availability Zone <span class="p">|</span> Alive <span class="p">|</span> State <span class="p">|</span> Binary                    <span class="p">|</span>
++--------------------------------------+--------------------+-----------------------------+-------------------+-------+-------+---------------------------+
+<span class="p">|</span> 1755e383-779d-430e-836c-d5ab6300247e <span class="p">|</span> Open vSwitch agent <span class="p">|</span> controllernode1.localdomain <span class="p">|</span> None              <span class="p">|</span> :-<span class="o">)</span>   <span class="p">|</span> UP    <span class="p">|</span> neutron-openvswitch-agent <span class="p">|</span>
+<span class="p">|</span> 72d25877-3746-4ebd-bda7-586bd5ee2ddf <span class="p">|</span> Open vSwitch agent <span class="p">|</span> computenode1.localdomain    <span class="p">|</span> None              <span class="p">|</span> :-<span class="o">)</span>   <span class="p">|</span> UP    <span class="p">|</span> neutron-openvswitch-agent <span class="p">|</span>
+<span class="p">|</span> ffe83ae4-da2a-411a-a535-8f1fdbf06e60 <span class="p">|</span> Open vSwitch agent <span class="p">|</span> computenode2.localdomain    <span class="p">|</span> None              <span class="p">|</span> :-<span class="o">)</span>   <span class="p">|</span> UP    <span class="p">|</span> neutron-openvswitch-agent <span class="p">|</span>
+<span class="p">|</span> 4aff7724-1a9e-42b7-aad3-142fd5c1d736 <span class="p">|</span> DHCP agent         <span class="p">|</span> controllernode1.localdomain <span class="p">|</span> nova              <span class="p">|</span> :-<span class="o">)</span>   <span class="p">|</span> UP    <span class="p">|</span> neutron-dhcp-agent        <span class="p">|</span>
+<span class="p">|</span> 8a45485e-f1d8-46ff-a0e4-440f98f377fc <span class="p">|</span> Metering agent     <span class="p">|</span> controllernode1.localdomain <span class="p">|</span> None              <span class="p">|</span> :-<span class="o">)</span>   <span class="p">|</span> UP    <span class="p">|</span> neutron-metering-agent    <span class="p">|</span>
+<span class="p">|</span> f533494b-9071-4159-ae80-12ae96534c77 <span class="p">|</span> L3 agent           <span class="p">|</span> controllernode1.localdomain <span class="p">|</span> nova              <span class="p">|</span> :-<span class="o">)</span>   <span class="p">|</span> UP    <span class="p">|</span> neutron-l3-agent          <span class="p">|</span>
+<span class="p">|</span> fc03ca4e-a5e4-469b-bbb8-9253248e40a6 <span class="p">|</span> Metadata agent     <span class="p">|</span> controllernode1.localdomain <span class="p">|</span> None              <span class="p">|</span> :-<span class="o">)</span>   <span class="p">|</span> UP    <span class="p">|</span> neutron-metadata-agent    <span class="p">|</span>
++--------------------------------------+--------------------+-----------------------------+-------------------+-------+-------+---------------------------+
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Por cada Nodo contamos con un agente Open vSwitch (controller node, compute node 1 y compute node 2)</p>
+</div>
+<p>Podemos verificar el estado de cada servicio usando el binario de la tabla así como del proceso <code class="docutils literal notranslate"><span class="pre">neutron-server</span></code> en sí:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> systemctl status neutron-server neutron-openvswitch-agent neutron-dhcp-agent neutron-metering-agent neutron-l3-agent neutron-metadata-agent
+</pre></div>
+</div>
+<ul class="simple">
+<li>Ver los OVS bridges que tenemos creados y los puertos conectados:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ovs-vsctl show
+
+496c7134-8b33-4aa9-b752-ab503fccd5d6
+    Manager <span class="s2">&quot;ptcp:6640:127.0.0.1&quot;</span>
+        is_connected: <span class="nb">true</span>
+    Bridge br-int
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port br-int
+            Interface br-int
+                type: internal
+        Port patch-tun
+            Interface patch-tun
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-int<span class="o">}</span>
+        Port int-br-ex
+            Interface int-br-ex
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>phy-br-ex<span class="o">}</span>
+    Bridge br-tun
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port br-tun
+            Interface br-tun
+                type: internal
+        Port <span class="s2">&quot;vxlan-0a0a0a66&quot;</span>
+            Interface <span class="s2">&quot;vxlan-0a0a0a66&quot;</span>
+                type: vxlan
+                options: <span class="o">{</span><span class="nv">df_default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>, <span class="nv">egress_pkt_mark</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>, <span class="nv">in_key</span><span class="o">=</span>flow, <span class="nv">local_ip</span><span class="o">=</span><span class="s2">&quot;192.168.1.100&quot;</span>, <span class="nv">out_key</span><span class="o">=</span>flow, <span class="nv">remote_ip</span><span class="o">=</span><span class="s2">&quot;10.10.10.102&quot;</span><span class="o">}</span>
+        Port patch-int
+            Interface patch-int
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-tun<span class="o">}</span>
+        Port <span class="s2">&quot;vxlan-0a0a0a65&quot;</span>
+            Interface <span class="s2">&quot;vxlan-0a0a0a65&quot;</span>
+                type: vxlan
+                options: <span class="o">{</span><span class="nv">df_default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>, <span class="nv">egress_pkt_mark</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>, <span class="nv">in_key</span><span class="o">=</span>flow, <span class="nv">local_ip</span><span class="o">=</span><span class="s2">&quot;192.168.1.100&quot;</span>, <span class="nv">out_key</span><span class="o">=</span>flow, <span class="nv">remote_ip</span><span class="o">=</span><span class="s2">&quot;10.10.10.101&quot;</span><span class="o">}</span>
+    Bridge br-ex
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port br-ex
+            Interface br-ex
+                type: internal
+        Port phy-br-ex
+            Interface phy-br-ex
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>int-br-ex<span class="o">}</span>
+        Port <span class="s2">&quot;enp0s3&quot;</span>
+            Interface <span class="s2">&quot;enp0s3&quot;</span>
+    ovs_version: <span class="s2">&quot;2.11.0&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Los bridges creados por defecto al instalar OpenStack son <code class="docutils literal notranslate"><span class="pre">br-int</span></code> (integration bridge), <code class="docutils literal notranslate"><span class="pre">br-tun</span></code> (tunnel bridge), y <code class="docutils literal notranslate"><span class="pre">br-ex</span></code> (external bridge).</p>
+</div>
+</div>
+<div class="section" id="crear-una-red-y-una-subred-internas">
+<h2><a class="toc-backref" href="#id9">Crear una red y una subred internas</a><a class="headerlink" href="#crear-una-red-y-una-subred-internas" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Link: <a href="#id26"><span class="problematic" id="id27">`Create and manage networks - Openstack Docs`_</span></a></p>
+<p><a class="reference external" href="https://docs.openstack.org/ocata/user-guide/cli-create-and-manage-networks.html">https://docs.openstack.org/ocata/user-guide/cli-create-and-manage-networks.html</a></p>
+<ol class="arabic simple">
+<li>Crear una red:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack network create intnet
+
+---------------------------+--------------------------------------+
+<span class="p">|</span> Field                     <span class="p">|</span> Value                                <span class="p">|</span>
++---------------------------+--------------------------------------+
+<span class="p">|</span> admin_state_up            <span class="p">|</span> UP                                   <span class="p">|</span>
+<span class="p">|</span> availability_zone_hints   <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> availability_zones        <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> created_at                <span class="p">|</span> <span class="m">2020</span>-02-10T23:19:50Z                 <span class="p">|</span>
+<span class="p">|</span> description               <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> dns_domain                <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> id                        <span class="p">|</span> 2cf9c274-8592-476b-bde5-41e930e01577 <span class="p">|</span>
+<span class="p">|</span> ipv4_address_scope        <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> ipv6_address_scope        <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> is_default                <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> is_vlan_transparent       <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> mtu                       <span class="p">|</span> <span class="m">1450</span>                                 <span class="p">|</span>
+<span class="p">|</span> name                      <span class="p">|</span> intnet                               <span class="p">|</span>
+<span class="p">|</span> port_security_enabled     <span class="p">|</span> True                                 <span class="p">|</span>
+<span class="p">|</span> project_id                <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64     <span class="p">|</span>
+<span class="p">|</span> provider:network_type     <span class="p">|</span> vxlan                                <span class="p">|</span>
+<span class="p">|</span> provider:physical_network <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> provider:segmentation_id  <span class="p">|</span> <span class="m">84</span>                                   <span class="p">|</span>
+<span class="p">|</span> qos_policy_id             <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> revision_number           <span class="p">|</span> <span class="m">2</span>                                    <span class="p">|</span>
+<span class="p">|</span> router:external           <span class="p">|</span> Internal                             <span class="p">|</span>
+<span class="p">|</span> segments                  <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> shared                    <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> status                    <span class="p">|</span> ACTIVE                               <span class="p">|</span>
+<span class="p">|</span> subnets                   <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> tags                      <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> updated_at                <span class="p">|</span> <span class="m">2020</span>-02-10T23:19:50Z                 <span class="p">|</span>
++---------------------------+--------------------------------------+
+</pre></div>
+</div>
+<p>La red creada usará algunos parámetros por defecto:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">provider:network_type</span></code>: <code class="docutils literal notranslate"><span class="pre">vxlan</span></code> - El tipo de red por defecto es VXLAN</li>
+<li><code class="docutils literal notranslate"><span class="pre">provider:physical_network</span></code>: <code class="docutils literal notranslate"><span class="pre">None</span></code> - La red virtual no se implementará sobre una red física</li>
+<li><code class="docutils literal notranslate"><span class="pre">router:external</span></code>: <code class="docutils literal notranslate"><span class="pre">Internal</span></code> - Configurar esta red como interna</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li>Crear una subred asociada a la red creada:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack subnet create subnet1 --subnet-range <span class="m">10</span>.5.5.0/24 --dns-nameserver <span class="m">8</span>.8.8.8 --network intnet
+
++-------------------+--------------------------------------+
+<span class="p">|</span> Field             <span class="p">|</span> Value                                <span class="p">|</span>
++-------------------+--------------------------------------+
+<span class="p">|</span> allocation_pools  <span class="p">|</span> <span class="m">10</span>.5.5.2-10.5.5.254                  <span class="p">|</span>
+<span class="p">|</span> cidr              <span class="p">|</span> <span class="m">10</span>.5.5.0/24                          <span class="p">|</span>
+<span class="p">|</span> created_at        <span class="p">|</span> <span class="m">2020</span>-02-10T23:44:17Z                 <span class="p">|</span>
+<span class="p">|</span> description       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> dns_nameservers   <span class="p">|</span> <span class="m">8</span>.8.8.8                              <span class="p">|</span>
+<span class="p">|</span> enable_dhcp       <span class="p">|</span> True                                 <span class="p">|</span>
+<span class="p">|</span> gateway_ip        <span class="p">|</span> <span class="m">10</span>.5.5.1                             <span class="p">|</span>
+<span class="p">|</span> host_routes       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> id                <span class="p">|</span> 8168b012-2c3c-4114-8145-963dd6646793 <span class="p">|</span>
+<span class="p">|</span> ip_version        <span class="p">|</span> <span class="m">4</span>                                    <span class="p">|</span>
+<span class="p">|</span> ipv6_address_mode <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> ipv6_ra_mode      <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> name              <span class="p">|</span> subnet1                              <span class="p">|</span>
+<span class="p">|</span> network_id        <span class="p">|</span> 2cf9c274-8592-476b-bde5-41e930e01577 <span class="p">|</span>
+<span class="p">|</span> prefix_length     <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> project_id        <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64     <span class="p">|</span>
+<span class="p">|</span> revision_number   <span class="p">|</span> <span class="m">0</span>                                    <span class="p">|</span>
+<span class="p">|</span> segment_id        <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> service_types     <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> subnetpool_id     <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> tags              <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> updated_at        <span class="p">|</span> <span class="m">2020</span>-02-10T23:44:17Z                 <span class="p">|</span>
++-------------------+--------------------------------------+
+</pre></div>
+</div>
+<ul class="simple">
+<li>La subred creada tiene el ID de la red <code class="docutils literal notranslate"><span class="pre">intnet</span></code> asociada a ella.</li>
+<li>Cuenta con un pool de direcciones reservadas para asignar: <code class="docutils literal notranslate"><span class="pre">10.5.5.2-10.5.5.254</span></code></li>
+<li>Se estableció como servidor DNS la IP <code class="docutils literal notranslate"><span class="pre">8.8.8.8</span></code></li>
+</ul>
+<p>Link del comando: <a href="#id28"><span class="problematic" id="id29">`subnet - Openstack Docs`_</span></a></p>
+<p>Además se han configurado unas opciones en la subred por defecto:</p>
+<ul class="simple">
+<li>Se establece como su gateway IP a la primera dirección IP del rango CIDR: <code class="docutils literal notranslate"><span class="pre">10.5.5.1</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">dhcp</span></code> está habilitado, por tanto se creó un namespace DHCP con una interfaz <code class="docutils literal notranslate"><span class="pre">tap</span></code> a la que se le agregó una IP dentro de la subred (Generalmente la IP <code class="docutils literal notranslate"><span class="pre">.2</span></code>). Además, este namespace tiene su interfaz conectada al bridge <code class="docutils literal notranslate"><span class="pre">br-int</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ip netns
+
+qdhcp-2cf9c274-8592-476b-bde5-41e930e01577 <span class="o">(</span>id: <span class="m">0</span><span class="o">)</span>
+
+<span class="s1">&#39;#&#39;</span> ip netns <span class="nb">exec</span> qdhcp-2cf9c274-8592-476b-bde5-41e930e01577 ip addr
+
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+        valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+        valid_lft forever preferred_lft forever
+<span class="m">13</span>: tapa2009c32-11: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether fa:16:3e:51:a7:89 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.5.5.2/24 brd <span class="m">10</span>.5.5.255 scope global tapa2009c32-11
+        valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe51:a789/64 scope link
+        valid_lft forever preferred_lft forever
+
+<span class="s1">&#39;#&#39;</span> ovs-vsctl show
+
+496c7134-8b33-4aa9-b752-ab503fccd5d6
+    Manager <span class="s2">&quot;ptcp:6640:127.0.0.1&quot;</span>
+        is_connected: <span class="nb">true</span>
+    Bridge br-int
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port <span class="s2">&quot;tapa2009c32-11&quot;</span>
+            tag: <span class="m">3</span>
+            Interface <span class="s2">&quot;tapa2009c32-11&quot;</span>
+                type: internal
+        Port br-int
+            Interface br-int
+                type: internal
+        Port patch-tun
+            Interface patch-tun
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-int<span class="o">}</span>
+        Port int-br-ex
+            Interface int-br-ex
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>phy-br-ex<span class="o">}</span>
+    ...
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>Los namespaces proveen aislamiento de tráfico en Neutron. Para cada nuevo servidor DHCP, se crea un nuevo namespace. Así podemos diferenciar el tráfico entre distintos proyectos.</p>
+<p>Si se agregaran más subredes con <code class="docutils literal notranslate"><span class="pre">dhcp</span></code> habilitado dentro de la misma red, se agregaría una IP extra a la misma interfaz <code class="docutils literal notranslate"><span class="pre">tap</span></code> del mismo namespace DHCP.</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ip netns <span class="nb">exec</span> qdhcp-2cf9c274-8592-476b-bde5-41e930e01577 ip addr
+
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+        valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+        valid_lft forever preferred_lft forever
+<span class="m">12</span>: tapfbe9d2c4-80: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether fa:16:3e:05:dd:2e brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.5.7.2/24 brd <span class="m">10</span>.5.7.255 scope global tapfbe9d2c4-80
+        valid_lft forever preferred_lft forever
+    inet <span class="m">10</span>.5.8.2/24 brd <span class="m">10</span>.5.8.255 scope global tapfbe9d2c4-80
+        valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe05:dd2e/64 scope link
+        valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="crear-un-router">
+<h2><a class="toc-backref" href="#id10">Crear un router</a><a class="headerlink" href="#crear-un-router" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Crear un router sin interfaces conectadas a él:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack router create R1
+
++-------------------------+--------------------------------------+
+<span class="p">|</span> Field                   <span class="p">|</span> Value                                <span class="p">|</span>
++-------------------------+--------------------------------------+
+<span class="p">|</span> admin_state_up          <span class="p">|</span> UP                                   <span class="p">|</span>
+<span class="p">|</span> availability_zone_hints <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> availability_zones      <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> created_at              <span class="p">|</span> <span class="m">2020</span>-02-11T00:08:40Z                 <span class="p">|</span>
+<span class="p">|</span> description             <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> distributed             <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> external_gateway_info   <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> flavor_id               <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> ha                      <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> id                      <span class="p">|</span> d4cb763e-8578-484d-be6a-6d7da165e161 <span class="p">|</span>
+<span class="p">|</span> name                    <span class="p">|</span> R1                                   <span class="p">|</span>
+<span class="p">|</span> project_id              <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64     <span class="p">|</span>
+<span class="p">|</span> revision_number         <span class="p">|</span> <span class="m">1</span>                                    <span class="p">|</span>
+<span class="p">|</span> routes                  <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> status                  <span class="p">|</span> ACTIVE                               <span class="p">|</span>
+<span class="p">|</span> tags                    <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> updated_at              <span class="p">|</span> <span class="m">2020</span>-02-11T00:08:40Z                 <span class="p">|</span>
++-------------------------+--------------------------------------+
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Conectar el router con una subred:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack router add subnet R1 subnet1
+
+<span class="s1">&#39;#&#39;</span> ip netns
+
+qrouter-d4cb763e-8578-484d-be6a-6d7da165e161 <span class="o">(</span>id: <span class="m">1</span><span class="o">)</span>
+qdhcp-2cf9c274-8592-476b-bde5-41e930e01577 <span class="o">(</span>id: <span class="m">0</span><span class="o">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Comprobar cambios de configuración:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ovs-vsctl show
+
+496c7134-8b33-4aa9-b752-ab503fccd5d6
+    Manager <span class="s2">&quot;ptcp:6640:127.0.0.1&quot;</span>
+        is_connected: <span class="nb">true</span>
+    Bridge br-int
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port <span class="s2">&quot;tapa2009c32-11&quot;</span>
+            tag: <span class="m">3</span>
+            Interface <span class="s2">&quot;tapa2009c32-11&quot;</span>
+                type: internal
+        Port br-int
+            Interface br-int
+                type: internal
+        Port patch-tun
+            Interface patch-tun
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-int<span class="o">}</span>
+<span class="hll">        Port <span class="s2">&quot;qr-4c7615a5-dd&quot;</span>
+</span><span class="hll">            tag: <span class="m">3</span>
+</span><span class="hll">            Interface <span class="s2">&quot;qr-4c7615a5-dd&quot;</span>
+</span><span class="hll">                type: internal
+</span>        Port int-br-ex
+            Interface int-br-ex
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>phy-br-ex<span class="o">}</span>
+
+
+<span class="s1">&#39;#&#39;</span> openstack router show R1
+
++-------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+<span class="p">|</span> Field                   <span class="p">|</span> Value                                                                                                                                <span class="p">|</span>
++-------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+<span class="p">|</span> admin_state_up          <span class="p">|</span> UP                                                                                                                                   <span class="p">|</span>
+<span class="p">|</span> availability_zone_hints <span class="p">|</span>                                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> availability_zones      <span class="p">|</span> nova                                                                                                                                 <span class="p">|</span>
+<span class="p">|</span> created_at              <span class="p">|</span> <span class="m">2020</span>-02-11T00:08:40Z                                                                                                                 <span class="p">|</span>
+<span class="p">|</span> description             <span class="p">|</span>                                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> distributed             <span class="p">|</span> False                                                                                                                                <span class="p">|</span>
+<span class="p">|</span> external_gateway_info   <span class="p">|</span> None                                                                                                                                 <span class="p">|</span>
+<span class="p">|</span> flavor_id               <span class="p">|</span> None                                                                                                                                 <span class="p">|</span>
+<span class="p">|</span> ha                      <span class="p">|</span> False                                                                                                                                <span class="p">|</span>
+<span class="p">|</span> id                      <span class="p">|</span> d4cb763e-8578-484d-be6a-6d7da165e161                                                                                                 <span class="p">|</span>
+<span class="p">|</span> interfaces_info         <span class="p">|</span> <span class="o">[{</span><span class="s2">&quot;subnet_id&quot;</span>: <span class="s2">&quot;8168b012-2c3c-4114-8145-963dd6646793&quot;</span>, <span class="s2">&quot;ip_address&quot;</span>: <span class="s2">&quot;10.5.5.1&quot;</span>, <span class="s2">&quot;port_id&quot;</span>: <span class="s2">&quot;4c7615a5-dd19-43d8-833f-37e3505b8175&quot;</span><span class="o">}]</span> <span class="p">|</span>
+<span class="p">|</span> name                    <span class="p">|</span> R1                                                                                                                                   <span class="p">|</span>
+<span class="p">|</span> project_id              <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64                                                                                                     <span class="p">|</span>
+<span class="p">|</span> revision_number         <span class="p">|</span> <span class="m">2</span>                                                                                                                                    <span class="p">|</span>
+<span class="p">|</span> routes                  <span class="p">|</span>                                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> status                  <span class="p">|</span> ACTIVE                                                                                                                               <span class="p">|</span>
+<span class="p">|</span> tags                    <span class="p">|</span>                                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> updated_at              <span class="p">|</span> <span class="m">2020</span>-02-11T00:10:29Z                                                                                                                 <span class="p">|</span>
++-------------------------+--------------------------------------------------------------------------------------------------------------------------------------+
+
+<span class="s1">&#39;#&#39;</span> ip netns <span class="nb">exec</span> qrouter-d4cb763e-8578-484d-be6a-6d7da165e161 ip addr
+
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+        valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+        valid_lft forever preferred_lft forever
+<span class="m">14</span>: qr-4c7615a5-dd: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether fa:16:3e:80:07:21 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.5.5.1/24 brd <span class="m">10</span>.5.5.255 scope global qr-4c7615a5-dd
+        valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe80:721/64 scope link
+        valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Luego de conectar el router a la subred interna, se ha creado una interfaz en el router con una IP dentro de la subred conectada. Además, el OVS bridge <code class="docutils literal notranslate"><span class="pre">br-int</span></code> tiene un nuevo puerto con esta interfaz conectada.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Establecer el gateway para nuestro router:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Con Neutron (deprecated): neutron router-gateway-set R1 external_network</span>
+<span class="s1">&#39;#&#39;</span> openstack router <span class="nb">set</span> R1 --external-gateway external_network
+</pre></div>
+</div>
+<ul class="simple">
+<li>Comprobar cambios de configuración:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ovs-vsctl show
+
+496c7134-8b33-4aa9-b752-ab503fccd5d6
+    Manager <span class="s2">&quot;ptcp:6640:127.0.0.1&quot;</span>
+        is_connected: <span class="nb">true</span>
+    Bridge br-int
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port <span class="s2">&quot;tapa2009c32-11&quot;</span>
+            tag: <span class="m">3</span>
+            Interface <span class="s2">&quot;tapa2009c32-11&quot;</span>
+                type: internal
+        Port br-int
+            Interface br-int
+                type: internal
+<span class="hll">        Port <span class="s2">&quot;qg-e364542a-a5&quot;</span>
+</span><span class="hll">            tag: <span class="m">4</span>
+</span><span class="hll">            Interface <span class="s2">&quot;qg-e364542a-a5&quot;</span>
+</span><span class="hll">                type: internal
+</span>        Port patch-tun
+            Interface patch-tun
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-int<span class="o">}</span>
+        Port <span class="s2">&quot;qr-4c7615a5-dd&quot;</span>
+            tag: <span class="m">3</span>
+            Interface <span class="s2">&quot;qr-4c7615a5-dd&quot;</span>
+                type: internal
+        Port int-br-ex
+            Interface int-br-ex
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>phy-br-ex<span class="o">}</span>
+
+<span class="s1">&#39;#&#39;</span> openstack router show R1
+
++-------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<span class="p">|</span> Field                   <span class="p">|</span> Value                                                                                                                                                                                     <span class="p">|</span>
++-------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<span class="p">|</span> admin_state_up          <span class="p">|</span> UP                                                                                                                                                                                        <span class="p">|</span>
+<span class="p">|</span> availability_zone_hints <span class="p">|</span>                                                                                                                                                                                           <span class="p">|</span>
+<span class="p">|</span> availability_zones      <span class="p">|</span> nova                                                                                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> created_at              <span class="p">|</span> <span class="m">2020</span>-02-11T00:08:40Z                                                                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> description             <span class="p">|</span>                                                                                                                                                                                           <span class="p">|</span>
+<span class="p">|</span> distributed             <span class="p">|</span> False                                                                                                                                                                                     <span class="p">|</span>
+<span class="p">|</span> external_gateway_info   <span class="p">|</span> <span class="o">{</span><span class="s2">&quot;network_id&quot;</span>: <span class="s2">&quot;f5dad5c1-bba9-41c5-844f-bd19a6a124aa&quot;</span>, <span class="s2">&quot;enable_snat&quot;</span>: true, <span class="s2">&quot;external_fixed_ips&quot;</span>: <span class="o">[{</span><span class="s2">&quot;subnet_id&quot;</span>: <span class="s2">&quot;a6ae14ab-2287-4d0d-b8eb-0f503792f32c&quot;</span>, <span class="s2">&quot;ip_address&quot;</span>: <span class="s2">&quot;192.168.1.151&quot;</span><span class="o">}]}</span> <span class="p">|</span>
+<span class="p">|</span> flavor_id               <span class="p">|</span> None                                                                                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> ha                      <span class="p">|</span> False                                                                                                                                                                                     <span class="p">|</span>
+<span class="p">|</span> id                      <span class="p">|</span> d4cb763e-8578-484d-be6a-6d7da165e161                                                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> interfaces_info         <span class="p">|</span> <span class="o">[{</span><span class="s2">&quot;subnet_id&quot;</span>: <span class="s2">&quot;8168b012-2c3c-4114-8145-963dd6646793&quot;</span>, <span class="s2">&quot;ip_address&quot;</span>: <span class="s2">&quot;10.5.5.1&quot;</span>, <span class="s2">&quot;port_id&quot;</span>: <span class="s2">&quot;4c7615a5-dd19-43d8-833f-37e3505b8175&quot;</span><span class="o">}]</span>                                                      <span class="p">|</span>
+<span class="p">|</span> name                    <span class="p">|</span> R1                                                                                                                                                                                        <span class="p">|</span>
+<span class="p">|</span> project_id              <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64                                                                                                                                                          <span class="p">|</span>
+<span class="p">|</span> revision_number         <span class="p">|</span> <span class="m">4</span>                                                                                                                                                                                         <span class="p">|</span>
+<span class="p">|</span> routes                  <span class="p">|</span>                                                                                                                                                                                           <span class="p">|</span>
+<span class="p">|</span> status                  <span class="p">|</span> ACTIVE                                                                                                                                                                                    <span class="p">|</span>
+<span class="p">|</span> tags                    <span class="p">|</span>                                                                                                                                                                                           <span class="p">|</span>
+<span class="p">|</span> updated_at              <span class="p">|</span> <span class="m">2020</span>-02-11T00:53:20Z                                                                                                                                                                      <span class="p">|</span>
++-------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+<span class="s1">&#39;#&#39;</span> ip netns <span class="nb">exec</span> qrouter-d4cb763e-8578-484d-be6a-6d7da165e161 ip addr
+
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+    valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+    valid_lft forever preferred_lft forever
+<span class="m">14</span>: qr-4c7615a5-dd: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether fa:16:3e:80:07:21 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.5.5.1/24 brd <span class="m">10</span>.5.5.255 scope global qr-4c7615a5-dd
+    valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe80:721/64 scope link
+    valid_lft forever preferred_lft forever
+<span class="m">15</span>: qg-e364542a-a5: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether fa:16:3e:be:4c:9a brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">192</span>.168.1.151/24 brd <span class="m">192</span>.168.1.255 scope global qg-e364542a-a5
+    valid_lft forever preferred_lft forever
+    inet6 <span class="m">2800</span>:200:e840:2918:f816:3eff:febe:4c9a/64 scope global mngtmpaddr dynamic
+    valid_lft 3598sec preferred_lft 3598sec
+    inet6 fe80::f816:3eff:febe:4c9a/64 scope link
+    valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Luego de establecer el gateway para nuestro router se crea una nueva interfaz en el router y se le asigna una IP dentro del rango de IPs a la subred que tiene como gateway (red externa en este caso). Viendo la información del router vemos que se trata de un SNAT.</p>
+</div>
+</div>
+<div class="section" id="listar-las-redes-y-subredes-creadas">
+<h2><a class="toc-backref" href="#id11">Listar las redes y subredes creadas</a><a class="headerlink" href="#listar-las-redes-y-subredes-creadas" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Podemos ver que contamos con una red interna y otra externa:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack network list
+
++--------------------------------------+------------------+--------------------------------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name             <span class="p">|</span> Subnets                              <span class="p">|</span>
++--------------------------------------+------------------+--------------------------------------+
+<span class="p">|</span> 2cf9c274-8592-476b-bde5-41e930e01577 <span class="p">|</span> intnet           <span class="p">|</span> 8168b012-2c3c-4114-8145-963dd6646793 <span class="p">|</span>
+<span class="p">|</span> f5dad5c1-bba9-41c5-844f-bd19a6a124aa <span class="p">|</span> external_network <span class="p">|</span> a6ae14ab-2287-4d0d-b8eb-0f503792f32c <span class="p">|</span>
++--------------------------------------+------------------+--------------------------------------+
+</pre></div>
+</div>
+<ul class="simple">
+<li>Para cada red creada se le ha asignado una subred:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack subnet list
+
++--------------------------------------+---------------+--------------------------------------+----------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name          <span class="p">|</span> Network                              <span class="p">|</span> Subnet         <span class="p">|</span>
++--------------------------------------+---------------+--------------------------------------+----------------+
+<span class="p">|</span> 8168b012-2c3c-4114-8145-963dd6646793 <span class="p">|</span> subnet1       <span class="p">|</span> 2cf9c274-8592-476b-bde5-41e930e01577 <span class="p">|</span> <span class="m">10</span>.5.5.0/24    <span class="p">|</span>
+<span class="p">|</span> a6ae14ab-2287-4d0d-b8eb-0f503792f32c <span class="p">|</span> public_subnet <span class="p">|</span> f5dad5c1-bba9-41c5-844f-bd19a6a124aa <span class="p">|</span> <span class="m">192</span>.168.1.0/24 <span class="p">|</span>
++--------------------------------------+---------------+--------------------------------------+----------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="editar-el-security-group-de-un-proyecto">
+<h2><a class="toc-backref" href="#id12">Editar el security group de un proyecto</a><a class="headerlink" href="#editar-el-security-group-de-un-proyecto" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Obtener el ID del security group de un proyecto:</li>
+</ol>
+<ul class="simple">
+<li>Listar proyectos:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack project list
+
++----------------------------------+-------------+
+<span class="p">|</span> ID                               <span class="p">|</span> Name        <span class="p">|</span>
++----------------------------------+-------------+
+<span class="p">|</span> 0c2bc29526f4465c95b8eaefcfae7b7c <span class="p">|</span> admin       <span class="p">|</span>
+<span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span> testproject <span class="p">|</span>
+<span class="p">|</span> ed14e8f780b84664accc6aa2d6673624 <span class="p">|</span> services    <span class="p">|</span>
++----------------------------------+-------------+
+</pre></div>
+</div>
+<ul class="simple">
+<li>Ver el ID del security group según el ID del proyecto:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack security group list
+
++--------------------------------------+---------+------------------------+----------------------------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name    <span class="p">|</span> Description            <span class="p">|</span> Project                          <span class="p">|</span>
++--------------------------------------+---------+------------------------+----------------------------------+
+<span class="p">|</span> 2bc3934c-debf-4477-917c-9f01e23e366e <span class="p">|</span> default <span class="p">|</span> Default security group <span class="p">|</span>                                  <span class="p">|</span>
+<span class="p">|</span> 3a9e73cd-0608-49bf-b295-94b987a920ec <span class="p">|</span> default <span class="p">|</span> Default security group <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span>
+<span class="p">|</span> 7e145dac-5186-4b0c-afad-a6766d3818a7 <span class="p">|</span> default <span class="p">|</span> Default security group <span class="p">|</span> 0c2bc29526f4465c95b8eaefcfae7b7c <span class="p">|</span>
++--------------------------------------+---------+------------------------+----------------------------------+
+</pre></div>
+</div>
+<p>Relacionando el ID del proyecto <code class="docutils literal notranslate"><span class="pre">testproject</span></code> vemos que el ID del security group relacionado es <code class="docutils literal notranslate"><span class="pre">3a9e73cd-0608-49bf-b295-94b987a920ec</span></code></p>
+<ol class="arabic simple" start="2">
+<li>Añadir una regla al security group que permita el tráfico ICMP y SSH hacia las instancias del proyecto:</li>
+</ol>
+<ul class="simple">
+<li>Regla para ICMP: permite todo el tráfico entrante ICMP a la instancia desde cualquier IP:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack security group rule create --remote-ip <span class="m">0</span>.0.0.0/0 --protocol icmp --ingress 3a9e73cd-0608-49bf-b295-94b987a920ec
+
++-------------------+--------------------------------------+
+<span class="p">|</span> Field             <span class="p">|</span> Value                                <span class="p">|</span>
++-------------------+--------------------------------------+
+<span class="p">|</span> created_at        <span class="p">|</span> <span class="m">2020</span>-02-11T01:46:21Z                 <span class="p">|</span>
+<span class="p">|</span> description       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> direction         <span class="p">|</span> ingress                              <span class="p">|</span>
+<span class="p">|</span> ether_type        <span class="p">|</span> IPv4                                 <span class="p">|</span>
+<span class="p">|</span> id                <span class="p">|</span> c0eb2ead-fad7-4400-8958-dcf6d43698c7 <span class="p">|</span>
+<span class="p">|</span> name              <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> port_range_max    <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> port_range_min    <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> project_id        <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64     <span class="p">|</span>
+<span class="p">|</span> protocol          <span class="p">|</span> icmp                                 <span class="p">|</span>
+<span class="p">|</span> remote_group_id   <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> remote_ip_prefix  <span class="p">|</span> <span class="m">0</span>.0.0.0/0                            <span class="p">|</span>
+<span class="p">|</span> revision_number   <span class="p">|</span> <span class="m">0</span>                                    <span class="p">|</span>
+<span class="p">|</span> security_group_id <span class="p">|</span> 3a9e73cd-0608-49bf-b295-94b987a920ec <span class="p">|</span>
+<span class="p">|</span> updated_at        <span class="p">|</span> <span class="m">2020</span>-02-11T01:46:21Z                 <span class="p">|</span>
++-------------------+--------------------------------------+
+</pre></div>
+</div>
+<ul class="simple">
+<li>Regla para SSH: permite todo el tráfico entrante SSH (puerto 22, TCP) a la instancia desde cualquier IP:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack security group rule create --remote-ip <span class="m">0</span>.0.0.0/0 --dst-port <span class="m">22</span> --protocol tcp --ingress 3a9e73cd-0608-49bf-b295-94b987a920ec
+
++-------------------+--------------------------------------+
+<span class="p">|</span> Field             <span class="p">|</span> Value                                <span class="p">|</span>
++-------------------+--------------------------------------+
+<span class="p">|</span> created_at        <span class="p">|</span> <span class="m">2020</span>-02-11T01:46:40Z                 <span class="p">|</span>
+<span class="p">|</span> description       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> direction         <span class="p">|</span> ingress                              <span class="p">|</span>
+<span class="p">|</span> ether_type        <span class="p">|</span> IPv4                                 <span class="p">|</span>
+<span class="p">|</span> id                <span class="p">|</span> 6aaffa9a-932b-432f-aa4e-bacb646fecb3 <span class="p">|</span>
+<span class="p">|</span> name              <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> port_range_max    <span class="p">|</span> <span class="m">22</span>                                   <span class="p">|</span>
+<span class="p">|</span> port_range_min    <span class="p">|</span> <span class="m">22</span>                                   <span class="p">|</span>
+<span class="p">|</span> project_id        <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64     <span class="p">|</span>
+<span class="p">|</span> protocol          <span class="p">|</span> tcp                                  <span class="p">|</span>
+<span class="p">|</span> remote_group_id   <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> remote_ip_prefix  <span class="p">|</span> <span class="m">0</span>.0.0.0/0                            <span class="p">|</span>
+<span class="p">|</span> revision_number   <span class="p">|</span> <span class="m">0</span>                                    <span class="p">|</span>
+<span class="p">|</span> security_group_id <span class="p">|</span> 3a9e73cd-0608-49bf-b295-94b987a920ec <span class="p">|</span>
+<span class="p">|</span> updated_at        <span class="p">|</span> <span class="m">2020</span>-02-11T01:46:40Z                 <span class="p">|</span>
++-------------------+--------------------------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="crear-una-instancia-1">
+<h2><a class="toc-backref" href="#id13">Crear una instancia (1)</a><a class="headerlink" href="#crear-una-instancia-1" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Crear una instancia seleccionando la imagen, el flavor, la red a la cual deseemos que se conecte nuestra VM y el nombre de la instancia:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack server create --image cirros --flavor <span class="m">10</span> --nic net-id<span class="o">=</span>2cf9c274-8592-476b-bde5-41e930e01577 inst1
+
++-------------------------------------+-----------------------------------------------+
+<span class="p">|</span> Field                               <span class="p">|</span> Value                                         <span class="p">|</span>
++-------------------------------------+-----------------------------------------------+
+<span class="p">|</span> OS-DCF:diskConfig                   <span class="p">|</span> MANUAL                                        <span class="p">|</span>
+<span class="p">|</span> OS-EXT-AZ:availability_zone         <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:host                <span class="p">|</span> None                                          <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:hypervisor_hostname <span class="p">|</span> None                                          <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:instance_name       <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:power_state              <span class="p">|</span> NOSTATE                                       <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:task_state               <span class="p">|</span> scheduling                                    <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:vm_state                 <span class="p">|</span> building                                      <span class="p">|</span>
+<span class="p">|</span> OS-SRV-USG:launched_at              <span class="p">|</span> None                                          <span class="p">|</span>
+<span class="p">|</span> OS-SRV-USG:terminated_at            <span class="p">|</span> None                                          <span class="p">|</span>
+<span class="p">|</span> accessIPv4                          <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> accessIPv6                          <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> addresses                           <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> adminPass                           <span class="p">|</span> S43XAdqjgaYV                                  <span class="p">|</span>
+<span class="p">|</span> config_drive                        <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> created                             <span class="p">|</span> <span class="m">2020</span>-02-11T02:53:57Z                          <span class="p">|</span>
+<span class="p">|</span> flavor                              <span class="p">|</span> m1.tiniest <span class="o">(</span><span class="m">10</span><span class="o">)</span>                               <span class="p">|</span>
+<span class="p">|</span> hostId                              <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> id                                  <span class="p">|</span> 1265b4c2-d15f-4279-9148-24454ee294ef          <span class="p">|</span>
+<span class="p">|</span> image                               <span class="p">|</span> cirros <span class="o">(</span>56dd3671-de42-40db-9637-7c5bef599d11<span class="o">)</span> <span class="p">|</span>
+<span class="p">|</span> key_name                            <span class="p">|</span> None                                          <span class="p">|</span>
+<span class="p">|</span> name                                <span class="p">|</span> inst1                                         <span class="p">|</span>
+<span class="p">|</span> progress                            <span class="p">|</span> <span class="m">0</span>                                             <span class="p">|</span>
+<span class="p">|</span> project_id                          <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64              <span class="p">|</span>
+<span class="p">|</span> properties                          <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> security_groups                     <span class="p">|</span> <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;default&#39;</span>                                <span class="p">|</span>
+<span class="p">|</span> status                              <span class="p">|</span> BUILD                                         <span class="p">|</span>
+<span class="p">|</span> updated                             <span class="p">|</span> <span class="m">2020</span>-02-11T02:53:57Z                          <span class="p">|</span>
+<span class="p">|</span> user_id                             <span class="p">|</span> 6643474fffb548b4bd4fb3d6a09d9ecd              <span class="p">|</span>
+<span class="p">|</span> volumes_attached                    <span class="p">|</span>                                               <span class="p">|</span>
++-------------------------------------+-----------------------------------------------+
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Despues de un momento, veremos que el estado de la VM se encuentra en activo y tiene asignada una dirección IP:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack server show inst1
+
++-------------------------------------+----------------------------------------------------------+
+<span class="p">|</span> Field                               <span class="p">|</span> Value                                                    <span class="p">|</span>
++-------------------------------------+----------------------------------------------------------+
+<span class="p">|</span> OS-DCF:diskConfig                   <span class="p">|</span> MANUAL                                                   <span class="p">|</span>
+<span class="p">|</span> OS-EXT-AZ:availability_zone         <span class="p">|</span> nova                                                     <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:host                <span class="p">|</span> controllernode1.localdomain                              <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:hypervisor_hostname <span class="p">|</span> controllernode1.localdomain                              <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:instance_name       <span class="p">|</span> instance-00000002                                        <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:power_state              <span class="p">|</span> Running                                                  <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:task_state               <span class="p">|</span> None                                                     <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:vm_state                 <span class="p">|</span> active                                                   <span class="p">|</span>
+<span class="p">|</span> OS-SRV-USG:launched_at              <span class="p">|</span> <span class="m">2020</span>-02-11T02:54:03.000000                               <span class="p">|</span>
+<span class="p">|</span> OS-SRV-USG:terminated_at            <span class="p">|</span> None                                                     <span class="p">|</span>
+<span class="p">|</span> accessIPv4                          <span class="p">|</span>                                                          <span class="p">|</span>
+<span class="p">|</span> accessIPv6                          <span class="p">|</span>                                                          <span class="p">|</span>
+<span class="p">|</span> addresses                           <span class="p">|</span> <span class="nv">intnet</span><span class="o">=</span><span class="m">10</span>.5.5.3                                          <span class="p">|</span>
+<span class="p">|</span> config_drive                        <span class="p">|</span>                                                          <span class="p">|</span>
+<span class="p">|</span> created                             <span class="p">|</span> <span class="m">2020</span>-02-11T02:53:57Z                                     <span class="p">|</span>
+<span class="p">|</span> flavor                              <span class="p">|</span> m1.tiniest <span class="o">(</span><span class="m">10</span><span class="o">)</span>                                          <span class="p">|</span>
+<span class="p">|</span> hostId                              <span class="p">|</span> e122795a13958abb7b13d1f480d04f15b58d09d04ae475133c0005a2 <span class="p">|</span>
+<span class="p">|</span> id                                  <span class="p">|</span> 1265b4c2-d15f-4279-9148-24454ee294ef                     <span class="p">|</span>
+<span class="p">|</span> image                               <span class="p">|</span> cirros <span class="o">(</span>56dd3671-de42-40db-9637-7c5bef599d11<span class="o">)</span>            <span class="p">|</span>
+<span class="p">|</span> key_name                            <span class="p">|</span> None                                                     <span class="p">|</span>
+<span class="p">|</span> name                                <span class="p">|</span> inst1                                                    <span class="p">|</span>
+<span class="p">|</span> progress                            <span class="p">|</span> <span class="m">0</span>                                                        <span class="p">|</span>
+<span class="p">|</span> project_id                          <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64                         <span class="p">|</span>
+<span class="p">|</span> properties                          <span class="p">|</span>                                                          <span class="p">|</span>
+<span class="p">|</span> security_groups                     <span class="p">|</span> <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;default&#39;</span>                                           <span class="p">|</span>
+<span class="p">|</span> status                              <span class="p">|</span> ACTIVE                                                   <span class="p">|</span>
+<span class="p">|</span> updated                             <span class="p">|</span> <span class="m">2020</span>-02-11T02:54:03Z                                     <span class="p">|</span>
+<span class="p">|</span> user_id                             <span class="p">|</span> 6643474fffb548b4bd4fb3d6a09d9ecd                         <span class="p">|</span>
+<span class="p">|</span> volumes_attached                    <span class="p">|</span>                                                          <span class="p">|</span>
++-------------------------------------+----------------------------------------------------------+
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Podemos conectarnos a la nueva instancia creada por SSH:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ip netns <span class="nb">exec</span> qrouter-d4cb763e-8578-484d-be6a-6d7da165e161 ssh cirros@10.5.5.3
+
+The authenticity of host <span class="s1">&#39;10.5.5.3 (10.5.5.3)&#39;</span> can<span class="s1">&#39;t be established.</span>
+<span class="s1">ECDSA key fingerprint is SHA256:NcjHkAHTVvp9GRDizktzGg5mlQJnjyCXA7ohVsVV9yM.</span>
+<span class="s1">ECDSA key fingerprint is MD5:2c:4f:d8:42:93:d3:fa:fe:16:1c:c8:fa:0c:ad:60:12.</span>
+<span class="s1">Are you sure you want to continue connecting (yes/no)? yes</span>
+<span class="s1">Warning: Permanently added &#39;</span><span class="m">10</span>.5.5.3<span class="s1">&#39; (ECDSA) to the list of known hosts.</span>
+<span class="s1">cirros@10.5.5.3&#39;</span>s password:
+
+$ whoami
+cirros
+
+$ ip addr
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue qlen <span class="m">1</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+<span class="m">2</span>: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc pfifo_fast qlen <span class="m">1000</span>
+    link/ether fa:16:3e:07:1d:bb brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.5.5.3/24 brd <span class="m">10</span>.5.5.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe07:1dbb/64 scope link
+       valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+</div>
+<div class="section" id="asignar-una-floating-ip-a-una-instancia">
+<h2><a class="toc-backref" href="#id14">Asignar una Floating IP a una instancia</a><a class="headerlink" href="#asignar-una-floating-ip-a-una-instancia" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Dentro de nuestra red y subred pública, crearemos una Floating IP para poder asignársela a la instancia:</p>
+<ol class="arabic simple">
+<li>Listar IDs de Redes y Subredes:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack network list
+
++--------------------------------------+------------------+--------------------------------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name             <span class="p">|</span> Subnets                              <span class="p">|</span>
++--------------------------------------+------------------+--------------------------------------+
+<span class="p">|</span> 2cf9c274-8592-476b-bde5-41e930e01577 <span class="p">|</span> intnet           <span class="p">|</span> 8168b012-2c3c-4114-8145-963dd6646793 <span class="p">|</span>
+<span class="p">|</span> f5dad5c1-bba9-41c5-844f-bd19a6a124aa <span class="p">|</span> external_network <span class="p">|</span> a6ae14ab-2287-4d0d-b8eb-0f503792f32c <span class="p">|</span>
++--------------------------------------+------------------+--------------------------------------+
+
+<span class="s1">&#39;#&#39;</span> openstack subnet list
+
++--------------------------------------+---------------+--------------------------------------+----------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name          <span class="p">|</span> Network                              <span class="p">|</span> Subnet         <span class="p">|</span>
++--------------------------------------+---------------+--------------------------------------+----------------+
+<span class="p">|</span> 8168b012-2c3c-4114-8145-963dd6646793 <span class="p">|</span> subnet1       <span class="p">|</span> 2cf9c274-8592-476b-bde5-41e930e01577 <span class="p">|</span> <span class="m">10</span>.5.5.0/24    <span class="p">|</span>
+<span class="p">|</span> a6ae14ab-2287-4d0d-b8eb-0f503792f32c <span class="p">|</span> public_subnet <span class="p">|</span> f5dad5c1-bba9-41c5-844f-bd19a6a124aa <span class="p">|</span> <span class="m">192</span>.168.1.0/24 <span class="p">|</span>
++--------------------------------------+---------------+--------------------------------------+----------------+
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Reservar una IP flotante dentro de la subred pública seleccionada:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack floating ip create --subnet a6ae14ab-2287-4d0d-b8eb-0f503792f32c f5dad5c1-bba9-41c5-844f-bd19a6a124aa
+
++---------------------+--------------------------------------+
+<span class="p">|</span> Field               <span class="p">|</span> Value                                <span class="p">|</span>
++---------------------+--------------------------------------+
+<span class="p">|</span> created_at          <span class="p">|</span> <span class="m">2020</span>-02-11T03:28:04Z                 <span class="p">|</span>
+<span class="p">|</span> description         <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> fixed_ip_address    <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> floating_ip_address <span class="p">|</span> <span class="m">192</span>.168.1.152                        <span class="p">|</span>
+<span class="p">|</span> floating_network_id <span class="p">|</span> f5dad5c1-bba9-41c5-844f-bd19a6a124aa <span class="p">|</span>
+<span class="p">|</span> id                  <span class="p">|</span> 3ef31d8b-4918-473e-9696-f3820230d393 <span class="p">|</span>
+<span class="p">|</span> name                <span class="p">|</span> <span class="m">192</span>.168.1.152                        <span class="p">|</span>
+<span class="p">|</span> port_id             <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> project_id          <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64     <span class="p">|</span>
+<span class="p">|</span> qos_policy_id       <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> revision_number     <span class="p">|</span> <span class="m">0</span>                                    <span class="p">|</span>
+<span class="p">|</span> router_id           <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> status              <span class="p">|</span> DOWN                                 <span class="p">|</span>
+<span class="p">|</span> subnet_id           <span class="p">|</span> a6ae14ab-2287-4d0d-b8eb-0f503792f32c <span class="p">|</span>
+<span class="p">|</span> updated_at          <span class="p">|</span> <span class="m">2020</span>-02-11T03:28:04Z                 <span class="p">|</span>
++---------------------+--------------------------------------+
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Se ha reservado la IP flotante <code class="docutils literal notranslate"><span class="pre">192.168.1.152</span></code>, pues la subred <code class="docutils literal notranslate"><span class="pre">public_subnet</span></code> tiene reservado el pool de asignación <code class="docutils literal notranslate"><span class="pre">192.168.1.150-192.168.1.200</span></code>.</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack ip availability list
+
++--------------------------------------+------------------+-----------+----------+
+<span class="p">|</span> Network ID                           <span class="p">|</span> Network Name     <span class="p">|</span> Total IPs <span class="p">|</span> Used IPs <span class="p">|</span>
++--------------------------------------+------------------+-----------+----------+
+<span class="p">|</span> f5dad5c1-bba9-41c5-844f-bd19a6a124aa <span class="p">|</span> external_network <span class="p">|</span>        <span class="m">51</span> <span class="p">|</span>        <span class="m">2</span> <span class="p">|</span>
+<span class="p">|</span> 2cf9c274-8592-476b-bde5-41e930e01577 <span class="p">|</span> intnet           <span class="p">|</span>       <span class="m">253</span> <span class="p">|</span>        <span class="m">3</span> <span class="p">|</span>
++--------------------------------------+------------------+-----------+----------+
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Asignar la Floating IP a la instancia:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack server add floating ip inst1 <span class="m">192</span>.168.1.152
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Podemos probar conectividad a esta instancia desde cualquier máquina de nuestra red física local:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ping <span class="m">192</span>.168.1.152
+PING <span class="m">192</span>.168.1.152 <span class="o">(</span><span class="m">192</span>.168.1.152<span class="o">)</span> <span class="m">56</span><span class="o">(</span><span class="m">84</span><span class="o">)</span> bytes of data.
+<span class="m">64</span> bytes from <span class="m">192</span>.168.1.152: <span class="nv">icmp_seq</span><span class="o">=</span><span class="m">1</span> <span class="nv">ttl</span><span class="o">=</span><span class="m">63</span> <span class="nv">time</span><span class="o">=</span><span class="m">48</span>.0 ms
+^C
+--- <span class="m">192</span>.168.1.152 ping statistics ---
+<span class="m">1</span> packets transmitted, <span class="m">1</span> received, <span class="m">0</span>% packet loss, <span class="nb">time</span> 0ms
+rtt min/avg/max/mdev <span class="o">=</span> <span class="m">48</span>.024/48.024/48.024/0.000 ms
+
+$ ssh cirros@192.168.1.152
+The authenticity of host <span class="s1">&#39;192.168.1.152 (192.168.1.152)&#39;</span> can<span class="s1">&#39;t be established.</span>
+<span class="s1">ECDSA key fingerprint is SHA256:NcjHkAHTVvp9GRDizktzGg5mlQJnjyCXA7ohVsVV9yM.</span>
+<span class="s1">Are you sure you want to continue connecting (yes/no)? yes</span>
+<span class="s1">Warning: Permanently added &#39;</span><span class="m">192</span>.168.1.152<span class="s1">&#39; (ECDSA) to the list of known hosts.</span>
+<span class="s1">cirros@192.168.1.152&#39;</span>s password:
+
+$ whoami
+cirros
+
+$ ip addr
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue qlen <span class="m">1</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+<span class="m">2</span>: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc pfifo_fast qlen <span class="m">1000</span>
+    link/ether fa:16:3e:07:1d:bb brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.5.5.3/24 brd <span class="m">10</span>.5.5.255 scope global eth0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fe07:1dbb/64 scope link
+       valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+</div>
+<div class="section" id="crear-un-key-pair">
+<h2><a class="toc-backref" href="#id15">Crear un key pair</a><a class="headerlink" href="#crear-un-key-pair" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Crear un nuevo key pair:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#create a keypair named mykeypair and copy to mykeypair.key file</span>
+<span class="s1">&#39;#&#39;</span> openstack keypair create mykeypair &gt;&gt; mykeypair.key
+</pre></div>
+</div>
+<p>Hemos creado un key pair llamado <code class="docutils literal notranslate"><span class="pre">mykeypair</span></code> y hemos guardado la llave en el archivo llamado <code class="docutils literal notranslate"><span class="pre">mykeypair.key</span></code>:</p>
+</div>
+<div class="section" id="crear-un-security-group">
+<h2><a class="toc-backref" href="#id16">Crear un security group</a><a class="headerlink" href="#crear-un-security-group" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Link: <a class="reference external" href="https://docs.openstack.org/ocata/user-guide/cli-nova-configure-access-security-for-instances.html">Configure access and security for instances - Openstack Docs</a></p>
+<ol class="arabic simple">
+<li>Crear un security group con un nombre y descripción específicos:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack security group create testsecgroup --description <span class="s2">&quot;Security Group Test&quot;</span>
+
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+<span class="p">|</span> Field           <span class="p">|</span> Value                                                                                                                                                 <span class="p">|</span>
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+<span class="p">|</span> created_at      <span class="p">|</span> <span class="m">2020</span>-02-11T04:29:20Z                                                                                                                                  <span class="p">|</span>
+<span class="p">|</span> description     <span class="p">|</span> Security Group Test                                                                                                                                   <span class="p">|</span>
+<span class="p">|</span> id              <span class="p">|</span> 6db48e49-c56d-450c-8692-faa0bad3c081                                                                                                                  <span class="p">|</span>
+<span class="p">|</span> name            <span class="p">|</span> testsecgroup                                                                                                                                          <span class="p">|</span>
+<span class="p">|</span> project_id      <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> revision_number <span class="p">|</span> <span class="m">2</span>                                                                                                                                                     <span class="p">|</span>
+<span class="p">|</span> rules           <span class="p">|</span> <span class="nv">created_at</span><span class="o">=</span><span class="s1">&#39;2020-02-11T04:29:20Z&#39;</span>, <span class="nv">direction</span><span class="o">=</span><span class="s1">&#39;egress&#39;</span>, <span class="nv">ethertype</span><span class="o">=</span><span class="s1">&#39;IPv6&#39;</span>, <span class="nv">id</span><span class="o">=</span><span class="s1">&#39;632c1a1f-a6ce-45d1-bf50-0dfc4018467e&#39;</span>, <span class="nv">updated_at</span><span class="o">=</span><span class="s1">&#39;2020-02-11T04:29:20Z&#39;</span> <span class="p">|</span>
+<span class="p">|</span>                 <span class="p">|</span> <span class="nv">created_at</span><span class="o">=</span><span class="s1">&#39;2020-02-11T04:29:20Z&#39;</span>, <span class="nv">direction</span><span class="o">=</span><span class="s1">&#39;egress&#39;</span>, <span class="nv">ethertype</span><span class="o">=</span><span class="s1">&#39;IPv4&#39;</span>, <span class="nv">id</span><span class="o">=</span><span class="s1">&#39;d663e37a-0a80-44ba-b557-ad7715afd0ff&#39;</span>, <span class="nv">updated_at</span><span class="o">=</span><span class="s1">&#39;2020-02-11T04:29:20Z&#39;</span> <span class="p">|</span>
+<span class="p">|</span> updated_at      <span class="p">|</span> <span class="m">2020</span>-02-11T04:29:20Z                                                                                                                                  <span class="p">|</span>
++-----------------+-------------------------------------------------------------------------------------------------------------------------------------------------------+
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Crear reglas para el nuevo security group:</li>
+</ol>
+<ul class="simple">
+<li>Permitir conexiones SSH remotas:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack security group rule create testsecgroup --protocol tcp --dst-port <span class="m">22</span>:22 --remote-ip <span class="m">0</span>.0.0.0/0
+
++-------------------+--------------------------------------+
+<span class="p">|</span> Field             <span class="p">|</span> Value                                <span class="p">|</span>
++-------------------+--------------------------------------+
+<span class="p">|</span> created_at        <span class="p">|</span> <span class="m">2020</span>-02-11T04:36:55Z                 <span class="p">|</span>
+<span class="p">|</span> description       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> direction         <span class="p">|</span> ingress                              <span class="p">|</span>
+<span class="p">|</span> ether_type        <span class="p">|</span> IPv4                                 <span class="p">|</span>
+<span class="p">|</span> id                <span class="p">|</span> fb4a6bb5-646d-4f02-a7cc-c01d460fb277 <span class="p">|</span>
+<span class="p">|</span> name              <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> port_range_max    <span class="p">|</span> <span class="m">22</span>                                   <span class="p">|</span>
+<span class="p">|</span> port_range_min    <span class="p">|</span> <span class="m">22</span>                                   <span class="p">|</span>
+<span class="p">|</span> project_id        <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64     <span class="p">|</span>
+<span class="p">|</span> protocol          <span class="p">|</span> tcp                                  <span class="p">|</span>
+<span class="p">|</span> remote_group_id   <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> remote_ip_prefix  <span class="p">|</span> <span class="m">0</span>.0.0.0/0                            <span class="p">|</span>
+<span class="p">|</span> revision_number   <span class="p">|</span> <span class="m">0</span>                                    <span class="p">|</span>
+<span class="p">|</span> security_group_id <span class="p">|</span> 6db48e49-c56d-450c-8692-faa0bad3c081 <span class="p">|</span>
+<span class="p">|</span> updated_at        <span class="p">|</span> <span class="m">2020</span>-02-11T04:36:55Z                 <span class="p">|</span>
++-------------------+--------------------------------------+
+</pre></div>
+</div>
+<ul class="simple">
+<li>Permitir tráfico ICMP entrante:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack security group rule create testsecgroup --protocol icmp
+
++-------------------+--------------------------------------+
+<span class="p">|</span> Field             <span class="p">|</span> Value                                <span class="p">|</span>
++-------------------+--------------------------------------+
+<span class="p">|</span> created_at        <span class="p">|</span> <span class="m">2020</span>-02-11T04:42:00Z                 <span class="p">|</span>
+<span class="p">|</span> description       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> direction         <span class="p">|</span> ingress                              <span class="p">|</span>
+<span class="p">|</span> ether_type        <span class="p">|</span> IPv4                                 <span class="p">|</span>
+<span class="p">|</span> id                <span class="p">|</span> c37a0ee4-7760-4e3f-9f24-d59076e6c1b8 <span class="p">|</span>
+<span class="p">|</span> name              <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> port_range_max    <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> port_range_min    <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> project_id        <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64     <span class="p">|</span>
+<span class="p">|</span> protocol          <span class="p">|</span> icmp                                 <span class="p">|</span>
+<span class="p">|</span> remote_group_id   <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> remote_ip_prefix  <span class="p">|</span> <span class="m">0</span>.0.0.0/0                            <span class="p">|</span>
+<span class="p">|</span> revision_number   <span class="p">|</span> <span class="m">0</span>                                    <span class="p">|</span>
+<span class="p">|</span> security_group_id <span class="p">|</span> 6db48e49-c56d-450c-8692-faa0bad3c081 <span class="p">|</span>
+<span class="p">|</span> updated_at        <span class="p">|</span> <span class="m">2020</span>-02-11T04:42:00Z                 <span class="p">|</span>
++-------------------+--------------------------------------+
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Ver detalles del security group y de las reglas dentro del grupo:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack security group list
+
++--------------------------------------+--------------+------------------------+----------------------------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name         <span class="p">|</span> Description            <span class="p">|</span> Project                          <span class="p">|</span>
++--------------------------------------+--------------+------------------------+----------------------------------+
+<span class="p">|</span> 2bc3934c-debf-4477-917c-9f01e23e366e <span class="p">|</span> default      <span class="p">|</span> Default security group <span class="p">|</span>                                  <span class="p">|</span>
+<span class="p">|</span> 3a9e73cd-0608-49bf-b295-94b987a920ec <span class="p">|</span> default      <span class="p">|</span> Default security group <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span>
+<span class="hll"><span class="p">|</span> 6db48e49-c56d-450c-8692-faa0bad3c081 <span class="p">|</span> testsecgroup <span class="p">|</span> Security Group Test    <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span>
+</span><span class="p">|</span> 7e145dac-5186-4b0c-afad-a6766d3818a7 <span class="p">|</span> default      <span class="p">|</span> Default security group <span class="p">|</span> 0c2bc29526f4465c95b8eaefcfae7b7c <span class="p">|</span>
+<span class="p">|</span> a2475e5d-a9dd-4ee1-a60f-2c2a15f1f299 <span class="p">|</span> default      <span class="p">|</span> Default security group <span class="p">|</span> ed14e8f780b84664accc6aa2d6673624 <span class="p">|</span>
++--------------------------------------+--------------+------------------------+----------------------------------+
+
+<span class="s1">&#39;#&#39;</span> openstack security group rule list testsecgroup
+
++--------------------------------------+-------------+-----------+------------+-----------------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> IP Protocol <span class="p">|</span> IP Range  <span class="p">|</span> Port Range <span class="p">|</span> Remote Security Group <span class="p">|</span>
++--------------------------------------+-------------+-----------+------------+-----------------------+
+<span class="p">|</span> 632c1a1f-a6ce-45d1-bf50-0dfc4018467e <span class="p">|</span> None        <span class="p">|</span> None      <span class="p">|</span>            <span class="p">|</span> None                  <span class="p">|</span>
+<span class="p">|</span> c37a0ee4-7760-4e3f-9f24-d59076e6c1b8 <span class="p">|</span> icmp        <span class="p">|</span> <span class="m">0</span>.0.0.0/0 <span class="p">|</span>            <span class="p">|</span> None                  <span class="p">|</span>
+<span class="p">|</span> d663e37a-0a80-44ba-b557-ad7715afd0ff <span class="p">|</span> None        <span class="p">|</span> None      <span class="p">|</span>            <span class="p">|</span> None                  <span class="p">|</span>
+<span class="hll"><span class="p">|</span> fb4a6bb5-646d-4f02-a7cc-c01d460fb277 <span class="p">|</span> tcp         <span class="p">|</span> <span class="m">0</span>.0.0.0/0 <span class="p">|</span> <span class="m">22</span>:22      <span class="p">|</span> None                  <span class="p">|</span>
+</span>+--------------------------------------+-------------+-----------+------------+-----------------------+
+
+<span class="s1">&#39;#&#39;</span> openstack security group rule show fb4a6bb5-646d-4f02-a7cc-c01d460fb277
+
++-------------------+--------------------------------------+
+<span class="p">|</span> Field             <span class="p">|</span> Value                                <span class="p">|</span>
++-------------------+--------------------------------------+
+<span class="p">|</span> created_at        <span class="p">|</span> <span class="m">2020</span>-02-11T04:36:55Z                 <span class="p">|</span>
+<span class="p">|</span> description       <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> direction         <span class="p">|</span> ingress                              <span class="p">|</span>
+<span class="p">|</span> ether_type        <span class="p">|</span> IPv4                                 <span class="p">|</span>
+<span class="p">|</span> id                <span class="p">|</span> fb4a6bb5-646d-4f02-a7cc-c01d460fb277 <span class="p">|</span>
+<span class="p">|</span> name              <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> port_range_max    <span class="p">|</span> <span class="m">22</span>                                   <span class="p">|</span>
+<span class="p">|</span> port_range_min    <span class="p">|</span> <span class="m">22</span>                                   <span class="p">|</span>
+<span class="p">|</span> project_id        <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64     <span class="p">|</span>
+<span class="p">|</span> protocol          <span class="p">|</span> tcp                                  <span class="p">|</span>
+<span class="p">|</span> remote_group_id   <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> remote_ip_prefix  <span class="p">|</span> <span class="m">0</span>.0.0.0/0                            <span class="p">|</span>
+<span class="p">|</span> revision_number   <span class="p">|</span> <span class="m">0</span>                                    <span class="p">|</span>
+<span class="p">|</span> security_group_id <span class="p">|</span> 6db48e49-c56d-450c-8692-faa0bad3c081 <span class="p">|</span>
+<span class="p">|</span> updated_at        <span class="p">|</span> <span class="m">2020</span>-02-11T04:36:55Z                 <span class="p">|</span>
++-------------------+--------------------------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="crear-una-instancia-2">
+<h2><a class="toc-backref" href="#id17">Crear una instancia (2)</a><a class="headerlink" href="#crear-una-instancia-2" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Link: <a class="reference external" href="https://docs.openstack.org/mitaka/install-guide-ubuntu/launch-instance-provider.html">Launch an instance on the provider network - Openstack Docs</a></p>
+<ol class="arabic simple">
+<li>Ahora crearemos una instancia especificando un security group y un keypair:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack server create --image cirros --flavor <span class="m">10</span> --key-name mykeypair --security-group testsecgroup --nic net-id<span class="o">=</span>2cf9c274-8592-476b-bde5-41e930e01577 inst2
+
++-------------------------------------+-----------------------------------------------+
+<span class="p">|</span> Field                               <span class="p">|</span> Value                                         <span class="p">|</span>
++-------------------------------------+-----------------------------------------------+
+<span class="p">|</span> OS-DCF:diskConfig                   <span class="p">|</span> MANUAL                                        <span class="p">|</span>
+<span class="p">|</span> OS-EXT-AZ:availability_zone         <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:host                <span class="p">|</span> None                                          <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:hypervisor_hostname <span class="p">|</span> None                                          <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:instance_name       <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:power_state              <span class="p">|</span> NOSTATE                                       <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:task_state               <span class="p">|</span> scheduling                                    <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:vm_state                 <span class="p">|</span> building                                      <span class="p">|</span>
+<span class="p">|</span> OS-SRV-USG:launched_at              <span class="p">|</span> None                                          <span class="p">|</span>
+<span class="p">|</span> OS-SRV-USG:terminated_at            <span class="p">|</span> None                                          <span class="p">|</span>
+<span class="p">|</span> accessIPv4                          <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> accessIPv6                          <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> addresses                           <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> adminPass                           <span class="p">|</span> q2rGS9Hbw7nF                                  <span class="p">|</span>
+<span class="p">|</span> config_drive                        <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> created                             <span class="p">|</span> <span class="m">2020</span>-02-11T04:58:15Z                          <span class="p">|</span>
+<span class="p">|</span> flavor                              <span class="p">|</span> m1.tiniest <span class="o">(</span><span class="m">10</span><span class="o">)</span>                               <span class="p">|</span>
+<span class="p">|</span> hostId                              <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> id                                  <span class="p">|</span> e597bba0-7440-49e3-b5ee-f972c2f640ab          <span class="p">|</span>
+<span class="p">|</span> image                               <span class="p">|</span> cirros <span class="o">(</span>56dd3671-de42-40db-9637-7c5bef599d11<span class="o">)</span> <span class="p">|</span>
+<span class="p">|</span> key_name                            <span class="p">|</span> mykeypair                                     <span class="p">|</span>
+<span class="p">|</span> name                                <span class="p">|</span> inst2                                         <span class="p">|</span>
+<span class="p">|</span> progress                            <span class="p">|</span> <span class="m">0</span>                                             <span class="p">|</span>
+<span class="p">|</span> project_id                          <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64              <span class="p">|</span>
+<span class="p">|</span> properties                          <span class="p">|</span>                                               <span class="p">|</span>
+<span class="p">|</span> security_groups                     <span class="p">|</span> <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;6db48e49-c56d-450c-8692-faa0bad3c081&#39;</span>   <span class="p">|</span>
+<span class="p">|</span> status                              <span class="p">|</span> BUILD                                         <span class="p">|</span>
+<span class="p">|</span> updated                             <span class="p">|</span> <span class="m">2020</span>-02-11T04:58:15Z                          <span class="p">|</span>
+<span class="p">|</span> user_id                             <span class="p">|</span> 6643474fffb548b4bd4fb3d6a09d9ecd              <span class="p">|</span>
+<span class="p">|</span> volumes_attached                    <span class="p">|</span>                                               <span class="p">|</span>
++-------------------------------------+-----------------------------------------------+
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p class="first">Ver detalles de la instancia creada una vez que está activa:</p>
+<blockquote>
+<div><p>“#” openstack server show inst2
++————————————-+———————————————————-+
+| Field                               | Value                                                    |
++————————————-+———————————————————-+
+| OS-DCF:diskConfig                   | MANUAL                                                   |
+| OS-EXT-AZ:availability_zone         | nova                                                     |
+| OS-EXT-SRV-ATTR:host                | controllernode1.localdomain                              |
+| OS-EXT-SRV-ATTR:hypervisor_hostname | controllernode1.localdomain                              |
+| OS-EXT-SRV-ATTR:instance_name       | instance-00000003                                        |
+| OS-EXT-STS:power_state              | Running                                                  |
+| OS-EXT-STS:task_state               | None                                                     |
+| OS-EXT-STS:vm_state                 | active                                                   |
+| OS-SRV-USG:launched_at              | 2020-02-11T04:58:21.000000                               |
+| OS-SRV-USG:terminated_at            | None                                                     |
+| accessIPv4                          |                                                          |
+| accessIPv6                          |                                                          |
+| addresses                           | intnet=10.5.5.4                                          |
+| config_drive                        |                                                          |
+| created                             | 2020-02-11T04:58:15Z                                     |
+| flavor                              | m1.tiniest (10)                                          |
+| hostId                              | e122795a13958abb7b13d1f480d04f15b58d09d04ae475133c0005a2 |
+| id                                  | e597bba0-7440-49e3-b5ee-f972c2f640ab                     |
+| image                               | cirros (56dd3671-de42-40db-9637-7c5bef599d11)            |
+| key_name                            | mykeypair                                                |
+| name                                | inst2                                                    |
+| progress                            | 0                                                        |
+| project_id                          | 99d8a6cd24734f2aa3fe70140fbdbd64                         |
+| properties                          |                                                          |
+| security_groups                     | name=”testsecgroup”                                      |
+| status                              | ACTIVE                                                   |
+| updated                             | 2020-02-11T04:58:21Z                                     |
+| user_id                             | 6643474fffb548b4bd4fb3d6a09d9ecd                         |
+| volumes_attached                    |                                                          |
++————————————-+———————————————————-+</p>
+</div></blockquote>
+</li>
+<li><p class="first">Asignar un IP flotante a la instancia creada:</p>
+</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack floating ip create --subnet a6ae14ab-2287-4d0d-b8eb-0f503792f32c f5dad5c1-bba9-41c5-844f-bd19a6a124aa
+
++---------------------+--------------------------------------+
+<span class="p">|</span> Field               <span class="p">|</span> Value                                <span class="p">|</span>
++---------------------+--------------------------------------+
+<span class="p">|</span> created_at          <span class="p">|</span> <span class="m">2020</span>-02-11T05:03:35Z                 <span class="p">|</span>
+<span class="p">|</span> description         <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> fixed_ip_address    <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> floating_ip_address <span class="p">|</span> <span class="m">192</span>.168.1.153                        <span class="p">|</span>
+<span class="p">|</span> floating_network_id <span class="p">|</span> f5dad5c1-bba9-41c5-844f-bd19a6a124aa <span class="p">|</span>
+<span class="p">|</span> id                  <span class="p">|</span> a4fc9dad-5e2a-4f56-ad0d-ae386b7238d1 <span class="p">|</span>
+<span class="p">|</span> name                <span class="p">|</span> <span class="m">192</span>.168.1.153                        <span class="p">|</span>
+<span class="p">|</span> port_id             <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> project_id          <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64     <span class="p">|</span>
+<span class="p">|</span> qos_policy_id       <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> revision_number     <span class="p">|</span> <span class="m">0</span>                                    <span class="p">|</span>
+<span class="p">|</span> router_id           <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> status              <span class="p">|</span> DOWN                                 <span class="p">|</span>
+<span class="p">|</span> subnet_id           <span class="p">|</span> a6ae14ab-2287-4d0d-b8eb-0f503792f32c <span class="p">|</span>
+<span class="p">|</span> updated_at          <span class="p">|</span> <span class="m">2020</span>-02-11T05:03:35Z                 <span class="p">|</span>
++---------------------+--------------------------------------+
+
+<span class="s1">&#39;#&#39;</span> openstack server add floating ip inst2 <span class="m">192</span>.168.1.153
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Conectarse a la instancia desde cualquier máquina dentro de la red local empleando la key pair:</li>
+</ol>
+<ul class="simple">
+<li>Primero debemos obtener el archivo con el contenido de la llave en la máquina que desea conectarse a la instancia. Por ejemplo, pasando por scp la llave desde el controller node a la máquina que se desea conectar:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> scp mykeypair.key gabriel@192.168.1.9:/home/gabriel/Downloads
+</pre></div>
+</div>
+<ul class="simple">
+<li>Una vez que tengamos la llave localmente, cambiar los permisos del archivo:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ chmod <span class="m">600</span> mykeypair.key
+</pre></div>
+</div>
+<ul class="simple">
+<li>Usar la llave para conectarnos a la instancia de forma <strong>passwordless</strong>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ssh -i mykeypair.key cirros@192.168.1.153
+
+$ whoami
+cirros
+
+$ ip addr
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue qlen <span class="m">1</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+    valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+    valid_lft forever preferred_lft forever
+<span class="m">2</span>: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc pfifo_fast qlen <span class="m">1000</span>
+    link/ether fa:16:3e:f5:21:35 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.5.5.4/24 brd <span class="m">10</span>.5.5.255 scope global eth0
+    valid_lft forever preferred_lft forever
+    inet6 fe80::f816:3eff:fef5:2135/64 scope link
+    valid_lft forever preferred_lft forever
+
+$ df -h
+Filesystem                Size      Used Available Use% Mounted on
+/dev                     <span class="m">51</span>.2M         <span class="m">0</span>     <span class="m">51</span>.2M   <span class="m">0</span>% /dev
+/dev/vda1               <span class="m">978</span>.9M     <span class="m">24</span>.0M    <span class="m">914</span>.1M   <span class="m">3</span>% /
+tmpfs                    <span class="m">55</span>.2M         <span class="m">0</span>     <span class="m">55</span>.2M   <span class="m">0</span>% /dev/shm
+tmpfs                    <span class="m">55</span>.2M     <span class="m">92</span>.0K     <span class="m">55</span>.1M   <span class="m">0</span>% /run
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>También podemos conectarnos a la instancia usando el navegador, ingresando la URL que aparece con el siguiente comando:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack console url show inst2
+
++-------+------------------------------------------------------------------------------------+
+<span class="p">|</span> Field <span class="p">|</span> Value                                                                              <span class="p">|</span>
++-------+------------------------------------------------------------------------------------+
+<span class="p">|</span> <span class="nb">type</span>  <span class="p">|</span> novnc                                                                              <span class="p">|</span>
+<span class="p">|</span> url   <span class="p">|</span> http://192.168.1.100:6080/vnc_auto.html?token<span class="o">=</span>957c0893-e5f1-409f-a0b8-d3a833a09863 <span class="p">|</span>
++-------+------------------------------------------------------------------------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="crear-snapshot-de-una-imagen">
+<h2><a class="toc-backref" href="#id18">Crear snapshot de una imagen</a><a class="headerlink" href="#crear-snapshot-de-una-imagen" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Link: <a class="reference external" href="https://docs.openstack.org/nova/rocky/admin/migrate-instance-with-snapshot.html">Use snapshots to migrate instances - Openstack Docs</a></p>
+<p>Crear un snapshot de una imagen definida:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack server image create --name snap1 inst2
+
++------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<span class="p">|</span> Field            <span class="p">|</span> Value                                                                                                                                                                                                                                                                      <span class="p">|</span>
++------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+<span class="p">|</span> checksum         <span class="p">|</span> None                                                                                                                                                                                                                                                                       <span class="p">|</span>
+<span class="p">|</span> container_format <span class="p">|</span> None                                                                                                                                                                                                                                                                       <span class="p">|</span>
+<span class="p">|</span> created_at       <span class="p">|</span> <span class="m">2020</span>-02-11T06:06:03Z                                                                                                                                                                                                                                                       <span class="p">|</span>
+<span class="p">|</span> disk_format      <span class="p">|</span> None                                                                                                                                                                                                                                                                       <span class="p">|</span>
+<span class="p">|</span> file             <span class="p">|</span> /v2/images/bc9fd276-2b21-44a0-aadc-fd971c2034aa/file                                                                                                                                                                                                                       <span class="p">|</span>
+<span class="p">|</span> id               <span class="p">|</span> bc9fd276-2b21-44a0-aadc-fd971c2034aa                                                                                                                                                                                                                                       <span class="p">|</span>
+<span class="p">|</span> min_disk         <span class="p">|</span> <span class="m">1</span>                                                                                                                                                                                                                                                                          <span class="p">|</span>
+<span class="p">|</span> min_ram          <span class="p">|</span> <span class="m">128</span>                                                                                                                                                                                                                                                                        <span class="p">|</span>
+<span class="p">|</span> name             <span class="p">|</span> snap1                                                                                                                                                                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> owner            <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64                                                                                                                                                                                                                                           <span class="p">|</span>
+<span class="p">|</span> properties       <span class="p">|</span> <span class="nv">base_image_ref</span><span class="o">=</span><span class="s1">&#39;56dd3671-de42-40db-9637-7c5bef599d11&#39;</span>, <span class="nv">boot_roles</span><span class="o">=</span><span class="s1">&#39;_member_,admin&#39;</span>, <span class="nv">image_type</span><span class="o">=</span><span class="s1">&#39;snapshot&#39;</span>, <span class="nv">instance_uuid</span><span class="o">=</span><span class="s1">&#39;e597bba0-7440-49e3-b5ee-f972c2f640ab&#39;</span>, <span class="nv">owner_project_name</span><span class="o">=</span><span class="s1">&#39;testproject&#39;</span>, <span class="nv">owner_user_name</span><span class="o">=</span><span class="s1">&#39;testuser1&#39;</span>, <span class="nv">user_id</span><span class="o">=</span><span class="s1">&#39;6643474fffb548b4bd4fb3d6a09d9ecd&#39;</span> <span class="p">|</span>
+<span class="p">|</span> protected        <span class="p">|</span> False                                                                                                                                                                                                                                                                      <span class="p">|</span>
+<span class="p">|</span> schema           <span class="p">|</span> /v2/schemas/image                                                                                                                                                                                                                                                          <span class="p">|</span>
+<span class="p">|</span> size             <span class="p">|</span> None                                                                                                                                                                                                                                                                       <span class="p">|</span>
+<span class="p">|</span> status           <span class="p">|</span> queued                                                                                                                                                                                                                                                                     <span class="p">|</span>
+<span class="p">|</span> tags             <span class="p">|</span>                                                                                                                                                                                                                                                                            <span class="p">|</span>
+<span class="p">|</span> updated_at       <span class="p">|</span> <span class="m">2020</span>-02-11T06:06:03Z                                                                                                                                                                                                                                                       <span class="p">|</span>
+<span class="p">|</span> virtual_size     <span class="p">|</span> None                                                                                                                                                                                                                                                                       <span class="p">|</span>
+<span class="p">|</span> visibility       <span class="p">|</span> private                                                                                                                                                                                                                                                                    <span class="p">|</span>
++------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+</pre></div>
+</div>
+<p>Podremos correr una nueva instancia desde este snapshot realizado. El snapshot creado es una imagen más del tipo <code class="docutils literal notranslate"><span class="pre">image_type='snapshot'</span></code> como se ve en la sección <code class="docutils literal notranslate"><span class="pre">properties</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack image list
++--------------------------------------+--------+--------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name   <span class="p">|</span> Status <span class="p">|</span>
++--------------------------------------+--------+--------+
+<span class="p">|</span> 56dd3671-de42-40db-9637-7c5bef599d11 <span class="p">|</span> cirros <span class="p">|</span> active <span class="p">|</span>
+<span class="p">|</span> bc9fd276-2b21-44a0-aadc-fd971c2034aa <span class="p">|</span> snap1  <span class="p">|</span> active <span class="p">|</span>
++--------------------------------------+--------+--------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="crear-un-volumen">
+<h2><a class="toc-backref" href="#id19">Crear un volumen</a><a class="headerlink" href="#crear-un-volumen" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Link: <a class="reference external" href="https://docs.openstack.org/ocata/install-guide-ubuntu/launch-instance-cinder.html">Block Storage - Openstack Docs</a></p>
+<p>Crear un volumen de 1 GB de tamaño llamado <code class="docutils literal notranslate"><span class="pre">vol1</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack volume create --size <span class="m">1</span> vol1
+
++---------------------+--------------------------------------+
+<span class="p">|</span> Field               <span class="p">|</span> Value                                <span class="p">|</span>
++---------------------+--------------------------------------+
+<span class="p">|</span> attachments         <span class="p">|</span> <span class="o">[]</span>                                   <span class="p">|</span>
+<span class="p">|</span> availability_zone   <span class="p">|</span> nova                                 <span class="p">|</span>
+<span class="p">|</span> bootable            <span class="p">|</span> <span class="nb">false</span>                                <span class="p">|</span>
+<span class="p">|</span> consistencygroup_id <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> created_at          <span class="p">|</span> <span class="m">2020</span>-02-11T06:39:16.000000           <span class="p">|</span>
+<span class="p">|</span> description         <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> encrypted           <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> id                  <span class="p">|</span> 325a4a42-d640-43d8-affe-8d5efacee6a4 <span class="p">|</span>
+<span class="p">|</span> migration_status    <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> multiattach         <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> name                <span class="p">|</span> vol1                                 <span class="p">|</span>
+<span class="p">|</span> properties          <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> replication_status  <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> size                <span class="p">|</span> <span class="m">1</span>                                    <span class="p">|</span>
+<span class="p">|</span> snapshot_id         <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> source_volid        <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> status              <span class="p">|</span> creating                             <span class="p">|</span>
+<span class="p">|</span> <span class="nb">type</span>                <span class="p">|</span> iscsi                                <span class="p">|</span>
+<span class="p">|</span> updated_at          <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> user_id             <span class="p">|</span> 6643474fffb548b4bd4fb3d6a09d9ecd     <span class="p">|</span>
++---------------------+--------------------------------------+
+
+<span class="s1">&#39;#&#39;</span> openstack volume list
+
++--------------------------------------+------+-----------+------+-------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name <span class="p">|</span> Status    <span class="p">|</span> Size <span class="p">|</span> Attached to <span class="p">|</span>
++--------------------------------------+------+-----------+------+-------------+
+<span class="p">|</span> 325a4a42-d640-43d8-affe-8d5efacee6a4 <span class="p">|</span> vol1 <span class="p">|</span> available <span class="p">|</span>    <span class="m">1</span> <span class="p">|</span>             <span class="p">|</span>
++--------------------------------------+------+-----------+------+-------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="conectar-y-montar-un-volumen-a-una-instancia">
+<h2><a class="toc-backref" href="#id20">Conectar y montar un volumen a una instancia</a><a class="headerlink" href="#conectar-y-montar-un-volumen-a-una-instancia" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Conectar el volumen <code class="docutils literal notranslate"><span class="pre">vol1</span></code> a la instancia <code class="docutils literal notranslate"><span class="pre">inst2</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack server add volume inst2 vol1
+
+<span class="s1">&#39;#&#39;</span> openstack volume list
++--------------------------------------+------+--------+------+--------------------------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name <span class="p">|</span> Status <span class="p">|</span> Size <span class="p">|</span> Attached to                    <span class="p">|</span>
++--------------------------------------+------+--------+------+--------------------------------+
+<span class="p">|</span> 325a4a42-d640-43d8-affe-8d5efacee6a4 <span class="p">|</span> vol1 <span class="p">|</span> in-use <span class="p">|</span>    <span class="m">1</span> <span class="p">|</span> Attached to inst2 on /dev/vdb  <span class="p">|</span>
++--------------------------------------+------+--------+------+--------------------------------+
+</pre></div>
+</div>
+<p>Comprobamos que el disco se ha conectado a la instancia <code class="docutils literal notranslate"><span class="pre">inst2</span></code> bajo la ruta <code class="docutils literal notranslate"><span class="pre">/dev/vdb</span></code>.</p>
+<ol class="arabic simple" start="2">
+<li>Dentro de la instancia formatearemos el volumen para que sea utilizable:</li>
+</ol>
+<ul class="simple">
+<li>Nos conectamos a la instancia y comprobamos que existe la ruta <code class="docutils literal notranslate"><span class="pre">/dev/vdb</span></code> dentro de la instancia:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ssh -i mykeypair.key cirros@192.168.1.153
+
+$ ls /dev <span class="p">|</span> grep vd
+vda
+vda1
+vda15
+vdb
+</pre></div>
+</div>
+<ul class="simple">
+<li>Formatear el volumen:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo mkfs.ext4 /dev/vdb
+mke2fs <span class="m">1</span>.42.12 <span class="o">(</span><span class="m">29</span>-Aug-2014<span class="o">)</span>
+Creating filesystem with <span class="m">262144</span> 4k blocks and <span class="m">65536</span> inodes
+Filesystem UUID: b4700792-4051-4657-91ed-9b07ca1153ae
+Superblock backups stored on blocks:
+        <span class="m">32768</span>, <span class="m">98304</span>, <span class="m">163840</span>, <span class="m">229376</span>
+
+Allocating group tables: <span class="k">done</span>
+Writing inode tables: <span class="k">done</span>
+Creating journal <span class="o">(</span><span class="m">8192</span> blocks<span class="o">)</span>: <span class="k">done</span>
+Writing superblocks and filesystem accounting information: <span class="k">done</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Montar el volumen formateado bajo un directorio:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo mkdir /mydisk
+$ sudo mount /dev/vdb /mydisk/
+
+$ df -h
+Filesystem                Size      Used Available Use% Mounted on
+/dev                     <span class="m">51</span>.2M         <span class="m">0</span>     <span class="m">51</span>.2M   <span class="m">0</span>% /dev
+/dev/vda1               <span class="m">978</span>.9M     <span class="m">24</span>.0M    <span class="m">914</span>.1M   <span class="m">3</span>% /
+tmpfs                    <span class="m">55</span>.2M         <span class="m">0</span>     <span class="m">55</span>.2M   <span class="m">0</span>% /dev/shm
+tmpfs                    <span class="m">55</span>.2M     <span class="m">92</span>.0K     <span class="m">55</span>.1M   <span class="m">0</span>% /run
+/dev/vdb                <span class="m">975</span>.9M      <span class="m">1</span>.3M    <span class="m">907</span>.4M   <span class="m">0</span>% /mydisk
+</pre></div>
+</div>
+<p>Comprobamos que el volumen con filesystem <code class="docutils literal notranslate"><span class="pre">/dev/vdb</span></code> y 1GB de almacenamiento se ha montado bajo el directorio <code class="docutils literal notranslate"><span class="pre">/mydisk</span></code> y ya es utilizable.</p>
+</div>
+<div class="section" id="crear-backup-de-un-volumen">
+<h2><a class="toc-backref" href="#id21">Crear backup de un volumen</a><a class="headerlink" href="#crear-backup-de-un-volumen" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para crear un backup de un volumen que está siendo usado actualmente usamos la opción <code class="docutils literal notranslate"><span class="pre">--force</span></code> del comando <code class="docutils literal notranslate"><span class="pre">openstack</span> <span class="pre">volume</span> <span class="pre">backup</span> <span class="pre">create</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack volume backup create --name vol1backup1 --force vol1
+
++-------+--------------------------------------+
+<span class="p">|</span> Field <span class="p">|</span> Value                                <span class="p">|</span>
++-------+--------------------------------------+
+<span class="p">|</span> id    <span class="p">|</span> d6638c79-7f32-4c88-bf65-c200f71c5279 <span class="p">|</span>
+<span class="p">|</span> name  <span class="p">|</span> vol1backup1                          <span class="p">|</span>
++-------+--------------------------------------+
+</pre></div>
+</div>
+<p>Podemos ver detalles del backup creado:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack volume backup show vol1backup1
+
++-----------------------+--------------------------------------+
+<span class="p">|</span> Field                 <span class="p">|</span> Value                                <span class="p">|</span>
++-----------------------+--------------------------------------+
+<span class="p">|</span> availability_zone     <span class="p">|</span> nova                                 <span class="p">|</span>
+<span class="p">|</span> container             <span class="p">|</span> volumebackups                        <span class="p">|</span>
+<span class="p">|</span> created_at            <span class="p">|</span> <span class="m">2020</span>-02-11T07:16:26.000000           <span class="p">|</span>
+<span class="p">|</span> data_timestamp        <span class="p">|</span> <span class="m">2020</span>-02-11T07:16:26.000000           <span class="p">|</span>
+<span class="p">|</span> description           <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> fail_reason           <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> has_dependent_backups <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> id                    <span class="p">|</span> d6638c79-7f32-4c88-bf65-c200f71c5279 <span class="p">|</span>
+<span class="p">|</span> is_incremental        <span class="p">|</span> False                                <span class="p">|</span>
+<span class="p">|</span> name                  <span class="p">|</span> vol1backup1                          <span class="p">|</span>
+<span class="p">|</span> object_count          <span class="p">|</span> <span class="m">22</span>                                   <span class="p">|</span>
+<span class="p">|</span> size                  <span class="p">|</span> <span class="m">1</span>                                    <span class="p">|</span>
+<span class="p">|</span> snapshot_id           <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> status                <span class="p">|</span> available                            <span class="p">|</span>
+<span class="p">|</span> updated_at            <span class="p">|</span> <span class="m">2020</span>-02-11T07:17:00.000000           <span class="p">|</span>
+<span class="p">|</span> volume_id             <span class="p">|</span> 325a4a42-d640-43d8-affe-8d5efacee6a4 <span class="p">|</span>
++-----------------------+--------------------------------------+
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Los bakcups son guardados en archivos, por lo que se trata de objetos. Los backups se almacenan en Swift object storage, por defecto.</p>
+</div>
+</div>
+<div class="section" id="crear-snapshot-de-un-volumen">
+<h2><a class="toc-backref" href="#id22">Crear snapshot de un volumen</a><a class="headerlink" href="#crear-snapshot-de-un-volumen" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para crear un snapshot de un volumen conectado a una instancia usamos la opción <code class="docutils literal notranslate"><span class="pre">--force</span></code> del comando. Seleccionamos cuál es el volumen al cual se le creará el snapshot con la opción <code class="docutils literal notranslate"><span class="pre">--volume</span></code>. Nombramos al snapshot <code class="docutils literal notranslate"><span class="pre">vol1snap1</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Deprecated: openstack snapshot create --name snap1 --force vol1</span>
+
+<span class="s1">&#39;#&#39;</span> openstack volume snapshot create --volume vol1 --force vol1snap1
+
++-------------+--------------------------------------+
+<span class="p">|</span> Field       <span class="p">|</span> Value                                <span class="p">|</span>
++-------------+--------------------------------------+
+<span class="p">|</span> created_at  <span class="p">|</span> <span class="m">2020</span>-02-11T08:53:24.358788           <span class="p">|</span>
+<span class="p">|</span> description <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> id          <span class="p">|</span> 9cbba900-465d-4ac4-b03f-ebe4dea15213 <span class="p">|</span>
+<span class="p">|</span> name        <span class="p">|</span> vol1snap1                            <span class="p">|</span>
+<span class="p">|</span> properties  <span class="p">|</span>                                      <span class="p">|</span>
+<span class="p">|</span> size        <span class="p">|</span> <span class="m">1</span>                                    <span class="p">|</span>
+<span class="p">|</span> status      <span class="p">|</span> creating                             <span class="p">|</span>
+<span class="p">|</span> updated_at  <span class="p">|</span> None                                 <span class="p">|</span>
+<span class="p">|</span> volume_id   <span class="p">|</span> 325a4a42-d640-43d8-affe-8d5efacee6a4 <span class="p">|</span>
++-------------+--------------------------------------+
+</pre></div>
+</div>
+<p>Link del comando: <a class="reference external" href="https://docs.openstack.org/python-openstackclient/latest/cli/command-objects/volume-snapshot.html">volumen snapshot - Openstack Docs</a></p>
+</div>
+<div class="section" id="crear-un-contenedor">
+<h2><a class="toc-backref" href="#id23">Crear un contenedor</a><a class="headerlink" href="#crear-un-contenedor" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Listemos las cuentas, bajo la cual se crearán los objetos:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack object store account show
++------------+---------------------------------------+
+<span class="p">|</span> Field      <span class="p">|</span> Value                                 <span class="p">|</span>
++------------+---------------------------------------+
+<span class="p">|</span> Account    <span class="p">|</span> AUTH_99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span>
+<span class="p">|</span> Bytes      <span class="p">|</span> <span class="m">0</span>                                     <span class="p">|</span>
+<span class="p">|</span> Containers <span class="p">|</span> <span class="m">0</span>                                     <span class="p">|</span>
+<span class="p">|</span> Objects    <span class="p">|</span> <span class="m">0</span>                                     <span class="p">|</span>
++------------+---------------------------------------+
+</pre></div>
+</div>
+<p>Las cuentas de Swift tienen contenedores y los contenedores tienen objetos dentro de sí.</p>
+<ol class="arabic simple" start="2">
+<li>Crear un contenedor:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack container create container1
+
++---------------------------------------+------------+------------------------------------+
+<span class="p">|</span> account                               <span class="p">|</span> container  <span class="p">|</span> x-trans-id                         <span class="p">|</span>
++---------------------------------------+------------+------------------------------------+
+<span class="p">|</span> AUTH_99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span> container1 <span class="p">|</span> tx3da04526eaac4deea9d15-005e427219 <span class="p">|</span>
++---------------------------------------+------------+------------------------------------+
+</pre></div>
+</div>
+<p>Como vemos, el contenedor se ha creado bajo la cuenta antes listada.</p>
+<ol class="arabic simple" start="3">
+<li>Listar contenedores:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack container list
+
++------------+
+<span class="p">|</span> Name       <span class="p">|</span>
++------------+
+<span class="p">|</span> container1 <span class="p">|</span>
++------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="crear-un-objeto">
+<h2><a class="toc-backref" href="#id24">Crear un objeto</a><a class="headerlink" href="#crear-un-objeto" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para crear un objeto en un contenedor debemos especificar el archivo que vamos a subir dentro del contenedor y el nombre de este contenedor.</p>
+<p>Por ejemplo, para subir el archivo <code class="docutils literal notranslate"><span class="pre">keystonerc_admin</span></code> al contenedor <code class="docutils literal notranslate"><span class="pre">container1</span></code> creamos un objeto:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack object create container1 keystonerc_admin
+
++------------------+------------+----------------------------------+
+<span class="p">|</span> object           <span class="p">|</span> container  <span class="p">|</span> etag                             <span class="p">|</span>
++------------------+------------+----------------------------------+
+<span class="p">|</span> keystonerc_admin <span class="p">|</span> container1 <span class="p">|</span> 75f5a62d38e6dcb7ba8ef259e8f71727 <span class="p">|</span>
++------------------+------------+----------------------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="acceder-a-un-objeto">
+<h2><a class="toc-backref" href="#id25">Acceder a un objeto</a><a class="headerlink" href="#acceder-a-un-objeto" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Podemos acceder a un objeto almacenado con Swift de múltiples formas. Por ejemplo, mediante un navegador o desde la línea de comandos:</p>
+<ol class="arabic simple">
+<li>Correr el comando <code class="docutils literal notranslate"><span class="pre">swift</span> <span class="pre">tempurl</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> swift tempurl
+
+...
+&lt;key&gt;               The secret temporary URL key <span class="nb">set</span> on the Swift cluster.
+                    To <span class="nb">set</span> a key, run <span class="s1">&#39;swift post -m</span>
+<span class="s1">                    &quot;Temp-URL-Key:b3968d0207b54ece87cccc06515a89d4&quot;&#39;</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>El comando <code class="docutils literal notranslate"><span class="pre">swift</span> <span class="pre">tempurl</span></code> nos dice que para configurar una llave URL temporal, primero debemos ejecutar:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> swift post -m <span class="s2">&quot;Temp-URL-Key:b3968d0207b54ece87cccc06515a89d4&quot;</span>
+</pre></div>
+</div>
+<p>Se ha generado la llave en el background.</p>
+<ol class="arabic simple" start="3">
+<li>Obtener el ID de la cuenta para formar la URL del objeto:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack object store account show
+
++------------+-------------------------------------------------+
+<span class="p">|</span> Field      <span class="p">|</span> Value                                           <span class="p">|</span>
++------------+-------------------------------------------------+
+<span class="p">|</span> Account    <span class="p">|</span> AUTH_99d8a6cd24734f2aa3fe70140fbdbd64           <span class="p">|</span>
+<span class="p">|</span> Bytes      <span class="p">|</span> <span class="m">373</span>                                             <span class="p">|</span>
+<span class="p">|</span> Containers <span class="p">|</span> <span class="m">1</span>                                               <span class="p">|</span>
+<span class="p">|</span> Objects    <span class="p">|</span> <span class="m">1</span>                                               <span class="p">|</span>
+<span class="p">|</span> properties <span class="p">|</span> Temp-Url-Key<span class="o">=</span><span class="s1">&#39;b3968d0207b54ece87cccc06515a89d4&#39;</span> <span class="p">|</span>
++------------+-------------------------------------------------+
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Generar la URL temporal del objeto con el comando <code class="docutils literal notranslate"><span class="pre">tempurl</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> swift tempurl get <span class="m">1000</span> /v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin b3968d0207b54ece87cccc06515a89d4
+
+/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig<span class="o">=</span>83258744f90d5dee3fc8cf04235754447c16f7b9<span class="p">&amp;</span><span class="nv">temp_url_expires</span><span class="o">=</span><span class="m">1581417017</span>
+</pre></div>
+</div>
+<p>En el comando hemos indicamos lo siguiente:</p>
+<ul class="simple">
+<li>deseamos acceder al link por el método <code class="docutils literal notranslate"><span class="pre">GET</span></code></li>
+<li>el link debe estar activo por <code class="docutils literal notranslate"><span class="pre">1000</span></code> segundos</li>
+<li>la versión soportada por Swift es la <code class="docutils literal notranslate"><span class="pre">v1</span></code></li>
+<li>el ID de la cuenta es <code class="docutils literal notranslate"><span class="pre">AUTH_99d8a6cd24734f2aa3fe70140fbdbd64</span></code></li>
+<li>el objeto al que deseamos acceder es <code class="docutils literal notranslate"><span class="pre">keystonerc_admin</span></code></li>
+<li>la llave del URL temporal es <code class="docutils literal notranslate"><span class="pre">b3968d0207b54ece87cccc06515a89d4</span></code></li>
+</ul>
+<ol class="arabic simple" start="5">
+<li>Combinemos la <code class="docutils literal notranslate"><span class="pre">tempURL</span></code> con la información del hosts de Swift. Para obtener los datos restantes ejecutar:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack endpoint list <span class="p">|</span> grep swift <span class="p">|</span> grep public
+
+<span class="p">|</span> 4bb287495f014c7b97f455784fc1e448 <span class="p">|</span> RegionOne <span class="p">|</span> swift        <span class="p">|</span> object-store <span class="p">|</span> True    <span class="p">|</span> public    <span class="p">|</span> http://192.168.1.100:8080/v1/AUTH_%<span class="o">(</span>tenant_id<span class="o">)</span>s <span class="p">|</span>
+
+<span class="s1">&#39;#&#39;</span> openstack endpoint show 4bb287495f014c7b97f455784fc1e448
+
++--------------+-------------------------------------------------+
+<span class="p">|</span> Field        <span class="p">|</span> Value                                           <span class="p">|</span>
++--------------+-------------------------------------------------+
+<span class="p">|</span> enabled      <span class="p">|</span> True                                            <span class="p">|</span>
+<span class="p">|</span> id           <span class="p">|</span> 4bb287495f014c7b97f455784fc1e448                <span class="p">|</span>
+<span class="p">|</span> interface    <span class="p">|</span> public                                          <span class="p">|</span>
+<span class="p">|</span> region       <span class="p">|</span> RegionOne                                       <span class="p">|</span>
+<span class="p">|</span> region_id    <span class="p">|</span> RegionOne                                       <span class="p">|</span>
+<span class="p">|</span> service_id   <span class="p">|</span> 43c335e18ef2446ca4171e16f82f0926                <span class="p">|</span>
+<span class="p">|</span> service_name <span class="p">|</span> swift                                           <span class="p">|</span>
+<span class="p">|</span> service_type <span class="p">|</span> object-store                                    <span class="p">|</span>
+<span class="hll"><span class="p">|</span> url          <span class="p">|</span> http://192.168.1.100:8080/v1/AUTH_%<span class="o">(</span>tenant_id<span class="o">)</span>s <span class="p">|</span>
+</span>+--------------+-------------------------------------------------+
+</pre></div>
+</div>
+<p>Ahora sabemos más a detalle el formato de la URL (IP y puerto): <code class="docutils literal notranslate"><span class="pre">http://192.168.1.100:8080/v1/AUTH_%(tenant_id)s</span></code></p>
+<ol class="arabic simple" start="6">
+<li>Formar la URL completa y acceder desde el terminal o el navegador a esta dirección para descargar el objeto:</li>
+</ol>
+<p>URL: <code class="docutils literal notranslate"><span class="pre">http://192.168.1.100:8080/</span></code> + <code class="docutils literal notranslate"><span class="pre">tempurl</span></code>
+URL: <a class="reference external" href="http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&amp;temp_url_expires=1581417017">http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&amp;temp_url_expires=1581417017</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
