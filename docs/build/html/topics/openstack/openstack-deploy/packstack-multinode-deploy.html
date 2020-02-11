@@ -35,7 +35,9 @@
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
-    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="OpenStack initial configuration" href="../openstack-guide/_openstack-guide.html" />
+    <link rel="prev" title="OpenStack Deploy Methods" href="_openstack-deploy.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -102,9 +104,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OpenStack</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../_openstack.html">OpenStack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_openstack-deploy.html">OpenStack Deploy Methods</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Despliegue de OpenStack Multi-node con Packstack (en VirtualBox)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisitos-controller-node">Prerequisitos (Controller node)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-de-compute-node-1">Configuración de Compute Node 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-de-compute-node-2">Configuración de Compute Node 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#descarga-de-paquetes-controller-node">Descarga de paquetes (Controller node)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-de-openstack-con-packstack-controller-node">Instalación de OpenStack con PackStack (Controller node)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-post-instalacion-controller-node">Configuración post-instalación (Controller node)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-de-compute-nodes-controller-node">Instalación de Compute Nodes (Controller Node)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
 </ul>
 <p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
 <ul>
@@ -181,6 +197,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_openstack-deploy.html">OpenStack Deploy Methods</a> &raquo;</li>
         
       <li>Despliegue de OpenStack Multi-node con Packstack (en VirtualBox)</li>
     
@@ -521,7 +539,9 @@ computenode2.localdomain
 </div>
 <div class="section" id="instalacion-de-openstack-con-packstack-controller-node">
 <h2><a class="toc-backref" href="#id6">Instalación de OpenStack con PackStack (Controller node)</a><a class="headerlink" href="#instalacion-de-openstack-con-packstack-controller-node" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>“#” packstack –allinone –provision-demo=n –os-neutron-ovs-bridge-mappings=extnet:br-ex –os-neutron-ml2-type-drivers=vxlan,flat</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> packstack --allinone --provision-demo<span class="o">=</span>n --os-neutron-ovs-bridge-mappings<span class="o">=</span>extnet:br-ex --os-neutron-ml2-type-drivers<span class="o">=</span>vxlan,flat
+</pre></div>
+</div>
 <p><a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_openstack_platform/8/html/command-line_interface_reference_guide/packstackclient_commands">Cliente de Línea de comandos de Packstack</a>:</p>
 <ul class="simple">
 <li><code class="docutils literal notranslate"><span class="pre">--allinone</span></code>: equivalente a <code class="docutils literal notranslate"><span class="pre">--install-hosts=&lt;local</span> <span class="pre">ipaddr&gt;</span> <span class="pre">--novanetwork-pubif=&lt;dev&gt;</span> <span class="pre">--novacompute-privif=lo</span> <span class="pre">--novanetwork-privif=lo</span> <span class="pre">--os-swift-install=y</span></code>. Esta opción puede usarse para instalar un nodo all-in-one OpenStack en este host.</li>
@@ -766,6 +786,15 @@ anaconda-ks.cfg  keystonerc_admin  packstack-answers-20190920-224100.   txt
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../openstack-guide/_openstack-guide.html" class="btn btn-neutral float-right" title="OpenStack initial configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_openstack-deploy.html" class="btn btn-neutral float-left" title="OpenStack Deploy Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

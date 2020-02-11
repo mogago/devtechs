@@ -312,7 +312,9 @@ Descarga de paquetes (Controller node)
 Instalación de OpenStack con PackStack (Controller node)
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-'#' packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ml2-type-drivers=vxlan,flat
+.. code-block:: bash
+
+    '#' packstack --allinone --provision-demo=n --os-neutron-ovs-bridge-mappings=extnet:br-ex --os-neutron-ml2-type-drivers=vxlan,flat
 
 `Cliente de Línea de comandos de Packstack`_:
 

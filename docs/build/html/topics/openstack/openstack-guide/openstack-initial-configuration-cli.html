@@ -35,7 +35,9 @@
   <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
-    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="PXE &amp; Kickstart" href="../../pxekickstart/_pxekickstart.html" />
+    <link rel="prev" title="OpenStack initial configuration" href="_openstack-guide.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -102,9 +104,40 @@
 <li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OpenStack</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../_openstack.html">OpenStack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_openstack-guide.html">OpenStack initial configuration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuración inicial de OpenStack</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#usar-credenciales-de-usuario">Usar credenciales de usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-un-nuevo-proyecto">Crear un nuevo proyecto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-un-usuario-asignado-a-un-proyecto">Creación de un usuario asignado a un proyecto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-credenciales-cli-para-un-usuario">Creación de credenciales CLI para un usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-un-flavor">Creación de un flavor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-una-imagen">Crear una imagen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ver-configuracion-de-red">Ver configuración de red</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-una-red-y-una-subred-internas">Crear una red y una subred internas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-un-router">Crear un router</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#listar-las-redes-y-subredes-creadas">Listar las redes y subredes creadas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editar-el-security-group-de-un-proyecto">Editar el security group de un proyecto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-una-instancia-1">Crear una instancia (1)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asignar-una-floating-ip-a-una-instancia">Asignar una Floating IP a una instancia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-un-key-pair">Crear un key pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-un-security-group">Crear un security group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-una-instancia-2">Crear una instancia (2)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-snapshot-de-una-imagen">Crear snapshot de una imagen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-un-volumen">Crear un volumen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conectar-y-montar-un-volumen-a-una-instancia">Conectar y montar un volumen a una instancia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-backup-de-un-volumen">Crear backup de un volumen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-snapshot-de-un-volumen">Crear snapshot de un volumen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-un-contenedor">Crear un contenedor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-un-objeto">Crear un objeto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#acceder-a-un-objeto">Acceder a un objeto</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
 <ul>
@@ -181,6 +214,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_openstack-guide.html">OpenStack initial configuration</a> &raquo;</li>
         
       <li>Configuración inicial de OpenStack</li>
     
@@ -505,8 +540,7 @@ Repeat User Password:
 </div>
 <div class="section" id="crear-una-red-y-una-subred-internas">
 <h2><a class="toc-backref" href="#id9">Crear una red y una subred internas</a><a class="headerlink" href="#crear-una-red-y-una-subred-internas" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Link: <a href="#id26"><span class="problematic" id="id27">`Create and manage networks - Openstack Docs`_</span></a></p>
-<p><a class="reference external" href="https://docs.openstack.org/ocata/user-guide/cli-create-and-manage-networks.html">https://docs.openstack.org/ocata/user-guide/cli-create-and-manage-networks.html</a></p>
+<p>Link: <a class="reference external" href="https://docs.openstack.org/ocata/user-guide/cli-create-and-manage-networks.html">Create and manage networks - Openstack Docs</a></p>
 <ol class="arabic simple">
 <li>Crear una red:</li>
 </ol>
@@ -589,7 +623,7 @@ Repeat User Password:
 <li>Cuenta con un pool de direcciones reservadas para asignar: <code class="docutils literal notranslate"><span class="pre">10.5.5.2-10.5.5.254</span></code></li>
 <li>Se estableció como servidor DNS la IP <code class="docutils literal notranslate"><span class="pre">8.8.8.8</span></code></li>
 </ul>
-<p>Link del comando: <a href="#id28"><span class="problematic" id="id29">`subnet - Openstack Docs`_</span></a></p>
+<p>Link del comando: <a class="reference external" href="https://docs.openstack.org/python-openstackclient/pike/cli/command-objects/subnet.html">subnet - Openstack Docs</a></p>
 <p>Además se han configurado unas opciones en la subred por defecto:</p>
 <ul class="simple">
 <li>Se establece como su gateway IP a la primera dirección IP del rango CIDR: <code class="docutils literal notranslate"><span class="pre">10.5.5.1</span></code></li>
@@ -1405,47 +1439,48 @@ $ ip addr
 +-------------------------------------+-----------------------------------------------+
 </pre></div>
 </div>
-<ol class="arabic" start="2">
-<li><p class="first">Ver detalles de la instancia creada una vez que está activa:</p>
-<blockquote>
-<div><p>“#” openstack server show inst2
-+————————————-+———————————————————-+
-| Field                               | Value                                                    |
-+————————————-+———————————————————-+
-| OS-DCF:diskConfig                   | MANUAL                                                   |
-| OS-EXT-AZ:availability_zone         | nova                                                     |
-| OS-EXT-SRV-ATTR:host                | controllernode1.localdomain                              |
-| OS-EXT-SRV-ATTR:hypervisor_hostname | controllernode1.localdomain                              |
-| OS-EXT-SRV-ATTR:instance_name       | instance-00000003                                        |
-| OS-EXT-STS:power_state              | Running                                                  |
-| OS-EXT-STS:task_state               | None                                                     |
-| OS-EXT-STS:vm_state                 | active                                                   |
-| OS-SRV-USG:launched_at              | 2020-02-11T04:58:21.000000                               |
-| OS-SRV-USG:terminated_at            | None                                                     |
-| accessIPv4                          |                                                          |
-| accessIPv6                          |                                                          |
-| addresses                           | intnet=10.5.5.4                                          |
-| config_drive                        |                                                          |
-| created                             | 2020-02-11T04:58:15Z                                     |
-| flavor                              | m1.tiniest (10)                                          |
-| hostId                              | e122795a13958abb7b13d1f480d04f15b58d09d04ae475133c0005a2 |
-| id                                  | e597bba0-7440-49e3-b5ee-f972c2f640ab                     |
-| image                               | cirros (56dd3671-de42-40db-9637-7c5bef599d11)            |
-| key_name                            | mykeypair                                                |
-| name                                | inst2                                                    |
-| progress                            | 0                                                        |
-| project_id                          | 99d8a6cd24734f2aa3fe70140fbdbd64                         |
-| properties                          |                                                          |
-| security_groups                     | name=”testsecgroup”                                      |
-| status                              | ACTIVE                                                   |
-| updated                             | 2020-02-11T04:58:21Z                                     |
-| user_id                             | 6643474fffb548b4bd4fb3d6a09d9ecd                         |
-| volumes_attached                    |                                                          |
-+————————————-+———————————————————-+</p>
-</div></blockquote>
-</li>
-<li><p class="first">Asignar un IP flotante a la instancia creada:</p>
-</li>
+<ol class="arabic simple" start="2">
+<li>Ver detalles de la instancia creada una vez que está activa:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack server show inst2
+
++-------------------------------------+----------------------------------------------------------+
+<span class="p">|</span> Field                               <span class="p">|</span> Value                                                    <span class="p">|</span>
++-------------------------------------+----------------------------------------------------------+
+<span class="p">|</span> OS-DCF:diskConfig                   <span class="p">|</span> MANUAL                                                   <span class="p">|</span>
+<span class="p">|</span> OS-EXT-AZ:availability_zone         <span class="p">|</span> nova                                                     <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:host                <span class="p">|</span> controllernode1.localdomain                              <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:hypervisor_hostname <span class="p">|</span> controllernode1.localdomain                              <span class="p">|</span>
+<span class="p">|</span> OS-EXT-SRV-ATTR:instance_name       <span class="p">|</span> instance-00000003                                        <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:power_state              <span class="p">|</span> Running                                                  <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:task_state               <span class="p">|</span> None                                                     <span class="p">|</span>
+<span class="p">|</span> OS-EXT-STS:vm_state                 <span class="p">|</span> active                                                   <span class="p">|</span>
+<span class="p">|</span> OS-SRV-USG:launched_at              <span class="p">|</span> <span class="m">2020</span>-02-11T04:58:21.000000                               <span class="p">|</span>
+<span class="p">|</span> OS-SRV-USG:terminated_at            <span class="p">|</span> None                                                     <span class="p">|</span>
+<span class="p">|</span> accessIPv4                          <span class="p">|</span>                                                          <span class="p">|</span>
+<span class="p">|</span> accessIPv6                          <span class="p">|</span>                                                          <span class="p">|</span>
+<span class="p">|</span> addresses                           <span class="p">|</span> <span class="nv">intnet</span><span class="o">=</span><span class="m">10</span>.5.5.4                                          <span class="p">|</span>
+<span class="p">|</span> config_drive                        <span class="p">|</span>                                                          <span class="p">|</span>
+<span class="p">|</span> created                             <span class="p">|</span> <span class="m">2020</span>-02-11T04:58:15Z                                     <span class="p">|</span>
+<span class="p">|</span> flavor                              <span class="p">|</span> m1.tiniest <span class="o">(</span><span class="m">10</span><span class="o">)</span>                                          <span class="p">|</span>
+<span class="p">|</span> hostId                              <span class="p">|</span> e122795a13958abb7b13d1f480d04f15b58d09d04ae475133c0005a2 <span class="p">|</span>
+<span class="p">|</span> id                                  <span class="p">|</span> e597bba0-7440-49e3-b5ee-f972c2f640ab                     <span class="p">|</span>
+<span class="p">|</span> image                               <span class="p">|</span> cirros <span class="o">(</span>56dd3671-de42-40db-9637-7c5bef599d11<span class="o">)</span>            <span class="p">|</span>
+<span class="p">|</span> key_name                            <span class="p">|</span> mykeypair                                                <span class="p">|</span>
+<span class="p">|</span> name                                <span class="p">|</span> inst2                                                    <span class="p">|</span>
+<span class="p">|</span> progress                            <span class="p">|</span> <span class="m">0</span>                                                        <span class="p">|</span>
+<span class="p">|</span> project_id                          <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64                         <span class="p">|</span>
+<span class="p">|</span> properties                          <span class="p">|</span>                                                          <span class="p">|</span>
+<span class="p">|</span> security_groups                     <span class="p">|</span> <span class="nv">name</span><span class="o">=</span><span class="s1">&#39;testsecgroup&#39;</span>                                      <span class="p">|</span>
+<span class="p">|</span> status                              <span class="p">|</span> ACTIVE                                                   <span class="p">|</span>
+<span class="p">|</span> updated                             <span class="p">|</span> <span class="m">2020</span>-02-11T04:58:21Z                                     <span class="p">|</span>
+<span class="p">|</span> user_id                             <span class="p">|</span> 6643474fffb548b4bd4fb3d6a09d9ecd                         <span class="p">|</span>
+<span class="p">|</span> volumes_attached                    <span class="p">|</span>                                                          <span class="p">|</span>
++-------------------------------------+----------------------------------------------------------+
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Asignar un IP flotante a la instancia creada:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack floating ip create --subnet a6ae14ab-2287-4d0d-b8eb-0f503792f32c f5dad5c1-bba9-41c5-844f-bd19a6a124aa
 
@@ -1468,8 +1503,9 @@ $ ip addr
 <span class="p">|</span> subnet_id           <span class="p">|</span> a6ae14ab-2287-4d0d-b8eb-0f503792f32c <span class="p">|</span>
 <span class="p">|</span> updated_at          <span class="p">|</span> <span class="m">2020</span>-02-11T05:03:35Z                 <span class="p">|</span>
 +---------------------+--------------------------------------+
-
-<span class="s1">&#39;#&#39;</span> openstack server add floating ip inst2 <span class="m">192</span>.168.1.153
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack server add floating ip inst2 <span class="m">192</span>.168.1.153
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
@@ -1884,8 +1920,10 @@ tmpfs                    <span class="m">55</span>.2M     <span class="m">92</sp
 <ol class="arabic simple" start="6">
 <li>Formar la URL completa y acceder desde el terminal o el navegador a esta dirección para descargar el objeto:</li>
 </ol>
-<p>URL: <code class="docutils literal notranslate"><span class="pre">http://192.168.1.100:8080/</span></code> + <code class="docutils literal notranslate"><span class="pre">tempurl</span></code>
-URL: <a class="reference external" href="http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&amp;temp_url_expires=1581417017">http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&amp;temp_url_expires=1581417017</a></p>
+<ul class="simple">
+<li>Formato de URL: <code class="docutils literal notranslate"><span class="pre">http://192.168.1.100:8080/</span></code> + <code class="docutils literal notranslate"><span class="pre">tempurl</span></code></li>
+<li>URL: <a class="reference external" href="http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&amp;temp_url_expires=1581417017">http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&amp;temp_url_expires=1581417017</a></li>
+</ul>
 </div>
 </div>
 
@@ -1894,6 +1932,15 @@ URL: <a class="reference external" href="http://192.168.1.100:8080/v1/AUTH_99d8a
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../pxekickstart/_pxekickstart.html" class="btn btn-neutral float-right" title="PXE &amp; Kickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_openstack-guide.html" class="btn btn-neutral float-left" title="OpenStack initial configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>

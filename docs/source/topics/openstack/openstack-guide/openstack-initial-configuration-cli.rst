@@ -288,9 +288,7 @@ Crear una red y una subred internas
 
 Link: `Create and manage networks - Openstack Docs`_
 
-.. Create and manage networks - Openstack Docs: https://docs.openstack.org/ocata/user-guide/cli-create-and-manage-networks.html
-
-https://docs.openstack.org/ocata/user-guide/cli-create-and-manage-networks.html
+.. _Create and manage networks - Openstack Docs: https://docs.openstack.org/ocata/user-guide/cli-create-and-manage-networks.html
 
 1. Crear una red:
 
@@ -375,7 +373,7 @@ La red creada usará algunos parámetros por defecto:
 
 Link del comando: `subnet - Openstack Docs`_
 
-.. subnet - Openstack Docs: https://docs.openstack.org/python-openstackclient/pike/cli/command-objects/subnet.html
+.. _subnet - Openstack Docs: https://docs.openstack.org/python-openstackclient/pike/cli/command-objects/subnet.html
 
 Además se han configurado unas opciones en la subred por defecto:
 
@@ -1207,7 +1205,10 @@ Link: `Launch an instance on the provider network - Openstack Docs`_
 
 2. Ver detalles de la instancia creada una vez que está activa:
 
+.. code-block:: bash
+
     '#' openstack server show inst2
+
     +-------------------------------------+----------------------------------------------------------+
     | Field                               | Value                                                    |
     +-------------------------------------+----------------------------------------------------------+
@@ -1267,6 +1268,8 @@ Link: `Launch an instance on the provider network - Openstack Docs`_
     | subnet_id           | a6ae14ab-2287-4d0d-b8eb-0f503792f32c |
     | updated_at          | 2020-02-11T05:03:35Z                 |
     +---------------------+--------------------------------------+
+
+.. code-block:: bash
 
     '#' openstack server add floating ip inst2 192.168.1.153
 
@@ -1711,5 +1714,5 @@ Ahora sabemos más a detalle el formato de la URL (IP y puerto): ``http://192.16
 
 6. Formar la URL completa y acceder desde el terminal o el navegador a esta dirección para descargar el objeto:
 
-URL: ``http://192.168.1.100:8080/`` + ``tempurl``
-URL: http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&temp_url_expires=1581417017
+- Formato de URL: ``http://192.168.1.100:8080/`` + ``tempurl``
+- URL: http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&temp_url_expires=1581417017
