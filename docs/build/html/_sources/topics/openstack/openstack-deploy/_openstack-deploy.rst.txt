@@ -6,4 +6,4 @@ OpenStack Deploy Methods
     :maxdepth: 2
     :caption: Índice
 
-    packstack-multinode-deploy
+    packstack-multinode-deploy-packstack-virtualbox

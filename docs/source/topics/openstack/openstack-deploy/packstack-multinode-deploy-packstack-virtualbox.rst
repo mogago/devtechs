@@ -1,15 +1,15 @@
-Despliegue de OpenStack Multi-node con Packstack (en VirtualBox)
-----------------------------------------------------------------
+Despliegue de OpenStack con Packstack y VirtualBox
+--------------------------------------------------
 
 .. contents:: Table of Contents
 
 Teoría de VirtualBox Bridged Networking:
 
 - `Bridged Networking - VirtualBox documentation`_
-- `How does bridged networking work in Virtualbox?`_
+- `How does bridged networking work in Virtualbox`_
 - `Neutron with existing external network`_
 
-.. _How does bridged networking work in Virtualbox?: https://superuser.com/questions/594550/how-does-bridged-networking-work-in-virtualbox
+.. _How does bridged networking work in Virtualbox: https://superuser.com/questions/594550/how-does-bridged-networking-work-in-virtualbox
 
 .. _Bridged Networking - VirtualBox documentation: https://www.virtualbox.org/manual/ch06.html#network_bridged
 
