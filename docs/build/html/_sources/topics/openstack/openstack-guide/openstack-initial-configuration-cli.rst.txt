@@ -142,7 +142,17 @@ Crear una imagen
 .. code-block:: bash
 
     '#' mkdir /root/images
-    '#' curl -o /root/images/cirros-0.4.0-x86_64-disk.img http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
+    '#' curl -o /root/images/cirros-0.4.0-x86_64-disk.img -L http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
+
+.. Note::
+
+    Usar la opción ``-L`` de ``curl`` para rehacer el pedido en la ubicación indicada.
+
+    - Referencia 1: `Comando curl no descarga el archivo`_
+    - Referencia 2: `Descargar con curl usando -L para seguir los redirects`_
+
+.. _Comando curl no descarga el archivo: https://stackoverflow.com/questions/27458797/curl-command-doesnt-download-the-file-linux-mint
+.. _Descargar con curl usando -L para seguir los redirects: https://stackoverflow.com/questions/5746325/how-do-i-download-a-tarball-from-github-using-curl
 
 .. Note::
 

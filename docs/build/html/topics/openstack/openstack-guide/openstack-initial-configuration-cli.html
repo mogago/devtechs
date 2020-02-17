@@ -400,8 +400,16 @@ Repeat User Password:
 <li>Descargar la imagen:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> mkdir /root/images
-<span class="s1">&#39;#&#39;</span> curl -o /root/images/cirros-0.4.0-x86_64-disk.img http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
+<span class="s1">&#39;#&#39;</span> curl -o /root/images/cirros-0.4.0-x86_64-disk.img -L http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Usar la opción <code class="docutils literal notranslate"><span class="pre">-L</span></code> de <code class="docutils literal notranslate"><span class="pre">curl</span></code> para rehacer el pedido en la ubicación indicada.</p>
+<ul class="last simple">
+<li>Referencia 1: <a class="reference external" href="https://stackoverflow.com/questions/27458797/curl-command-doesnt-download-the-file-linux-mint">Comando curl no descarga el archivo</a></li>
+<li>Referencia 2: <a class="reference external" href="https://stackoverflow.com/questions/5746325/how-do-i-download-a-tarball-from-github-using-curl">Descargar con curl usando -L para seguir los redirects</a></li>
+</ul>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
