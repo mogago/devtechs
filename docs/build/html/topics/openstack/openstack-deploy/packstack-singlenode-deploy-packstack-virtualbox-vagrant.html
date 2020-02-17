@@ -122,6 +122,7 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado">Pruebas en el entorno OpenStack desplegado</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anexo-archivo-answers-txt-de-packstack-generado">Anexo: Archivo answers.txt de packstack generado</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a></li>
@@ -246,6 +247,7 @@
 </li>
 <li><a class="reference internal" href="#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack" id="id23">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a></li>
 <li><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado" id="id24">Pruebas en el entorno OpenStack desplegado</a></li>
+<li><a class="reference internal" href="#anexo-archivo-answers-txt-de-packstack-generado" id="id25">Anexo: Archivo answers.txt de packstack generado</a></li>
 </ul>
 </li>
 </ul>
@@ -490,6 +492,1378 @@ $ <span class="nb">cd</span> /root
 <div class="figure align-center" id="id14">
 <img alt="../../../_images/openstack-singlenode-test-instance-test-1.png" src="../../../_images/openstack-singlenode-test-instance-test-1.png" />
 <p class="caption"><span class="caption-text">OpenStack - Consola <code class="docutils literal notranslate"><span class="pre">test-1</span></code></span></p>
+</div>
+</div>
+<div class="section" id="anexo-archivo-answers-txt-de-packstack-generado">
+<h2><a class="toc-backref" href="#id25">Anexo: Archivo answers.txt de packstack generado</a><a class="headerlink" href="#anexo-archivo-answers-txt-de-packstack-generado" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat packstack-answers-20200217-165200.txt
+
+<span class="o">[</span>general<span class="o">]</span>
+
+<span class="c1"># Path to a public key to install on servers. If a usable key has not</span>
+<span class="c1"># been installed on the remote servers, the user is prompted for a</span>
+<span class="c1"># password and this key is installed so the password will not be</span>
+<span class="c1"># required again.</span>
+<span class="nv">CONFIG_SSH_KEY</span><span class="o">=</span>/root/.ssh/id_rsa.pub
+
+<span class="c1"># Default password to be used everywhere (overridden by passwords set</span>
+<span class="c1"># for individual services or users).</span>
+<span class="nv">CONFIG_DEFAULT_PASSWORD</span><span class="o">=</span>
+
+<span class="c1"># The amount of service workers/threads to use for each service.</span>
+<span class="c1"># Useful to tweak when you have memory constraints. Defaults to the</span>
+<span class="c1"># amount of cores on the system.</span>
+<span class="nv">CONFIG_SERVICE_WORKERS</span><span class="o">=</span>%<span class="o">{</span>::processorcount<span class="o">}</span>
+
+<span class="c1"># Specify &#39;y&#39; to install MariaDB. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_MARIADB_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Image Service (glance). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_GLANCE_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Block Storage (cinder). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_CINDER_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Shared File System (manila). [&#39;y&#39;,</span>
+<span class="c1"># &#39;n&#39;]</span>
+<span class="nv">CONFIG_MANILA_INSTALL</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Compute (nova). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_NOVA_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Networking (neutron) [&#39;y&#39;]</span>
+<span class="nv">CONFIG_NEUTRON_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Dashboard (horizon). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_HORIZON_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Object Storage (swift). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_SWIFT_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Metering (ceilometer). Note this</span>
+<span class="c1"># will also automatically install gnocchi service and configures it as</span>
+<span class="c1"># the metrics backend. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_CEILOMETER_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Telemetry Alarming (Aodh). Note</span>
+<span class="c1"># Aodh requires Ceilometer to be installed as well. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_AODH_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Events Service (panko). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_PANKO_INSTALL</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Data Processing (sahara). In case</span>
+<span class="c1"># of sahara installation packstack also installs heat.[&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_SAHARA_INSTALL</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Orchestration (heat). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_HEAT_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Container Infrastructure</span>
+<span class="c1"># Management Service (magnum). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_MAGNUM_INSTALL</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Database (trove) [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_TROVE_INSTALL</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Bare Metal Provisioning (ironic).</span>
+<span class="c1"># [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_IRONIC_INSTALL</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; to install the OpenStack Client packages (command-line</span>
+<span class="c1"># tools). An admin &quot;rc&quot; file will also be installed. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_CLIENT_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Comma-separated list of NTP servers. Leave plain if Packstack</span>
+<span class="c1"># should not install ntpd on instances.</span>
+<span class="nv">CONFIG_NTP_SERVERS</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of servers to be excluded from the</span>
+<span class="c1"># installation. This is helpful if you are running Packstack a second</span>
+<span class="c1"># time with the same answer file and do not want Packstack to</span>
+<span class="c1"># overwrite these server&#39;s configurations. Leave empty if you do not</span>
+<span class="c1"># need to exclude any servers.</span>
+<span class="nv">EXCLUDE_SERVERS</span><span class="o">=</span>
+
+<span class="c1"># Specify &#39;y&#39; if you want to run OpenStack services in debug mode;</span>
+<span class="c1"># otherwise, specify &#39;n&#39;. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_DEBUG_MODE</span><span class="o">=</span>n
+
+<span class="c1"># Server on which to install OpenStack services specific to the</span>
+<span class="c1"># controller role (for example, API servers or dashboard).</span>
+<span class="nv">CONFIG_CONTROLLER_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+
+<span class="c1"># List the servers on which to install the Compute service.</span>
+<span class="nv">CONFIG_COMPUTE_HOSTS</span><span class="o">=</span><span class="m">10</span>.0.0.20
+
+<span class="c1"># List of servers on which to install the network service such as</span>
+<span class="c1"># Compute networking (nova network) or OpenStack Networking (neutron).</span>
+<span class="nv">CONFIG_NETWORK_HOSTS</span><span class="o">=</span><span class="m">10</span>.0.0.20
+
+<span class="c1"># Specify &#39;y&#39; if you want to use VMware vCenter as hypervisor and</span>
+<span class="c1"># storage; otherwise, specify &#39;n&#39;. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_VMWARE_BACKEND</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; if you want to use unsupported parameters. This should</span>
+<span class="c1"># be used only if you know what you are doing. Issues caused by using</span>
+<span class="c1"># unsupported options will not be fixed before the next major release.</span>
+<span class="c1"># [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_UNSUPPORTED</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; if you want to use subnet addresses (in CIDR format)</span>
+<span class="c1"># instead of interface names in following options:</span>
+<span class="c1"># CONFIG_NEUTRON_OVS_BRIDGE_IFACES,</span>
+<span class="c1"># CONFIG_NEUTRON_LB_INTERFACE_MAPPINGS, CONFIG_NEUTRON_OVS_TUNNEL_IF.</span>
+<span class="c1"># This is useful for cases when interface names are not same on all</span>
+<span class="c1"># installation hosts.</span>
+<span class="nv">CONFIG_USE_SUBNETS</span><span class="o">=</span>n
+
+<span class="c1"># IP address of the VMware vCenter server.</span>
+<span class="nv">CONFIG_VCENTER_HOST</span><span class="o">=</span>
+
+<span class="c1"># User name for VMware vCenter server authentication.</span>
+<span class="nv">CONFIG_VCENTER_USER</span><span class="o">=</span>
+
+<span class="c1"># Password for VMware vCenter server authentication.</span>
+<span class="nv">CONFIG_VCENTER_PASSWORD</span><span class="o">=</span>
+
+<span class="c1"># Comma separated list of names of the VMware vCenter clusters. Note:</span>
+<span class="c1"># if multiple clusters are specified each one is mapped to one</span>
+<span class="c1"># compute, otherwise all computes are mapped to same cluster.</span>
+<span class="nv">CONFIG_VCENTER_CLUSTER_NAMES</span><span class="o">=</span>
+
+<span class="c1"># (Unsupported!) Server on which to install OpenStack services</span>
+<span class="c1"># specific to storage servers such as Image or Block Storage services.</span>
+<span class="nv">CONFIG_STORAGE_HOST</span><span class="o">=</span><span class="m">10</span>.0.2.15
+
+<span class="c1"># (Unsupported!) Server on which to install OpenStack services</span>
+<span class="c1"># specific to OpenStack Data Processing (sahara).</span>
+<span class="nv">CONFIG_SAHARA_HOST</span><span class="o">=</span><span class="m">10</span>.0.2.15
+
+<span class="c1"># Comma-separated list of URLs for any additional yum repositories,</span>
+<span class="c1"># to use for installation.</span>
+<span class="nv">CONFIG_REPO</span><span class="o">=</span>
+
+<span class="c1"># Specify &#39;y&#39; to enable the RDO testing repository. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_ENABLE_RDO_TESTING</span><span class="o">=</span>n
+
+<span class="c1"># To subscribe each server with Red Hat Subscription Manager, include</span>
+<span class="c1"># this with CONFIG_RH_PW.</span>
+<span class="nv">CONFIG_RH_USER</span><span class="o">=</span>
+
+<span class="c1"># To subscribe each server to receive updates from a Satellite</span>
+<span class="c1"># server, provide the URL of the Satellite server. You must also</span>
+<span class="c1"># provide a user name (CONFIG_SATELLITE_USERNAME) and password</span>
+<span class="c1"># (CONFIG_SATELLITE_PASSWORD) or an access key (CONFIG_SATELLITE_AKEY)</span>
+<span class="c1"># for authentication.</span>
+<span class="nv">CONFIG_SATELLITE_URL</span><span class="o">=</span>
+
+<span class="c1"># Specify a Satellite 6 Server to register to. If not specified,</span>
+<span class="c1"># Packstack will register the system to the Red Hat server. When this</span>
+<span class="c1"># option is specified, you also need to set the Satellite 6</span>
+<span class="c1"># organization (CONFIG_RH_SAT6_ORG) and an activation key</span>
+<span class="c1"># (CONFIG_RH_SAT6_KEY).</span>
+<span class="nv">CONFIG_RH_SAT6_SERVER</span><span class="o">=</span>
+
+<span class="c1"># To subscribe each server with Red Hat Subscription Manager, include</span>
+<span class="c1"># this with CONFIG_RH_USER.</span>
+<span class="nv">CONFIG_RH_PW</span><span class="o">=</span>
+
+<span class="c1"># Specify &#39;y&#39; to enable RHEL optional repositories. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_RH_OPTIONAL</span><span class="o">=</span>y
+
+<span class="c1"># HTTP proxy to use with Red Hat Subscription Manager.</span>
+<span class="nv">CONFIG_RH_PROXY</span><span class="o">=</span>
+
+<span class="c1"># Specify a Satellite 6 Server organization to use when registering</span>
+<span class="c1"># the system.</span>
+<span class="nv">CONFIG_RH_SAT6_ORG</span><span class="o">=</span>
+
+<span class="c1"># Specify a Satellite 6 Server activation key to use when registering</span>
+<span class="c1"># the system.</span>
+<span class="nv">CONFIG_RH_SAT6_KEY</span><span class="o">=</span>
+
+<span class="c1"># Port to use for Red Hat Subscription Manager&#39;s HTTP proxy.</span>
+<span class="nv">CONFIG_RH_PROXY_PORT</span><span class="o">=</span>
+
+<span class="c1"># User name to use for Red Hat Subscription Manager&#39;s HTTP proxy.</span>
+<span class="nv">CONFIG_RH_PROXY_USER</span><span class="o">=</span>
+
+<span class="c1"># Password to use for Red Hat Subscription Manager&#39;s HTTP proxy.</span>
+<span class="nv">CONFIG_RH_PROXY_PW</span><span class="o">=</span>
+
+<span class="c1"># User name to authenticate with the RHN Satellite server; if you</span>
+<span class="c1"># intend to use an access key for Satellite authentication, leave this</span>
+<span class="c1"># blank.</span>
+<span class="nv">CONFIG_SATELLITE_USER</span><span class="o">=</span>
+
+<span class="c1"># Password to authenticate with the RHN Satellite server; if you</span>
+<span class="c1"># intend to use an access key for Satellite authentication, leave this</span>
+<span class="c1"># blank.</span>
+<span class="nv">CONFIG_SATELLITE_PW</span><span class="o">=</span>
+
+<span class="c1"># Access key for the Satellite server; if you intend to use a user</span>
+<span class="c1"># name and password for Satellite authentication, leave this blank.</span>
+<span class="nv">CONFIG_SATELLITE_AKEY</span><span class="o">=</span>
+
+<span class="c1"># Certificate path or URL of the certificate authority to verify that</span>
+<span class="c1"># the connection with the Satellite server is secure. If you are not</span>
+<span class="c1"># using Satellite in your deployment, leave this blank.</span>
+<span class="nv">CONFIG_SATELLITE_CACERT</span><span class="o">=</span>
+
+<span class="c1"># Profile name that should be used as an identifier for the system in</span>
+<span class="c1"># RHN Satellite (if required).</span>
+<span class="nv">CONFIG_SATELLITE_PROFILE</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of flags passed to the rhnreg_ks command.</span>
+<span class="c1"># Valid flags are: novirtinfo, norhnsd, nopackages [&#39;novirtinfo&#39;,</span>
+<span class="c1"># &#39;norhnsd&#39;, &#39;nopackages&#39;]</span>
+<span class="nv">CONFIG_SATELLITE_FLAGS</span><span class="o">=</span>
+
+<span class="c1"># HTTP proxy to use when connecting to the RHN Satellite server (if</span>
+<span class="c1"># required).</span>
+<span class="nv">CONFIG_SATELLITE_PROXY</span><span class="o">=</span>
+
+<span class="c1"># User name to authenticate with the Satellite-server HTTP proxy.</span>
+<span class="nv">CONFIG_SATELLITE_PROXY_USER</span><span class="o">=</span>
+
+<span class="c1"># User password to authenticate with the Satellite-server HTTP proxy.</span>
+<span class="nv">CONFIG_SATELLITE_PROXY_PW</span><span class="o">=</span>
+
+<span class="c1"># Specify filepath for CA cert file. If CONFIG_SSL_CACERT_SELFSIGN is</span>
+<span class="c1"># set to &#39;n&#39; it has to be preexisting file.</span>
+<span class="nv">CONFIG_SSL_CACERT_FILE</span><span class="o">=</span>/etc/pki/tls/certs/selfcert.crt
+
+<span class="c1"># Specify filepath for CA cert key file. If</span>
+<span class="c1"># CONFIG_SSL_CACERT_SELFSIGN is set to &#39;n&#39; it has to be preexisting</span>
+<span class="c1"># file.</span>
+<span class="nv">CONFIG_SSL_CACERT_KEY_FILE</span><span class="o">=</span>/etc/pki/tls/private/selfkey.key
+
+<span class="c1"># Enter the path to use to store generated SSL certificates in.</span>
+<span class="nv">CONFIG_SSL_CERT_DIR</span><span class="o">=</span>~/packstackca/
+
+<span class="c1"># Specify &#39;y&#39; if you want Packstack to pregenerate the CA</span>
+<span class="c1"># Certificate.</span>
+<span class="nv">CONFIG_SSL_CACERT_SELFSIGN</span><span class="o">=</span>y
+
+<span class="c1"># Enter the ssl certificates subject country.</span>
+<span class="nv">CONFIG_SSL_CERT_SUBJECT_C</span><span class="o">=</span>--
+
+<span class="c1"># Enter the ssl certificates subject state.</span>
+<span class="nv">CONFIG_SSL_CERT_SUBJECT_ST</span><span class="o">=</span>State
+
+<span class="c1"># Enter the ssl certificates subject location.</span>
+<span class="nv">CONFIG_SSL_CERT_SUBJECT_L</span><span class="o">=</span>City
+
+<span class="c1"># Enter the ssl certificates subject organization.</span>
+<span class="nv">CONFIG_SSL_CERT_SUBJECT_O</span><span class="o">=</span>openstack
+
+<span class="c1"># Enter the ssl certificates subject organizational unit.</span>
+<span class="nv">CONFIG_SSL_CERT_SUBJECT_OU</span><span class="o">=</span>packstack
+
+<span class="c1"># Enter the ssl certificates subject common name.</span>
+<span class="nv">CONFIG_SSL_CERT_SUBJECT_CN</span><span class="o">=</span>packstack
+
+<span class="nv">CONFIG_SSL_CERT_SUBJECT_MAIL</span><span class="o">=</span>admin@packstack
+
+<span class="c1"># Service to be used as the AMQP broker. Allowed values are: rabbitmq</span>
+<span class="c1"># [&#39;rabbitmq&#39;]</span>
+<span class="nv">CONFIG_AMQP_BACKEND</span><span class="o">=</span>rabbitmq
+
+<span class="c1"># IP address of the server on which to install the AMQP service.</span>
+<span class="nv">CONFIG_AMQP_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+
+<span class="c1"># Specify &#39;y&#39; to enable SSL for the AMQP service. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_AMQP_ENABLE_SSL</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; to enable authentication for the AMQP service. [&#39;y&#39;,</span>
+<span class="c1"># &#39;n&#39;]</span>
+<span class="nv">CONFIG_AMQP_ENABLE_AUTH</span><span class="o">=</span>n
+
+<span class="c1"># Password for the NSS certificate database of the AMQP service.</span>
+<span class="nv">CONFIG_AMQP_NSS_CERTDB_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># User for AMQP authentication.</span>
+<span class="nv">CONFIG_AMQP_AUTH_USER</span><span class="o">=</span>amqp_user
+
+<span class="c1"># Password for AMQP authentication.</span>
+<span class="nv">CONFIG_AMQP_AUTH_PASSWORD</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># IP address of the server on which to install MariaDB. If a MariaDB</span>
+<span class="c1"># installation was not specified in CONFIG_MARIADB_INSTALL, specify</span>
+<span class="c1"># the IP address of an existing database server (a MariaDB cluster can</span>
+<span class="c1"># also be specified).</span>
+<span class="nv">CONFIG_MARIADB_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+
+<span class="c1"># User name for the MariaDB administrative user.</span>
+<span class="nv">CONFIG_MARIADB_USER</span><span class="o">=</span>root
+
+<span class="c1"># Password for the MariaDB administrative user.</span>
+<span class="nv">CONFIG_MARIADB_PW</span><span class="o">=</span>44ffb78fcad945e7
+
+<span class="c1"># Password to use for the Identity service (keystone) to access the</span>
+<span class="c1"># database.</span>
+<span class="nv">CONFIG_KEYSTONE_DB_PW</span><span class="o">=</span>c71b53327b7d44d3
+
+<span class="c1"># Enter y if cron job for removing soft deleted DB rows should be</span>
+<span class="c1"># created.</span>
+<span class="nv">CONFIG_KEYSTONE_DB_PURGE_ENABLE</span><span class="o">=</span>True
+
+<span class="c1"># Default region name to use when creating tenants in the Identity</span>
+<span class="c1"># service.</span>
+<span class="nv">CONFIG_KEYSTONE_REGION</span><span class="o">=</span>RegionOne
+
+<span class="c1"># Token to use for the Identity service API.</span>
+<span class="nv">CONFIG_KEYSTONE_ADMIN_TOKEN</span><span class="o">=</span>d033267ae7e445ffbb0c6f78c09849e2
+
+<span class="c1"># Email address for the Identity service &#39;admin&#39; user.  Defaults to</span>
+<span class="nv">CONFIG_KEYSTONE_ADMIN_EMAIL</span><span class="o">=</span>root@localhost
+
+<span class="c1"># User name for the Identity service &#39;admin&#39; user.  Defaults to</span>
+<span class="c1"># &#39;admin&#39;.</span>
+<span class="nv">CONFIG_KEYSTONE_ADMIN_USERNAME</span><span class="o">=</span>admin
+
+<span class="c1"># Password to use for the Identity service &#39;admin&#39; user.</span>
+<span class="nv">CONFIG_KEYSTONE_ADMIN_PW</span><span class="o">=</span>openstack
+
+<span class="c1"># Password to use for the Identity service &#39;demo&#39; user.</span>
+<span class="nv">CONFIG_KEYSTONE_DEMO_PW</span><span class="o">=</span>openstack
+
+<span class="c1"># Identity service API version string. [&#39;v2.0&#39;, &#39;v3&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_API_VERSION</span><span class="o">=</span>v3
+
+<span class="c1"># Identity service token format (UUID, PKI or FERNET). The</span>
+<span class="c1"># recommended format for new deployments is FERNET. [&#39;UUID&#39;, &#39;PKI&#39;,</span>
+<span class="c1"># &#39;FERNET&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_TOKEN_FORMAT</span><span class="o">=</span>FERNET
+
+<span class="c1"># Type of Identity service backend (sql or ldap). [&#39;sql&#39;, &#39;ldap&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_IDENTITY_BACKEND</span><span class="o">=</span>sql
+
+<span class="c1"># URL for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_URL</span><span class="o">=</span>ldap://10.0.2.15
+
+<span class="c1"># User DN for the Identity service LDAP backend.  Used to bind to the</span>
+<span class="c1"># LDAP server if the LDAP server does not allow anonymous</span>
+<span class="c1"># authentication.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_DN</span><span class="o">=</span>
+
+<span class="c1"># User DN password for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_PASSWORD</span><span class="o">=</span>
+
+<span class="c1"># Base suffix for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_SUFFIX</span><span class="o">=</span>
+
+<span class="c1"># Query scope for the Identity service LDAP backend. Use &#39;one&#39; for</span>
+<span class="c1"># onelevel/singleLevel or &#39;sub&#39; for subtree/wholeSubtree (&#39;base&#39; is</span>
+<span class="c1"># not actually used by the Identity service and is therefore</span>
+<span class="c1"># deprecated). [&#39;base&#39;, &#39;one&#39;, &#39;sub&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_QUERY_SCOPE</span><span class="o">=</span>one
+
+<span class="c1"># Query page size for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_PAGE_SIZE</span><span class="o">=</span>-1
+
+<span class="c1"># User subtree for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_SUBTREE</span><span class="o">=</span>
+
+<span class="c1"># User query filter for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_FILTER</span><span class="o">=</span>
+
+<span class="c1"># User object class for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_OBJECTCLASS</span><span class="o">=</span>
+
+<span class="c1"># User ID attribute for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ID_ATTRIBUTE</span><span class="o">=</span>
+
+<span class="c1"># User name attribute for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_NAME_ATTRIBUTE</span><span class="o">=</span>
+
+<span class="c1"># User email address attribute for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_MAIL_ATTRIBUTE</span><span class="o">=</span>
+
+<span class="c1"># User-enabled attribute for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ENABLED_ATTRIBUTE</span><span class="o">=</span>
+
+<span class="c1"># Bit mask integer applied to user-enabled attribute for the Identity</span>
+<span class="c1"># service LDAP backend. Indicate the bit that the enabled value is</span>
+<span class="c1"># stored in if the LDAP server represents &quot;enabled&quot; as a bit on an</span>
+<span class="c1"># integer rather than a boolean. A value of &quot;0&quot; indicates the mask is</span>
+<span class="c1"># not used (default). If this is not set to &quot;0&quot;, the typical value is</span>
+<span class="c1"># &quot;2&quot;, typically used when</span>
+<span class="c1"># &quot;CONFIG_KEYSTONE_LDAP_USER_ENABLED_ATTRIBUTE = userAccountControl&quot;.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ENABLED_MASK</span><span class="o">=</span>-1
+
+<span class="c1"># Value of enabled attribute which indicates user is enabled for the</span>
+<span class="c1"># Identity service LDAP backend. This should match an appropriate</span>
+<span class="c1"># integer value if the LDAP server uses non-boolean (bitmask) values</span>
+<span class="c1"># to indicate whether a user is enabled or disabled. If this is not</span>
+<span class="c1"># set as &#39;y&#39;, the typical value is &quot;512&quot;. This is typically used when</span>
+<span class="c1"># &quot;CONFIG_KEYSTONE_LDAP_USER_ENABLED_ATTRIBUTE = userAccountControl&quot;.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ENABLED_DEFAULT</span><span class="o">=</span>TRUE
+
+<span class="c1"># Specify &#39;y&#39; if users are disabled (not enabled) in the Identity</span>
+<span class="c1"># service LDAP backend (inverts boolean-enalbed values).  Some LDAP</span>
+<span class="c1"># servers use a boolean lock attribute where &quot;y&quot; means an account is</span>
+<span class="c1"># disabled. Setting this to &#39;y&#39; allows these lock attributes to be</span>
+<span class="c1"># used. This setting will have no effect if</span>
+<span class="c1"># &quot;CONFIG_KEYSTONE_LDAP_USER_ENABLED_MASK&quot; is in use. [&#39;n&#39;, &#39;y&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ENABLED_INVERT</span><span class="o">=</span>n
+
+<span class="c1"># Comma-separated list of attributes stripped from LDAP user entry</span>
+<span class="c1"># upon update.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ATTRIBUTE_IGNORE</span><span class="o">=</span>
+
+<span class="c1"># Identity service LDAP attribute mapped to default_project_id for</span>
+<span class="c1"># users.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_DEFAULT_PROJECT_ID_ATTRIBUTE</span><span class="o">=</span>
+
+<span class="c1"># Specify &#39;y&#39; if you want to be able to create Identity service users</span>
+<span class="c1"># through the Identity service interface; specify &#39;n&#39; if you will</span>
+<span class="c1"># create directly in the LDAP backend. [&#39;n&#39;, &#39;y&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ALLOW_CREATE</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; if you want to be able to update Identity service users</span>
+<span class="c1"># through the Identity service interface; specify &#39;n&#39; if you will</span>
+<span class="c1"># update directly in the LDAP backend. [&#39;n&#39;, &#39;y&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ALLOW_UPDATE</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; if you want to be able to delete Identity service users</span>
+<span class="c1"># through the Identity service interface; specify &#39;n&#39; if you will</span>
+<span class="c1"># delete directly in the LDAP backend. [&#39;n&#39;, &#39;y&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ALLOW_DELETE</span><span class="o">=</span>n
+
+<span class="c1"># Identity service LDAP attribute mapped to password.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_PASS_ATTRIBUTE</span><span class="o">=</span>
+
+<span class="c1"># DN of the group entry to hold enabled LDAP users when using enabled</span>
+<span class="c1"># emulation.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ENABLED_EMULATION_DN</span><span class="o">=</span>
+
+<span class="c1"># List of additional LDAP attributes for mapping additional attribute</span>
+<span class="c1"># mappings for users. The attribute-mapping format is</span>
+<span class="c1"># &lt;ldap_attr&gt;:&lt;user_attr&gt;, where ldap_attr is the attribute in the</span>
+<span class="c1"># LDAP entry and user_attr is the Identity API attribute.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USER_ADDITIONAL_ATTRIBUTE_MAPPING</span><span class="o">=</span>
+
+<span class="c1"># Group subtree for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_SUBTREE</span><span class="o">=</span>
+
+<span class="c1"># Group query filter for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_FILTER</span><span class="o">=</span>
+
+<span class="c1"># Group object class for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_OBJECTCLASS</span><span class="o">=</span>
+
+<span class="c1"># Group ID attribute for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_ID_ATTRIBUTE</span><span class="o">=</span>
+
+<span class="c1"># Group name attribute for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_NAME_ATTRIBUTE</span><span class="o">=</span>
+
+<span class="c1"># Group member attribute for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_MEMBER_ATTRIBUTE</span><span class="o">=</span>
+
+<span class="c1"># Group description attribute for the Identity service LDAP backend.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_DESC_ATTRIBUTE</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of attributes stripped from LDAP group entry</span>
+<span class="c1"># upon update.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_ATTRIBUTE_IGNORE</span><span class="o">=</span>
+
+<span class="c1"># Specify &#39;y&#39; if you want to be able to create Identity service</span>
+<span class="c1"># groups through the Identity service interface; specify &#39;n&#39; if you</span>
+<span class="c1"># will create directly in the LDAP backend. [&#39;n&#39;, &#39;y&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_CREATE</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; if you want to be able to update Identity service</span>
+<span class="c1"># groups through the Identity service interface; specify &#39;n&#39; if you</span>
+<span class="c1"># will update directly in the LDAP backend. [&#39;n&#39;, &#39;y&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_UPDATE</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; if you want to be able to delete Identity service</span>
+<span class="c1"># groups through the Identity service interface; specify &#39;n&#39; if you</span>
+<span class="c1"># will delete directly in the LDAP backend. [&#39;n&#39;, &#39;y&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_ALLOW_DELETE</span><span class="o">=</span>n
+
+<span class="c1"># List of additional LDAP attributes used for mapping additional</span>
+<span class="c1"># attribute mappings for groups. The attribute=mapping format is</span>
+<span class="c1"># &lt;ldap_attr&gt;:&lt;group_attr&gt;, where ldap_attr is the attribute in the</span>
+<span class="c1"># LDAP entry and group_attr is the Identity API attribute.</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_GROUP_ADDITIONAL_ATTRIBUTE_MAPPING</span><span class="o">=</span>
+
+<span class="c1"># Specify &#39;y&#39; if the Identity service LDAP backend should use TLS.</span>
+<span class="c1"># [&#39;n&#39;, &#39;y&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_USE_TLS</span><span class="o">=</span>n
+
+<span class="c1"># CA certificate directory for Identity service LDAP backend (if TLS</span>
+<span class="c1"># is used).</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_TLS_CACERTDIR</span><span class="o">=</span>
+
+<span class="c1"># CA certificate file for Identity service LDAP backend (if TLS is</span>
+<span class="c1"># used).</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_TLS_CACERTFILE</span><span class="o">=</span>
+
+<span class="c1"># Certificate-checking strictness level for Identity service LDAP</span>
+<span class="c1"># backend; valid options are: never, allow, demand. [&#39;never&#39;, &#39;allow&#39;,</span>
+<span class="c1"># &#39;demand&#39;]</span>
+<span class="nv">CONFIG_KEYSTONE_LDAP_TLS_REQ_CERT</span><span class="o">=</span>demand
+
+<span class="c1"># Password to use for the Image service (glance) to access the</span>
+<span class="c1"># database.</span>
+<span class="nv">CONFIG_GLANCE_DB_PW</span><span class="o">=</span>28e3dfa378f84d9b
+
+<span class="c1"># Password to use for the Image service to authenticate with the</span>
+<span class="c1"># Identity service.</span>
+<span class="nv">CONFIG_GLANCE_KS_PW</span><span class="o">=</span>0a8468db9d5a4ae5
+
+<span class="c1"># Storage backend for the Image service (controls how the Image</span>
+<span class="c1"># service stores disk images). Valid options are: file or swift</span>
+<span class="c1"># (Object Storage). The Object Storage service must be enabled to use</span>
+<span class="c1"># it as a working backend; otherwise, Packstack falls back to &#39;file&#39;.</span>
+<span class="c1"># [&#39;file&#39;, &#39;swift&#39;]</span>
+<span class="nv">CONFIG_GLANCE_BACKEND</span><span class="o">=</span>file
+
+<span class="c1"># Password to use for the Block Storage service (cinder) to access</span>
+<span class="c1"># the database.</span>
+<span class="nv">CONFIG_CINDER_DB_PW</span><span class="o">=</span><span class="m">2705428887884634</span>
+
+<span class="c1"># Enter y if cron job for removing soft deleted DB rows should be</span>
+<span class="c1"># created.</span>
+<span class="nv">CONFIG_CINDER_DB_PURGE_ENABLE</span><span class="o">=</span>True
+
+<span class="c1"># Password to use for the Block Storage service to authenticate with</span>
+<span class="c1"># the Identity service.</span>
+<span class="nv">CONFIG_CINDER_KS_PW</span><span class="o">=</span>761e7589519e4e64
+
+<span class="c1"># Storage backend to use for the Block Storage service; valid options</span>
+<span class="c1"># are: lvm, gluster, nfs, vmdk, netapp, solidfire. [&#39;lvm&#39;, &#39;gluster&#39;,</span>
+<span class="c1"># &#39;nfs&#39;, &#39;vmdk&#39;, &#39;netapp&#39;, &#39;solidfire&#39;]</span>
+<span class="nv">CONFIG_CINDER_BACKEND</span><span class="o">=</span>lvm
+
+<span class="c1"># Specify &#39;y&#39; to create the Block Storage volumes group. That is,</span>
+<span class="c1"># Packstack creates a raw disk image in /var/lib/cinder, and mounts it</span>
+<span class="c1"># using a loopback device. This should only be used for testing on a</span>
+<span class="c1"># proof-of-concept installation of the Block Storage service (a file-</span>
+<span class="c1"># backed volume group is not suitable for production usage). [&#39;y&#39;,</span>
+<span class="c1"># &#39;n&#39;]</span>
+<span class="nv">CONFIG_CINDER_VOLUMES_CREATE</span><span class="o">=</span>y
+
+<span class="c1"># Specify a custom name for the lvm cinder volume group</span>
+<span class="nv">CONFIG_CINDER_VOLUME_NAME</span><span class="o">=</span>cinder-volumes
+
+<span class="c1"># Size of Block Storage volumes group. Actual volume size will be</span>
+<span class="c1"># extended with 3% more space for VG metadata. Remember that the size</span>
+<span class="c1"># of the volume group will restrict the amount of disk space that you</span>
+<span class="c1"># can expose to Compute instances, and that the specified amount must</span>
+<span class="c1"># be available on the device used for /var/lib/cinder.</span>
+<span class="nv">CONFIG_CINDER_VOLUMES_SIZE</span><span class="o">=</span>20G
+
+<span class="c1"># A single or comma-separated list of Red Hat Storage (gluster)</span>
+<span class="c1"># volume shares to mount. Example: &#39;ip-address:/vol-name&#39;, &#39;domain</span>
+<span class="c1"># :/vol-name&#39;</span>
+<span class="nv">CONFIG_CINDER_GLUSTER_MOUNTS</span><span class="o">=</span>
+
+<span class="c1"># A single or comma-separated list of NFS exports to mount. Example:</span>
+<span class="c1"># &#39;ip-address:/export-name&#39;</span>
+<span class="nv">CONFIG_CINDER_NFS_MOUNTS</span><span class="o">=</span>
+
+<span class="c1"># Administrative user account name used to access the NetApp storage</span>
+<span class="c1"># system or proxy server.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_LOGIN</span><span class="o">=</span>
+
+<span class="c1"># Password for the NetApp administrative user account specified in</span>
+<span class="c1"># the CONFIG_CINDER_NETAPP_LOGIN parameter.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_PASSWORD</span><span class="o">=</span>
+
+<span class="c1"># Hostname (or IP address) for the NetApp storage system or proxy</span>
+<span class="c1"># server.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_HOSTNAME</span><span class="o">=</span>
+
+<span class="c1"># The TCP port to use for communication with the storage system or</span>
+<span class="c1"># proxy. If not specified, Data ONTAP drivers will use 80 for HTTP and</span>
+<span class="c1"># 443 for HTTPS; E-Series will use 8080 for HTTP and 8443 for HTTPS.</span>
+<span class="c1"># Defaults to 80.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_SERVER_PORT</span><span class="o">=</span><span class="m">80</span>
+
+<span class="c1"># Storage family type used on the NetApp storage system; valid</span>
+<span class="c1"># options are ontap_7mode for using Data ONTAP operating in 7-Mode,</span>
+<span class="c1"># ontap_cluster for using clustered Data ONTAP, or E-Series for NetApp</span>
+<span class="c1"># E-Series. Defaults to ontap_cluster. [&#39;ontap_7mode&#39;,</span>
+<span class="c1"># &#39;ontap_cluster&#39;, &#39;eseries&#39;]</span>
+<span class="nv">CONFIG_CINDER_NETAPP_STORAGE_FAMILY</span><span class="o">=</span>ontap_cluster
+
+<span class="c1"># The transport protocol used when communicating with the NetApp</span>
+<span class="c1"># storage system or proxy server. Valid values are http or https.</span>
+<span class="c1"># Defaults to &#39;http&#39;. [&#39;http&#39;, &#39;https&#39;]</span>
+<span class="nv">CONFIG_CINDER_NETAPP_TRANSPORT_TYPE</span><span class="o">=</span>http
+
+<span class="c1"># Storage protocol to be used on the data path with the NetApp</span>
+<span class="c1"># storage system; valid options are iscsi, fc, nfs. Defaults to nfs.</span>
+<span class="c1"># [&#39;iscsi&#39;, &#39;fc&#39;, &#39;nfs&#39;]</span>
+<span class="nv">CONFIG_CINDER_NETAPP_STORAGE_PROTOCOL</span><span class="o">=</span>nfs
+
+<span class="c1"># Quantity to be multiplied by the requested volume size to ensure</span>
+<span class="c1"># enough space is available on the virtual storage server (Vserver) to</span>
+<span class="c1"># fulfill the volume creation request.  Defaults to 1.0.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_SIZE_MULTIPLIER</span><span class="o">=</span><span class="m">1</span>.0
+
+<span class="c1"># Time period (in minutes) that is allowed to elapse after the image</span>
+<span class="c1"># is last accessed, before it is deleted from the NFS image cache.</span>
+<span class="c1"># When a cache-cleaning cycle begins, images in the cache that have</span>
+<span class="c1"># not been accessed in the last M minutes, where M is the value of</span>
+<span class="c1"># this parameter, are deleted from the cache to create free space on</span>
+<span class="c1"># the NFS share. Defaults to 720.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_EXPIRY_THRES_MINUTES</span><span class="o">=</span><span class="m">720</span>
+
+<span class="c1"># If the percentage of available space for an NFS share has dropped</span>
+<span class="c1"># below the value specified by this parameter, the NFS image cache is</span>
+<span class="c1"># cleaned.  Defaults to 20.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_THRES_AVL_SIZE_PERC_START</span><span class="o">=</span><span class="m">20</span>
+
+<span class="c1"># When the percentage of available space on an NFS share has reached</span>
+<span class="c1"># the percentage specified by this parameter, the driver stops</span>
+<span class="c1"># clearing files from the NFS image cache that have not been accessed</span>
+<span class="c1"># in the last M minutes, where M is the value of the</span>
+<span class="c1"># CONFIG_CINDER_NETAPP_EXPIRY_THRES_MINUTES parameter. Defaults to 60.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_THRES_AVL_SIZE_PERC_STOP</span><span class="o">=</span><span class="m">60</span>
+
+<span class="c1"># Single or comma-separated list of NetApp NFS shares for Block</span>
+<span class="c1"># Storage to use.  Format: ip-address:/export-name. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_NFS_SHARES</span><span class="o">=</span>
+
+<span class="c1"># File with the list of available NFS shares.   Defaults to</span>
+<span class="c1"># &#39;/etc/cinder/shares.conf&#39;.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_NFS_SHARES_CONFIG</span><span class="o">=</span>/etc/cinder/shares.conf
+
+<span class="c1"># This parameter is only utilized when the storage protocol is</span>
+<span class="c1"># configured to use iSCSI or FC. This parameter is used to restrict</span>
+<span class="c1"># provisioning to the specified controller volumes. Specify the value</span>
+<span class="c1"># of this parameter to be a comma separated list of NetApp controller</span>
+<span class="c1"># volume names to be used for provisioning. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_VOLUME_LIST</span><span class="o">=</span>
+
+<span class="c1"># The vFiler unit on which provisioning of block storage volumes will</span>
+<span class="c1"># be done. This parameter is only used by the driver when connecting</span>
+<span class="c1"># to an instance with a storage family of Data ONTAP operating in</span>
+<span class="c1"># 7-Mode Only use this parameter when utilizing the MultiStore feature</span>
+<span class="c1"># on the NetApp storage system. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_VFILER</span><span class="o">=</span>
+
+<span class="c1"># The name of the config.conf stanza for a Data ONTAP (7-mode) HA</span>
+<span class="c1"># partner.  This option is only used by the driver when connecting to</span>
+<span class="c1"># an instance with a storage family of Data ONTAP operating in 7-Mode,</span>
+<span class="c1"># and it is required if the storage protocol selected is FC. Defaults</span>
+<span class="c1"># to &#39;&#39;.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_PARTNER_BACKEND_NAME</span><span class="o">=</span>
+
+<span class="c1"># This option specifies the virtual storage server (Vserver) name on</span>
+<span class="c1"># the storage cluster on which provisioning of block storage volumes</span>
+<span class="c1"># should occur. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_VSERVER</span><span class="o">=</span>
+
+<span class="c1"># Restricts provisioning to the specified controllers. Value must be</span>
+<span class="c1"># a comma-separated list of controller hostnames or IP addresses to be</span>
+<span class="c1"># used for provisioning. This option is only utilized when the storage</span>
+<span class="c1"># family is configured to use E-Series. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_CONTROLLER_IPS</span><span class="o">=</span>
+
+<span class="c1"># Password for the NetApp E-Series storage array. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_SA_PASSWORD</span><span class="o">=</span>
+
+<span class="c1"># This option is used to define how the controllers in the E-Series</span>
+<span class="c1"># storage array will work with the particular operating system on the</span>
+<span class="c1"># hosts that are connected to it. Defaults to &#39;linux_dm_mp&#39;</span>
+<span class="nv">CONFIG_CINDER_NETAPP_ESERIES_HOST_TYPE</span><span class="o">=</span>linux_dm_mp
+
+<span class="c1"># Path to the NetApp E-Series proxy application on a proxy server.</span>
+<span class="c1"># The value is combined with the value of the</span>
+<span class="c1"># CONFIG_CINDER_NETAPP_TRANSPORT_TYPE, CONFIG_CINDER_NETAPP_HOSTNAME,</span>
+<span class="c1"># and CONFIG_CINDER_NETAPP_HOSTNAME options to create the URL used by</span>
+<span class="c1"># the driver to connect to the proxy application. Defaults to</span>
+<span class="c1"># &#39;/devmgr/v2&#39;.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_WEBSERVICE_PATH</span><span class="o">=</span>/devmgr/v2
+
+<span class="c1"># Restricts provisioning to the specified storage pools. Only dynamic</span>
+<span class="c1"># disk pools are currently supported. The value must be a comma-</span>
+<span class="c1"># separated list of disk pool names to be used for provisioning.</span>
+<span class="c1"># Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_CINDER_NETAPP_STORAGE_POOLS</span><span class="o">=</span>
+
+<span class="c1"># Cluster admin account name used to access the SolidFire storage</span>
+<span class="c1"># system.</span>
+<span class="nv">CONFIG_CINDER_SOLIDFIRE_LOGIN</span><span class="o">=</span>
+
+<span class="c1"># Password for the SolidFire cluster admin user account specified in</span>
+<span class="c1"># the CONFIG_CINDER_SOLIDFIRE_LOGIN parameter.</span>
+<span class="nv">CONFIG_CINDER_SOLIDFIRE_PASSWORD</span><span class="o">=</span>
+
+<span class="c1"># Hostname (or IP address) for the SolidFire storage system&#39;s MVIP.</span>
+<span class="nv">CONFIG_CINDER_SOLIDFIRE_HOSTNAME</span><span class="o">=</span>
+
+<span class="c1"># Password to use for OpenStack Bare Metal Provisioning (ironic) to</span>
+<span class="c1"># access the database.</span>
+<span class="nv">CONFIG_IRONIC_DB_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Password to use for OpenStack Bare Metal Provisioning to</span>
+<span class="c1"># authenticate with the Identity service.</span>
+<span class="nv">CONFIG_IRONIC_KS_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Enter y if cron job for removing soft deleted DB rows should be</span>
+<span class="c1"># created.</span>
+<span class="nv">CONFIG_NOVA_DB_PURGE_ENABLE</span><span class="o">=</span>True
+
+<span class="c1"># Password to use for the Compute service (nova) to access the</span>
+<span class="c1"># database.</span>
+<span class="nv">CONFIG_NOVA_DB_PW</span><span class="o">=</span>0b064882c78246b7
+
+<span class="c1"># Password to use for the Compute service to authenticate with the</span>
+<span class="c1"># Identity service.</span>
+<span class="nv">CONFIG_NOVA_KS_PW</span><span class="o">=</span>6983aca5676b40d1
+
+<span class="c1"># Whether or not Packstack should manage a default initial set of</span>
+<span class="c1"># Nova flavors. Defaults to &#39;y&#39;.</span>
+<span class="nv">CONFIG_NOVA_MANAGE_FLAVORS</span><span class="o">=</span>y
+
+<span class="c1"># Overcommitment ratio for virtual to physical CPUs. Specify 1.0 to</span>
+<span class="c1"># disable CPU overcommitment.</span>
+<span class="nv">CONFIG_NOVA_SCHED_CPU_ALLOC_RATIO</span><span class="o">=</span><span class="m">16</span>.0
+
+<span class="c1"># Overcommitment ratio for virtual to physical RAM. Specify 1.0 to</span>
+<span class="c1"># disable RAM overcommitment.</span>
+<span class="nv">CONFIG_NOVA_SCHED_RAM_ALLOC_RATIO</span><span class="o">=</span><span class="m">1</span>.5
+
+<span class="c1"># Protocol used for instance migration. Valid options are: ssh and</span>
+<span class="c1"># tcp. Note that the tcp protocol is not encrypted, so it is insecure.</span>
+<span class="c1"># [&#39;ssh&#39;, &#39;tcp&#39;]</span>
+<span class="nv">CONFIG_NOVA_COMPUTE_MIGRATE_PROTOCOL</span><span class="o">=</span>ssh
+
+<span class="c1"># PEM encoded certificate to be used for ssl on the https server,</span>
+<span class="c1"># leave blank if one should be generated, this certificate should not</span>
+<span class="c1"># require a passphrase. If CONFIG_HORIZON_SSL is set to &#39;n&#39; this</span>
+<span class="c1"># parameter is ignored.</span>
+<span class="nv">CONFIG_VNC_SSL_CERT</span><span class="o">=</span>
+
+<span class="c1"># SSL keyfile corresponding to the certificate if one was entered. If</span>
+<span class="c1"># CONFIG_HORIZON_SSL is set to &#39;n&#39; this parameter is ignored.</span>
+<span class="nv">CONFIG_VNC_SSL_KEY</span><span class="o">=</span>
+
+<span class="c1"># Enter the PCI passthrough array of hash in JSON style for</span>
+<span class="c1"># controller eg. [{&quot;vendor_id&quot;:&quot;1234&quot;, &quot;product_id&quot;:&quot;5678&quot;,</span>
+<span class="c1"># &quot;name&quot;:&quot;default&quot;}, {...}]</span>
+<span class="nv">CONFIG_NOVA_PCI_ALIAS</span><span class="o">=</span>
+
+<span class="c1"># Enter the PCI passthrough whitelist array of hash in JSON style for</span>
+<span class="c1"># controller eg. [{&quot;vendor_id&quot;:&quot;1234&quot;, &quot;product_id&quot;:&quot;5678&quot;,</span>
+<span class="c1"># &quot;name&#39;:&quot;default&quot;}, {...}]</span>
+<span class="nv">CONFIG_NOVA_PCI_PASSTHROUGH_WHITELIST</span><span class="o">=</span>
+
+<span class="c1"># The hypervisor driver to use with Nova. Can be either &#39;qemu&#39; or</span>
+<span class="c1"># &#39;kvm&#39;. Defaults to &#39;qemu&#39; on virtual machines and &#39;kvm&#39; on bare</span>
+<span class="c1"># metal hardware. For nested KVM set it explicitly to &#39;kvm&#39;.</span>
+<span class="nv">CONFIG_NOVA_LIBVIRT_VIRT_TYPE</span><span class="o">=</span>%<span class="o">{</span>::default_hypervisor<span class="o">}</span>
+
+<span class="c1"># Password to use for OpenStack Networking (neutron) to authenticate</span>
+<span class="c1"># with the Identity service.</span>
+<span class="nv">CONFIG_NEUTRON_KS_PW</span><span class="o">=</span>8e82a3f6289d40c9
+
+<span class="c1"># The password to use for OpenStack Networking to access the</span>
+<span class="c1"># database.</span>
+<span class="nv">CONFIG_NEUTRON_DB_PW</span><span class="o">=</span>e8ebbf3755d64dfe
+
+<span class="c1"># The name of the Open vSwitch bridge (or empty for linuxbridge) for</span>
+<span class="c1"># the OpenStack Networking L3 agent to use for external  traffic.</span>
+<span class="c1"># Specify &#39;provider&#39; if you intend to use a provider network to handle</span>
+<span class="c1"># external traffic.</span>
+<span class="nv">CONFIG_NEUTRON_L3_EXT_BRIDGE</span><span class="o">=</span>br-ex
+
+<span class="c1"># Password for the OpenStack Networking metadata agent.</span>
+<span class="nv">CONFIG_NEUTRON_METADATA_PW</span><span class="o">=</span>bce78eaf963644b2
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Networking&#39;s Load-Balancing-</span>
+<span class="c1"># as-a-Service (LBaaS). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_LBAAS_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to install OpenStack Networking&#39;s L3 Metering agent</span>
+<span class="c1"># [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_NEUTRON_METERING_AGENT_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to configure OpenStack Networking&#39;s Firewall-</span>
+<span class="c1"># as-a-Service (FWaaS). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_NEUTRON_FWAAS</span><span class="o">=</span>n
+
+<span class="c1"># Specify &#39;y&#39; to configure OpenStack Networking&#39;s VPN-as-a-Service</span>
+<span class="c1"># (VPNaaS). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_NEUTRON_VPNAAS</span><span class="o">=</span>n
+
+<span class="c1"># Comma-separated list of network-type driver entry points to be</span>
+<span class="c1"># loaded from the neutron.ml2.type_drivers namespace. [&#39;local&#39;,</span>
+<span class="c1"># &#39;flat&#39;, &#39;vlan&#39;, &#39;gre&#39;, &#39;vxlan&#39;, &#39;geneve&#39;]</span>
+<span class="nv">CONFIG_NEUTRON_ML2_TYPE_DRIVERS</span><span class="o">=</span>vxlan,flat
+
+<span class="c1"># Comma-separated, ordered list of network types to allocate as</span>
+<span class="c1"># tenant networks. The &#39;local&#39; value is only useful for single-box</span>
+<span class="c1"># testing and provides no connectivity between hosts. [&#39;local&#39;,</span>
+<span class="c1"># &#39;vlan&#39;, &#39;gre&#39;, &#39;vxlan&#39;, &#39;geneve&#39;]</span>
+<span class="nv">CONFIG_NEUTRON_ML2_TENANT_NETWORK_TYPES</span><span class="o">=</span>vxlan
+
+<span class="c1"># Comma-separated ordered list of networking mechanism driver entry</span>
+<span class="c1"># points to be loaded from the neutron.ml2.mechanism_drivers</span>
+<span class="c1"># namespace. [&#39;logger&#39;, &#39;test&#39;, &#39;linuxbridge&#39;, &#39;openvswitch&#39;,</span>
+<span class="c1"># &#39;hyperv&#39;, &#39;ncs&#39;, &#39;arista&#39;, &#39;cisco_nexus&#39;, &#39;mlnx&#39;, &#39;l2population&#39;,</span>
+<span class="c1"># &#39;sriovnicswitch&#39;, &#39;ovn&#39;]</span>
+<span class="nv">CONFIG_NEUTRON_ML2_MECHANISM_DRIVERS</span><span class="o">=</span>openvswitch
+
+<span class="c1"># Comma-separated list of physical_network names with which flat</span>
+<span class="c1"># networks can be created. Use * to allow flat networks with arbitrary</span>
+<span class="c1"># physical_network names.</span>
+<span class="nv">CONFIG_NEUTRON_ML2_FLAT_NETWORKS</span><span class="o">=</span>*
+
+<span class="c1"># Comma-separated list of &lt;physical_network&gt;:&lt;vlan_min&gt;:&lt;vlan_max&gt; or</span>
+<span class="c1"># &lt;physical_network&gt; specifying physical_network names usable for VLAN</span>
+<span class="c1"># provider and tenant networks, as well as ranges of VLAN tags on each</span>
+<span class="c1"># available for allocation to tenant networks.</span>
+<span class="nv">CONFIG_NEUTRON_ML2_VLAN_RANGES</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of &lt;tun_min&gt;:&lt;tun_max&gt; tuples enumerating</span>
+<span class="c1"># ranges of GRE tunnel IDs that are available for tenant-network</span>
+<span class="c1"># allocation. A tuple must be an array with tun_max +1 - tun_min &gt;</span>
+<span class="c1"># 1000000.</span>
+<span class="nv">CONFIG_NEUTRON_ML2_TUNNEL_ID_RANGES</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of addresses for VXLAN multicast group. If</span>
+<span class="c1"># left empty, disables VXLAN from sending allocate broadcast traffic</span>
+<span class="c1"># (disables multicast VXLAN mode). Should be a Multicast IP (v4 or v6)</span>
+<span class="c1"># address.</span>
+<span class="nv">CONFIG_NEUTRON_ML2_VXLAN_GROUP</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of &lt;vni_min&gt;:&lt;vni_max&gt; tuples enumerating</span>
+<span class="c1"># ranges of VXLAN VNI IDs that are available for tenant network</span>
+<span class="c1"># allocation. Minimum value is 0 and maximum value is 16777215.</span>
+<span class="nv">CONFIG_NEUTRON_ML2_VNI_RANGES</span><span class="o">=</span><span class="m">10</span>:100
+
+<span class="c1"># Name of the L2 agent to be used with OpenStack Networking.</span>
+<span class="c1"># [&#39;linuxbridge&#39;, &#39;openvswitch&#39;, &#39;ovn&#39;]</span>
+<span class="nv">CONFIG_NEUTRON_L2_AGENT</span><span class="o">=</span>openvswitch
+
+<span class="c1"># Comma separated list of supported PCI vendor devices defined by</span>
+<span class="c1"># vendor_id:product_id according to the PCI ID Repository.</span>
+<span class="nv">CONFIG_NEUTRON_ML2_SUPPORTED_PCI_VENDOR_DEVS</span><span class="o">=[</span><span class="s1">&#39;15b3:1004&#39;</span>, <span class="s1">&#39;8086:10ca&#39;</span><span class="o">]</span>
+
+<span class="c1"># Comma-separated list of interface mappings for the OpenStack</span>
+<span class="c1"># Networking ML2 SRIOV agent. Each tuple in the list must be in the</span>
+<span class="c1"># format &lt;physical_network&gt;:&lt;net_interface&gt;. Example:</span>
+<span class="c1"># physnet1:eth1,physnet2:eth2,physnet3:eth3.</span>
+<span class="nv">CONFIG_NEUTRON_ML2_SRIOV_INTERFACE_MAPPINGS</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of interface mappings for the OpenStack</span>
+<span class="c1"># Networking linuxbridge plugin. Each tuple in the list must be in the</span>
+<span class="c1"># format &lt;physical_network&gt;:&lt;net_interface&gt;. Example:</span>
+<span class="c1"># physnet1:eth1,physnet2:eth2,physnet3:eth3.</span>
+<span class="nv">CONFIG_NEUTRON_LB_INTERFACE_MAPPINGS</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of bridge mappings for the OpenStack</span>
+<span class="c1"># Networking Open vSwitch plugin. Each tuple in the list must be in</span>
+<span class="c1"># the format &lt;physical_network&gt;:&lt;ovs_bridge&gt;. Example: physnet1:br-</span>
+<span class="c1"># eth1,physnet2:br-eth2,physnet3:br-eth3</span>
+<span class="nv">CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS</span><span class="o">=</span>extnet:br-ex
+
+<span class="c1"># Comma-separated list of colon-separated Open vSwitch</span>
+<span class="c1"># &lt;bridge&gt;:&lt;interface&gt; pairs. The interface will be added to the</span>
+<span class="c1"># associated bridge. If you desire the bridge to be persistent a value</span>
+<span class="c1"># must be added to this directive, also</span>
+<span class="c1"># CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS must be set in order to create</span>
+<span class="c1"># the proper port. This can be achieved from the command line by</span>
+<span class="c1"># issuing the following command: packstack --allinone --os-neutron-</span>
+<span class="c1"># ovs-bridge-mappings=ext-net:br-ex --os-neutron-ovs-bridge-interfaces</span>
+<span class="c1"># =br-ex:eth0</span>
+<span class="nv">CONFIG_NEUTRON_OVS_BRIDGE_IFACES</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of Open vSwitch bridges that must be created</span>
+<span class="c1"># and connected to interfaces in compute nodes when flat or vlan type</span>
+<span class="c1"># drivers are enabled. These bridges must exist in</span>
+<span class="c1"># CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS and</span>
+<span class="c1"># CONFIG_NEUTRON_OVS_BRIDGE_IFACES. Example: --os-neutron-ovs-bridges-</span>
+<span class="c1"># compute=br-vlan --os-neutron-ovs-bridge-mappings=&quot;extnet:br-</span>
+<span class="c1"># ex,physnet1:br-vlan&quot; --os-neutron-ovs-bridge-interfaces=&quot;br-ex:eth1</span>
+<span class="c1"># ,br-vlan:eth2&quot;</span>
+<span class="nv">CONFIG_NEUTRON_OVS_BRIDGES_COMPUTE</span><span class="o">=</span>
+
+<span class="c1"># Name of physical network used for external network when enabling</span>
+<span class="c1"># CONFIG_PROVISION_DEMO. Name must be one of the included in</span>
+<span class="c1"># CONFIG_NEUTRON_OVS_BRIDGE_MAPPINGS. Example: --os-neutron-ovs-</span>
+<span class="c1"># bridge-mappings=&quot;extnet:br-ex,physnet1:br-vlan&quot; --os-neutron-ovs-</span>
+<span class="c1"># bridge-interfaces=&quot;br-ex:eth1,br-vlan:eth2&quot; --os-neutron-ovs-</span>
+<span class="c1"># external-physnet=&quot;extnet&quot;</span>
+<span class="nv">CONFIG_NEUTRON_OVS_EXTERNAL_PHYSNET</span><span class="o">=</span>extnet
+
+<span class="c1"># Interface for the Open vSwitch tunnel. Packstack overrides the IP</span>
+<span class="c1"># address used for tunnels on this hypervisor to the IP found on the</span>
+<span class="c1"># specified interface (for example, eth1).</span>
+<span class="nv">CONFIG_NEUTRON_OVS_TUNNEL_IF</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of subnets (for example,</span>
+<span class="c1"># 192.168.10.0/24,192.168.11.0/24) used for sending tunneling packets.</span>
+<span class="c1"># This is used to configure IP filtering to accept tunneling packets</span>
+<span class="c1"># from these subnets instead of specific IP addresses of peer nodes.</span>
+<span class="c1"># This is useful when you add existing nodes to EXCLUDE_SERVERS</span>
+<span class="c1"># because, in this case, packstack cannot modify the IP filtering of</span>
+<span class="c1"># the existing nodes.</span>
+<span class="nv">CONFIG_NEUTRON_OVS_TUNNEL_SUBNETS</span><span class="o">=</span>
+
+<span class="c1"># VXLAN UDP port.</span>
+<span class="nv">CONFIG_NEUTRON_OVS_VXLAN_UDP_PORT</span><span class="o">=</span><span class="m">4789</span>
+
+<span class="c1"># Comma-separated list of bridge mappings for the OpenStack</span>
+<span class="c1"># Networking Open Virtual Network plugin. Each tuple in the list must</span>
+<span class="c1"># be in the format &lt;physical_network&gt;:&lt;ovs_bridge&gt;. Example: physnet1</span>
+<span class="c1"># :br-eth1,physnet2:br-eth2,physnet3:br-eth3</span>
+<span class="nv">CONFIG_NEUTRON_OVN_BRIDGE_MAPPINGS</span><span class="o">=</span>extnet:br-ex
+
+<span class="c1"># Comma-separated list of colon-separated Open vSwitch</span>
+<span class="c1"># &lt;bridge&gt;:&lt;interface&gt; pairs. The interface will be added to the</span>
+<span class="c1"># associated bridge. If you desire the bridge to be persistent a value</span>
+<span class="c1"># must be added to this directive, also</span>
+<span class="c1"># CONFIG_NEUTRON_OVN_BRIDGE_MAPPINGS must be set in order to create</span>
+<span class="c1"># the proper port. This can be achieved from the command line by</span>
+<span class="c1"># issuing the following command: packstack --allinone --os-neutron-</span>
+<span class="c1"># ovn-bridge-mappings=ext-net:br-ex --os-neutron-ovn-bridge-interfaces</span>
+<span class="c1"># =br-ex:eth0</span>
+<span class="nv">CONFIG_NEUTRON_OVN_BRIDGE_IFACES</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of Open vSwitch bridges that must be created</span>
+<span class="c1"># and connected to interfaces in compute nodes when flat or vlan type</span>
+<span class="c1"># drivers are enabled. These bridges must exist in</span>
+<span class="c1"># CONFIG_NEUTRON_OVN_BRIDGE_MAPPINGS and</span>
+<span class="c1"># CONFIG_NEUTRON_OVN_BRIDGE_IFACES. Example: --os-neutron-ovn-bridges-</span>
+<span class="c1"># compute=br-vlan --os-neutron-ovn-bridge-mappings=&quot;extnet:br-</span>
+<span class="c1"># ex,physnet1:br-vlan&quot; --os-neutron-ovn-bridge-interfaces=&quot;br-ex:eth1</span>
+<span class="c1"># ,br-vlan:eth2&quot;</span>
+<span class="nv">CONFIG_NEUTRON_OVN_BRIDGES_COMPUTE</span><span class="o">=</span>
+
+<span class="c1"># Name of physical network used for external network when enabling</span>
+<span class="c1"># CONFIG_PROVISION_DEMO. Name must be one of the included in</span>
+<span class="c1"># CONFIG_NEUTRON_OVN_BRIDGE_MAPPINGS. Example: --os-neutron-ovn-</span>
+<span class="c1"># bridge-mappings=&quot;extnet:br-ex,physnet1:br-vlan&quot; --os-neutron-ovn-</span>
+<span class="c1"># bridge-interfaces=&quot;br-ex:eth1,br-vlan:eth2&quot; --os-neutron-ovn-</span>
+<span class="c1"># external-physnet=&quot;extnet&quot;</span>
+<span class="nv">CONFIG_NEUTRON_OVN_EXTERNAL_PHYSNET</span><span class="o">=</span>extnet
+
+<span class="c1"># Interface for the Open vSwitch tunnel. Packstack overrides the IP</span>
+<span class="c1"># address used for tunnels on this hypervisor to the IP found on the</span>
+<span class="c1"># specified interface (for example, eth1).</span>
+<span class="nv">CONFIG_NEUTRON_OVN_TUNNEL_IF</span><span class="o">=</span>
+
+<span class="c1"># Comma-separated list of subnets (for example,</span>
+<span class="c1"># 192.168.10.0/24,192.168.11.0/24) used for sending tunneling packets.</span>
+<span class="c1"># This is used to configure IP filtering to accept tunneling packets</span>
+<span class="c1"># from these subnets instead of specific IP addresses of peer nodes.</span>
+<span class="c1"># This is useful when you add existing nodes to EXCLUDE_SERVERS</span>
+<span class="c1"># because, in this case, packstack cannot modify the IP filtering of</span>
+<span class="c1"># the existing nodes.</span>
+<span class="nv">CONFIG_NEUTRON_OVN_TUNNEL_SUBNETS</span><span class="o">=</span>
+
+<span class="c1"># Password to use for the OpenStack File Share service (manila) to</span>
+<span class="c1"># access the database.</span>
+<span class="nv">CONFIG_MANILA_DB_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Password to use for the OpenStack File Share service (manila) to</span>
+<span class="c1"># authenticate with the Identity service.</span>
+<span class="nv">CONFIG_MANILA_KS_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Backend for the OpenStack File Share service (manila); valid</span>
+<span class="c1"># options are: generic, netapp, glusternative, or glusternfs.</span>
+<span class="c1"># [&#39;generic&#39;, &#39;netapp&#39;, &#39;glusternative&#39;, &#39;glusternfs&#39;]</span>
+<span class="nv">CONFIG_MANILA_BACKEND</span><span class="o">=</span>generic
+
+<span class="c1"># Denotes whether the driver should handle the responsibility of</span>
+<span class="c1"># managing share servers. This must be set to false if the driver is</span>
+<span class="c1"># to operate without managing share servers. Defaults to &#39;false&#39;</span>
+<span class="c1"># [&#39;true&#39;, &#39;false&#39;]</span>
+<span class="nv">CONFIG_MANILA_NETAPP_DRV_HANDLES_SHARE_SERVERS</span><span class="o">=</span><span class="nb">false</span>
+
+<span class="c1"># The transport protocol used when communicating with the storage</span>
+<span class="c1"># system or proxy server. Valid values are &#39;http&#39; and &#39;https&#39;.</span>
+<span class="c1"># Defaults to &#39;https&#39;. [&#39;https&#39;, &#39;http&#39;]</span>
+<span class="nv">CONFIG_MANILA_NETAPP_TRANSPORT_TYPE</span><span class="o">=</span>https
+
+<span class="c1"># Administrative user account name used to access the NetApp storage</span>
+<span class="c1"># system.  Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETAPP_LOGIN</span><span class="o">=</span>admin
+
+<span class="c1"># Password for the NetApp administrative user account specified in</span>
+<span class="c1"># the CONFIG_MANILA_NETAPP_LOGIN parameter. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETAPP_PASSWORD</span><span class="o">=</span>
+
+<span class="c1"># Hostname (or IP address) for the NetApp storage system or proxy</span>
+<span class="c1"># server. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETAPP_SERVER_HOSTNAME</span><span class="o">=</span>
+
+<span class="c1"># The storage family type used on the storage system; valid values</span>
+<span class="c1"># are ontap_cluster for clustered Data ONTAP. Defaults to</span>
+<span class="c1"># &#39;ontap_cluster&#39;. [&#39;ontap_cluster&#39;]</span>
+<span class="nv">CONFIG_MANILA_NETAPP_STORAGE_FAMILY</span><span class="o">=</span>ontap_cluster
+
+<span class="c1"># The TCP port to use for communication with the storage system or</span>
+<span class="c1"># proxy server. If not specified, Data ONTAP drivers will use 80 for</span>
+<span class="c1"># HTTP and 443 for HTTPS. Defaults to &#39;443&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETAPP_SERVER_PORT</span><span class="o">=</span><span class="m">443</span>
+
+<span class="c1"># Pattern for searching available aggregates for NetApp provisioning.</span>
+<span class="c1"># Defaults to &#39;(.*)&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETAPP_AGGREGATE_NAME_SEARCH_PATTERN</span><span class="o">=(</span>.*<span class="o">)</span>
+
+<span class="c1"># Name of aggregate on which to create the NetApp root volume. This</span>
+<span class="c1"># option only applies when the option</span>
+<span class="c1"># CONFIG_MANILA_NETAPP_DRV_HANDLES_SHARE_SERVERS is set to True.</span>
+<span class="nv">CONFIG_MANILA_NETAPP_ROOT_VOLUME_AGGREGATE</span><span class="o">=</span>
+
+<span class="c1"># NetApp root volume name. Defaults to &#39;root&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETAPP_ROOT_VOLUME_NAME</span><span class="o">=</span>root
+
+<span class="c1"># This option specifies the storage virtual machine (previously</span>
+<span class="c1"># called a Vserver) name on the storage cluster on which provisioning</span>
+<span class="c1"># of shared file systems should occur. This option only applies when</span>
+<span class="c1"># the option driver_handles_share_servers is set to False. Defaults to</span>
+<span class="c1"># &#39;&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETAPP_VSERVER</span><span class="o">=</span>
+
+<span class="c1"># Denotes whether the driver should handle the responsibility of</span>
+<span class="c1"># managing share servers. This must be set to false if the driver is</span>
+<span class="c1"># to operate without managing share servers. Defaults to &#39;true&#39;.</span>
+<span class="c1"># [&#39;true&#39;, &#39;false&#39;]</span>
+<span class="nv">CONFIG_MANILA_GENERIC_DRV_HANDLES_SHARE_SERVERS</span><span class="o">=</span><span class="nb">true</span>
+
+<span class="c1"># Volume name template for Manila service. Defaults to &#39;manila-</span>
+<span class="c1"># share-%s&#39;.</span>
+<span class="nv">CONFIG_MANILA_GENERIC_VOLUME_NAME_TEMPLATE</span><span class="o">=</span>manila-share-%s
+
+<span class="c1"># Share mount path for Manila service. Defaults to &#39;/shares&#39;.</span>
+<span class="nv">CONFIG_MANILA_GENERIC_SHARE_MOUNT_PATH</span><span class="o">=</span>/shares
+
+<span class="c1"># Location of disk image for Manila service instance. Defaults to &#39;</span>
+<span class="nv">CONFIG_MANILA_SERVICE_IMAGE_LOCATION</span><span class="o">=</span>https://www.dropbox.com/s/vi5oeh10q1qkckh/ubuntu_1204_nfs_cifs.qcow2
+
+<span class="c1"># User in Manila service instance.</span>
+<span class="nv">CONFIG_MANILA_SERVICE_INSTANCE_USER</span><span class="o">=</span>ubuntu
+
+<span class="c1"># Password to service instance user.</span>
+<span class="nv">CONFIG_MANILA_SERVICE_INSTANCE_PASSWORD</span><span class="o">=</span>ubuntu
+
+<span class="c1"># Type of networking that the backend will use. A more detailed</span>
+<span class="c1"># description of each option is available in the Manila docs. Defaults</span>
+<span class="c1"># to &#39;neutron&#39;. [&#39;neutron&#39;, &#39;nova-network&#39;, &#39;standalone&#39;]</span>
+<span class="nv">CONFIG_MANILA_NETWORK_TYPE</span><span class="o">=</span>neutron
+
+<span class="c1"># Gateway IPv4 address that should be used. Required. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETWORK_STANDALONE_GATEWAY</span><span class="o">=</span>
+
+<span class="c1"># Network mask that will be used. Can be either decimal like &#39;24&#39; or</span>
+<span class="c1"># binary like &#39;255.255.255.0&#39;. Required. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETWORK_STANDALONE_NETMASK</span><span class="o">=</span>
+
+<span class="c1"># Set it if network has segmentation (VLAN, VXLAN, etc). It will be</span>
+<span class="c1"># assigned to share-network and share drivers will be able to use this</span>
+<span class="c1"># for network interfaces within provisioned share servers. Optional.</span>
+<span class="c1"># Example: 1001. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETWORK_STANDALONE_SEG_ID</span><span class="o">=</span>
+
+<span class="c1"># Can be IP address, range of IP addresses or list of addresses or</span>
+<span class="c1"># ranges. Contains addresses from IP network that are allowed to be</span>
+<span class="c1"># used. If empty, then will be assumed that all host addresses from</span>
+<span class="c1"># network can be used. Optional. Examples: 10.0.0.10 or</span>
+<span class="c1"># 10.0.0.10-10.0.0.20 or</span>
+<span class="c1"># 10.0.0.10-10.0.0.20,10.0.0.30-10.0.0.40,10.0.0.50. Defaults to &#39;&#39;.</span>
+<span class="nv">CONFIG_MANILA_NETWORK_STANDALONE_IP_RANGE</span><span class="o">=</span>
+
+<span class="c1"># IP version of network. Optional. Defaults to &#39;4&#39;. [&#39;4&#39;, &#39;6&#39;]</span>
+<span class="nv">CONFIG_MANILA_NETWORK_STANDALONE_IP_VERSION</span><span class="o">=</span><span class="m">4</span>
+
+<span class="c1"># List of GlusterFS servers that can be used to create shares. Each</span>
+<span class="c1"># GlusterFS server should be of the form [remoteuser@]&lt;volserver&gt;, and</span>
+<span class="c1"># they are assumed to belong to distinct Gluster clusters.</span>
+<span class="nv">CONFIG_MANILA_GLUSTERFS_SERVERS</span><span class="o">=</span>
+
+<span class="c1"># Path of Manila host&#39;s private SSH key file.</span>
+<span class="nv">CONFIG_MANILA_GLUSTERFS_NATIVE_PATH_TO_PRIVATE_KEY</span><span class="o">=</span>
+
+<span class="c1"># Regular expression template used to filter GlusterFS volumes for</span>
+<span class="c1"># share creation. The regex template can optionally (ie. with support</span>
+<span class="c1"># of the GlusterFS backend) contain the #{size} parameter which</span>
+<span class="c1"># matches an integer (sequence of digits) in which case the value</span>
+<span class="c1"># shall be intepreted as size of the volume in GB. Examples: &quot;manila-</span>
+<span class="c1"># share-volume-d+$&quot;, &quot;manila-share-volume-#{size}G-d+$&quot;; with matching</span>
+<span class="c1"># volume names, respectively: &quot;manila-share-volume-12&quot;, &quot;manila-share-</span>
+<span class="c1"># volume-3G-13&quot;. In latter example, the number that matches &quot;#{size}&quot;,</span>
+<span class="c1"># that is, 3, is an indication that the size of volume is 3G.</span>
+<span class="nv">CONFIG_MANILA_GLUSTERFS_VOLUME_PATTERN</span><span class="o">=</span>
+
+<span class="c1"># Specifies the GlusterFS volume to be mounted on the Manila host.</span>
+<span class="c1"># For e.g: [remoteuser@]&lt;volserver&gt;:/&lt;volid&gt;</span>
+<span class="nv">CONFIG_MANILA_GLUSTERFS_TARGET</span><span class="o">=</span>
+
+<span class="c1"># Base directory containing mount points for Gluster volumes.</span>
+<span class="nv">CONFIG_MANILA_GLUSTERFS_MOUNT_POINT_BASE</span><span class="o">=</span>
+
+<span class="c1"># Type of NFS server that mediate access to the Gluster volumes</span>
+<span class="c1"># (Gluster or Ganesha).</span>
+<span class="nv">CONFIG_MANILA_GLUSTERFS_NFS_SERVER_TYPE</span><span class="o">=</span>gluster
+
+<span class="c1"># Path of Manila host&#39;s private SSH key file.</span>
+<span class="nv">CONFIG_MANILA_GLUSTERFS_PATH_TO_PRIVATE_KEY</span><span class="o">=</span>
+
+<span class="c1"># Remote Ganesha server node&#39;s IP address.</span>
+<span class="nv">CONFIG_MANILA_GLUSTERFS_GANESHA_SERVER_IP</span><span class="o">=</span>
+
+<span class="c1"># Specify &#39;y&#39; to set up Horizon communication over https. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_HORIZON_SSL</span><span class="o">=</span>n
+
+<span class="c1"># Secret key to use for Horizon Secret Encryption Key.</span>
+<span class="nv">CONFIG_HORIZON_SECRET_KEY</span><span class="o">=</span>d5722567e0e64eabb0ad52a9bf5a13a2
+
+<span class="c1"># PEM-encoded certificate to be used for SSL connections on the https</span>
+<span class="c1"># server. To generate a certificate, leave blank.</span>
+<span class="nv">CONFIG_HORIZON_SSL_CERT</span><span class="o">=</span>
+
+<span class="c1"># SSL keyfile corresponding to the certificate if one was specified.</span>
+<span class="c1"># The certificate should not require a passphrase.</span>
+<span class="nv">CONFIG_HORIZON_SSL_KEY</span><span class="o">=</span>
+
+<span class="nv">CONFIG_HORIZON_SSL_CACERT</span><span class="o">=</span>
+
+<span class="c1"># Password to use for the Object Storage service to authenticate with</span>
+<span class="c1"># the Identity service.</span>
+<span class="nv">CONFIG_SWIFT_KS_PW</span><span class="o">=</span>1be401c8d38241fb
+
+<span class="c1"># Comma-separated list of devices to use as storage device for Object</span>
+<span class="c1"># Storage. Each entry must take the format /path/to/dev (for example,</span>
+<span class="c1"># specifying /dev/vdb installs /dev/vdb as the Object Storage storage</span>
+<span class="c1"># device; Packstack does not create the filesystem, you must do this</span>
+<span class="c1"># first). If left empty, Packstack creates a loopback device for test</span>
+<span class="c1"># setup.</span>
+<span class="nv">CONFIG_SWIFT_STORAGES</span><span class="o">=</span>
+
+<span class="c1"># Number of Object Storage storage zones; this number MUST be no</span>
+<span class="c1"># larger than the number of configured storage devices.</span>
+<span class="nv">CONFIG_SWIFT_STORAGE_ZONES</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># Number of Object Storage storage replicas; this number MUST be no</span>
+<span class="c1"># larger than the number of configured storage zones.</span>
+<span class="nv">CONFIG_SWIFT_STORAGE_REPLICAS</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># File system type for storage nodes. [&#39;xfs&#39;, &#39;ext4&#39;]</span>
+<span class="nv">CONFIG_SWIFT_STORAGE_FSTYPE</span><span class="o">=</span>ext4
+
+<span class="c1"># Custom seed number to use for swift_hash_path_suffix in</span>
+<span class="c1"># /etc/swift/swift.conf. If you do not provide a value, a seed number</span>
+<span class="c1"># is automatically generated.</span>
+<span class="nv">CONFIG_SWIFT_HASH</span><span class="o">=</span>84fa4dd7b1dd4080
+
+<span class="c1"># Size of the Object Storage loopback file storage device.</span>
+<span class="nv">CONFIG_SWIFT_STORAGE_SIZE</span><span class="o">=</span>2G
+
+<span class="c1"># Password used by Orchestration service user to authenticate against</span>
+<span class="c1"># the database.</span>
+<span class="nv">CONFIG_HEAT_DB_PW</span><span class="o">=</span>c09db27f0f814e8f
+
+<span class="c1"># Encryption key to use for authentication in the Orchestration</span>
+<span class="c1"># database (16, 24, or 32 chars).</span>
+<span class="nv">CONFIG_HEAT_AUTH_ENC_KEY</span><span class="o">=</span>f08b3f50a6cd4b73
+
+<span class="c1"># Password to use for the Orchestration service to authenticate with</span>
+<span class="c1"># the Identity service.</span>
+<span class="nv">CONFIG_HEAT_KS_PW</span><span class="o">=</span>8bb68206891b4547
+
+<span class="c1"># Specify &#39;y&#39; to install the Orchestration CloudFormation API. [&#39;y&#39;,</span>
+<span class="c1"># &#39;n&#39;]</span>
+<span class="nv">CONFIG_HEAT_CFN_INSTALL</span><span class="o">=</span>y
+
+<span class="c1"># Name of the Identity domain for Orchestration.</span>
+<span class="nv">CONFIG_HEAT_DOMAIN</span><span class="o">=</span>heat
+
+<span class="c1"># Name of the Identity domain administrative user for Orchestration.</span>
+<span class="nv">CONFIG_HEAT_DOMAIN_ADMIN</span><span class="o">=</span>heat_admin
+
+<span class="c1"># Password for the Identity domain administrative user for</span>
+<span class="c1"># Orchestration.</span>
+<span class="nv">CONFIG_HEAT_DOMAIN_PASSWORD</span><span class="o">=</span>20f72f5bda0a4ee8
+
+<span class="c1"># Specify &#39;y&#39; to provision for demo usage and testing. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_PROVISION_DEMO</span><span class="o">=</span>y
+
+<span class="c1"># Specify &#39;y&#39; to configure the OpenStack Integration Test Suite</span>
+<span class="c1"># (tempest) for testing. The test suite requires OpenStack Networking</span>
+<span class="c1"># to be installed. [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST</span><span class="o">=</span>n
+
+<span class="c1"># CIDR network address for the floating IP subnet.</span>
+<span class="nv">CONFIG_PROVISION_DEMO_FLOATRANGE</span><span class="o">=</span><span class="m">172</span>.24.4.0/24
+
+<span class="c1"># Allocation pools in the floating IP subnet.</span>
+<span class="nv">CONFIG_PROVISION_DEMO_ALLOCATION_POOLS</span><span class="o">=[]</span>
+
+<span class="c1"># The name to be assigned to the demo image in Glance (default</span>
+<span class="c1"># &quot;cirros&quot;).</span>
+<span class="nv">CONFIG_PROVISION_IMAGE_NAME</span><span class="o">=</span>cirros
+
+<span class="c1"># A URL or local file location for an image to download and provision</span>
+<span class="c1"># in Glance (defaults to a URL for a recent &quot;cirros&quot; image).</span>
+<span class="nv">CONFIG_PROVISION_IMAGE_URL</span><span class="o">=</span>http://download.cirros-cloud.net/0.3.5/cirros-0.3.5-x86_64-disk.img
+
+<span class="c1"># Format for the demo image (default &quot;qcow2&quot;).</span>
+<span class="nv">CONFIG_PROVISION_IMAGE_FORMAT</span><span class="o">=</span>qcow2
+
+<span class="c1"># Properties of the demo image (none by default).</span>
+<span class="nv">CONFIG_PROVISION_IMAGE_PROPERTIES</span><span class="o">=</span>
+
+<span class="c1"># User to use when connecting to instances booted from the demo</span>
+<span class="c1"># image.</span>
+<span class="nv">CONFIG_PROVISION_IMAGE_SSH_USER</span><span class="o">=</span>cirros
+
+<span class="c1"># Name of the uec image created in Glance used in tempest tests</span>
+<span class="c1"># (default &quot;cirros-uec&quot;).</span>
+<span class="nv">CONFIG_PROVISION_UEC_IMAGE_NAME</span><span class="o">=</span>cirros-uec
+
+<span class="c1"># URL of the kernel image copied to Glance image for uec image</span>
+<span class="c1"># (defaults to a URL for a recent &quot;cirros&quot; uec image).</span>
+<span class="nv">CONFIG_PROVISION_UEC_IMAGE_KERNEL_URL</span><span class="o">=</span>http://download.cirros-cloud.net/0.3.5/cirros-0.3.5-x86_64-kernel
+
+<span class="c1"># URL of the ramdisk image copied to Glance image for uec image</span>
+<span class="c1"># (defaults to a URL for a recent &quot;cirros&quot; uec image).</span>
+<span class="nv">CONFIG_PROVISION_UEC_IMAGE_RAMDISK_URL</span><span class="o">=</span>http://download.cirros-cloud.net/0.3.5/cirros-0.3.5-x86_64-initramfs
+
+<span class="c1"># URL of the disk image copied to Glance image for uec image</span>
+<span class="c1"># (defaults to a URL for a recent &quot;cirros&quot; uec image).</span>
+<span class="nv">CONFIG_PROVISION_UEC_IMAGE_DISK_URL</span><span class="o">=</span>http://download.cirros-cloud.net/0.3.5/cirros-0.3.5-x86_64-disk.img
+
+<span class="nv">CONFIG_TEMPEST_HOST</span><span class="o">=</span>
+
+<span class="c1"># Name of the Integration Test Suite provisioning user. If you do not</span>
+<span class="c1"># provide a user name, Tempest is configured in a standalone mode.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_USER</span><span class="o">=</span>
+
+<span class="c1"># Password to use for the Integration Test Suite provisioning user.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_USER_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># CIDR network address for the floating IP subnet.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_FLOATRANGE</span><span class="o">=</span><span class="m">172</span>.24.4.0/24
+
+<span class="c1"># Primary flavor name to use in Tempest.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_FLAVOR_NAME</span><span class="o">=</span>m1.nano
+
+<span class="c1"># Primary flavor&#39;s disk quota in Gb.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_FLAVOR_DISK</span><span class="o">=</span><span class="m">0</span>
+
+<span class="c1"># Primary flavor&#39;s ram in Mb.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_FLAVOR_RAM</span><span class="o">=</span><span class="m">128</span>
+
+<span class="c1"># Primary flavor&#39;s vcpus number.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_FLAVOR_VCPUS</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># Alternative flavor name to use in Tempest.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_FLAVOR_ALT_NAME</span><span class="o">=</span>m1.micro
+
+<span class="c1"># Alternative flavor&#39;s disk quota in Gb.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_FLAVOR_ALT_DISK</span><span class="o">=</span><span class="m">0</span>
+
+<span class="c1"># Alternative flavor&#39;s ram in Mb.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_FLAVOR_ALT_RAM</span><span class="o">=</span><span class="m">128</span>
+
+<span class="c1"># Alternative flavor&#39;s vcpus number.</span>
+<span class="nv">CONFIG_PROVISION_TEMPEST_FLAVOR_ALT_VCPUS</span><span class="o">=</span><span class="m">1</span>
+
+<span class="c1"># Specify &#39;y&#39; to run Tempest smoke test as last step of installation.</span>
+<span class="nv">CONFIG_RUN_TEMPEST</span><span class="o">=</span>n
+
+<span class="c1"># Test suites to run, example: &quot;smoke dashboard TelemetryAlarming&quot;.</span>
+<span class="c1"># Optional, defaults to &quot;smoke&quot;.</span>
+<span class="nv">CONFIG_RUN_TEMPEST_TESTS</span><span class="o">=</span>smoke
+
+<span class="c1"># Specify &#39;y&#39; to configure the Open vSwitch external bridge for an</span>
+<span class="c1"># all-in-one deployment (the L3 external bridge acts as the gateway</span>
+<span class="c1"># for virtual machines). [&#39;y&#39;, &#39;n&#39;]</span>
+<span class="nv">CONFIG_PROVISION_OVS_BRIDGE</span><span class="o">=</span>y
+
+<span class="c1"># Password to use for Gnocchi to access the database.</span>
+<span class="nv">CONFIG_GNOCCHI_DB_PW</span><span class="o">=</span>9fb681656e85442c
+
+<span class="c1"># Password to use for Gnocchi to authenticate with the Identity</span>
+<span class="c1"># service.</span>
+<span class="nv">CONFIG_GNOCCHI_KS_PW</span><span class="o">=</span>e6ae0c21541d4b5d
+
+<span class="c1"># Secret key for signing Telemetry service (ceilometer) messages.</span>
+<span class="nv">CONFIG_CEILOMETER_SECRET</span><span class="o">=</span>a7a99be36c744d9a
+
+<span class="c1"># Password to use for Telemetry to authenticate with the Identity</span>
+<span class="c1"># service.</span>
+<span class="nv">CONFIG_CEILOMETER_KS_PW</span><span class="o">=</span>42070708044240a7
+
+<span class="c1"># Ceilometer service name. [&#39;httpd&#39;, &#39;ceilometer&#39;]</span>
+<span class="nv">CONFIG_CEILOMETER_SERVICE_NAME</span><span class="o">=</span>httpd
+
+<span class="c1"># Backend driver for Telemetry&#39;s group membership coordination.</span>
+<span class="c1"># [&#39;redis&#39;, &#39;none&#39;]</span>
+<span class="nv">CONFIG_CEILOMETER_COORDINATION_BACKEND</span><span class="o">=</span>redis
+
+<span class="c1"># Whether to enable ceilometer middleware in swift proxy. By default</span>
+<span class="c1"># this should be false to avoid unnecessary load.</span>
+<span class="nv">CONFIG_ENABLE_CEILOMETER_MIDDLEWARE</span><span class="o">=</span>n
+
+<span class="c1"># IP address of the server on which to install the Redis server.</span>
+<span class="nv">CONFIG_REDIS_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+
+<span class="c1"># Port on which the Redis server listens.</span>
+<span class="nv">CONFIG_REDIS_PORT</span><span class="o">=</span><span class="m">6379</span>
+
+<span class="c1"># Password to use for Telemetry Alarming to authenticate with the</span>
+<span class="c1"># Identity service.</span>
+<span class="nv">CONFIG_AODH_KS_PW</span><span class="o">=</span>6d8e580d6c624698
+
+<span class="c1"># Password to use for Telemetry Alarming (AODH) to access the</span>
+<span class="c1"># database.</span>
+<span class="nv">CONFIG_AODH_DB_PW</span><span class="o">=</span>5e58935a65834246
+
+<span class="c1"># Password to use for Panko to access the database.</span>
+<span class="nv">CONFIG_PANKO_DB_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Password to use for Panko to authenticate with the Identity</span>
+<span class="c1"># service.</span>
+<span class="nv">CONFIG_PANKO_KS_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Password to use for OpenStack Database-as-a-Service (trove) to</span>
+<span class="c1"># access the database.</span>
+<span class="nv">CONFIG_TROVE_DB_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Password to use for OpenStack Database-as-a-Service to authenticate</span>
+<span class="c1"># with the Identity service.</span>
+<span class="nv">CONFIG_TROVE_KS_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># User name to use when OpenStack Database-as-a-Service connects to</span>
+<span class="c1"># the Compute service.</span>
+<span class="nv">CONFIG_TROVE_NOVA_USER</span><span class="o">=</span>trove
+
+<span class="c1"># Tenant to use when OpenStack Database-as-a-Service connects to the</span>
+<span class="c1"># Compute service.</span>
+<span class="nv">CONFIG_TROVE_NOVA_TENANT</span><span class="o">=</span>services
+
+<span class="c1"># Password to use when OpenStack Database-as-a-Service connects to</span>
+<span class="c1"># the Compute service.</span>
+<span class="nv">CONFIG_TROVE_NOVA_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Password to use for OpenStack Data Processing (sahara) to access</span>
+<span class="c1"># the database.</span>
+<span class="nv">CONFIG_SAHARA_DB_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Password to use for OpenStack Data Processing to authenticate with</span>
+<span class="c1"># the Identity service.</span>
+<span class="nv">CONFIG_SAHARA_KS_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Password to use for the Magnum to access the database.</span>
+<span class="nv">CONFIG_MAGNUM_DB_PW</span><span class="o">=</span>PW_PLACEHOLDER
+
+<span class="c1"># Password to use for the Magnum to authenticate with the Identity</span>
+<span class="c1"># service.</span>
+<span class="nv">CONFIG_MAGNUM_KS_PW</span><span class="o">=</span>PW_PLACEHOLDER
+</pre></div>
 </div>
 </div>
 </div>
