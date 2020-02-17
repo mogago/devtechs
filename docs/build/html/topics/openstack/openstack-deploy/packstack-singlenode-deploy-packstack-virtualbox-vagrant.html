@@ -1,0 +1,546 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html" />
+    <link rel="prev" title="OpenStack Deploy Methods" href="_openstack-deploy.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_openstack-deploy.html">OpenStack Deploy Methods</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisitos-del-sistema">Prerequisitos del sistema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-de-virtualbox">Configuración de VirtualBox</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#host-only-network-adapter">Host-only Network Adapter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nat-provider-network">NAT Provider Network</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#definicion-del-archivo-vagrantfile">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#definicion-de-archivo-de-configuracion-del-nodo">Definición de archivo de configuración del nodo</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#controller-packstack-setup-sh">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado">Pruebas en el entorno OpenStack desplegado</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html">Despliegue de OpenStack con Packstack y VirtualBox</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE &amp; Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxekickstart/_pxekickstart.html">PXE &amp; Kickstart</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_openstack-deploy.html">OpenStack Deploy Methods</a> &raquo;</li>
+        
+      <li>Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/openstack/openstack-deploy/packstack-singlenode-deploy-packstack-virtualbox-vagrant.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="despliegue-de-openstack-singlenode-con-packstack-virtualbox-y-vagrant">
+<h1><a class="toc-backref" href="#id15">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a><a class="headerlink" href="#despliegue-de-openstack-singlenode-con-packstack-virtualbox-y-vagrant" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#despliegue-de-openstack-singlenode-con-packstack-virtualbox-y-vagrant" id="id15">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a><ul>
+<li><a class="reference internal" href="#prerequisitos-del-sistema" id="id16">Prerequisitos del sistema</a></li>
+<li><a class="reference internal" href="#configuracion-de-virtualbox" id="id17">Configuración de VirtualBox</a><ul>
+<li><a class="reference internal" href="#host-only-network-adapter" id="id18">Host-only Network Adapter</a></li>
+<li><a class="reference internal" href="#nat-provider-network" id="id19">NAT Provider Network</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#definicion-del-archivo-vagrantfile" id="id20">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
+<li><a class="reference internal" href="#definicion-de-archivo-de-configuracion-del-nodo" id="id21">Definición de archivo de configuración del nodo</a><ul>
+<li><a class="reference internal" href="#controller-packstack-setup-sh" id="id22">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack" id="id23">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a></li>
+<li><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado" id="id24">Pruebas en el entorno OpenStack desplegado</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="prerequisitos-del-sistema">
+<h2><a class="toc-backref" href="#id16">Prerequisitos del sistema</a><a class="headerlink" href="#prerequisitos-del-sistema" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Desde nuestro sistema Operativo (Windows, macOS, Linux) debemos tener instaladas los siguientes programas:</p>
+<ul class="simple">
+<li>VirtualBox</li>
+<li>Vagrant</li>
+</ul>
+<p>Este escenario de OpenStack que será desplegado consta de 1 VM: un node que contiene las funcionalidades de controller, network, compute, etc. integradas. Se requiere al menos 8 GB de RAM y 4 CPUs.</p>
+</div>
+<div class="section" id="configuracion-de-virtualbox">
+<h2><a class="toc-backref" href="#id17">Configuración de VirtualBox</a><a class="headerlink" href="#configuracion-de-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="host-only-network-adapter">
+<h3><a class="toc-backref" href="#id18">Host-only Network Adapter</a><a class="headerlink" href="#host-only-network-adapter" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li>Crear un Host-only Network Adapter haciendo clic en el botón <span class="guilabel">Global Tools</span>, <span class="guilabel">Host Network Manager</span>. Clic en el botón <span class="guilabel">Create</span>:</li>
+</ol>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/Windows-VirtualBox-HostNetworkManager-Create-Adapter-11.png" src="../../../_images/Windows-VirtualBox-HostNetworkManager-Create-Adapter-11.png" />
+<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Crear un nuevo adaptador</span></p>
+</div>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/Linux-VirtualBox-HostNetworkManager-Create-Adapter-11.png" src="../../../_images/Linux-VirtualBox-HostNetworkManager-Create-Adapter-11.png" />
+<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Crear un nuevo adaptador</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Se creará un adaptador con un nombre predefinido al cual podremos editar la dirección IPv4 respectiva. En este caso no será necesario activar la opción de DHCP:</li>
+</ol>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/Windows-VirtualBox-HostNetworkManager-Create-Adapter-21.png" src="../../../_images/Windows-VirtualBox-HostNetworkManager-Create-Adapter-21.png" />
+<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Configuración del adaptador</span></p>
+</div>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/Linux-VirtualBox-HostNetworkManager-Create-Adapter-21.png" src="../../../_images/Linux-VirtualBox-HostNetworkManager-Create-Adapter-21.png" />
+<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Configuración del adaptador</span></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Sobre el adaptador de red creado:</p>
+<ul class="last simple">
+<li>El adaptador pertenece a la red de management</li>
+<li>La dirección IP del adaptador es el Host-side de la red</li>
+</ul>
+</div>
+</div>
+<div class="section" id="nat-provider-network">
+<h3><a class="toc-backref" href="#id19">NAT Provider Network</a><a class="headerlink" href="#nat-provider-network" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li>Clic en <span class="guilabel">Preferences</span> (<span class="guilabel">Ctrl + G</span>):</li>
+</ol>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/Windows-VirtualBox-Preferences1.png" src="../../../_images/Windows-VirtualBox-Preferences1.png" />
+<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Clic en opción <span class="guilabel">Preferences</span></span></p>
+</div>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/Linux-VirtualBox-Preferences1.png" src="../../../_images/Linux-VirtualBox-Preferences1.png" />
+<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Clic en opción <span class="guilabel">Preferences</span></span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>En la sección <span class="guilabel">Network</span>, seleccionar el botón de creación de una nueva red:</li>
+</ol>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/Windows-VirtualBox-Preferences-Network1.png" src="../../../_images/Windows-VirtualBox-Preferences-Network1.png" />
+<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Clic en sección <span class="guilabel">Network</span></span></p>
+</div>
+<div class="figure align-center" id="id8">
+<img alt="../../../_images/Linux-VirtualBox-Preferences-Network1.png" src="../../../_images/Linux-VirtualBox-Preferences-Network1.png" />
+<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Clic en sección <span class="guilabel">Network</span></span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Nombrar y definir un rango para la red NAT. También podemos dar soporte DHCP:</li>
+</ol>
+<div class="figure align-center" id="id9">
+<img alt="../../../_images/Windows-VirtualBox-Create-Provider-Network1.png" src="../../../_images/Windows-VirtualBox-Create-Provider-Network1.png" />
+<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Definir propiedades de la red</span></p>
+</div>
+<div class="figure align-center" id="id10">
+<img alt="../../../_images/Linux-VirtualBox-Create-Provider-Network1.png" src="../../../_images/Linux-VirtualBox-Create-Provider-Network1.png" />
+<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Definir propiedades de la red</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="definicion-del-archivo-vagrantfile">
+<h2><a class="toc-backref" href="#id20">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a><a class="headerlink" href="#definicion-del-archivo-vagrantfile" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> se define de la siguiente forma:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- mode: ruby -*-</span>
+<span class="c1"># vi: set ft=ruby :</span>
+<span class="nv">servers</span><span class="o">=[</span>
+  <span class="o">{</span>
+    :hostname <span class="o">=</span>&gt; <span class="s2">&quot;packstack&quot;</span>,
+    :box <span class="o">=</span>&gt; <span class="s2">&quot;centos/7&quot;</span>,
+    :ram <span class="o">=</span>&gt; <span class="m">8192</span>,
+    :cpu <span class="o">=</span>&gt; <span class="m">4</span>,
+    :script <span class="o">=</span>&gt; <span class="s2">&quot;sh /vagrant/packstack_setup.sh&quot;</span>
+  <span class="o">}</span>
+<span class="o">]</span>
+<span class="c1"># All Vagrant configuration is done below. The &quot;2&quot; in Vagrant.configure</span>
+<span class="c1"># configures the configuration version (we support older styles for</span>
+<span class="c1"># backwards compatibility). Please don&#39;t change it unless you know what</span>
+<span class="c1"># you&#39;re doing.</span>
+Vagrant.configure<span class="o">(</span><span class="s2">&quot;2&quot;</span><span class="o">)</span> <span class="k">do</span> <span class="p">|</span>config<span class="p">|</span>
+  servers.each <span class="k">do</span> <span class="p">|</span>machine<span class="p">|</span>
+    config.vm.define machine<span class="o">[</span>:hostname<span class="o">]</span> <span class="k">do</span> <span class="p">|</span>node<span class="p">|</span>
+      node.vm.box <span class="o">=</span> machine<span class="o">[</span>:box<span class="o">]</span>
+      node.vm.hostname <span class="o">=</span> machine<span class="o">[</span>:hostname<span class="o">]</span>
+      node.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> <span class="p">|</span>vb<span class="p">|</span>
+        vb.customize <span class="o">[</span><span class="s2">&quot;modifyvm&quot;</span>, :id, <span class="s2">&quot;--memory&quot;</span>, machine<span class="o">[</span>:ram<span class="o">]</span>, <span class="s2">&quot;--cpus&quot;</span>, machine<span class="o">[</span>:cpu<span class="o">]]</span>
+        vb.customize <span class="o">[</span><span class="s2">&quot;modifyvm&quot;</span>, :id, <span class="s2">&quot;--nic2&quot;</span>, <span class="s2">&quot;hostonly&quot;</span>, <span class="s2">&quot;--hostonlyadapter2&quot;</span>, <span class="s2">&quot;VirtualBox Host-Only Ethernet Adapter #2&quot;</span><span class="o">]</span>
+      end
+      node.vm.provision <span class="s2">&quot;shell&quot;</span>, inline: machine<span class="o">[</span>:script<span class="o">]</span>, privileged: true, run: <span class="s2">&quot;once&quot;</span>
+    end
+  end
+end
+</pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<ul class="last simple">
+<li>Vagrant configura automáticamente la primera interfaz de red de una nueva VM en la red NAT. A través de esta red podemos acceder desde el sistema host al Dashboard o CLI del nodo.</li>
+<li>La primera interfaz de red se usa para conectarnos a Internet.</li>
+<li>La segunda interfaz sirve para proveer conectividad del sistema host a la VM con OpenStack.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="definicion-de-archivo-de-configuracion-del-nodo">
+<h2><a class="toc-backref" href="#id21">Definición de archivo de configuración del nodo</a><a class="headerlink" href="#definicion-de-archivo-de-configuracion-del-nodo" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En el mismo directorio donde tenemos almacenado el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> guardaremos el script <code class="docutils literal notranslate"><span class="pre">.sh</span></code> que se correrá cuando Vagrant lance la VM dentro del nodo:</p>
+<div class="section" id="controller-packstack-setup-sh">
+<h3><a class="toc-backref" href="#id22">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a><a class="headerlink" href="#controller-packstack-setup-sh" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
+
+    <span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.utf-8
+    <span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.utf-8
+
+    sed -i -e <span class="s1">&#39;s/enabled=1/enabled=0/g&#39;</span> /etc/yum/pluginconf.d/fastestmirror.conf
+
+    cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-eth1</span>
+<span class="s">    DEVICE=&quot;eth1&quot;</span>
+<span class="s">    DEFROUTE=&quot;no&quot;</span>
+<span class="s">    BOOTPROTO=&quot;static&quot;</span>
+<span class="s">    IPADDR=&quot;10.0.0.20&quot;</span>
+<span class="s">    NETMASK=&quot;255.255.255.0&quot;</span>
+<span class="s">    DNS1=&quot;8.8.8.8&quot;</span>
+<span class="s">    TYPE=&quot;Ethernet&quot;</span>
+<span class="s">    ONBOOT=yes</span>
+<span class="s">    EOF</span>
+
+    ifdown eth1
+    ifup eth1
+
+    cat <span class="s">&lt;&lt;- EOF &gt; /etc/hosts</span>
+<span class="s">    127.0.0.1 localhost</span>
+<span class="s">    10.0.0.20 packstack</span>
+<span class="s">    EOF</span>
+
+    <span class="nb">echo</span> <span class="s1">&#39;centos&#39;</span> &gt;/etc/yum/vars/contentdir
+
+    systemctl disable firewalld
+    systemctl stop firewalld
+    systemctl disable NetworkManager
+    systemctl stop NetworkManager
+    systemctl <span class="nb">enable</span> network
+    systemctl start network
+
+    yum install -y centos-release-openstack-queens
+    yum update -y
+    yum install -y openstack-packstack
+    yum install -y lvm2
+
+    packstack --install-hosts<span class="o">=</span><span class="s2">&quot;10.0.0.20&quot;</span> --os-heat-install<span class="o">=</span>y --os-heat-cfn-install<span class="o">=</span>y --os-neutron-lbaas-install<span class="o">=</span>y --keystone-admin-passwd<span class="o">=</span><span class="s2">&quot;openstack&quot;</span> --keystone-demo-passwd<span class="o">=</span><span class="s2">&quot;openstack&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack">
+<h2><a class="toc-backref" href="#id23">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a><a class="headerlink" href="#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>En el terminal, cambiar de directorio al lugar donde tenemos almacenado el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> y el script <code class="docutils literal notranslate"><span class="pre">.sh</span></code> del nodo. Luego, desplegar la máquina virtual con <code class="docutils literal notranslate"><span class="pre">vagrant</span> <span class="pre">up</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> singlenode-packstack-vagrant
+
+$ vagrant up
+</pre></div>
+</div>
+<p>Comenzará la configuración y despliegue de la máquina virtual en VirtualBox conforme se ha especificado en el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code>, luego correrá automáticamente el script <code class="docutils literal notranslate"><span class="pre">.sh</span></code> que se ha definido para la VM:</p>
+<div class="figure align-center" id="id11">
+<img alt="../../../_images/vagrant-deploy-virtualbox-vm.png" src="../../../_images/vagrant-deploy-virtualbox-vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - VM desplegada por Vagrant</span></p>
+</div>
+<p>La instalación de Packstack en este nodo iniciará automáticamente. Luego de media hora aproximadamente, la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">El Dashboard de OpenStack podría demorar un corto tiempo para arrancar la primera vez luego de haber instalado OpenStack.</p>
+</div>
+</div>
+<div class="section" id="pruebas-en-el-entorno-openstack-desplegado">
+<h2><a class="toc-backref" href="#id24">Pruebas en el entorno OpenStack desplegado</a><a class="headerlink" href="#pruebas-en-el-entorno-openstack-desplegado" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Ubicándonos el mismo directorio donde tenemos el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> entraremos al terminal de la VM <code class="docutils literal notranslate"><span class="pre">packstack</span></code> con el siguiente comando:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vagrant ssh packstack
+$ sudo su
+$ <span class="nb">cd</span> /root
+</pre></div>
+</div>
+<p>Ahora realizaremos una prueba de despliegue desde el CLI:</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">La imagen de CirrOS que se crea por defecto como <code class="docutils literal notranslate"><span class="pre">demo</span></code> al instalar Packstack tiene fallos pues tiene un tamaño reducido de 273 bytes. La causa de esto es que puede ser que se haya descargado sin la opción <code class="docutils literal notranslate"><span class="pre">-L</span></code> del comando <code class="docutils literal notranslate"><span class="pre">curl</span></code>. Por lo tanto, crearemos nuestra propia imagen CirrOS:</p>
+</div>
+<p>La topología que se desea lograr es la siguiente:</p>
+<div class="figure align-center" id="id12">
+<img alt="../../../_images/openstack-sample-topology1.png" src="../../../_images/openstack-sample-topology1.png" />
+<p class="caption"><span class="caption-text">OpenStack - Topología desplegada</span></p>
+</div>
+<p>Y los comandos que ejecutaremos en el nodo controller serán los siguientes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_admin
+
+<span class="s1">&#39;#&#39;</span> mkdir images
+<span class="s1">&#39;#&#39;</span> curl -o /root/images/cirros-0.4.0-x86_64-disk.img -L http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
+<span class="s1">&#39;#&#39;</span> openstack image create --min-disk <span class="m">1</span> --min-ram <span class="m">128</span> --public --disk-format qcow2 --file /root/images/cirros-0.4.0-x86_64-disk.img cirros1
+
+<span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_demo
+
+<span class="s1">&#39;#&#39;</span> openstack network list
+
++--------------------------------------+---------+--------------------------------------+
+<span class="p">|</span> ID                                   <span class="p">|</span> Name    <span class="p">|</span> Subnets                              <span class="p">|</span>
++--------------------------------------+---------+--------------------------------------+
+<span class="p">|</span> 2355d395-0b86-4b04-aedf-56c22ea87bf1 <span class="p">|</span> private <span class="p">|</span> 623a8170-54d0-47be-b8bc-fca4fdebe4cb <span class="p">|</span>
+<span class="p">|</span> 273ed9aa-63e1-4178-9237-32a6095f9840 <span class="p">|</span> public  <span class="p">|</span> c04cf225-a94d-4237-869d-d0bd08e40f37 <span class="p">|</span>
++--------------------------------------+---------+--------------------------------------+
+
+<span class="s1">&#39;#&#39;</span> openstack server create --image cirros1 --flavor <span class="m">1</span> --min <span class="m">2</span> --max <span class="m">2</span> --nic net-id<span class="o">=</span>2355d395-0b86-4b04-aedf-56c22ea87bf1 <span class="nb">test</span>
+</pre></div>
+</div>
+<p>En este despliegue de prueba se han creado dos instancias al mismo tiempo y con las mismas características corriendo en el mismo nodo (o equivalentemente, en el mismo hypervisor).</p>
+<div class="figure align-center" id="id13">
+<img alt="../../../_images/openstack-singlenode-test-instances.png" src="../../../_images/openstack-singlenode-test-instances.png" />
+<p class="caption"><span class="caption-text">OpenStack - Instancias desplegadas</span></p>
+</div>
+<p>Podremos ingresar a la consola de cada instancia desde el dashboard y probar conectividad entre ellas:</p>
+<div class="figure align-center" id="id14">
+<img alt="../../../_images/openstack-singlenode-test-instance-test-1.png" src="../../../_images/openstack-singlenode-test-instance-test-1.png" />
+<p class="caption"><span class="caption-text">OpenStack - Consola <code class="docutils literal notranslate"><span class="pre">test-1</span></code></span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html" class="btn btn-neutral float-right" title="Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_openstack-deploy.html" class="btn btn-neutral float-left" title="OpenStack Deploy Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

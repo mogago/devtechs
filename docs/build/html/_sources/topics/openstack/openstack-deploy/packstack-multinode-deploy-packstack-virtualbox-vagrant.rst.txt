@@ -99,51 +99,56 @@ El archivo ``Vagrantfile`` se define de la siguiente forma:
     # -*- mode: ruby -*-
     # vi: set ft=ruby :
     servers=[
-    {
+      {
         :hostname => "compute1",
         :box => "geerlingguy/centos7",
         :ram => 2048,
         :cpu => 1,
         :script => "sh /vagrant/compute1_setup.sh"
-    },
-    {
+      },
+      {
         :hostname => "compute2",
         :box => "geerlingguy/centos7",
         :ram => 2048,
         :cpu => 1,
         :script => "sh /vagrant/compute2_setup.sh"
-    },
-    {
+      },
+      {
         :hostname => "packstack",
         :box => "geerlingguy/centos7",
         :ram => 8192,
         :cpu => 2,
         :script => "sh /vagrant/packstack_setup.sh"
-    }
+      }
     ]
     # All Vagrant configuration is done below. The "2" in Vagrant.configure
     # configures the configuration version (we support older styles for
     # backwards compatibility). Please don't change it unless you know what
     # you're doing.
     Vagrant.configure("2") do |config|
-    servers.each do |machine|
+      servers.each do |machine|
         config.vm.define machine[:hostname] do |node|
-        node.vm.box = machine[:box]
-        node.vm.hostname = machine[:hostname]
-        node.vm.provider "virtualbox" do |vb|
+          node.vm.box = machine[:box]
+          node.vm.hostname = machine[:hostname]
+          node.vm.provider "virtualbox" do |vb|
             vb.customize ["modifyvm", :id, "--memory", machine[:ram], "--cpus", machine[:cpu]]
             vb.customize ["modifyvm", :id, "--nic2", "hostonly", "--hostonlyadapter2", "VirtualBox Host-Only Ethernet Adapter #2"]
+          end
+          node.vm.provision "shell", inline: machine[:script], privileged: true, run: "once"
         end
-        node.vm.provision "shell", inline: machine[:script], privileged: true, run: "once"
-        end
-    end
+      end
     end
 
+.. Important::
+
+    - Vagrant configura automáticamente la primera interfaz de red de una nueva VM en la red NAT. A través de esta red podemos acceder desde el sistema host al Dashboard o CLI del nodo.
+    - La primera interfaz de red se usa para conectarnos a Internet.
+    - La segunda interfaz sirve para proveer conectividad del sistema host a la VM con OpenStack.
 
 Definición de archivos de configuración de nodos
 ''''''''''''''''''''''''''''''''''''''''''''''''
 
-En el mismo directorio donde tenemos almacenado el archivo ``Vagrantfile`` guardaremos los scrips ``.sh`` que se correrán cuando Vagrant lance las VMs en su respectivo nodo:
+En el mismo directorio donde tenemos almacenado el archivo ``Vagrantfile`` guardaremos los scripts ``.sh`` que se correrán cuando Vagrant lance las VMs en su respectivo nodo:
 
 Controller (``packstack_setup.sh``)
 """""""""""""""""""""""""""""""""""
@@ -310,7 +315,7 @@ Comenzará la configuración y despliegue de máquinas virtuales en VirtualBox c
 Instalación de OpenStack con Packstack
 ''''''''''''''''''''''''''''''''''''''
 
-Ubicándonos el mismo directorio donde tenemos el archivo ``Vagrantfile`` entraremos al terminal de la VM ``packstack`` con el siguiente comando:
+Ubicándonos en el mismo directorio donde tenemos el archivo ``Vagrantfile`` entraremos al terminal de la VM ``packstack`` con el siguiente comando:
 
 .. code-block:: bash
 
@@ -327,7 +332,7 @@ Este script corre comandos de prueba ``ssh`` a las VMs de los compute nodes para
 Pruebas en el entorno OpenStack desplegado
 ''''''''''''''''''''''''''''''''''''''''''
 
-Luego de media hora aproximadamente, la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack:
+Luego de media hora aproximadamente, la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.
 
 .. Note::
 
@@ -350,9 +355,10 @@ Y los comandos que ejecutaremos en el nodo controller serán los siguientes:
 
 .. code-block:: bash
 
-    '#' source keystonerc_admin
-
+    $ sudo su
     '#' cd /root
+
+    '#' source keystonerc_admin
 
     '#' mkdir images
     '#' curl -o /root/images/cirros-0.4.0-x86_64-disk.img -L http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
@@ -385,12 +391,12 @@ En este despliegue de prueba se han creado dos instancias al mismo tiempo y con 
 
 Podremos ingresar a la consola de cada instancia desde el dashboard y probar conectividad entre ellas:
 
-.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/openstack-test-instance-test-1.png
+.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/openstack-multinode-test-instance-test-1.png
     :align: center
 
     OpenStack - Consola ``test-1``
 
-.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/openstack-test-instance-test-2.png
+.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/openstack-multinode-test-instance-test-2.png
     :align: center
 
     OpenStack - Consola ``test-2``

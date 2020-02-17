@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
-    <link rel="next" title="OpenStack initial configuration" href="../openstack-guide/_openstack-guide.html" />
-    <link rel="prev" title="Despliegue de OpenStack con Packstack y VirtualBox" href="packstack-multinode-deploy-packstack-virtualbox.html" /> 
+    <link rel="next" title="Despliegue de OpenStack con Packstack y VirtualBox" href="packstack-multinode-deploy-packstack-virtualbox.html" />
+    <link rel="prev" title="Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -108,7 +108,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../_openstack.html">OpenStack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="_openstack-deploy.html">OpenStack Deploy Methods</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html">Despliegue de OpenStack con Packstack y VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#prerequisitos-del-sistema">Prerequisitos del sistema</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuracion-de-virtualbox">Configuración de VirtualBox</a><ul>
@@ -128,6 +128,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado">Pruebas en el entorno OpenStack desplegado</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html">Despliegue de OpenStack con Packstack y VirtualBox</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
@@ -342,51 +343,59 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- mode: ruby -*-</span>
 <span class="c1"># vi: set ft=ruby :</span>
 <span class="nv">servers</span><span class="o">=[</span>
-<span class="o">{</span>
+  <span class="o">{</span>
     :hostname <span class="o">=</span>&gt; <span class="s2">&quot;compute1&quot;</span>,
     :box <span class="o">=</span>&gt; <span class="s2">&quot;geerlingguy/centos7&quot;</span>,
     :ram <span class="o">=</span>&gt; <span class="m">2048</span>,
     :cpu <span class="o">=</span>&gt; <span class="m">1</span>,
     :script <span class="o">=</span>&gt; <span class="s2">&quot;sh /vagrant/compute1_setup.sh&quot;</span>
-<span class="o">}</span>,
-<span class="o">{</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
     :hostname <span class="o">=</span>&gt; <span class="s2">&quot;compute2&quot;</span>,
     :box <span class="o">=</span>&gt; <span class="s2">&quot;geerlingguy/centos7&quot;</span>,
     :ram <span class="o">=</span>&gt; <span class="m">2048</span>,
     :cpu <span class="o">=</span>&gt; <span class="m">1</span>,
     :script <span class="o">=</span>&gt; <span class="s2">&quot;sh /vagrant/compute2_setup.sh&quot;</span>
-<span class="o">}</span>,
-<span class="o">{</span>
+  <span class="o">}</span>,
+  <span class="o">{</span>
     :hostname <span class="o">=</span>&gt; <span class="s2">&quot;packstack&quot;</span>,
     :box <span class="o">=</span>&gt; <span class="s2">&quot;geerlingguy/centos7&quot;</span>,
     :ram <span class="o">=</span>&gt; <span class="m">8192</span>,
     :cpu <span class="o">=</span>&gt; <span class="m">2</span>,
     :script <span class="o">=</span>&gt; <span class="s2">&quot;sh /vagrant/packstack_setup.sh&quot;</span>
-<span class="o">}</span>
+  <span class="o">}</span>
 <span class="o">]</span>
 <span class="c1"># All Vagrant configuration is done below. The &quot;2&quot; in Vagrant.configure</span>
 <span class="c1"># configures the configuration version (we support older styles for</span>
 <span class="c1"># backwards compatibility). Please don&#39;t change it unless you know what</span>
 <span class="c1"># you&#39;re doing.</span>
 Vagrant.configure<span class="o">(</span><span class="s2">&quot;2&quot;</span><span class="o">)</span> <span class="k">do</span> <span class="p">|</span>config<span class="p">|</span>
-servers.each <span class="k">do</span> <span class="p">|</span>machine<span class="p">|</span>
+  servers.each <span class="k">do</span> <span class="p">|</span>machine<span class="p">|</span>
     config.vm.define machine<span class="o">[</span>:hostname<span class="o">]</span> <span class="k">do</span> <span class="p">|</span>node<span class="p">|</span>
-    node.vm.box <span class="o">=</span> machine<span class="o">[</span>:box<span class="o">]</span>
-    node.vm.hostname <span class="o">=</span> machine<span class="o">[</span>:hostname<span class="o">]</span>
-    node.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> <span class="p">|</span>vb<span class="p">|</span>
+      node.vm.box <span class="o">=</span> machine<span class="o">[</span>:box<span class="o">]</span>
+      node.vm.hostname <span class="o">=</span> machine<span class="o">[</span>:hostname<span class="o">]</span>
+      node.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> <span class="p">|</span>vb<span class="p">|</span>
         vb.customize <span class="o">[</span><span class="s2">&quot;modifyvm&quot;</span>, :id, <span class="s2">&quot;--memory&quot;</span>, machine<span class="o">[</span>:ram<span class="o">]</span>, <span class="s2">&quot;--cpus&quot;</span>, machine<span class="o">[</span>:cpu<span class="o">]]</span>
         vb.customize <span class="o">[</span><span class="s2">&quot;modifyvm&quot;</span>, :id, <span class="s2">&quot;--nic2&quot;</span>, <span class="s2">&quot;hostonly&quot;</span>, <span class="s2">&quot;--hostonlyadapter2&quot;</span>, <span class="s2">&quot;VirtualBox Host-Only Ethernet Adapter #2&quot;</span><span class="o">]</span>
+      end
+      node.vm.provision <span class="s2">&quot;shell&quot;</span>, inline: machine<span class="o">[</span>:script<span class="o">]</span>, privileged: true, run: <span class="s2">&quot;once&quot;</span>
     end
-    node.vm.provision <span class="s2">&quot;shell&quot;</span>, inline: machine<span class="o">[</span>:script<span class="o">]</span>, privileged: true, run: <span class="s2">&quot;once&quot;</span>
-    end
-end
+  end
 end
 </pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<ul class="last simple">
+<li>Vagrant configura automáticamente la primera interfaz de red de una nueva VM en la red NAT. A través de esta red podemos acceder desde el sistema host al Dashboard o CLI del nodo.</li>
+<li>La primera interfaz de red se usa para conectarnos a Internet.</li>
+<li>La segunda interfaz sirve para proveer conectividad del sistema host a la VM con OpenStack.</li>
+</ul>
 </div>
 </div>
 <div class="section" id="definicion-de-archivos-de-configuracion-de-nodos">
 <h2><a class="toc-backref" href="#id23">Definición de archivos de configuración de nodos</a><a class="headerlink" href="#definicion-de-archivos-de-configuracion-de-nodos" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>En el mismo directorio donde tenemos almacenado el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> guardaremos los scrips <code class="docutils literal notranslate"><span class="pre">.sh</span></code> que se correrán cuando Vagrant lance las VMs en su respectivo nodo:</p>
+<p>En el mismo directorio donde tenemos almacenado el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> guardaremos los scripts <code class="docutils literal notranslate"><span class="pre">.sh</span></code> que se correrán cuando Vagrant lance las VMs en su respectivo nodo:</p>
 <div class="section" id="controller-packstack-setup-sh">
 <h3><a class="toc-backref" href="#id24">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a><a class="headerlink" href="#controller-packstack-setup-sh" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
@@ -545,7 +554,7 @@ $ vagrant up
 </div>
 <div class="section" id="instalacion-de-openstack-con-packstack">
 <h2><a class="toc-backref" href="#id28">Instalación de OpenStack con Packstack</a><a class="headerlink" href="#instalacion-de-openstack-con-packstack" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Ubicándonos el mismo directorio donde tenemos el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> entraremos al terminal de la VM <code class="docutils literal notranslate"><span class="pre">packstack</span></code> con el siguiente comando:</p>
+<p>Ubicándonos en el mismo directorio donde tenemos el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> entraremos al terminal de la VM <code class="docutils literal notranslate"><span class="pre">packstack</span></code> con el siguiente comando:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vagrant ssh packstack
 </pre></div>
 </div>
@@ -557,7 +566,7 @@ $ vagrant up
 </div>
 <div class="section" id="pruebas-en-el-entorno-openstack-desplegado">
 <h2><a class="toc-backref" href="#id29">Pruebas en el entorno OpenStack desplegado</a><a class="headerlink" href="#pruebas-en-el-entorno-openstack-desplegado" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Luego de media hora aproximadamente, la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack:</p>
+<p>Luego de media hora aproximadamente, la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.</p>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
 <p class="last">El Dashboard de OpenStack podría demorar un corto tiempo para arrancar la primera vez luego de haber instalado OpenStack.</p>
@@ -573,9 +582,10 @@ $ vagrant up
 <p class="caption"><span class="caption-text">OpenStack - Topología desplegada</span></p>
 </div>
 <p>Y los comandos que ejecutaremos en el nodo controller serán los siguientes:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_admin
-
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo su
 <span class="s1">&#39;#&#39;</span> <span class="nb">cd</span> /root
+
+<span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_admin
 
 <span class="s1">&#39;#&#39;</span> mkdir images
 <span class="s1">&#39;#&#39;</span> curl -o /root/images/cirros-0.4.0-x86_64-disk.img -L http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
@@ -606,11 +616,11 @@ $ vagrant up
 </div>
 <p>Podremos ingresar a la consola de cada instancia desde el dashboard y probar conectividad entre ellas:</p>
 <div class="figure align-center" id="id15">
-<img alt="../../../_images/openstack-test-instance-test-1.png" src="../../../_images/openstack-test-instance-test-1.png" />
+<img alt="../../../_images/openstack-multinode-test-instance-test-1.png" src="../../../_images/openstack-multinode-test-instance-test-1.png" />
 <p class="caption"><span class="caption-text">OpenStack - Consola <code class="docutils literal notranslate"><span class="pre">test-1</span></code></span></p>
 </div>
 <div class="figure align-center" id="id16">
-<img alt="../../../_images/openstack-test-instance-test-2.png" src="../../../_images/openstack-test-instance-test-2.png" />
+<img alt="../../../_images/openstack-multinode-test-instance-test-2.png" src="../../../_images/openstack-multinode-test-instance-test-2.png" />
 <p class="caption"><span class="caption-text">OpenStack - Consola <code class="docutils literal notranslate"><span class="pre">test-2</span></code></span></p>
 </div>
 </div>
@@ -624,10 +634,10 @@ $ vagrant up
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../openstack-guide/_openstack-guide.html" class="btn btn-neutral float-right" title="OpenStack initial configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="packstack-multinode-deploy-packstack-virtualbox.html" class="btn btn-neutral float-right" title="Despliegue de OpenStack con Packstack y VirtualBox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="packstack-multinode-deploy-packstack-virtualbox.html" class="btn btn-neutral float-left" title="Despliegue de OpenStack con Packstack y VirtualBox" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html" class="btn btn-neutral float-left" title="Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
