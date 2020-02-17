@@ -7,3 +7,4 @@ OpenStack Deploy Methods
     :caption: Índice
 
     packstack-multinode-deploy-packstack-virtualbox
+    packstack-multinode-deploy-packstack-virtualbox-vagrant
