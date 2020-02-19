@@ -113,12 +113,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#prerequisitos-del-sistema">Prerequisitos del sistema</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuracion-de-virtualbox">Configuración de VirtualBox</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#host-only-network-adapter">Host-only Network Adapter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#nat-provider-network">NAT Provider Network</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#definicion-del-archivo-vagrantfile">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#definicion-de-archivos-de-configuracion-de-nodos">Definición de archivos de configuración de nodos</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#controller-packstack-setup-sh">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#controller-network-packstack-setup-sh">Controller/Network (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#compute-1-compute1-setup-sh">Compute 1 (<code class="docutils literal notranslate"><span class="pre">compute1_setup.sh</span></code>)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#compute-2-compute2-setup-sh">Compute 2 (<code class="docutils literal notranslate"><span class="pre">compute2_setup.sh</span></code>)</a></li>
 </ul>
@@ -126,7 +125,24 @@
 <li class="toctree-l3"><a class="reference internal" href="#correr-el-entorno-vagrant-de-maquinas-virtuales">Correr el entorno Vagrant de máquinas virtuales</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#instalacion-de-openstack-con-packstack">Instalación de OpenStack con Packstack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado">Pruebas en el entorno OpenStack desplegado</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#anexo-archivo-answers-txt-de-packstack-generado">Anexo: Archivo answers.txt de packstack generado</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anexo-1-configuracion-de-red-desplegada">Anexo 1: Configuración de red desplegada</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#host-configuration-windows-user">Host configuration (Windows user)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vm-configuration-virtualbox-config">VM configuration (virtualBox config)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vm-configuration-openstack-config">VM configuration (OpenStack config)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#anexo-2-graficos-de-red-desplegada">Anexo 2: Gráficos de red desplegada</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#red-general-total-host-vms-tenant-networks">Red general total (Host + VMs + Tenant Networks)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#red-e-interfaces-internas-vms-tenant-networks">Red e interfaces internas (VMs + Tenant Networks)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#anexo-3-interfaces-de-red-ovs-bridges">Anexo 3: Interfaces de red, OvS, bridges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anexo-4-pruebas-de-trafico">Anexo 4: Pruebas de tráfico</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#comunicacion-entre-instancias-de-compute-nodes-distintos">Comunicación entre instancias de Compute nodes distintos</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comunicacion-de-instancia-con-internet">Comunicación de instancia con Internet</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#anexo-5-archivo-answers-txt-de-packstack-generado">Anexo 5: Archivo answers.txt de packstack generado</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html">Despliegue de OpenStack con Packstack y VirtualBox</a></li>
@@ -232,45 +248,70 @@
            <div itemprop="articleBody">
             
   <div class="section" id="despliegue-de-openstack-multinode-con-packstack-virtualbox-y-vagrant">
-<h1><a class="toc-backref" href="#id17">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a><a class="headerlink" href="#despliegue-de-openstack-multinode-con-packstack-virtualbox-y-vagrant" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><a class="toc-backref" href="#id15">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a><a class="headerlink" href="#despliegue-de-openstack-multinode-con-packstack-virtualbox-y-vagrant" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="contents topic" id="table-of-contents">
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#despliegue-de-openstack-multinode-con-packstack-virtualbox-y-vagrant" id="id17">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a><ul>
-<li><a class="reference internal" href="#prerequisitos-del-sistema" id="id18">Prerequisitos del sistema</a></li>
-<li><a class="reference internal" href="#configuracion-de-virtualbox" id="id19">Configuración de VirtualBox</a><ul>
-<li><a class="reference internal" href="#host-only-network-adapter" id="id20">Host-only Network Adapter</a></li>
-<li><a class="reference internal" href="#nat-provider-network" id="id21">NAT Provider Network</a></li>
+<li><a class="reference internal" href="#despliegue-de-openstack-multinode-con-packstack-virtualbox-y-vagrant" id="id15">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a><ul>
+<li><a class="reference internal" href="#prerequisitos-del-sistema" id="id16">Prerequisitos del sistema</a></li>
+<li><a class="reference internal" href="#configuracion-de-virtualbox" id="id17">Configuración de VirtualBox</a><ul>
+<li><a class="reference internal" href="#host-only-network-adapter" id="id18">Host-only Network Adapter</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#definicion-del-archivo-vagrantfile" id="id22">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
-<li><a class="reference internal" href="#definicion-de-archivos-de-configuracion-de-nodos" id="id23">Definición de archivos de configuración de nodos</a><ul>
-<li><a class="reference internal" href="#controller-packstack-setup-sh" id="id24">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a></li>
-<li><a class="reference internal" href="#compute-1-compute1-setup-sh" id="id25">Compute 1 (<code class="docutils literal notranslate"><span class="pre">compute1_setup.sh</span></code>)</a></li>
-<li><a class="reference internal" href="#compute-2-compute2-setup-sh" id="id26">Compute 2 (<code class="docutils literal notranslate"><span class="pre">compute2_setup.sh</span></code>)</a></li>
+<li><a class="reference internal" href="#definicion-del-archivo-vagrantfile" id="id19">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
+<li><a class="reference internal" href="#definicion-de-archivos-de-configuracion-de-nodos" id="id20">Definición de archivos de configuración de nodos</a><ul>
+<li><a class="reference internal" href="#controller-network-packstack-setup-sh" id="id21">Controller/Network (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a></li>
+<li><a class="reference internal" href="#compute-1-compute1-setup-sh" id="id22">Compute 1 (<code class="docutils literal notranslate"><span class="pre">compute1_setup.sh</span></code>)</a></li>
+<li><a class="reference internal" href="#compute-2-compute2-setup-sh" id="id23">Compute 2 (<code class="docutils literal notranslate"><span class="pre">compute2_setup.sh</span></code>)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#correr-el-entorno-vagrant-de-maquinas-virtuales" id="id27">Correr el entorno Vagrant de máquinas virtuales</a></li>
-<li><a class="reference internal" href="#instalacion-de-openstack-con-packstack" id="id28">Instalación de OpenStack con Packstack</a></li>
-<li><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado" id="id29">Pruebas en el entorno OpenStack desplegado</a></li>
-<li><a class="reference internal" href="#anexo-archivo-answers-txt-de-packstack-generado" id="id30">Anexo: Archivo answers.txt de packstack generado</a></li>
+<li><a class="reference internal" href="#correr-el-entorno-vagrant-de-maquinas-virtuales" id="id24">Correr el entorno Vagrant de máquinas virtuales</a></li>
+<li><a class="reference internal" href="#instalacion-de-openstack-con-packstack" id="id25">Instalación de OpenStack con Packstack</a></li>
+<li><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado" id="id26">Pruebas en el entorno OpenStack desplegado</a></li>
+<li><a class="reference internal" href="#anexo-1-configuracion-de-red-desplegada" id="id27">Anexo 1: Configuración de red desplegada</a><ul>
+<li><a class="reference internal" href="#host-configuration-windows-user" id="id28">Host configuration (Windows user)</a></li>
+<li><a class="reference internal" href="#vm-configuration-virtualbox-config" id="id29">VM configuration (virtualBox config)</a><ul>
+<li><a class="reference internal" href="#interfaces-desde-el-lado-host" id="id30">Interfaces desde el lado host</a></li>
+<li><a class="reference internal" href="#interfaces-desde-el-lado-guest" id="id31">Interfaces desde el lado guest</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vm-configuration-openstack-config" id="id32">VM configuration (OpenStack config)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#anexo-2-graficos-de-red-desplegada" id="id33">Anexo 2: Gráficos de red desplegada</a><ul>
+<li><a class="reference internal" href="#red-general-total-host-vms-tenant-networks" id="id34">Red general total (Host + VMs + Tenant Networks)</a></li>
+<li><a class="reference internal" href="#red-e-interfaces-internas-vms-tenant-networks" id="id35">Red e interfaces internas (VMs + Tenant Networks)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#anexo-3-interfaces-de-red-ovs-bridges" id="id36">Anexo 3: Interfaces de red, OvS, bridges</a></li>
+<li><a class="reference internal" href="#anexo-4-pruebas-de-trafico" id="id37">Anexo 4: Pruebas de tráfico</a><ul>
+<li><a class="reference internal" href="#comunicacion-entre-instancias-de-compute-nodes-distintos" id="id38">Comunicación entre instancias de Compute nodes distintos</a></li>
+<li><a class="reference internal" href="#comunicacion-de-instancia-con-internet" id="id39">Comunicación de instancia con Internet</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#anexo-5-archivo-answers-txt-de-packstack-generado" id="id40">Anexo 5: Archivo answers.txt de packstack generado</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="prerequisitos-del-sistema">
-<h2><a class="toc-backref" href="#id18">Prerequisitos del sistema</a><a class="headerlink" href="#prerequisitos-del-sistema" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id16">Prerequisitos del sistema</a><a class="headerlink" href="#prerequisitos-del-sistema" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Desde nuestro sistema Operativo (Windows, macOS, Linux) debemos tener instaladas los siguientes programas:</p>
 <ul class="simple">
 <li>VirtualBox</li>
 <li>Vagrant</li>
 </ul>
-<p>Este escenario de OpenStack que será desplegado consta de 3 VMs: un controller node y dos compute nodes. Se requiere al menos 12 GB de RAM y 4 CPUs</p>
+<p>Este escenario de OpenStack que será desplegado consta de 3 VMs: un Controller/Network node y dos Compute nodes. Se requiere al menos 12 GB de RAM y 4 CPUs</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>Si existen errores en la creación de las instancias o que las instancias creadas se apagan automáticamete, esto podría deberse a la falta de recursos en el host.</p>
+<p class="last">Revisar la memoria RAM disponible con <code class="docutils literal notranslate"><span class="pre">free</span> <span class="pre">-m</span></code> y el uso de CPU con <code class="docutils literal notranslate"><span class="pre">top</span></code> o <code class="docutils literal notranslate"><span class="pre">htop</span></code>. En caso los recursos se están usando al máximo, apagar la VM y asignarle más recursos desde el host en VirtualBox.</p>
+</div>
 </div>
 <div class="section" id="configuracion-de-virtualbox">
-<h2><a class="toc-backref" href="#id19">Configuración de VirtualBox</a><a class="headerlink" href="#configuracion-de-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">Configuración de VirtualBox</a><a class="headerlink" href="#configuracion-de-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="section" id="host-only-network-adapter">
-<h3><a class="toc-backref" href="#id20">Host-only Network Adapter</a><a class="headerlink" href="#host-only-network-adapter" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id18">Host-only Network Adapter</a><a class="headerlink" href="#host-only-network-adapter" title="Enlazar permanentemente con este título">¶</a></h3>
 <ol class="arabic simple">
 <li>Crear un Host-only Network Adapter haciendo clic en el botón <span class="guilabel">Global Tools</span>, <span class="guilabel">Host Network Manager</span>. Clic en el botón <span class="guilabel">Create</span>:</li>
 </ol>
@@ -302,45 +343,9 @@
 </ul>
 </div>
 </div>
-<div class="section" id="nat-provider-network">
-<h3><a class="toc-backref" href="#id21">NAT Provider Network</a><a class="headerlink" href="#nat-provider-network" title="Enlazar permanentemente con este título">¶</a></h3>
-<ol class="arabic simple">
-<li>Clic en <span class="guilabel">Preferences</span> (<span class="guilabel">Ctrl + G</span>):</li>
-</ol>
-<div class="figure align-center" id="id5">
-<img alt="../../../_images/Windows-VirtualBox-Preferences.png" src="../../../_images/Windows-VirtualBox-Preferences.png" />
-<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Clic en opción <span class="guilabel">Preferences</span></span></p>
-</div>
-<div class="figure align-center" id="id6">
-<img alt="../../../_images/Linux-VirtualBox-Preferences.png" src="../../../_images/Linux-VirtualBox-Preferences.png" />
-<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Clic en opción <span class="guilabel">Preferences</span></span></p>
-</div>
-<ol class="arabic simple" start="2">
-<li>En la sección <span class="guilabel">Network</span>, seleccionar el botón de creación de una nueva red:</li>
-</ol>
-<div class="figure align-center" id="id7">
-<img alt="../../../_images/Windows-VirtualBox-Preferences-Network.png" src="../../../_images/Windows-VirtualBox-Preferences-Network.png" />
-<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Clic en sección <span class="guilabel">Network</span></span></p>
-</div>
-<div class="figure align-center" id="id8">
-<img alt="../../../_images/Linux-VirtualBox-Preferences-Network.png" src="../../../_images/Linux-VirtualBox-Preferences-Network.png" />
-<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Clic en sección <span class="guilabel">Network</span></span></p>
-</div>
-<ol class="arabic simple" start="3">
-<li>Nombrar y definir un rango para la red NAT. También podemos dar soporte DHCP:</li>
-</ol>
-<div class="figure align-center" id="id9">
-<img alt="../../../_images/Windows-VirtualBox-Create-Provider-Network.png" src="../../../_images/Windows-VirtualBox-Create-Provider-Network.png" />
-<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Definir propiedades de la red</span></p>
-</div>
-<div class="figure align-center" id="id10">
-<img alt="../../../_images/Linux-VirtualBox-Create-Provider-Network.png" src="../../../_images/Linux-VirtualBox-Create-Provider-Network.png" />
-<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Definir propiedades de la red</span></p>
-</div>
-</div>
 </div>
 <div class="section" id="definicion-del-archivo-vagrantfile">
-<h2><a class="toc-backref" href="#id22">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a><a class="headerlink" href="#definicion-del-archivo-vagrantfile" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id19">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a><a class="headerlink" href="#definicion-del-archivo-vagrantfile" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>El archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> se define de la siguiente forma:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- mode: ruby -*-</span>
 <span class="c1"># vi: set ft=ruby :</span>
@@ -390,16 +395,16 @@ end
 <p class="first admonition-title">Importante</p>
 <ul class="last simple">
 <li>Vagrant configura automáticamente la primera interfaz de red de una nueva VM en la red NAT. A través de esta red podemos acceder desde el sistema host al Dashboard o CLI del nodo.</li>
-<li>La primera interfaz de red se usa para conectarnos a Internet.</li>
-<li>La segunda interfaz sirve para proveer conectividad del sistema host a la VM con OpenStack.</li>
+<li>La primera interfaz de red se usa para tener salida a Internet.</li>
+<li>La segunda interfaz sirve para proveer conectividad del sistema host a la VM (y viceversa).</li>
 </ul>
 </div>
 </div>
 <div class="section" id="definicion-de-archivos-de-configuracion-de-nodos">
-<h2><a class="toc-backref" href="#id23">Definición de archivos de configuración de nodos</a><a class="headerlink" href="#definicion-de-archivos-de-configuracion-de-nodos" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Definición de archivos de configuración de nodos</a><a class="headerlink" href="#definicion-de-archivos-de-configuracion-de-nodos" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En el mismo directorio donde tenemos almacenado el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> guardaremos los scripts <code class="docutils literal notranslate"><span class="pre">.sh</span></code> que se correrán cuando Vagrant lance las VMs en su respectivo nodo:</p>
-<div class="section" id="controller-packstack-setup-sh">
-<h3><a class="toc-backref" href="#id24">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a><a class="headerlink" href="#controller-packstack-setup-sh" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="section" id="controller-network-packstack-setup-sh">
+<h3><a class="toc-backref" href="#id21">Controller/Network (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a><a class="headerlink" href="#controller-network-packstack-setup-sh" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
 
 <span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.utf-8
@@ -411,7 +416,7 @@ cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-enp0
 <span class="s">DEVICE=&quot;enp0s8&quot;</span>
 <span class="s">DEFROUTE=&quot;no&quot;</span>
 <span class="s">BOOTPROTO=&quot;static&quot;</span>
-<span class="s">IPADDR=&quot;10.0.0.20&quot;</span>
+<span class="s">IPADDR=&quot;10.0.1.20&quot;</span>
 <span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
 <span class="s">DNS1=&quot;8.8.8.8&quot;</span>
 <span class="s">TYPE=&quot;Ethernet&quot;</span>
@@ -423,9 +428,9 @@ ifup enp0s8
 
 cat <span class="s">&lt;&lt;- EOF &gt; /etc/hosts</span>
 <span class="s">127.0.0.1 localhost</span>
-<span class="s">10.0.0.20 packstack</span>
-<span class="s">10.0.0.21 compute1</span>
-<span class="s">10.0.0.22 compute2</span>
+<span class="s">10.0.1.20 packstack</span>
+<span class="s">10.0.1.21 compute1</span>
+<span class="s">10.0.1.22 compute2</span>
 <span class="s">EOF</span>
 
 <span class="nb">echo</span> <span class="s1">&#39;centos&#39;</span> &gt;/etc/yum/vars/contentdir
@@ -452,7 +457,7 @@ cat <span class="s">&lt;&lt;- EOF &gt; /home/vagrant/run-packstack.sh</span>
 <span class="s">ssh vagrant@compute2 echo &quot;OK&quot;</span>
 <span class="s">echo &quot;Running packstack with options&quot;</span>
 <span class="s">echo &quot;The &#39;root&#39; password is &#39;vagrant&#39;&quot;</span>
-<span class="s">packstack --install-hosts=&quot;10.0.0.20&quot;,&quot;10.0.0.21&quot;,&quot;10.0.0.22&quot; --os-heat-install=y --os-heat-cfn-install=y --os-neutron-lbaas-install=y --keystone-admin-passwd=&quot;openstack&quot; --keystone-demo-passwd=&quot;openstack&quot;</span>
+<span class="s">packstack --install-hosts=&quot;10.0.1.20&quot;,&quot;10.0.1.21&quot;,&quot;10.0.1.22&quot; --os-heat-install=y --os-heat-cfn-install=y --os-neutron-lbaas-install=y --keystone-admin-passwd=&quot;openstack&quot; --keystone-demo-passwd=&quot;openstack&quot;</span>
 <span class="s">EOF</span>
 
 chown vagrant:vagrant /home/vagrant/run-packstack.sh
@@ -460,7 +465,7 @@ chown vagrant:vagrant /home/vagrant/run-packstack.sh
 </div>
 </div>
 <div class="section" id="compute-1-compute1-setup-sh">
-<h3><a class="toc-backref" href="#id25">Compute 1 (<code class="docutils literal notranslate"><span class="pre">compute1_setup.sh</span></code>)</a><a class="headerlink" href="#compute-1-compute1-setup-sh" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id22">Compute 1 (<code class="docutils literal notranslate"><span class="pre">compute1_setup.sh</span></code>)</a><a class="headerlink" href="#compute-1-compute1-setup-sh" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
 
 <span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.utf-8
@@ -473,7 +478,7 @@ cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-enp0
 <span class="s">DEVICE=&quot;enp0s8&quot;</span>
 <span class="s">DEFROUTE=&quot;no&quot;</span>
 <span class="s">BOOTPROTO=&quot;static&quot;</span>
-<span class="s">IPADDR=&quot;10.0.0.21&quot;</span>
+<span class="s">IPADDR=&quot;10.0.1.21&quot;</span>
 <span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
 <span class="s">DNS1=&quot;8.8.8.8&quot;</span>
 <span class="s">TYPE=&quot;Ethernet&quot;</span>
@@ -485,9 +490,9 @@ ifup enp0s8
 
 cat <span class="s">&lt;&lt;- EOF &gt; /etc/hosts</span>
 <span class="s">127.0.0.1 localhost</span>
-<span class="s">10.0.0.20 packstack</span>
-<span class="s">10.0.0.21 compute1</span>
-<span class="s">10.0.0.22 compute2</span>
+<span class="s">10.0.1.20 packstack</span>
+<span class="s">10.0.1.21 compute1</span>
+<span class="s">10.0.1.22 compute2</span>
 <span class="s">EOF</span>
 
 systemctl disable firewalld
@@ -500,7 +505,7 @@ systemctl start network
 </div>
 </div>
 <div class="section" id="compute-2-compute2-setup-sh">
-<h3><a class="toc-backref" href="#id26">Compute 2 (<code class="docutils literal notranslate"><span class="pre">compute2_setup.sh</span></code>)</a><a class="headerlink" href="#compute-2-compute2-setup-sh" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id23">Compute 2 (<code class="docutils literal notranslate"><span class="pre">compute2_setup.sh</span></code>)</a><a class="headerlink" href="#compute-2-compute2-setup-sh" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
 
 <span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.utf-8
@@ -513,7 +518,7 @@ cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-enp0
 <span class="s">DEVICE=&quot;enp0s8&quot;</span>
 <span class="s">DEFROUTE=&quot;no&quot;</span>
 <span class="s">BOOTPROTO=&quot;static&quot;</span>
-<span class="s">IPADDR=&quot;10.0.0.22&quot;</span>
+<span class="s">IPADDR=&quot;10.0.1.22&quot;</span>
 <span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
 <span class="s">DNS1=&quot;8.8.8.8&quot;</span>
 <span class="s">TYPE=&quot;Ethernet&quot;</span>
@@ -525,9 +530,9 @@ ifup enp0s8
 
 cat <span class="s">&lt;&lt;- EOF &gt; /etc/hosts</span>
 <span class="s">127.0.0.1 localhost</span>
-<span class="s">10.0.0.20 packstack</span>
-<span class="s">10.0.0.21 compute1</span>
-<span class="s">10.0.0.22 compute2</span>
+<span class="s">10.0.1.20 packstack</span>
+<span class="s">10.0.1.21 compute1</span>
+<span class="s">10.0.1.22 compute2</span>
 <span class="s">EOF</span>
 
 systemctl disable firewalld
@@ -541,7 +546,7 @@ systemctl start network
 </div>
 </div>
 <div class="section" id="correr-el-entorno-vagrant-de-maquinas-virtuales">
-<h2><a class="toc-backref" href="#id27">Correr el entorno Vagrant de máquinas virtuales</a><a class="headerlink" href="#correr-el-entorno-vagrant-de-maquinas-virtuales" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id24">Correr el entorno Vagrant de máquinas virtuales</a><a class="headerlink" href="#correr-el-entorno-vagrant-de-maquinas-virtuales" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En el terminal, cambiar de directorio al lugar donde tenemos almacenado el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> y los scripts <code class="docutils literal notranslate"><span class="pre">.sh</span></code> de los nodos. Luego, desplegar las máquinas virtuales con <code class="docutils literal notranslate"><span class="pre">vagrant</span> <span class="pre">up</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> multinode-packstack-vagrant
 
@@ -549,13 +554,13 @@ $ vagrant up
 </pre></div>
 </div>
 <p>Comenzará la configuración y despliegue de máquinas virtuales en VirtualBox conforme se ha especificado en el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code>, luego se correrán automáticamente los scripts <code class="docutils literal notranslate"><span class="pre">.sh</span></code> que se ha definido para cada VM:</p>
-<div class="figure align-center" id="id11">
+<div class="figure align-center" id="id5">
 <img alt="../../../_images/vagrant-deploy-virtualbox-vms.png" src="../../../_images/vagrant-deploy-virtualbox-vms.png" />
 <p class="caption"><span class="caption-text">VirtualBox - VMs desplegadas por Vagrant</span></p>
 </div>
 </div>
 <div class="section" id="instalacion-de-openstack-con-packstack">
-<h2><a class="toc-backref" href="#id28">Instalación de OpenStack con Packstack</a><a class="headerlink" href="#instalacion-de-openstack-con-packstack" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id25">Instalación de OpenStack con Packstack</a><a class="headerlink" href="#instalacion-de-openstack-con-packstack" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Ubicándonos en el mismo directorio donde tenemos el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> entraremos al terminal de la VM <code class="docutils literal notranslate"><span class="pre">packstack</span></code> con el siguiente comando:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vagrant ssh packstack
 </pre></div>
@@ -567,8 +572,8 @@ $ vagrant up
 <p>Este script corre comandos de prueba <code class="docutils literal notranslate"><span class="pre">ssh</span></code> a las VMs de los compute nodes para compartir las llaves SSH (imprime el mensaje OK en cada VM) y luego corre el comando packstack con opciones para la instalación de OpenStack. Nos pedirá ingresar la contraseña del usuario root de las VMs de los compute nodes.</p>
 </div>
 <div class="section" id="pruebas-en-el-entorno-openstack-desplegado">
-<h2><a class="toc-backref" href="#id29">Pruebas en el entorno OpenStack desplegado</a><a class="headerlink" href="#pruebas-en-el-entorno-openstack-desplegado" title="Enlazar permanentemente con este título">¶</a></h2>
-<p>Luego de media hora aproximadamente, la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.</p>
+<h2><a class="toc-backref" href="#id26">Pruebas en el entorno OpenStack desplegado</a><a class="headerlink" href="#pruebas-en-el-entorno-openstack-desplegado" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Luego de media hora aproximadamente (40 minutos en total: 5 min. despliegue de VMs + 35 min. instalación de OpenStack), la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.</p>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
 <p class="last">El Dashboard de OpenStack podría demorar un corto tiempo para arrancar la primera vez luego de haber instalado OpenStack.</p>
@@ -579,11 +584,11 @@ $ vagrant up
 <p class="last">La imagen de CirrOS que se crea por defecto como <code class="docutils literal notranslate"><span class="pre">demo</span></code> al instalar Packstack tiene fallos pues tiene un tamaño reducido de 273 bytes. La causa de esto es que puede ser que se haya descargado sin la opción <code class="docutils literal notranslate"><span class="pre">-L</span></code> del comando <code class="docutils literal notranslate"><span class="pre">curl</span></code>. Por lo tanto, crearemos nuestra propia imagen CirrOS:</p>
 </div>
 <p>La topología que se desea lograr es la siguiente:</p>
-<div class="figure align-center" id="id12">
+<div class="figure align-center" id="id6">
 <img alt="../../../_images/openstack-sample-topology.png" src="../../../_images/openstack-sample-topology.png" />
 <p class="caption"><span class="caption-text">OpenStack - Topología desplegada</span></p>
 </div>
-<p>Y los comandos que ejecutaremos en el nodo controller serán los siguientes:</p>
+<p>Y los comandos que ejecutaremos en el nodo Controller/Network serán los siguientes:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo su
 <span class="s1">&#39;#&#39;</span> <span class="nb">cd</span> /root
 
@@ -600,35 +605,844 @@ $ vagrant up
 +--------------------------------------+---------+--------------------------------------+
 <span class="p">|</span> ID                                   <span class="p">|</span> Name    <span class="p">|</span> Subnets                              <span class="p">|</span>
 +--------------------------------------+---------+--------------------------------------+
-<span class="p">|</span> 0b01c7b4-27fd-4f5a-bfb9-c40726d6a66b <span class="p">|</span> private <span class="p">|</span> e4562283-1c3f-4ddd-86b0-52b9cd0b5d81 <span class="p">|</span>
-<span class="p">|</span> 7687d634-7b43-4877-9113-e68e068640fc <span class="p">|</span> public  <span class="p">|</span> c34775f8-b9ba-4a94-ad87-b57d7859ef4a <span class="p">|</span>
+<span class="p">|</span> 836312ac-15d2-462c-a588-ccb6bda9953f <span class="p">|</span> private <span class="p">|</span> 7684b9ae-f2e4-4731-8b22-a4df18925ec0 <span class="p">|</span>
+<span class="p">|</span> f1b16d9e-cb71-47e1-9654-d78eb54f1621 <span class="p">|</span> public  <span class="p">|</span> 2faf694b-320e-4e87-9fe6-2146b169c591 <span class="p">|</span>
 +--------------------------------------+---------+--------------------------------------+
 
-<span class="s1">&#39;#&#39;</span> openstack server create --image cirros1 --flavor <span class="m">1</span> --min <span class="m">2</span> --max <span class="m">2</span> --nic net-id<span class="o">=</span>0b01c 7b4-27fd-4f5a-bfb9-c40726d6a66b <span class="nb">test</span>
+<span class="s1">&#39;#&#39;</span> openstack server create --image cirros1 --flavor <span class="m">1</span> --min <span class="m">2</span> --max <span class="m">2</span> --nic net-id<span class="o">=</span>836312ac-15d2-462c-a588-ccb6bda9953f <span class="nb">test</span>
 </pre></div>
 </div>
 <p>En este despliegue de prueba se han creado dos instancias al mismo tiempo y con las mismas características de forma que usen todos los recursos de un hypervisor al crear una instancia y para crear otra instancia se requiera usar el hypervisor del otro compute node. Logrando tener una instancia en cada compute node (o equivalentemente, cada instancia administrada por un hypervisor distinto).</p>
-<div class="figure align-center" id="id13">
+<div class="figure align-center" id="id7">
 <img alt="../../../_images/openstack-hypervisors-compute-nodes.png" src="../../../_images/openstack-hypervisors-compute-nodes.png" />
 <p class="caption"><span class="caption-text">OpenStack - Uso de Hypervisors (Compute 1 y Compute 2)</span></p>
 </div>
-<div class="figure align-center" id="id14">
+<div class="figure align-center" id="id8">
 <img alt="../../../_images/openstack-multinode-test-instances.png" src="../../../_images/openstack-multinode-test-instances.png" />
 <p class="caption"><span class="caption-text">OpenStack - Instancias desplegadas</span></p>
 </div>
 <p>Podremos ingresar a la consola de cada instancia desde el dashboard y probar conectividad entre ellas:</p>
-<div class="figure align-center" id="id15">
+<div class="figure align-center" id="id9">
 <img alt="../../../_images/openstack-multinode-test-instance-test-1.png" src="../../../_images/openstack-multinode-test-instance-test-1.png" />
 <p class="caption"><span class="caption-text">OpenStack - Consola <code class="docutils literal notranslate"><span class="pre">test-1</span></code></span></p>
 </div>
-<div class="figure align-center" id="id16">
+<div class="figure align-center" id="id10">
 <img alt="../../../_images/openstack-multinode-test-instance-test-2.png" src="../../../_images/openstack-multinode-test-instance-test-2.png" />
 <p class="caption"><span class="caption-text">OpenStack - Consola <code class="docutils literal notranslate"><span class="pre">test-2</span></code></span></p>
 </div>
 </div>
-<div class="section" id="anexo-archivo-answers-txt-de-packstack-generado">
-<h2><a class="toc-backref" href="#id30">Anexo: Archivo answers.txt de packstack generado</a><a class="headerlink" href="#anexo-archivo-answers-txt-de-packstack-generado" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat packstack-answers-20200216-004812.txt
+<div class="section" id="anexo-1-configuracion-de-red-desplegada">
+<h2><a class="toc-backref" href="#id27">Anexo 1: Configuración de red desplegada</a><a class="headerlink" href="#anexo-1-configuracion-de-red-desplegada" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="host-configuration-windows-user">
+<h3><a class="toc-backref" href="#id28">Host configuration (Windows user)</a><a class="headerlink" href="#host-configuration-windows-user" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Las interfaces de red que tenemos en el sistema host de Windows son las siguientes:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>C<span class="p">:</span><span class="nl">\Users\usuario</span><span class="c1">&gt;ipconfig</span>
+
+Configuración IP de Windows
+
+
+Adaptador de Ethernet VirtualBox Host-Only Network #2:
+
+Sufijo DNS específico para la conexión. . :
+Dirección IPv4. . . . . . . . . . . . . . : 10.0.1.1
+Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+Puerta de enlace predeterminada . . . . . :
+
+Adaptador de Ethernet Ethernet:
+
+Sufijo DNS específico para la conexión. . :
+Dirección IPv4. . . . . . . . . . . . . . : 192.168.1.10
+Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+Puerta de enlace predeterminada . . . . . : 192.168.1.1
+</pre></div>
+</div>
+<ul class="simple">
+<li>La interfaz <code class="docutils literal notranslate"><span class="pre">Adaptador</span> <span class="pre">de</span> <span class="pre">Ethernet</span> <span class="pre">Ethernet</span></code> es nuestra tarjeta de red física con salida a Internet a través de un router físico (<code class="docutils literal notranslate"><span class="pre">192.168.1.1</span></code>). Se le ha asignado la IP <code class="docutils literal notranslate"><span class="pre">192.168.1.10</span></code>.</li>
+<li>La interfaz <code class="docutils literal notranslate"><span class="pre">Adaptador</span> <span class="pre">de</span> <span class="pre">Ethernet</span> <span class="pre">VirtualBox</span> <span class="pre">Host-Only</span> <span class="pre">Network</span> <span class="pre">#2</span></code> ha sido creada con VirtualBox dentro de <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">Network</span> <span class="pre">Manager</span></code>. Se le ha asignado la IP <code class="docutils literal notranslate"><span class="pre">10.0.1.1</span></code>. Esta interfaz no cuenta con salida al exterior (Internet).</li>
+</ul>
+</div>
+<div class="section" id="vm-configuration-virtualbox-config">
+<h3><a class="toc-backref" href="#id29">VM configuration (virtualBox config)</a><a class="headerlink" href="#vm-configuration-virtualbox-config" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Las 3 VMs creadas poseen cada una 2 interfaces del mismo tipo que pueden verse desde el lado del SO host o del lado del SO guest, obteniendo información útil de su implementación:</p>
+<div class="section" id="interfaces-desde-el-lado-host">
+<h4><a class="toc-backref" href="#id30">Interfaces desde el lado host</a><a class="headerlink" href="#interfaces-desde-el-lado-host" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Las VMs con sistema CentOS creadas por VirtualBox poseen dos interfaces del mismo tipo conectadas virtualmente:</p>
+<ol class="arabic simple">
+<li><strong>Adaptador 1 - Interfaz tipo NAT</strong>:</li>
+</ol>
+<p>La primera interfaz de red es usada para que la VM tenga salida a Internet (en la VM se ve como la interfaz <code class="docutils literal notranslate"><span class="pre">enp0s3</span></code> o <code class="docutils literal notranslate"><span class="pre">eth0</span></code>):</p>
+<div class="figure align-center" id="id11">
+<img alt="../../../_images/vm-multinode-packstack-adapter1.png" src="../../../_images/vm-multinode-packstack-adapter1.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Adaptador 1</span></p>
+</div>
+<ul class="simple">
+<li>La interfaz se encuentra conectada a una red virtual tipo NAT.</li>
+<li>En este caso la interfaz de cada VM tiene asignada la misma IP <code class="docutils literal notranslate"><span class="pre">10.0.2.15</span></code> y comparten la misma configuración de red (misma MAC).</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><strong>Adaptador 2 - Interfaz tipo Host-only Adapter</strong>:</li>
+</ol>
+<p>La segunda interfaz de red de cada VM es usada para que exista comunicación entre el sistema host y la VM (en la VM se ve como la interfaz <code class="docutils literal notranslate"><span class="pre">enp0s8</span></code> o <code class="docutils literal notranslate"><span class="pre">eth1</span></code>):</p>
+<div class="figure align-center" id="id12">
+<img alt="../../../_images/vm-multinode-packstack-adapter2.png" src="../../../_images/vm-multinode-packstack-adapter2.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Adaptador 2</span></p>
+</div>
+<ul class="simple">
+<li>La interfaz se encuentra conectada a la red física del host, siendo del tipo Host-only Adapter. Desde cada VM podemos llegar a los equipos dentro de la red host (<code class="docutils literal notranslate"><span class="pre">192.168.1.0/24</span></code>).</li>
+<li>En este caso la IP de la interfaz del Controller/Network node es <code class="docutils literal notranslate"><span class="pre">10.0.1.20</span></code>, la IP de la interfaz del compute node 1 es <code class="docutils literal notranslate"><span class="pre">10.0.1.21</span></code>, la IP de la interfaz del compute node 2 es <code class="docutils literal notranslate"><span class="pre">10.0.1.22</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="interfaces-desde-el-lado-guest">
+<h4><a class="toc-backref" href="#id31">Interfaces desde el lado guest</a><a class="headerlink" href="#interfaces-desde-el-lado-guest" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Las IPs de cada interfaz han sido obtenidas desde la consola de las VMs:</p>
+<ol class="arabic simple">
+<li>Adaptador 1 - Interfaz tipo NAT: <code class="docutils literal notranslate"><span class="pre">enp0s3</span></code> o <code class="docutils literal notranslate"><span class="pre">eth0</span></code></li>
+<li>Adaptador 2 - Interfaz tipo Host-only Adapter: <code class="docutils literal notranslate"><span class="pre">enp0s8</span></code> o <code class="docutils literal notranslate"><span class="pre">eth1</span></code></li>
+</ol>
+<ul class="simple">
+<li>Controller/Network node:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ip addr
+
+...
+
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.2.15/24 brd <span class="m">10</span>.0.2.255 scope global noprefixroute dynamic enp0s3
+       valid_lft 78655sec preferred_lft 78655sec
+    inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+<span class="m">3</span>: enp0s8: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:08:08:b2 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.1.20/24 brd <span class="m">10</span>.0.1.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe08:8b2/64 scope link
+       valid_lft forever preferred_lft forever
+
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li>Compute node 1:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ip addr
+
+...
+
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.2.15/24 brd <span class="m">10</span>.0.2.255 scope global noprefixroute dynamic enp0s3
+       valid_lft 78414sec preferred_lft 78414sec
+    inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+<span class="m">3</span>: enp0s8: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:2b:30:af brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.1.21/24 brd <span class="m">10</span>.0.1.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe2b:30af/64 scope link
+       valid_lft forever preferred_lft forever
+
+...
+</pre></div>
+</div>
+<ul class="simple">
+<li>Compute node 2:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ip addr
+
+...
+
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.2.15/24 brd <span class="m">10</span>.0.2.255 scope global noprefixroute dynamic enp0s3
+       valid_lft 78419sec preferred_lft 78419sec
+    inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+<span class="m">3</span>: enp0s8: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:d2:4c:f1 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.1.22/24 brd <span class="m">10</span>.0.1.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fed2:4cf1/64 scope link
+       valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="vm-configuration-openstack-config">
+<h3><a class="toc-backref" href="#id32">VM configuration (OpenStack config)</a><a class="headerlink" href="#vm-configuration-openstack-config" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Interfaz dentro de la red pública de OpenStack:</li>
+</ul>
+<p>La interfaz <code class="docutils literal notranslate"><span class="pre">br-ex</span></code> es en realidad un OvS con una interfaz interna que posee una IP dentro de la red pública y solo se encuentra en el Controller/Network node:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ip addr
+
+...
+
+<span class="m">5</span>: br-ex: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether 6a:f2:c8:bc:42:4e brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.24.4.1/24 scope global br-ex
+       valid_lft forever preferred_lft forever
+    inet6 fe80::68f2:c8ff:febc:424e/64 scope link
+       valid_lft forever preferred_lft forever
+
+...
+</pre></div>
+</div>
+<p>En este caso, la red pública es <code class="docutils literal notranslate"><span class="pre">172.24.4.0/24</span></code> y <code class="docutils literal notranslate"><span class="pre">br-ex</span></code> tiene la IP <code class="docutils literal notranslate"><span class="pre">172.24.4.1</span></code> asignada.</p>
+</div>
+</div>
+<div class="section" id="anexo-2-graficos-de-red-desplegada">
+<h2><a class="toc-backref" href="#id33">Anexo 2: Gráficos de red desplegada</a><a class="headerlink" href="#anexo-2-graficos-de-red-desplegada" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="red-general-total-host-vms-tenant-networks">
+<h3><a class="toc-backref" href="#id34">Red general total (Host + VMs + Tenant Networks)</a><a class="headerlink" href="#red-general-total-host-vms-tenant-networks" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="figure align-center" id="id13">
+<img alt="../../../_images/openstack-multinode-deployment-network.png" src="../../../_images/openstack-multinode-deployment-network.png" />
+<p class="caption"><span class="caption-text">OpenStack: Host + VMs + Tenant Networks</span></p>
+</div>
+</div>
+<div class="section" id="red-e-interfaces-internas-vms-tenant-networks">
+<h3><a class="toc-backref" href="#id35">Red e interfaces internas (VMs + Tenant Networks)</a><a class="headerlink" href="#red-e-interfaces-internas-vms-tenant-networks" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="figure align-center" id="id14">
+<img alt="../../../_images/openstack-multinode-deployment-internal-network.png" src="../../../_images/openstack-multinode-deployment-internal-network.png" />
+<p class="caption"><span class="caption-text">OpenStack: Internal VMs + Tenant Networks</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="anexo-3-interfaces-de-red-ovs-bridges">
+<h2><a class="toc-backref" href="#id36">Anexo 3: Interfaces de red, OvS, bridges</a><a class="headerlink" href="#anexo-3-interfaces-de-red-ovs-bridges" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se presentan los bridges, OvS e interfaces de red de cada VM con el despliegue de OpenStack, solo con los elementos de demo instalados y 2 instancias lanzadas manualmente:</p>
+<ul class="simple">
+<li>Controller/Network node:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> ip address
+
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.2.15/24 brd <span class="m">10</span>.0.2.255 scope global noprefixroute dynamic enp0s3
+       valid_lft 77961sec preferred_lft 77961sec
+    inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+<span class="m">3</span>: enp0s8: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:08:08:b2 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.1.20/24 brd <span class="m">10</span>.0.1.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe08:8b2/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">4</span>: ovs-system: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether 9e:03:28:91:83:47 brd ff:ff:ff:ff:ff:ff
+<span class="m">5</span>: br-ex: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether <span class="m">32</span>:ff:ae:d9:59:40 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.24.4.1/24 scope global br-ex
+       valid_lft forever preferred_lft forever
+    inet6 fe80::30ff:aeff:fed9:5940/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">6</span>: br-int: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether <span class="m">12</span>:b8:dc:b4:52:4d brd ff:ff:ff:ff:ff:ff
+<span class="m">7</span>: br-tun: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether 6e:9e:09:79:38:41 brd ff:ff:ff:ff:ff:ff
+<span class="m">10</span>: vxlan_sys_4789: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">65000</span> qdisc noqueue master ovs-system state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether 1a:f3:1e:bf:73:fa brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::18f3:1eff:febf:73fa/64 scope link
+       valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> ovs-vsctl show
+
+c82010c9-0b35-4391-97f2-77e0946a1f26
+    Manager <span class="s2">&quot;ptcp:6640:127.0.0.1&quot;</span>
+        is_connected: <span class="nb">true</span>
+    Bridge br-tun
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port <span class="s2">&quot;vxlan-0a000116&quot;</span>
+            Interface <span class="s2">&quot;vxlan-0a000116&quot;</span>
+                type: vxlan
+                options: <span class="o">{</span><span class="nv">df_default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>, <span class="nv">egress_pkt_mark</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>, <span class="nv">in_key</span><span class="o">=</span>flow, <span class="nv">local_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.20&quot;</span>, <span class="nv">out_key</span><span class="o">=</span>flow, <span class="nv">remote_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.22&quot;</span><span class="o">}</span>
+        Port <span class="s2">&quot;vxlan-0a000115&quot;</span>
+            Interface <span class="s2">&quot;vxlan-0a000115&quot;</span>
+                type: vxlan
+                options: <span class="o">{</span><span class="nv">df_default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>, <span class="nv">egress_pkt_mark</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>, <span class="nv">in_key</span><span class="o">=</span>flow, <span class="nv">local_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.20&quot;</span>, <span class="nv">out_key</span><span class="o">=</span>flow, <span class="nv">remote_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.21&quot;</span><span class="o">}</span>
+        Port br-tun
+            Interface br-tun
+                type: internal
+        Port patch-int
+            Interface patch-int
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-tun<span class="o">}</span>
+    Bridge br-int
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port int-br-ex
+            Interface int-br-ex
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>phy-br-ex<span class="o">}</span>
+        Port <span class="s2">&quot;qg-0dc02115-5b&quot;</span>
+            tag: <span class="m">2</span>
+            Interface <span class="s2">&quot;qg-0dc02115-5b&quot;</span>
+                type: internal
+        Port patch-tun
+            Interface patch-tun
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-int<span class="o">}</span>
+        Port <span class="s2">&quot;qr-cbc140a5-76&quot;</span>
+            tag: <span class="m">1</span>
+            Interface <span class="s2">&quot;qr-cbc140a5-76&quot;</span>
+                type: internal
+        Port br-int
+            Interface br-int
+                type: internal
+        Port <span class="s2">&quot;tapb10894b0-97&quot;</span>
+            tag: <span class="m">1</span>
+            Interface <span class="s2">&quot;tapb10894b0-97&quot;</span>
+                type: internal
+    Bridge br-ex
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port phy-br-ex
+            Interface phy-br-ex
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>int-br-ex<span class="o">}</span>
+        Port br-ex
+            Interface br-ex
+                type: internal
+    ovs_version: <span class="s2">&quot;2.11.0&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Compute node 1:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> ip address
+
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.2.15/24 brd <span class="m">10</span>.0.2.255 scope global noprefixroute dynamic enp0s3
+       valid_lft 77693sec preferred_lft 77693sec
+    inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+<span class="m">3</span>: enp0s8: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:2b:30:af brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.1.21/24 brd <span class="m">10</span>.0.1.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe2b:30af/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">4</span>: ovs-system: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether <span class="m">12</span>:62:58:1e:15:29 brd ff:ff:ff:ff:ff:ff
+<span class="m">5</span>: br-int: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1450</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether fa:31:12:ef:10:47 brd ff:ff:ff:ff:ff:ff
+<span class="m">6</span>: br-tun: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether f2:34:e5:f9:bb:40 brd ff:ff:ff:ff:ff:ff
+<span class="m">7</span>: vxlan_sys_4789: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">65000</span> qdisc noqueue master ovs-system state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether 8e:ea:c0:5b:31:90 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::8cea:c0ff:fe5b:3190/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">8</span>: qbr40be7332-c9: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue state UP group default qlen <span class="m">1000</span>
+    link/ether a6:a3:f6:b8:3e:a1 brd ff:ff:ff:ff:ff:ff
+<span class="m">9</span>: qvo40be7332-c9@qvb40be7332-c9: &lt;BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue master ovs-system state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">32</span>:16:e4:da:86:52 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::3016:e4ff:feda:8652/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">10</span>: qvb40be7332-c9@qvo40be7332-c9: &lt;BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue master qbr40be7332-c9 state UP group default qlen <span class="m">1000</span>
+    link/ether a6:a3:f6:b8:3e:a1 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::a4a3:f6ff:feb8:3ea1/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">11</span>: tap40be7332-c9: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc pfifo_fast master qbr40be7332-c9 state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether fe:16:3e:3e:76:b9 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::fc16:3eff:fe3e:76b9/64 scope link
+       valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> ovs-vsctl show
+
+4357a757-09ee-4189-8edf-1c8bc9036850
+    Manager <span class="s2">&quot;ptcp:6640:127.0.0.1&quot;</span>
+        is_connected: <span class="nb">true</span>
+    Bridge br-int
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port br-int
+            Interface br-int
+                type: internal
+        Port <span class="s2">&quot;qvo40be7332-c9&quot;</span>
+            tag: <span class="m">1</span>
+            Interface <span class="s2">&quot;qvo40be7332-c9&quot;</span>
+        Port patch-tun
+            Interface patch-tun
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-int<span class="o">}</span>
+    Bridge br-tun
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port patch-int
+            Interface patch-int
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-tun<span class="o">}</span>
+        Port br-tun
+            Interface br-tun
+                type: internal
+        Port <span class="s2">&quot;vxlan-0a000114&quot;</span>
+            Interface <span class="s2">&quot;vxlan-0a000114&quot;</span>
+                type: vxlan
+                options: <span class="o">{</span><span class="nv">df_default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>, <span class="nv">egress_pkt_mark</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>, <span class="nv">in_key</span><span class="o">=</span>flow, <span class="nv">local_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.21&quot;</span>, <span class="nv">out_key</span><span class="o">=</span>flow, <span class="nv">remote_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.20&quot;</span><span class="o">}</span>
+        Port <span class="s2">&quot;vxlan-0a000116&quot;</span>
+            Interface <span class="s2">&quot;vxlan-0a000116&quot;</span>
+                type: vxlan
+                options: <span class="o">{</span><span class="nv">df_default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>, <span class="nv">egress_pkt_mark</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>, <span class="nv">in_key</span><span class="o">=</span>flow, <span class="nv">local_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.21&quot;</span>, <span class="nv">out_key</span><span class="o">=</span>flow, <span class="nv">remote_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.22&quot;</span><span class="o">}</span>
+    ovs_version: <span class="s2">&quot;2.11.0&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> brctl show
+
+bridge name         bridge id           STP enabled     interfaces
+qbr40be7332-c9      <span class="m">8000</span>.a6a3f6b83ea1   no              qvb40be7332-c9
+                                                        tap40be7332-c9
+</pre></div>
+</div>
+<ul class="simple">
+<li>Compute node 2:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> ip address
+
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.2.15/24 brd <span class="m">10</span>.0.2.255 scope global noprefixroute dynamic enp0s3
+       valid_lft 77679sec preferred_lft 77679sec
+    inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+       valid_lft forever preferred_lft forever
+<span class="m">3</span>: enp0s8: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:d2:4c:f1 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.1.22/24 brd <span class="m">10</span>.0.1.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fed2:4cf1/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">4</span>: ovs-system: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether <span class="m">46</span>:5c:23:7e:2b:37 brd ff:ff:ff:ff:ff:ff
+<span class="m">5</span>: br-int: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1450</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether fa:2a:a6:6e:31:4f brd ff:ff:ff:ff:ff:ff
+<span class="m">6</span>: br-tun: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether aa:c3:d2:90:32:4b brd ff:ff:ff:ff:ff:ff
+<span class="m">7</span>: vxlan_sys_4789: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">65000</span> qdisc noqueue master ovs-system state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether 6e:9d:de:a6:ec:99 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::6c9d:deff:fea6:ec99/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">8</span>: qbr9a26419b-25: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">46</span>:18:9a:b4:51:0c brd ff:ff:ff:ff:ff:ff
+<span class="m">9</span>: qvo9a26419b-25@qvb9a26419b-25: &lt;BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue master ovs-system state UP group default qlen <span class="m">1000</span>
+    link/ether c2:5f:0b:e1:1e:09 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::c05f:bff:fee1:1e09/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">10</span>: qvb9a26419b-25@qvo9a26419b-25: &lt;BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue master qbr9a26419b-25 state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">46</span>:18:9a:b4:51:0c brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::4418:9aff:feb4:510c/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">11</span>: tap9a26419b-25: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc pfifo_fast master qbr9a26419b-25 state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether fe:16:3e:c8:7d:90 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::fc16:3eff:fec8:7d90/64 scope link
+       valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> ovs-vsctl show
+
+48edfef1-b892-4471-b143-263034441275
+    Manager <span class="s2">&quot;ptcp:6640:127.0.0.1&quot;</span>
+        is_connected: <span class="nb">true</span>
+    Bridge br-int
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port br-int
+            Interface br-int
+                type: internal
+        Port <span class="s2">&quot;qvo9a26419b-25&quot;</span>
+            tag: <span class="m">1</span>
+            Interface <span class="s2">&quot;qvo9a26419b-25&quot;</span>
+        Port patch-tun
+            Interface patch-tun
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-int<span class="o">}</span>
+    Bridge br-tun
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port br-tun
+            Interface br-tun
+                type: internal
+        Port <span class="s2">&quot;vxlan-0a000114&quot;</span>
+            Interface <span class="s2">&quot;vxlan-0a000114&quot;</span>
+                type: vxlan
+                options: <span class="o">{</span><span class="nv">df_default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>, <span class="nv">egress_pkt_mark</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>, <span class="nv">in_key</span><span class="o">=</span>flow, <span class="nv">local_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.22&quot;</span>, <span class="nv">out_key</span><span class="o">=</span>flow, <span class="nv">remote_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.20&quot;</span><span class="o">}</span>
+        Port <span class="s2">&quot;vxlan-0a000115&quot;</span>
+            Interface <span class="s2">&quot;vxlan-0a000115&quot;</span>
+                type: vxlan
+                options: <span class="o">{</span><span class="nv">df_default</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>, <span class="nv">egress_pkt_mark</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>, <span class="nv">in_key</span><span class="o">=</span>flow, <span class="nv">local_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.22&quot;</span>, <span class="nv">out_key</span><span class="o">=</span>flow, <span class="nv">remote_ip</span><span class="o">=</span><span class="s2">&quot;10.0.1.21&quot;</span><span class="o">}</span>
+        Port patch-int
+            Interface patch-int
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-tun<span class="o">}</span>
+    ovs_version: <span class="s2">&quot;2.11.0&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> brctl show
+
+bridge name         bridge id               STP enabled     interfaces
+qbr9a26419b-25      <span class="m">8000</span>.46189ab4510c       no              qvb9a26419b-25
+                                                            tap9a26419b-25
+</pre></div>
+</div>
+</div>
+<div class="section" id="anexo-4-pruebas-de-trafico">
+<h2><a class="toc-backref" href="#id37">Anexo 4: Pruebas de tráfico</a><a class="headerlink" href="#anexo-4-pruebas-de-trafico" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="comunicacion-entre-instancias-de-compute-nodes-distintos">
+<h3><a class="toc-backref" href="#id38">Comunicación entre instancias de Compute nodes distintos</a><a class="headerlink" href="#comunicacion-entre-instancias-de-compute-nodes-distintos" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Desde la instancia 1 (<code class="docutils literal notranslate"><span class="pre">10.0.0.2</span></code>) ubicada en el nodo Compute 1 (Hypervisor 1) haremos ping a la instancia 2 (<code class="docutils literal notranslate"><span class="pre">10.0.0.3</span></code>) ubicada en el nodo Compute 2 (Hypervisor 2):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ping <span class="m">10</span>.0.0.3
+</pre></div>
+</div>
+<ul class="simple">
+<li>¿Por qué nodos viaja el tráfico ICMP?</li>
+</ul>
+<p>Hacemos uso de <code class="docutils literal notranslate"><span class="pre">tcpdump</span></code> en cada nodo (o VM) en busca de tráfico ICMP y obtenemos los siguientes resultados:</p>
+<ol class="arabic simple">
+<li>Controller/Network Node:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i any icmp
+
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on any, link-type LINUX_SLL <span class="o">(</span>Linux cooked<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+^C
+<span class="m">0</span> packets captured
+<span class="m">0</span> packets received by filter
+<span class="m">0</span> packets dropped by kernel
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Compute Node 1:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i any icmp
+
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on any, link-type LINUX_SLL <span class="o">(</span>Linux cooked<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">23</span>:28:22.640464 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.640488 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.640489 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.640593 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.643021 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.643125 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.643127 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.643138 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:23.641731 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">1</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:23.641745 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">1</span>, length <span class="m">64</span>
+...
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Compute Node 2:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i any icmp
+
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on any, link-type LINUX_SLL <span class="o">(</span>Linux cooked<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">23</span>:28:22.639348 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.640678 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.640681 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.640695 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.641265 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.641275 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.641276 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:22.641419 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">43265</span>, seq <span class="m">0</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:23.640486 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">1</span>, length <span class="m">64</span>
+<span class="m">23</span>:28:23.640509 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">43265</span>, seq <span class="m">1</span>, length <span class="m">64</span>
+...
+</pre></div>
+</div>
+<p>Como se ha comprobado, por el Controller/Network node no cruza tráfico de las instancias. Por los nodos Compute 1 y Compute 2 pasan 4 request y 4 replies cada uno para una misma secuencia (<code class="docutils literal notranslate"><span class="pre">seq</span></code>) de paquete ICMP. Esto nos hace pensar que el paquete ICMP está atravesando 4 interfaces distintas en cada Compute node.</p>
+<ul class="simple">
+<li>¿Qué interfaces atraviesa el tráfico para viajar de instancia a instancia?</li>
+</ul>
+<p>Sabemos que el tráfico entre instancias de compute nodes distintos no pasa por el Controller/Network node. Ahora veamos qué interfaces atraviesa el tráfico en Compute 1 y Compute 2:</p>
+<ol class="arabic simple">
+<li>Compute Node 1:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i tap40be7332-c9 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on tap40be7332-c9, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">23</span>:48:39.283358 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">44033</span>, seq <span class="m">5</span>, length <span class="m">64</span>
+<span class="m">23</span>:48:39.284066 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">44033</span>, seq <span class="m">5</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i qvb40be7332-c9 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on qvb40be7332-c9, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">23</span>:48:48.285237 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">44033</span>, seq <span class="m">14</span>, length <span class="m">64</span>
+<span class="m">23</span>:48:48.285952 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">44033</span>, seq <span class="m">14</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i qbr40be7332-c9 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on qbr40be7332-c9, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">23</span>:49:02.302033 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">44033</span>, seq <span class="m">28</span>, length <span class="m">64</span>
+<span class="m">23</span>:49:02.302889 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">44033</span>, seq <span class="m">28</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i qvo40be7332-c9 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on qvo40be7332-c9, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">23</span>:49:19.305016 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">44033</span>, seq <span class="m">45</span>, length <span class="m">64</span>
+<span class="m">23</span>:49:19.305850 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">44033</span>, seq <span class="m">45</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="c1"># tcpdump -i vxlan_sys_4789 icmp</span>
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on vxlan_sys_4789, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">01</span>:17:41.602490 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">44033</span>, seq <span class="m">50</span>, length <span class="m">64</span>
+<span class="m">01</span>:17:41.603217 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">44033</span>, seq <span class="m">50</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="c1"># tcpdump -i enp0s3 icmp</span>
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on enp0s3, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+^C
+<span class="m">0</span> packets captured
+<span class="m">0</span> packets received by filter
+<span class="m">0</span> packets dropped by kernel
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i enp0s8 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on enp0s8, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+^C
+<span class="m">0</span> packets captured
+<span class="m">0</span> packets received by filter
+<span class="m">0</span> packets dropped by kernel
+</pre></div>
+</div>
+<p>Vemos que, en realidad, el tráfico ICMP atraviesa 5 interfaces del Compute Node 1: 3 interfaces del Linux Bridge, 1 interfaz del OVS Integration bridge que se conecta con este Linux bridge y 1 la interfaz VXLAN.</p>
+<ol class="arabic simple" start="2">
+<li>Compute Node 2:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i qvo9a26419b-25 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on qvo9a26419b-25, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">23</span>:56:59.857009 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">44289</span>, seq <span class="m">6</span>, length <span class="m">64</span>
+<span class="m">23</span>:56:59.857879 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">44289</span>, seq <span class="m">6</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i qvb9a26419b-25 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on qvb9a26419b-25, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">23</span>:57:06.860267 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">44289</span>, seq <span class="m">13</span>, length <span class="m">64</span>
+<span class="m">23</span>:57:06.861080 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">44289</span>, seq <span class="m">13</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i qbr9a26419b-25 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on qbr9a26419b-25, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">23</span>:57:12.861566 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">44289</span>, seq <span class="m">19</span>, length <span class="m">64</span>
+<span class="m">23</span>:57:12.862064 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">44289</span>, seq <span class="m">19</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i tap9a26419b-25 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on tap9a26419b-25, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">23</span>:57:19.863279 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">44289</span>, seq <span class="m">26</span>, length <span class="m">64</span>
+<span class="m">23</span>:57:19.863987 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">44289</span>, seq <span class="m">26</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i vxlan_sys_4789 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on vxlan_sys_4789, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">01</span>:26:21.977054 IP <span class="m">10</span>.0.0.2 &gt; <span class="m">10</span>.0.0.3: ICMP <span class="nb">echo</span> request, id <span class="m">44289</span>, seq <span class="m">30</span>, length <span class="m">64</span>
+<span class="m">01</span>:26:21.977938 IP <span class="m">10</span>.0.0.3 &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">44289</span>, seq <span class="m">30</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i enp0s3 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on enp0s3, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+^C
+<span class="m">0</span> packets captured
+<span class="m">0</span> packets received by filter
+<span class="m">0</span> packets dropped by kernel
+
+<span class="o">[</span>root@compute2 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i enp0s8 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on enp0s8, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+^C
+<span class="m">0</span> packets captured
+<span class="m">0</span> packets received by filter
+<span class="m">0</span> packets dropped by kernel
+</pre></div>
+</div>
+<p>Vemos que, en realidad, el tráfico ICMP atraviesa 5 interfaces del Compute Node 2: 3 interfaces del Linux Bridge, 1 interfaz del OVS Integration bridge que se conecta con este Linux bridge y 1 la interfaz VXLAN.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Hemos comprobado que existe una ruta de comunicación separada para el tráfico entre instancias que pertenecen a distintos Compute Nodes. Esta se llama <strong>Data Path</strong>. El Controller/Network Node no recibe tráfico de esta comunicación entre instancias.</p>
+</div>
+</div>
+<div class="section" id="comunicacion-de-instancia-con-internet">
+<h3><a class="toc-backref" href="#id39">Comunicación de instancia con Internet</a><a class="headerlink" href="#comunicacion-de-instancia-con-internet" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Desde la instancia 1 (<code class="docutils literal notranslate"><span class="pre">10.0.0.2</span></code>) ubicada en el nodo Compute 1 (Hypervisor 1) haremos ping a la IP <code class="docutils literal notranslate"><span class="pre">8.8.8.8</span></code>:</p>
+<ul class="simple">
+<li>¿Por qué nodos viaja el tráfico ICMP?</li>
+</ul>
+<p>Hacemos uso de <code class="docutils literal notranslate"><span class="pre">tcpdump</span></code> en el nodo Controller/Network y Compute 1 en busca de tráfico ICMP y obtenemos los siguientes resultados:</p>
+<ol class="arabic simple">
+<li>Controller/Network Node:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i any icmp
+
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on any, link-type LINUX_SLL <span class="o">(</span>Linux cooked<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">00</span>:50:54.291695 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">1</span>, length <span class="m">64</span>
+<span class="m">00</span>:50:54.291723 IP <span class="m">172</span>.24.4.10 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">1</span>, length <span class="m">64</span>
+<span class="m">00</span>:50:54.291731 IP packstack &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">1</span>, length <span class="m">64</span>
+<span class="m">00</span>:50:54.373374 IP dns.google &gt; packstack: ICMP <span class="nb">echo</span> reply, id <span class="m">45057</span>, seq <span class="m">1</span>, length <span class="m">64</span>
+<span class="m">00</span>:50:54.373401 IP dns.google &gt; <span class="m">172</span>.24.4.10: ICMP <span class="nb">echo</span> reply, id <span class="m">45057</span>, seq <span class="m">1</span>, length <span class="m">64</span>
+<span class="m">00</span>:50:54.373445 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">45057</span>, seq <span class="m">1</span>, length <span class="m">64</span>
+<span class="m">00</span>:50:55.293234 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">2</span>, length <span class="m">64</span>
+<span class="m">00</span>:50:55.293261 IP <span class="m">172</span>.24.4.10 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">2</span>, length <span class="m">64</span>
+...
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Compute Node 1:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i any icmp
+
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on any, link-type LINUX_SLL <span class="o">(</span>Linux cooked<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">00</span>:51:04.317637 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">11</span>, length <span class="m">64</span>
+<span class="m">00</span>:51:04.317663 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">11</span>, length <span class="m">64</span>
+<span class="m">00</span>:51:04.317665 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">11</span>, length <span class="m">64</span>
+<span class="m">00</span>:51:04.317670 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">11</span>, length <span class="m">64</span>
+<span class="m">00</span>:51:04.399731 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">45057</span>, seq <span class="m">11</span>, length <span class="m">64</span>
+<span class="m">00</span>:51:04.399739 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">45057</span>, seq <span class="m">11</span>, length <span class="m">64</span>
+<span class="m">00</span>:51:04.399740 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">45057</span>, seq <span class="m">11</span>, length <span class="m">64</span>
+<span class="m">00</span>:51:04.399755 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">45057</span>, seq <span class="m">11</span>, length <span class="m">64</span>
+<span class="m">00</span>:51:05.324080 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">12</span>, length <span class="m">64</span>
+<span class="m">00</span>:51:05.324105 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45057</span>, seq <span class="m">12</span>, length <span class="m">64</span>
+...
+</pre></div>
+</div>
+<p>Por el nodo Controller/Network pasan 3 request y 3 replies de tráfico ICMP, mientras que por Compute 1 pasan 4 request y 4 replies, para una misma secuencia (<code class="docutils literal notranslate"><span class="pre">seq</span></code>) de paquete ICMP.</p>
+<ul class="simple">
+<li>¿Qué interfaces atraviesa el tráfico para viajar de la instancia a Internet?</li>
+</ul>
+<p>Ahora veamos qué interfaces atraviesa el tráfico en Controller/Network node y Compute 1:</p>
+<ol class="arabic simple">
+<li>Controller/Network Node:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i enp0s3 icmp
+
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on enp0s3, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">01</span>:04:48.753587 IP packstack &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45569</span>, seq <span class="m">6</span>, length <span class="m">64</span>
+<span class="m">01</span>:04:48.829003 IP dns.google &gt; packstack: ICMP <span class="nb">echo</span> reply, id <span class="m">45569</span>, seq <span class="m">6</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i enp0s8 icmp
+
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on enp0s8, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+^C
+<span class="m">0</span> packets captured
+<span class="m">0</span> packets received by filter
+<span class="m">0</span> packets dropped by kernel
+
+<span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i br-ex icmp
+
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on br-ex, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">01</span>:05:06.838046 IP <span class="m">172</span>.24.4.10 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45569</span>, seq <span class="m">24</span>, length <span class="m">64</span>
+<span class="m">01</span>:05:06.911353 IP dns.google &gt; <span class="m">172</span>.24.4.10: ICMP <span class="nb">echo</span> reply, id <span class="m">45569</span>, seq <span class="m">24</span>, length <span class="m">64</span>
+...
+
+<span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i vxlan_sys_4789 icmp
+
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on vxlan_sys_4789, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">01</span>:05:13.858767 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">45569</span>, seq <span class="m">31</span>, length <span class="m">64</span>
+<span class="m">01</span>:05:13.936364 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">45569</span>, seq <span class="m">31</span>, length <span class="m">64</span>
+...
+</pre></div>
+</div>
+<p>Comprobamos que el tráfico ICMP atraviesa 3 interfaces del Controller/Network Node: <code class="docutils literal notranslate"><span class="pre">enp0s3</span></code>, <code class="docutils literal notranslate"><span class="pre">enp0s8</span></code> y 1 la interfaz VXLAN.</p>
+<ol class="arabic simple" start="2">
+<li>Compute Node 1:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i tap40be7332-c9 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on tap40be7332-c9, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">01</span>:10:12.675236 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">46081</span>, seq <span class="m">15</span>, length <span class="m">64</span>
+<span class="m">01</span>:10:12.753360 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">46081</span>, seq <span class="m">15</span>, length <span class="m">64</span>
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i qvb40be7332-c9 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on qvb40be7332-c9, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">01</span>:10:25.676923 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">46081</span>, seq <span class="m">28</span>, length <span class="m">64</span>
+<span class="m">01</span>:10:25.753336 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">46081</span>, seq <span class="m">28</span>, length <span class="m">64</span>
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i qbr40be7332-c9 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on qbr40be7332-c9, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">01</span>:10:40.680569 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">46081</span>, seq <span class="m">43</span>, length <span class="m">64</span>
+<span class="m">01</span>:10:40.756072 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">46081</span>, seq <span class="m">43</span>, length <span class="m">64</span>
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i qvo40be7332-c9 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on qvo40be7332-c9, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">01</span>:11:03.686021 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">46081</span>, seq <span class="m">66</span>, length <span class="m">64</span>
+<span class="m">01</span>:11:03.763526 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">46081</span>, seq <span class="m">66</span>, length <span class="m">64</span>
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i vxlan_sys_4789 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on vxlan_sys_4789, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+<span class="m">01</span>:11:42.705281 IP <span class="m">10</span>.0.0.2 &gt; dns.google: ICMP <span class="nb">echo</span> request, id <span class="m">46081</span>, seq <span class="m">105</span>, length <span class="m">64</span>
+<span class="m">01</span>:11:42.783655 IP dns.google &gt; <span class="m">10</span>.0.0.2: ICMP <span class="nb">echo</span> reply, id <span class="m">46081</span>, seq <span class="m">105</span>, length <span class="m">64</span>
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i enp0s3 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on enp0s3, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+^C
+<span class="m">0</span> packets captured
+<span class="m">0</span> packets received by filter
+<span class="m">0</span> packets dropped by kernel
+
+<span class="o">[</span>root@compute1 ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> tcpdump -i enp0s8 icmp
+tcpdump: verbose output suppressed, use -v or -vv <span class="k">for</span> full protocol decode
+listening on enp0s8, link-type EN10MB <span class="o">(</span>Ethernet<span class="o">)</span>, capture size <span class="m">262144</span> bytes
+^C
+<span class="m">0</span> packets captured
+<span class="m">0</span> packets received by filter
+<span class="m">0</span> packets dropped by kernel
+</pre></div>
+</div>
+<p>Vemos que, en realidad, el tráfico ICMP atraviesa 5 interfaces del Compute Node 1: 3 interfaces del Linux Bridge, 1 interfaz del OVS Integration bridge que se conecta con este Linux bridge y 1 la interfaz VXLAN.</p>
+</div>
+</div>
+<div class="section" id="anexo-5-archivo-answers-txt-de-packstack-generado">
+<h2><a class="toc-backref" href="#id40">Anexo 5: Archivo answers.txt de packstack generado</a><a class="headerlink" href="#anexo-5-archivo-answers-txt-de-packstack-generado" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /home/vagrant/packstack-answers-20200218-155331.txt
 
 <span class="o">[</span>general<span class="o">]</span>
 
@@ -723,14 +1537,14 @@ $ vagrant up
 
 <span class="c1"># Server on which to install OpenStack services specific to the</span>
 <span class="c1"># controller role (for example, API servers or dashboard).</span>
-<span class="nv">CONFIG_CONTROLLER_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_CONTROLLER_HOST</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># List the servers on which to install the Compute service.</span>
-<span class="nv">CONFIG_COMPUTE_HOSTS</span><span class="o">=</span><span class="m">10</span>.0.0.21,10.0.0.22
+<span class="nv">CONFIG_COMPUTE_HOSTS</span><span class="o">=</span><span class="m">10</span>.0.1.21,10.0.1.22
 
 <span class="c1"># List of servers on which to install the network service such as</span>
 <span class="c1"># Compute networking (nova network) or OpenStack Networking (neutron).</span>
-<span class="nv">CONFIG_NETWORK_HOSTS</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_NETWORK_HOSTS</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># Specify &#39;y&#39; if you want to use VMware vCenter as hypervisor and</span>
 <span class="c1"># storage; otherwise, specify &#39;n&#39;. [&#39;y&#39;, &#39;n&#39;]</span>
@@ -903,7 +1717,7 @@ $ vagrant up
 <span class="nv">CONFIG_AMQP_BACKEND</span><span class="o">=</span>rabbitmq
 
 <span class="c1"># IP address of the server on which to install the AMQP service.</span>
-<span class="nv">CONFIG_AMQP_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_AMQP_HOST</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># Specify &#39;y&#39; to enable SSL for the AMQP service. [&#39;y&#39;, &#39;n&#39;]</span>
 <span class="nv">CONFIG_AMQP_ENABLE_SSL</span><span class="o">=</span>n
@@ -925,17 +1739,17 @@ $ vagrant up
 <span class="c1"># installation was not specified in CONFIG_MARIADB_INSTALL, specify</span>
 <span class="c1"># the IP address of an existing database server (a MariaDB cluster can</span>
 <span class="c1"># also be specified).</span>
-<span class="nv">CONFIG_MARIADB_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_MARIADB_HOST</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># User name for the MariaDB administrative user.</span>
 <span class="nv">CONFIG_MARIADB_USER</span><span class="o">=</span>root
 
 <span class="c1"># Password for the MariaDB administrative user.</span>
-<span class="nv">CONFIG_MARIADB_PW</span><span class="o">=</span>9406607c0b3347bc
+<span class="nv">CONFIG_MARIADB_PW</span><span class="o">=</span>8941bfccbd3645d1
 
 <span class="c1"># Password to use for the Identity service (keystone) to access the</span>
 <span class="c1"># database.</span>
-<span class="nv">CONFIG_KEYSTONE_DB_PW</span><span class="o">=</span>1f4f9e6ec6d44aaa
+<span class="nv">CONFIG_KEYSTONE_DB_PW</span><span class="o">=</span>1e448e39f1dc4906
 
 <span class="c1"># Enter y if cron job for removing soft deleted DB rows should be</span>
 <span class="c1"># created.</span>
@@ -946,7 +1760,7 @@ $ vagrant up
 <span class="nv">CONFIG_KEYSTONE_REGION</span><span class="o">=</span>RegionOne
 
 <span class="c1"># Token to use for the Identity service API.</span>
-<span class="nv">CONFIG_KEYSTONE_ADMIN_TOKEN</span><span class="o">=</span>99be887aa2ee444d9391657149ae3a20
+<span class="nv">CONFIG_KEYSTONE_ADMIN_TOKEN</span><span class="o">=</span>329f0cccb90e44afb9e1d597e60660b2
 
 <span class="c1"># Email address for the Identity service &#39;admin&#39; user.  Defaults to</span>
 <span class="nv">CONFIG_KEYSTONE_ADMIN_EMAIL</span><span class="o">=</span>root@localhost
@@ -1142,11 +1956,11 @@ $ vagrant up
 
 <span class="c1"># Password to use for the Image service (glance) to access the</span>
 <span class="c1"># database.</span>
-<span class="nv">CONFIG_GLANCE_DB_PW</span><span class="o">=</span>b7886c5dee054535
+<span class="nv">CONFIG_GLANCE_DB_PW</span><span class="o">=</span>55a47171835c4229
 
 <span class="c1"># Password to use for the Image service to authenticate with the</span>
 <span class="c1"># Identity service.</span>
-<span class="nv">CONFIG_GLANCE_KS_PW</span><span class="o">=</span>0965574b890045ba
+<span class="nv">CONFIG_GLANCE_KS_PW</span><span class="o">=</span>7e2770838bab4988
 
 <span class="c1"># Storage backend for the Image service (controls how the Image</span>
 <span class="c1"># service stores disk images). Valid options are: file or swift</span>
@@ -1157,7 +1971,7 @@ $ vagrant up
 
 <span class="c1"># Password to use for the Block Storage service (cinder) to access</span>
 <span class="c1"># the database.</span>
-<span class="nv">CONFIG_CINDER_DB_PW</span><span class="o">=</span>7549367c69a14bf6
+<span class="nv">CONFIG_CINDER_DB_PW</span><span class="o">=</span>4b4373ed09dc49f9
 
 <span class="c1"># Enter y if cron job for removing soft deleted DB rows should be</span>
 <span class="c1"># created.</span>
@@ -1165,7 +1979,7 @@ $ vagrant up
 
 <span class="c1"># Password to use for the Block Storage service to authenticate with</span>
 <span class="c1"># the Identity service.</span>
-<span class="nv">CONFIG_CINDER_KS_PW</span><span class="o">=</span>d3988e56159a494a
+<span class="nv">CONFIG_CINDER_KS_PW</span><span class="o">=</span>0e7ff9aa05d54997
 
 <span class="c1"># Storage backend to use for the Block Storage service; valid options</span>
 <span class="c1"># are: lvm, gluster, nfs, vmdk, netapp, solidfire. [&#39;lvm&#39;, &#39;gluster&#39;,</span>
@@ -1346,11 +2160,11 @@ $ vagrant up
 
 <span class="c1"># Password to use for the Compute service (nova) to access the</span>
 <span class="c1"># database.</span>
-<span class="nv">CONFIG_NOVA_DB_PW</span><span class="o">=</span>738aee35a25f481e
+<span class="nv">CONFIG_NOVA_DB_PW</span><span class="o">=</span>6295662e92e94420
 
 <span class="c1"># Password to use for the Compute service to authenticate with the</span>
 <span class="c1"># Identity service.</span>
-<span class="nv">CONFIG_NOVA_KS_PW</span><span class="o">=</span>e69669a1bf8642f8
+<span class="nv">CONFIG_NOVA_KS_PW</span><span class="o">=</span>f3b48c3136e544c1
 
 <span class="c1"># Whether or not Packstack should manage a default initial set of</span>
 <span class="c1"># Nova flavors. Defaults to &#39;y&#39;.</span>
@@ -1396,11 +2210,11 @@ $ vagrant up
 
 <span class="c1"># Password to use for OpenStack Networking (neutron) to authenticate</span>
 <span class="c1"># with the Identity service.</span>
-<span class="nv">CONFIG_NEUTRON_KS_PW</span><span class="o">=</span>4af89e370d1a45f3
+<span class="nv">CONFIG_NEUTRON_KS_PW</span><span class="o">=</span>a06d5f5ee976464f
 
 <span class="c1"># The password to use for OpenStack Networking to access the</span>
 <span class="c1"># database.</span>
-<span class="nv">CONFIG_NEUTRON_DB_PW</span><span class="o">=</span>52914171125f42a9
+<span class="nv">CONFIG_NEUTRON_DB_PW</span><span class="o">=</span>dc36414078674e17
 
 <span class="c1"># The name of the Open vSwitch bridge (or empty for linuxbridge) for</span>
 <span class="c1"># the OpenStack Networking L3 agent to use for external  traffic.</span>
@@ -1409,7 +2223,7 @@ $ vagrant up
 <span class="nv">CONFIG_NEUTRON_L3_EXT_BRIDGE</span><span class="o">=</span>br-ex
 
 <span class="c1"># Password for the OpenStack Networking metadata agent.</span>
-<span class="nv">CONFIG_NEUTRON_METADATA_PW</span><span class="o">=</span>a556078a86c94c3d
+<span class="nv">CONFIG_NEUTRON_METADATA_PW</span><span class="o">=</span>7174442df1764ba1
 
 <span class="c1"># Specify &#39;y&#39; to install OpenStack Networking&#39;s Load-Balancing-</span>
 <span class="c1"># as-a-Service (LBaaS). [&#39;y&#39;, &#39;n&#39;]</span>
@@ -1750,7 +2564,7 @@ $ vagrant up
 <span class="nv">CONFIG_HORIZON_SSL</span><span class="o">=</span>n
 
 <span class="c1"># Secret key to use for Horizon Secret Encryption Key.</span>
-<span class="nv">CONFIG_HORIZON_SECRET_KEY</span><span class="o">=</span>12e15d8140d44bd18a3267db90e31221
+<span class="nv">CONFIG_HORIZON_SECRET_KEY</span><span class="o">=</span>344bf1addd2d49c0beab4b659bf0e55f
 
 <span class="c1"># PEM-encoded certificate to be used for SSL connections on the https</span>
 <span class="c1"># server. To generate a certificate, leave blank.</span>
@@ -1764,7 +2578,7 @@ $ vagrant up
 
 <span class="c1"># Password to use for the Object Storage service to authenticate with</span>
 <span class="c1"># the Identity service.</span>
-<span class="nv">CONFIG_SWIFT_KS_PW</span><span class="o">=</span>85566c38881f4d6e
+<span class="nv">CONFIG_SWIFT_KS_PW</span><span class="o">=</span>7e9cb3e48d014ad5
 
 <span class="c1"># Comma-separated list of devices to use as storage device for Object</span>
 <span class="c1"># Storage. Each entry must take the format /path/to/dev (for example,</span>
@@ -1788,22 +2602,22 @@ $ vagrant up
 <span class="c1"># Custom seed number to use for swift_hash_path_suffix in</span>
 <span class="c1"># /etc/swift/swift.conf. If you do not provide a value, a seed number</span>
 <span class="c1"># is automatically generated.</span>
-<span class="nv">CONFIG_SWIFT_HASH</span><span class="o">=</span>d14037a2a5784e4b
+<span class="nv">CONFIG_SWIFT_HASH</span><span class="o">=</span>4fa03e02fd9240ec
 
 <span class="c1"># Size of the Object Storage loopback file storage device.</span>
 <span class="nv">CONFIG_SWIFT_STORAGE_SIZE</span><span class="o">=</span>2G
 
 <span class="c1"># Password used by Orchestration service user to authenticate against</span>
 <span class="c1"># the database.</span>
-<span class="nv">CONFIG_HEAT_DB_PW</span><span class="o">=</span>aa292bf6f9f444b3
+<span class="nv">CONFIG_HEAT_DB_PW</span><span class="o">=</span>bca90ad488604f3f
 
 <span class="c1"># Encryption key to use for authentication in the Orchestration</span>
 <span class="c1"># database (16, 24, or 32 chars).</span>
-<span class="nv">CONFIG_HEAT_AUTH_ENC_KEY</span><span class="o">=</span>6c3d28d54a3b4150
+<span class="nv">CONFIG_HEAT_AUTH_ENC_KEY</span><span class="o">=</span>43c886595fec4dfa
 
 <span class="c1"># Password to use for the Orchestration service to authenticate with</span>
 <span class="c1"># the Identity service.</span>
-<span class="nv">CONFIG_HEAT_KS_PW</span><span class="o">=</span>5b2249b3b30c475d
+<span class="nv">CONFIG_HEAT_KS_PW</span><span class="o">=</span>3d68fd66259c41ee
 
 <span class="c1"># Specify &#39;y&#39; to install the Orchestration CloudFormation API. [&#39;y&#39;,</span>
 <span class="c1"># &#39;n&#39;]</span>
@@ -1817,7 +2631,7 @@ $ vagrant up
 
 <span class="c1"># Password for the Identity domain administrative user for</span>
 <span class="c1"># Orchestration.</span>
-<span class="nv">CONFIG_HEAT_DOMAIN_PASSWORD</span><span class="o">=</span>e0ba944e057d4571
+<span class="nv">CONFIG_HEAT_DOMAIN_PASSWORD</span><span class="o">=</span>3435199bed7c4095
 
 <span class="c1"># Specify &#39;y&#39; to provision for demo usage and testing. [&#39;y&#39;, &#39;n&#39;]</span>
 <span class="nv">CONFIG_PROVISION_DEMO</span><span class="o">=</span>y
@@ -1916,18 +2730,18 @@ $ vagrant up
 <span class="nv">CONFIG_PROVISION_OVS_BRIDGE</span><span class="o">=</span>y
 
 <span class="c1"># Password to use for Gnocchi to access the database.</span>
-<span class="nv">CONFIG_GNOCCHI_DB_PW</span><span class="o">=</span>2d66ddd454554e20
+<span class="nv">CONFIG_GNOCCHI_DB_PW</span><span class="o">=</span>6fb1d9e8bf884e37
 
 <span class="c1"># Password to use for Gnocchi to authenticate with the Identity</span>
 <span class="c1"># service.</span>
-<span class="nv">CONFIG_GNOCCHI_KS_PW</span><span class="o">=</span>ca4878189f214cb1
+<span class="nv">CONFIG_GNOCCHI_KS_PW</span><span class="o">=</span>2818fec28de64c57
 
 <span class="c1"># Secret key for signing Telemetry service (ceilometer) messages.</span>
-<span class="nv">CONFIG_CEILOMETER_SECRET</span><span class="o">=</span>bd0a56bf54ed40ff
+<span class="nv">CONFIG_CEILOMETER_SECRET</span><span class="o">=</span>c26282c0fb404345
 
 <span class="c1"># Password to use for Telemetry to authenticate with the Identity</span>
 <span class="c1"># service.</span>
-<span class="nv">CONFIG_CEILOMETER_KS_PW</span><span class="o">=</span>ce01b357d0ee46e2
+<span class="nv">CONFIG_CEILOMETER_KS_PW</span><span class="o">=</span>b1388b48ef6147f2
 
 <span class="c1"># Ceilometer service name. [&#39;httpd&#39;, &#39;ceilometer&#39;]</span>
 <span class="nv">CONFIG_CEILOMETER_SERVICE_NAME</span><span class="o">=</span>httpd
@@ -1941,18 +2755,18 @@ $ vagrant up
 <span class="nv">CONFIG_ENABLE_CEILOMETER_MIDDLEWARE</span><span class="o">=</span>n
 
 <span class="c1"># IP address of the server on which to install the Redis server.</span>
-<span class="nv">CONFIG_REDIS_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_REDIS_HOST</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># Port on which the Redis server listens.</span>
 <span class="nv">CONFIG_REDIS_PORT</span><span class="o">=</span><span class="m">6379</span>
 
 <span class="c1"># Password to use for Telemetry Alarming to authenticate with the</span>
 <span class="c1"># Identity service.</span>
-<span class="nv">CONFIG_AODH_KS_PW</span><span class="o">=</span>0b54f8ec8d8c4d38
+<span class="nv">CONFIG_AODH_KS_PW</span><span class="o">=</span>2c5c29bc887a4185
 
 <span class="c1"># Password to use for Telemetry Alarming (AODH) to access the</span>
 <span class="c1"># database.</span>
-<span class="nv">CONFIG_AODH_DB_PW</span><span class="o">=</span>06103a156492464c
+<span class="nv">CONFIG_AODH_DB_PW</span><span class="o">=</span>dda2cdf3fbd64ff6
 
 <span class="c1"># Password to use for Panko to access the database.</span>
 <span class="nv">CONFIG_PANKO_DB_PW</span><span class="o">=</span>PW_PLACEHOLDER

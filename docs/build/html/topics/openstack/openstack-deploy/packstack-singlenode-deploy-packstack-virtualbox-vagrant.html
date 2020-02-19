@@ -112,7 +112,6 @@
 <li class="toctree-l3"><a class="reference internal" href="#prerequisitos-del-sistema">Prerequisitos del sistema</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#configuracion-de-virtualbox">Configuración de VirtualBox</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#host-only-network-adapter">Host-only Network Adapter</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#nat-provider-network">NAT Provider Network</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#definicion-del-archivo-vagrantfile">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
@@ -122,7 +121,19 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado">Pruebas en el entorno OpenStack desplegado</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#anexo-archivo-answers-txt-de-packstack-generado">Anexo: Archivo answers.txt de packstack generado</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anexo-1-configuracion-de-red-desplegada">Anexo 1: Configuración de red desplegada</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#host-configuration-windows-user">Host configuration (Windows user)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vm-configuration-virtualbox-config">VM configuration (virtualBox config)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#vm-configuration-openstack-config">VM configuration (OpenStack config)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#anexo-2-graficos-de-red-desplegada">Anexo 2: Gráficos de red desplegada</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#red-general-total-host-vm-tenant-networks">Red general total (Host + VM + Tenant Networks)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#red-e-interfaces-internas-vm-tenant-networks">Red e interfaces internas (VM + Tenant Networks)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#anexo-3-interfaces-de-red-ovs-bridges">Anexo 3: Interfaces de red, OvS, bridges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#anexo-4-archivo-answers-txt-de-packstack-generado">Anexo 4: Archivo answers.txt de packstack generado</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a></li>
@@ -229,42 +240,62 @@
            <div itemprop="articleBody">
             
   <div class="section" id="despliegue-de-openstack-singlenode-con-packstack-virtualbox-y-vagrant">
-<h1><a class="toc-backref" href="#id15">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a><a class="headerlink" href="#despliegue-de-openstack-singlenode-con-packstack-virtualbox-y-vagrant" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><a class="toc-backref" href="#id13">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a><a class="headerlink" href="#despliegue-de-openstack-singlenode-con-packstack-virtualbox-y-vagrant" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="contents topic" id="table-of-contents">
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#despliegue-de-openstack-singlenode-con-packstack-virtualbox-y-vagrant" id="id15">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a><ul>
-<li><a class="reference internal" href="#prerequisitos-del-sistema" id="id16">Prerequisitos del sistema</a></li>
-<li><a class="reference internal" href="#configuracion-de-virtualbox" id="id17">Configuración de VirtualBox</a><ul>
-<li><a class="reference internal" href="#host-only-network-adapter" id="id18">Host-only Network Adapter</a></li>
-<li><a class="reference internal" href="#nat-provider-network" id="id19">NAT Provider Network</a></li>
+<li><a class="reference internal" href="#despliegue-de-openstack-singlenode-con-packstack-virtualbox-y-vagrant" id="id13">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a><ul>
+<li><a class="reference internal" href="#prerequisitos-del-sistema" id="id14">Prerequisitos del sistema</a></li>
+<li><a class="reference internal" href="#configuracion-de-virtualbox" id="id15">Configuración de VirtualBox</a><ul>
+<li><a class="reference internal" href="#host-only-network-adapter" id="id16">Host-only Network Adapter</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#definicion-del-archivo-vagrantfile" id="id20">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
-<li><a class="reference internal" href="#definicion-de-archivo-de-configuracion-del-nodo" id="id21">Definición de archivo de configuración del nodo</a><ul>
-<li><a class="reference internal" href="#controller-packstack-setup-sh" id="id22">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a></li>
+<li><a class="reference internal" href="#definicion-del-archivo-vagrantfile" id="id17">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
+<li><a class="reference internal" href="#definicion-de-archivo-de-configuracion-del-nodo" id="id18">Definición de archivo de configuración del nodo</a><ul>
+<li><a class="reference internal" href="#controller-packstack-setup-sh" id="id19">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack" id="id23">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a></li>
-<li><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado" id="id24">Pruebas en el entorno OpenStack desplegado</a></li>
-<li><a class="reference internal" href="#anexo-archivo-answers-txt-de-packstack-generado" id="id25">Anexo: Archivo answers.txt de packstack generado</a></li>
+<li><a class="reference internal" href="#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack" id="id20">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a></li>
+<li><a class="reference internal" href="#pruebas-en-el-entorno-openstack-desplegado" id="id21">Pruebas en el entorno OpenStack desplegado</a></li>
+<li><a class="reference internal" href="#anexo-1-configuracion-de-red-desplegada" id="id22">Anexo 1: Configuración de red desplegada</a><ul>
+<li><a class="reference internal" href="#host-configuration-windows-user" id="id23">Host configuration (Windows user)</a></li>
+<li><a class="reference internal" href="#vm-configuration-virtualbox-config" id="id24">VM configuration (virtualBox config)</a><ul>
+<li><a class="reference internal" href="#interfaces-desde-el-lado-host" id="id25">Interfaces desde el lado host</a></li>
+<li><a class="reference internal" href="#interfaces-desde-el-lado-guest" id="id26">Interfaces desde el lado guest</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#vm-configuration-openstack-config" id="id27">VM configuration (OpenStack config)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#anexo-2-graficos-de-red-desplegada" id="id28">Anexo 2: Gráficos de red desplegada</a><ul>
+<li><a class="reference internal" href="#red-general-total-host-vm-tenant-networks" id="id29">Red general total (Host + VM + Tenant Networks)</a></li>
+<li><a class="reference internal" href="#red-e-interfaces-internas-vm-tenant-networks" id="id30">Red e interfaces internas (VM + Tenant Networks)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#anexo-3-interfaces-de-red-ovs-bridges" id="id31">Anexo 3: Interfaces de red, OvS, bridges</a></li>
+<li><a class="reference internal" href="#anexo-4-archivo-answers-txt-de-packstack-generado" id="id32">Anexo 4: Archivo answers.txt de packstack generado</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="section" id="prerequisitos-del-sistema">
-<h2><a class="toc-backref" href="#id16">Prerequisitos del sistema</a><a class="headerlink" href="#prerequisitos-del-sistema" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id14">Prerequisitos del sistema</a><a class="headerlink" href="#prerequisitos-del-sistema" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Desde nuestro sistema Operativo (Windows, macOS, Linux) debemos tener instaladas los siguientes programas:</p>
 <ul class="simple">
 <li>VirtualBox</li>
 <li>Vagrant</li>
 </ul>
-<p>Este escenario de OpenStack que será desplegado consta de 1 VM: un node que contiene las funcionalidades de controller, network, compute, etc. integradas. Se requiere al menos 8 GB de RAM y 4 CPUs.</p>
+<p>Este escenario de OpenStack que será desplegado consta de 1 VM: un node que contiene las funcionalidades de controller, network, compute, etc. integradas. Se requiere al menos 10 GB de RAM y 4 CPUs.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>Si existen errores en la creación de las instancias o que las instancias creadas se apagan automáticamete, esto podría deberse a la falta de recursos en el host.</p>
+<p class="last">Revisar la memoria RAM disponible con <code class="docutils literal notranslate"><span class="pre">free</span> <span class="pre">-m</span></code> y el uso de CPU con <code class="docutils literal notranslate"><span class="pre">top</span></code> o <code class="docutils literal notranslate"><span class="pre">htop</span></code>. En caso los recursos se están usando al máximo, apagar la VM y asignarle más recursos desde el host en VirtualBox.</p>
+</div>
 </div>
 <div class="section" id="configuracion-de-virtualbox">
-<h2><a class="toc-backref" href="#id17">Configuración de VirtualBox</a><a class="headerlink" href="#configuracion-de-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">Configuración de VirtualBox</a><a class="headerlink" href="#configuracion-de-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="section" id="host-only-network-adapter">
-<h3><a class="toc-backref" href="#id18">Host-only Network Adapter</a><a class="headerlink" href="#host-only-network-adapter" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">Host-only Network Adapter</a><a class="headerlink" href="#host-only-network-adapter" title="Enlazar permanentemente con este título">¶</a></h3>
 <ol class="arabic simple">
 <li>Crear un Host-only Network Adapter haciendo clic en el botón <span class="guilabel">Global Tools</span>, <span class="guilabel">Host Network Manager</span>. Clic en el botón <span class="guilabel">Create</span>:</li>
 </ol>
@@ -296,45 +327,9 @@
 </ul>
 </div>
 </div>
-<div class="section" id="nat-provider-network">
-<h3><a class="toc-backref" href="#id19">NAT Provider Network</a><a class="headerlink" href="#nat-provider-network" title="Enlazar permanentemente con este título">¶</a></h3>
-<ol class="arabic simple">
-<li>Clic en <span class="guilabel">Preferences</span> (<span class="guilabel">Ctrl + G</span>):</li>
-</ol>
-<div class="figure align-center" id="id5">
-<img alt="../../../_images/Windows-VirtualBox-Preferences1.png" src="../../../_images/Windows-VirtualBox-Preferences1.png" />
-<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Clic en opción <span class="guilabel">Preferences</span></span></p>
-</div>
-<div class="figure align-center" id="id6">
-<img alt="../../../_images/Linux-VirtualBox-Preferences1.png" src="../../../_images/Linux-VirtualBox-Preferences1.png" />
-<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Clic en opción <span class="guilabel">Preferences</span></span></p>
-</div>
-<ol class="arabic simple" start="2">
-<li>En la sección <span class="guilabel">Network</span>, seleccionar el botón de creación de una nueva red:</li>
-</ol>
-<div class="figure align-center" id="id7">
-<img alt="../../../_images/Windows-VirtualBox-Preferences-Network1.png" src="../../../_images/Windows-VirtualBox-Preferences-Network1.png" />
-<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Clic en sección <span class="guilabel">Network</span></span></p>
-</div>
-<div class="figure align-center" id="id8">
-<img alt="../../../_images/Linux-VirtualBox-Preferences-Network1.png" src="../../../_images/Linux-VirtualBox-Preferences-Network1.png" />
-<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Clic en sección <span class="guilabel">Network</span></span></p>
-</div>
-<ol class="arabic simple" start="3">
-<li>Nombrar y definir un rango para la red NAT. También podemos dar soporte DHCP:</li>
-</ol>
-<div class="figure align-center" id="id9">
-<img alt="../../../_images/Windows-VirtualBox-Create-Provider-Network1.png" src="../../../_images/Windows-VirtualBox-Create-Provider-Network1.png" />
-<p class="caption"><span class="caption-text">Windows - VirtualBox v5.2 - Definir propiedades de la red</span></p>
-</div>
-<div class="figure align-center" id="id10">
-<img alt="../../../_images/Linux-VirtualBox-Create-Provider-Network1.png" src="../../../_images/Linux-VirtualBox-Create-Provider-Network1.png" />
-<p class="caption"><span class="caption-text">Linux - VirtualBox v6.0 - Definir propiedades de la red</span></p>
-</div>
-</div>
 </div>
 <div class="section" id="definicion-del-archivo-vagrantfile">
-<h2><a class="toc-backref" href="#id20">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a><a class="headerlink" href="#definicion-del-archivo-vagrantfile" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id17">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a><a class="headerlink" href="#definicion-del-archivo-vagrantfile" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>El archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> se define de la siguiente forma:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- mode: ruby -*-</span>
 <span class="c1"># vi: set ft=ruby :</span>
@@ -342,7 +337,7 @@
   <span class="o">{</span>
     :hostname <span class="o">=</span>&gt; <span class="s2">&quot;packstack&quot;</span>,
     :box <span class="o">=</span>&gt; <span class="s2">&quot;centos/7&quot;</span>,
-    :ram <span class="o">=</span>&gt; <span class="m">8192</span>,
+    :ram <span class="o">=</span>&gt; <span class="m">10240</span>,
     :cpu <span class="o">=</span>&gt; <span class="m">4</span>,
     :script <span class="o">=</span>&gt; <span class="s2">&quot;sh /vagrant/packstack_setup.sh&quot;</span>
   <span class="o">}</span>
@@ -370,63 +365,63 @@ end
 <p class="first admonition-title">Importante</p>
 <ul class="last simple">
 <li>Vagrant configura automáticamente la primera interfaz de red de una nueva VM en la red NAT. A través de esta red podemos acceder desde el sistema host al Dashboard o CLI del nodo.</li>
-<li>La primera interfaz de red se usa para conectarnos a Internet.</li>
-<li>La segunda interfaz sirve para proveer conectividad del sistema host a la VM con OpenStack.</li>
+<li>La primera interfaz de red se usa para tener salida a Internet.</li>
+<li>La segunda interfaz sirve para proveer conectividad del sistema host a la VM (y viceversa).</li>
 </ul>
 </div>
 </div>
 <div class="section" id="definicion-de-archivo-de-configuracion-del-nodo">
-<h2><a class="toc-backref" href="#id21">Definición de archivo de configuración del nodo</a><a class="headerlink" href="#definicion-de-archivo-de-configuracion-del-nodo" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id18">Definición de archivo de configuración del nodo</a><a class="headerlink" href="#definicion-de-archivo-de-configuracion-del-nodo" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En el mismo directorio donde tenemos almacenado el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> guardaremos el script <code class="docutils literal notranslate"><span class="pre">.sh</span></code> que se correrá cuando Vagrant lance la VM dentro del nodo:</p>
 <div class="section" id="controller-packstack-setup-sh">
-<h3><a class="toc-backref" href="#id22">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a><a class="headerlink" href="#controller-packstack-setup-sh" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id19">Controller (<code class="docutils literal notranslate"><span class="pre">packstack_setup.sh</span></code>)</a><a class="headerlink" href="#controller-packstack-setup-sh" title="Enlazar permanentemente con este título">¶</a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
 
-    <span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.utf-8
-    <span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.utf-8
+<span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.utf-8
+<span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.utf-8
 
-    sed -i -e <span class="s1">&#39;s/enabled=1/enabled=0/g&#39;</span> /etc/yum/pluginconf.d/fastestmirror.conf
+sed -i -e <span class="s1">&#39;s/enabled=1/enabled=0/g&#39;</span> /etc/yum/pluginconf.d/fastestmirror.conf
 
-    cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-eth1</span>
-<span class="s">    DEVICE=&quot;eth1&quot;</span>
-<span class="s">    DEFROUTE=&quot;no&quot;</span>
-<span class="s">    BOOTPROTO=&quot;static&quot;</span>
-<span class="s">    IPADDR=&quot;10.0.0.20&quot;</span>
-<span class="s">    NETMASK=&quot;255.255.255.0&quot;</span>
-<span class="s">    DNS1=&quot;8.8.8.8&quot;</span>
-<span class="s">    TYPE=&quot;Ethernet&quot;</span>
-<span class="s">    ONBOOT=yes</span>
-<span class="s">    EOF</span>
+cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-eth1</span>
+<span class="s">DEVICE=&quot;eth1&quot;</span>
+<span class="s">DEFROUTE=&quot;no&quot;</span>
+<span class="s">BOOTPROTO=&quot;static&quot;</span>
+<span class="s">IPADDR=&quot;10.0.1.20&quot;</span>
+<span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
+<span class="s">DNS1=&quot;8.8.8.8&quot;</span>
+<span class="s">TYPE=&quot;Ethernet&quot;</span>
+<span class="s">ONBOOT=yes</span>
+<span class="s">EOF</span>
 
-    ifdown eth1
-    ifup eth1
+ifdown eth1
+ifup eth1
 
-    cat <span class="s">&lt;&lt;- EOF &gt; /etc/hosts</span>
-<span class="s">    127.0.0.1 localhost</span>
-<span class="s">    10.0.0.20 packstack</span>
-<span class="s">    EOF</span>
+cat <span class="s">&lt;&lt;- EOF &gt; /etc/hosts</span>
+<span class="s">127.0.0.1 localhost</span>
+<span class="s">10.0.1.20 packstack</span>
+<span class="s">EOF</span>
 
-    <span class="nb">echo</span> <span class="s1">&#39;centos&#39;</span> &gt;/etc/yum/vars/contentdir
+<span class="nb">echo</span> <span class="s1">&#39;centos&#39;</span> &gt;/etc/yum/vars/contentdir
 
-    systemctl disable firewalld
-    systemctl stop firewalld
-    systemctl disable NetworkManager
-    systemctl stop NetworkManager
-    systemctl <span class="nb">enable</span> network
-    systemctl start network
+systemctl disable firewalld
+systemctl stop firewalld
+systemctl disable NetworkManager
+systemctl stop NetworkManager
+systemctl <span class="nb">enable</span> network
+systemctl start network
 
-    yum install -y centos-release-openstack-queens
-    yum update -y
-    yum install -y openstack-packstack
-    yum install -y lvm2
+yum install -y centos-release-openstack-queens
+yum update -y
+yum install -y openstack-packstack
+yum install -y lvm2
 
-    packstack --install-hosts<span class="o">=</span><span class="s2">&quot;10.0.0.20&quot;</span> --os-heat-install<span class="o">=</span>y --os-heat-cfn-install<span class="o">=</span>y --os-neutron-lbaas-install<span class="o">=</span>y --keystone-admin-passwd<span class="o">=</span><span class="s2">&quot;openstack&quot;</span> --keystone-demo-passwd<span class="o">=</span><span class="s2">&quot;openstack&quot;</span>
+packstack --install-hosts<span class="o">=</span><span class="s2">&quot;10.0.1.20&quot;</span> --os-heat-install<span class="o">=</span>y --os-heat-cfn-install<span class="o">=</span>y --os-neutron-lbaas-install<span class="o">=</span>y --keystone-admin-passwd<span class="o">=</span><span class="s2">&quot;openstack&quot;</span> --keystone-demo-passwd<span class="o">=</span><span class="s2">&quot;openstack&quot;</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack">
-<h2><a class="toc-backref" href="#id23">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a><a class="headerlink" href="#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a><a class="headerlink" href="#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En el terminal, cambiar de directorio al lugar donde tenemos almacenado el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> y el script <code class="docutils literal notranslate"><span class="pre">.sh</span></code> del nodo. Luego, desplegar la máquina virtual con <code class="docutils literal notranslate"><span class="pre">vagrant</span> <span class="pre">up</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> singlenode-packstack-vagrant
 
@@ -434,18 +429,18 @@ $ vagrant up
 </pre></div>
 </div>
 <p>Comenzará la configuración y despliegue de la máquina virtual en VirtualBox conforme se ha especificado en el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code>, luego correrá automáticamente el script <code class="docutils literal notranslate"><span class="pre">.sh</span></code> que se ha definido para la VM:</p>
-<div class="figure align-center" id="id11">
+<div class="figure align-center" id="id5">
 <img alt="../../../_images/vagrant-deploy-virtualbox-vm.png" src="../../../_images/vagrant-deploy-virtualbox-vm.png" />
 <p class="caption"><span class="caption-text">VirtualBox - VM desplegada por Vagrant</span></p>
 </div>
-<p>La instalación de Packstack en este nodo iniciará automáticamente. Luego de media hora aproximadamente, la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.</p>
+<p>La instalación de Packstack en este nodo iniciará automáticamente. Luego de media hora aproximadamente (32 minutos en total: despliegue de VMs + instalación de OpenStack), la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.</p>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
 <p class="last">El Dashboard de OpenStack podría demorar un corto tiempo para arrancar la primera vez luego de haber instalado OpenStack.</p>
 </div>
 </div>
 <div class="section" id="pruebas-en-el-entorno-openstack-desplegado">
-<h2><a class="toc-backref" href="#id24">Pruebas en el entorno OpenStack desplegado</a><a class="headerlink" href="#pruebas-en-el-entorno-openstack-desplegado" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id21">Pruebas en el entorno OpenStack desplegado</a><a class="headerlink" href="#pruebas-en-el-entorno-openstack-desplegado" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Ubicándonos el mismo directorio donde tenemos el archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> entraremos al terminal de la VM <code class="docutils literal notranslate"><span class="pre">packstack</span></code> con el siguiente comando:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ vagrant ssh packstack
 $ sudo su
@@ -458,7 +453,7 @@ $ <span class="nb">cd</span> /root
 <p class="last">La imagen de CirrOS que se crea por defecto como <code class="docutils literal notranslate"><span class="pre">demo</span></code> al instalar Packstack tiene fallos pues tiene un tamaño reducido de 273 bytes. La causa de esto es que puede ser que se haya descargado sin la opción <code class="docutils literal notranslate"><span class="pre">-L</span></code> del comando <code class="docutils literal notranslate"><span class="pre">curl</span></code>. Por lo tanto, crearemos nuestra propia imagen CirrOS:</p>
 </div>
 <p>La topología que se desea lograr es la siguiente:</p>
-<div class="figure align-center" id="id12">
+<div class="figure align-center" id="id6">
 <img alt="../../../_images/openstack-sample-topology1.png" src="../../../_images/openstack-sample-topology1.png" />
 <p class="caption"><span class="caption-text">OpenStack - Topología desplegada</span></p>
 </div>
@@ -476,27 +471,296 @@ $ <span class="nb">cd</span> /root
 +--------------------------------------+---------+--------------------------------------+
 <span class="p">|</span> ID                                   <span class="p">|</span> Name    <span class="p">|</span> Subnets                              <span class="p">|</span>
 +--------------------------------------+---------+--------------------------------------+
-<span class="p">|</span> 2355d395-0b86-4b04-aedf-56c22ea87bf1 <span class="p">|</span> private <span class="p">|</span> 623a8170-54d0-47be-b8bc-fca4fdebe4cb <span class="p">|</span>
-<span class="p">|</span> 273ed9aa-63e1-4178-9237-32a6095f9840 <span class="p">|</span> public  <span class="p">|</span> c04cf225-a94d-4237-869d-d0bd08e40f37 <span class="p">|</span>
+<span class="p">|</span> 0c2f47d2-d672-4aae-a83e-e5e40faf0197 <span class="p">|</span> public  <span class="p">|</span> 8a0934e6-6826-44b8-8f38-dba27e301021 <span class="p">|</span>
+<span class="p">|</span> 6665f7ee-4692-442b-a7dc-e38de59a32a3 <span class="p">|</span> private <span class="p">|</span> 4fccbd2e-ff40-4c75-acb3-5781360af1b5 <span class="p">|</span>
 +--------------------------------------+---------+--------------------------------------+
 
-<span class="s1">&#39;#&#39;</span> openstack server create --image cirros1 --flavor <span class="m">1</span> --min <span class="m">2</span> --max <span class="m">2</span> --nic net-id<span class="o">=</span>2355d395-0b86-4b04-aedf-56c22ea87bf1 <span class="nb">test</span>
+<span class="s1">&#39;#&#39;</span> openstack server create --image cirros1 --flavor <span class="m">1</span> --min <span class="m">2</span> --max <span class="m">2</span> --nic net-id<span class="o">=</span>6665f7ee-4692-442b-a7dc-e38de59a32a3 <span class="nb">test</span>
 </pre></div>
 </div>
 <p>En este despliegue de prueba se han creado dos instancias al mismo tiempo y con las mismas características corriendo en el mismo nodo (o equivalentemente, en el mismo hypervisor).</p>
-<div class="figure align-center" id="id13">
+<div class="figure align-center" id="id7">
 <img alt="../../../_images/openstack-singlenode-test-instances.png" src="../../../_images/openstack-singlenode-test-instances.png" />
 <p class="caption"><span class="caption-text">OpenStack - Instancias desplegadas</span></p>
 </div>
 <p>Podremos ingresar a la consola de cada instancia desde el dashboard y probar conectividad entre ellas:</p>
-<div class="figure align-center" id="id14">
+<div class="figure align-center" id="id8">
 <img alt="../../../_images/openstack-singlenode-test-instance-test-1.png" src="../../../_images/openstack-singlenode-test-instance-test-1.png" />
 <p class="caption"><span class="caption-text">OpenStack - Consola <code class="docutils literal notranslate"><span class="pre">test-1</span></code></span></p>
 </div>
 </div>
-<div class="section" id="anexo-archivo-answers-txt-de-packstack-generado">
-<h2><a class="toc-backref" href="#id25">Anexo: Archivo answers.txt de packstack generado</a><a class="headerlink" href="#anexo-archivo-answers-txt-de-packstack-generado" title="Enlazar permanentemente con este título">¶</a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat packstack-answers-20200217-165200.txt
+<div class="section" id="anexo-1-configuracion-de-red-desplegada">
+<h2><a class="toc-backref" href="#id22">Anexo 1: Configuración de red desplegada</a><a class="headerlink" href="#anexo-1-configuracion-de-red-desplegada" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="host-configuration-windows-user">
+<h3><a class="toc-backref" href="#id23">Host configuration (Windows user)</a><a class="headerlink" href="#host-configuration-windows-user" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Las interfaces de red que tenemos en el sistema host de Windows son las siguientes:</p>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>C<span class="p">:</span><span class="nl">\Users\usuario</span><span class="c1">&gt;ipconfig</span>
+
+Configuración IP de Windows
+
+
+Adaptador de Ethernet VirtualBox Host-Only Network #2:
+
+Sufijo DNS específico para la conexión. . :
+Dirección IPv4. . . . . . . . . . . . . . : 10.0.1.1
+Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+Puerta de enlace predeterminada . . . . . :
+
+Adaptador de Ethernet Ethernet:
+
+Sufijo DNS específico para la conexión. . :
+Dirección IPv4. . . . . . . . . . . . . . : 192.168.1.10
+Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+Puerta de enlace predeterminada . . . . . : 192.168.1.1
+</pre></div>
+</div>
+<ul class="simple">
+<li>La interfaz <code class="docutils literal notranslate"><span class="pre">Adaptador</span> <span class="pre">de</span> <span class="pre">Ethernet</span> <span class="pre">Ethernet</span></code> es nuestra tarjeta de red física con salida a Internet a través de un router físico (<code class="docutils literal notranslate"><span class="pre">192.168.1.1</span></code>). Se le ha asignado la IP <code class="docutils literal notranslate"><span class="pre">192.168.1.10</span></code>.</li>
+<li>La interfaz <code class="docutils literal notranslate"><span class="pre">Adaptador</span> <span class="pre">de</span> <span class="pre">Ethernet</span> <span class="pre">VirtualBox</span> <span class="pre">Host-Only</span> <span class="pre">Network</span> <span class="pre">#2</span></code> ha sido creada con VirtualBox dentro de <code class="docutils literal notranslate"><span class="pre">Host</span> <span class="pre">Network</span> <span class="pre">Manager</span></code>. Se le ha asignado la IP <code class="docutils literal notranslate"><span class="pre">10.0.1.1</span></code>. Esta interfaz no cuenta con salida al exterior (Internet).</li>
+</ul>
+</div>
+<div class="section" id="vm-configuration-virtualbox-config">
+<h3><a class="toc-backref" href="#id24">VM configuration (virtualBox config)</a><a class="headerlink" href="#vm-configuration-virtualbox-config" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La VM creada como único nodo donde se instala OpenStack posee 2 interfaces que pueden verse desde el lado del SO host o del lado del SO guest, obteniendo información útil de su implementación:</p>
+<div class="section" id="interfaces-desde-el-lado-host">
+<h4><a class="toc-backref" href="#id25">Interfaces desde el lado host</a><a class="headerlink" href="#interfaces-desde-el-lado-host" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>La VM con sistema CentOS creada por VirtualBox posee dos interfaces conectadas virtualmente:</p>
+<ol class="arabic simple">
+<li><strong>Adaptador 1 - Interfaz tipo NAT</strong>:</li>
+</ol>
+<p>La primera interfaz de red es usada para que la VM tenga salida a Internet (en la VM se ve como la interfaz <code class="docutils literal notranslate"><span class="pre">enp0s3</span></code> o <code class="docutils literal notranslate"><span class="pre">eth0</span></code>):</p>
+<div class="figure align-center" id="id9">
+<img alt="../../../_images/vm-singlenode-packstack-adapter1.png" src="../../../_images/vm-singlenode-packstack-adapter1.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Adaptador 1</span></p>
+</div>
+<ul class="simple">
+<li>La interfaz se encuentra conectada a una red virtual tipo NAT.</li>
+<li>En este caso la interfaz tiene asignada la IP <code class="docutils literal notranslate"><span class="pre">10.0.2.15</span></code>.</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><strong>Adaptador 2 - Interfaz tipo Host-only Adapter</strong>:</li>
+</ol>
+<p>La segunda interfaz de red es usada para que exista comunicación entre el sistema host y la VM (en la VM se ve como la interfaz <code class="docutils literal notranslate"><span class="pre">enp0s8</span></code> o <code class="docutils literal notranslate"><span class="pre">eth1</span></code>):</p>
+<div class="figure align-center" id="id10">
+<img alt="../../../_images/vm-singlenode-packstack-adapter2.png" src="../../../_images/vm-singlenode-packstack-adapter2.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Adaptador 2</span></p>
+</div>
+<ul class="simple">
+<li>La interfaz se encuentra conectada a la red física del host, siendo del tipo Host-only Adapter. Desde la VM podemos llegar a los equipos dentro de la red host (<code class="docutils literal notranslate"><span class="pre">192.168.1.0/24</span></code>).</li>
+<li>En este caso la interfaz tiene asignada la IP <code class="docutils literal notranslate"><span class="pre">10.0.1.20</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="interfaces-desde-el-lado-guest">
+<h4><a class="toc-backref" href="#id26">Interfaces desde el lado guest</a><a class="headerlink" href="#interfaces-desde-el-lado-guest" title="Enlazar permanentemente con este título">¶</a></h4>
+<p>Las IPs de cada interfaz han sido obtenidas desde la consola de la VM:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ip addr
+
+...
+
+<span class="m">2</span>: enp0s3: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.2.15/24 brd <span class="m">10</span>.0.2.255 scope global noprefixroute dynamic enp0s3
+        valid_lft 42944sec preferred_lft 42944sec
+    inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+        valid_lft forever preferred_lft forever
+<span class="m">3</span>: enp0s8: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:3a:ab:74 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.1.20/24 brd <span class="m">10</span>.0.0.255 scope global noprefixroute enp0s8
+        valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe3a:ab74/64 scope link
+        valid_lft forever preferred_lft forever
+
+...
+</pre></div>
+</div>
+<ol class="arabic simple">
+<li>Adaptador 1 - Interfaz tipo NAT: <code class="docutils literal notranslate"><span class="pre">enp0s3</span></code> o <code class="docutils literal notranslate"><span class="pre">eth0</span></code></li>
+<li>Adaptador 2 - Interfaz tipo Host-only Adapter: <code class="docutils literal notranslate"><span class="pre">enp0s8</span></code> o <code class="docutils literal notranslate"><span class="pre">eth1</span></code></li>
+</ol>
+</div>
+</div>
+<div class="section" id="vm-configuration-openstack-config">
+<h3><a class="toc-backref" href="#id27">VM configuration (OpenStack config)</a><a class="headerlink" href="#vm-configuration-openstack-config" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Interfaz dentro de la red pública de OpenStack:</li>
+</ul>
+<p>La interfaz <code class="docutils literal notranslate"><span class="pre">br-ex</span></code> es en realidad un OvS con una interfaz interna que posee una IP dentro de la red pública:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> ip addr
+
+...
+
+<span class="m">5</span>: br-ex: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether 6a:f2:c8:bc:42:4e brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.24.4.1/24 scope global br-ex
+       valid_lft forever preferred_lft forever
+    inet6 fe80::68f2:c8ff:febc:424e/64 scope link
+       valid_lft forever preferred_lft forever
+
+...
+</pre></div>
+</div>
+<p>En este caso, la red pública es <code class="docutils literal notranslate"><span class="pre">172.24.4.0/24</span></code> y <code class="docutils literal notranslate"><span class="pre">br-ex</span></code> tiene la IP <code class="docutils literal notranslate"><span class="pre">172.24.4.1</span></code> asignada.</p>
+</div>
+</div>
+<div class="section" id="anexo-2-graficos-de-red-desplegada">
+<h2><a class="toc-backref" href="#id28">Anexo 2: Gráficos de red desplegada</a><a class="headerlink" href="#anexo-2-graficos-de-red-desplegada" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="red-general-total-host-vm-tenant-networks">
+<h3><a class="toc-backref" href="#id29">Red general total (Host + VM + Tenant Networks)</a><a class="headerlink" href="#red-general-total-host-vm-tenant-networks" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="figure align-center" id="id11">
+<img alt="../../../_images/openstack-singlenode-deployment-network.png" src="../../../_images/openstack-singlenode-deployment-network.png" />
+<p class="caption"><span class="caption-text">OpenStack: Host + VM + Tenant Networks</span></p>
+</div>
+</div>
+<div class="section" id="red-e-interfaces-internas-vm-tenant-networks">
+<h3><a class="toc-backref" href="#id30">Red e interfaces internas (VM + Tenant Networks)</a><a class="headerlink" href="#red-e-interfaces-internas-vm-tenant-networks" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="figure align-center" id="id12">
+<img alt="../../../_images/openstack-singlenode-deployment-internal-network.png" src="../../../_images/openstack-singlenode-deployment-internal-network.png" />
+<p class="caption"><span class="caption-text">OpenStack: Internal VM + Tenant Networks</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="anexo-3-interfaces-de-red-ovs-bridges">
+<h2><a class="toc-backref" href="#id31">Anexo 3: Interfaces de red, OvS, bridges</a><a class="headerlink" href="#anexo-3-interfaces-de-red-ovs-bridges" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Se presentan los bridges, OvS e interfaces de red de la VM con el despliegue de OpenStack, solo con los elementos de demo instalados y 2 instancias lanzadas manualmente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> ip address
+
+<span class="m">1</span>: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu <span class="m">65536</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/loopback <span class="m">00</span>:00:00:00:00:00 brd <span class="m">00</span>:00:00:00:00:00
+    inet <span class="m">127</span>.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host
+       valid_lft forever preferred_lft forever
+<span class="m">2</span>: eth0: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">52</span>:54:00:8a:fe:e6 brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.2.15/24 brd <span class="m">10</span>.0.2.255 scope global noprefixroute dynamic eth0
+       valid_lft 80714sec preferred_lft 80714sec
+    inet6 fe80::5054:ff:fe8a:fee6/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">3</span>: eth1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc pfifo_fast state UP group default qlen <span class="m">1000</span>
+    link/ether <span class="m">08</span>:00:27:d3:26:2e brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">10</span>.0.1.20/24 brd <span class="m">10</span>.0.1.255 scope global noprefixroute eth1
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fed3:262e/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">4</span>: ovs-system: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether <span class="m">92</span>:7f:d2:a2:0b:89 brd ff:ff:ff:ff:ff:ff
+<span class="m">5</span>: br-ex: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1500</span> qdisc noqueue state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether 6a:f2:c8:bc:42:4e brd ff:ff:ff:ff:ff:ff
+    inet <span class="m">172</span>.24.4.1/24 scope global br-ex
+       valid_lft forever preferred_lft forever
+    inet6 fe80::68f2:c8ff:febc:424e/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">6</span>: br-int: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1450</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether 1a:26:e1:53:59:47 brd ff:ff:ff:ff:ff:ff
+<span class="m">7</span>: br-tun: &lt;BROADCAST,MULTICAST&gt; mtu <span class="m">1500</span> qdisc noop state DOWN group default qlen <span class="m">1000</span>
+    link/ether <span class="m">12</span>:f8:4a:f2:1d:42 brd ff:ff:ff:ff:ff:ff
+<span class="m">11</span>: qbrbc1cf336-e1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue state UP group default qlen <span class="m">1000</span>
+    link/ether fe:16:3e:51:be:1b brd ff:ff:ff:ff:ff:ff
+<span class="m">12</span>: qbr0ed97bfb-fa: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue state UP group default qlen <span class="m">1000</span>
+    link/ether ca:06:e8:28:78:a6 brd ff:ff:ff:ff:ff:ff
+<span class="m">13</span>: qvobc1cf336-e1@qvbbc1cf336-e1: &lt;BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue master ovs-system state UP group default qlen <span class="m">1000</span>
+    link/ether 7a:fb:e2:b2:12:4b brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::78fb:e2ff:feb2:124b/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">14</span>: qvbbc1cf336-e1@qvobc1cf336-e1: &lt;BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue master qbrbc1cf336-e1 state UP group default qlen <span class="m">1000</span>
+    link/ether fe:74:14:d1:17:28 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::fc74:14ff:fed1:1728/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">15</span>: qvo0ed97bfb-fa@qvb0ed97bfb-fa: &lt;BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue master ovs-system state UP group default qlen <span class="m">1000</span>
+    link/ether da:3c:b2:98:fd:df brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::d83c:b2ff:fe98:fddf/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">16</span>: qvb0ed97bfb-fa@qvo0ed97bfb-fa: &lt;BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc noqueue master qbr0ed97bfb-fa state UP group default qlen <span class="m">1000</span>
+    link/ether ca:06:e8:28:78:a6 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::c806:e8ff:fe28:78a6/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">17</span>: tap0ed97bfb-fa: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc pfifo_fast master qbr0ed97bfb-fa state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether fe:16:3e:b3:2d:11 brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::fc16:3eff:feb3:2d11/64 scope link
+       valid_lft forever preferred_lft forever
+<span class="m">18</span>: tapbc1cf336-e1: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu <span class="m">1450</span> qdisc pfifo_fast master qbrbc1cf336-e1 state UNKNOWN group default qlen <span class="m">1000</span>
+    link/ether fe:16:3e:51:be:1b brd ff:ff:ff:ff:ff:ff
+    inet6 fe80::fc16:3eff:fe51:be1b/64 scope link
+       valid_lft forever preferred_lft forever
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> ovs-vsctl show
+
+d9b4a0db-3fc2-41b3-a089-e2fa9ddd0a3f
+    Manager <span class="s2">&quot;ptcp:6640:127.0.0.1&quot;</span>
+        is_connected: <span class="nb">true</span>
+    Bridge br-int
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port patch-tun
+            Interface patch-tun
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-int<span class="o">}</span>
+        Port <span class="s2">&quot;qvo0ed97bfb-fa&quot;</span>
+            tag: <span class="m">1</span>
+            Interface <span class="s2">&quot;qvo0ed97bfb-fa&quot;</span>
+        Port br-int
+            Interface br-int
+                type: internal
+        Port <span class="s2">&quot;qvobc1cf336-e1&quot;</span>
+            tag: <span class="m">1</span>
+            Interface <span class="s2">&quot;qvobc1cf336-e1&quot;</span>
+        Port <span class="s2">&quot;qg-c38b2759-b4&quot;</span>
+            tag: <span class="m">2</span>
+            Interface <span class="s2">&quot;qg-c38b2759-b4&quot;</span>
+                type: internal
+        Port int-br-ex
+            Interface int-br-ex
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>phy-br-ex<span class="o">}</span>
+        Port <span class="s2">&quot;tape0a80b5f-e1&quot;</span>
+            tag: <span class="m">1</span>
+            Interface <span class="s2">&quot;tape0a80b5f-e1&quot;</span>
+                type: internal
+        Port <span class="s2">&quot;qr-480f039f-df&quot;</span>
+            tag: <span class="m">1</span>
+            Interface <span class="s2">&quot;qr-480f039f-df&quot;</span>
+                type: internal
+    Bridge br-ex
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port br-ex
+            Interface br-ex
+                type: internal
+        Port phy-br-ex
+            Interface phy-br-ex
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>int-br-ex<span class="o">}</span>
+    Bridge br-tun
+        Controller <span class="s2">&quot;tcp:127.0.0.1:6633&quot;</span>
+            is_connected: <span class="nb">true</span>
+        fail_mode: secure
+        Port patch-int
+            Interface patch-int
+                type: patch
+                options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>patch-tun<span class="o">}</span>
+        Port br-tun
+            Interface br-tun
+                type: internal
+    ovs_version: <span class="s2">&quot;2.11.0&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@packstack ~<span class="o">]</span><span class="s1">&#39;#&#39;</span> brctl show
+
+bridge name             bridge id               STP enabled     interfaces
+qbr0ed97bfb-fa          <span class="m">8000</span>.ca06e82878a6       no              qvb0ed97bfb-fa
+                                                                tap0ed97bfb-fa
+
+qbrbc1cf336-e1          <span class="m">8000</span>.fe163e51be1b       no              qvbbc1cf336-e1
+                                                                tapbc1cf336-e1
+</pre></div>
+</div>
+</div>
+<div class="section" id="anexo-4-archivo-answers-txt-de-packstack-generado">
+<h2><a class="toc-backref" href="#id32">Anexo 4: Archivo answers.txt de packstack generado</a><a class="headerlink" href="#anexo-4-archivo-answers-txt-de-packstack-generado" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat /home/vagrant/packstack-answers-20200217-234314.txt
 
 <span class="o">[</span>general<span class="o">]</span>
 
@@ -591,14 +855,14 @@ $ <span class="nb">cd</span> /root
 
 <span class="c1"># Server on which to install OpenStack services specific to the</span>
 <span class="c1"># controller role (for example, API servers or dashboard).</span>
-<span class="nv">CONFIG_CONTROLLER_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_CONTROLLER_HOST</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># List the servers on which to install the Compute service.</span>
-<span class="nv">CONFIG_COMPUTE_HOSTS</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_COMPUTE_HOSTS</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># List of servers on which to install the network service such as</span>
 <span class="c1"># Compute networking (nova network) or OpenStack Networking (neutron).</span>
-<span class="nv">CONFIG_NETWORK_HOSTS</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_NETWORK_HOSTS</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># Specify &#39;y&#39; if you want to use VMware vCenter as hypervisor and</span>
 <span class="c1"># storage; otherwise, specify &#39;n&#39;. [&#39;y&#39;, &#39;n&#39;]</span>
@@ -771,7 +1035,7 @@ $ <span class="nb">cd</span> /root
 <span class="nv">CONFIG_AMQP_BACKEND</span><span class="o">=</span>rabbitmq
 
 <span class="c1"># IP address of the server on which to install the AMQP service.</span>
-<span class="nv">CONFIG_AMQP_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_AMQP_HOST</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># Specify &#39;y&#39; to enable SSL for the AMQP service. [&#39;y&#39;, &#39;n&#39;]</span>
 <span class="nv">CONFIG_AMQP_ENABLE_SSL</span><span class="o">=</span>n
@@ -793,17 +1057,17 @@ $ <span class="nb">cd</span> /root
 <span class="c1"># installation was not specified in CONFIG_MARIADB_INSTALL, specify</span>
 <span class="c1"># the IP address of an existing database server (a MariaDB cluster can</span>
 <span class="c1"># also be specified).</span>
-<span class="nv">CONFIG_MARIADB_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_MARIADB_HOST</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># User name for the MariaDB administrative user.</span>
 <span class="nv">CONFIG_MARIADB_USER</span><span class="o">=</span>root
 
 <span class="c1"># Password for the MariaDB administrative user.</span>
-<span class="nv">CONFIG_MARIADB_PW</span><span class="o">=</span>44ffb78fcad945e7
+<span class="nv">CONFIG_MARIADB_PW</span><span class="o">=</span>438b090ac8954b38
 
 <span class="c1"># Password to use for the Identity service (keystone) to access the</span>
 <span class="c1"># database.</span>
-<span class="nv">CONFIG_KEYSTONE_DB_PW</span><span class="o">=</span>c71b53327b7d44d3
+<span class="nv">CONFIG_KEYSTONE_DB_PW</span><span class="o">=</span>2001d80f5ef94c48
 
 <span class="c1"># Enter y if cron job for removing soft deleted DB rows should be</span>
 <span class="c1"># created.</span>
@@ -814,7 +1078,7 @@ $ <span class="nb">cd</span> /root
 <span class="nv">CONFIG_KEYSTONE_REGION</span><span class="o">=</span>RegionOne
 
 <span class="c1"># Token to use for the Identity service API.</span>
-<span class="nv">CONFIG_KEYSTONE_ADMIN_TOKEN</span><span class="o">=</span>d033267ae7e445ffbb0c6f78c09849e2
+<span class="nv">CONFIG_KEYSTONE_ADMIN_TOKEN</span><span class="o">=</span>a862d06c55c143e2822ba5fbe3a19e8f
 
 <span class="c1"># Email address for the Identity service &#39;admin&#39; user.  Defaults to</span>
 <span class="nv">CONFIG_KEYSTONE_ADMIN_EMAIL</span><span class="o">=</span>root@localhost
@@ -1010,11 +1274,11 @@ $ <span class="nb">cd</span> /root
 
 <span class="c1"># Password to use for the Image service (glance) to access the</span>
 <span class="c1"># database.</span>
-<span class="nv">CONFIG_GLANCE_DB_PW</span><span class="o">=</span>28e3dfa378f84d9b
+<span class="nv">CONFIG_GLANCE_DB_PW</span><span class="o">=</span>0d36ed19e654478e
 
 <span class="c1"># Password to use for the Image service to authenticate with the</span>
 <span class="c1"># Identity service.</span>
-<span class="nv">CONFIG_GLANCE_KS_PW</span><span class="o">=</span>0a8468db9d5a4ae5
+<span class="nv">CONFIG_GLANCE_KS_PW</span><span class="o">=</span>a7a58564762445b2
 
 <span class="c1"># Storage backend for the Image service (controls how the Image</span>
 <span class="c1"># service stores disk images). Valid options are: file or swift</span>
@@ -1025,7 +1289,7 @@ $ <span class="nb">cd</span> /root
 
 <span class="c1"># Password to use for the Block Storage service (cinder) to access</span>
 <span class="c1"># the database.</span>
-<span class="nv">CONFIG_CINDER_DB_PW</span><span class="o">=</span><span class="m">2705428887884634</span>
+<span class="nv">CONFIG_CINDER_DB_PW</span><span class="o">=</span>d5143e26f1bc4fa4
 
 <span class="c1"># Enter y if cron job for removing soft deleted DB rows should be</span>
 <span class="c1"># created.</span>
@@ -1033,7 +1297,7 @@ $ <span class="nb">cd</span> /root
 
 <span class="c1"># Password to use for the Block Storage service to authenticate with</span>
 <span class="c1"># the Identity service.</span>
-<span class="nv">CONFIG_CINDER_KS_PW</span><span class="o">=</span>761e7589519e4e64
+<span class="nv">CONFIG_CINDER_KS_PW</span><span class="o">=</span>24d21c3ac97042ab
 
 <span class="c1"># Storage backend to use for the Block Storage service; valid options</span>
 <span class="c1"># are: lvm, gluster, nfs, vmdk, netapp, solidfire. [&#39;lvm&#39;, &#39;gluster&#39;,</span>
@@ -1214,11 +1478,11 @@ $ <span class="nb">cd</span> /root
 
 <span class="c1"># Password to use for the Compute service (nova) to access the</span>
 <span class="c1"># database.</span>
-<span class="nv">CONFIG_NOVA_DB_PW</span><span class="o">=</span>0b064882c78246b7
+<span class="nv">CONFIG_NOVA_DB_PW</span><span class="o">=</span>d6fc9a80f919466b
 
 <span class="c1"># Password to use for the Compute service to authenticate with the</span>
 <span class="c1"># Identity service.</span>
-<span class="nv">CONFIG_NOVA_KS_PW</span><span class="o">=</span>6983aca5676b40d1
+<span class="nv">CONFIG_NOVA_KS_PW</span><span class="o">=</span>e4773a61b8684f64
 
 <span class="c1"># Whether or not Packstack should manage a default initial set of</span>
 <span class="c1"># Nova flavors. Defaults to &#39;y&#39;.</span>
@@ -1264,11 +1528,11 @@ $ <span class="nb">cd</span> /root
 
 <span class="c1"># Password to use for OpenStack Networking (neutron) to authenticate</span>
 <span class="c1"># with the Identity service.</span>
-<span class="nv">CONFIG_NEUTRON_KS_PW</span><span class="o">=</span>8e82a3f6289d40c9
+<span class="nv">CONFIG_NEUTRON_KS_PW</span><span class="o">=</span>976c2961895641c4
 
 <span class="c1"># The password to use for OpenStack Networking to access the</span>
 <span class="c1"># database.</span>
-<span class="nv">CONFIG_NEUTRON_DB_PW</span><span class="o">=</span>e8ebbf3755d64dfe
+<span class="nv">CONFIG_NEUTRON_DB_PW</span><span class="o">=</span>99e053b66e0f4731
 
 <span class="c1"># The name of the Open vSwitch bridge (or empty for linuxbridge) for</span>
 <span class="c1"># the OpenStack Networking L3 agent to use for external  traffic.</span>
@@ -1277,7 +1541,7 @@ $ <span class="nb">cd</span> /root
 <span class="nv">CONFIG_NEUTRON_L3_EXT_BRIDGE</span><span class="o">=</span>br-ex
 
 <span class="c1"># Password for the OpenStack Networking metadata agent.</span>
-<span class="nv">CONFIG_NEUTRON_METADATA_PW</span><span class="o">=</span>bce78eaf963644b2
+<span class="nv">CONFIG_NEUTRON_METADATA_PW</span><span class="o">=</span>05256ed8a49e4a36
 
 <span class="c1"># Specify &#39;y&#39; to install OpenStack Networking&#39;s Load-Balancing-</span>
 <span class="c1"># as-a-Service (LBaaS). [&#39;y&#39;, &#39;n&#39;]</span>
@@ -1618,7 +1882,7 @@ $ <span class="nb">cd</span> /root
 <span class="nv">CONFIG_HORIZON_SSL</span><span class="o">=</span>n
 
 <span class="c1"># Secret key to use for Horizon Secret Encryption Key.</span>
-<span class="nv">CONFIG_HORIZON_SECRET_KEY</span><span class="o">=</span>d5722567e0e64eabb0ad52a9bf5a13a2
+<span class="nv">CONFIG_HORIZON_SECRET_KEY</span><span class="o">=</span>a8fe06092db44944a5bc6305911bbcd6
 
 <span class="c1"># PEM-encoded certificate to be used for SSL connections on the https</span>
 <span class="c1"># server. To generate a certificate, leave blank.</span>
@@ -1632,7 +1896,7 @@ $ <span class="nb">cd</span> /root
 
 <span class="c1"># Password to use for the Object Storage service to authenticate with</span>
 <span class="c1"># the Identity service.</span>
-<span class="nv">CONFIG_SWIFT_KS_PW</span><span class="o">=</span>1be401c8d38241fb
+<span class="nv">CONFIG_SWIFT_KS_PW</span><span class="o">=</span>d09d01ba889b482e
 
 <span class="c1"># Comma-separated list of devices to use as storage device for Object</span>
 <span class="c1"># Storage. Each entry must take the format /path/to/dev (for example,</span>
@@ -1656,22 +1920,22 @@ $ <span class="nb">cd</span> /root
 <span class="c1"># Custom seed number to use for swift_hash_path_suffix in</span>
 <span class="c1"># /etc/swift/swift.conf. If you do not provide a value, a seed number</span>
 <span class="c1"># is automatically generated.</span>
-<span class="nv">CONFIG_SWIFT_HASH</span><span class="o">=</span>84fa4dd7b1dd4080
+<span class="nv">CONFIG_SWIFT_HASH</span><span class="o">=</span>21aa09faa5474ad6
 
 <span class="c1"># Size of the Object Storage loopback file storage device.</span>
 <span class="nv">CONFIG_SWIFT_STORAGE_SIZE</span><span class="o">=</span>2G
 
 <span class="c1"># Password used by Orchestration service user to authenticate against</span>
 <span class="c1"># the database.</span>
-<span class="nv">CONFIG_HEAT_DB_PW</span><span class="o">=</span>c09db27f0f814e8f
+<span class="nv">CONFIG_HEAT_DB_PW</span><span class="o">=</span>f7ca5fea54fe4e60
 
 <span class="c1"># Encryption key to use for authentication in the Orchestration</span>
 <span class="c1"># database (16, 24, or 32 chars).</span>
-<span class="nv">CONFIG_HEAT_AUTH_ENC_KEY</span><span class="o">=</span>f08b3f50a6cd4b73
+<span class="nv">CONFIG_HEAT_AUTH_ENC_KEY</span><span class="o">=</span>e3c4823d506c4d6d
 
 <span class="c1"># Password to use for the Orchestration service to authenticate with</span>
 <span class="c1"># the Identity service.</span>
-<span class="nv">CONFIG_HEAT_KS_PW</span><span class="o">=</span>8bb68206891b4547
+<span class="nv">CONFIG_HEAT_KS_PW</span><span class="o">=</span>678525b8eaca46c4
 
 <span class="c1"># Specify &#39;y&#39; to install the Orchestration CloudFormation API. [&#39;y&#39;,</span>
 <span class="c1"># &#39;n&#39;]</span>
@@ -1685,7 +1949,7 @@ $ <span class="nb">cd</span> /root
 
 <span class="c1"># Password for the Identity domain administrative user for</span>
 <span class="c1"># Orchestration.</span>
-<span class="nv">CONFIG_HEAT_DOMAIN_PASSWORD</span><span class="o">=</span>20f72f5bda0a4ee8
+<span class="nv">CONFIG_HEAT_DOMAIN_PASSWORD</span><span class="o">=</span>4e6b56b8b8f14ccd
 
 <span class="c1"># Specify &#39;y&#39; to provision for demo usage and testing. [&#39;y&#39;, &#39;n&#39;]</span>
 <span class="nv">CONFIG_PROVISION_DEMO</span><span class="o">=</span>y
@@ -1784,18 +2048,18 @@ $ <span class="nb">cd</span> /root
 <span class="nv">CONFIG_PROVISION_OVS_BRIDGE</span><span class="o">=</span>y
 
 <span class="c1"># Password to use for Gnocchi to access the database.</span>
-<span class="nv">CONFIG_GNOCCHI_DB_PW</span><span class="o">=</span>9fb681656e85442c
+<span class="nv">CONFIG_GNOCCHI_DB_PW</span><span class="o">=</span>46612ab8aebe46c4
 
 <span class="c1"># Password to use for Gnocchi to authenticate with the Identity</span>
 <span class="c1"># service.</span>
-<span class="nv">CONFIG_GNOCCHI_KS_PW</span><span class="o">=</span>e6ae0c21541d4b5d
+<span class="nv">CONFIG_GNOCCHI_KS_PW</span><span class="o">=</span>bdef00d6ab8f4ec3
 
 <span class="c1"># Secret key for signing Telemetry service (ceilometer) messages.</span>
-<span class="nv">CONFIG_CEILOMETER_SECRET</span><span class="o">=</span>a7a99be36c744d9a
+<span class="nv">CONFIG_CEILOMETER_SECRET</span><span class="o">=</span>0f2c8fc4b0aa4ca6
 
 <span class="c1"># Password to use for Telemetry to authenticate with the Identity</span>
 <span class="c1"># service.</span>
-<span class="nv">CONFIG_CEILOMETER_KS_PW</span><span class="o">=</span>42070708044240a7
+<span class="nv">CONFIG_CEILOMETER_KS_PW</span><span class="o">=</span>6f6306dc0e504470
 
 <span class="c1"># Ceilometer service name. [&#39;httpd&#39;, &#39;ceilometer&#39;]</span>
 <span class="nv">CONFIG_CEILOMETER_SERVICE_NAME</span><span class="o">=</span>httpd
@@ -1809,18 +2073,18 @@ $ <span class="nb">cd</span> /root
 <span class="nv">CONFIG_ENABLE_CEILOMETER_MIDDLEWARE</span><span class="o">=</span>n
 
 <span class="c1"># IP address of the server on which to install the Redis server.</span>
-<span class="nv">CONFIG_REDIS_HOST</span><span class="o">=</span><span class="m">10</span>.0.0.20
+<span class="nv">CONFIG_REDIS_HOST</span><span class="o">=</span><span class="m">10</span>.0.1.20
 
 <span class="c1"># Port on which the Redis server listens.</span>
 <span class="nv">CONFIG_REDIS_PORT</span><span class="o">=</span><span class="m">6379</span>
 
 <span class="c1"># Password to use for Telemetry Alarming to authenticate with the</span>
 <span class="c1"># Identity service.</span>
-<span class="nv">CONFIG_AODH_KS_PW</span><span class="o">=</span>6d8e580d6c624698
+<span class="nv">CONFIG_AODH_KS_PW</span><span class="o">=</span>6452ce6bfc8244a5
 
 <span class="c1"># Password to use for Telemetry Alarming (AODH) to access the</span>
 <span class="c1"># database.</span>
-<span class="nv">CONFIG_AODH_DB_PW</span><span class="o">=</span>5e58935a65834246
+<span class="nv">CONFIG_AODH_DB_PW</span><span class="o">=</span>67194291fed6497c
 
 <span class="c1"># Password to use for Panko to access the database.</span>
 <span class="nv">CONFIG_PANKO_DB_PW</span><span class="o">=</span>PW_PLACEHOLDER

@@ -11,7 +11,13 @@ Desde nuestro sistema Operativo (Windows, macOS, Linux) debemos tener instaladas
 - VirtualBox
 - Vagrant
 
-Este escenario de OpenStack que será desplegado consta de 1 VM: un node que contiene las funcionalidades de controller, network, compute, etc. integradas. Se requiere al menos 8 GB de RAM y 4 CPUs.
+Este escenario de OpenStack que será desplegado consta de 1 VM: un node que contiene las funcionalidades de controller, network, compute, etc. integradas. Se requiere al menos 10 GB de RAM y 4 CPUs.
+
+.. Important::
+
+    Si existen errores en la creación de las instancias o que las instancias creadas se apagan automáticamete, esto podría deberse a la falta de recursos en el host.
+
+    Revisar la memoria RAM disponible con ``free -m`` y el uso de CPU con ``top`` o ``htop``. En caso los recursos se están usando al máximo, apagar la VM y asignarle más recursos desde el host en VirtualBox.
 
 Configuración de VirtualBox
 '''''''''''''''''''''''''''
@@ -50,45 +56,6 @@ Host-only Network Adapter
     - El adaptador pertenece a la red de management
     - La dirección IP del adaptador es el Host-side de la red
 
-NAT Provider Network
-""""""""""""""""""""
-
-1. Clic en :guilabel:`Preferences` (:guilabel:`Ctrl + G`):
-
-.. figure:: images/packstack-singlenode-deploy-packstack-virtualbox-vagrant/Windows-VirtualBox-Preferences.png
-    :align: center
-
-    Windows - VirtualBox v5.2 - Clic en opción :guilabel:`Preferences`
-
-.. figure:: images/packstack-singlenode-deploy-packstack-virtualbox-vagrant/Linux-VirtualBox-Preferences.png
-    :align: center
-
-    Linux - VirtualBox v6.0 - Clic en opción :guilabel:`Preferences`
-
-2. En la sección :guilabel:`Network`, seleccionar el botón de creación de una nueva red:
-
-.. figure:: images/packstack-singlenode-deploy-packstack-virtualbox-vagrant/Windows-VirtualBox-Preferences-Network.png
-    :align: center
-
-    Windows - VirtualBox v5.2 - Clic en sección :guilabel:`Network`
-
-.. figure:: images/packstack-singlenode-deploy-packstack-virtualbox-vagrant/Linux-VirtualBox-Preferences-Network.png
-    :align: center
-
-    Linux - VirtualBox v6.0 - Clic en sección :guilabel:`Network`
-
-3. Nombrar y definir un rango para la red NAT. También podemos dar soporte DHCP:
-
-.. figure:: images/packstack-singlenode-deploy-packstack-virtualbox-vagrant/Windows-VirtualBox-Create-Provider-Network.png
-    :align: center
-
-    Windows - VirtualBox v5.2 - Definir propiedades de la red
-
-.. figure:: images/packstack-singlenode-deploy-packstack-virtualbox-vagrant/Linux-VirtualBox-Create-Provider-Network.png
-    :align: center
-
-    Linux - VirtualBox v6.0 - Definir propiedades de la red
-
 Definición del archivo ``Vagrantfile``
 ''''''''''''''''''''''''''''''''''''''
 
@@ -102,7 +69,7 @@ El archivo ``Vagrantfile`` se define de la siguiente forma:
       {
         :hostname => "packstack",
         :box => "centos/7",
-        :ram => 8192,
+        :ram => 10240,
         :cpu => 4,
         :script => "sh /vagrant/packstack_setup.sh"
       }
@@ -128,8 +95,8 @@ El archivo ``Vagrantfile`` se define de la siguiente forma:
 .. Important::
 
     - Vagrant configura automáticamente la primera interfaz de red de una nueva VM en la red NAT. A través de esta red podemos acceder desde el sistema host al Dashboard o CLI del nodo.
-    - La primera interfaz de red se usa para conectarnos a Internet.
-    - La segunda interfaz sirve para proveer conectividad del sistema host a la VM con OpenStack.
+    - La primera interfaz de red se usa para tener salida a Internet.
+    - La segunda interfaz sirve para proveer conectividad del sistema host a la VM (y viceversa).
 
 Definición de archivo de configuración del nodo
 '''''''''''''''''''''''''''''''''''''''''''''''
@@ -143,45 +110,45 @@ Controller (``packstack_setup.sh``)
 
     #! /bin/sh
 
-        export LANG=en_US.utf-8
-        export LC_ALL=en_US.utf-8
+    export LANG=en_US.utf-8
+    export LC_ALL=en_US.utf-8
 
-        sed -i -e 's/enabled=1/enabled=0/g' /etc/yum/pluginconf.d/fastestmirror.conf
+    sed -i -e 's/enabled=1/enabled=0/g' /etc/yum/pluginconf.d/fastestmirror.conf
 
-        cat <<- EOF > /etc/sysconfig/network-scripts/ifcfg-eth1
-        DEVICE="eth1"
-        DEFROUTE="no"
-        BOOTPROTO="static"
-        IPADDR="10.0.0.20"
-        NETMASK="255.255.255.0"
-        DNS1="8.8.8.8"
-        TYPE="Ethernet"
-        ONBOOT=yes
-        EOF
+    cat <<- EOF > /etc/sysconfig/network-scripts/ifcfg-eth1
+    DEVICE="eth1"
+    DEFROUTE="no"
+    BOOTPROTO="static"
+    IPADDR="10.0.1.20"
+    NETMASK="255.255.255.0"
+    DNS1="8.8.8.8"
+    TYPE="Ethernet"
+    ONBOOT=yes
+    EOF
 
-        ifdown eth1
-        ifup eth1
+    ifdown eth1
+    ifup eth1
 
-        cat <<- EOF > /etc/hosts
-        127.0.0.1 localhost
-        10.0.0.20 packstack
-        EOF
+    cat <<- EOF > /etc/hosts
+    127.0.0.1 localhost
+    10.0.1.20 packstack
+    EOF
 
-        echo 'centos' >/etc/yum/vars/contentdir
+    echo 'centos' >/etc/yum/vars/contentdir
 
-        systemctl disable firewalld
-        systemctl stop firewalld
-        systemctl disable NetworkManager
-        systemctl stop NetworkManager
-        systemctl enable network
-        systemctl start network
+    systemctl disable firewalld
+    systemctl stop firewalld
+    systemctl disable NetworkManager
+    systemctl stop NetworkManager
+    systemctl enable network
+    systemctl start network
 
-        yum install -y centos-release-openstack-queens
-        yum update -y
-        yum install -y openstack-packstack
-        yum install -y lvm2
+    yum install -y centos-release-openstack-queens
+    yum update -y
+    yum install -y openstack-packstack
+    yum install -y lvm2
 
-        packstack --install-hosts="10.0.0.20" --os-heat-install=y --os-heat-cfn-install=y --os-neutron-lbaas-install=y --keystone-admin-passwd="openstack" --keystone-demo-passwd="openstack"
+    packstack --install-hosts="10.0.1.20" --os-heat-install=y --os-heat-cfn-install=y --os-neutron-lbaas-install=y --keystone-admin-passwd="openstack" --keystone-demo-passwd="openstack"
 
 Correr el entorno Vagrant e Instalación de OpenStack con Packstack
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -201,7 +168,7 @@ Comenzará la configuración y despliegue de la máquina virtual en VirtualBox c
 
     VirtualBox - VM desplegada por Vagrant
 
-La instalación de Packstack en este nodo iniciará automáticamente. Luego de media hora aproximadamente, la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.
+La instalación de Packstack en este nodo iniciará automáticamente. Luego de media hora aproximadamente (32 minutos en total: despliegue de VMs + instalación de OpenStack), la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.
 
 .. Note::
 
@@ -248,11 +215,11 @@ Y los comandos que ejecutaremos en el nodo controller serán los siguientes:
     +--------------------------------------+---------+--------------------------------------+
     | ID                                   | Name    | Subnets                              |
     +--------------------------------------+---------+--------------------------------------+
-    | 2355d395-0b86-4b04-aedf-56c22ea87bf1 | private | 623a8170-54d0-47be-b8bc-fca4fdebe4cb |
-    | 273ed9aa-63e1-4178-9237-32a6095f9840 | public  | c04cf225-a94d-4237-869d-d0bd08e40f37 |
+    | 0c2f47d2-d672-4aae-a83e-e5e40faf0197 | public  | 8a0934e6-6826-44b8-8f38-dba27e301021 |
+    | 6665f7ee-4692-442b-a7dc-e38de59a32a3 | private | 4fccbd2e-ff40-4c75-acb3-5781360af1b5 |
     +--------------------------------------+---------+--------------------------------------+
 
-    '#' openstack server create --image cirros1 --flavor 1 --min 2 --max 2 --nic net-id=2355d395-0b86-4b04-aedf-56c22ea87bf1 test
+    '#' openstack server create --image cirros1 --flavor 1 --min 2 --max 2 --nic net-id=6665f7ee-4692-442b-a7dc-e38de59a32a3 test
 
 En este despliegue de prueba se han creado dos instancias al mismo tiempo y con las mismas características corriendo en el mismo nodo (o equivalentemente, en el mismo hypervisor).
 
@@ -268,12 +235,293 @@ Podremos ingresar a la consola de cada instancia desde el dashboard y probar con
 
     OpenStack - Consola ``test-1``
 
-Anexo: Archivo answers.txt de packstack generado
-''''''''''''''''''''''''''''''''''''''''''''''''
+Anexo 1: Configuración de red desplegada
+''''''''''''''''''''''''''''''''''''''''
+
+Host configuration (Windows user)
+"""""""""""""""""""""""""""""""""
+
+Las interfaces de red que tenemos en el sistema host de Windows son las siguientes:
+
+.. code-block:: bat
+
+    C:\Users\usuario>ipconfig
+
+    Configuración IP de Windows
+
+
+    Adaptador de Ethernet VirtualBox Host-Only Network #2:
+
+    Sufijo DNS específico para la conexión. . :
+    Dirección IPv4. . . . . . . . . . . . . . : 10.0.1.1
+    Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+    Puerta de enlace predeterminada . . . . . :
+
+    Adaptador de Ethernet Ethernet:
+
+    Sufijo DNS específico para la conexión. . :
+    Dirección IPv4. . . . . . . . . . . . . . : 192.168.1.10
+    Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+    Puerta de enlace predeterminada . . . . . : 192.168.1.1
+
+- La interfaz ``Adaptador de Ethernet Ethernet`` es nuestra tarjeta de red física con salida a Internet a través de un router físico (``192.168.1.1``). Se le ha asignado la IP ``192.168.1.10``.
+- La interfaz ``Adaptador de Ethernet VirtualBox Host-Only Network #2`` ha sido creada con VirtualBox dentro de ``Host Network Manager``. Se le ha asignado la IP ``10.0.1.1``. Esta interfaz no cuenta con salida al exterior (Internet).
+
+VM configuration (virtualBox config)
+""""""""""""""""""""""""""""""""""""
+
+La VM creada como único nodo donde se instala OpenStack posee 2 interfaces que pueden verse desde el lado del SO host o del lado del SO guest, obteniendo información útil de su implementación:
+
+Interfaces desde el lado host
+/////////////////////////////
+
+La VM con sistema CentOS creada por VirtualBox posee dos interfaces conectadas virtualmente:
+
+1. **Adaptador 1 - Interfaz tipo NAT**:
+
+La primera interfaz de red es usada para que la VM tenga salida a Internet (en la VM se ve como la interfaz ``enp0s3`` o ``eth0``):
+
+.. figure:: images/packstack-singlenode-deploy-packstack-virtualbox-vagrant/vm-singlenode-packstack-adapter1.png
+    :align: center
+
+    VirtualBox - Adaptador 1
+
+- La interfaz se encuentra conectada a una red virtual tipo NAT.
+- En este caso la interfaz tiene asignada la IP ``10.0.2.15``.
+
+2. **Adaptador 2 - Interfaz tipo Host-only Adapter**:
+
+La segunda interfaz de red es usada para que exista comunicación entre el sistema host y la VM (en la VM se ve como la interfaz ``enp0s8`` o ``eth1``):
+
+.. figure:: images/packstack-singlenode-deploy-packstack-virtualbox-vagrant/vm-singlenode-packstack-adapter2.png
+    :align: center
+
+    VirtualBox - Adaptador 2
+
+- La interfaz se encuentra conectada a la red física del host, siendo del tipo Host-only Adapter. Desde la VM podemos llegar a los equipos dentro de la red host (``192.168.1.0/24``).
+- En este caso la interfaz tiene asignada la IP ``10.0.1.20``.
+
+Interfaces desde el lado guest
+//////////////////////////////
+
+Las IPs de cada interfaz han sido obtenidas desde la consola de la VM:
 
 .. code-block:: bash
 
-    '#' cat packstack-answers-20200217-165200.txt
+    '#' ip addr
+
+    ...
+
+    2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic enp0s3
+            valid_lft 42944sec preferred_lft 42944sec
+        inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+            valid_lft forever preferred_lft forever
+    3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:3a:ab:74 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.1.20/24 brd 10.0.0.255 scope global noprefixroute enp0s8
+            valid_lft forever preferred_lft forever
+        inet6 fe80::a00:27ff:fe3a:ab74/64 scope link
+            valid_lft forever preferred_lft forever
+
+    ...
+
+1. Adaptador 1 - Interfaz tipo NAT: ``enp0s3`` o ``eth0``
+2. Adaptador 2 - Interfaz tipo Host-only Adapter: ``enp0s8`` o ``eth1``
+
+VM configuration (OpenStack config)
+"""""""""""""""""""""""""""""""""""
+
+- Interfaz dentro de la red pública de OpenStack:
+
+La interfaz ``br-ex`` es en realidad un OvS con una interfaz interna que posee una IP dentro de la red pública:
+
+.. code-block:: bash
+
+    '#' ip addr
+
+    ...
+
+    5: br-ex: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/ether 6a:f2:c8:bc:42:4e brd ff:ff:ff:ff:ff:ff
+        inet 172.24.4.1/24 scope global br-ex
+           valid_lft forever preferred_lft forever
+        inet6 fe80::68f2:c8ff:febc:424e/64 scope link
+           valid_lft forever preferred_lft forever
+    
+    ...
+
+En este caso, la red pública es ``172.24.4.0/24`` y ``br-ex`` tiene la IP ``172.24.4.1`` asignada.
+
+Anexo 2: Gráficos de red desplegada
+'''''''''''''''''''''''''''''''''''
+
+Red general total (Host + VM + Tenant Networks)
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+.. figure:: images/packstack-singlenode-deploy-packstack-virtualbox-vagrant/openstack-singlenode-deployment-network.png
+    :align: center
+
+    OpenStack: Host + VM + Tenant Networks
+
+Red e interfaces internas (VM + Tenant Networks)
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. figure:: images/packstack-singlenode-deploy-packstack-virtualbox-vagrant/openstack-singlenode-deployment-internal-network.png
+    :align: center
+
+    OpenStack: Internal VM + Tenant Networks
+
+Anexo 3: Interfaces de red, OvS, bridges
+''''''''''''''''''''''''''''''''''''''''
+
+Se presentan los bridges, OvS e interfaces de red de la VM con el despliegue de OpenStack, solo con los elementos de demo instalados y 2 instancias lanzadas manualmente:
+
+.. code-block:: bash
+
+    [root@packstack ~]'#' ip address
+
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+           valid_lft forever preferred_lft forever
+        inet6 ::1/128 scope host
+           valid_lft forever preferred_lft forever
+    2: eth0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 52:54:00:8a:fe:e6 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic eth0
+           valid_lft 80714sec preferred_lft 80714sec
+        inet6 fe80::5054:ff:fe8a:fee6/64 scope link
+           valid_lft forever preferred_lft forever
+    3: eth1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:d3:26:2e brd ff:ff:ff:ff:ff:ff
+        inet 10.0.1.20/24 brd 10.0.1.255 scope global noprefixroute eth1
+           valid_lft forever preferred_lft forever
+        inet6 fe80::a00:27ff:fed3:262e/64 scope link
+           valid_lft forever preferred_lft forever
+    4: ovs-system: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+        link/ether 92:7f:d2:a2:0b:89 brd ff:ff:ff:ff:ff:ff
+    5: br-ex: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/ether 6a:f2:c8:bc:42:4e brd ff:ff:ff:ff:ff:ff
+        inet 172.24.4.1/24 scope global br-ex
+           valid_lft forever preferred_lft forever
+        inet6 fe80::68f2:c8ff:febc:424e/64 scope link
+           valid_lft forever preferred_lft forever
+    6: br-int: <BROADCAST,MULTICAST> mtu 1450 qdisc noop state DOWN group default qlen 1000
+        link/ether 1a:26:e1:53:59:47 brd ff:ff:ff:ff:ff:ff
+    7: br-tun: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+        link/ether 12:f8:4a:f2:1d:42 brd ff:ff:ff:ff:ff:ff
+    11: qbrbc1cf336-e1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+        link/ether fe:16:3e:51:be:1b brd ff:ff:ff:ff:ff:ff
+    12: qbr0ed97bfb-fa: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+        link/ether ca:06:e8:28:78:a6 brd ff:ff:ff:ff:ff:ff
+    13: qvobc1cf336-e1@qvbbc1cf336-e1: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1450 qdisc noqueue master ovs-system state UP group default qlen 1000
+        link/ether 7a:fb:e2:b2:12:4b brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::78fb:e2ff:feb2:124b/64 scope link
+           valid_lft forever preferred_lft forever
+    14: qvbbc1cf336-e1@qvobc1cf336-e1: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1450 qdisc noqueue master qbrbc1cf336-e1 state UP group default qlen 1000
+        link/ether fe:74:14:d1:17:28 brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::fc74:14ff:fed1:1728/64 scope link
+           valid_lft forever preferred_lft forever
+    15: qvo0ed97bfb-fa@qvb0ed97bfb-fa: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1450 qdisc noqueue master ovs-system state UP group default qlen 1000
+        link/ether da:3c:b2:98:fd:df brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::d83c:b2ff:fe98:fddf/64 scope link
+           valid_lft forever preferred_lft forever
+    16: qvb0ed97bfb-fa@qvo0ed97bfb-fa: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1450 qdisc noqueue master qbr0ed97bfb-fa state UP group default qlen 1000
+        link/ether ca:06:e8:28:78:a6 brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::c806:e8ff:fe28:78a6/64 scope link
+           valid_lft forever preferred_lft forever
+    17: tap0ed97bfb-fa: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast master qbr0ed97bfb-fa state UNKNOWN group default qlen 1000
+        link/ether fe:16:3e:b3:2d:11 brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::fc16:3eff:feb3:2d11/64 scope link
+           valid_lft forever preferred_lft forever
+    18: tapbc1cf336-e1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast master qbrbc1cf336-e1 state UNKNOWN group default qlen 1000
+        link/ether fe:16:3e:51:be:1b brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::fc16:3eff:fe51:be1b/64 scope link
+           valid_lft forever preferred_lft forever
+
+.. code-block:: bash
+
+    [root@packstack ~]'#' ovs-vsctl show
+
+    d9b4a0db-3fc2-41b3-a089-e2fa9ddd0a3f
+        Manager "ptcp:6640:127.0.0.1"
+            is_connected: true
+        Bridge br-int
+            Controller "tcp:127.0.0.1:6633"
+                is_connected: true
+            fail_mode: secure
+            Port patch-tun
+                Interface patch-tun
+                    type: patch
+                    options: {peer=patch-int}
+            Port "qvo0ed97bfb-fa"
+                tag: 1
+                Interface "qvo0ed97bfb-fa"
+            Port br-int
+                Interface br-int
+                    type: internal
+            Port "qvobc1cf336-e1"
+                tag: 1
+                Interface "qvobc1cf336-e1"
+            Port "qg-c38b2759-b4"
+                tag: 2
+                Interface "qg-c38b2759-b4"
+                    type: internal
+            Port int-br-ex
+                Interface int-br-ex
+                    type: patch
+                    options: {peer=phy-br-ex}
+            Port "tape0a80b5f-e1"
+                tag: 1
+                Interface "tape0a80b5f-e1"
+                    type: internal
+            Port "qr-480f039f-df"
+                tag: 1
+                Interface "qr-480f039f-df"
+                    type: internal
+        Bridge br-ex
+            Controller "tcp:127.0.0.1:6633"
+                is_connected: true
+            fail_mode: secure
+            Port br-ex
+                Interface br-ex
+                    type: internal
+            Port phy-br-ex
+                Interface phy-br-ex
+                    type: patch
+                    options: {peer=int-br-ex}
+        Bridge br-tun
+            Controller "tcp:127.0.0.1:6633"
+                is_connected: true
+            fail_mode: secure
+            Port patch-int
+                Interface patch-int
+                    type: patch
+                    options: {peer=patch-tun}
+            Port br-tun
+                Interface br-tun
+                    type: internal
+        ovs_version: "2.11.0"
+
+.. code-block:: bash
+
+    [root@packstack ~]'#' brctl show
+
+    bridge name             bridge id               STP enabled     interfaces
+    qbr0ed97bfb-fa          8000.ca06e82878a6       no              qvb0ed97bfb-fa
+                                                                    tap0ed97bfb-fa
+
+    qbrbc1cf336-e1          8000.fe163e51be1b       no              qvbbc1cf336-e1
+                                                                    tapbc1cf336-e1
+
+Anexo 4: Archivo answers.txt de packstack generado
+''''''''''''''''''''''''''''''''''''''''''''''''''
+
+.. code-block:: bash
+
+    '#' cat /home/vagrant/packstack-answers-20200217-234314.txt
 
     [general]
 
@@ -368,14 +616,14 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Server on which to install OpenStack services specific to the
     # controller role (for example, API servers or dashboard).
-    CONFIG_CONTROLLER_HOST=10.0.0.20
+    CONFIG_CONTROLLER_HOST=10.0.1.20
 
     # List the servers on which to install the Compute service.
-    CONFIG_COMPUTE_HOSTS=10.0.0.20
+    CONFIG_COMPUTE_HOSTS=10.0.1.20
 
     # List of servers on which to install the network service such as
     # Compute networking (nova network) or OpenStack Networking (neutron).
-    CONFIG_NETWORK_HOSTS=10.0.0.20
+    CONFIG_NETWORK_HOSTS=10.0.1.20
 
     # Specify 'y' if you want to use VMware vCenter as hypervisor and
     # storage; otherwise, specify 'n'. ['y', 'n']
@@ -548,7 +796,7 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_AMQP_BACKEND=rabbitmq
 
     # IP address of the server on which to install the AMQP service.
-    CONFIG_AMQP_HOST=10.0.0.20
+    CONFIG_AMQP_HOST=10.0.1.20
 
     # Specify 'y' to enable SSL for the AMQP service. ['y', 'n']
     CONFIG_AMQP_ENABLE_SSL=n
@@ -570,17 +818,17 @@ Anexo: Archivo answers.txt de packstack generado
     # installation was not specified in CONFIG_MARIADB_INSTALL, specify
     # the IP address of an existing database server (a MariaDB cluster can
     # also be specified).
-    CONFIG_MARIADB_HOST=10.0.0.20
+    CONFIG_MARIADB_HOST=10.0.1.20
 
     # User name for the MariaDB administrative user.
     CONFIG_MARIADB_USER=root
 
     # Password for the MariaDB administrative user.
-    CONFIG_MARIADB_PW=44ffb78fcad945e7
+    CONFIG_MARIADB_PW=438b090ac8954b38
 
     # Password to use for the Identity service (keystone) to access the
     # database.
-    CONFIG_KEYSTONE_DB_PW=c71b53327b7d44d3
+    CONFIG_KEYSTONE_DB_PW=2001d80f5ef94c48
 
     # Enter y if cron job for removing soft deleted DB rows should be
     # created.
@@ -591,7 +839,7 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_KEYSTONE_REGION=RegionOne
 
     # Token to use for the Identity service API.
-    CONFIG_KEYSTONE_ADMIN_TOKEN=d033267ae7e445ffbb0c6f78c09849e2
+    CONFIG_KEYSTONE_ADMIN_TOKEN=a862d06c55c143e2822ba5fbe3a19e8f
 
     # Email address for the Identity service 'admin' user.  Defaults to
     CONFIG_KEYSTONE_ADMIN_EMAIL=root@localhost
@@ -787,11 +1035,11 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for the Image service (glance) to access the
     # database.
-    CONFIG_GLANCE_DB_PW=28e3dfa378f84d9b
+    CONFIG_GLANCE_DB_PW=0d36ed19e654478e
 
     # Password to use for the Image service to authenticate with the
     # Identity service.
-    CONFIG_GLANCE_KS_PW=0a8468db9d5a4ae5
+    CONFIG_GLANCE_KS_PW=a7a58564762445b2
 
     # Storage backend for the Image service (controls how the Image
     # service stores disk images). Valid options are: file or swift
@@ -802,7 +1050,7 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for the Block Storage service (cinder) to access
     # the database.
-    CONFIG_CINDER_DB_PW=2705428887884634
+    CONFIG_CINDER_DB_PW=d5143e26f1bc4fa4
 
     # Enter y if cron job for removing soft deleted DB rows should be
     # created.
@@ -810,7 +1058,7 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for the Block Storage service to authenticate with
     # the Identity service.
-    CONFIG_CINDER_KS_PW=761e7589519e4e64
+    CONFIG_CINDER_KS_PW=24d21c3ac97042ab
 
     # Storage backend to use for the Block Storage service; valid options
     # are: lvm, gluster, nfs, vmdk, netapp, solidfire. ['lvm', 'gluster',
@@ -991,11 +1239,11 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for the Compute service (nova) to access the
     # database.
-    CONFIG_NOVA_DB_PW=0b064882c78246b7
+    CONFIG_NOVA_DB_PW=d6fc9a80f919466b
 
     # Password to use for the Compute service to authenticate with the
     # Identity service.
-    CONFIG_NOVA_KS_PW=6983aca5676b40d1
+    CONFIG_NOVA_KS_PW=e4773a61b8684f64
 
     # Whether or not Packstack should manage a default initial set of
     # Nova flavors. Defaults to 'y'.
@@ -1041,11 +1289,11 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for OpenStack Networking (neutron) to authenticate
     # with the Identity service.
-    CONFIG_NEUTRON_KS_PW=8e82a3f6289d40c9
+    CONFIG_NEUTRON_KS_PW=976c2961895641c4
 
     # The password to use for OpenStack Networking to access the
     # database.
-    CONFIG_NEUTRON_DB_PW=e8ebbf3755d64dfe
+    CONFIG_NEUTRON_DB_PW=99e053b66e0f4731
 
     # The name of the Open vSwitch bridge (or empty for linuxbridge) for
     # the OpenStack Networking L3 agent to use for external  traffic.
@@ -1054,7 +1302,7 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_NEUTRON_L3_EXT_BRIDGE=br-ex
 
     # Password for the OpenStack Networking metadata agent.
-    CONFIG_NEUTRON_METADATA_PW=bce78eaf963644b2
+    CONFIG_NEUTRON_METADATA_PW=05256ed8a49e4a36
 
     # Specify 'y' to install OpenStack Networking's Load-Balancing-
     # as-a-Service (LBaaS). ['y', 'n']
@@ -1395,7 +1643,7 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_HORIZON_SSL=n
 
     # Secret key to use for Horizon Secret Encryption Key.
-    CONFIG_HORIZON_SECRET_KEY=d5722567e0e64eabb0ad52a9bf5a13a2
+    CONFIG_HORIZON_SECRET_KEY=a8fe06092db44944a5bc6305911bbcd6
 
     # PEM-encoded certificate to be used for SSL connections on the https
     # server. To generate a certificate, leave blank.
@@ -1409,7 +1657,7 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for the Object Storage service to authenticate with
     # the Identity service.
-    CONFIG_SWIFT_KS_PW=1be401c8d38241fb
+    CONFIG_SWIFT_KS_PW=d09d01ba889b482e
 
     # Comma-separated list of devices to use as storage device for Object
     # Storage. Each entry must take the format /path/to/dev (for example,
@@ -1433,22 +1681,22 @@ Anexo: Archivo answers.txt de packstack generado
     # Custom seed number to use for swift_hash_path_suffix in
     # /etc/swift/swift.conf. If you do not provide a value, a seed number
     # is automatically generated.
-    CONFIG_SWIFT_HASH=84fa4dd7b1dd4080
+    CONFIG_SWIFT_HASH=21aa09faa5474ad6
 
     # Size of the Object Storage loopback file storage device.
     CONFIG_SWIFT_STORAGE_SIZE=2G
 
     # Password used by Orchestration service user to authenticate against
     # the database.
-    CONFIG_HEAT_DB_PW=c09db27f0f814e8f
+    CONFIG_HEAT_DB_PW=f7ca5fea54fe4e60
 
     # Encryption key to use for authentication in the Orchestration
     # database (16, 24, or 32 chars).
-    CONFIG_HEAT_AUTH_ENC_KEY=f08b3f50a6cd4b73
+    CONFIG_HEAT_AUTH_ENC_KEY=e3c4823d506c4d6d
 
     # Password to use for the Orchestration service to authenticate with
     # the Identity service.
-    CONFIG_HEAT_KS_PW=8bb68206891b4547
+    CONFIG_HEAT_KS_PW=678525b8eaca46c4
 
     # Specify 'y' to install the Orchestration CloudFormation API. ['y',
     # 'n']
@@ -1462,7 +1710,7 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password for the Identity domain administrative user for
     # Orchestration.
-    CONFIG_HEAT_DOMAIN_PASSWORD=20f72f5bda0a4ee8
+    CONFIG_HEAT_DOMAIN_PASSWORD=4e6b56b8b8f14ccd
 
     # Specify 'y' to provision for demo usage and testing. ['y', 'n']
     CONFIG_PROVISION_DEMO=y
@@ -1561,18 +1809,18 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_PROVISION_OVS_BRIDGE=y
 
     # Password to use for Gnocchi to access the database.
-    CONFIG_GNOCCHI_DB_PW=9fb681656e85442c
+    CONFIG_GNOCCHI_DB_PW=46612ab8aebe46c4
 
     # Password to use for Gnocchi to authenticate with the Identity
     # service.
-    CONFIG_GNOCCHI_KS_PW=e6ae0c21541d4b5d
+    CONFIG_GNOCCHI_KS_PW=bdef00d6ab8f4ec3
 
     # Secret key for signing Telemetry service (ceilometer) messages.
-    CONFIG_CEILOMETER_SECRET=a7a99be36c744d9a
+    CONFIG_CEILOMETER_SECRET=0f2c8fc4b0aa4ca6
 
     # Password to use for Telemetry to authenticate with the Identity
     # service.
-    CONFIG_CEILOMETER_KS_PW=42070708044240a7
+    CONFIG_CEILOMETER_KS_PW=6f6306dc0e504470
 
     # Ceilometer service name. ['httpd', 'ceilometer']
     CONFIG_CEILOMETER_SERVICE_NAME=httpd
@@ -1586,18 +1834,18 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_ENABLE_CEILOMETER_MIDDLEWARE=n
 
     # IP address of the server on which to install the Redis server.
-    CONFIG_REDIS_HOST=10.0.0.20
+    CONFIG_REDIS_HOST=10.0.1.20
 
     # Port on which the Redis server listens.
     CONFIG_REDIS_PORT=6379
 
     # Password to use for Telemetry Alarming to authenticate with the
     # Identity service.
-    CONFIG_AODH_KS_PW=6d8e580d6c624698
+    CONFIG_AODH_KS_PW=6452ce6bfc8244a5
 
     # Password to use for Telemetry Alarming (AODH) to access the
     # database.
-    CONFIG_AODH_DB_PW=5e58935a65834246
+    CONFIG_AODH_DB_PW=67194291fed6497c
 
     # Password to use for Panko to access the database.
     CONFIG_PANKO_DB_PW=PW_PLACEHOLDER

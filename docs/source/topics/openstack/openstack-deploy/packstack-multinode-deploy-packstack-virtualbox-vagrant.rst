@@ -11,7 +11,13 @@ Desde nuestro sistema Operativo (Windows, macOS, Linux) debemos tener instaladas
 - VirtualBox
 - Vagrant
 
-Este escenario de OpenStack que será desplegado consta de 3 VMs: un controller node y dos compute nodes. Se requiere al menos 12 GB de RAM y 4 CPUs
+Este escenario de OpenStack que será desplegado consta de 3 VMs: un Controller/Network node y dos Compute nodes. Se requiere al menos 12 GB de RAM y 4 CPUs
+
+.. Important::
+
+    Si existen errores en la creación de las instancias o que las instancias creadas se apagan automáticamete, esto podría deberse a la falta de recursos en el host.
+
+    Revisar la memoria RAM disponible con ``free -m`` y el uso de CPU con ``top`` o ``htop``. En caso los recursos se están usando al máximo, apagar la VM y asignarle más recursos desde el host en VirtualBox.
 
 Configuración de VirtualBox
 '''''''''''''''''''''''''''
@@ -49,45 +55,6 @@ Host-only Network Adapter
 
     - El adaptador pertenece a la red de management
     - La dirección IP del adaptador es el Host-side de la red
-
-NAT Provider Network
-""""""""""""""""""""
-
-1. Clic en :guilabel:`Preferences` (:guilabel:`Ctrl + G`):
-
-.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/Windows-VirtualBox-Preferences.png
-    :align: center
-
-    Windows - VirtualBox v5.2 - Clic en opción :guilabel:`Preferences`
-
-.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/Linux-VirtualBox-Preferences.png
-    :align: center
-
-    Linux - VirtualBox v6.0 - Clic en opción :guilabel:`Preferences`
-
-2. En la sección :guilabel:`Network`, seleccionar el botón de creación de una nueva red:
-
-.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/Windows-VirtualBox-Preferences-Network.png
-    :align: center
-
-    Windows - VirtualBox v5.2 - Clic en sección :guilabel:`Network`
-
-.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/Linux-VirtualBox-Preferences-Network.png
-    :align: center
-
-    Linux - VirtualBox v6.0 - Clic en sección :guilabel:`Network`
-
-3. Nombrar y definir un rango para la red NAT. También podemos dar soporte DHCP:
-
-.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/Windows-VirtualBox-Create-Provider-Network.png
-    :align: center
-
-    Windows - VirtualBox v5.2 - Definir propiedades de la red
-
-.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/Linux-VirtualBox-Create-Provider-Network.png
-    :align: center
-
-    Linux - VirtualBox v6.0 - Definir propiedades de la red
 
 Definición del archivo ``Vagrantfile``
 ''''''''''''''''''''''''''''''''''''''
@@ -142,16 +109,16 @@ El archivo ``Vagrantfile`` se define de la siguiente forma:
 .. Important::
 
     - Vagrant configura automáticamente la primera interfaz de red de una nueva VM en la red NAT. A través de esta red podemos acceder desde el sistema host al Dashboard o CLI del nodo.
-    - La primera interfaz de red se usa para conectarnos a Internet.
-    - La segunda interfaz sirve para proveer conectividad del sistema host a la VM con OpenStack.
+    - La primera interfaz de red se usa para tener salida a Internet.
+    - La segunda interfaz sirve para proveer conectividad del sistema host a la VM (y viceversa).
 
 Definición de archivos de configuración de nodos
 ''''''''''''''''''''''''''''''''''''''''''''''''
 
 En el mismo directorio donde tenemos almacenado el archivo ``Vagrantfile`` guardaremos los scripts ``.sh`` que se correrán cuando Vagrant lance las VMs en su respectivo nodo:
 
-Controller (``packstack_setup.sh``)
-"""""""""""""""""""""""""""""""""""
+Controller/Network (``packstack_setup.sh``)
+"""""""""""""""""""""""""""""""""""""""""""
 
 .. code-block:: bash
 
@@ -166,7 +133,7 @@ Controller (``packstack_setup.sh``)
     DEVICE="enp0s8"
     DEFROUTE="no"
     BOOTPROTO="static"
-    IPADDR="10.0.0.20"
+    IPADDR="10.0.1.20"
     NETMASK="255.255.255.0"
     DNS1="8.8.8.8"
     TYPE="Ethernet"
@@ -178,9 +145,9 @@ Controller (``packstack_setup.sh``)
 
     cat <<- EOF > /etc/hosts
     127.0.0.1 localhost
-    10.0.0.20 packstack
-    10.0.0.21 compute1
-    10.0.0.22 compute2
+    10.0.1.20 packstack
+    10.0.1.21 compute1
+    10.0.1.22 compute2
     EOF
 
     echo 'centos' >/etc/yum/vars/contentdir
@@ -207,7 +174,7 @@ Controller (``packstack_setup.sh``)
     ssh vagrant@compute2 echo "OK"
     echo "Running packstack with options"
     echo "The 'root' password is 'vagrant'"
-    packstack --install-hosts="10.0.0.20","10.0.0.21","10.0.0.22" --os-heat-install=y --os-heat-cfn-install=y --os-neutron-lbaas-install=y --keystone-admin-passwd="openstack" --keystone-demo-passwd="openstack"
+    packstack --install-hosts="10.0.1.20","10.0.1.21","10.0.1.22" --os-heat-install=y --os-heat-cfn-install=y --os-neutron-lbaas-install=y --keystone-admin-passwd="openstack" --keystone-demo-passwd="openstack"
     EOF
 
     chown vagrant:vagrant /home/vagrant/run-packstack.sh
@@ -229,7 +196,7 @@ Compute 1 (``compute1_setup.sh``)
     DEVICE="enp0s8"
     DEFROUTE="no"
     BOOTPROTO="static"
-    IPADDR="10.0.0.21"
+    IPADDR="10.0.1.21"
     NETMASK="255.255.255.0"
     DNS1="8.8.8.8"
     TYPE="Ethernet"
@@ -241,9 +208,9 @@ Compute 1 (``compute1_setup.sh``)
 
     cat <<- EOF > /etc/hosts
     127.0.0.1 localhost
-    10.0.0.20 packstack
-    10.0.0.21 compute1
-    10.0.0.22 compute2
+    10.0.1.20 packstack
+    10.0.1.21 compute1
+    10.0.1.22 compute2
     EOF
 
     systemctl disable firewalld
@@ -270,7 +237,7 @@ Compute 2 (``compute2_setup.sh``)
     DEVICE="enp0s8"
     DEFROUTE="no"
     BOOTPROTO="static"
-    IPADDR="10.0.0.22"
+    IPADDR="10.0.1.22"
     NETMASK="255.255.255.0"
     DNS1="8.8.8.8"
     TYPE="Ethernet"
@@ -282,9 +249,9 @@ Compute 2 (``compute2_setup.sh``)
 
     cat <<- EOF > /etc/hosts
     127.0.0.1 localhost
-    10.0.0.20 packstack
-    10.0.0.21 compute1
-    10.0.0.22 compute2
+    10.0.1.20 packstack
+    10.0.1.21 compute1
+    10.0.1.22 compute2
     EOF
 
     systemctl disable firewalld
@@ -332,7 +299,7 @@ Este script corre comandos de prueba ``ssh`` a las VMs de los compute nodes para
 Pruebas en el entorno OpenStack desplegado
 ''''''''''''''''''''''''''''''''''''''''''
 
-Luego de media hora aproximadamente, la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.
+Luego de media hora aproximadamente (40 minutos en total: 5 min. despliegue de VMs + 35 min. instalación de OpenStack), la instalación de OpenStack con Packstack habrá finalizado y podremos ingresar al Dashboard o al CLI de OpenStack.
 
 .. Note::
 
@@ -351,7 +318,7 @@ La topología que se desea lograr es la siguiente:
 
     OpenStack - Topología desplegada
 
-Y los comandos que ejecutaremos en el nodo controller serán los siguientes:
+Y los comandos que ejecutaremos en el nodo Controller/Network serán los siguientes:
 
 .. code-block:: bash
 
@@ -371,11 +338,11 @@ Y los comandos que ejecutaremos en el nodo controller serán los siguientes:
     +--------------------------------------+---------+--------------------------------------+
     | ID                                   | Name    | Subnets                              |
     +--------------------------------------+---------+--------------------------------------+
-    | 0b01c7b4-27fd-4f5a-bfb9-c40726d6a66b | private | e4562283-1c3f-4ddd-86b0-52b9cd0b5d81 |
-    | 7687d634-7b43-4877-9113-e68e068640fc | public  | c34775f8-b9ba-4a94-ad87-b57d7859ef4a |
+    | 836312ac-15d2-462c-a588-ccb6bda9953f | private | 7684b9ae-f2e4-4731-8b22-a4df18925ec0 |
+    | f1b16d9e-cb71-47e1-9654-d78eb54f1621 | public  | 2faf694b-320e-4e87-9fe6-2146b169c591 |
     +--------------------------------------+---------+--------------------------------------+
 
-    '#' openstack server create --image cirros1 --flavor 1 --min 2 --max 2 --nic net-id=0b01c 7b4-27fd-4f5a-bfb9-c40726d6a66b test
+    '#' openstack server create --image cirros1 --flavor 1 --min 2 --max 2 --nic net-id=836312ac-15d2-462c-a588-ccb6bda9953f test
 
 En este despliegue de prueba se han creado dos instancias al mismo tiempo y con las mismas características de forma que usen todos los recursos de un hypervisor al crear una instancia y para crear otra instancia se requiera usar el hypervisor del otro compute node. Logrando tener una instancia en cada compute node (o equivalentemente, cada instancia administrada por un hypervisor distinto).
 
@@ -401,12 +368,844 @@ Podremos ingresar a la consola de cada instancia desde el dashboard y probar con
 
     OpenStack - Consola ``test-2``
 
-Anexo: Archivo answers.txt de packstack generado
-''''''''''''''''''''''''''''''''''''''''''''''''
+Anexo 1: Configuración de red desplegada
+''''''''''''''''''''''''''''''''''''''''
+
+Host configuration (Windows user)
+"""""""""""""""""""""""""""""""""
+
+Las interfaces de red que tenemos en el sistema host de Windows son las siguientes:
+
+.. code-block:: bat
+
+    C:\Users\usuario>ipconfig
+
+    Configuración IP de Windows
+
+
+    Adaptador de Ethernet VirtualBox Host-Only Network #2:
+
+    Sufijo DNS específico para la conexión. . :
+    Dirección IPv4. . . . . . . . . . . . . . : 10.0.1.1
+    Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+    Puerta de enlace predeterminada . . . . . :
+
+    Adaptador de Ethernet Ethernet:
+
+    Sufijo DNS específico para la conexión. . :
+    Dirección IPv4. . . . . . . . . . . . . . : 192.168.1.10
+    Máscara de subred . . . . . . . . . . . . : 255.255.255.0
+    Puerta de enlace predeterminada . . . . . : 192.168.1.1
+
+- La interfaz ``Adaptador de Ethernet Ethernet`` es nuestra tarjeta de red física con salida a Internet a través de un router físico (``192.168.1.1``). Se le ha asignado la IP ``192.168.1.10``.
+- La interfaz ``Adaptador de Ethernet VirtualBox Host-Only Network #2`` ha sido creada con VirtualBox dentro de ``Host Network Manager``. Se le ha asignado la IP ``10.0.1.1``. Esta interfaz no cuenta con salida al exterior (Internet).
+
+VM configuration (virtualBox config)
+""""""""""""""""""""""""""""""""""""
+
+Las 3 VMs creadas poseen cada una 2 interfaces del mismo tipo que pueden verse desde el lado del SO host o del lado del SO guest, obteniendo información útil de su implementación:
+
+Interfaces desde el lado host
+/////////////////////////////
+
+Las VMs con sistema CentOS creadas por VirtualBox poseen dos interfaces del mismo tipo conectadas virtualmente:
+
+1. **Adaptador 1 - Interfaz tipo NAT**:
+
+La primera interfaz de red es usada para que la VM tenga salida a Internet (en la VM se ve como la interfaz ``enp0s3`` o ``eth0``):
+
+.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/vm-multinode-packstack-adapter1.png
+    :align: center
+
+    VirtualBox - Adaptador 1
+
+- La interfaz se encuentra conectada a una red virtual tipo NAT.
+- En este caso la interfaz de cada VM tiene asignada la misma IP ``10.0.2.15`` y comparten la misma configuración de red (misma MAC).
+
+2. **Adaptador 2 - Interfaz tipo Host-only Adapter**:
+
+La segunda interfaz de red de cada VM es usada para que exista comunicación entre el sistema host y la VM (en la VM se ve como la interfaz ``enp0s8`` o ``eth1``):
+
+.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/vm-multinode-packstack-adapter2.png
+    :align: center
+
+    VirtualBox - Adaptador 2
+
+- La interfaz se encuentra conectada a la red física del host, siendo del tipo Host-only Adapter. Desde cada VM podemos llegar a los equipos dentro de la red host (``192.168.1.0/24``).
+- En este caso la IP de la interfaz del Controller/Network node es ``10.0.1.20``, la IP de la interfaz del compute node 1 es ``10.0.1.21``, la IP de la interfaz del compute node 2 es ``10.0.1.22``.
+
+Interfaces desde el lado guest
+//////////////////////////////
+
+Las IPs de cada interfaz han sido obtenidas desde la consola de las VMs:
+
+1. Adaptador 1 - Interfaz tipo NAT: ``enp0s3`` o ``eth0``
+2. Adaptador 2 - Interfaz tipo Host-only Adapter: ``enp0s8`` o ``eth1``
+
+- Controller/Network node:
 
 .. code-block:: bash
 
-    '#' cat packstack-answers-20200216-004812.txt
+    '#' ip addr
+
+    ...
+
+    2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic enp0s3
+           valid_lft 78655sec preferred_lft 78655sec
+        inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+           valid_lft forever preferred_lft forever
+    3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:08:08:b2 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.1.20/24 brd 10.0.1.255 scope global noprefixroute enp0s8
+           valid_lft forever preferred_lft forever
+        inet6 fe80::a00:27ff:fe08:8b2/64 scope link
+           valid_lft forever preferred_lft forever
+
+    ...
+
+- Compute node 1:
+
+.. code-block:: bash
+
+    '#' ip addr
+
+    ...
+
+    2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic enp0s3
+           valid_lft 78414sec preferred_lft 78414sec
+        inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+           valid_lft forever preferred_lft forever
+    3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:2b:30:af brd ff:ff:ff:ff:ff:ff
+        inet 10.0.1.21/24 brd 10.0.1.255 scope global noprefixroute enp0s8
+           valid_lft forever preferred_lft forever
+        inet6 fe80::a00:27ff:fe2b:30af/64 scope link
+           valid_lft forever preferred_lft forever
+
+    ...
+
+- Compute node 2:
+
+.. code-block:: bash
+
+    '#' ip addr
+
+    ...
+
+    2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic enp0s3
+           valid_lft 78419sec preferred_lft 78419sec
+        inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+           valid_lft forever preferred_lft forever
+    3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:d2:4c:f1 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.1.22/24 brd 10.0.1.255 scope global noprefixroute enp0s8
+           valid_lft forever preferred_lft forever
+        inet6 fe80::a00:27ff:fed2:4cf1/64 scope link
+           valid_lft forever preferred_lft forever
+
+VM configuration (OpenStack config)
+"""""""""""""""""""""""""""""""""""
+
+- Interfaz dentro de la red pública de OpenStack:
+
+La interfaz ``br-ex`` es en realidad un OvS con una interfaz interna que posee una IP dentro de la red pública y solo se encuentra en el Controller/Network node:
+
+.. code-block:: bash
+
+    '#' ip addr
+
+    ...
+
+    5: br-ex: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/ether 6a:f2:c8:bc:42:4e brd ff:ff:ff:ff:ff:ff
+        inet 172.24.4.1/24 scope global br-ex
+           valid_lft forever preferred_lft forever
+        inet6 fe80::68f2:c8ff:febc:424e/64 scope link
+           valid_lft forever preferred_lft forever
+    
+    ...
+
+En este caso, la red pública es ``172.24.4.0/24`` y ``br-ex`` tiene la IP ``172.24.4.1`` asignada.
+
+Anexo 2: Gráficos de red desplegada
+'''''''''''''''''''''''''''''''''''
+
+Red general total (Host + VMs + Tenant Networks)
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/openstack-multinode-deployment-network.png
+    :align: center
+
+    OpenStack: Host + VMs + Tenant Networks
+
+Red e interfaces internas (VMs + Tenant Networks)
+"""""""""""""""""""""""""""""""""""""""""""""""""
+
+.. figure:: images/packstack-multinode-deploy-packstack-virtualbox-vagrant/openstack-multinode-deployment-internal-network.png
+    :align: center
+
+    OpenStack: Internal VMs + Tenant Networks
+
+Anexo 3: Interfaces de red, OvS, bridges
+''''''''''''''''''''''''''''''''''''''''
+
+Se presentan los bridges, OvS e interfaces de red de cada VM con el despliegue de OpenStack, solo con los elementos de demo instalados y 2 instancias lanzadas manualmente:
+
+- Controller/Network node:
+
+.. code-block:: bash
+
+    [root@packstack ~]'#' ip address
+
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+           valid_lft forever preferred_lft forever
+        inet6 ::1/128 scope host
+           valid_lft forever preferred_lft forever
+    2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic enp0s3
+           valid_lft 77961sec preferred_lft 77961sec
+        inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+           valid_lft forever preferred_lft forever
+    3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:08:08:b2 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.1.20/24 brd 10.0.1.255 scope global noprefixroute enp0s8
+           valid_lft forever preferred_lft forever
+        inet6 fe80::a00:27ff:fe08:8b2/64 scope link
+           valid_lft forever preferred_lft forever
+    4: ovs-system: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+        link/ether 9e:03:28:91:83:47 brd ff:ff:ff:ff:ff:ff
+    5: br-ex: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/ether 32:ff:ae:d9:59:40 brd ff:ff:ff:ff:ff:ff
+        inet 172.24.4.1/24 scope global br-ex
+           valid_lft forever preferred_lft forever
+        inet6 fe80::30ff:aeff:fed9:5940/64 scope link
+           valid_lft forever preferred_lft forever
+    6: br-int: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+        link/ether 12:b8:dc:b4:52:4d brd ff:ff:ff:ff:ff:ff
+    7: br-tun: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+        link/ether 6e:9e:09:79:38:41 brd ff:ff:ff:ff:ff:ff
+    10: vxlan_sys_4789: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 65000 qdisc noqueue master ovs-system state UNKNOWN group default qlen 1000
+        link/ether 1a:f3:1e:bf:73:fa brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::18f3:1eff:febf:73fa/64 scope link
+           valid_lft forever preferred_lft forever
+
+.. code-block:: bash
+
+    [root@packstack ~]'#' ovs-vsctl show
+
+    c82010c9-0b35-4391-97f2-77e0946a1f26
+        Manager "ptcp:6640:127.0.0.1"
+            is_connected: true
+        Bridge br-tun
+            Controller "tcp:127.0.0.1:6633"
+                is_connected: true
+            fail_mode: secure
+            Port "vxlan-0a000116"
+                Interface "vxlan-0a000116"
+                    type: vxlan
+                    options: {df_default="true", egress_pkt_mark="0", in_key=flow, local_ip="10.0.1.20", out_key=flow, remote_ip="10.0.1.22"}
+            Port "vxlan-0a000115"
+                Interface "vxlan-0a000115"
+                    type: vxlan
+                    options: {df_default="true", egress_pkt_mark="0", in_key=flow, local_ip="10.0.1.20", out_key=flow, remote_ip="10.0.1.21"}
+            Port br-tun
+                Interface br-tun
+                    type: internal
+            Port patch-int
+                Interface patch-int
+                    type: patch
+                    options: {peer=patch-tun}
+        Bridge br-int
+            Controller "tcp:127.0.0.1:6633"
+                is_connected: true
+            fail_mode: secure
+            Port int-br-ex
+                Interface int-br-ex
+                    type: patch
+                    options: {peer=phy-br-ex}
+            Port "qg-0dc02115-5b"
+                tag: 2
+                Interface "qg-0dc02115-5b"
+                    type: internal
+            Port patch-tun
+                Interface patch-tun
+                    type: patch
+                    options: {peer=patch-int}
+            Port "qr-cbc140a5-76"
+                tag: 1
+                Interface "qr-cbc140a5-76"
+                    type: internal
+            Port br-int
+                Interface br-int
+                    type: internal
+            Port "tapb10894b0-97"
+                tag: 1
+                Interface "tapb10894b0-97"
+                    type: internal
+        Bridge br-ex
+            Controller "tcp:127.0.0.1:6633"
+                is_connected: true
+            fail_mode: secure
+            Port phy-br-ex
+                Interface phy-br-ex
+                    type: patch
+                    options: {peer=int-br-ex}
+            Port br-ex
+                Interface br-ex
+                    type: internal
+        ovs_version: "2.11.0"
+
+
+- Compute node 1:
+
+.. code-block:: bash
+
+    [root@compute1 ~]'#' ip address
+
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+           valid_lft forever preferred_lft forever
+        inet6 ::1/128 scope host
+           valid_lft forever preferred_lft forever
+    2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic enp0s3
+           valid_lft 77693sec preferred_lft 77693sec
+        inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+           valid_lft forever preferred_lft forever
+    3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:2b:30:af brd ff:ff:ff:ff:ff:ff
+        inet 10.0.1.21/24 brd 10.0.1.255 scope global noprefixroute enp0s8
+           valid_lft forever preferred_lft forever
+        inet6 fe80::a00:27ff:fe2b:30af/64 scope link
+           valid_lft forever preferred_lft forever
+    4: ovs-system: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+        link/ether 12:62:58:1e:15:29 brd ff:ff:ff:ff:ff:ff
+    5: br-int: <BROADCAST,MULTICAST> mtu 1450 qdisc noop state DOWN group default qlen 1000
+        link/ether fa:31:12:ef:10:47 brd ff:ff:ff:ff:ff:ff
+    6: br-tun: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+        link/ether f2:34:e5:f9:bb:40 brd ff:ff:ff:ff:ff:ff
+    7: vxlan_sys_4789: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 65000 qdisc noqueue master ovs-system state UNKNOWN group default qlen 1000
+        link/ether 8e:ea:c0:5b:31:90 brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::8cea:c0ff:fe5b:3190/64 scope link
+           valid_lft forever preferred_lft forever
+    8: qbr40be7332-c9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+        link/ether a6:a3:f6:b8:3e:a1 brd ff:ff:ff:ff:ff:ff
+    9: qvo40be7332-c9@qvb40be7332-c9: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1450 qdisc noqueue master ovs-system state UP group default qlen 1000
+        link/ether 32:16:e4:da:86:52 brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::3016:e4ff:feda:8652/64 scope link
+           valid_lft forever preferred_lft forever
+    10: qvb40be7332-c9@qvo40be7332-c9: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1450 qdisc noqueue master qbr40be7332-c9 state UP group default qlen 1000
+        link/ether a6:a3:f6:b8:3e:a1 brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::a4a3:f6ff:feb8:3ea1/64 scope link
+           valid_lft forever preferred_lft forever
+    11: tap40be7332-c9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast master qbr40be7332-c9 state UNKNOWN group default qlen 1000
+        link/ether fe:16:3e:3e:76:b9 brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::fc16:3eff:fe3e:76b9/64 scope link
+           valid_lft forever preferred_lft forever
+
+.. code-block:: bash
+
+    [root@compute1 ~]'#' ovs-vsctl show
+
+    4357a757-09ee-4189-8edf-1c8bc9036850
+        Manager "ptcp:6640:127.0.0.1"
+            is_connected: true
+        Bridge br-int
+            Controller "tcp:127.0.0.1:6633"
+                is_connected: true
+            fail_mode: secure
+            Port br-int
+                Interface br-int
+                    type: internal
+            Port "qvo40be7332-c9"
+                tag: 1
+                Interface "qvo40be7332-c9"
+            Port patch-tun
+                Interface patch-tun
+                    type: patch
+                    options: {peer=patch-int}
+        Bridge br-tun
+            Controller "tcp:127.0.0.1:6633"
+                is_connected: true
+            fail_mode: secure
+            Port patch-int
+                Interface patch-int
+                    type: patch
+                    options: {peer=patch-tun}
+            Port br-tun
+                Interface br-tun
+                    type: internal
+            Port "vxlan-0a000114"
+                Interface "vxlan-0a000114"
+                    type: vxlan
+                    options: {df_default="true", egress_pkt_mark="0", in_key=flow, local_ip="10.0.1.21", out_key=flow, remote_ip="10.0.1.20"}
+            Port "vxlan-0a000116"
+                Interface "vxlan-0a000116"
+                    type: vxlan
+                    options: {df_default="true", egress_pkt_mark="0", in_key=flow, local_ip="10.0.1.21", out_key=flow, remote_ip="10.0.1.22"}
+        ovs_version: "2.11.0"
+
+.. code-block:: bash
+
+    [root@compute1 ~]'#' brctl show
+    
+    bridge name         bridge id           STP enabled     interfaces
+    qbr40be7332-c9      8000.a6a3f6b83ea1   no              qvb40be7332-c9
+                                                            tap40be7332-c9
+
+- Compute node 2:
+
+.. code-block:: bash
+
+    [root@compute2 ~]'#' ip address
+
+    1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+        link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+        inet 127.0.0.1/8 scope host lo
+           valid_lft forever preferred_lft forever
+        inet6 ::1/128 scope host
+           valid_lft forever preferred_lft forever
+    2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:03:ad:05 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic enp0s3
+           valid_lft 77679sec preferred_lft 77679sec
+        inet6 fe80::a00:27ff:fe03:ad05/64 scope link noprefixroute
+           valid_lft forever preferred_lft forever
+    3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+        link/ether 08:00:27:d2:4c:f1 brd ff:ff:ff:ff:ff:ff
+        inet 10.0.1.22/24 brd 10.0.1.255 scope global noprefixroute enp0s8
+           valid_lft forever preferred_lft forever
+        inet6 fe80::a00:27ff:fed2:4cf1/64 scope link
+           valid_lft forever preferred_lft forever
+    4: ovs-system: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+        link/ether 46:5c:23:7e:2b:37 brd ff:ff:ff:ff:ff:ff
+    5: br-int: <BROADCAST,MULTICAST> mtu 1450 qdisc noop state DOWN group default qlen 1000
+        link/ether fa:2a:a6:6e:31:4f brd ff:ff:ff:ff:ff:ff
+    6: br-tun: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
+        link/ether aa:c3:d2:90:32:4b brd ff:ff:ff:ff:ff:ff
+    7: vxlan_sys_4789: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 65000 qdisc noqueue master ovs-system state UNKNOWN group default qlen 1000
+        link/ether 6e:9d:de:a6:ec:99 brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::6c9d:deff:fea6:ec99/64 scope link
+           valid_lft forever preferred_lft forever
+    8: qbr9a26419b-25: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc noqueue state UP group default qlen 1000
+        link/ether 46:18:9a:b4:51:0c brd ff:ff:ff:ff:ff:ff
+    9: qvo9a26419b-25@qvb9a26419b-25: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1450 qdisc noqueue master ovs-system state UP group default qlen 1000
+        link/ether c2:5f:0b:e1:1e:09 brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::c05f:bff:fee1:1e09/64 scope link
+           valid_lft forever preferred_lft forever
+    10: qvb9a26419b-25@qvo9a26419b-25: <BROADCAST,MULTICAST,PROMISC,UP,LOWER_UP> mtu 1450 qdisc noqueue master qbr9a26419b-25 state UP group default qlen 1000
+        link/ether 46:18:9a:b4:51:0c brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::4418:9aff:feb4:510c/64 scope link
+           valid_lft forever preferred_lft forever
+    11: tap9a26419b-25: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1450 qdisc pfifo_fast master qbr9a26419b-25 state UNKNOWN group default qlen 1000
+        link/ether fe:16:3e:c8:7d:90 brd ff:ff:ff:ff:ff:ff
+        inet6 fe80::fc16:3eff:fec8:7d90/64 scope link
+           valid_lft forever preferred_lft forever
+
+.. code-block:: bash
+
+    [root@compute2 ~]'#' ovs-vsctl show
+
+    48edfef1-b892-4471-b143-263034441275
+        Manager "ptcp:6640:127.0.0.1"
+            is_connected: true
+        Bridge br-int
+            Controller "tcp:127.0.0.1:6633"
+                is_connected: true
+            fail_mode: secure
+            Port br-int
+                Interface br-int
+                    type: internal
+            Port "qvo9a26419b-25"
+                tag: 1
+                Interface "qvo9a26419b-25"
+            Port patch-tun
+                Interface patch-tun
+                    type: patch
+                    options: {peer=patch-int}
+        Bridge br-tun
+            Controller "tcp:127.0.0.1:6633"
+                is_connected: true
+            fail_mode: secure
+            Port br-tun
+                Interface br-tun
+                    type: internal
+            Port "vxlan-0a000114"
+                Interface "vxlan-0a000114"
+                    type: vxlan
+                    options: {df_default="true", egress_pkt_mark="0", in_key=flow, local_ip="10.0.1.22", out_key=flow, remote_ip="10.0.1.20"}
+            Port "vxlan-0a000115"
+                Interface "vxlan-0a000115"
+                    type: vxlan
+                    options: {df_default="true", egress_pkt_mark="0", in_key=flow, local_ip="10.0.1.22", out_key=flow, remote_ip="10.0.1.21"}
+            Port patch-int
+                Interface patch-int
+                    type: patch
+                    options: {peer=patch-tun}
+        ovs_version: "2.11.0"
+
+.. code-block:: bash
+
+    [root@compute2 ~]'#' brctl show
+
+    bridge name         bridge id               STP enabled     interfaces
+    qbr9a26419b-25      8000.46189ab4510c       no              qvb9a26419b-25
+                                                                tap9a26419b-25
+
+Anexo 4: Pruebas de tráfico
+'''''''''''''''''''''''''''
+
+Comunicación entre instancias de Compute nodes distintos
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+Desde la instancia 1 (``10.0.0.2``) ubicada en el nodo Compute 1 (Hypervisor 1) haremos ping a la instancia 2 (``10.0.0.3``) ubicada en el nodo Compute 2 (Hypervisor 2):
+
+.. code-block:: bash
+
+    $ ping 10.0.0.3
+
+- ¿Por qué nodos viaja el tráfico ICMP?
+
+Hacemos uso de ``tcpdump`` en cada nodo (o VM) en busca de tráfico ICMP y obtenemos los siguientes resultados:
+
+1. Controller/Network Node:
+
+.. code-block:: bash
+
+    [root@packstack ~]'#' tcpdump -i any icmp
+
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes
+    ^C
+    0 packets captured
+    0 packets received by filter
+    0 packets dropped by kernel
+
+2. Compute Node 1:
+
+.. code-block:: bash
+
+    [root@compute1 ~]'#' tcpdump -i any icmp
+
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes
+    23:28:22.640464 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 0, length 64
+    23:28:22.640488 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 0, length 64
+    23:28:22.640489 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 0, length 64
+    23:28:22.640593 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 0, length 64
+    23:28:22.643021 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 43265, seq 0, length 64
+    23:28:22.643125 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 43265, seq 0, length 64
+    23:28:22.643127 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 43265, seq 0, length 64
+    23:28:22.643138 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 43265, seq 0, length 64
+    23:28:23.641731 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 1, length 64
+    23:28:23.641745 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 1, length 64
+    ...
+
+3. Compute Node 2:
+
+.. code-block:: bash
+
+    [root@compute2 ~]'#' tcpdump -i any icmp
+
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes
+    23:28:22.639348 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 0, length 64
+    23:28:22.640678 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 0, length 64
+    23:28:22.640681 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 0, length 64
+    23:28:22.640695 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 0, length 64
+    23:28:22.641265 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 43265, seq 0, length 64
+    23:28:22.641275 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 43265, seq 0, length 64
+    23:28:22.641276 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 43265, seq 0, length 64
+    23:28:22.641419 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 43265, seq 0, length 64
+    23:28:23.640486 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 1, length 64
+    23:28:23.640509 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 43265, seq 1, length 64
+    ...
+
+Como se ha comprobado, por el Controller/Network node no cruza tráfico de las instancias. Por los nodos Compute 1 y Compute 2 pasan 4 request y 4 replies cada uno para una misma secuencia (``seq``) de paquete ICMP. Esto nos hace pensar que el paquete ICMP está atravesando 4 interfaces distintas en cada Compute node.
+
+- ¿Qué interfaces atraviesa el tráfico para viajar de instancia a instancia?
+
+Sabemos que el tráfico entre instancias de compute nodes distintos no pasa por el Controller/Network node. Ahora veamos qué interfaces atraviesa el tráfico en Compute 1 y Compute 2:
+
+1. Compute Node 1:
+
+.. code-block:: bash
+
+    [root@compute1 ~]'#' tcpdump -i tap40be7332-c9 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on tap40be7332-c9, link-type EN10MB (Ethernet), capture size 262144 bytes
+    23:48:39.283358 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 44033, seq 5, length 64
+    23:48:39.284066 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 44033, seq 5, length 64
+    ...
+
+    [root@compute1 ~]'#' tcpdump -i qvb40be7332-c9 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on qvb40be7332-c9, link-type EN10MB (Ethernet), capture size 262144 bytes
+    23:48:48.285237 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 44033, seq 14, length 64
+    23:48:48.285952 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 44033, seq 14, length 64
+    ...
+
+    [root@compute1 ~]'#' tcpdump -i qbr40be7332-c9 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on qbr40be7332-c9, link-type EN10MB (Ethernet), capture size 262144 bytes
+    23:49:02.302033 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 44033, seq 28, length 64
+    23:49:02.302889 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 44033, seq 28, length 64
+    ...
+
+    [root@compute1 ~]'#' tcpdump -i qvo40be7332-c9 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on qvo40be7332-c9, link-type EN10MB (Ethernet), capture size 262144 bytes
+    23:49:19.305016 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 44033, seq 45, length 64
+    23:49:19.305850 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 44033, seq 45, length 64
+    ...
+
+    [root@compute1 ~]# tcpdump -i vxlan_sys_4789 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on vxlan_sys_4789, link-type EN10MB (Ethernet), capture size 262144 bytes
+    01:17:41.602490 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 44033, seq 50, length 64
+    01:17:41.603217 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 44033, seq 50, length 64
+    ...
+
+    [root@compute1 ~]# tcpdump -i enp0s3 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on enp0s3, link-type EN10MB (Ethernet), capture size 262144 bytes
+    ^C
+    0 packets captured
+    0 packets received by filter
+    0 packets dropped by kernel
+
+    [root@compute1 ~]'#' tcpdump -i enp0s8 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on enp0s8, link-type EN10MB (Ethernet), capture size 262144 bytes
+    ^C
+    0 packets captured
+    0 packets received by filter
+    0 packets dropped by kernel
+
+Vemos que, en realidad, el tráfico ICMP atraviesa 5 interfaces del Compute Node 1: 3 interfaces del Linux Bridge, 1 interfaz del OVS Integration bridge que se conecta con este Linux bridge y 1 la interfaz VXLAN.
+
+2. Compute Node 2:
+
+.. code-block:: bash
+
+    [root@compute2 ~]'#' tcpdump -i qvo9a26419b-25 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on qvo9a26419b-25, link-type EN10MB (Ethernet), capture size 262144 bytes
+    23:56:59.857009 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 44289, seq 6, length 64
+    23:56:59.857879 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 44289, seq 6, length 64
+    ...
+
+    [root@compute2 ~]'#' tcpdump -i qvb9a26419b-25 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on qvb9a26419b-25, link-type EN10MB (Ethernet), capture size 262144 bytes
+    23:57:06.860267 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 44289, seq 13, length 64
+    23:57:06.861080 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 44289, seq 13, length 64
+    ...
+
+    [root@compute2 ~]'#' tcpdump -i qbr9a26419b-25 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on qbr9a26419b-25, link-type EN10MB (Ethernet), capture size 262144 bytes
+    23:57:12.861566 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 44289, seq 19, length 64
+    23:57:12.862064 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 44289, seq 19, length 64
+    ...
+
+    [root@compute2 ~]'#' tcpdump -i tap9a26419b-25 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on tap9a26419b-25, link-type EN10MB (Ethernet), capture size 262144 bytes
+    23:57:19.863279 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 44289, seq 26, length 64
+    23:57:19.863987 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 44289, seq 26, length 64
+    ...
+
+    [root@compute2 ~]'#' tcpdump -i vxlan_sys_4789 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on vxlan_sys_4789, link-type EN10MB (Ethernet), capture size 262144 bytes
+    01:26:21.977054 IP 10.0.0.2 > 10.0.0.3: ICMP echo request, id 44289, seq 30, length 64
+    01:26:21.977938 IP 10.0.0.3 > 10.0.0.2: ICMP echo reply, id 44289, seq 30, length 64
+    ...
+
+    [root@compute2 ~]'#' tcpdump -i enp0s3 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on enp0s3, link-type EN10MB (Ethernet), capture size 262144 bytes
+    ^C
+    0 packets captured
+    0 packets received by filter
+    0 packets dropped by kernel
+
+    [root@compute2 ~]'#' tcpdump -i enp0s8 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on enp0s8, link-type EN10MB (Ethernet), capture size 262144 bytes
+    ^C
+    0 packets captured
+    0 packets received by filter
+    0 packets dropped by kernel
+
+Vemos que, en realidad, el tráfico ICMP atraviesa 5 interfaces del Compute Node 2: 3 interfaces del Linux Bridge, 1 interfaz del OVS Integration bridge que se conecta con este Linux bridge y 1 la interfaz VXLAN.
+
+.. Important::
+
+    Hemos comprobado que existe una ruta de comunicación separada para el tráfico entre instancias que pertenecen a distintos Compute Nodes. Esta se llama **Data Path**. El Controller/Network Node no recibe tráfico de esta comunicación entre instancias.
+
+Comunicación de instancia con Internet
+""""""""""""""""""""""""""""""""""""""
+
+Desde la instancia 1 (``10.0.0.2``) ubicada en el nodo Compute 1 (Hypervisor 1) haremos ping a la IP ``8.8.8.8``:
+
+- ¿Por qué nodos viaja el tráfico ICMP?
+
+Hacemos uso de ``tcpdump`` en el nodo Controller/Network y Compute 1 en busca de tráfico ICMP y obtenemos los siguientes resultados:
+
+1. Controller/Network Node:
+
+.. code-block:: bash
+
+    [root@packstack ~]'#' tcpdump -i any icmp
+
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes
+    00:50:54.291695 IP 10.0.0.2 > dns.google: ICMP echo request, id 45057, seq 1, length 64
+    00:50:54.291723 IP 172.24.4.10 > dns.google: ICMP echo request, id 45057, seq 1, length 64
+    00:50:54.291731 IP packstack > dns.google: ICMP echo request, id 45057, seq 1, length 64
+    00:50:54.373374 IP dns.google > packstack: ICMP echo reply, id 45057, seq 1, length 64
+    00:50:54.373401 IP dns.google > 172.24.4.10: ICMP echo reply, id 45057, seq 1, length 64
+    00:50:54.373445 IP dns.google > 10.0.0.2: ICMP echo reply, id 45057, seq 1, length 64
+    00:50:55.293234 IP 10.0.0.2 > dns.google: ICMP echo request, id 45057, seq 2, length 64
+    00:50:55.293261 IP 172.24.4.10 > dns.google: ICMP echo request, id 45057, seq 2, length 64
+    ...
+
+2. Compute Node 1:
+
+.. code-block:: bash
+
+    [root@compute1 ~]'#' tcpdump -i any icmp
+
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on any, link-type LINUX_SLL (Linux cooked), capture size 262144 bytes
+    00:51:04.317637 IP 10.0.0.2 > dns.google: ICMP echo request, id 45057, seq 11, length 64
+    00:51:04.317663 IP 10.0.0.2 > dns.google: ICMP echo request, id 45057, seq 11, length 64
+    00:51:04.317665 IP 10.0.0.2 > dns.google: ICMP echo request, id 45057, seq 11, length 64
+    00:51:04.317670 IP 10.0.0.2 > dns.google: ICMP echo request, id 45057, seq 11, length 64
+    00:51:04.399731 IP dns.google > 10.0.0.2: ICMP echo reply, id 45057, seq 11, length 64
+    00:51:04.399739 IP dns.google > 10.0.0.2: ICMP echo reply, id 45057, seq 11, length 64
+    00:51:04.399740 IP dns.google > 10.0.0.2: ICMP echo reply, id 45057, seq 11, length 64
+    00:51:04.399755 IP dns.google > 10.0.0.2: ICMP echo reply, id 45057, seq 11, length 64
+    00:51:05.324080 IP 10.0.0.2 > dns.google: ICMP echo request, id 45057, seq 12, length 64
+    00:51:05.324105 IP 10.0.0.2 > dns.google: ICMP echo request, id 45057, seq 12, length 64
+    ...
+
+Por el nodo Controller/Network pasan 3 request y 3 replies de tráfico ICMP, mientras que por Compute 1 pasan 4 request y 4 replies, para una misma secuencia (``seq``) de paquete ICMP.
+
+- ¿Qué interfaces atraviesa el tráfico para viajar de la instancia a Internet?
+
+Ahora veamos qué interfaces atraviesa el tráfico en Controller/Network node y Compute 1:
+
+1. Controller/Network Node:
+
+.. code-block:: bash
+
+    [root@packstack ~]'#' tcpdump -i enp0s3 icmp
+
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on enp0s3, link-type EN10MB (Ethernet), capture size 262144 bytes
+    01:04:48.753587 IP packstack > dns.google: ICMP echo request, id 45569, seq 6, length 64
+    01:04:48.829003 IP dns.google > packstack: ICMP echo reply, id 45569, seq 6, length 64
+    ...
+
+    [root@packstack ~]'#' tcpdump -i enp0s8 icmp
+
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on enp0s8, link-type EN10MB (Ethernet), capture size 262144 bytes
+    ^C
+    0 packets captured
+    0 packets received by filter
+    0 packets dropped by kernel
+
+    [root@packstack ~]'#' tcpdump -i br-ex icmp
+
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on br-ex, link-type EN10MB (Ethernet), capture size 262144 bytes
+    01:05:06.838046 IP 172.24.4.10 > dns.google: ICMP echo request, id 45569, seq 24, length 64
+    01:05:06.911353 IP dns.google > 172.24.4.10: ICMP echo reply, id 45569, seq 24, length 64
+    ...
+
+    [root@packstack ~]'#' tcpdump -i vxlan_sys_4789 icmp
+
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on vxlan_sys_4789, link-type EN10MB (Ethernet), capture size 262144 bytes
+    01:05:13.858767 IP 10.0.0.2 > dns.google: ICMP echo request, id 45569, seq 31, length 64
+    01:05:13.936364 IP dns.google > 10.0.0.2: ICMP echo reply, id 45569, seq 31, length 64
+    ...
+
+Comprobamos que el tráfico ICMP atraviesa 3 interfaces del Controller/Network Node: ``enp0s3``, ``enp0s8`` y 1 la interfaz VXLAN.
+
+2. Compute Node 1:
+
+.. code-block:: bash
+
+    [root@compute1 ~]'#' tcpdump -i tap40be7332-c9 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on tap40be7332-c9, link-type EN10MB (Ethernet), capture size 262144 bytes
+    01:10:12.675236 IP 10.0.0.2 > dns.google: ICMP echo request, id 46081, seq 15, length 64
+    01:10:12.753360 IP dns.google > 10.0.0.2: ICMP echo reply, id 46081, seq 15, length 64
+
+    [root@compute1 ~]'#' tcpdump -i qvb40be7332-c9 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on qvb40be7332-c9, link-type EN10MB (Ethernet), capture size 262144 bytes
+    01:10:25.676923 IP 10.0.0.2 > dns.google: ICMP echo request, id 46081, seq 28, length 64
+    01:10:25.753336 IP dns.google > 10.0.0.2: ICMP echo reply, id 46081, seq 28, length 64
+
+    [root@compute1 ~]'#' tcpdump -i qbr40be7332-c9 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on qbr40be7332-c9, link-type EN10MB (Ethernet), capture size 262144 bytes
+    01:10:40.680569 IP 10.0.0.2 > dns.google: ICMP echo request, id 46081, seq 43, length 64
+    01:10:40.756072 IP dns.google > 10.0.0.2: ICMP echo reply, id 46081, seq 43, length 64
+
+    [root@compute1 ~]'#' tcpdump -i qvo40be7332-c9 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on qvo40be7332-c9, link-type EN10MB (Ethernet), capture size 262144 bytes
+    01:11:03.686021 IP 10.0.0.2 > dns.google: ICMP echo request, id 46081, seq 66, length 64
+    01:11:03.763526 IP dns.google > 10.0.0.2: ICMP echo reply, id 46081, seq 66, length 64
+
+    [root@compute1 ~]'#' tcpdump -i vxlan_sys_4789 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on vxlan_sys_4789, link-type EN10MB (Ethernet), capture size 262144 bytes
+    01:11:42.705281 IP 10.0.0.2 > dns.google: ICMP echo request, id 46081, seq 105, length 64
+    01:11:42.783655 IP dns.google > 10.0.0.2: ICMP echo reply, id 46081, seq 105, length 64
+
+    [root@compute1 ~]'#' tcpdump -i enp0s3 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on enp0s3, link-type EN10MB (Ethernet), capture size 262144 bytes
+    ^C
+    0 packets captured
+    0 packets received by filter
+    0 packets dropped by kernel
+
+    [root@compute1 ~]'#' tcpdump -i enp0s8 icmp
+    tcpdump: verbose output suppressed, use -v or -vv for full protocol decode
+    listening on enp0s8, link-type EN10MB (Ethernet), capture size 262144 bytes
+    ^C
+    0 packets captured
+    0 packets received by filter
+    0 packets dropped by kernel
+
+Vemos que, en realidad, el tráfico ICMP atraviesa 5 interfaces del Compute Node 1: 3 interfaces del Linux Bridge, 1 interfaz del OVS Integration bridge que se conecta con este Linux bridge y 1 la interfaz VXLAN.
+
+Anexo 5: Archivo answers.txt de packstack generado
+''''''''''''''''''''''''''''''''''''''''''''''''''
+
+.. code-block:: bash
+
+    '#' cat /home/vagrant/packstack-answers-20200218-155331.txt
 
     [general]
 
@@ -501,14 +1300,14 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Server on which to install OpenStack services specific to the
     # controller role (for example, API servers or dashboard).
-    CONFIG_CONTROLLER_HOST=10.0.0.20
+    CONFIG_CONTROLLER_HOST=10.0.1.20
 
     # List the servers on which to install the Compute service.
-    CONFIG_COMPUTE_HOSTS=10.0.0.21,10.0.0.22
+    CONFIG_COMPUTE_HOSTS=10.0.1.21,10.0.1.22
 
     # List of servers on which to install the network service such as
     # Compute networking (nova network) or OpenStack Networking (neutron).
-    CONFIG_NETWORK_HOSTS=10.0.0.20
+    CONFIG_NETWORK_HOSTS=10.0.1.20
 
     # Specify 'y' if you want to use VMware vCenter as hypervisor and
     # storage; otherwise, specify 'n'. ['y', 'n']
@@ -681,7 +1480,7 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_AMQP_BACKEND=rabbitmq
 
     # IP address of the server on which to install the AMQP service.
-    CONFIG_AMQP_HOST=10.0.0.20
+    CONFIG_AMQP_HOST=10.0.1.20
 
     # Specify 'y' to enable SSL for the AMQP service. ['y', 'n']
     CONFIG_AMQP_ENABLE_SSL=n
@@ -703,17 +1502,17 @@ Anexo: Archivo answers.txt de packstack generado
     # installation was not specified in CONFIG_MARIADB_INSTALL, specify
     # the IP address of an existing database server (a MariaDB cluster can
     # also be specified).
-    CONFIG_MARIADB_HOST=10.0.0.20
+    CONFIG_MARIADB_HOST=10.0.1.20
 
     # User name for the MariaDB administrative user.
     CONFIG_MARIADB_USER=root
 
     # Password for the MariaDB administrative user.
-    CONFIG_MARIADB_PW=9406607c0b3347bc
+    CONFIG_MARIADB_PW=8941bfccbd3645d1
 
     # Password to use for the Identity service (keystone) to access the
     # database.
-    CONFIG_KEYSTONE_DB_PW=1f4f9e6ec6d44aaa
+    CONFIG_KEYSTONE_DB_PW=1e448e39f1dc4906
 
     # Enter y if cron job for removing soft deleted DB rows should be
     # created.
@@ -724,7 +1523,7 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_KEYSTONE_REGION=RegionOne
 
     # Token to use for the Identity service API.
-    CONFIG_KEYSTONE_ADMIN_TOKEN=99be887aa2ee444d9391657149ae3a20
+    CONFIG_KEYSTONE_ADMIN_TOKEN=329f0cccb90e44afb9e1d597e60660b2
 
     # Email address for the Identity service 'admin' user.  Defaults to
     CONFIG_KEYSTONE_ADMIN_EMAIL=root@localhost
@@ -920,11 +1719,11 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for the Image service (glance) to access the
     # database.
-    CONFIG_GLANCE_DB_PW=b7886c5dee054535
+    CONFIG_GLANCE_DB_PW=55a47171835c4229
 
     # Password to use for the Image service to authenticate with the
     # Identity service.
-    CONFIG_GLANCE_KS_PW=0965574b890045ba
+    CONFIG_GLANCE_KS_PW=7e2770838bab4988
 
     # Storage backend for the Image service (controls how the Image
     # service stores disk images). Valid options are: file or swift
@@ -935,7 +1734,7 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for the Block Storage service (cinder) to access
     # the database.
-    CONFIG_CINDER_DB_PW=7549367c69a14bf6
+    CONFIG_CINDER_DB_PW=4b4373ed09dc49f9
 
     # Enter y if cron job for removing soft deleted DB rows should be
     # created.
@@ -943,7 +1742,7 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for the Block Storage service to authenticate with
     # the Identity service.
-    CONFIG_CINDER_KS_PW=d3988e56159a494a
+    CONFIG_CINDER_KS_PW=0e7ff9aa05d54997
 
     # Storage backend to use for the Block Storage service; valid options
     # are: lvm, gluster, nfs, vmdk, netapp, solidfire. ['lvm', 'gluster',
@@ -1124,11 +1923,11 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for the Compute service (nova) to access the
     # database.
-    CONFIG_NOVA_DB_PW=738aee35a25f481e
+    CONFIG_NOVA_DB_PW=6295662e92e94420
 
     # Password to use for the Compute service to authenticate with the
     # Identity service.
-    CONFIG_NOVA_KS_PW=e69669a1bf8642f8
+    CONFIG_NOVA_KS_PW=f3b48c3136e544c1
 
     # Whether or not Packstack should manage a default initial set of
     # Nova flavors. Defaults to 'y'.
@@ -1174,11 +1973,11 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for OpenStack Networking (neutron) to authenticate
     # with the Identity service.
-    CONFIG_NEUTRON_KS_PW=4af89e370d1a45f3
+    CONFIG_NEUTRON_KS_PW=a06d5f5ee976464f
 
     # The password to use for OpenStack Networking to access the
     # database.
-    CONFIG_NEUTRON_DB_PW=52914171125f42a9
+    CONFIG_NEUTRON_DB_PW=dc36414078674e17
 
     # The name of the Open vSwitch bridge (or empty for linuxbridge) for
     # the OpenStack Networking L3 agent to use for external  traffic.
@@ -1187,7 +1986,7 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_NEUTRON_L3_EXT_BRIDGE=br-ex
 
     # Password for the OpenStack Networking metadata agent.
-    CONFIG_NEUTRON_METADATA_PW=a556078a86c94c3d
+    CONFIG_NEUTRON_METADATA_PW=7174442df1764ba1
 
     # Specify 'y' to install OpenStack Networking's Load-Balancing-
     # as-a-Service (LBaaS). ['y', 'n']
@@ -1528,7 +2327,7 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_HORIZON_SSL=n
 
     # Secret key to use for Horizon Secret Encryption Key.
-    CONFIG_HORIZON_SECRET_KEY=12e15d8140d44bd18a3267db90e31221
+    CONFIG_HORIZON_SECRET_KEY=344bf1addd2d49c0beab4b659bf0e55f
 
     # PEM-encoded certificate to be used for SSL connections on the https
     # server. To generate a certificate, leave blank.
@@ -1542,7 +2341,7 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password to use for the Object Storage service to authenticate with
     # the Identity service.
-    CONFIG_SWIFT_KS_PW=85566c38881f4d6e
+    CONFIG_SWIFT_KS_PW=7e9cb3e48d014ad5
 
     # Comma-separated list of devices to use as storage device for Object
     # Storage. Each entry must take the format /path/to/dev (for example,
@@ -1566,22 +2365,22 @@ Anexo: Archivo answers.txt de packstack generado
     # Custom seed number to use for swift_hash_path_suffix in
     # /etc/swift/swift.conf. If you do not provide a value, a seed number
     # is automatically generated.
-    CONFIG_SWIFT_HASH=d14037a2a5784e4b
+    CONFIG_SWIFT_HASH=4fa03e02fd9240ec
 
     # Size of the Object Storage loopback file storage device.
     CONFIG_SWIFT_STORAGE_SIZE=2G
 
     # Password used by Orchestration service user to authenticate against
     # the database.
-    CONFIG_HEAT_DB_PW=aa292bf6f9f444b3
+    CONFIG_HEAT_DB_PW=bca90ad488604f3f
 
     # Encryption key to use for authentication in the Orchestration
     # database (16, 24, or 32 chars).
-    CONFIG_HEAT_AUTH_ENC_KEY=6c3d28d54a3b4150
+    CONFIG_HEAT_AUTH_ENC_KEY=43c886595fec4dfa
 
     # Password to use for the Orchestration service to authenticate with
     # the Identity service.
-    CONFIG_HEAT_KS_PW=5b2249b3b30c475d
+    CONFIG_HEAT_KS_PW=3d68fd66259c41ee
 
     # Specify 'y' to install the Orchestration CloudFormation API. ['y',
     # 'n']
@@ -1595,7 +2394,7 @@ Anexo: Archivo answers.txt de packstack generado
 
     # Password for the Identity domain administrative user for
     # Orchestration.
-    CONFIG_HEAT_DOMAIN_PASSWORD=e0ba944e057d4571
+    CONFIG_HEAT_DOMAIN_PASSWORD=3435199bed7c4095
 
     # Specify 'y' to provision for demo usage and testing. ['y', 'n']
     CONFIG_PROVISION_DEMO=y
@@ -1694,18 +2493,18 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_PROVISION_OVS_BRIDGE=y
 
     # Password to use for Gnocchi to access the database.
-    CONFIG_GNOCCHI_DB_PW=2d66ddd454554e20
+    CONFIG_GNOCCHI_DB_PW=6fb1d9e8bf884e37
 
     # Password to use for Gnocchi to authenticate with the Identity
     # service.
-    CONFIG_GNOCCHI_KS_PW=ca4878189f214cb1
+    CONFIG_GNOCCHI_KS_PW=2818fec28de64c57
 
     # Secret key for signing Telemetry service (ceilometer) messages.
-    CONFIG_CEILOMETER_SECRET=bd0a56bf54ed40ff
+    CONFIG_CEILOMETER_SECRET=c26282c0fb404345
 
     # Password to use for Telemetry to authenticate with the Identity
     # service.
-    CONFIG_CEILOMETER_KS_PW=ce01b357d0ee46e2
+    CONFIG_CEILOMETER_KS_PW=b1388b48ef6147f2
 
     # Ceilometer service name. ['httpd', 'ceilometer']
     CONFIG_CEILOMETER_SERVICE_NAME=httpd
@@ -1719,18 +2518,18 @@ Anexo: Archivo answers.txt de packstack generado
     CONFIG_ENABLE_CEILOMETER_MIDDLEWARE=n
 
     # IP address of the server on which to install the Redis server.
-    CONFIG_REDIS_HOST=10.0.0.20
+    CONFIG_REDIS_HOST=10.0.1.20
 
     # Port on which the Redis server listens.
     CONFIG_REDIS_PORT=6379
 
     # Password to use for Telemetry Alarming to authenticate with the
     # Identity service.
-    CONFIG_AODH_KS_PW=0b54f8ec8d8c4d38
+    CONFIG_AODH_KS_PW=2c5c29bc887a4185
 
     # Password to use for Telemetry Alarming (AODH) to access the
     # database.
-    CONFIG_AODH_DB_PW=06103a156492464c
+    CONFIG_AODH_DB_PW=dda2cdf3fbd64ff6
 
     # Password to use for Panko to access the database.
     CONFIG_PANKO_DB_PW=PW_PLACEHOLDER
