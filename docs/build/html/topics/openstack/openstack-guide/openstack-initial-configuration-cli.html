@@ -134,6 +134,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#crear-un-contenedor">Crear un contenedor</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#crear-un-objeto">Crear un objeto</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#acceder-a-un-objeto">Acceder a un objeto</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#copiar-llave-publica-al-usuario-admin">Copiar llave pública al usuario <code class="docutils literal notranslate"><span class="pre">admin</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-host-aggregates">Crear Host Aggregates</a></li>
 </ul>
 </li>
 </ul>
@@ -266,6 +268,8 @@
 <li><a class="reference internal" href="#crear-un-contenedor" id="id23">Crear un contenedor</a></li>
 <li><a class="reference internal" href="#crear-un-objeto" id="id24">Crear un objeto</a></li>
 <li><a class="reference internal" href="#acceder-a-un-objeto" id="id25">Acceder a un objeto</a></li>
+<li><a class="reference internal" href="#copiar-llave-publica-al-usuario-admin" id="id26">Copiar llave pública al usuario <code class="docutils literal notranslate"><span class="pre">admin</span></code></a></li>
+<li><a class="reference internal" href="#crear-host-aggregates" id="id27">Crear Host Aggregates</a></li>
 </ul>
 </li>
 </ul>
@@ -273,7 +277,8 @@
 <div class="section" id="usar-credenciales-de-usuario">
 <h2><a class="toc-backref" href="#id2">Usar credenciales de usuario</a><a class="headerlink" href="#usar-credenciales-de-usuario" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>En el CLI, usar las credenciales del usuario <code class="docutils literal notranslate"><span class="pre">admin</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_admin
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">cd</span> /root/
+<span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_admin
 </pre></div>
 </div>
 </div>
@@ -322,7 +327,6 @@ Repeat User Password:
 <li>Asignar los roles <code class="docutils literal notranslate"><span class="pre">_member_</span></code> y <code class="docutils literal notranslate"><span class="pre">admin</span></code> al usuario creado:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack role add --project testproject --user testuser1 _member_
-<span class="s1">&#39;#&#39;</span> openstack role add --project testproject --user testuser1 admin
 
 <span class="s1">&#39;#&#39;</span> openstack role assignment list --project testproject --user testuser1
 
@@ -330,31 +334,34 @@ Repeat User Password:
 <span class="p">|</span> Role                             <span class="p">|</span> User                             <span class="p">|</span> Group <span class="p">|</span> Project                          <span class="p">|</span> Domain <span class="p">|</span> Inherited <span class="p">|</span>
 +----------------------------------+----------------------------------+-------+----------------------------------+--------+-----------+
 <span class="p">|</span> 75dbe014bfa54197890b46a034f4661e <span class="p">|</span> 6643474fffb548b4bd4fb3d6a09d9ecd <span class="p">|</span>       <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span>        <span class="p">|</span> False     <span class="p">|</span>
-<span class="p">|</span> 9fe2ff9ee4384b1894a90878d3e92bab <span class="p">|</span> 6643474fffb548b4bd4fb3d6a09d9ecd <span class="p">|</span>       <span class="p">|</span> 99d8a6cd24734f2aa3fe70140fbdbd64 <span class="p">|</span>        <span class="p">|</span> False     <span class="p">|</span>
 +----------------------------------+----------------------------------+-------+----------------------------------+--------+-----------+
 </pre></div>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>Si queremos que nuestro usuario tenga permisos de administrador, ejecutar la siguiente línea:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack role add --project testproject --user testuser1 admin
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="creacion-de-credenciales-cli-para-un-usuario">
 <h2><a class="toc-backref" href="#id5">Creación de credenciales CLI para un usuario</a><a class="headerlink" href="#creacion-de-credenciales-cli-para-un-usuario" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cp keystonerc_admin keystonerc_testuser1
 
-<span class="s1">&#39;#&#39;</span> keystonerc_testuser1
-<span class="s1">&#39;#&#39;</span> cat keystonerc_testuser1
-
-<span class="nb">unset</span> OS_SERVICE_TOKEN
-<span class="hll">    <span class="nb">export</span> <span class="nv">OS_USERNAME</span><span class="o">=</span>testuser1
-</span><span class="hll">    <span class="nb">export</span> <span class="nv">OS_PASSWORD</span><span class="o">=</span>testuser1
-</span>    <span class="nb">export</span> <span class="nv">OS_REGION_NAME</span><span class="o">=</span>RegionOne
-    <span class="nb">export</span> <span class="nv">OS_AUTH_URL</span><span class="o">=</span>http://192.168.1.100:5000/v3
-<span class="hll">    <span class="nb">export</span> <span class="nv">PS1</span><span class="o">=</span><span class="s1">&#39;[\u@\h \W(testuser1)]\$ &#39;</span>
+<span class="s1">&#39;#&#39;</span> cat <span class="s">&lt;&lt;- EOF &gt; keystonerc_testuser1</span>
+<span class="s">unset OS_SERVICE_TOKEN</span>
+<span class="hll"><span class="s">    export OS_USERNAME=testuser1</span>
+</span><span class="hll"><span class="s">    export OS_PASSWORD=testuser1</span>
+</span><span class="s">    export OS_REGION_NAME=RegionOne</span>
+<span class="s">    export OS_AUTH_URL=http://192.168.1.100:5000/v3</span>
+<span class="hll"><span class="s">    export PS1=&#39;[\u@\h \W(testuser1)]\$ &#39;</span>
 </span>
-<span class="hll"><span class="nb">export</span> <span class="nv">OS_PROJECT_NAME</span><span class="o">=</span>testproject
-</span><span class="nb">export</span> <span class="nv">OS_USER_DOMAIN_NAME</span><span class="o">=</span>Default
-<span class="nb">export</span> <span class="nv">OS_PROJECT_DOMAIN_NAME</span><span class="o">=</span>Default
-<span class="nb">export</span> <span class="nv">OS_IDENTITY_API_VERSION</span><span class="o">=</span><span class="m">3</span>
-
-<span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_testuser1
+<span class="hll"><span class="s">export OS_PROJECT_NAME=testproject</span>
+</span><span class="s">export OS_USER_DOMAIN_NAME=Default</span>
+<span class="s">export OS_PROJECT_DOMAIN_NAME=Default</span>
+<span class="s">export OS_IDENTITY_API_VERSION=3</span>
+<span class="s">EOF</span>
 </pre></div>
 </div>
 </div>
@@ -552,9 +559,11 @@ Repeat User Password:
 <ol class="arabic simple">
 <li>Crear una red:</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack network create intnet
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_testuser1
 
----------------------------+--------------------------------------+
+<span class="s1">&#39;#&#39;</span> openstack network create intnet
+
++---------------------------+--------------------------------------+
 <span class="p">|</span> Field                     <span class="p">|</span> Value                                <span class="p">|</span>
 +---------------------------+--------------------------------------+
 <span class="p">|</span> admin_state_up            <span class="p">|</span> UP                                   <span class="p">|</span>
@@ -741,11 +750,6 @@ qdhcp-2cf9c274-8592-476b-bde5-41e930e01577 <span class="o">(</span>id: <span cla
 <li>Conectar el router con una subred:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack router add subnet R1 subnet1
-
-<span class="s1">&#39;#&#39;</span> ip netns
-
-qrouter-d4cb763e-8578-484d-be6a-6d7da165e161 <span class="o">(</span>id: <span class="m">1</span><span class="o">)</span>
-qdhcp-2cf9c274-8592-476b-bde5-41e930e01577 <span class="o">(</span>id: <span class="m">0</span><span class="o">)</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -780,6 +784,10 @@ qdhcp-2cf9c274-8592-476b-bde5-41e930e01577 <span class="o">(</span>id: <span cla
                 type: patch
                 options: <span class="o">{</span><span class="nv">peer</span><span class="o">=</span>phy-br-ex<span class="o">}</span>
 
+<span class="s1">&#39;#&#39;</span> ip netns
+
+qrouter-d4cb763e-8578-484d-be6a-6d7da165e161 <span class="o">(</span>id: <span class="m">1</span><span class="o">)</span>
+qdhcp-2cf9c274-8592-476b-bde5-41e930e01577 <span class="o">(</span>id: <span class="m">0</span><span class="o">)</span>
 
 <span class="s1">&#39;#&#39;</span> openstack router show R1
 
@@ -1932,6 +1940,65 @@ tmpfs                    <span class="m">55</span>.2M     <span class="m">92</sp
 <li>Formato de URL: <code class="docutils literal notranslate"><span class="pre">http://192.168.1.100:8080/</span></code> + <code class="docutils literal notranslate"><span class="pre">tempurl</span></code></li>
 <li>URL: <a class="reference external" href="http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&amp;temp_url_expires=1581417017">http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&amp;temp_url_expires=1581417017</a></li>
 </ul>
+</div>
+<div class="section" id="copiar-llave-publica-al-usuario-admin">
+<h2><a class="toc-backref" href="#id26">Copiar llave pública al usuario <code class="docutils literal notranslate"><span class="pre">admin</span></code></a><a class="headerlink" href="#copiar-llave-publica-al-usuario-admin" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Copiar el contenido de la llave pública del keypair <code class="docutils literal notranslate"><span class="pre">keypair1</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> openstack keypair show --public-key keypair1
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxmvWnlwsIFva/0NUdPGI9FyMAQj9UOS36YILnbVF6Zv+SYBJMUJfuim68yEQbNh1U5OcP0oAP2DpSUzIkEVqJTLeJ6tZiL0jT34sDslCmFZd3Md+u88r6MGz/Oavso9lUr3nx9//Caqc9YJiCghCAeF7M1Yp5RnaUz08jnibqJ8ayRxKlj9PXasLtRZcXPgqVySdokmZYvf8M6wXDq/U8Z0pfHsiWczfCgdfKw7CJA8D+HsnDH0iX92rsD94wbir43WklbOR2lrtb8IYF+vzyqhkogzQiFsbKMVIqNSklZcs0BkE7iT7lCpi5vTXryrawjrNNZeRZUR4Nkv/rVJz/ Generated-by-Nova
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> cat keypair1.pub
+
+ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxmvWnlwsIFva/0NUdPGI9FyMAQj9UOS36YILnbVF6Zv+SYBJMUJfuim68yEQbNh1U5OcP0oAP2DpSUzIkEVqJTLeJ6tZiL0jT34sDslCmFZd3Md+u88r6MGz/Oavso9lUr3nx9//Caqc9YJiCghCAeF7M1Yp5RnaUz08jnibqJ8ayRxKlj9PXasLtRZcXPgqVySdokmZYvf8M6wXDq/U8Z0pfHsiWczfCgdfKw7CJA8D+HsnDH0iX92rsD94wbir43WklbOR2lrtb8IYF+vzyqhkogzQiFsbKMVIqNSklZcs0BkE7iT7lCpi5vTXryrawjrNNZeRZUR4Nkv/rVJz/ Generated-by-Nova
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Cambiar de usuario a <code class="docutils literal notranslate"><span class="pre">admin</span></code> y crear el keypair:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_admin
+
+<span class="s1">&#39;#&#39;</span> openstack keypair create --public-key keypair1.pub keypair1
+
++-------------+-------------------------------------------------+
+<span class="p">|</span> Field       <span class="p">|</span> Value                                           <span class="p">|</span>
++-------------+-------------------------------------------------+
+<span class="p">|</span> fingerprint <span class="p">|</span> 4a:ba:08:bc:b8:43:ec:8c:6c:9a:a9:6f:c0:f8:6f:3f <span class="p">|</span>
+<span class="p">|</span> name        <span class="p">|</span> keypair1                                        <span class="p">|</span>
+<span class="p">|</span> user_id     <span class="p">|</span> 913e33878304445a987b04f5ca4705a0                <span class="p">|</span>
++-------------+-------------------------------------------------+
+</pre></div>
+</div>
+</div>
+<div class="section" id="crear-host-aggregates">
+<h2><a class="toc-backref" href="#id27">Crear Host Aggregates</a><a class="headerlink" href="#crear-host-aggregates" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_admin
+
+<span class="s1">&#39;#&#39;</span> openstack aggregate create --zone controller1_zone controller1_aggregate
+
+<span class="s1">&#39;#&#39;</span> openstack aggregate add host controller1_aggregate controllernode1.localdomain
+
+<span class="s1">&#39;#&#39;</span> openstack aggregate create --zone compute1_zone compute1_aggregate
+
+<span class="s1">&#39;#&#39;</span> openstack aggregate create --zone compute2_zone compute2_aggregate
+
+<span class="s1">&#39;#&#39;</span> openstack aggregate add host compute2_aggregate computenode2.localdomain
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Ahora que hemos creado host aggregates y los hemos asociado a availability zones, podemos crear instancias en availability zones determinados sin necesidad de tener permisos de administrador:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> <span class="nb">source</span> keystonerc_testuser1
+
+<span class="s1">&#39;#&#39;</span> openstack server create --image cirros --flavor <span class="m">10</span> --key-name project1_keypair1 --security-group project1_secgroup --availability-zone compute1_zone --nic net-id<span class="o">=</span>e6760c1d-535b-4c0a-948d-5433e6d9fbec,v4-fixed-ip<span class="o">=</span><span class="m">10</span>.10.10.203 instC
+
+<span class="s1">&#39;#&#39;</span> openstack server create --image cirros --flavor <span class="m">10</span> --key-name project1_keypair1 --security-group project1_secgroup --availability-zone compute2_zone --nic net-id<span class="o">=</span>e6760c1d-535b-4c0a-948d-5433e6d9fbec,v4-fixed-ip<span class="o">=</span><span class="m">10</span>.10.10.204 instD
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 

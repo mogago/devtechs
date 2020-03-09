@@ -10,6 +10,7 @@ En el CLI, usar las credenciales del usuario ``admin``
 
 .. code-block:: bash
 
+    '#' cd /root/
     '#' source keystonerc_admin
 
 Crear un nuevo proyecto
@@ -60,7 +61,6 @@ Creación de un usuario asignado a un proyecto
 .. code-block:: bash
 
     '#' openstack role add --project testproject --user testuser1 _member_
-    '#' openstack role add --project testproject --user testuser1 admin
 
     '#' openstack role assignment list --project testproject --user testuser1
 
@@ -68,20 +68,25 @@ Creación de un usuario asignado a un proyecto
     | Role                             | User                             | Group | Project                          | Domain | Inherited |
     +----------------------------------+----------------------------------+-------+----------------------------------+--------+-----------+
     | 75dbe014bfa54197890b46a034f4661e | 6643474fffb548b4bd4fb3d6a09d9ecd |       | 99d8a6cd24734f2aa3fe70140fbdbd64 |        | False     |
-    | 9fe2ff9ee4384b1894a90878d3e92bab | 6643474fffb548b4bd4fb3d6a09d9ecd |       | 99d8a6cd24734f2aa3fe70140fbdbd64 |        | False     |
     +----------------------------------+----------------------------------+-------+----------------------------------+--------+-----------+
+
+.. Important::
+
+    Si queremos que nuestro usuario tenga permisos de administrador, ejecutar la siguiente línea:
+
+    .. code-block:: bash
+
+        '#' openstack role add --project testproject --user testuser1 admin
 
 Creación de credenciales CLI para un usuario
 ''''''''''''''''''''''''''''''''''''''''''''
 
 .. code-block:: bash
-    :emphasize-lines: 7,8,11,13
+    :emphasize-lines: 5,6,9,11
 
     '#' cp keystonerc_admin keystonerc_testuser1
 
-    '#' keystonerc_testuser1
-    '#' cat keystonerc_testuser1
-
+    '#' cat <<- EOF > keystonerc_testuser1
     unset OS_SERVICE_TOKEN
         export OS_USERNAME=testuser1
         export OS_PASSWORD=testuser1
@@ -93,8 +98,7 @@ Creación de credenciales CLI para un usuario
     export OS_USER_DOMAIN_NAME=Default
     export OS_PROJECT_DOMAIN_NAME=Default
     export OS_IDENTITY_API_VERSION=3
-
-    '#' source keystonerc_testuser1
+    EOF
 
 Creación de un flavor
 '''''''''''''''''''''
@@ -304,9 +308,11 @@ Link: `Create and manage networks - Openstack Docs`_
 
 .. code-block:: bash
 
+    '#' source keystonerc_testuser1
+
     '#' openstack network create intnet
 
-    ---------------------------+--------------------------------------+
+    +---------------------------+--------------------------------------+
     | Field                     | Value                                |
     +---------------------------+--------------------------------------+
     | admin_state_up            | UP                                   |
@@ -499,11 +505,6 @@ Crear un router
 
     '#' openstack router add subnet R1 subnet1
 
-    '#' ip netns
-
-    qrouter-d4cb763e-8578-484d-be6a-6d7da165e161 (id: 1)
-    qdhcp-2cf9c274-8592-476b-bde5-41e930e01577 (id: 0)
-
 - Comprobar cambios de configuración:
 
 .. code-block:: bash
@@ -538,6 +539,10 @@ Crear un router
                     type: patch
                     options: {peer=phy-br-ex}
 
+    '#' ip netns
+
+    qrouter-d4cb763e-8578-484d-be6a-6d7da165e161 (id: 1)
+    qdhcp-2cf9c274-8592-476b-bde5-41e930e01577 (id: 0)
 
     '#' openstack router show R1
 
@@ -1726,3 +1731,66 @@ Ahora sabemos más a detalle el formato de la URL (IP y puerto): ``http://192.16
 
 - Formato de URL: ``http://192.168.1.100:8080/`` + ``tempurl``
 - URL: http://192.168.1.100:8080/v1/AUTH_99d8a6cd24734f2aa3fe70140fbdbd64/container1/keystonerc_admin?temp_url_sig=83258744f90d5dee3fc8cf04235754447c16f7b9&temp_url_expires=1581417017
+
+
+Copiar llave pública al usuario ``admin``
+'''''''''''''''''''''''''''''''''''''''''
+
+1. Copiar el contenido de la llave pública del keypair ``keypair1``:
+
+.. code-block:: bash
+
+    '#' openstack keypair show --public-key keypair1
+
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxmvWnlwsIFva/0NUdPGI9FyMAQj9UOS36YILnbVF6Zv+SYBJMUJfuim68yEQbNh1U5OcP0oAP2DpSUzIkEVqJTLeJ6tZiL0jT34sDslCmFZd3Md+u88r6MGz/Oavso9lUr3nx9//Caqc9YJiCghCAeF7M1Yp5RnaUz08jnibqJ8ayRxKlj9PXasLtRZcXPgqVySdokmZYvf8M6wXDq/U8Z0pfHsiWczfCgdfKw7CJA8D+HsnDH0iX92rsD94wbir43WklbOR2lrtb8IYF+vzyqhkogzQiFsbKMVIqNSklZcs0BkE7iT7lCpi5vTXryrawjrNNZeRZUR4Nkv/rVJz/ Generated-by-Nova
+
+.. code-block:: bash
+
+    '#' cat keypair1.pub
+
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCxmvWnlwsIFva/0NUdPGI9FyMAQj9UOS36YILnbVF6Zv+SYBJMUJfuim68yEQbNh1U5OcP0oAP2DpSUzIkEVqJTLeJ6tZiL0jT34sDslCmFZd3Md+u88r6MGz/Oavso9lUr3nx9//Caqc9YJiCghCAeF7M1Yp5RnaUz08jnibqJ8ayRxKlj9PXasLtRZcXPgqVySdokmZYvf8M6wXDq/U8Z0pfHsiWczfCgdfKw7CJA8D+HsnDH0iX92rsD94wbir43WklbOR2lrtb8IYF+vzyqhkogzQiFsbKMVIqNSklZcs0BkE7iT7lCpi5vTXryrawjrNNZeRZUR4Nkv/rVJz/ Generated-by-Nova
+
+2. Cambiar de usuario a ``admin`` y crear el keypair:
+
+.. code-block:: bash
+
+    '#' source keystonerc_admin
+
+    '#' openstack keypair create --public-key keypair1.pub keypair1
+
+    +-------------+-------------------------------------------------+
+    | Field       | Value                                           |
+    +-------------+-------------------------------------------------+
+    | fingerprint | 4a:ba:08:bc:b8:43:ec:8c:6c:9a:a9:6f:c0:f8:6f:3f |
+    | name        | keypair1                                        |
+    | user_id     | 913e33878304445a987b04f5ca4705a0                |
+    +-------------+-------------------------------------------------+
+
+Crear Host Aggregates
+'''''''''''''''''''''
+
+.. code-block:: bash
+
+    '#' source keystonerc_admin
+    
+    '#' openstack aggregate create --zone controller1_zone controller1_aggregate
+
+    '#' openstack aggregate add host controller1_aggregate controllernode1.localdomain
+
+    '#' openstack aggregate create --zone compute1_zone compute1_aggregate
+
+    '#' openstack aggregate create --zone compute2_zone compute2_aggregate
+
+    '#' openstack aggregate add host compute2_aggregate computenode2.localdomain
+
+.. Note::
+
+    Ahora que hemos creado host aggregates y los hemos asociado a availability zones, podemos crear instancias en availability zones determinados sin necesidad de tener permisos de administrador:
+
+    .. code-block:: bash
+
+        '#' source keystonerc_testuser1
+
+        '#' openstack server create --image cirros --flavor 10 --key-name project1_keypair1 --security-group project1_secgroup --availability-zone compute1_zone --nic net-id=e6760c1d-535b-4c0a-948d-5433e6d9fbec,v4-fixed-ip=10.10.10.203 instC
+
+        '#' openstack server create --image cirros --flavor 10 --key-name project1_keypair1 --security-group project1_secgroup --availability-zone compute2_zone --nic net-id=e6760c1d-535b-4c0a-948d-5433e6d9fbec,v4-fixed-ip=10.10.10.204 instD
