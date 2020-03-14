@@ -48,3 +48,15 @@ docs/build/html/_sources/topics/openstack/openstack-essentials/*
 docs/build/html/topics/openstack/openstack-essentials/*
 # archivos .rst creados por mí (fuente)
 docs/source/topics/openstack/openstack-essentials/*
+
+# ANSIBLE ESSENTIALS (VIDEO)
+# archivos .doctree para cada archivo dentro del directorio ansible-essentials (misma organización que la fuente)
+docs/build/doctrees/topics/ansible/ansible-essentials/*
+# imágenes dentro de build/html (directorio de imágenes de toda la página, comparten el mismo directorio)
+docs/build/html/_images/ansible-essentials-fig*.png
+# archivos .txt para cada archivo dentro del directorio ansible-essentials (misma organización que la fuente)
+docs/build/html/_sources/topics/ansible/ansible-essentials/*
+# archivos .html para cada archivo dentro del directorio ansible-essentials (misma organización que la fuente)
+docs/build/html/topics/ansible/ansible-essentials/*
+# archivos .rst creados por mí (fuente)
+docs/source/topics/ansible/ansible-essentials/*

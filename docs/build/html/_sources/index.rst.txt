@@ -14,6 +14,7 @@ Welcome to DevTechs's documentation!
     :caption: Ansible
 
     topics/ansible/_ansible
+    topics/ansible/ansible-essentials/_ansible-essentials
 
 .. toctree::
     :maxdepth: 2
