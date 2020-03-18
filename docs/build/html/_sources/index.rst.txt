@@ -51,9 +51,15 @@ Welcome to DevTechs's documentation!
 
 .. toctree::
     :maxdepth: 2
-    :caption: PXE & Kickstart
+    :caption: PXE
 
-    topics/pxekickstart/_pxekickstart
+    topics/pxe/_pxe
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Kickstart
+
+    topics/kickstart/_kickstart
 
 .. toctree::
     :maxdepth: 2
