@@ -1,0 +1,370 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Opciones de Kickstart - selección de paquetes &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Opciones de Kickstart- distribución de teclado" href="ks-keyboard-layout.html" />
+    <link rel="prev" title="Kickstart Options" href="_ks-options.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/ansible-essentials/_ansible-essentials.html">Ansible Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kickstart</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_kickstart.html">Kickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ks-methods/_ks-methods.html">Kickstart Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ks-templates/_ks-templates.html">Kickstart Templates</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_ks-options.html">Kickstart Options</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Opciones de Kickstart - selección de paquetes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#core-package-group">Core Package Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#default-package-groups">Default Package Groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#minimal-install-environment-group">Minimal Install Environment Group</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ks-keyboard-layout.html">Opciones de Kickstart- distribución de teclado</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ks-root-password.html">Opciones de Kickstart - contraseña root</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_ks-options.html">Kickstart Options</a> &raquo;</li>
+        
+      <li>Opciones de Kickstart - selección de paquetes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/kickstart/ks-options/ks-package-selection.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="opciones-de-kickstart-seleccion-de-paquetes">
+<h1><a class="toc-backref" href="#id1">Opciones de Kickstart - selección de paquetes</a><a class="headerlink" href="#opciones-de-kickstart-seleccion-de-paquetes" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#opciones-de-kickstart-seleccion-de-paquetes" id="id1">Opciones de Kickstart - selección de paquetes</a><ul>
+<li><a class="reference internal" href="#core-package-group" id="id2">Core Package Group</a></li>
+<li><a class="reference internal" href="#default-package-groups" id="id3">Default Package Groups</a></li>
+<li><a class="reference internal" href="#minimal-install-environment-group" id="id4">Minimal Install Environment Group</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li>Referencia 1: <a class="reference external" href="https://www.certdepot.net/rhel7-get-started-package-groups/">RHEL 7 Package Groups</a></li>
+<li>Referencia 2: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/installation_guide/sect-kickstart-syntax#sect-kickstart-packages">KICKSTART SYNTAX REFERENCE - Package Selection</a></li>
+</ul>
+<div class="section" id="core-package-group">
+<h2><a class="toc-backref" href="#id2">Core Package Group</a><a class="headerlink" href="#core-package-group" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">%packages</span>
+<span class="na">@core</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;core</span></code> - “Core” simple package group. Contiene aproximadamente 291 paquetes.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Listar paquetes instalados en sistemas operativos basados en Red Hat:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rpm -qa
+</pre></div>
+</div>
+<p class="last">Referencia: <a class="reference external" href="https://serverfault.com/questions/349769/package-list-for-kickstart">Package list for Kickstart</a></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">&#64;Core</span></code> package group is defined as a minimal set of packages needed for installing a working system.</p>
+<p class="last">Referencia: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/installation_guide/sect-kickstart-syntax#sect-kickstart-packages">KICKSTART SYNTAX REFERENCE - Package Selection</a></p>
+</div>
+</div>
+<div class="section" id="default-package-groups">
+<h2><a class="toc-backref" href="#id3">Default Package Groups</a><a class="headerlink" href="#default-package-groups" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El grupo de paquetes <code class="docutils literal notranslate"><span class="pre">Core</span></code> es agregado por defecto cuando usamos el parámetro <code class="docutils literal notranslate"><span class="pre">%packages</span></code> en el archivo Kickstart. Por tanto, el siguiente bloque del archivo kickstart:</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">%packages</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<p>Es equivalente a usar el siguiente bloque en el archivo kickstart:</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">%packages</span>
+<span class="na">@core</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>The Core group is always selected - it is not necessary to specify it in the %packages section.</p>
+<p class="last">Referencia: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/installation_guide/sect-kickstart-syntax#sect-kickstart-packages">KICKSTART SYNTAX REFERENCE - Package Selection</a></p>
+</div>
+</div>
+<div class="section" id="minimal-install-environment-group">
+<h2><a class="toc-backref" href="#id4">Minimal Install Environment Group</a><a class="headerlink" href="#minimal-install-environment-group" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">%packages</span>
+<span class="na">@^minimal</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;^minimal</span></code> - “Minimal install” environment group. Contiene el mandatory group <code class="docutils literal notranslate"><span class="pre">core</span></code>, que a su vez se conforma de 291 paquetes.</p>
+<p>Listar groups (Mandatory y Optional) que contiene el environment group “Minimal install”:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;#&#39;</span> yum group info <span class="s2">&quot;Minimal Install&quot;</span>
+
+Loaded plugins: fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+...
+Environment Group: Minimal Install
+ Environment-Id: minimal
+ Description: Basic functionality.
+ Mandatory Groups:
+   +core
+ Optional Groups:
+   +debugging
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">El prefijo <code class="docutils literal notranslate"><span class="pre">&#64;^</span></code> está reservado para environment groups</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p>If you are not sure what package should be installed, Red Hat recommends you to select the Minimal Install environment. Minimal install provides only the packages which are essential for running Red Hat Enterprise Linux 7.</p>
+<p class="last">Referencia: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/installation_guide/sect-kickstart-syntax#sect-kickstart-packages">KICKSTART SYNTAX REFERENCE - Package Selection</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="ks-keyboard-layout.html" class="btn btn-neutral float-right" title="Opciones de Kickstart- distribución de teclado" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_ks-options.html" class="btn btn-neutral float-left" title="Kickstart Options" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

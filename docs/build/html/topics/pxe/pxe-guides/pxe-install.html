@@ -1,0 +1,699 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>PXE Install &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="PXE + Kickstart" href="pxe-kickstart.html" />
+    <link rel="prev" title="PXE Guides" href="_pxe-guides.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/ansible-essentials/_ansible-essentials.html">Ansible Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/_kickstart.html">Kickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-methods/_ks-methods.html">Kickstart Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-templates/_ks-templates.html">Kickstart Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-options/_ks-options.html">Kickstart Options</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_pxe.html">PXE</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_pxe-guides.html">PXE Guides</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PXE Install</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vagrantfile-pxe-server">Vagrantfile - PXE Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-de-pxe-server">Configuración de PXE Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#instalacion-de-herramientas">Instalación de herramientas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuracion-del-servicio-dhcp">Configuración del servicio DHCP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#habilitacion-de-servicios">Habilitación de servicios</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuracion-de-servicios-para-habilitar-pxe">Configuración de servicios para habilitar PXE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuracion-de-firewall-opcional">Configuración de firewall (OPCIONAL)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#script-de-automatizacion-configuracion-de-pxe-server">Script de automatización - Configuración de PXE Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#instalando-centos-7-en-un-cliente-pxe">Instalando CentOS 7 en un cliente PXE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pxe-kickstart.html">PXE + Kickstart</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_pxe-guides.html">PXE Guides</a> &raquo;</li>
+        
+      <li>PXE Install</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/pxe/pxe-guides/pxe-install.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="pxe-install">
+<span id="pxeinstall"></span><h1><a class="toc-backref" href="#id3">PXE Install</a><a class="headerlink" href="#pxe-install" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#pxe-install" id="id3">PXE Install</a><ul>
+<li><a class="reference internal" href="#vagrantfile-pxe-server" id="id4">Vagrantfile - PXE Server</a></li>
+<li><a class="reference internal" href="#configuracion-de-pxe-server" id="id5">Configuración de PXE Server</a><ul>
+<li><a class="reference internal" href="#instalacion-de-herramientas" id="id6">Instalación de herramientas</a></li>
+<li><a class="reference internal" href="#configuracion-del-servicio-dhcp" id="id7">Configuración del servicio DHCP</a></li>
+<li><a class="reference internal" href="#habilitacion-de-servicios" id="id8">Habilitación de servicios</a></li>
+<li><a class="reference internal" href="#configuracion-de-servicios-para-habilitar-pxe" id="id9">Configuración de servicios para habilitar PXE</a></li>
+<li><a class="reference internal" href="#configuracion-de-firewall-opcional" id="id10">Configuración de firewall (OPCIONAL)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#script-de-automatizacion-configuracion-de-pxe-server" id="id11">Script de automatización - Configuración de PXE Server</a></li>
+<li><a class="reference internal" href="#instalando-centos-7-en-un-cliente-pxe" id="id12">Instalando CentOS 7 en un cliente PXE</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Documentación con el proceso de instalación y configuración de herramientas para habilitar un servidor PXE. Este servidor permitará la instalación por red del sistema operativo CentOS 7 en clientes PXE.</p>
+<div class="section" id="vagrantfile-pxe-server">
+<h2><a class="toc-backref" href="#id4">Vagrantfile - PXE Server</a><a class="headerlink" href="#vagrantfile-pxe-server" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code> para crear una VM con sistema operativo CentOS 7 usando Vagrant, a la cual se le instalará las herramientas para que funcione como servidor PXE. Los detalles de la VM creada en VirtualBox son los siguientes:</p>
+<ul class="simple">
+<li>Sistema operativo CentOS 7 con 4 GB de RAM, 2 vCPUs y 20 GB de almacenamiento</li>
+<li><dl class="first docutils">
+<dt>Tiene 2 interfaces de red:</dt>
+<dd><ul class="first last">
+<li>1 interfaz conectada a NAT (creada por defecto por Vagrant): 10.0.2.15/24</li>
+<li>1 interfaz conectada a una red aislada: 192.168.8.8/24</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Pasamos un script para una configuración inicial: <code class="docutils literal notranslate"><span class="pre">pxeserver_setup.sh</span></code></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- mode: ruby -*-</span>
+<span class="c1"># vi: set ft=ruby :</span>
+<span class="nv">servers</span><span class="o">=[</span>
+<span class="o">{</span>
+    :hostname <span class="o">=</span>&gt; <span class="s2">&quot;pxeserver&quot;</span>,
+    :box <span class="o">=</span>&gt; <span class="s2">&quot;geerlingguy/centos7&quot;</span>,
+    :ram <span class="o">=</span>&gt; <span class="m">4096</span>,
+    :cpu <span class="o">=</span>&gt; <span class="m">2</span>,
+    :disk <span class="o">=</span>&gt; <span class="s2">&quot;20GB&quot;</span>,
+    :script <span class="o">=</span>&gt; <span class="s2">&quot;sh /vagrant/pxeserver_setup.sh&quot;</span>
+<span class="o">}</span>
+<span class="o">]</span>
+
+Vagrant.configure<span class="o">(</span><span class="s2">&quot;2&quot;</span><span class="o">)</span> <span class="k">do</span> <span class="p">|</span>config<span class="p">|</span>
+servers.each <span class="k">do</span> <span class="p">|</span>machine<span class="p">|</span>
+    config.vm.define machine<span class="o">[</span>:hostname<span class="o">]</span> <span class="k">do</span> <span class="p">|</span>node<span class="p">|</span>
+    node.vm.box <span class="o">=</span> machine<span class="o">[</span>:box<span class="o">]</span>
+    node.vm.hostname <span class="o">=</span> machine<span class="o">[</span>:hostname<span class="o">]</span>
+    node.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> <span class="p">|</span>vb<span class="p">|</span>
+        vb.customize <span class="o">[</span><span class="s2">&quot;modifyvm&quot;</span>, :id, <span class="s2">&quot;--memory&quot;</span>, machine<span class="o">[</span>:ram<span class="o">]</span>, <span class="s2">&quot;--cpus&quot;</span>, machine<span class="o">[</span>:cpu<span class="o">]]</span>
+        <span class="c1">#vb.customize [&quot;modifyvm&quot;, :id, &quot;--nic2&quot;, &quot;hostonly&quot;, &quot;--hostonlyadapter2&quot;, &quot;vboxnet0&quot;]</span>
+    end
+    node.vm.provision <span class="s2">&quot;shell&quot;</span>, inline: machine<span class="o">[</span>:script<span class="o">]</span>, privileged: true, run: <span class="s2">&quot;once&quot;</span>
+    end
+end
+
+config.vm.define <span class="s2">&quot;pxeserver&quot;</span> <span class="k">do</span> <span class="p">|</span>pxeserver<span class="p">|</span>
+    pxeserver.vm.network <span class="s2">&quot;private_network&quot;</span>, ip: <span class="s1">&#39;192.168.8.8&#39;</span>, virtualbox__intnet: true, adapter: <span class="m">2</span>
+end
+end
+</pre></div>
+</div>
+<p>script <code class="docutils literal notranslate"><span class="pre">pxeserver_setup.sh</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
+
+cat <span class="s">&lt;&lt; EOF &gt; /etc/sysconfig/network-scripts/ifcfg-enp0s8</span>
+<span class="s">DEVICE=&quot;enp0s8&quot;</span>
+<span class="s">DEFROUTE=&quot;no&quot;</span>
+<span class="s">BOOTPROTO=&quot;static&quot;</span>
+<span class="s">IPADDR=&quot;192.168.8.8&quot;</span>
+<span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
+<span class="s">DNS1=&quot;8.8.8.8&quot;</span>
+<span class="s">TYPE=&quot;Ethernet&quot;</span>
+<span class="s">ONBOOT=yes</span>
+<span class="s">EOF</span>
+
+ifdown enp0s8
+ifup enp0s8
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuracion-de-pxe-server">
+<h2><a class="toc-backref" href="#id5">Configuración de PXE Server</a><a class="headerlink" href="#configuracion-de-pxe-server" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="instalacion-de-herramientas">
+<h3><a class="toc-backref" href="#id6">Instalación de herramientas</a><a class="headerlink" href="#instalacion-de-herramientas" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El servidor PXE contará con servicios que deberán ser instalados en la VM:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">syslinux</span></code>: provee distintos bootloaders</li>
+<li><code class="docutils literal notranslate"><span class="pre">dhcp</span></code>: ofrece el servicio de DHCP que asignará IPs a todos los clientes conectados en la red interna y booteen usando PXE.</li>
+<li><code class="docutils literal notranslate"><span class="pre">tftp-server</span></code>: ofrece el servicio de TFTP (Trivial FTP) que proveerá los bootloaders necesarios (de syslinux) a los clientes PXE.</li>
+<li><code class="docutils literal notranslate"><span class="pre">vsftpd</span></code>: ofrece el servicio de FTP que compartirá el medio de instalación del Sistema Operativo (en nuestro caso CentOS 7) a los clientes PXE. Otras opciones a usarse podrían ser NFS o HTTP.</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo yum install -y syslinux dhcp tftp-server vsftpd
+</pre></div>
+</div>
+<p>Instalar otras herramientas de utilidad:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo yum install -y vim wget
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuracion-del-servicio-dhcp">
+<h3><a class="toc-backref" href="#id7">Configuración del servicio DHCP</a><a class="headerlink" href="#configuracion-del-servicio-dhcp" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El servicio DHCP será configurado con el archivo <code class="docutils literal notranslate"><span class="pre">/etc/dhcp/dhcpd.conf</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo bash -c <span class="s1">&#39;cat &lt;&lt; EOF &gt; /etc/dhcp/dhcpd.conf</span>
+<span class="s1">#DHCP configuration for PXE boot server</span>
+<span class="s1">ddns-update-style interim;</span>
+<span class="s1">ignore client-updates;</span>
+<span class="s1">authoritative;</span>
+<span class="s1">allow booting;</span>
+<span class="s1">allow bootp;</span>
+<span class="s1">allow unknown-clients;</span>
+<span class="s1">#DHCP pool</span>
+<span class="s1">subnet 192.168.8.0</span>
+<span class="s1">netmask 255.255.255.0</span>
+<span class="s1">{</span>
+<span class="s1">range 192.168.8.100 192.168.8.199;</span>
+<span class="s1">option domain-name-servers 192.168.8.2;</span>
+<span class="s1">option domain-name &quot;midominio.com&quot;;</span>
+<span class="s1">option routers 192.168.8.2;</span>
+<span class="s1">option broadcast-address 192.168.8.255;</span>
+<span class="s1">default-lease-time 600;</span>
+<span class="s1">max-lease-time 7200;</span>
+<span class="s1">#PXE boot server</span>
+<span class="s1">next-server 192.168.8.8;</span>
+<span class="s1">filename &quot;pxelinux.0&quot;;</span>
+<span class="s1">}</span>
+<span class="s1"># Static lease, fixed IP: hostname-MAC-IP</span>
+<span class="s1">host vm2-pxe-client</span>
+<span class="s1">{</span>
+<span class="s1">option host-name    &quot;vm2.host&quot;;</span>
+<span class="s1">hardware ethernet   00:11:22:33:44:55;</span>
+<span class="s1">fixed-address       192.168.8.50;</span>
+<span class="s1">}</span>
+<span class="s1">EOF&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Se tiene un pool de direcciones IP (192.168.8.100 - 192.168.8.199) que se pueden asignar a los cliente conectados a la red.</li>
+<li>Para una MAC específica se asignará un hostname e IP predeterminados. Esto es útil para controlar la asignación de IPs en los clientes PXE.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Output redirection (e.g., &gt;) is performed by bash, not by cat, while running with your UID. To run with root’s UID use <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">bash</span> <span class="pre">-c</span></code></p>
+</div>
+</div>
+<div class="section" id="habilitacion-de-servicios">
+<h3><a class="toc-backref" href="#id8">Habilitación de servicios</a><a class="headerlink" href="#habilitacion-de-servicios" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Habilitaremos e iniciaremos los servicios de DHCP, TFTP y FTP:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat <span class="s">&lt;&lt; EOF &gt; enable_pxe_services.sh</span>
+<span class="s">#!/bin/bash</span>
+<span class="s">#DHCP</span>
+<span class="s">systemctl start dhcpd.service &amp;&amp; systemctl enable dhcpd.service</span>
+<span class="s">#TFTP</span>
+<span class="s">systemctl start tftp.service &amp;&amp; systemctl enable tftp.service</span>
+<span class="s">#FTP</span>
+<span class="s">systemctl start vsftpd.service &amp;&amp; systemctl enable vsftpd.service</span>
+<span class="s">systemctl status dhcpd tftp vsftpd</span>
+<span class="s">EOF</span>
+
+chmod +x enable_pxe_services.sh
+sudo ./enable_pxe_services.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuracion-de-servicios-para-habilitar-pxe">
+<h3><a class="toc-backref" href="#id9">Configuración de servicios para habilitar PXE</a><a class="headerlink" href="#configuracion-de-servicios-para-habilitar-pxe" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Copiar los bootloaders que provee <code class="docutils literal notranslate"><span class="pre">syslinux</span></code> a la carpeta TFTP:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo cp -v /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
+$ sudo cp -v /usr/share/syslinux/menu.c32 /var/lib/tftpboot/
+$ sudo cp -v /usr/share/syslinux/mboot.c32 /var/lib/tftpboot/
+$ sudo cp -v /usr/share/syslinux/chain.c32 /var/lib/tftpboot/
+</pre></div>
+</div>
+<ul class="simple">
+<li>Crear los directorios necesarios para FTP y TFTP:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo mkdir /var/lib/tftpboot/pxelinux.cfg
+$ sudo mkdir -p /var/lib/tftpboot/networkboot/centos7
+$ sudo mkdir /var/ftp/pub/centos7
+</pre></div>
+</div>
+<ul class="simple">
+<li>Descargar el ISO de CentOS 7 “Minimal ISO” usando <code class="docutils literal notranslate"><span class="pre">wget</span></code> con un mirror habilitado:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ wget http://mirror.unimagdalena.edu.co/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso
+</pre></div>
+</div>
+<ul class="simple">
+<li>Montar el ISO de CentOS 7:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo mount -o loop CentOS-7-x86_64-Minimal-1908.iso /mnt/
+</pre></div>
+</div>
+<ul class="simple">
+<li>Copiar el contenido del ISO montado de CentOS al directorio que hemos creado:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo cp -rf /mnt/* /var/ftp/pub/centos7
+</pre></div>
+</div>
+<ul class="simple">
+<li>Copiar el archivo de init RAM disk (<code class="docutils literal notranslate"><span class="pre">initrd</span></code>) y el archivo de kernel <code class="docutils literal notranslate"><span class="pre">vmlinuz</span></code> de CentOS al directorio de TFTP <code class="docutils literal notranslate"><span class="pre">/var/lib/tftpboot/networkboot/centos7/</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo cp /var/ftp/pub/centos7/images/pxeboot/initrd.img /var/lib/tftpboot/networkboot/centos7/
+$ sudo cp /var/ftp/pub/centos7/images/pxeboot/vmlinuz /var/lib/tftpboot/networkboot/centos7/
+</pre></div>
+</div>
+<ul class="simple">
+<li>Crear el un archivo de configuracion del menú de PXE Boot:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo bash -c <span class="s1">&#39;cat &lt;&lt; EOF &gt; /var/lib/tftpboot/pxelinux.cfg/default</span>
+<span class="s1">default menu.c32</span>
+<span class="s1">prompt 0</span>
+<span class="s1">timeout 30</span>
+<span class="s1">menu title PXE Boot CentOS 7</span>
+<span class="s1">label Instalar CentOS 7 (Minimal)</span>
+<span class="s1">kernel /networkboot/centos7/vmlinuz</span>
+<span class="s1">append initrd=/networkboot/centos7/initrd.img inst.repo=ftp://192.168.8.8/pub/centos7</span>
+<span class="s1">EOF&#39;</span>
+</pre></div>
+</div>
+<p>En esta entrada del menú de PXE Boot indicamos el <strong>kernel</strong> (<code class="docutils literal notranslate"><span class="pre">vmlinuz</span></code>), el <strong>init RAM disk</strong> (<code class="docutils literal notranslate"><span class="pre">initrd.img</span></code>) y el repositorio de donde se va a descargar los paquetes, en este caso localmente. El kernel y el initrd se pasan a través de <strong>TFTP</strong>, mientras que los archivos de repositorio se pasan mediante <strong>FTP</strong>. Además se añade una etiqueta que idenfique esta entrada para instalar CentOS en el menú.</p>
+<ul class="simple">
+<li>Reiniciar los servicios de DHCP, TFTP y FTP</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat <span class="s">&lt;&lt; EOF &gt; restart_pxe_services.sh</span>
+<span class="s">#!/bin/bash</span>
+<span class="s">sudo systemctl restart dhcpd</span>
+<span class="s">sudo systemctl restart tftp</span>
+<span class="s">sudo systemctl restart vsftpd</span>
+<span class="s">systemctl status dhcpd tftp vsftpd</span>
+<span class="s">EOF</span>
+
+chmod +x restart_pxe_services.sh
+./restart_pxe_services.sh
+</pre></div>
+</div>
+</div>
+<div class="section" id="configuracion-de-firewall-opcional">
+<h3><a class="toc-backref" href="#id10">Configuración de firewall (OPCIONAL)</a><a class="headerlink" href="#configuracion-de-firewall-opcional" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Si nuestro sistema tiene activo el servicio de firewall o tiene reglas de firewalls activadas debemos configurar ciertos servicios:</p>
+<ul class="simple">
+<li>Agregar reglas al firewall de los servicios:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat <span class="s">&lt;&lt; EOF &gt; firewall_pxe_services.sh</span>
+<span class="s">#!/bin/bash</span>
+<span class="s">#DHCP</span>
+<span class="s">sudo firewall-cmd --permanent --add-service={dhcp,proxy-dhcp}</span>
+<span class="s">#TFTP</span>
+<span class="s">sudo firewall-cmd --permanent --add-service=tftp</span>
+<span class="s">#FTP</span>
+<span class="s">sudo firewall-cmd --permanent --add-service=ftp</span>
+<span class="s">sudo firewall-cmd --reload</span>
+<span class="s">sudo firewall-cmd --state</span>
+<span class="s">systemctl status firewalld</span>
+<span class="s">EOF</span>
+
+chmod +x firewall_pxe_services.sh
+./firewall_pxe_services.sh
+</pre></div>
+</div>
+<ul class="simple">
+<li>Agregar una regla de <code class="docutils literal notranslate"><span class="pre">iptables</span></code> para que no existan problemas de conexión del cliente PXE:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo iptables -I INPUT -i enp0s8 -p udp --dport <span class="m">67</span>:68 --sport <span class="m">67</span>:68 -j ACCEPT
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="script-de-automatizacion-configuracion-de-pxe-server">
+<h2><a class="toc-backref" href="#id11">Script de automatización - Configuración de PXE Server</a><a class="headerlink" href="#script-de-automatizacion-configuracion-de-pxe-server" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>El siguiente script automatiza (agrupa) todos los pasos desarrollados en la sección anterior:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum install -y syslinux dhcp tftp-server vsftpd
+sudo yum install -y vim wget
+
+sudo bash -c <span class="s1">&#39;cat &lt;&lt; EOF &gt; /etc/dhcp/dhcpd.conf</span>
+<span class="s1">#DHCP configuration for PXE boot server</span>
+<span class="s1">ddns-update-style interim;</span>
+<span class="s1">ignore client-updates;</span>
+<span class="s1">authoritative;</span>
+<span class="s1">allow booting;</span>
+<span class="s1">allow bootp;</span>
+<span class="s1">allow unknown-clients;</span>
+<span class="s1">#DHCP pool</span>
+<span class="s1">subnet 192.168.8.0</span>
+<span class="s1">netmask 255.255.255.0</span>
+<span class="s1">{</span>
+<span class="s1">range 192.168.8.100 192.168.8.199;</span>
+<span class="s1">option domain-name-servers 192.168.8.2;</span>
+<span class="s1">option domain-name &quot;midominio.com&quot;;</span>
+<span class="s1">option routers 192.168.8.2;</span>
+<span class="s1">option broadcast-address 192.168.8.255;</span>
+<span class="s1">default-lease-time 600;</span>
+<span class="s1">max-lease-time 7200;</span>
+<span class="s1">#PXE boot server</span>
+<span class="s1">next-server 192.168.8.8;</span>
+<span class="s1">filename &quot;pxelinux.0&quot;;</span>
+<span class="s1">}</span>
+<span class="s1"># Static lease, fixed IP: hostname-MAC-IP</span>
+<span class="s1">host vm2-pxe-client</span>
+<span class="s1">{</span>
+<span class="s1">option host-name    &quot;vm2.host&quot;;</span>
+<span class="s1">hardware ethernet   00:11:22:33:44:55;</span>
+<span class="s1">fixed-address       192.168.8.50;</span>
+<span class="s1">}</span>
+<span class="s1">EOF&#39;</span>
+
+cat <span class="s">&lt;&lt; EOF &gt; enable_pxe_services.sh</span>
+<span class="s">#!/bin/bash</span>
+<span class="s">#DHCP</span>
+<span class="s">systemctl start dhcpd.service &amp;&amp; systemctl enable dhcpd.service</span>
+<span class="s">#TFTP</span>
+<span class="s">systemctl start tftp.service &amp;&amp; systemctl enable tftp.service</span>
+<span class="s">#FTP</span>
+<span class="s">systemctl start vsftpd.service &amp;&amp; systemctl enable vsftpd.service</span>
+<span class="s">systemctl status dhcpd tftp vsftpd</span>
+<span class="s">EOF</span>
+
+chmod +x enable_pxe_services.sh
+sudo ./enable_pxe_services.sh
+
+<span class="c1">#cat &lt;&lt; EOF &gt; firewall_pxe_services.sh</span>
+<span class="c1">##!/bin/bash</span>
+<span class="c1">##DHCP</span>
+<span class="c1">#sudo firewall-cmd --permanent --add-service={dhcp,proxy-dhcp}</span>
+<span class="c1">##TFTP</span>
+<span class="c1">#sudo firewall-cmd --permanent --add-service=tftp</span>
+<span class="c1">##FTP</span>
+<span class="c1">#sudo firewall-cmd --permanent --add-service=ftp</span>
+<span class="c1">#sudo firewall-cmd --reload</span>
+<span class="c1">#sudo firewall-cmd --state</span>
+<span class="c1">#systemctl status firewalld</span>
+<span class="c1">#EOF</span>
+<span class="c1">#</span>
+<span class="c1">#chmod +x firewall_pxe_services.sh</span>
+<span class="c1">#./firewall_pxe_services.sh</span>
+
+sudo cp -v /usr/share/syslinux/pxelinux.0 /var/lib/tftpboot/
+sudo cp -v /usr/share/syslinux/menu.c32 /var/lib/tftpboot/
+sudo cp -v /usr/share/syslinux/mboot.c32 /var/lib/tftpboot/
+sudo cp -v /usr/share/syslinux/chain.c32 /var/lib/tftpboot/
+
+sudo mkdir /var/lib/tftpboot/pxelinux.cfg
+sudo mkdir -p /var/lib/tftpboot/networkboot/centos7
+sudo mkdir /var/ftp/pub/centos7
+
+wget http://mirror.unimagdalena.edu.co/centos/7.7.1908/isos/x86_64/CentOS-7-x86_64-Minimal-1908.iso
+sudo mount -o loop CentOS-7-x86_64-Minimal-1908.iso /mnt/
+
+sudo cp -rf /mnt/* /var/ftp/pub/centos7
+
+sudo cp /var/ftp/pub/centos7/images/pxeboot/initrd.img /var/lib/tftpboot/networkboot/centos7/
+sudo cp /var/ftp/pub/centos7/images/pxeboot/vmlinuz /var/lib/tftpboot/networkboot/centos7/
+
+sudo bash -c <span class="s1">&#39;cat &lt;&lt; EOF &gt; /var/lib/tftpboot/pxelinux.cfg/default</span>
+<span class="s1">default menu.c32</span>
+<span class="s1">prompt 0</span>
+<span class="s1">timeout 30</span>
+<span class="s1">menu title PXE Boot CentOS 7</span>
+<span class="s1">label Instalar CentOS 7 (Minimal)</span>
+<span class="s1">kernel /networkboot/centos7/vmlinuz</span>
+<span class="s1">append initrd=/networkboot/centos7/initrd.img inst.repo=ftp://192.168.8.8/pub/centos7</span>
+<span class="s1">EOF&#39;</span>
+
+cat <span class="s">&lt;&lt; EOF &gt; restart_pxe_services.sh</span>
+<span class="s">#!/bin/bash</span>
+<span class="s">sudo systemctl restart dhcpd</span>
+<span class="s">sudo systemctl restart tftp</span>
+<span class="s">sudo systemctl restart vsftpd</span>
+<span class="s">systemctl status dhcpd tftp vsftpd</span>
+<span class="s">EOF</span>
+
+chmod +x restart_pxe_services.sh
+./restart_pxe_services.sh
+
+<span class="c1"># sudo iptables -I INPUT -i enp0s8 -p udp --dport 67:68 --sport 67:68 -j ACCEPT</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="instalando-centos-7-en-un-cliente-pxe">
+<span id="pxecentosinstaller"></span><h2><a class="toc-backref" href="#id12">Instalando CentOS 7 en un cliente PXE</a><a class="headerlink" href="#instalando-centos-7-en-un-cliente-pxe" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para instalar CentOS 7 en un cliente PXE de VirtualBox configuraremos lo siguiente en una VM creada:</p>
+<ul class="simple">
+<li>Un mínimo de 2048 MB de RAM</li>
+<li>Boot order: primero Hard Disk y luego Network</li>
+</ul>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/virtualbox_pxeclient_system_tab.png" src="../../../_images/virtualbox_pxeclient_system_tab.png" />
+<p class="caption"><span class="caption-text">VirtualBox - PXE Client - System Tab</span></p>
+</div>
+<ul class="simple">
+<li>Una interfaz de red conectada en la misma red por donde el PXE server ofrece sus servicios de DHCP, FTP, TFTP:</li>
+</ul>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/virtualbox_pxeclient_network_tab.png" src="../../../_images/virtualbox_pxeclient_network_tab.png" />
+<p class="caption"><span class="caption-text">VirtualBox - PXE Client - Network Tab</span></p>
+</div>
+<p>El arranque del instalador de CentOS 7 usando PXE se muestra en el siguiente video:</p>
+<div style="text-align: center; margin-bottom: 2em;">
+<iframe width="100%" height="350" src="https://www.youtube.com/embed/NVsclkjFug4?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</div><p>Los siguientes pasos consisten en seguir el proceso del instalador de CentOS 7. Hemos logrado el objetivo de proporcionar un medio de instalación por red con el método PXE. Mediante este, múltiples clientes PXE podrán conectarse al servidor PXE, a través de la red, y obtener los medios para instalar el sistema operativo CentOS 7.</p>
+<p>A pesar de que hemos logrado brindar el instalador de CentOS 7 por red, sería útil automatizar la instalación del sistema operativo en sí. Este objetivo lo lograremos a través de archivos Kickstart.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="pxe-kickstart.html" class="btn btn-neutral float-right" title="PXE + Kickstart" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_pxe-guides.html" class="btn btn-neutral float-left" title="PXE Guides" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

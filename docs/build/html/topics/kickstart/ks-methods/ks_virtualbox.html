@@ -1,0 +1,477 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Kickstart Methods - usando Virtualbox &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Python" href="../../python/_python.html" />
+    <link rel="prev" title="Kickstart Methods" href="_ks-methods.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/ansible-essentials/_ansible-essentials.html">Ansible Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kickstart</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_kickstart.html">Kickstart</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_ks-methods.html">Kickstart Methods</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kickstart Methods - usando Virtualbox</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creacion-de-vm-en-virtualbox">Creación de VM en VirtualBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-de-vm-en-virtualbox">Configuración de VM en VirtualBox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#formas-de-pasar-el-archivo-kickstart">Formas de pasar el archivo kickstart</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#archivo-kickstart-pasado-por-http">Archivo Kickstart pasado por HTTP</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-de-centos-7">Instalación de CentOS 7</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_ks-methods.html">Kickstart Methods</a> &raquo;</li>
+        
+      <li>Kickstart Methods - usando Virtualbox</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/kickstart/ks-methods/ks_virtualbox.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kickstart-methods-usando-virtualbox">
+<h1><a class="toc-backref" href="#id22">Kickstart Methods - usando Virtualbox</a><a class="headerlink" href="#kickstart-methods-usando-virtualbox" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#kickstart-methods-usando-virtualbox" id="id22">Kickstart Methods - usando Virtualbox</a><ul>
+<li><a class="reference internal" href="#creacion-de-vm-en-virtualbox" id="id23">Creación de VM en VirtualBox</a></li>
+<li><a class="reference internal" href="#configuracion-de-vm-en-virtualbox" id="id24">Configuración de VM en VirtualBox</a></li>
+<li><a class="reference internal" href="#formas-de-pasar-el-archivo-kickstart" id="id25">Formas de pasar el archivo kickstart</a><ul>
+<li><a class="reference internal" href="#archivo-kickstart-pasado-por-http" id="id26">Archivo Kickstart pasado por HTTP</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#instalacion-de-centos-7" id="id27">Instalación de CentOS 7</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Descripción de la documentación</strong>: Método de instalación de un SO basado en Red Hat Enterprise Linux usando VirtualBox y un archivo ISO como medio de instalación. Este procedimiento sirve como un escenario de pruebas fácil de implementar, con el fin de probar archivos Kickstart que automaticen la instalación del SO.</p>
+<div class="section" id="creacion-de-vm-en-virtualbox">
+<h2><a class="toc-backref" href="#id23">Creación de VM en VirtualBox</a><a class="headerlink" href="#creacion-de-vm-en-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>En VirtualBox, crear una nueva VM haciendo clic en el botón <span class="guilabel">New</span>:</li>
+</ol>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/01-virtualbox_new_vm.png" src="../../../_images/01-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Crear una nueva VM</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Nombrar el nombre de la VM y seleccionar el SO que deseemos instalar; en este caso, es un SO basado em Red Hat:</li>
+</ol>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/02-virtualbox_new_vm.png" src="../../../_images/02-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Nombrar la VM y seleccionar el SO</span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Elegir la cantidad de memoria RAM que deseemos asignarle a nuestra VM:</li>
+</ol>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/03-virtualbox_new_vm.png" src="../../../_images/03-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Seleccionar la cantidad de RAM</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Seleccionar como tipo de disco duro <span class="guilabel">VDI (VirtualBox Disk Image)</span>:</li>
+</ol>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/04-virtualbox_new_vm.png" src="../../../_images/04-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Seleccionar el tipo de disco duro que será creado y conectado a la VM</span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Para el provisionamiento de espacio en el disco elegir la opción <span class="guilabel">Dynamically Allocated</span>:</li>
+</ol>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/05-virtualbox_new_vm.png" src="../../../_images/05-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Seleccionar <span class="guilabel">Dynamically Allocated</span></span></p>
+</div>
+<ol class="arabic simple" start="6">
+<li>Determinar la ubicación y tamaño del disco:</li>
+</ol>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/06-virtualbox_new_vm.png" src="../../../_images/06-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Seleccionar la ubicación y tamaño del disco</span></p>
+</div>
+<p>Finalmente, clic en el botón <span class="guilabel">Create</span>.</p>
+</div>
+<div class="section" id="configuracion-de-vm-en-virtualbox">
+<h2><a class="toc-backref" href="#id24">Configuración de VM en VirtualBox</a><a class="headerlink" href="#configuracion-de-vm-en-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Clic en el botón <span class="guilabel">Settings</span> para configurar la VM:</li>
+</ol>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/07-virtualbox_new_vm.png" src="../../../_images/07-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Seleccionar la opción <span class="guilabel">Settings</span></span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Seleccionar la pestaña <span class="guilabel">System</span> cambiar el orden de arranque, poniendo primero <span class="guilabel">Hard Disk</span> y luego <span class="guilabel">Optical</span>:</li>
+</ol>
+<div class="figure align-center" id="id8">
+<img alt="../../../_images/08-virtualbox_new_vm.png" src="../../../_images/08-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Cambiar el orden de arranque del sistema en la pestaña <span class="guilabel">System</span></span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Seleccionar la pestaña <span class="guilabel">Storage</span> y clic sobre el ícono de disco con nombre Empty:</li>
+</ol>
+<div class="figure align-center" id="id9">
+<img alt="../../../_images/09-virtualbox_new_vm.png" src="../../../_images/09-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Cambiar a la pestaña <span class="guilabel">Storage</span></span></p>
+</div>
+<p>El método de instalación del sistema operativo usando en esta guía será a través un archivo ISO de CentOS 7 que contiene el medio de instalación.</p>
+<p>Previamente debemos haber descargado el instalador de CentOS 7 en formato <code class="docutils literal notranslate"><span class="pre">.iso</span></code> de alguno de los <a class="reference external" href="http://isoredirect.centos.org/centos/7/isos/x86_64/">Mirrors oficiales de imágenes ISO de CentOS 7</a>:</p>
+<ol class="arabic simple" start="4">
+<li>Clic el botón con ícono de disco en la parte derecha y seleccionar la opción <span class="guilabel">Choose Virtual Optical Disk File…</span>:</li>
+</ol>
+<div class="figure align-center" id="id10">
+<img alt="../../../_images/10-virtualbox_new_vm.png" src="../../../_images/10-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Seleccionar el ícono del disco y elegir <span class="guilabel">Choose Virtual Optical Disk File…</span></span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>En el navegador de archivos, elegir el archivo ISO que servirá como medio de instalación del SO:</li>
+</ol>
+<div class="figure align-center" id="id11">
+<img alt="../../../_images/11-virtualbox_new_vm.png" src="../../../_images/11-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Elegir el archivo <code class="docutils literal notranslate"><span class="pre">.iso</span></code> del instalador del SO desde el navegador de archivos</span></p>
+</div>
+<ol class="arabic simple" start="6">
+<li>Verificar que el archivo ISO se haya cargado en el controlador IDE. Luego clic en <span class="guilabel">OK</span></li>
+</ol>
+<div class="figure align-center" id="id12">
+<img alt="../../../_images/12-virtualbox_new_vm.png" src="../../../_images/12-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Revisar la configuración de Storage y clic en <span class="guilabel">OK</span></span></p>
+</div>
+<ol class="arabic simple" start="7">
+<li>Iniciar la VM haciendo clic en la opción <span class="guilabel">Start</span>:</li>
+</ol>
+<div class="figure align-center" id="id13">
+<img alt="../../../_images/13-virtualbox_new_vm.png" src="../../../_images/13-virtualbox_new_vm.png" />
+<p class="caption"><span class="caption-text">VirtualBox - Arrancar la VM con el botón <span class="guilabel">Start</span></span></p>
+</div>
+<ol class="arabic simple" start="8">
+<li>Una vez cargue la página principal del instalador del SO, debemos presionar en el teclado la tecla <span class="guilabel">Esc</span> para ingresar a la opciones de <span class="guilabel">boot</span>:</li>
+</ol>
+<div class="figure align-center" id="id14">
+<img alt="../../../_images/14-instalacion_centos7.png" src="../../../_images/14-instalacion_centos7.png" />
+<p class="caption"><span class="caption-text">Centos 7 VM - En la página principal de carga para instalar el SO, presionar la tecla <span class="guilabel">Esc</span></span></p>
+</div>
+<p>Referencia: <a class="reference external" href="https://docs.centos.org/en-US/8-docs/standard-install/assembly_booting-installer/#editing-boot-options_booting-the-installer">Editing boot options</a></p>
+<ol class="arabic simple" start="9">
+<li>Verificar que cargue la siguiente pantalla con el prompt de <code class="docutils literal notranslate"><span class="pre">boot:</span></code>:</li>
+</ol>
+<div class="figure align-center" id="id15">
+<img alt="../../../_images/15-instalacion_centos7.png" src="../../../_images/15-instalacion_centos7.png" />
+<p class="caption"><span class="caption-text">Centos 7 VM - Cargará una página con el mensaje <code class="docutils literal notranslate"><span class="pre">boot:</span></code></span></p>
+</div>
+</div>
+<div class="section" id="formas-de-pasar-el-archivo-kickstart">
+<h2><a class="toc-backref" href="#id25">Formas de pasar el archivo kickstart</a><a class="headerlink" href="#formas-de-pasar-el-archivo-kickstart" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Existen distintas formas de pasar el archivo Kickstart al medio de instalación con el fin de automatizar el proceso de instalación.</p>
+<p>En el prompt de <code class="docutils literal notranslate"><span class="pre">boot:</span></code> podemos emplear el parámetro <code class="docutils literal notranslate"><span class="pre">ks=</span></code> e indicar a través de qué medio se pasará el archivo kickstart. Entre los métodos soportados para pasar el archivo kickstart están NFS (<code class="docutils literal notranslate"><span class="pre">nfs</span></code>), HTTP (<code class="docutils literal notranslate"><span class="pre">http</span></code>), Diskette (<code class="docutils literal notranslate"><span class="pre">floppy</span></code>), disco montado (<code class="docutils literal notranslate"><span class="pre">hd</span></code>), file system sin montar (<code class="docutils literal notranslate"><span class="pre">file</span></code>) y CD-ROM (<code class="docutils literal notranslate"><span class="pre">cdrom</span></code>).</p>
+<p>Referencia 1: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/installation_guide/s1-kickstart2-startinginstall">Starting a Kickstart installation</a></p>
+<p>Referencia 2: <a class="reference external" href="https://www.ibm.com/support/knowledgecenter/linuxonibm/liaae/liaaekickstart.html">Fuentes de archivo kickstart</a></p>
+<div class="section" id="archivo-kickstart-pasado-por-http">
+<h3><a class="toc-backref" href="#id26">Archivo Kickstart pasado por HTTP</a><a class="headerlink" href="#archivo-kickstart-pasado-por-http" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En este método, obtenemos el archivo kickstart de un servidor a través de HTTP. Para esto, pasamos la URL de la página que tiene el archivo kickstart como en el siguiente ejemplo:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>boot: linux ks=http://raw.githubusercontent.com/mogago/kickstartfiles/master/ks1.cfg
+</pre></div>
+</div>
+<div class="figure align-center" id="id16">
+<img alt="../../../_images/16-instalacion_centos7-kickstart-cdrom.png" src="../../../_images/16-instalacion_centos7-kickstart-cdrom.png" />
+<p class="caption"><span class="caption-text">Centos 7 VM - Ingresar la dirección URL correcta para obtener el archivo kickstart</span></p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">La página que contiene el archivo kickstart no debe tener ningún tipo de equitas HTML ni formatos extra, solo debe contener el archivo kickstart en texto plano. Comprobar esto usando <code class="docutils literal notranslate"><span class="pre">wget</span></code> con la página web en un terminal de comandos.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Opcionalmente, podemos usar <code class="docutils literal notranslate"><span class="pre">ks=https:</span></code> en lugar de <code class="docutils literal notranslate"><span class="pre">ks=http:</span></code>, si la página tiene habilitado el protocolo HTTPS o en caso el servidor web no redirija automáticamente las solicitudes HTTP a HTTPS.</p>
+</div>
+<p>En este ejemplo se está usando GitHub como repositorio de los archivos Kickstart:</p>
+<div class="figure align-center" id="id17">
+<img alt="../../../_images/github-sample-kickstart.png" src="../../../_images/github-sample-kickstart.png" />
+<p class="caption"><span class="caption-text">GitHub - Archivo Kickstart de ejemplo</span></p>
+</div>
+<p>Pero para obtener el archivo Kickstart en texto plano debemos seleccionar el botón <span class="guilabel">Raw</span> en la página anterior, lo cual nos redirigirá a otra URL:</p>
+<div class="figure align-center" id="id18">
+<img alt="../../../_images/github-sample-kickstart-raw.png" src="../../../_images/github-sample-kickstart-raw.png" />
+<p class="caption"><span class="caption-text">GitHub - Archivo Kickstart de ejemplo en formato raw</span></p>
+</div>
+<p>Ya que en esta página solo obtenemos el archivo Kickstart en texto plano, podremos emplear esta dirección URL como parámetro de <code class="docutils literal notranslate"><span class="pre">ks=http://</span></code>.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Este método requiere conexión al servidor web remoto que proporcione el archivo Kickstart. En caso el archivo Kickstart se encuentre en la web, podemos tener una interfaz conectada a una red con un servidor DHCP y obtener una IP y salida a Internet. Por ejemplo, en VirtualBox podemos usar una red NAT o Bridged.</p>
+</div>
+</div>
+</div>
+<div class="section" id="instalacion-de-centos-7">
+<h2><a class="toc-backref" href="#id27">Instalación de CentOS 7</a><a class="headerlink" href="#instalacion-de-centos-7" title="Enlazar permanentemente con este título">¶</a></h2>
+<ol class="arabic simple">
+<li>Inmediatamente luego de presionar el botón <span class="guilabel">Enter</span> en el prompt de <code class="docutils literal notranslate"><span class="pre">boot:</span></code> comenzará el proceso de instalación automatizado con el archivo Kickstart que hemos pasado:</li>
+</ol>
+<div class="figure align-center" id="id19">
+<img alt="../../../_images/17-instalacion_centos7.png" src="../../../_images/17-instalacion_centos7.png" />
+<p class="caption"><span class="caption-text">Centos 7 VM - Iniciará el proceso de instalación automatizado leyendo la plantilla en Kickstart</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Una vez acabada la instalación desatentidada del SO, la VM se reiniciará automáticamente y cargará desde el disco instalado:</li>
+</ol>
+<div class="figure align-center" id="id20">
+<img alt="../../../_images/18-instalacion_centos7.png" src="../../../_images/18-instalacion_centos7.png" />
+<p class="caption"><span class="caption-text">Centos 7 VM - Iniciará el sistema CentOS 7 instalado</span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Finalmente, iniciará el SO CentOS instalado automáticamente con Kickstart:</li>
+</ol>
+<div class="figure align-center" id="id21">
+<img alt="../../../_images/19-instalacion_centos7.png" src="../../../_images/19-instalacion_centos7.png" />
+<p class="caption"><span class="caption-text">Centos 7 VM - Sistema operativo CentOS 7 funcionando</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../python/_python.html" class="btn btn-neutral float-right" title="Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_ks-methods.html" class="btn btn-neutral float-left" title="Kickstart Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

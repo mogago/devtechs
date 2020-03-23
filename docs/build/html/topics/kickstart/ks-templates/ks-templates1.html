@@ -1,0 +1,978 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Kickstart Templates 1 &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Kickstart Options" href="../ks-options/_ks-options.html" />
+    <link rel="prev" title="Kickstart Templates" href="_ks-templates.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/ansible-essentials/_ansible-essentials.html">Ansible Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kickstart</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_kickstart.html">Kickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ks-methods/_ks-methods.html">Kickstart Methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_ks-templates.html">Kickstart Templates</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Kickstart Templates 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-kickstart-configuracion-minima">Archivo Kickstart - Configuración mínima</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-kickstart-creacion-de-usuario">Archivo Kickstart - Creación de usuario</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-kickstart-static-network-configuration">Archivo Kickstart - Static network configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-kickstart-pre-install-script">Archivo Kickstart - Pre-install script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-kickstart-post-install-script">Archivo Kickstart - Post-install script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-kickstart-text-mode-install">Archivo Kickstart - Text mode install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-kickstart-medio-pasado-mediante-url">Archivo Kickstart - Medio pasado mediante URL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-kickstart-esquema-de-particiones-personalizado">Archivo Kickstart - esquema de particiones personalizado</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-kickstart-configuracion-de-seguridad">Archivo Kickstart - configuración de seguridad</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#archivo-kickstart-multiples-opciones">Archivo Kickstart - múltiples opciones</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ks-options/_ks-options.html">Kickstart Options</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/pxe-guides/_pxe-guides.html">PXE Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_ks-templates.html">Kickstart Templates</a> &raquo;</li>
+        
+      <li>Kickstart Templates 1</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/kickstart/ks-templates/ks-templates1.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="kickstart-templates-1">
+<span id="kstemplates1"></span><h1><a class="toc-backref" href="#id1">Kickstart Templates 1</a><a class="headerlink" href="#kickstart-templates-1" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#kickstart-templates-1" id="id1">Kickstart Templates 1</a><ul>
+<li><a class="reference internal" href="#archivo-kickstart-configuracion-minima" id="id2">Archivo Kickstart - Configuración mínima</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-creacion-de-usuario" id="id3">Archivo Kickstart - Creación de usuario</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-static-network-configuration" id="id4">Archivo Kickstart - Static network configuration</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-pre-install-script" id="id5">Archivo Kickstart - Pre-install script</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-post-install-script" id="id6">Archivo Kickstart - Post-install script</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-text-mode-install" id="id7">Archivo Kickstart - Text mode install</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-medio-pasado-mediante-url" id="id8">Archivo Kickstart - Medio pasado mediante URL</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-esquema-de-particiones-personalizado" id="id9">Archivo Kickstart - esquema de particiones personalizado</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-configuracion-de-seguridad" id="id10">Archivo Kickstart - configuración de seguridad</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-multiples-opciones" id="id11">Archivo Kickstart - múltiples opciones</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li>Referencia 1: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/installation_guide/sect-kickstart-syntax">Red Hat Docs - KICKSTART SYNTAX REFERENCE</a></li>
+</ul>
+<div class="section" id="archivo-kickstart-configuracion-minima">
+<h2><a class="toc-backref" href="#id2">Archivo Kickstart - Configuración mínima</a><a class="headerlink" href="#archivo-kickstart-configuracion-minima" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Archivo Kickstart con una configuración mínima para lograr una instalación de CentOS 7 totalmente desatendida:</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">install</span>
+<span class="na">cdrom</span>
+<span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr</span>
+<span class="na">keyboard --vckeymap</span><span class="o">=</span><span class="s">latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="na">rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="na">lang en_US.UTF-8 --addsupport</span><span class="o">=</span><span class="s">es_US.UTF-8</span>
+<span class="na">clearpart --all --initlabel</span>
+<span class="na">part / --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="na">timezone America/Lima</span>
+<span class="na">reboot</span>
+
+<span class="na">%packages</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">install</span></code> - (optional). Modo de instalación. Debe ir acompañado en otra línea del tipo de instalación: <code class="docutils literal notranslate"><span class="pre">cdrom</span></code>, <code class="docutils literal notranslate"><span class="pre">harddrive</span></code>, <code class="docutils literal notranslate"><span class="pre">nfs</span></code>, <code class="docutils literal notranslate"><span class="pre">liveimg</span></code>, <code class="docutils literal notranslate"><span class="pre">url</span></code> (FTP, HTTP, HTTPS).</li>
+<li><code class="docutils literal notranslate"><span class="pre">cdrom</span></code> - instalar desde el primer disco óptico en el sistema.</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">bootloader</span></code> - (required). Especifica cómo debe instalarse el boot loader</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">--location=</span></code> - especifica donde es escrito el boot record</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">mbr</span></code> - (default). Depende de si el drive usa el Master Boot Record (MBR) o un esquema GUID Partition Tables (GPT). En un disco con formato GTP, essta opción instala la etapa 1.5 del boot loader en la particion de arranque BIOS. En un disco con formato MBR, la etapa 1.5 es instalada en un espacio vacío entre el MBR y la primera partición.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr --append=&quot;hdd=ide-scsi ide=nodma&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">keyboard</span></code> - (required). Configura uno o más keyboard layouts para el sistema.</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">vckeymap</span></code> - especifica un <code class="docutils literal notranslate"><span class="pre">VConsole</span></code> keymap que se debe usar.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--xlayouts</span></code> - especifica una lista de X layouts que deben ser usados.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">keyboard --xlayouts</span><span class="o">=</span><span class="s">us,&#39;cz (qwerty)&#39; --switch=grp:alt_shift_toggle</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">rootpw</span></code> - (required). Configura la contraseña root con el argumento de la contraseña</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">--iscrypted</span></code> - si esta opción está presente se asume que el argumento de la contraseña ya está encriptado.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">rootpw [--iscrypted|--plaintext] [--lock] password</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">lang</span></code> - (required). Establece el lenguaje a usar durante la instalación y el lenguaje usado por defecto en el sistema instalado.</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">--addsupport=</span></code> - añadir soporte de lenguajes adicionales. Podemos listar varios separados por comas.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">lang en_US --addsupport</span><span class="o">=</span><span class="s">cs_CZ,de_DE,en_UK</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">clearpart</span></code> - (optional). Remueve las particiones del sistema, previo a la creación de nuevas particiones. Por defecto ninguna partición es eliminada.</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">--all</span></code> - elimina todas las particiones del sistema. Se eliminarán todos los discos que puedan ser alcanzados por el instalador, incluyendo cualquier almacenamiento conectado por red.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--initlabel</span></code> - inicializa un disco discos, creando un disk label por defecto para todos los discos en su arquitectura respectiva (p.ej. msdos para x86) que hayan sido designados para formatear. Ya que <code class="docutils literal notranslate"><span class="pre">--initlabel</span></code> puede ver todos los discos, es importante asegurarse que solo los drivers que serán formateadas se encuentran conectados.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">part</span></code> - (o <code class="docutils literal notranslate"><span class="pre">partiton</span></code>). (required). Crea una partición en el sistema. Todas las particiones creadas son formateadas, como parte del proceso de instalación, excepto que se indique lo contrario (con <code class="docutils literal notranslate"><span class="pre">--noformat</span></code> y <code class="docutils literal notranslate"><span class="pre">--onpart</span></code>).</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">--fstype=</span></code> - configura el tipo de file system para la partición. Valores posibles: <code class="docutils literal notranslate"><span class="pre">xfs</span></code>, <code class="docutils literal notranslate"><span class="pre">ext2</span></code>, <code class="docutils literal notranslate"><span class="pre">ext3</span></code>, <code class="docutils literal notranslate"><span class="pre">ext4</span></code>, <code class="docutils literal notranslate"><span class="pre">swap</span></code>, <code class="docutils literal notranslate"><span class="pre">vfat</span></code>, <code class="docutils literal notranslate"><span class="pre">efi</span></code> y <code class="docutils literal notranslate"><span class="pre">biosboot</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--grow</span></code> - le indica al volumen lógico que crezca para rellenar el espacio disponible (si existe), o hasta la configuración de tamaño máximo, si se especifica uno. Un tamaño mínimo debe ser especificado usando la opción <code class="docutils literal notranslate"><span class="pre">--percent=</span></code> o <code class="docutils literal notranslate"><span class="pre">--size=</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--ondisk=</span></code> - (o <code class="docutils literal notranslate"><span class="pre">--ondrive=</span></code>). Crea una partición (especificada por el comando part) en un disco existente. Este comando siempre crea una partición.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--size=</span></code> - tamaño del volumen lógico en MiB. No podemos usar esta opción junto con <code class="docutils literal notranslate"><span class="pre">--percent=</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">timezone</span></code> - (required). Configura la zona horaria.</li>
+<li><code class="docutils literal notranslate"><span class="pre">reboot</span></code> - (optional). Reinicia luego de que la instalación es completada satisfactoriamente. Esta opción es equivalente a ejecutar el comando <code class="docutils literal notranslate"><span class="pre">shutdown</span> <span class="pre">-r</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">%packages</span></code> - Usar este comando para iniciar una sección en Kickstart que describa los paquetes de software a ser instalados. Podemos especificar paquetes por environmet (<code class="docutils literal notranslate"><span class="pre">&#64;^</span></code>), group (<code class="docutils literal notranslate"><span class="pre">&#64;</span></code>), o por sus nombres de paquete. El <code class="docutils literal notranslate"><span class="pre">Core</span></code> group siempre es seleccionado por defecto, cuando se usa esta sección <code class="docutils literal notranslate"><span class="pre">%packages</span></code>, por lo que no es obligatorio especificarlo.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Verificar el nombre con el cual son creados los discos, para planear las particiones. En VirtualBox los discos se crean con el formato de nombre <code class="docutils literal notranslate"><span class="pre">sdx</span></code> (<code class="docutils literal notranslate"><span class="pre">--ondisk=sda</span></code>), pero en virt-manager los discos se crean con el formato de nombre <code class="docutils literal notranslate"><span class="pre">vdx</span></code> (<code class="docutils literal notranslate"><span class="pre">--ondisk=vda</span></code>). (x=a,b,c,d,…)</p>
+</div>
+</div>
+<div class="section" id="archivo-kickstart-creacion-de-usuario">
+<h2><a class="toc-backref" href="#id3">Archivo Kickstart - Creación de usuario</a><a class="headerlink" href="#archivo-kickstart-creacion-de-usuario" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Archivo Kickstart con la funcionalidad para crear un nuevo usuario:</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">install</span>
+<span class="na">cdrom</span>
+<span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr</span>
+<span class="na">keyboard --vckeymap</span><span class="o">=</span><span class="s">latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="na">rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="na">lang en_US.UTF-8 --addsupport</span><span class="o">=</span><span class="s">es_US.UTF-8</span>
+<span class="na">clearpart --all --initlabel</span>
+<span class="na">part / --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="na">timezone America/Lima</span>
+<span class="na">reboot</span>
+
+<span class="na">user --name</span><span class="o">=</span><span class="s">user1 --groups=wheel --iscrypted --password=$1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+
+<span class="na">%packages</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">user</span></code> - (optional). Crear un nuevo usuario en el sistema.</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">--name=</span></code> - (required). Provee el nombre del usuario.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--groups=</span></code> - En adición al grupo por defecto, una lista separada por comas de nombre de grupos a los que el usuario debe pertenecer. Los grupos deben existir antes que la cuenta de usuario sea creada.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--homedir=</span></code> - El directorio home del usuario. Si no es provisto, por defecto se usará <code class="docutils literal notranslate"><span class="pre">/home/username</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--password=</span></code> - La contraseña del nuevo usuario. Si no es provista, la cuenta será bloqueada por defecto.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--iscrypted</span></code> - si esta opción está presente se asume que el argumento de la contraseña ya está encriptado.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">user --name</span><span class="o">=</span><span class="s">username [options]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Podemos usar una contraseña con HASH MD5, SHA256 o SHA512. El instalador comprenderá el tipo de HASH que se está usando según la longitud de caracteres este. Por ejemplo, estos dos líneas usan un HASH SHA512 y MD5 respectivamente, pero tienen el mismo resultado:</p>
+<div class="last highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">user --name</span><span class="o">=</span><span class="s">user1 --groups=wheel --iscrypted --password=$6$KnYe93Ga4BpTVh8i$bGNPmIEGhgCUTx9i3wpZvxx6ZS3OP0t7tw4UxCK67dtDftIjaKVMqlE8rwhdwCR9Pq1g.OsyQXQyMv2DUHvjc0</span>
+<span class="na">user --name</span><span class="o">=</span><span class="s">user1 --groups=wheel --iscrypted --password=$1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="archivo-kickstart-static-network-configuration">
+<h2><a class="toc-backref" href="#id4">Archivo Kickstart - Static network configuration</a><a class="headerlink" href="#archivo-kickstart-static-network-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Archivo Kickstart con la funcionalidad para configurar la red:</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">install</span>
+<span class="na">cdrom</span>
+<span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr</span>
+<span class="na">keyboard --vckeymap</span><span class="o">=</span><span class="s">latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="na">rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="na">lang en_US.UTF-8 --addsupport</span><span class="o">=</span><span class="s">es_US.UTF-8</span>
+<span class="na">clearpart --all --initlabel</span>
+<span class="na">part / --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="na">timezone America/Lima</span>
+<span class="na">reboot</span>
+
+<span class="na">network --bootproto</span><span class="o">=</span><span class="s">static --device=00:11:22:33:44:55 --ip=10.1.1.5 --netmask=255.255.255.0 gateway=10.1.1.5 --nameserver=8.8.8.8 --hostname=centos7</span>
+
+<span class="na">%packages</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">network</span></code> - (optional). Configura la información de red para el sistema objetivo y activa dispositivos de red en el entorno de instalación. El dispositivo especificado en el primer comando <code class="docutils literal notranslate"><span class="pre">network</span></code> es activado automáticamente. La activación del dispositivo también puede ser requerida explícitamente por la opción <code class="docutils literal notranslate"><span class="pre">--activate</span></code>.</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">--activate</span></code> - activa este dispositivo en el entorno de instalación. Si usamos la opción <code class="docutils literal notranslate"><span class="pre">--activate</span></code> en un dispositivo que ya ha sido activado (por ejemplo, una interfaz que hemos configurado con boot options para que el sistema pueda obtener el archivo Kickstart), el dispositivo es reactivado para usar los detalles especificados en el archivo Kickstart.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--bootproto=</span></code> - Toma uno de los siguientes valores: <code class="docutils literal notranslate"><span class="pre">dhcp</span></code> (default), <code class="docutils literal notranslate"><span class="pre">bootp</span></code>, <code class="docutils literal notranslate"><span class="pre">ibft</span></code>, <code class="docutils literal notranslate"><span class="pre">static</span></code>.</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">--device=</span></code> - Especifica el dispositivo a ser configurado con el comando <code class="docutils literal notranslate"><span class="pre">network</span></code>. Podemos especificar un dispositivo para que sea activado en cualquiera de las siguientes formas:</dt>
+<dd><ul class="first last">
+<li>el nombre de dispositivo de la interfaz (p. ej. <code class="docutils literal notranslate"><span class="pre">em1</span></code>)</li>
+<li>la dirección MAC de la interfaz (p. ej. <code class="docutils literal notranslate"><span class="pre">01:23:45:67:89:ab</span></code>)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">--ip</span></code> - dirección IPv4 del dispositivo.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--netmask</span></code> - máscara de red para el sistema instalado.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--gateway</span></code> - default gateway como única dirección IPv4.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--nameserver</span></code> - DNS name server, como una dirección IP. Para especificar múltiples name servers, listarlos y separar cada dirección IP con comas.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--hostname</span></code> - El host name del sistema instalado.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="archivo-kickstart-pre-install-script">
+<h2><a class="toc-backref" href="#id5">Archivo Kickstart - Pre-install script</a><a class="headerlink" href="#archivo-kickstart-pre-install-script" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Caso de uso para un pre-installation script:</p>
+<p>Si hemos configurado una dirección IP y un hostname específicos para un cliente (según la MAC del cliente) en el servidor DHCP, podemos volver esta configuración estática. Es decir, los parámetros asignados por el servidor DHCP se mantendrán luego del reinicio del sistema, posterior a la instalación. El fin de este script es que la configuración de red asignada por el servidor DHCP se vuelva estática, aún cuando este servidor no esté activo y el cliente no pueda recibir una IP ni hostname.</p>
+<p>Para volver estática la configuración asignada por el servidor DHCP se puede usar un pre-installation script en el archivo Kickstart para la instalación del cliente. Este pre-installation script obtiene IP y netmask del comando <code class="docutils literal notranslate"><span class="pre">ip</span></code> y el hostname del comando <code class="docutils literal notranslate"><span class="pre">hostname</span></code> y los almacena en variables. Luego se establece una entrada para el archivo kickstart que configure estáticamente la configuración de red.</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">install</span>
+<span class="na">cdrom</span>
+<span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr</span>
+<span class="na">keyboard --vckeymap</span><span class="o">=</span><span class="s">latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="na">rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="na">lang en_US.UTF-8 --addsupport</span><span class="o">=</span><span class="s">es_US.UTF-8</span>
+<span class="na">clearpart --all --initlabel</span>
+<span class="na">part / --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="na">timezone America/Lima</span>
+<span class="na">reboot</span>
+
+<span class="c1"># Incluir archivo generado en pre installation script</span>
+<span class="na">%include /tmp/network.ks</span>
+
+<span class="na">%packages</span>
+<span class="na">%end</span>
+
+<span class="na">%pre</span>
+<span class="c1">#!/bin/bash</span>
+
+<span class="na">inet</span><span class="o">=</span><span class="s">&quot;$(ip addr show dev enp0s3 scope global | grep &#39;inet&#39;)&quot;</span>
+<span class="c1">#echo &quot;$inet&quot;</span>
+
+<span class="c1">#ipdir=&quot;$(echo &quot;$inet&quot; | awk &#39;{ print $2 }&#39;)&quot;</span>
+<span class="na">ipdir</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$inet&quot; | cut -d &#39; &#39; -f 6)&quot;</span>
+<span class="c1">#echo &quot;$ipdir&quot;</span>
+
+<span class="na">ip</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$ipdir&quot; | cut -d / -f1)&quot;</span>
+<span class="na">echo &quot;$ip&quot;</span>
+
+<span class="na">netmaskCIDR</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$ipdir&quot; | cut -d / -f2)&quot;</span>
+<span class="c1">#echo &quot;$netmaskCIDR&quot;</span>
+
+<span class="c1"># ======TRANSFORMAR MASCARA DE CIDR A DECIMAL=======</span>
+
+<span class="c1"># Obtener 1&#39;s</span>
+<span class="c1">#for i in $( seq 1 $netmaskCIDR )</span>
+<span class="na">for (( i</span><span class="o">=</span><span class="s">1; i&lt;=$netmaskCIDR; i++ ))</span>
+<span class="na">do</span>
+        <span class="na">unos+</span><span class="o">=</span><span class="s">&quot;1&quot;</span>
+<span class="na">done</span>
+
+<span class="c1"># Obtener 0&#39;s</span>
+<span class="na">cidrceros</span><span class="o">=</span><span class="s">$(( 32-$netmaskCIDR ))</span>
+
+<span class="c1">#for i in $( seq 1 $cidrceros )</span>
+<span class="na">for (( i</span><span class="o">=</span><span class="s">1; i&lt;=$cidrceros; i++ ))</span>
+<span class="na">do</span>
+        <span class="na">ceros+</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+<span class="na">done</span>
+
+<span class="c1"># Concatenar 1&#39;s con 0&#39;s</span>
+<span class="na">binario</span><span class="o">=</span><span class="s">&quot;$unos$ceros&quot;</span>
+
+<span class="c1">#echo $unos</span>
+<span class="c1">#echo $ceros</span>
+<span class="c1">#echo $binario</span>
+
+<span class="c1"># Separar cada 8 digitos</span>
+<span class="na">oct1</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$binario&quot; | cut -c 1-8)&quot;</span>
+<span class="na">oct2</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$binario&quot; | cut -c 9-16)&quot;</span>
+<span class="na">oct3</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$binario&quot; | cut -c 17-24)&quot;</span>
+<span class="na">oct4</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$binario&quot; | cut -c 25-32)&quot;</span>
+
+<span class="c1">#echo $oct1</span>
+<span class="c1">#echo $oct2</span>
+<span class="c1">#echo $oct3</span>
+<span class="c1">#echo $oct4</span>
+
+<span class="c1"># Transformar cada octeto de binario a decimal</span>
+<span class="c1">#for i in $( seq 1 8 )</span>
+<span class="na">for i in {1..8}</span>
+<span class="na">do</span>
+<span class="c1">#       echo $i</span>
+        <span class="na">peso</span><span class="o">=</span><span class="s">$(( 128/(2**$(( $i-1 ))) ))</span>
+<span class="c1">#       echo $peso</span>
+
+        <span class="c1"># PRIMER OCTETO</span>
+        <span class="na">posicion</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$oct1&quot; | cut -c $i)&quot;</span>
+<span class="c1">#       echo $posicion</span>
+        <span class="na">valor</span><span class="o">=</span><span class="s">$(( $posicion*$peso ))</span>
+<span class="c1">#       echo $valor</span>
+        <span class="na">sum</span><span class="o">=</span><span class="s">$(( $sum+$valor ))</span>
+
+        <span class="c1"># SEGUNDO OCTETO</span>
+        <span class="na">posicion2</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$oct2&quot; | cut -c $i)&quot;</span>
+<span class="s">        valor2=$(( $posicion2*$peso ))</span>
+<span class="s">        sum2=$(( $sum2+$valor2 ))</span>
+
+        <span class="c1"># TERCER OCTETO</span>
+        <span class="na">posicion3</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$oct3&quot; | cut -c $i)&quot;</span>
+<span class="s">        valor3=$(( $posicion3*$peso ))</span>
+<span class="s">        sum3=$(( $sum3+$valor3 ))</span>
+
+        <span class="c1"># CUARTO OCTETO</span>
+        <span class="na">posicion4</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$oct4&quot; | cut -c $i)&quot;</span>
+<span class="s">        valor4=$(( $posicion4*$peso ))</span>
+<span class="s">        sum4=$(( $sum4+$valor4 ))</span>
+<span class="na">done</span>
+
+<span class="c1">#echo $sum</span>
+<span class="c1">#echo $sum2</span>
+<span class="c1">#echo $sum3</span>
+<span class="c1">#echo $sum4</span>
+
+<span class="c1"># Formar netmask</span>
+<span class="na">netmask</span><span class="o">=</span><span class="s">&quot;$sum.$sum2.$sum3.$sum4&quot;</span>
+<span class="na">echo $netmask</span>
+
+<span class="c1"># Variable que almacena el hosntame</span>
+<span class="na">hostn</span><span class="o">=</span><span class="s">&quot;$(hostname)&quot;</span>
+<span class="na">echo &quot;$hostn&quot;</span>
+
+<span class="na">echo &quot;network --bootproto</span><span class="o">=</span><span class="s">static --device=enp0s3 --ip=$ip --netmask=$netmask --hostname=$hostn&quot; &gt; /tmp/network.ks</span>
+
+<span class="na">%end</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">%include</span></code> - (optional). Usar el comando <code class="docutils literal notranslate"><span class="pre">%include</span> <span class="pre">/path/to/file</span></code> para incluir los contenidos de otro archivo en el archivo Kickstart como si el contenido estuviera en la ubicación del comando <code class="docutils literal notranslate"><span class="pre">%include</span></code> en el archivo Kickstart.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En este ejemplo, la línea <code class="docutils literal notranslate"><span class="pre">%include</span> <span class="pre">/tmp/network.ks</span></code> es reemplazada por <code class="docutils literal notranslate"><span class="pre">network</span> <span class="pre">--bootproto=static</span> <span class="pre">--device=enp0s3</span> <span class="pre">--ip=$ip</span> <span class="pre">--netmask=$netmask</span> <span class="pre">--hostname=$hostn</span></code></p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Usar el parámetro <code class="docutils literal notranslate"><span class="pre">--bootproto=</span></code> con valor <code class="docutils literal notranslate"><span class="pre">static</span></code> configura el parámetro <code class="docutils literal notranslate"><span class="pre">BOOTPROTO=&quot;none&quot;</span></code> en el archivo <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/network-scripts/ifcfg-enp0s3</span></code>, en lugar de <code class="docutils literal notranslate"><span class="pre">BOOTPROTO=&quot;dhcp&quot;</span></code> (por defecto).</p>
+</div>
+</div>
+<div class="section" id="archivo-kickstart-post-install-script">
+<h2><a class="toc-backref" href="#id6">Archivo Kickstart - Post-install script</a><a class="headerlink" href="#archivo-kickstart-post-install-script" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Caso de uso para un post-installation script:</p>
+<p>Agregar una llave pública para habilitar Passwordless SSH hacia el cliente.</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">install</span>
+<span class="na">cdrom</span>
+<span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr</span>
+<span class="na">keyboard --vckeymap</span><span class="o">=</span><span class="s">latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="na">rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="na">lang en_US.UTF-8 --addsupport</span><span class="o">=</span><span class="s">es_US.UTF-8</span>
+<span class="na">clearpart --all --initlabel</span>
+<span class="na">part / --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="na">timezone America/Lima</span>
+<span class="na">reboot</span>
+
+<span class="na">user --name</span><span class="o">=</span><span class="s">user1 --groups=wheel --iscrypted --password=$1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+
+<span class="na">%post</span>
+<span class="c1">#---- Install our SSH key ----</span>
+<span class="na">mkdir -m0700 /home/user1/.ssh/</span>
+
+<span class="c1"># SSH public key of PXE boot server (SSH client)</span>
+<span class="na">cat &lt;&lt;EOF &gt;/home/user1/.ssh/authorized_keys</span>
+<span class="na">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDblvZmYVA+ayprv7f25pS3+agpSGzDg0mlZxvxB1g46r7YSGiMDXphujEqE6FJAkecAClQq3uztTQhGYqOutU4KQmHZ+f/os22YrA+aM3blNHcwh+OAjpfcdLnYuAo5YjsAuJ5/1bI6+VOKN6BHQYNVxkkggkeYnrZwQUD0w054cAgpfMp2O7FJGJ5SXDKUR4w7y2gAEjOFe6X/ULpRR0FWGFrDsO894XKnEBh3D2lhrdGZURwKJCtsbWxfO4XOm8P7JHdQK8z1xgKsTaJLotReh8lbwPptlLPGF3QjD0kvab9jqm8MosdOR4N4CGyYldflDHZ3FoKvxMA2lIUoalkicNzqkGP7kBj3Nzd+83E8KWdPbbk32KLkuFNQiXe5vWje1PlxufUAfBv3DaiRCtWSO50ZhdK4oLKiaOfkMxATEW6zXDiBYA4nig4FtIqYDjYB+Ca7vkrqifwNzliYZpQfcgQqZXEVUQtlw4JM1T/xhByt/T6A3pOwMBrVEaClgOwQaz/LiVFfyolyhO9OzOzFNXSw+Z5zZ7hj68lkji0gbjbxHMXNrHPhCMjts9m7dss/LrYIpmNHpbUWwpL8OilS+vofkgESbpJNw+1/fPlwx0UIKiJ4hHQpqzaOcSsRXhmyrBj/T1HWUyxUv34gmTynFTLNsNVMgWfBQTeqPruPQ</span><span class="o">=</span><span class="s">= user1@localhost.localdomain</span>
+<span class="na">EOF</span>
+
+<span class="c1"># set permissions</span>
+<span class="na">chmod 0600 /home/user1/.ssh/authorized_keys</span>
+
+<span class="c1"># fix up selinux context</span>
+<span class="na">restorecon -R /home/user1/.ssh/</span>
+
+<span class="c1"># change owner from root to user1</span>
+<span class="na">chown -R user1:user1 /home/user1/.ssh</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="archivo-kickstart-text-mode-install">
+<h2><a class="toc-backref" href="#id7">Archivo Kickstart - Text mode install</a><a class="headerlink" href="#archivo-kickstart-text-mode-install" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Archivo Kickstart con una configuración mínima en modo texto, en lugar del modo gráfico:</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">install</span>
+<span class="na">cdrom</span>
+<span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr</span>
+<span class="na">keyboard --vckeymap</span><span class="o">=</span><span class="s">latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="na">rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="na">lang en_US.UTF-8 --addsupport</span><span class="o">=</span><span class="s">es_US.UTF-8</span>
+<span class="na">clearpart --all --initlabel</span>
+<span class="na">part / --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="na">timezone America/Lima</span>
+<span class="na">reboot</span>
+
+<span class="na">text</span>
+
+<span class="na">%packages</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">text</span></code> - (optional). Realizar la instalación con Kickstart en modo texto. Por defecto, las instalaciones se realizan en modo gráfico.</li>
+</ul>
+</div>
+<div class="section" id="archivo-kickstart-medio-pasado-mediante-url">
+<h2><a class="toc-backref" href="#id8">Archivo Kickstart - Medio pasado mediante URL</a><a class="headerlink" href="#archivo-kickstart-medio-pasado-mediante-url" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Archivo Kickstart con un medio de instalación pasado mediante una URL. En este caso se usa el protocolo FTP para enviar el medio al destino:</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">install</span>
+<span class="na">url --url</span><span class="o">=</span><span class="s">&quot;ftp://192.168.8.8/pub/centos7&quot;</span>
+<span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr</span>
+<span class="na">keyboard --vckeymap</span><span class="o">=</span><span class="s">latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="na">rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="na">lang en_US.UTF-8 --addsupport</span><span class="o">=</span><span class="s">es_US.UTF-8</span>
+<span class="na">clearpart --all --initlabel</span>
+<span class="na">part / --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="na">timezone America/Lima</span>
+<span class="na">reboot</span>
+
+<span class="na">%packages</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">install</span></code> - (optional). Modo de instalación. Debe ir acompañado en otra línea del tipo de instalación: <code class="docutils literal notranslate"><span class="pre">cdrom</span></code>, <code class="docutils literal notranslate"><span class="pre">harddrive</span></code>, <code class="docutils literal notranslate"><span class="pre">nfs</span></code>, <code class="docutils literal notranslate"><span class="pre">liveimg</span></code>, <code class="docutils literal notranslate"><span class="pre">url</span></code> (FTP, HTTP, HTTPS).</li>
+<li><code class="docutils literal notranslate"><span class="pre">--url=</span></code> - la ubicación de donde instalar. Soporta protocolos <code class="docutils literal notranslate"><span class="pre">HTTP</span></code>, <code class="docutils literal notranslate"><span class="pre">HTTPS</span></code>, <code class="docutils literal notranslate"><span class="pre">FTP</span></code> y <code class="docutils literal notranslate"><span class="pre">file</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="archivo-kickstart-esquema-de-particiones-personalizado">
+<h2><a class="toc-backref" href="#id9">Archivo Kickstart - esquema de particiones personalizado</a><a class="headerlink" href="#archivo-kickstart-esquema-de-particiones-personalizado" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Archivo Kickstart con un esquema de particiones más desarrollado. Un mismo disco de 8 GB será particionado en 3 partes:</p>
+<blockquote>
+<div><ul class="simple">
+<li>partición 1 (<code class="docutils literal notranslate"><span class="pre">/</span></code>): 5 GB</li>
+<li>partición 2: partición para swap del tamaño recomendado por el instalador</li>
+<li>partición 3 (<code class="docutils literal notranslate"><span class="pre">/home</span></code>): ocupar el tamaño restante del disco</li>
+</ul>
+</div></blockquote>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">install</span>
+<span class="na">cdrom</span>
+<span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr</span>
+<span class="na">keyboard --vckeymap</span><span class="o">=</span><span class="s">latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="na">rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="na">lang en_US.UTF-8 --addsupport</span><span class="o">=</span><span class="s">es_US.UTF-8</span>
+<span class="na">clearpart --all --initlabel</span>
+<span class="na">part / --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --ondisk=sda --asprimary --size=5120</span>
+<span class="na">part /home --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="na">part swap --fstype</span><span class="o">=</span><span class="s">&quot;swap&quot; --recommended</span>
+<span class="na">timezone America/Lima</span>
+<span class="na">reboot</span>
+
+<span class="na">%packages</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<p>El esquema de particiones generado a partir de este archivo Kickstart es el siguiente:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ lsblk
+
+NAME   MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+sda      <span class="m">8</span>:0    <span class="m">0</span>     8G  <span class="m">0</span> disk
+├─sda1   <span class="m">8</span>:1    <span class="m">0</span>     5G  <span class="m">0</span> part /
+├─sda2   <span class="m">8</span>:2    <span class="m">0</span>   <span class="m">2</span>.2G  <span class="m">0</span> part /home
+└─sda3   <span class="m">8</span>:3    <span class="m">0</span>   820M  <span class="m">0</span> part <span class="o">[</span>SWAP<span class="o">]</span>
+sr0     <span class="m">11</span>:0    <span class="m">1</span>   942M  <span class="m">0</span> rom
+</pre></div>
+</div>
+</div>
+<div class="section" id="archivo-kickstart-configuracion-de-seguridad">
+<h2><a class="toc-backref" href="#id10">Archivo Kickstart - configuración de seguridad</a><a class="headerlink" href="#archivo-kickstart-configuracion-de-seguridad" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Archivo Kickstart con una configuración personalizada del Firewall y SELinux del sistema:</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">install</span>
+<span class="na">cdrom</span>
+<span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr</span>
+<span class="na">keyboard --vckeymap</span><span class="o">=</span><span class="s">latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="na">rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="na">lang en_US.UTF-8 --addsupport</span><span class="o">=</span><span class="s">es_US.UTF-8</span>
+<span class="na">clearpart --all --initlabel</span>
+<span class="na">part / --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="na">timezone America/Lima</span>
+<span class="na">reboot</span>
+
+<span class="na">firewall --disabled</span>
+<span class="na">selinux --enforcing</span>
+
+<span class="na">%packages</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">firewall</span></code> - (optional). Especificar la configuración de firewall para el sistema instalado.</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">--enabled</span></code> - (o <code class="docutils literal notranslate"><span class="pre">--enable</span></code>). Rechaza conexiones entrantes que no responden a solicitudes salientes, como respuestas DNS o solicitudes DHCP. Si se necesita el acceso a servicios que corren en esta máquina, podemos escoger permitir servicios específicos a través del firewall.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--disabled</span></code> - (o <code class="docutils literal notranslate"><span class="pre">--disable</span></code>). No configurar ninguna regla de iptables.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">firewall --enabled|--disabled device [options]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Revisar el estado del firewall con <code class="docutils literal notranslate"><span class="pre">systemctl</span> <span class="pre">status</span> <span class="pre">firewalld</span></code> y ver las reglas de iptables con <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">iptables</span> <span class="pre">-S</span></code>.</p>
+</div>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">selinux</span></code> - (optional). Configura el estado de SELinux en los sistemas instalados. La política por defecto de SELinux es <code class="docutils literal notranslate"><span class="pre">enforcing</span></code>.</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">--enforcing</span></code> - Habilita SELinux con la política objetivo en estado <code class="docutils literal notranslate"><span class="pre">enforcing</span></code>.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--permissive</span></code> - Entrega precauciones basados en la política de SELinux, pero en realidad no hace cumplir (enforce) la política.</li>
+<li><code class="docutils literal notranslate"><span class="pre">--disabled</span></code> - Deshabilita SELinux completamente en el sistema.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">selinux [--disabled|--enforcing|--permissive]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Revisar las políticas de seguridad de SELinux con el comando <code class="docutils literal notranslate"><span class="pre">getenforce</span></code> o leyendo el archivo <code class="docutils literal notranslate"><span class="pre">/etc/selinux/config</span></code>.</p>
+</div>
+</div>
+<div class="section" id="archivo-kickstart-multiples-opciones">
+<h2><a class="toc-backref" href="#id11">Archivo Kickstart - múltiples opciones</a><a class="headerlink" href="#archivo-kickstart-multiples-opciones" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Archivo kickstart que agrupa distintos parámetros ya revisados en los anteriores ejemplos:</p>
+<div class="highlight-cfg notranslate"><div class="highlight"><pre><span></span><span class="na">install</span>
+<span class="na">url --url</span><span class="o">=</span><span class="s">&quot;ftp://192.168.8.8/pub/centos7&quot;</span>
+<span class="na">bootloader --location</span><span class="o">=</span><span class="s">mbr</span>
+<span class="na">keyboard --vckeymap</span><span class="o">=</span><span class="s">latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="na">rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="na">lang en_US.UTF-8 --addsupport</span><span class="o">=</span><span class="s">es_US.UTF-8</span>
+<span class="na">clearpart --all --initlabel</span>
+<span class="na">part / --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --ondisk=sda --asprimary --size=5120</span>
+<span class="na">part /home --fstype</span><span class="o">=</span><span class="s">&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="na">part swap --fstype</span><span class="o">=</span><span class="s">&quot;swap&quot; --recommended</span>
+<span class="na">timezone America/Lima</span>
+<span class="na">reboot</span>
+
+<span class="na">user --name</span><span class="o">=</span><span class="s">user1 --groups=wheel --iscrypted --password=$1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+
+<span class="na">firewall --disabled</span>
+<span class="na">selinux --enforcing</span>
+
+<span class="na">text</span>
+
+<span class="c1"># Incluir archivo generado en pre installation script</span>
+<span class="na">%include /tmp/network.ks</span>
+
+<span class="na">%packages</span>
+<span class="na">%end</span>
+
+<span class="na">%pre</span>
+<span class="c1">#!/bin/bash</span>
+
+<span class="na">inet</span><span class="o">=</span><span class="s">&quot;$(ip addr show dev enp0s3 scope global | grep &#39;inet&#39;)&quot;</span>
+<span class="c1">#echo &quot;$inet&quot;</span>
+
+<span class="c1">#ipdir=&quot;$(echo &quot;$inet&quot; | awk &#39;{ print $2 }&#39;)&quot;</span>
+<span class="na">ipdir</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$inet&quot; | cut -d &#39; &#39; -f 6)&quot;</span>
+<span class="c1">#echo &quot;$ipdir&quot;</span>
+
+<span class="na">ip</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$ipdir&quot; | cut -d / -f1)&quot;</span>
+<span class="na">echo &quot;$ip&quot;</span>
+
+<span class="na">netmaskCIDR</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$ipdir&quot; | cut -d / -f2)&quot;</span>
+<span class="c1">#echo &quot;$netmaskCIDR&quot;</span>
+
+<span class="c1"># ======TRANSFORMAR MASCARA DE CIDR A DECIMAL=======</span>
+
+<span class="c1"># Obtener 1&#39;s</span>
+<span class="c1">#for i in $( seq 1 $netmaskCIDR )</span>
+<span class="na">for (( i</span><span class="o">=</span><span class="s">1; i&lt;=$netmaskCIDR; i++ ))</span>
+<span class="na">do</span>
+        <span class="na">unos+</span><span class="o">=</span><span class="s">&quot;1&quot;</span>
+<span class="na">done</span>
+
+<span class="c1"># Obtener 0&#39;s</span>
+<span class="na">cidrceros</span><span class="o">=</span><span class="s">$(( 32-$netmaskCIDR ))</span>
+
+<span class="c1">#for i in $( seq 1 $cidrceros )</span>
+<span class="na">for (( i</span><span class="o">=</span><span class="s">1; i&lt;=$cidrceros; i++ ))</span>
+<span class="na">do</span>
+        <span class="na">ceros+</span><span class="o">=</span><span class="s">&quot;0&quot;</span>
+<span class="na">done</span>
+
+<span class="c1"># Concatenar 1&#39;s con 0&#39;s</span>
+<span class="na">binario</span><span class="o">=</span><span class="s">&quot;$unos$ceros&quot;</span>
+
+<span class="c1">#echo $unos</span>
+<span class="c1">#echo $ceros</span>
+<span class="c1">#echo $binario</span>
+
+<span class="c1"># Separar cada 8 digitos</span>
+<span class="na">oct1</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$binario&quot; | cut -c 1-8)&quot;</span>
+<span class="na">oct2</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$binario&quot; | cut -c 9-16)&quot;</span>
+<span class="na">oct3</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$binario&quot; | cut -c 17-24)&quot;</span>
+<span class="na">oct4</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$binario&quot; | cut -c 25-32)&quot;</span>
+
+<span class="c1">#echo $oct1</span>
+<span class="c1">#echo $oct2</span>
+<span class="c1">#echo $oct3</span>
+<span class="c1">#echo $oct4</span>
+
+<span class="c1"># Transformar cada octeto de binario a decimal</span>
+<span class="c1">#for i in $( seq 1 8 )</span>
+<span class="na">for i in {1..8}</span>
+<span class="na">do</span>
+<span class="c1">#       echo $i</span>
+        <span class="na">peso</span><span class="o">=</span><span class="s">$(( 128/(2**$(( $i-1 ))) ))</span>
+<span class="c1">#       echo $peso</span>
+
+        <span class="c1"># PRIMER OCTETO</span>
+        <span class="na">posicion</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$oct1&quot; | cut -c $i)&quot;</span>
+<span class="c1">#       echo $posicion</span>
+        <span class="na">valor</span><span class="o">=</span><span class="s">$(( $posicion*$peso ))</span>
+<span class="c1">#       echo $valor</span>
+        <span class="na">sum</span><span class="o">=</span><span class="s">$(( $sum+$valor ))</span>
+
+        <span class="c1"># SEGUNDO OCTETO</span>
+        <span class="na">posicion2</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$oct2&quot; | cut -c $i)&quot;</span>
+<span class="s">        valor2=$(( $posicion2*$peso ))</span>
+<span class="s">        sum2=$(( $sum2+$valor2 ))</span>
+
+        <span class="c1"># TERCER OCTETO</span>
+        <span class="na">posicion3</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$oct3&quot; | cut -c $i)&quot;</span>
+<span class="s">        valor3=$(( $posicion3*$peso ))</span>
+<span class="s">        sum3=$(( $sum3+$valor3 ))</span>
+
+        <span class="c1"># CUARTO OCTETO</span>
+        <span class="na">posicion4</span><span class="o">=</span><span class="s">&quot;$(echo &quot;$oct4&quot; | cut -c $i)&quot;</span>
+<span class="s">        valor4=$(( $posicion4*$peso ))</span>
+<span class="s">        sum4=$(( $sum4+$valor4 ))</span>
+<span class="na">done</span>
+
+<span class="c1">#echo $sum</span>
+<span class="c1">#echo $sum2</span>
+<span class="c1">#echo $sum3</span>
+<span class="c1">#echo $sum4</span>
+
+<span class="c1"># Formar netmask</span>
+<span class="na">netmask</span><span class="o">=</span><span class="s">&quot;$sum.$sum2.$sum3.$sum4&quot;</span>
+<span class="na">echo $netmask</span>
+
+<span class="c1"># Variable que almacena el hosntame</span>
+<span class="na">hostn</span><span class="o">=</span><span class="s">&quot;$(hostname)&quot;</span>
+<span class="na">echo &quot;$hostn&quot;</span>
+
+<span class="na">echo &quot;network --bootproto</span><span class="o">=</span><span class="s">static --device=enp0s3 --ip=$ip --netmask=$netmask --hostname=$hostn&quot; &gt; /tmp/network.ks</span>
+
+<span class="na">%end</span>
+
+<span class="na">%post</span>
+<span class="c1">#---- Install our SSH key ----</span>
+<span class="na">mkdir -m0700 /home/user1/.ssh/</span>
+
+<span class="c1"># SSH public key of PXE boot server (SSH client)</span>
+<span class="na">cat &lt;&lt;EOF &gt;/home/user1/.ssh/authorized_keys</span>
+<span class="na">ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgnCcOFXIm9hmohfEURM7cgE4usT2VbASeoRY4Y/VzxIIgigv8C9+N4Rf4s+uj/65oCys8fHJsC0KCQELl3ORDbBew6wT0YgPKU9D1NjXYXS4DTHy5pkLIVLN05Vs+cSyZphRB4ofuRYIhumJrGV7KwwkRw8cjOkIiSQBAvNZYU8fGP5Z7jBc26UgTcnTp8/9Sf94o+TgmjNI7cagQetJD+RbZmR3dW9I0pHYKddr/TIWRkozZWNyaycVsBpBjQfPUYojENCJBaASRAvR21KpqHcxBWczSh8bc6AInAOEO2IpuJiXxZUkDcNX0BmwZvwcE6DsK8QlfYOyUyXhPzOg1 vagrant@pxeserver</span>
+<span class="na">EOF</span>
+
+<span class="c1"># set permissions</span>
+<span class="na">chmod 0600 /home/user1/.ssh/authorized_keys</span>
+
+<span class="c1"># fix up selinux context</span>
+<span class="na">restorecon -R /home/user1/.ssh/</span>
+
+<span class="c1"># change owner from root to user1</span>
+<span class="na">chown -R user1:user1 /home/user1/.ssh</span>
+<span class="na">%end</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../ks-options/_ks-options.html" class="btn btn-neutral float-right" title="Kickstart Options" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_ks-templates.html" class="btn btn-neutral float-left" title="Kickstart Templates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

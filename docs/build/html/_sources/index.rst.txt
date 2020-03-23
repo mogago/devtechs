@@ -36,6 +36,15 @@ Welcome to DevTechs's documentation!
 
 .. toctree::
     :maxdepth: 2
+    :caption: Kickstart
+
+    topics/kickstart/_kickstart
+    topics/kickstart/ks-methods/_ks-methods
+    topics/kickstart/ks-templates/_ks-templates
+    topics/kickstart/ks-options/_ks-options
+
+.. toctree::
+    :maxdepth: 2
     :caption: Markdown
 
     topics/markdown/_markdown
@@ -54,12 +63,7 @@ Welcome to DevTechs's documentation!
     :caption: PXE
 
     topics/pxe/_pxe
-
-.. toctree::
-    :maxdepth: 2
-    :caption: Kickstart
-
-    topics/kickstart/_kickstart
+    topics/pxe/pxe-guides/_pxe-guides.rst
 
 .. toctree::
     :maxdepth: 2
