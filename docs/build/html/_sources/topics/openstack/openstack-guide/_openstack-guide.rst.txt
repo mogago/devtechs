@@ -7,4 +7,4 @@ OpenStack initial configuration
     :caption: Índice
 
     openstack-initial-configuration-cli
-    
+    openstack_manual_install_process

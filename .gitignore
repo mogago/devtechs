@@ -60,3 +60,16 @@ docs/build/html/_sources/topics/ansible/ansible-essentials/*
 docs/build/html/topics/ansible/ansible-essentials/*
 # archivos .rst creados por mí (fuente)
 docs/source/topics/ansible/ansible-essentials/*
+
+# OPENSTACK INSTALLATION AND DEPLOYMENT
+# archivos .doctree para cada archivo dentro del directorio openstack-installation-deployment (misma organización que la fuente)
+docs/build/doctrees/topics/openstack/openstack-installation-deployment/*
+# imágenes dentro de build/html (directorio de imágenes de toda la página, comparten el mismo directorio)
+docs/build/html/_images/lesson1.*.png
+docs/build/html/_images/lesson2.*.png
+# archivos .txt para cada archivo dentro del directorio openstack-installation-deployment (misma organización que la fuente)
+docs/build/html/_sources/topics/openstack/openstack-installation-deployment/*
+# archivos .html para cada archivo dentro del directorio openstack-installation-deployment (misma organización que la fuente)
+docs/build/html/topics/openstack/openstack-installation-deployment/*
+# archivos .rst creados por mí (fuente)
+docs/source/topics/openstack/openstack-installation-deployment/*

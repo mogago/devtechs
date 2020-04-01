@@ -57,6 +57,7 @@ Welcome to DevTechs's documentation!
     topics/openstack/openstack-essentials/_openstack-essentials
     topics/openstack/openstack-deploy/_openstack-deploy
     topics/openstack/openstack-guide/_openstack-guide
+    topics/openstack/openstack-installation-deployment/_openstack-installation-deployment
 
 .. toctree::
     :maxdepth: 2
