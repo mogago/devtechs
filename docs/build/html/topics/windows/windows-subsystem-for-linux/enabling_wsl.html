@@ -1,0 +1,412 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Enabling Windows Subsystem for Linux &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="Enabling SSH into WSL" href="enabling_ssh_into_wsl.html" />
+    <link rel="prev" title="Windows Subsystem For Linux" href="_windows-subsystem-for-linux.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/ansible-essentials/_ansible-essentials.html">Ansible Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/_kickstart.html">Kickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-methods/_ks-methods.html">Kickstart Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-templates/_ks-templates.html">Kickstart Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-options/_ks-options.html">Kickstart Options</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/pxe-guides/_pxe-guides.html">PXE Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Windows</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_windows.html">Windows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Enabling Windows Subsystem for Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enable-wsl">Enable WSL</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#option-1-windows-features-dialog">Option 1 - Windows Features dialog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#option-2-powershell">Option 2 - PowerShell</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#check">Check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-your-linux-distribution-of-choice">Install your Linux Distribution of Choice</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#option-1-download-and-install-from-the-microsoft-store">Option 1 - Download and install from the Microsoft Store</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#option-2-download-and-install-from-the-command-line-script">Option 2 - Download and install from the Command-Line/Script</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#initializing-a-newly-installed-distro">Initializing a newly installed distro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="enabling_ssh_into_wsl.html">Enabling SSH into WSL</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a> &raquo;</li>
+        
+      <li>Enabling Windows Subsystem for Linux</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/windows/windows-subsystem-for-linux/enabling_wsl.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="enabling-windows-subsystem-for-linux">
+<h1><a class="toc-backref" href="#id9">Enabling Windows Subsystem for Linux</a><a class="headerlink" href="#enabling-windows-subsystem-for-linux" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#enabling-windows-subsystem-for-linux" id="id9">Enabling Windows Subsystem for Linux</a><ul>
+<li><a class="reference internal" href="#enable-wsl" id="id10">Enable WSL</a><ul>
+<li><a class="reference internal" href="#option-1-windows-features-dialog" id="id11">Option 1 - Windows Features dialog</a></li>
+<li><a class="reference internal" href="#option-2-powershell" id="id12">Option 2 - PowerShell</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#check" id="id13">Check</a></li>
+<li><a class="reference internal" href="#install-your-linux-distribution-of-choice" id="id14">Install your Linux Distribution of Choice</a><ul>
+<li><a class="reference internal" href="#option-1-download-and-install-from-the-microsoft-store" id="id15">Option 1 - Download and install from the Microsoft Store</a></li>
+<li><a class="reference internal" href="#option-2-download-and-install-from-the-command-line-script" id="id16">Option 2 - Download and install from the Command-Line/Script</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#initializing-a-newly-installed-distro" id="id17">Initializing a newly installed distro</a></li>
+<li><a class="reference internal" href="#referencias" id="id18">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="enable-wsl">
+<h2><a class="toc-backref" href="#id10">Enable WSL</a><a class="headerlink" href="#enable-wsl" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Podemos habilitar el <strong>Windows Subsystem for Linux (WSL)</strong> desde la interfaz gráfica o usando comandos en Powershell.</p>
+<div class="section" id="option-1-windows-features-dialog">
+<h3><a class="toc-backref" href="#id11">Option 1 - Windows Features dialog</a><a class="headerlink" href="#option-1-windows-features-dialog" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En la barra de navegación de Windows, buscar <span class="guilabel">Características de Windows</span> y abrir el programa <span class="guilabel">Activar o desactivar las características de Windows</span>. Activar la opción <span class="guilabel">Subsistema de Windows para Linux</span> (<span class="guilabel">Windows Subsystem for Linux</span>). Presionar <span class="guilabel">Aceptar</span></p>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/enable_wsl_windows_features.png" src="../../../_images/enable_wsl_windows_features.png" />
+<p class="caption"><span class="caption-text">Habilitando WSL en <span class="guilabel">Características de Windows</span></span></p>
+</div>
+<p>Luego nos saldrá una opción para reiniciar Windows, aceptarla.</p>
+</div>
+<div class="section" id="option-2-powershell">
+<h3><a class="toc-backref" href="#id12">Option 2 - PowerShell</a><a class="headerlink" href="#option-2-powershell" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Abrir <span class="guilabel">PowerShell</span> con la opción <span class="guilabel">Ejecutar como Administrador</span> y ejecutar el siguiente comando:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Enable-WindowsOptionalFeature</span> <span class="n">-Online</span> <span class="n">-FeatureName</span> <span class="n">Microsoft-Windows-Subsystem-Linux</span>
+</pre></div>
+</div>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/enable_wsl_powershel.png" src="../../../_images/enable_wsl_powershel.png" />
+<p class="caption"><span class="caption-text">Habilitando WSL en <span class="guilabel">Powershell</span></span></p>
+</div>
+<p>Luego de correr el comando debemos reiniciar el sistema, aceptando con <span class="guilabel">Y</span>.</p>
+</div>
+</div>
+<div class="section" id="check">
+<h2><a class="toc-backref" href="#id13">Check</a><a class="headerlink" href="#check" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Luego de haber reiniciado Windows, podemos comprobar que hemos instalado correctamente WSL corriendo el comando <code class="docutils literal notranslate"><span class="pre">wsl</span></code> en el terminal:</p>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/wsl_check.png" src="../../../_images/wsl_check.png" />
+<p class="caption"><span class="caption-text">Check WSL</span></p>
+</div>
+</div>
+<div class="section" id="install-your-linux-distribution-of-choice">
+<h2><a class="toc-backref" href="#id14">Install your Linux Distribution of Choice</a><a class="headerlink" href="#install-your-linux-distribution-of-choice" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="option-1-download-and-install-from-the-microsoft-store">
+<h3><a class="toc-backref" href="#id15">Option 1 - Download and install from the Microsoft Store</a><a class="headerlink" href="#option-1-download-and-install-from-the-microsoft-store" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>La opción más sencilla es buscar la distribución de nuestra preferencia en el Microsoft Store e instalarla:</p>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/wsl_distro_microsoft_store.png" src="../../../_images/wsl_distro_microsoft_store.png" />
+<p class="caption"><span class="caption-text">Instalar Ubuntu 18.04 Distro para WSL</span></p>
+</div>
+</div>
+<div class="section" id="option-2-download-and-install-from-the-command-line-script">
+<h3><a class="toc-backref" href="#id16">Option 2 - Download and install from the Command-Line/Script</a><a class="headerlink" href="#option-2-download-and-install-from-the-command-line-script" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Otra opción será usar el programa <span class="guilabel">Powershell</span>:</p>
+<ul class="simple">
+<li>Descargar la distribución por línea de comandos:</li>
+</ul>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> .\Desktop\
+Invoke-WebRequest -Uri https://aka.ms/wsl-ubuntu-1804 -OutFile Ubuntu.appx -UseBasicParsing
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Ver lista de distros disponibles para descargar en formato <code class="docutils literal notranslate"><span class="pre">.appx</span></code>: <a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros">Downloading distros</a></p>
+</div>
+<ul class="simple">
+<li>Instalar la distro:</li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Add-AppxPackage</span> <span class="p">.\</span><span class="n">Ubuntu</span><span class="p">.</span><span class="n">appx</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="initializing-a-newly-installed-distro">
+<h2><a class="toc-backref" href="#id17">Initializing a newly installed distro</a><a class="headerlink" href="#initializing-a-newly-installed-distro" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Abrir en el navegador de Windows el programa con el nombre de la aplicación instalada. Por ejemplo, en este caso <span class="guilabel">Ubuntu</span></li>
+</ul>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/wsl_distro_installed.png" src="../../../_images/wsl_distro_installed.png" />
+<p class="caption"><span class="caption-text">Iniciar el programa de la distro instalada</span></p>
+</div>
+<ul class="simple">
+<li>Comenzará la configuración inicial y nos pedirá crear un usuario con contraseña:</li>
+</ul>
+<div class="figure align-center" id="id8">
+<img alt="../../../_images/wsl_distro_user_created.png" src="../../../_images/wsl_distro_user_created.png" />
+<p class="caption"><span class="caption-text">Iniciar el programa de la distro instalada</span></p>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id18">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/about">Windows Subsystem for Linux Documentation</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install-win10">Windows Subsystem for Linux Installation Guide for Windows 10</a></li>
+<li><a class="reference external" href="https://code.visualstudio.com/remote-tutorials/wsl/enable-wsl">Enable WSL</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install-manual">Manually download Windows Subsystem for Linux distro packages</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/install-manual#downloading-distros">Downloading distros</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/windows/wsl/initialize-distro">Initializing a newly installed distro</a></li>
+<li><a class="reference external" href="https://www.howtogeek.com/261188/how-to-uninstall-or-reinstall-windows-10s-ubuntu-bash-shell/">How to Remove Windows 10s Bash Tools Completely</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="enabling_ssh_into_wsl.html" class="btn btn-neutral float-right" title="Enabling SSH into WSL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="_windows-subsystem-for-linux.html" class="btn btn-neutral float-left" title="Windows Subsystem For Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

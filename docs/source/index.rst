@@ -103,3 +103,10 @@ Welcome to DevTechs's documentation!
     :caption: Web
 
     topics/web/_web
+
+.. toctree::
+    :maxdepth: 2
+    :caption: Windows
+
+    topics/windows/_windows
+    topics/windows/windows-subsystem-for-linux/_windows-subsystem-for-linux

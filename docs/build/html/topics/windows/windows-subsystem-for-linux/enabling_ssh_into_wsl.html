@@ -1,0 +1,413 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Enabling SSH into WSL &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="prev" title="Enabling Windows Subsystem for Linux" href="enabling_wsl.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/ansible-essentials/_ansible-essentials.html">Ansible Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/_kickstart.html">Kickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-methods/_ks-methods.html">Kickstart Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-templates/_ks-templates.html">Kickstart Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-options/_ks-options.html">Kickstart Options</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/pxe-guides/_pxe-guides.html">PXE Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Windows</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_windows.html">Windows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="enabling_wsl.html">Enabling Windows Subsystem for Linux</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Enabling SSH into WSL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a> &raquo;</li>
+        
+      <li>Enabling SSH into WSL</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/windows/windows-subsystem-for-linux/enabling_ssh_into_wsl.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="enabling-ssh-into-wsl">
+<h1><a class="toc-backref" href="#id8">Enabling SSH into WSL</a><a class="headerlink" href="#enabling-ssh-into-wsl" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#enabling-ssh-into-wsl" id="id8">Enabling SSH into WSL</a><ul>
+<li><a class="reference internal" href="#referencias" id="id9">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<ul class="simple">
+<li>Instalar <code class="docutils literal notranslate"><span class="pre">openssh-server</span></code> en la distro de WSL:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install openssh-server
+
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+openssh-server is already the newest version <span class="o">(</span><span class="m">1</span>:7.6p1-4ubuntu0.3<span class="o">)</span>.
+<span class="m">0</span> upgraded, <span class="m">0</span> newly installed, <span class="m">0</span> to remove and <span class="m">0</span> not upgraded.
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Para la distro de WSL Ubuntu 18.04, ya se encontrará instalado el servidor SSH por defecto</p>
+</div>
+<ul class="simple">
+<li>En el WSL bash shell, reinstalar (reconfigurar) OpenSSH con:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo dpkg-reconfigure openssh-server
+
+Creating SSH2 RSA key<span class="p">;</span> this may take some <span class="nb">time</span> ...
+<span class="m">2048</span> SHA256:a1Wm2wlyu+xMvJpFADe8oqlSJCUfT96/8qXPYcWGe8U root@DESKTOP-PTFJ9SQ <span class="o">(</span>RSA<span class="o">)</span>
+Creating SSH2 ECDSA key<span class="p">;</span> this may take some <span class="nb">time</span> ...
+<span class="m">256</span> SHA256:YYqT6dvLFpUA21BduvnqXM7i5RdSurvdkafD2lw7glw root@DESKTOP-PTFJ9SQ <span class="o">(</span>ECDSA<span class="o">)</span>
+Creating SSH2 ED25519 key<span class="p">;</span> this may take some <span class="nb">time</span> ...
+<span class="m">256</span> SHA256:q084sqn9frKtN9ZcwQw02/mGmYzn7XNQsFoKzdQ4GDo root@DESKTOP-PTFJ9SQ <span class="o">(</span>ED25519<span class="o">)</span>
+invoke-rc.d: could not determine current runlevel
+</pre></div>
+</div>
+<ul class="simple">
+<li>Editar el archivo <code class="docutils literal notranslate"><span class="pre">/etc/ssh/sshd_config</span></code> y agregar las 2 líneas siguientes:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo vim /etc/ssh/sshd_config
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>PasswordAuthentication yes
+Port <span class="m">2222</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">La razón del cambio de puerto por defecto para SSH (<code class="docutils literal notranslate"><span class="pre">22</span></code>) es debido a que puede estar en uso por Windows.</p>
+</div>
+<ul class="simple">
+<li>Abrir el puerto <code class="docutils literal notranslate"><span class="pre">2222</span></code> en el firewall de Windows:</li>
+</ul>
+<ol class="arabic simple">
+<li>En el barra de navegación de Windows, abrir el programa <span class="guilabel">WF.msc</span> Seleccionar la opción <span class="guilabel">Reglas de entrada</span> en la barra izquierda:</li>
+</ol>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/new_windows_firewall_rule_1.png" src="../../../_images/new_windows_firewall_rule_1.png" />
+<p class="caption"><span class="caption-text">Abrir el programa <span class="guilabel">WF.msc</span> de Windows, <span class="guilabel">Reglas de entrada</span></span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Seleccionar la opción <span class="guilabel">Nueva regla…</span> en la barra derecha:</li>
+</ol>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/new_windows_firewall_rule_2.png" src="../../../_images/new_windows_firewall_rule_2.png" />
+<p class="caption"><span class="caption-text">Seleccionar la opción <span class="guilabel">Nueva regla…</span></span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Seleccionar el tipo de regla <span class="guilabel">Puerto</span>:</li>
+</ol>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/new_windows_firewall_rule_3.png" src="../../../_images/new_windows_firewall_rule_3.png" />
+<p class="caption"><span class="caption-text">Tipo de regla: <span class="guilabel">Puerto</span></span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Aplicar la regla a <span class="guilabel">TCP</span> y usar la opción <span class="guilabel">Puertos locales específicos:</span> y escribir <span class="guilabel">2222</span>:</li>
+</ol>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/new_windows_firewall_rule_4.png" src="../../../_images/new_windows_firewall_rule_4.png" />
+<p class="caption"><span class="caption-text">Aplicar la regla a <span class="guilabel">TCP</span>, <span class="guilabel">Puertos locales específicos:</span> <span class="guilabel">2222</span></span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Elegir la opción <span class="guilabel">Permitir la conexión</span>:</li>
+</ol>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/new_windows_firewall_rule_5.png" src="../../../_images/new_windows_firewall_rule_5.png" />
+<p class="caption"><span class="caption-text">Seleccionar <span class="guilabel">Permitir la conexión</span></span></p>
+</div>
+<ol class="arabic simple" start="6">
+<li>Aplicar la regla sobre todas las opciones: <span class="guilabel">Dominio</span>, <span class="guilabel">Privado</span>, <span class="guilabel">Público</span></li>
+</ol>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/new_windows_firewall_rule_6.png" src="../../../_images/new_windows_firewall_rule_6.png" />
+<p class="caption"><span class="caption-text">Seleccionar <span class="guilabel">Permitir la conexión</span></span></p>
+</div>
+<ol class="arabic simple" start="7">
+<li>Dar un nombre y descripción a la nueva regla de firewall creada:</li>
+</ol>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/new_windows_firewall_rule_7.png" src="../../../_images/new_windows_firewall_rule_7.png" />
+<p class="caption"><span class="caption-text">Nombre y descripción de la regla de firewall</span></p>
+</div>
+<ul class="simple">
+<li>En el WSL bash shell, reiniciar el SSH server</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo service ssh --full-restart
+</pre></div>
+</div>
+<ul class="simple">
+<li>Comprobar que Windows se encuentra escuchando en el puerto <code class="docutils literal notranslate"><span class="pre">2222</span></code>. Desde el Powershell ejecutar:</li>
+</ul>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">netstat</span> <span class="n">-aon</span> <span class="p">|</span> <span class="n">findstr</span> <span class="s2">&quot;2222&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Desde un equipo remoto conectarnos por SSH al WSL de Windows usando un terminal o PuTTY, apuntando a la IP del sistema Windows y el puerto <code class="docutils literal notranslate"><span class="pre">2222</span></code>. Por ejemplo para conectarnos por SSH desde un terminal de Linux usamos:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ssh mogago@192.168.1.8 -p <span class="m">2222</span>
+</pre></div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id9">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.illuminiastudios.com/dev-diaries/ssh-on-windows-subsystem-for-linux/">SSH on Windows Subsystem for Linux</a></li>
+<li><a class="reference external" href="https://jeetblogs.org/post/sshing-into-a-windows-wsl-linux-subsystem/">SSH-ing into a Windows WSL Linux Subsystem</a></li>
+<li><a class="reference external" href="https://www.isunshare.com/blog/how-to-determine-what-ports-are-being-used-in-windows-10/">How to Determine What Ports are Being Used in Windows 10</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="enabling_wsl.html" class="btn btn-neutral float-left" title="Enabling Windows Subsystem for Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
