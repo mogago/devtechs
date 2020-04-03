@@ -1,4 +1,4 @@
-Enabling Windows Subsystem for Linux 
+Enabling Windows Subsystem for Linux
 ====================================
 
 .. contents:: Table of Contents
@@ -85,6 +85,9 @@ Otra opción será usar el programa :guilabel:`Powershell`:
 Initializing a newly installed distro
 '''''''''''''''''''''''''''''''''''''
 
+Initializing from Ubuntu terminal
+"""""""""""""""""""""""""""""""""
+
 - Abrir en el navegador de Windows el programa con el nombre de la aplicación instalada. Por ejemplo, en este caso :guilabel:`Ubuntu`
 
 .. figure:: images/enabling_wsl/wsl_distro_installed.png
@@ -99,6 +102,15 @@ Initializing a newly installed distro
 
     Iniciar el programa de la distro instalada
 
+Initializing from Powershell
+""""""""""""""""""""""""""""
+
+Podemos iniciar el **Windows Subsystem for Linux (WSL)** desde el **Powershell** o la línea de comandos **CMD** de Windows usando el comando ``wsl``:
+
+.. figure:: images/enabling_wsl/wsl_start_from_powershell.png
+    :align: center
+
+    Iniciar el programa de la distro instalada desde Powershell
 
 Referencias
 '''''''''''
