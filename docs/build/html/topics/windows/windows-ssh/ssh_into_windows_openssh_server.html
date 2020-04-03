@@ -1,0 +1,512 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Conectarse por SSH a Windows 10 (OpenSSH server) &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="prev" title="SSH en Windows" href="_windows-subsystem-for-linux.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/ansible-essentials/_ansible-essentials.html">Ansible Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/_kickstart.html">Kickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-methods/_ks-methods.html">Kickstart Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-templates/_ks-templates.html">Kickstart Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-options/_ks-options.html">Kickstart Options</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/pxe-guides/_pxe-guides.html">PXE Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Windows</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windows-subsystem-for-linux/_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_windows-subsystem-for-linux.html">SSH en Windows</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Conectarse por SSH a Windows 10 (OpenSSH server)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-de-openssh-server">Instalación de OpenSSH Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#opcion-1-usando-interfaz-grafica">Opción 1 - Usando interfaz gráfica</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#opcion-2-usando-powershell">Opción 2 - Usando Powershell</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#abrir-el-archivo-sshd-config-con-un-editor-de-texto">Abrir el archivo <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code> con un editor de texto</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usando-visual-studio-code">Usando Visual Studio Code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usando-bloc-de-notas">Usando Bloc de Notas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usando-wsl">Usando WSL</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuracion-del-servidor-openssh">Configuración del servidor OpenSSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#agregar-una-regla-al-firewall-de-windows">Agregar una regla al Firewall de Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reiniciar-el-servicio-de-ssh">Reiniciar el servicio de SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conexion-remota-por-ssh">Conexión remota por SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_windows-subsystem-for-linux.html">SSH en Windows</a> &raquo;</li>
+        
+      <li>Conectarse por SSH a Windows 10 (OpenSSH server)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/windows/windows-ssh/ssh_into_windows_openssh_server.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="conectarse-por-ssh-a-windows-10-openssh-server">
+<h1><a class="toc-backref" href="#id12">Conectarse por SSH a Windows 10 (OpenSSH server)</a><a class="headerlink" href="#conectarse-por-ssh-a-windows-10-openssh-server" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#conectarse-por-ssh-a-windows-10-openssh-server" id="id12">Conectarse por SSH a Windows 10 (OpenSSH server)</a><ul>
+<li><a class="reference internal" href="#instalacion-de-openssh-server" id="id13">Instalación de OpenSSH Server</a><ul>
+<li><a class="reference internal" href="#opcion-1-usando-interfaz-grafica" id="id14">Opción 1 - Usando interfaz gráfica</a></li>
+<li><a class="reference internal" href="#opcion-2-usando-powershell" id="id15">Opción 2 - Usando Powershell</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#abrir-el-archivo-sshd-config-con-un-editor-de-texto" id="id16">Abrir el archivo <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code> con un editor de texto</a><ul>
+<li><a class="reference internal" href="#usando-visual-studio-code" id="id17">Usando Visual Studio Code</a></li>
+<li><a class="reference internal" href="#usando-bloc-de-notas" id="id18">Usando Bloc de Notas</a></li>
+<li><a class="reference internal" href="#usando-wsl" id="id19">Usando WSL</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configuracion-del-servidor-openssh" id="id20">Configuración del servidor OpenSSH</a></li>
+<li><a class="reference internal" href="#agregar-una-regla-al-firewall-de-windows" id="id21">Agregar una regla al Firewall de Windows</a></li>
+<li><a class="reference internal" href="#reiniciar-el-servicio-de-ssh" id="id22">Reiniciar el servicio de SSH</a></li>
+<li><a class="reference internal" href="#conexion-remota-por-ssh" id="id23">Conexión remota por SSH</a></li>
+<li><a class="reference internal" href="#referencias" id="id24">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="instalacion-de-openssh-server">
+<h2><a class="toc-backref" href="#id13">Instalación de OpenSSH Server</a><a class="headerlink" href="#instalacion-de-openssh-server" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Tenemos 2 opciones para instalar OpenSSH Server, desde un entorno gráfico o con la línea de comandos.</p>
+<div class="section" id="opcion-1-usando-interfaz-grafica">
+<h3><a class="toc-backref" href="#id14">Opción 1 - Usando interfaz gráfica</a><a class="headerlink" href="#opcion-1-usando-interfaz-grafica" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li>Abrir el programa <span class="guilabel">Aplicaciones y características</span> de Windows y elegir la opción <span class="guilabel">Características opcionales</span>:</li>
+</ol>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/install_openssh_server_gui_1.png" src="../../../_images/install_openssh_server_gui_1.png" />
+<p class="caption"><span class="caption-text">Opción <span class="guilabel">Características opcionales</span> del programa <span class="guilabel">Aplicaciones y características</span></span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Clic en <span class="guilabel">+ Agregar una característica</span>:</li>
+</ol>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/install_openssh_server_gui_2.png" src="../../../_images/install_openssh_server_gui_2.png" />
+<p class="caption"><span class="caption-text">Opción <span class="guilabel">+ Agregar una característica</span></span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Buscar <span class="guilabel">Servidor de OpenSSH</span> y clic en <span class="guilabel">Instalar</span>:</li>
+</ol>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/install_openssh_server_gui_3.png" src="../../../_images/install_openssh_server_gui_3.png" />
+<p class="caption"><span class="caption-text">En la característica <span class="guilabel">Servidor de OpenSSH</span>, opción <span class="guilabel">Instalar</span>:</span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Comprobar que hemos agregado correctamente el <span class="guilabel">Servidor de OpenSSH</span>:</li>
+</ol>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/install_openssh_server_gui_4.png" src="../../../_images/install_openssh_server_gui_4.png" />
+<p class="caption"><span class="caption-text">Comprobar que está instalado el <span class="guilabel">Servidor de OpenSSH</span>:</span></p>
+</div>
+</div>
+<div class="section" id="opcion-2-usando-powershell">
+<h3><a class="toc-backref" href="#id15">Opción 2 - Usando Powershell</a><a class="headerlink" href="#opcion-2-usando-powershell" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Abrir el programa <strong>Powershell</strong> como administrador. Y ejecutar los siguientes comandos:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Add-WindowsCapability</span> <span class="n">-Online</span> <span class="n">-Name</span> <span class="n">OpenSSH</span><span class="p">.</span><span class="n">Server</span><span class="p">~~~~</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">.</span><span class="n">0</span>
+<span class="nb">Set-Service</span> <span class="n">-Name</span> <span class="n">ssh-agent</span> <span class="n">-StartupType</span> <span class="s1">&#39;Automatic&#39;</span>
+<span class="nb">Set-Service</span> <span class="n">-Name</span> <span class="n">sshd</span> <span class="n">-StartupType</span> <span class="s1">&#39;Automatic&#39;</span>
+<span class="nb">Get-Service</span> <span class="n">ssh</span><span class="p">*</span> <span class="p">|</span> <span class="nb">Start-Service</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="abrir-el-archivo-sshd-config-con-un-editor-de-texto">
+<h2><a class="toc-backref" href="#id16">Abrir el archivo <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code> con un editor de texto</a><a class="headerlink" href="#abrir-el-archivo-sshd-config-con-un-editor-de-texto" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Con un editor de texto editar el archivo <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code>:</li>
+</ul>
+<div class="section" id="usando-visual-studio-code">
+<h3><a class="toc-backref" href="#id17">Usando Visual Studio Code</a><a class="headerlink" href="#usando-visual-studio-code" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Abrir <strong>Powershell</strong> en modo administrador y ejecutar los siguiente comandos:</li>
+</ul>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> C:\ProgramData\ssh\
+code sshd_config
+</pre></div>
+</div>
+</div>
+<div class="section" id="usando-bloc-de-notas">
+<h3><a class="toc-backref" href="#id18">Usando Bloc de Notas</a><a class="headerlink" href="#usando-bloc-de-notas" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Abrir <strong>Powershell</strong> en modo administrador y ejecutar los siguiente comandos:</li>
+</ul>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span><span class="k">cd</span> C:\ProgramData\ssh\
+notepad sshd_config
+</pre></div>
+</div>
+</div>
+<div class="section" id="usando-wsl">
+<h3><a class="toc-backref" href="#id19">Usando WSL</a><a class="headerlink" href="#usando-wsl" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Abrir un terminal de Linux como administrador y ejeutar los siguientes comandos:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo su
+<span class="nb">cd</span> /mnt/c/ProgramData/ssh/
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vim sshd_config
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="configuracion-del-servidor-openssh">
+<h2><a class="toc-backref" href="#id20">Configuración del servidor OpenSSH</a><a class="headerlink" href="#configuracion-del-servidor-openssh" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Port 2233
+PasswordAuthentication yes
+#PermitEmptyPasswords yes
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">En caso, el usuario de Windows no tenga una contraseña establecida; en primer lugar, probar usando como contraseña el nombre de usuario. En caso no funcione, habilitar la línea <code class="docutils literal notranslate"><span class="pre">PermitEmptyPasswords</span> <span class="pre">yes</span></code> en el archivo <code class="docutils literal notranslate"><span class="pre">sshd_config</span></code> y reiniciar el servicio de SSH. Con esta última opción se habilita las conexiones SSH para usuario que no tiene contraseña.</p>
+</div>
+</div>
+<div class="section" id="agregar-una-regla-al-firewall-de-windows">
+<h2><a class="toc-backref" href="#id21">Agregar una regla al Firewall de Windows</a><a class="headerlink" href="#agregar-una-regla-al-firewall-de-windows" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Abrir el puerto <code class="docutils literal notranslate"><span class="pre">2233</span></code> en el firewall de Windows:</li>
+</ul>
+<ol class="arabic simple">
+<li>En el barra de navegación de Windows, abrir el programa <span class="guilabel">WF.msc</span> Seleccionar la opción <span class="guilabel">Reglas de entrada</span> en la barra izquierda:</li>
+</ol>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/new_windows_ssh_firewall_rule_1.png" src="../../../_images/new_windows_ssh_firewall_rule_1.png" />
+<p class="caption"><span class="caption-text">Abrir el programa <span class="guilabel">WF.msc</span> de Windows, <span class="guilabel">Reglas de entrada</span></span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Seleccionar la opción <span class="guilabel">Nueva regla…</span> en la barra derecha:</li>
+</ol>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/new_windows_ssh_firewall_rule_2.png" src="../../../_images/new_windows_ssh_firewall_rule_2.png" />
+<p class="caption"><span class="caption-text">Seleccionar la opción <span class="guilabel">Nueva regla…</span></span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Seleccionar el tipo de regla <span class="guilabel">Puerto</span>:</li>
+</ol>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/new_windows_ssh_firewall_rule_3.png" src="../../../_images/new_windows_ssh_firewall_rule_3.png" />
+<p class="caption"><span class="caption-text">Tipo de regla: <span class="guilabel">Puerto</span></span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>Aplicar la regla a <span class="guilabel">TCP</span> y usar la opción <span class="guilabel">Puertos locales específicos:</span> y escribir <span class="guilabel">2233</span>:</li>
+</ol>
+<div class="figure align-center" id="id8">
+<img alt="../../../_images/new_windows_ssh_firewall_rule_4.png" src="../../../_images/new_windows_ssh_firewall_rule_4.png" />
+<p class="caption"><span class="caption-text">Aplicar la regla a <span class="guilabel">TCP</span>, <span class="guilabel">Puertos locales específicos:</span> <span class="guilabel">2233</span></span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Elegir la opción <span class="guilabel">Permitir la conexión</span>:</li>
+</ol>
+<div class="figure align-center" id="id9">
+<img alt="../../../_images/new_windows_ssh_firewall_rule_5.png" src="../../../_images/new_windows_ssh_firewall_rule_5.png" />
+<p class="caption"><span class="caption-text">Seleccionar <span class="guilabel">Permitir la conexión</span></span></p>
+</div>
+<ol class="arabic simple" start="6">
+<li>Aplicar la regla sobre todas las opciones: <span class="guilabel">Dominio</span>, <span class="guilabel">Privado</span>, <span class="guilabel">Público</span></li>
+</ol>
+<div class="figure align-center" id="id10">
+<img alt="../../../_images/new_windows_ssh_firewall_rule_6.png" src="../../../_images/new_windows_ssh_firewall_rule_6.png" />
+<p class="caption"><span class="caption-text">Seleccionar <span class="guilabel">Permitir la conexión</span></span></p>
+</div>
+<ol class="arabic simple" start="7">
+<li>Dar un nombre y descripción a la nueva regla de firewall creada:</li>
+</ol>
+<div class="figure align-center" id="id11">
+<img alt="../../../_images/new_windows_ssh_firewall_rule_7.png" src="../../../_images/new_windows_ssh_firewall_rule_7.png" />
+<p class="caption"><span class="caption-text">Nombre y descripción de la regla de firewall</span></p>
+</div>
+</div>
+<div class="section" id="reiniciar-el-servicio-de-ssh">
+<h2><a class="toc-backref" href="#id22">Reiniciar el servicio de SSH</a><a class="headerlink" href="#reiniciar-el-servicio-de-ssh" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="nb">Restart-Service</span> <span class="n">sshd</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Verificar que se encuentre escuchando en el puerto <code class="docutils literal notranslate"><span class="pre">2233</span></code>:</li>
+</ul>
+<div class="highlight-bat notranslate"><div class="highlight"><pre><span></span>netstat -aon <span class="p">|</span> findstr <span class="s2">&quot;2233&quot;</span>
+  TCP    0.0.0.0:2233           0.0.0.0:0              LISTENING       9972
+  TCP    [::]:2233              [::]:0                 LISTENING       9972
+</pre></div>
+</div>
+</div>
+<div class="section" id="conexion-remota-por-ssh">
+<h2><a class="toc-backref" href="#id23">Conexión remota por SSH</a><a class="headerlink" href="#conexion-remota-por-ssh" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Desde un equipo remoto conectarnos por SSH al sistema Windows usando un terminal o PuTTY, apuntando a la IP del sistema Windows y el puerto <code class="docutils literal notranslate"><span class="pre">2233</span></code>. Por ejemplo para conectarnos por SSH desde un terminal de Linux usamos:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ssh usuario@192.168.1.8 -p <span class="m">2233</span>
+
+usuario@192.168.1.8 s password:
+Microsoft Windows <span class="o">[</span>Versión <span class="m">10</span>.0.18362.720<span class="o">]</span>
+<span class="o">(</span>c<span class="o">)</span> <span class="m">2019</span> Microsoft Corporation. Todos los derechos reservados.
+
+usuario@DESKTOP-PTFJ9SQ C:<span class="se">\U</span>sers<span class="se">\u</span>suario&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id24">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.youtube.com/watch?v=6FVKHv_0IPA">Instalación y configuración de OpenSSH Server en Windows Server 2019</a></li>
+<li><a class="reference external" href="https://www.addictivetips.com/windows-tips/install-openssh-on-windows-10/">How To Install OpenSSH On Windows 10</a></li>
+<li><a class="reference external" href="https://security.stackexchange.com/questions/154478/openssh-windows-10-users-password-not-configured">OpenSSH windows 10 user s password not configured</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/powershell/scripting/learn/remoting/ssh-remoting-in-powershell-core?view=powershell-7">PowerShell remoting over SSH</a></li>
+<li><a class="reference external" href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement">OpenSSH Key Management</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="_windows-subsystem-for-linux.html" class="btn btn-neutral float-left" title="SSH en Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

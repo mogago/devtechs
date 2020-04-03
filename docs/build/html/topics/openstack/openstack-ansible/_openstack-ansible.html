@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OpenStack Deploy Methods &mdash; documentación de DevTechs - </title>
+  <title>OpenStack-Ansible &mdash; documentación de DevTechs - </title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
-    <link rel="next" title="Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html" />
-    <link rel="prev" title="16. Lesson 16. Final Section" href="../openstack-essentials/lesson16.html" /> 
+    <link rel="next" title="OpenStack-Ansible Deployment" href="openstack-ansible-intro.html" />
+    <link rel="prev" title="2.31 Verify Horizon and Complete OpenStack Installation" href="../openstack-installation-deployment/lesson2.31-verify_horizon_and_complete_openstack_installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -115,15 +115,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../_openstack.html">OpenStack</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenStack Deploy Methods</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html">Despliegue de OpenStack con Packstack y VirtualBox</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenStack-Ansible</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openstack-ansible-intro.html">OpenStack-Ansible Deployment</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">PXE</span></p>
 <ul>
@@ -207,13 +205,13 @@
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
-      <li>OpenStack Deploy Methods</li>
+      <li>OpenStack-Ansible</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/topics/openstack/openstack-deploy/_openstack-deploy.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/topics/openstack/openstack-ansible/_openstack-ansible.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -226,47 +224,13 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="openstack-deploy-methods">
-<h1>OpenStack Deploy Methods<a class="headerlink" href="#openstack-deploy-methods" title="Enlazar permanentemente con este título">¶</a></h1>
+  <div class="section" id="openstack-ansible">
+<h1>OpenStack-Ansible<a class="headerlink" href="#openstack-ansible" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Índice</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html#prerequisitos-del-sistema">Prerequisitos del sistema</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html#configuracion-de-virtualbox">Configuración de VirtualBox</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html#definicion-del-archivo-vagrantfile">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html#definicion-de-archivo-de-configuracion-del-nodo">Definición de archivo de configuración del nodo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html#correr-el-entorno-vagrant-e-instalacion-de-openstack-con-packstack">Correr el entorno Vagrant e Instalación de OpenStack con Packstack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html#pruebas-en-el-entorno-openstack-desplegado">Pruebas en el entorno OpenStack desplegado</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html#anexo-1-configuracion-de-red-desplegada">Anexo 1: Configuración de red desplegada</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html#anexo-2-graficos-de-red-desplegada">Anexo 2: Gráficos de red desplegada</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html#anexo-3-interfaces-de-red-ovs-bridges">Anexo 3: Interfaces de red, OvS, bridges</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html#anexo-4-archivo-answers-txt-de-packstack-generado">Anexo 4: Archivo answers.txt de packstack generado</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#prerequisitos-del-sistema">Prerequisitos del sistema</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#configuracion-de-virtualbox">Configuración de VirtualBox</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#definicion-del-archivo-vagrantfile">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#definicion-de-archivos-de-configuracion-de-nodos">Definición de archivos de configuración de nodos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#correr-el-entorno-vagrant-de-maquinas-virtuales">Correr el entorno Vagrant de máquinas virtuales</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#instalacion-de-openstack-con-packstack">Instalación de OpenStack con Packstack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#pruebas-en-el-entorno-openstack-desplegado">Pruebas en el entorno OpenStack desplegado</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#anexo-1-configuracion-de-red-desplegada">Anexo 1: Configuración de red desplegada</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#anexo-2-graficos-de-red-desplegada">Anexo 2: Gráficos de red desplegada</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#anexo-3-interfaces-de-red-ovs-bridges">Anexo 3: Interfaces de red, OvS, bridges</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#anexo-4-pruebas-de-trafico">Anexo 4: Pruebas de tráfico</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox-vagrant.html#anexo-5-archivo-answers-txt-de-packstack-generado">Anexo 5: Archivo answers.txt de packstack generado</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html">Despliegue de OpenStack con Packstack y VirtualBox</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html#prerequisitos-controller-node">Prerequisitos (Controller node)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html#configuracion-de-compute-node-1">Configuración de Compute Node 1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html#configuracion-de-compute-node-2">Configuración de Compute Node 2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html#descarga-de-paquetes-controller-node">Descarga de paquetes (Controller node)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html#instalacion-de-openstack-con-packstack-controller-node">Instalación de OpenStack con PackStack (Controller node)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html#configuracion-post-instalacion-controller-node">Configuración post-instalación (Controller node)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="packstack-multinode-deploy-packstack-virtualbox.html#instalacion-de-compute-nodes-controller-node">Instalación de Compute Nodes (Controller Node)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="openstack-ansible-intro.html">OpenStack-Ansible Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openstack-ansible-intro.html#openstack-ansible-documentacion-oficial">OpenStack-Ansible - Documentación oficial</a></li>
 </ul>
 </li>
 </ul>
@@ -281,10 +245,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="packstack-singlenode-deploy-packstack-virtualbox-vagrant.html" class="btn btn-neutral float-right" title="Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="openstack-ansible-intro.html" class="btn btn-neutral float-right" title="OpenStack-Ansible Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../openstack-essentials/lesson16.html" class="btn btn-neutral float-left" title="16. Lesson 16. Final Section" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../openstack-installation-deployment/lesson2.31-verify_horizon_and_complete_openstack_installation.html" class="btn btn-neutral float-left" title="2.31 Verify Horizon and Complete OpenStack Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -58,6 +58,7 @@ Welcome to DevTechs's documentation!
     topics/openstack/openstack-deploy/_openstack-deploy
     topics/openstack/openstack-guide/_openstack-guide
     topics/openstack/openstack-installation-deployment/_openstack-installation-deployment
+    topics/openstack/openstack-ansible/_openstack-ansible
 
 .. toctree::
     :maxdepth: 2
@@ -110,3 +111,4 @@ Welcome to DevTechs's documentation!
 
     topics/windows/_windows
     topics/windows/windows-subsystem-for-linux/_windows-subsystem-for-linux
+    topics/windows/windows-ssh/_windows-subsystem-for-linux
