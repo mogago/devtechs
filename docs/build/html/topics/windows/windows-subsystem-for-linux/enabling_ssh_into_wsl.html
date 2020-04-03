@@ -36,6 +36,7 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="SSH en Windows" href="../windows-ssh/_windows-subsystem-for-linux.html" />
     <link rel="prev" title="Enabling Windows Subsystem for Linux" href="enabling_wsl.html" /> 
 </head>
 
@@ -117,6 +118,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a></li>
 </ul>
 <p class="caption"><span class="caption-text">PXE</span></p>
 <ul>
@@ -157,11 +159,16 @@
 <li class="toctree-l1 current"><a class="reference internal" href="_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="enabling_wsl.html">Enabling Windows Subsystem for Linux</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Enabling SSH into WSL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-y-configuracion-de-openssh-server">Instalación y configuración de OpenSSH server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-una-regla-en-el-firewall-de-windows">Crear una regla en el firewall de Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reiniciar-el-servicio-ssh">Reiniciar el servicio SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conexion-remota-por-ssh">Conexión remota por SSH</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../windows-ssh/_windows-subsystem-for-linux.html">SSH en Windows</a></li>
 </ul>
 
             
@@ -234,11 +241,17 @@
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#enabling-ssh-into-wsl" id="id8">Enabling SSH into WSL</a><ul>
-<li><a class="reference internal" href="#referencias" id="id9">Referencias</a></li>
+<li><a class="reference internal" href="#instalacion-y-configuracion-de-openssh-server" id="id9">Instalación y configuración de OpenSSH server</a></li>
+<li><a class="reference internal" href="#crear-una-regla-en-el-firewall-de-windows" id="id10">Crear una regla en el firewall de Windows</a></li>
+<li><a class="reference internal" href="#reiniciar-el-servicio-ssh" id="id11">Reiniciar el servicio SSH</a></li>
+<li><a class="reference internal" href="#conexion-remota-por-ssh" id="id12">Conexión remota por SSH</a></li>
+<li><a class="reference internal" href="#referencias" id="id13">Referencias</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<div class="section" id="instalacion-y-configuracion-de-openssh-server">
+<h2><a class="toc-backref" href="#id9">Instalación y configuración de OpenSSH server</a><a class="headerlink" href="#instalacion-y-configuracion-de-openssh-server" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li>Instalar <code class="docutils literal notranslate"><span class="pre">openssh-server</span></code> en la distro de WSL:</li>
 </ul>
@@ -283,6 +296,9 @@ Port <span class="m">2222</span>
 <p class="first admonition-title">Nota</p>
 <p class="last">La razón del cambio de puerto por defecto para SSH (<code class="docutils literal notranslate"><span class="pre">22</span></code>) es debido a que puede estar en uso por Windows.</p>
 </div>
+</div>
+<div class="section" id="crear-una-regla-en-el-firewall-de-windows">
+<h2><a class="toc-backref" href="#id10">Crear una regla en el firewall de Windows</a><a class="headerlink" href="#crear-una-regla-en-el-firewall-de-windows" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li>Abrir el puerto <code class="docutils literal notranslate"><span class="pre">2222</span></code> en el firewall de Windows:</li>
 </ul>
@@ -335,6 +351,9 @@ Port <span class="m">2222</span>
 <img alt="../../../_images/new_windows_firewall_rule_7.png" src="../../../_images/new_windows_firewall_rule_7.png" />
 <p class="caption"><span class="caption-text">Nombre y descripción de la regla de firewall</span></p>
 </div>
+</div>
+<div class="section" id="reiniciar-el-servicio-ssh">
+<h2><a class="toc-backref" href="#id11">Reiniciar el servicio SSH</a><a class="headerlink" href="#reiniciar-el-servicio-ssh" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li>En el WSL bash shell, reiniciar el SSH server</li>
 </ul>
@@ -347,14 +366,18 @@ Port <span class="m">2222</span>
 <div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="p">$</span> <span class="n">netstat</span> <span class="n">-aon</span> <span class="p">|</span> <span class="n">findstr</span> <span class="s2">&quot;2222&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="conexion-remota-por-ssh">
+<h2><a class="toc-backref" href="#id12">Conexión remota por SSH</a><a class="headerlink" href="#conexion-remota-por-ssh" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li>Desde un equipo remoto conectarnos por SSH al WSL de Windows usando un terminal o PuTTY, apuntando a la IP del sistema Windows y el puerto <code class="docutils literal notranslate"><span class="pre">2222</span></code>. Por ejemplo para conectarnos por SSH desde un terminal de Linux usamos:</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ssh mogago@192.168.1.8 -p <span class="m">2222</span>
 </pre></div>
 </div>
+</div>
 <div class="section" id="referencias">
-<h2><a class="toc-backref" href="#id9">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id13">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://www.illuminiastudios.com/dev-diaries/ssh-on-windows-subsystem-for-linux/">SSH on Windows Subsystem for Linux</a></li>
 <li><a class="reference external" href="https://jeetblogs.org/post/sshing-into-a-windows-wsl-linux-subsystem/">SSH-ing into a Windows WSL Linux Subsystem</a></li>
@@ -370,6 +393,8 @@ Port <span class="m">2222</span>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../windows-ssh/_windows-subsystem-for-linux.html" class="btn btn-neutral float-right" title="SSH en Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="enabling_wsl.html" class="btn btn-neutral float-left" title="Enabling Windows Subsystem for Linux" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

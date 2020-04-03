@@ -3,6 +3,9 @@ Enabling SSH into WSL
 
 .. contents:: Table of Contents
 
+Instalación y configuración de OpenSSH server
+'''''''''''''''''''''''''''''''''''''''''''''
+
 - Instalar ``openssh-server`` en la distro de WSL:
 
 .. code-block:: bash
@@ -47,6 +50,9 @@ Enabling SSH into WSL
 .. Note::
 
     La razón del cambio de puerto por defecto para SSH (``22``) es debido a que puede estar en uso por Windows.
+
+Crear una regla en el firewall de Windows
+'''''''''''''''''''''''''''''''''''''''''
 
 - Abrir el puerto ``2222`` en el firewall de Windows:
 
@@ -99,6 +105,9 @@ Enabling SSH into WSL
 
     Nombre y descripción de la regla de firewall
 
+Reiniciar el servicio SSH
+'''''''''''''''''''''''''
+
 - En el WSL bash shell, reiniciar el SSH server
 
 .. code-block:: bash
@@ -110,6 +119,9 @@ Enabling SSH into WSL
 .. code-block:: powershell
 
     $ netstat -aon | findstr "2222"
+
+Conexión remota por SSH
+'''''''''''''''''''''''
 
 - Desde un equipo remoto conectarnos por SSH al WSL de Windows usando un terminal o PuTTY, apuntando a la IP del sistema Windows y el puerto ``2222``. Por ejemplo para conectarnos por SSH desde un terminal de Linux usamos:
 
