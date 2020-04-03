@@ -4,12 +4,12 @@ Conectarse por SSH a Windows 10 (OpenSSH server)
 .. contents:: Table of Contents
 
 Instalación de OpenSSH Server
-'''''''''''''''''''''''''''''
+-----------------------------
 
 Tenemos 2 opciones para instalar OpenSSH Server, desde un entorno gráfico o con la línea de comandos.
 
 Opción 1 - Usando interfaz gráfica
-""""""""""""""""""""""""""""""""""
+''''''''''''''''''''''''''''''''''
 
 1. Abrir el programa :guilabel:`Aplicaciones y características` de Windows y elegir la opción :guilabel:`Características opcionales`:
 
@@ -40,7 +40,7 @@ Opción 1 - Usando interfaz gráfica
     Comprobar que está instalado el :guilabel:`Servidor de OpenSSH`:
 
 Opción 2 - Usando Powershell
-""""""""""""""""""""""""""""
+''''''''''''''''''''''''''''
 
 Abrir el programa **Powershell** como administrador. Y ejecutar los siguientes comandos:
 
@@ -52,12 +52,12 @@ Abrir el programa **Powershell** como administrador. Y ejecutar los siguientes c
     Get-Service ssh* | Start-Service
 
 Abrir el archivo ``sshd_config`` con un editor de texto
-'''''''''''''''''''''''''''''''''''''''''''''''''''''''
+-------------------------------------------------------
 
 - Con un editor de texto editar el archivo ``sshd_config``:
 
 Usando Visual Studio Code
-"""""""""""""""""""""""""
+'''''''''''''''''''''''''
 
 - Abrir **Powershell** en modo administrador y ejecutar los siguiente comandos:
 
@@ -67,7 +67,7 @@ Usando Visual Studio Code
     code sshd_config
 
 Usando Bloc de Notas
-""""""""""""""""""""
+''''''''''''''''''''
 
 - Abrir **Powershell** en modo administrador y ejecutar los siguiente comandos:
 
@@ -77,7 +77,7 @@ Usando Bloc de Notas
     notepad sshd_config
 
 Usando WSL
-""""""""""
+''''''''''
 
 - Abrir un terminal de Linux como administrador y ejeutar los siguientes comandos:
 
@@ -91,7 +91,7 @@ Usando WSL
     vim sshd_config
 
 Configuración del servidor OpenSSH
-''''''''''''''''''''''''''''''''''
+----------------------------------
 
 .. code-block:: text
 
@@ -104,7 +104,7 @@ Configuración del servidor OpenSSH
     En caso, el usuario de Windows no tenga una contraseña establecida; en primer lugar, probar usando como contraseña el nombre de usuario. En caso no funcione, habilitar la línea ``PermitEmptyPasswords yes`` en el archivo ``sshd_config`` y reiniciar el servicio de SSH. Con esta última opción se habilita las conexiones SSH para usuario que no tiene contraseña.
 
 Agregar una regla al Firewall de Windows
-''''''''''''''''''''''''''''''''''''''''
+----------------------------------------
 
 - Abrir el puerto ``2233`` en el firewall de Windows:
 
@@ -158,7 +158,7 @@ Agregar una regla al Firewall de Windows
     Nombre y descripción de la regla de firewall
 
 Reiniciar el servicio de SSH
-''''''''''''''''''''''''''''
+----------------------------
 
 .. code-block:: powershell
 
@@ -173,7 +173,7 @@ Reiniciar el servicio de SSH
       TCP    [::]:2233              [::]:0                 LISTENING       9972
 
 Conexión remota por SSH
-'''''''''''''''''''''''
+-----------------------
 
 - Desde un equipo remoto conectarnos por SSH al sistema Windows usando un terminal o PuTTY, apuntando a la IP del sistema Windows y el puerto ``2233``. Por ejemplo para conectarnos por SSH desde un terminal de Linux usamos:
 
@@ -188,7 +188,7 @@ Conexión remota por SSH
     usuario@DESKTOP-PTFJ9SQ C:\Users\usuario>
 
 Referencias
-'''''''''''
+-----------
 
 - `Instalación y configuración de OpenSSH Server en Windows Server 2019`_
 - `How To Install OpenSSH On Windows 10`_

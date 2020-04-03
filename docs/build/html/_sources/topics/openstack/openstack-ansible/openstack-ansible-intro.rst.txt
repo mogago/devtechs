@@ -1,10 +1,10 @@
 OpenStack-Ansible Deployment
-----------------------------
+============================
 
 .. contents:: Table of Contents
 
 OpenStack-Ansible - Documentación oficial
-'''''''''''''''''''''''''''''''''''''''''
+-----------------------------------------
 
 - `OpenStack-Ansible Documentation (Train release)`_
 - `OpenStack-Ansible Deployment Guide (Train release)`_

@@ -4,12 +4,12 @@ Enabling Windows Subsystem for Linux
 .. contents:: Table of Contents
 
 Enable WSL
-''''''''''
+----------
 
 Podemos habilitar el **Windows Subsystem for Linux (WSL)** desde la interfaz gráfica o usando comandos en Powershell.
 
 Option 1 - Windows Features dialog
-""""""""""""""""""""""""""""""""""
+''''''''''''''''''''''''''''''''''
 
 En la barra de navegación de Windows, buscar :guilabel:`Características de Windows` y abrir el programa :guilabel:`Activar o desactivar las características de Windows`. Activar la opción :guilabel:`Subsistema de Windows para Linux` (:guilabel:`Windows Subsystem for Linux`). Presionar :guilabel:`Aceptar`
 
@@ -21,7 +21,7 @@ En la barra de navegación de Windows, buscar :guilabel:`Características de Win
 Luego nos saldrá una opción para reiniciar Windows, aceptarla.
 
 Option 2 - PowerShell
-"""""""""""""""""""""
+'''''''''''''''''''''
 
 Abrir :guilabel:`PowerShell` con la opción :guilabel:`Ejecutar como Administrador` y ejecutar el siguiente comando:
 
@@ -37,7 +37,7 @@ Abrir :guilabel:`PowerShell` con la opción :guilabel:`Ejecutar como Administrad
 Luego de correr el comando debemos reiniciar el sistema, aceptando con :guilabel:`Y`.
 
 Check
-'''''
+-----
 
 Luego de haber reiniciado Windows, podemos comprobar que hemos instalado correctamente WSL corriendo el comando ``wsl`` en el terminal:
 
@@ -47,10 +47,10 @@ Luego de haber reiniciado Windows, podemos comprobar que hemos instalado correct
     Check WSL
 
 Install your Linux Distribution of Choice
-'''''''''''''''''''''''''''''''''''''''''
+-----------------------------------------
 
 Option 1 - Download and install from the Microsoft Store
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 La opción más sencilla es buscar la distribución de nuestra preferencia en el Microsoft Store e instalarla:
 
@@ -61,7 +61,7 @@ La opción más sencilla es buscar la distribución de nuestra preferencia en el
 
 
 Option 2 - Download and install from the Command-Line/Script
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
 Otra opción será usar el programa :guilabel:`Powershell`:
 
@@ -83,10 +83,10 @@ Otra opción será usar el programa :guilabel:`Powershell`:
     Add-AppxPackage .\Ubuntu.appx
 
 Initializing a newly installed distro
-'''''''''''''''''''''''''''''''''''''
+-------------------------------------
 
 Initializing from Ubuntu terminal
-"""""""""""""""""""""""""""""""""
+'''''''''''''''''''''''''''''''''
 
 - Abrir en el navegador de Windows el programa con el nombre de la aplicación instalada. Por ejemplo, en este caso :guilabel:`Ubuntu`
 
@@ -103,7 +103,7 @@ Initializing from Ubuntu terminal
     Iniciar el programa de la distro instalada
 
 Initializing from Powershell
-""""""""""""""""""""""""""""
+''''''''''''''''''''''''''''
 
 Podemos iniciar el **Windows Subsystem for Linux (WSL)** desde el **Powershell** o la línea de comandos **CMD** de Windows usando el comando ``wsl``:
 
@@ -113,7 +113,7 @@ Podemos iniciar el **Windows Subsystem for Linux (WSL)** desde el **Powershell**
     Iniciar el programa de la distro instalada desde Powershell
 
 Referencias
-'''''''''''
+-----------
 
 - `Windows Subsystem for Linux Documentation`_
 - `Windows Subsystem for Linux Installation Guide for Windows 10`_
