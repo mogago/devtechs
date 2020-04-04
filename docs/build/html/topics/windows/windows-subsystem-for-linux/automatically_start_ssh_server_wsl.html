@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Windows Subsystem For Linux &mdash; documentación de DevTechs - </title>
+  <title>Iniciar el servidor SSH automáticamente en WSL &mdash; documentación de DevTechs - </title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
-    <link rel="next" title="Enabling Windows Subsystem for Linux" href="enabling_wsl.html" />
-    <link rel="prev" title="Windows" href="../_windows.html" /> 
+    <link rel="next" title="SSH en Windows" href="../windows-ssh/_windows-subsystem-for-linux.html" />
+    <link rel="prev" title="Enabling SSH into WSL" href="enabling_ssh_into_wsl.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -157,10 +157,16 @@
 <p class="caption"><span class="caption-text">Windows</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../_windows.html">Windows</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Windows Subsystem For Linux</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="enabling_wsl.html">Enabling Windows Subsystem for Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="enabling_ssh_into_wsl.html">Enabling SSH into WSL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="automatically_start_ssh_server_wsl.html">Iniciar el servidor SSH automáticamente en WSL</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Iniciar el servidor SSH automáticamente en WSL</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#permitir-iniciar-el-servicio-ssh-sin-password">Permitir iniciar el servicio SSH sin password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#crear-una-nueva-tarea-en-el-programador-de-tareas-de-windows">Crear una nueva tarea en el Programador de tareas de Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comprobar-funcionamiento">Comprobar funcionamiento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../windows-ssh/_windows-subsystem-for-linux.html">SSH en Windows</a></li>
@@ -209,13 +215,15 @@
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
-      <li>Windows Subsystem For Linux</li>
+          <li><a href="_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a> &raquo;</li>
+        
+      <li>Iniciar el servidor SSH automáticamente en WSL</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/topics/windows/windows-subsystem-for-linux/_windows-subsystem-for-linux.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/topics/windows/windows-subsystem-for-linux/automatically_start_ssh_server_wsl.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -228,34 +236,136 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="windows-subsystem-for-linux">
-<h1>Windows Subsystem For Linux<a class="headerlink" href="#windows-subsystem-for-linux" title="Enlazar permanentemente con este título">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Índice</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="enabling_wsl.html">Enabling Windows Subsystem for Linux</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="enabling_wsl.html#enable-wsl">Enable WSL</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enabling_wsl.html#check">Check</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enabling_wsl.html#install-your-linux-distribution-of-choice">Install your Linux Distribution of Choice</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enabling_wsl.html#initializing-a-newly-installed-distro">Initializing a newly installed distro</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enabling_wsl.html#referencias">Referencias</a></li>
+  <div class="section" id="iniciar-el-servidor-ssh-automaticamente-en-wsl">
+<h1><a class="toc-backref" href="#id9">Iniciar el servidor SSH automáticamente en WSL</a><a class="headerlink" href="#iniciar-el-servidor-ssh-automaticamente-en-wsl" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#iniciar-el-servidor-ssh-automaticamente-en-wsl" id="id9">Iniciar el servidor SSH automáticamente en WSL</a><ul>
+<li><a class="reference internal" href="#permitir-iniciar-el-servicio-ssh-sin-password" id="id10">Permitir iniciar el servicio SSH sin password</a></li>
+<li><a class="reference internal" href="#crear-una-nueva-tarea-en-el-programador-de-tareas-de-windows" id="id11">Crear una nueva tarea en el Programador de tareas de Windows</a></li>
+<li><a class="reference internal" href="#comprobar-funcionamiento" id="id12">Comprobar funcionamiento</a></li>
+<li><a class="reference internal" href="#referencias" id="id13">Referencias</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="enabling_ssh_into_wsl.html">Enabling SSH into WSL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="enabling_ssh_into_wsl.html#instalacion-y-configuracion-de-openssh-server">Instalación y configuración de OpenSSH server</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enabling_ssh_into_wsl.html#crear-una-regla-en-el-firewall-de-windows">Crear una regla en el firewall de Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enabling_ssh_into_wsl.html#reiniciar-el-servicio-ssh">Reiniciar el servicio SSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enabling_ssh_into_wsl.html#conexion-remota-por-ssh">Conexión remota por SSH</a></li>
-<li class="toctree-l2"><a class="reference internal" href="enabling_ssh_into_wsl.html#referencias">Referencias</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="automatically_start_ssh_server_wsl.html">Iniciar el servidor SSH automáticamente en WSL</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="automatically_start_ssh_server_wsl.html#permitir-iniciar-el-servicio-ssh-sin-password">Permitir iniciar el servicio SSH sin password</a></li>
-<li class="toctree-l2"><a class="reference internal" href="automatically_start_ssh_server_wsl.html#crear-una-nueva-tarea-en-el-programador-de-tareas-de-windows">Crear una nueva tarea en el Programador de tareas de Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="automatically_start_ssh_server_wsl.html#comprobar-funcionamiento">Comprobar funcionamiento</a></li>
-<li class="toctree-l2"><a class="reference internal" href="automatically_start_ssh_server_wsl.html#referencias">Referencias</a></li>
+</div>
+<p>Documentación para iniciar el servidor SSH de WSL junto con el arranque del sistema de Windows. El comportamiento normal es que WSL no iniciará una tarea mientras no ejecutemos el bash de Linux e iniciemos manualmente el servicio SSH.</p>
+<div class="section" id="permitir-iniciar-el-servicio-ssh-sin-password">
+<h2><a class="toc-backref" href="#id10">Permitir iniciar el servicio SSH sin password</a><a class="headerlink" href="#permitir-iniciar-el-servicio-ssh-sin-password" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Editar los permisos de <code class="docutils literal notranslate"><span class="pre">/etc/sudoers</span></code> con <code class="docutils literal notranslate"><span class="pre">visudo</span></code>:</li>
 </ul>
-</li>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo visudo
+</pre></div>
+</div>
+<ul class="simple">
+<li>Añadir la siguiente línea al final del archivo <code class="docutils literal notranslate"><span class="pre">/etc/sudoers</span></code> para tener permisos de iniciar el servicio de SSH:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%sudo <span class="nv">ALL</span><span class="o">=</span>NOPASSWD: /etc/init.d/ssh start
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Otras opciones de permisos en <code class="docutils literal notranslate"><span class="pre">/etc/sudoers</span></code>:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Start/Stop scripts for ssh service</span>
+%sudo <span class="nv">ALL</span><span class="o">=</span>NOPASSWD: /etc/init.d/ssh
+
+<span class="c1"># service command</span>
+%sudo <span class="nv">ALL</span><span class="o">=</span>NOPASSWD: /usr/sbin/service
+
+<span class="c1"># ssh command</span>
+%sudo <span class="nv">ALL</span><span class="o">=</span>NOPASSWD: /usr/bin/ssh
+
+<span class="c1"># sshd command</span>
+%sudo <span class="nv">ALL</span><span class="o">=</span>NOPASSWD: /usr/sbin/sshd
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="crear-una-nueva-tarea-en-el-programador-de-tareas-de-windows">
+<h2><a class="toc-backref" href="#id11">Crear una nueva tarea en el Programador de tareas de Windows</a><a class="headerlink" href="#crear-una-nueva-tarea-en-el-programador-de-tareas-de-windows" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li>Abrir el programa <span class="guilabel">Programador de tareas</span>:</li>
+</ul>
+<div class="figure align-center" id="id1">
+<img alt="../../../_images/windows_search.png" src="../../../_images/windows_search.png" />
+<p class="caption"><span class="caption-text">Búsqueda de Windows: <span class="guilabel">Programador de tareas</span></span></p>
+</div>
+<ul class="simple">
+<li>En el <span class="guilabel">Programador de tareas</span>, seleccionar la opción <span class="guilabel">Crear tarea básica…</span>:</li>
+</ul>
+<div class="figure align-center" id="id2">
+<img alt="../../../_images/programador_de_tareas.png" src="../../../_images/programador_de_tareas.png" />
+<p class="caption"><span class="caption-text">Búsqueda de Windows: <span class="guilabel">Programador de tareas</span></span></p>
+</div>
+<ul class="simple">
+<li>Pasos para la creación de una nueva tarea:</li>
+</ul>
+<ol class="arabic simple">
+<li>Dar un Nombre y Descripción a la nueva tarea:</li>
+</ol>
+<div class="figure align-center" id="id3">
+<img alt="../../../_images/nueva_tarea1.png" src="../../../_images/nueva_tarea1.png" />
+<p class="caption"><span class="caption-text">Dar un Nombre y Descripción a la tarea</span></p>
+</div>
+<ol class="arabic simple" start="2">
+<li>Elegir como desencadenante de la acción <span class="guilabel">Al iniciar sesión</span>:</li>
+</ol>
+<div class="figure align-center" id="id4">
+<img alt="../../../_images/nueva_tarea2.png" src="../../../_images/nueva_tarea2.png" />
+<p class="caption"><span class="caption-text">Desencadenador de tarea: <span class="guilabel">Al iniciar sesión</span></span></p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Elegir como acción que realizará la tarea <span class="guilabel">Iniciar un programa</span>:</li>
+</ol>
+<div class="figure align-center" id="id5">
+<img alt="../../../_images/nueva_tarea3.png" src="../../../_images/nueva_tarea3.png" />
+<p class="caption"><span class="caption-text">Acción de la tarea: <span class="guilabel">Iniciar un programa</span></span></p>
+</div>
+<ol class="arabic simple" start="4">
+<li>El programa a ejecutarse será el bash de WSL y le pasamos como argumento el comando a ejecutar:</li>
+</ol>
+<ul class="simple">
+<li>Programa o script: <code class="docutils literal notranslate"><span class="pre">C:\Windows\System32\bash.exe</span></code></li>
+<li>Argumentos: <code class="docutils literal notranslate"><span class="pre">-c</span> <span class="pre">&quot;sudo</span> <span class="pre">/etc/init.d/ssh</span> <span class="pre">start&quot;</span></code></li>
+</ul>
+<div class="figure align-center" id="id6">
+<img alt="../../../_images/nueva_tarea4.png" src="../../../_images/nueva_tarea4.png" />
+<p class="caption"><span class="caption-text">Programa a ejecutar con sus argumentos</span></p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Revisar la configuración de la tarea y clic en <span class="guilabel">Finalizar</span>:</li>
+</ol>
+<div class="figure align-center" id="id7">
+<img alt="../../../_images/nueva_tarea5.png" src="../../../_images/nueva_tarea5.png" />
+<p class="caption"><span class="caption-text">Revisar el resumen de la tarea</span></p>
+</div>
+<ol class="arabic simple" start="6">
+<li>En la barra lateral izquierda, escogemos la opción <span class="guilabel">Biblioteca del Programador de tareas</span> y podremos ver listada nuestra nueva tarea:</li>
+</ol>
+<div class="figure align-center" id="id8">
+<img alt="../../../_images/nueva_tarea6.png" src="../../../_images/nueva_tarea6.png" />
+<p class="caption"><span class="caption-text">Nueva tarea agregada a la Biblioteca</span></p>
+</div>
+</div>
+<div class="section" id="comprobar-funcionamiento">
+<h2><a class="toc-backref" href="#id12">Comprobar funcionamiento</a><a class="headerlink" href="#comprobar-funcionamiento" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para comprobar que se está ejecutando el servicio de SSH de WSL al iniciar el sistema de Windows realizaremos los siguientes pasos:</p>
+<ol class="arabic simple">
+<li>Reiniciar nuestro sistema de Windows</li>
+<li>Desde un equipo remoto haremos conexión SSH al usuario, IP y puerto pertenecientes al WSL:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh mogago@192.168.1.8 -p <span class="m">2222</span>
+mogago@192.168.1.8 s password:
+</pre></div>
+</div>
+<p>Si la conexión por SSH al equipo remoto ha sido exitosa, hemos configurado correctamente la tarea.</p>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id13">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.illuminiastudios.com/dev-diaries/ssh-on-windows-subsystem-for-linux/">SSH on Windows Subsystem for Linux (WSL)</a></li>
 </ul>
 </div>
 </div>
@@ -268,10 +378,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="enabling_wsl.html" class="btn btn-neutral float-right" title="Enabling Windows Subsystem for Linux" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../windows-ssh/_windows-subsystem-for-linux.html" class="btn btn-neutral float-right" title="SSH en Windows" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../_windows.html" class="btn btn-neutral float-left" title="Windows" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="enabling_ssh_into_wsl.html" class="btn btn-neutral float-left" title="Enabling SSH into WSL" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

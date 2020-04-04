@@ -8,3 +8,4 @@ Windows Subsystem For Linux
 
     enabling_wsl
     enabling_ssh_into_wsl
+    automatically_start_ssh_server_wsl

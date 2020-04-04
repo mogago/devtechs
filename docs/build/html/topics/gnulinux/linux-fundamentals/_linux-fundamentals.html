@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
-    <link rel="next" title="Introduction" href="0_introduction.html" />
+    <link rel="next" title="001 Linux Fundamentals - Introduction" href="001-Linux_Fundamentals_Introduction.html" />
     <link rel="prev" title="Instalando Ubuntu en un USB con mkusb" href="../ubuntu/ubuntu-install-usb-mkusb.html" /> 
 </head>
 
@@ -100,7 +100,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../archlinux/_archlinux.html">ArchLinux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../ubuntu/_ubuntu.html">Ubuntu</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Linux Fundamentals (Sander van Vugt)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="0_introduction.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="001-Linux_Fundamentals_Introduction.html">001 Linux Fundamentals - Introduction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-1-essential-commands">Module 1: Essential Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-2-user-and-group-management-and-permissions">Module 2: User and Group Management and Permissions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-3-operating-running-systems">Module 3: Operating Running Systems</a></li>
 </ul>
 </li>
 </ul>
@@ -228,11 +234,192 @@
             
   <div class="section" id="linux-fundamentals-sander-van-vugt">
 <h1>Linux Fundamentals (Sander van Vugt)<a class="headerlink" href="#linux-fundamentals-sander-van-vugt" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Enlazar permanentemente con este título">¶</a></h2>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Índice</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="0_introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="001-Linux_Fundamentals_Introduction.html">001 Linux Fundamentals - Introduction</a></li>
 </ul>
+</div>
+</div>
+<div class="section" id="module-1-essential-commands">
+<h2>Module 1: Essential Commands<a class="headerlink" href="#module-1-essential-commands" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">002</span> <span class="n">Module</span> <span class="n">introduction</span>
+<span class="mi">003</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">004</span> <span class="mf">1.1</span> <span class="n">Understanding</span> <span class="n">Linux</span> <span class="n">Distributions</span>
+<span class="mi">005</span> <span class="mf">1.2</span> <span class="n">Installing</span> <span class="n">CentOS</span> <span class="mf">7.5</span>
+<span class="mi">006</span> <span class="mf">1.3</span> <span class="n">Installing</span> <span class="n">Ubuntu</span> <span class="mf">18.04</span> <span class="n">LTS</span>
+<span class="mi">007</span> <span class="n">Lesson</span> <span class="mi">1</span> <span class="n">Lab</span> <span class="o">-</span> <span class="n">Installing</span> <span class="n">Linux</span>
+<span class="mi">008</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">009</span> <span class="mf">2.1</span> <span class="n">Logging</span> <span class="ow">in</span> <span class="n">to</span> <span class="n">Linux</span>
+<span class="mi">010</span> <span class="mf">2.2</span> <span class="n">Using</span> <span class="n">the</span> <span class="n">Seven</span> <span class="n">Essential</span> <span class="n">Linux</span> <span class="n">Command</span> <span class="n">Line</span> <span class="n">Tools</span>
+<span class="mi">011</span> <span class="mf">2.3</span> <span class="n">Getting</span> <span class="n">Help</span> <span class="k">with</span> <span class="n">man</span>
+<span class="mi">012</span> <span class="mf">2.4</span> <span class="n">Finding</span> <span class="n">Which</span> <span class="n">man</span> <span class="n">Page</span> <span class="n">to</span> <span class="n">Use</span>
+<span class="mi">013</span> <span class="mf">2.5</span> <span class="n">Using</span> <span class="n">pinfo</span>
+<span class="mi">014</span> <span class="mf">2.6</span> <span class="n">Using</span> <span class="n">Other</span> <span class="n">Systems</span> <span class="k">for</span> <span class="n">Getting</span> <span class="n">Help</span>
+<span class="mi">015</span> <span class="mf">2.7</span> <span class="n">Lesson</span> <span class="mi">2</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">016</span> <span class="n">Lesson</span> <span class="mi">2</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Using</span> <span class="n">Essential</span> <span class="n">Tools</span>
+<span class="mi">017</span> <span class="n">Lesson</span> <span class="mi">2</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="n">Using</span> <span class="n">Essential</span> <span class="n">Tools</span>
+<span class="mi">018</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">019</span> <span class="mf">3.1</span> <span class="n">Understanding</span> <span class="n">the</span> <span class="n">Linux</span> <span class="n">File</span> <span class="n">System</span> <span class="n">Hierarchy</span>
+<span class="mi">020</span> <span class="mf">3.2</span> <span class="n">Listing</span> <span class="n">Files</span> <span class="k">with</span> <span class="n">ls</span>
+<span class="mi">021</span> <span class="mf">3.3</span> <span class="n">Using</span> <span class="n">Wildcards</span>
+<span class="mi">022</span> <span class="mf">3.4</span> <span class="n">Copying</span> <span class="n">Files</span> <span class="k">with</span> <span class="n">cp</span>
+<span class="mi">023</span> <span class="mf">3.5</span> <span class="n">Working</span> <span class="k">with</span> <span class="n">Directories</span>
+<span class="mi">024</span> <span class="mf">3.6</span> <span class="n">Using</span> <span class="n">Absolute</span> <span class="ow">and</span> <span class="n">Relative</span> <span class="n">Paths</span>
+<span class="mi">025</span> <span class="mf">3.7</span> <span class="n">Moving</span> <span class="n">Files</span> <span class="k">with</span> <span class="n">mv</span>
+<span class="mi">026</span> <span class="mf">3.8</span> <span class="n">Removing</span> <span class="n">Files</span> <span class="k">with</span> <span class="n">rm</span>
+<span class="mi">027</span> <span class="mf">3.9</span> <span class="n">Understanding</span> <span class="n">Hard</span> <span class="ow">and</span> <span class="n">Symbolic</span> <span class="n">Links</span>
+<span class="mi">028</span> <span class="mf">3.10</span> <span class="n">Managing</span> <span class="n">Hard</span> <span class="ow">and</span> <span class="n">Symbolic</span> <span class="n">Links</span>
+<span class="mi">029</span> <span class="mf">3.11</span> <span class="n">Finding</span> <span class="n">Files</span> <span class="k">with</span> <span class="n">find</span>
+<span class="mi">030</span> <span class="mf">3.12</span> <span class="n">Using</span> <span class="n">Advanced</span> <span class="n">find</span> <span class="n">Options</span>
+<span class="mi">031</span> <span class="mf">3.13</span> <span class="n">Archiving</span> <span class="n">Files</span> <span class="k">with</span> <span class="n">tar</span>
+<span class="mi">032</span> <span class="mf">3.14</span> <span class="n">Managing</span> <span class="n">File</span> <span class="n">Compression</span>
+<span class="mi">033</span> <span class="mf">3.15</span> <span class="n">Lesson</span> <span class="mi">3</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">034</span> <span class="n">Lesson</span> <span class="mi">3</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Using</span> <span class="n">Essential</span> <span class="n">File</span> <span class="n">Management</span> <span class="n">Tools</span>
+<span class="mi">035</span> <span class="n">Lesson</span> <span class="mi">3</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="o">-</span>  <span class="n">Using</span> <span class="n">Essential</span> <span class="n">File</span> <span class="n">Management</span> <span class="n">Tools</span>
+<span class="mi">036</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">037</span> <span class="mf">4.1</span> <span class="n">Understanding</span> <span class="n">vi</span>
+<span class="mi">038</span> <span class="mf">4.2</span> <span class="n">Creating</span> <span class="n">Text</span> <span class="n">Files</span> <span class="k">with</span> <span class="n">vi</span>
+<span class="mi">039</span> <span class="mf">4.3</span> <span class="n">Browsing</span> <span class="n">Text</span> <span class="n">Files</span> <span class="k">with</span> <span class="n">more</span> <span class="ow">and</span> <span class="n">less</span>
+<span class="mi">040</span> <span class="mf">4.4</span> <span class="n">Using</span> <span class="n">head</span> <span class="ow">and</span> <span class="n">tail</span> <span class="n">to</span> <span class="n">See</span> <span class="n">File</span> <span class="n">Start</span> <span class="ow">and</span> <span class="n">End</span>
+<span class="mi">041</span> <span class="mf">4.5</span> <span class="n">Displaying</span> <span class="n">File</span> <span class="n">Contents</span> <span class="k">with</span> <span class="n">cat</span> <span class="ow">and</span> <span class="n">tac</span>
+<span class="mi">042</span> <span class="mf">4.6</span> <span class="n">Working</span> <span class="k">with</span> <span class="n">grep</span>
+<span class="mi">043</span> <span class="mf">4.7</span> <span class="n">Understanding</span> <span class="n">Regular</span> <span class="n">Expressions</span>
+<span class="mi">044</span> <span class="mf">4.8</span> <span class="n">Using</span> <span class="n">Regular</span> <span class="n">Expressions</span> <span class="k">with</span> <span class="n">grep</span>
+<span class="mi">045</span> <span class="mf">4.9</span> <span class="n">Using</span> <span class="n">Common</span> <span class="n">Text</span> <span class="n">Processing</span> <span class="n">Utilities</span>
+<span class="mi">046</span> <span class="mf">4.10</span> <span class="n">Lesson</span> <span class="mi">4</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">047</span> <span class="n">Lesson</span> <span class="mi">4</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Working</span> <span class="k">with</span> <span class="n">Text</span> <span class="n">Files</span>
+<span class="mi">048</span> <span class="n">Lesson</span> <span class="mi">4</span> <span class="n">Lab</span> <span class="n">Solution</span>  <span class="n">Working</span> <span class="k">with</span> <span class="n">Text</span> <span class="n">Files</span>
+<span class="mi">049</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">050</span> <span class="mf">5.1</span> <span class="n">Understanding</span> <span class="n">the</span> <span class="n">Root</span> <span class="n">User</span>
+<span class="mi">051</span> <span class="mf">5.2</span> <span class="n">Using</span> <span class="n">su</span>
+<span class="mi">052</span> <span class="mf">5.3</span> <span class="n">Using</span> <span class="n">sudo</span>
+<span class="mi">053</span> <span class="mf">5.4</span> <span class="n">Creating</span> <span class="n">a</span> <span class="n">Simple</span> <span class="n">sudo</span> <span class="n">Configuration</span>
+<span class="mi">054</span> <span class="mf">5.5</span> <span class="n">Working</span> <span class="n">on</span> <span class="n">Linux</span> <span class="kn">from</span> <span class="nn">Graphical</span> <span class="n">Interface</span> <span class="ow">or</span> <span class="n">Command</span> <span class="n">Line</span>
+<span class="mi">055</span> <span class="mf">5.6</span> <span class="n">Using</span> <span class="n">ssh</span> <span class="n">to</span> <span class="n">Connect</span> <span class="n">to</span> <span class="n">a</span> <span class="n">Remote</span> <span class="n">Server</span>
+<span class="mi">056</span> <span class="mf">5.7</span> <span class="n">Using</span> <span class="n">ssh</span> <span class="n">Keys</span>
+<span class="mi">057</span> <span class="mf">5.8</span> <span class="n">Lesson</span> <span class="mi">5</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">058</span> <span class="n">Lesson</span> <span class="mi">5</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Connecting</span> <span class="n">to</span> <span class="n">a</span> <span class="n">Server</span>
+<span class="mi">059</span> <span class="n">Lesson</span> <span class="mi">5</span> <span class="n">Lab</span> <span class="n">Solution</span>  <span class="n">Connecting</span> <span class="n">to</span> <span class="n">a</span> <span class="n">Server</span>
+<span class="mi">060</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">061</span> <span class="mf">6.1</span> <span class="n">Understanding</span> <span class="n">the</span> <span class="n">Shell</span> <span class="ow">and</span> <span class="n">Other</span> <span class="n">Core</span> <span class="n">Linux</span> <span class="n">Components</span>
+<span class="mi">062</span> <span class="mf">6.2</span> <span class="n">Using</span> <span class="n">I_O</span> <span class="n">Redirection</span> <span class="ow">and</span> <span class="n">Piping</span>
+<span class="mi">063</span> <span class="mf">6.3</span> <span class="n">Working</span> <span class="k">with</span> <span class="n">history</span>
+<span class="mi">064</span> <span class="mf">6.4</span> <span class="n">Using</span> <span class="n">Command</span> <span class="n">Line</span> <span class="n">Completion</span>
+<span class="mi">065</span> <span class="mf">6.5</span> <span class="n">Using</span> <span class="n">Variables</span>
+<span class="mi">066</span> <span class="mf">6.6</span> <span class="n">Using</span> <span class="n">Other</span> <span class="n">Bash</span> <span class="n">Features</span>
+<span class="mi">067</span> <span class="mf">6.7</span> <span class="n">Working</span> <span class="k">with</span> <span class="n">Bash</span> <span class="n">Startup</span> <span class="n">Files</span>
+<span class="mi">068</span> <span class="mf">6.8</span> <span class="n">Lesson</span> <span class="mi">6</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">069</span> <span class="n">Lesson</span> <span class="mi">6</span> <span class="n">Lab</span> <span class="o">-</span> <span class="n">Working</span> <span class="k">with</span> <span class="n">the</span> <span class="n">Bash</span> <span class="n">Shell</span>
+<span class="mi">070</span> <span class="n">Lesson</span> <span class="mi">6</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="n">Working</span> <span class="k">with</span> <span class="n">the</span> <span class="n">Bash</span> <span class="n">Shell</span>
+<span class="mi">071</span> <span class="n">Module</span> <span class="n">introduction</span>
+<span class="mi">072</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">073</span> <span class="mf">7.1</span> <span class="n">Understanding</span> <span class="n">Users</span>
+<span class="mi">074</span> <span class="mf">7.2</span> <span class="n">Understanding</span> <span class="n">File</span> <span class="n">Ownership</span>
+<span class="mi">075</span> <span class="mf">7.3</span> <span class="n">Creating</span> <span class="n">Users</span> <span class="k">with</span> <span class="n">useradd</span>
+<span class="mi">076</span> <span class="mf">7.4</span> <span class="n">Creating</span> <span class="n">Groups</span> <span class="k">with</span> <span class="n">groupadd</span>
+<span class="mi">077</span> <span class="mf">7.5</span> <span class="n">Managing</span> <span class="n">User</span> <span class="ow">and</span> <span class="n">Group</span> <span class="n">Properties</span>
+<span class="mi">078</span> <span class="mf">7.6</span> <span class="n">Configuring</span> <span class="n">Defaults</span> <span class="k">for</span> <span class="n">New</span> <span class="n">Users</span>
+<span class="mi">079</span> <span class="mf">7.7</span> <span class="n">Managing</span> <span class="n">Password</span> <span class="n">Properties</span>
+<span class="mi">080</span> <span class="mf">7.8</span> <span class="n">Understanding</span> <span class="n">User</span> <span class="ow">and</span> <span class="n">Group</span> <span class="n">Configuration</span> <span class="n">Files</span>
+<span class="mi">081</span> <span class="mf">7.09</span> <span class="n">Managing</span> <span class="n">Current</span> <span class="n">Sessions</span>
+<span class="mi">082</span> <span class="mf">7.10</span> <span class="n">Lesson</span> <span class="mi">7</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">083</span> <span class="n">Lesson</span> <span class="mi">7</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Managing</span> <span class="n">Users</span>
+<span class="mi">084</span> <span class="n">Lesson</span> <span class="mi">7</span> <span class="n">Lab</span> <span class="n">Solution</span>  <span class="n">Managing</span> <span class="n">Users</span>
+<span class="mi">085</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">086</span> <span class="mf">8.1</span> <span class="n">Understanding</span> <span class="n">Basic</span> <span class="n">Linux</span> <span class="n">Permissions</span>
+<span class="mi">087</span> <span class="mf">8.2</span> <span class="n">Managing</span> <span class="n">Basic</span> <span class="n">Linux</span> <span class="n">Permissions</span>
+<span class="mi">088</span> <span class="mf">8.3</span> <span class="n">Understanding</span> <span class="n">Advanced</span> <span class="n">Linux</span> <span class="n">Permissions</span>
+<span class="mi">089</span> <span class="mf">8.4</span> <span class="n">Managing</span> <span class="n">Advanced</span> <span class="n">Linux</span> <span class="n">Permissions</span>
+<span class="mi">090</span> <span class="mf">8.5</span> <span class="n">Managing</span> <span class="n">umask</span>
+<span class="mi">091</span> <span class="mf">8.6</span> <span class="n">Lesson</span> <span class="mi">8</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">092</span> <span class="n">Lesson</span> <span class="mi">8</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Managing</span> <span class="n">Permissions</span>
+<span class="mi">093</span> <span class="n">Lesson</span> <span class="mi">8</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="o">-</span> <span class="n">Managing</span> <span class="n">Permissions</span>
+<span class="mi">094</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">095</span> <span class="mf">9.1</span> <span class="n">Understanding</span> <span class="n">Linux</span> <span class="n">Storage</span> <span class="n">Solutions</span>
+<span class="mi">096</span> <span class="mf">9.2</span> <span class="n">Creating</span> <span class="n">MBR</span> <span class="n">Partitions</span>
+<span class="mi">097</span> <span class="mf">9.3</span> <span class="n">Creating</span> <span class="n">GPT</span> <span class="n">Partitions</span>
+<span class="mi">098</span> <span class="mf">9.4</span> <span class="n">Creating</span> <span class="n">Filesystems</span>
+<span class="mi">099</span> <span class="mf">9.5</span> <span class="n">Mounting</span> <span class="n">Filesystems</span>
+<span class="mi">100</span> <span class="mf">9.6</span> <span class="n">Lesson</span> <span class="mi">9</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">101</span> <span class="n">Lesson</span> <span class="mi">9</span> <span class="n">Lab</span> <span class="o">-</span> <span class="n">Managing</span> <span class="n">Storage</span>
+<span class="mi">102</span> <span class="n">Lesson</span> <span class="mi">9</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="n">Managing</span> <span class="n">Storage</span>
+<span class="mi">103</span> <span class="n">Module</span> <span class="n">introduction</span>
+<span class="mi">104</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">105</span> <span class="mf">10.1</span> <span class="n">Understanding</span> <span class="n">IPv4</span> <span class="n">Basics</span>
+<span class="mi">106</span> <span class="mf">10.2</span> <span class="n">Understanding</span> <span class="n">IPv6</span> <span class="n">Basics</span>
+<span class="mi">107</span> <span class="mf">10.3</span> <span class="n">Applying</span> <span class="n">run</span><span class="o">-</span><span class="n">time</span> <span class="n">Network</span> <span class="n">Configuration</span>
+<span class="mi">108</span> <span class="mf">10.4</span> <span class="n">Understanding</span> <span class="n">Network</span> <span class="n">Device</span> <span class="n">Naming</span>
+<span class="mi">109</span> <span class="mf">10.5</span> <span class="n">Managing</span> <span class="n">Host</span> <span class="n">Names</span>
+<span class="mi">110</span> <span class="mf">10.6</span> <span class="n">Managing</span> <span class="n">Host</span> <span class="n">Name</span> <span class="n">Resolution</span>
+<span class="mi">111</span> <span class="mf">10.7</span> <span class="n">Using</span> <span class="n">Common</span> <span class="n">Network</span> <span class="n">Tools</span>
+<span class="mi">112</span> <span class="mf">10.8</span> <span class="n">Lesson</span> <span class="mi">10</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">113</span> <span class="n">Lesson</span> <span class="mi">10</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Managing</span> <span class="n">Networking</span>
+<span class="mi">114</span> <span class="n">Lesson</span> <span class="mi">10</span> <span class="n">Lab</span> <span class="n">Solution</span>  <span class="n">Managing</span> <span class="n">Networking</span>
+<span class="mi">115</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">116</span> <span class="mf">11.1</span> <span class="n">Understanding</span> <span class="n">Linux</span> <span class="n">Time</span>
+<span class="mi">117</span> <span class="mf">11.2</span> <span class="n">Managing</span> <span class="n">Linux</span> <span class="n">Time</span>
+<span class="mi">118</span> <span class="mf">11.3</span> <span class="n">Understanding</span> <span class="n">the</span> <span class="n">NTP</span> <span class="n">Protocol</span>
+<span class="mi">119</span> <span class="mf">11.4</span> <span class="n">Configuring</span> <span class="n">Time</span> <span class="n">Synchronization</span>
+<span class="mi">120</span> <span class="mf">11.5</span> <span class="n">Lesson</span> <span class="mi">11</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">121</span> <span class="n">Lesson</span> <span class="mi">11</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Managing</span> <span class="n">Time</span>
+<span class="mi">122</span> <span class="n">Lesson</span> <span class="mi">11</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="n">Managing</span> <span class="n">Time</span>
+<span class="mi">123</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">124</span> <span class="mf">12.1</span> <span class="n">Understanding</span> <span class="n">Systemd</span>
+<span class="mi">125</span> <span class="mf">12.2</span> <span class="n">Managing</span> <span class="n">Systemd</span> <span class="n">Services</span>
+<span class="mi">126</span> <span class="mf">12.3</span> <span class="n">Modifying</span> <span class="n">Service</span> <span class="n">Configuration</span>
+<span class="mi">127</span> <span class="mf">12.4</span> <span class="n">Understanding</span> <span class="n">Targets</span>
+<span class="mi">128</span> <span class="mf">12.5</span> <span class="n">Managing</span> <span class="n">Targets</span>
+<span class="mi">129</span> <span class="mf">12.6</span> <span class="n">Lesson</span> <span class="mi">12</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">130</span> <span class="n">Lesson</span> <span class="mi">12</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Working</span> <span class="k">with</span> <span class="n">Systemd</span>
+<span class="mi">131</span> <span class="n">Lesson</span> <span class="mi">12</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="n">Working</span> <span class="k">with</span> <span class="n">Systemd</span>
+<span class="mi">132</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">133</span> <span class="mf">13.1</span> <span class="n">Understanding</span> <span class="n">Linux</span> <span class="n">Processes</span> <span class="ow">and</span> <span class="n">Jobs</span>
+<span class="mi">134</span> <span class="mf">13.2</span> <span class="n">Managing</span> <span class="n">Interactive</span> <span class="n">Shell</span> <span class="n">Jobs</span>
+<span class="mi">135</span> <span class="mf">13.3</span> <span class="n">Monitoring</span> <span class="n">Processes</span> <span class="k">with</span> <span class="n">top</span>
+<span class="mi">136</span> <span class="mf">13.4</span> <span class="n">Changing</span> <span class="n">top</span> <span class="n">Display</span> <span class="n">Properties</span>
+<span class="mi">137</span> <span class="mf">13.5</span> <span class="n">Monitoring</span> <span class="n">Process</span> <span class="n">Properties</span> <span class="k">with</span> <span class="n">ps</span>
+<span class="mi">138</span> <span class="mf">13.6</span> <span class="n">Changing</span> <span class="n">Process</span> <span class="n">Priority</span>
+<span class="mi">139</span> <span class="mf">13.7</span> <span class="n">Managing</span> <span class="n">Processes</span> <span class="k">with</span> <span class="n">kill</span>
+<span class="mi">140</span> <span class="mf">13.8</span> <span class="n">Lesson</span> <span class="mi">13</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">141</span> <span class="n">Lesson</span> <span class="mi">13</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Managing</span> <span class="n">Processes</span>
+<span class="mi">142</span> <span class="n">Lesson</span> <span class="mi">13</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="n">Managing</span> <span class="n">Processes</span>
+<span class="mi">143</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">144</span> <span class="mf">14.1</span> <span class="n">Installing</span> <span class="n">Software</span> <span class="kn">from</span> <span class="nn">Source</span> <span class="n">Packages</span>
+<span class="mi">145</span> <span class="mf">14.2</span> <span class="n">Understanding</span> <span class="n">Software</span> <span class="n">Packages</span>
+<span class="mi">146</span> <span class="mf">14.3</span> <span class="n">Managing</span> <span class="n">Libraries</span>
+<span class="mi">147</span> <span class="mf">14.4</span> <span class="n">Understanding</span> <span class="n">Repositories</span>
+<span class="mi">148</span> <span class="mf">14.5</span> <span class="n">Managing</span> <span class="n">Packages</span> <span class="k">with</span> <span class="n">yum</span>
+<span class="mi">149</span> <span class="mf">14.6</span> <span class="n">Managing</span> <span class="n">Packages</span> <span class="k">with</span> <span class="n">apt</span>
+<span class="mi">150</span> <span class="mf">14.7</span> <span class="n">Using</span> <span class="n">rpm</span>
+<span class="mi">151</span> <span class="mf">14.8</span> <span class="n">Lesson</span> <span class="mi">14</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">152</span> <span class="n">Lesson</span> <span class="mi">14</span> <span class="n">Lab</span> <span class="o">-</span>   <span class="n">Managing</span> <span class="n">Software</span>
+<span class="mi">153</span> <span class="n">Lesson</span> <span class="mi">14</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="n">Managing</span> <span class="n">Software</span>
+<span class="mi">154</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">155</span> <span class="mf">15.1</span> <span class="n">Understanding</span> <span class="n">Linux</span> <span class="n">Task</span> <span class="n">Scheduling</span>
+<span class="mi">156</span> <span class="mf">15.2</span> <span class="n">Scheduling</span> <span class="n">Tasks</span> <span class="k">with</span> <span class="n">cron</span>
+<span class="mi">157</span> <span class="mf">15.3</span> <span class="n">Using</span> <span class="n">systemd</span> <span class="n">Timers</span>
+<span class="mi">158</span> <span class="mf">15.4</span> <span class="n">Using</span> <span class="n">at</span> <span class="n">to</span> <span class="n">Schedule</span> <span class="n">Tasks</span>
+<span class="mi">159</span> <span class="mf">15.5</span> <span class="n">Lesson</span> <span class="mi">15</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">160</span> <span class="n">Lesson</span> <span class="mi">15</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Scheduling</span> <span class="n">Tasks</span>
+<span class="mi">161</span> <span class="n">Lesson</span> <span class="mi">15</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="n">Scheduling</span> <span class="n">Tasks</span>
+<span class="mi">162</span> <span class="n">Learning</span> <span class="n">objectives</span>
+<span class="mi">163</span> <span class="mf">16.1</span> <span class="n">Understanding</span> <span class="n">Linux</span> <span class="n">Logging</span>
+<span class="mi">164</span> <span class="mf">16.2</span> <span class="n">Working</span> <span class="k">with</span> <span class="n">journalctl</span>
+<span class="mi">165</span> <span class="mf">16.3</span> <span class="n">Understanding</span> <span class="n">Rsyslog</span>
+<span class="mi">166</span> <span class="mf">16.4</span> <span class="n">Lesson</span> <span class="mi">16</span> <span class="n">Command</span> <span class="n">Review</span>
+<span class="mi">167</span> <span class="n">Lesson</span> <span class="mi">16</span> <span class="n">Lab</span> <span class="o">-</span>  <span class="n">Working</span> <span class="k">with</span> <span class="n">Logging</span>
+<span class="mi">168</span> <span class="n">Lesson</span> <span class="mi">16</span> <span class="n">Lab</span> <span class="n">Solution</span> <span class="n">Working</span> <span class="k">with</span> <span class="n">Logging</span>
+<span class="mi">169</span> <span class="n">Linux</span> <span class="n">Fundamentals</span> <span class="o">-</span> <span class="n">Summary</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-2-user-and-group-management-and-permissions">
+<h2>Module 2: User and Group Management and Permissions<a class="headerlink" href="#module-2-user-and-group-management-and-permissions" title="Enlazar permanentemente con este título">¶</a></h2>
+</div>
+<div class="section" id="module-3-operating-running-systems">
+<h2>Module 3: Operating Running Systems<a class="headerlink" href="#module-3-operating-running-systems" title="Enlazar permanentemente con este título">¶</a></h2>
 </div>
 </div>
 
@@ -244,7 +431,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="0_introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="001-Linux_Fundamentals_Introduction.html" class="btn btn-neutral float-right" title="001 Linux Fundamentals - Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../ubuntu/ubuntu-install-usb-mkusb.html" class="btn btn-neutral float-left" title="Instalando Ubuntu en un USB con mkusb" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
