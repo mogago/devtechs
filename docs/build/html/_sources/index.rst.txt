@@ -33,6 +33,7 @@ Welcome to DevTechs's documentation!
     topics/gnulinux/new-disk-dd
     topics/gnulinux/archlinux/_archlinux
     topics/gnulinux/ubuntu/_ubuntu
+    topics/gnulinux/linux-fundamentals/_linux-fundamentals
 
 .. toctree::
     :maxdepth: 2
