@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Ubuntu &mdash; documentación de DevTechs - </title>
+  <title>Solucionar error repository is not valid yet &mdash; documentación de DevTechs - </title>
   
 
   
@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
-    <link rel="next" title="Instalando Ubuntu en un USB con mkusb" href="ubuntu-install-usb-mkusb.html" />
-    <link rel="prev" title="Instalar un Desktop Environment en Arch" href="../archlinux/desktop-env.html" /> 
+    <link rel="next" title="Linux Fundamentals (Sander van Vugt)" href="../linux-fundamentals/_linux-fundamentals.html" />
+    <link rel="prev" title="Instalando Ubuntu en un USB con mkusb" href="ubuntu-install-usb-mkusb.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -98,9 +98,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../user-management.html">User Management</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../archlinux/_archlinux.html">ArchLinux</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Ubuntu</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="_ubuntu.html">Ubuntu</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="ubuntu-install-usb-mkusb.html">Instalando Ubuntu en un USB con mkusb</a></li>
-<li class="toctree-l2"><a class="reference internal" href="error-repository_is_not_valid_yet.html">Solucionar error <code class="docutils literal notranslate"><span class="pre">repository</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid</span> <span class="pre">yet</span></code></a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Solucionar error <code class="docutils literal notranslate"><span class="pre">repository</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid</span> <span class="pre">yet</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#descripcion-del-error">Descripción del error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solucion-del-error">Solución del error</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../linux-fundamentals/_linux-fundamentals.html">Linux Fundamentals (Sander van Vugt)</a></li>
@@ -208,13 +213,15 @@
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
-      <li>Ubuntu</li>
+          <li><a href="_ubuntu.html">Ubuntu</a> &raquo;</li>
+        
+      <li>Solucionar error <code class="docutils literal notranslate"><span class="pre">repository</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid</span> <span class="pre">yet</span></code></li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../../_sources/topics/gnulinux/ubuntu/_ubuntu.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../../_sources/topics/gnulinux/ubuntu/error-repository_is_not_valid_yet.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -227,23 +234,112 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="ubuntu">
-<h1>Ubuntu<a class="headerlink" href="#ubuntu" title="Enlazar permanentemente con este título">¶</a></h1>
-<div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Índice</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="ubuntu-install-usb-mkusb.html">Instalando Ubuntu en un USB con mkusb</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ubuntu-install-usb-mkusb.html#instalando-mkusb">Instalando <code class="docutils literal notranslate"><span class="pre">mkusb</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="ubuntu-install-usb-mkusb.html#instalando-el-so-con-mkusb">Instalando el SO con <code class="docutils literal notranslate"><span class="pre">mkusb</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="ubuntu-install-usb-mkusb.html#referencias">Referencias</a></li>
+  <div class="section" id="solucionar-error-repository-is-not-valid-yet">
+<h1><a class="toc-backref" href="#id1">Solucionar error <code class="docutils literal notranslate"><span class="pre">repository</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid</span> <span class="pre">yet</span></code></a><a class="headerlink" href="#solucionar-error-repository-is-not-valid-yet" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#solucionar-error-repository-is-not-valid-yet" id="id1">Solucionar error <code class="docutils literal notranslate"><span class="pre">repository</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid</span> <span class="pre">yet</span></code></a><ul>
+<li><a class="reference internal" href="#descripcion-del-error" id="id2">Descripción del error</a></li>
+<li><a class="reference internal" href="#solucion-del-error" id="id3">Solución del error</a></li>
+<li><a class="reference internal" href="#referencias" id="id4">Referencias</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="error-repository_is_not_valid_yet.html">Solucionar error <code class="docutils literal notranslate"><span class="pre">repository</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid</span> <span class="pre">yet</span></code></a><ul>
-<li class="toctree-l2"><a class="reference internal" href="error-repository_is_not_valid_yet.html#descripcion-del-error">Descripción del error</a></li>
-<li class="toctree-l2"><a class="reference internal" href="error-repository_is_not_valid_yet.html#solucion-del-error">Solución del error</a></li>
-<li class="toctree-l2"><a class="reference internal" href="error-repository_is_not_valid_yet.html#referencias">Referencias</a></li>
 </ul>
-</li>
+</div>
+<p>Cuando deseamos actualizar los paquetes podemos obtener el siguiente error: <em>Release file for […] is not valid yet (invalid for another […]). Updates for this repository will not be applied.»</em></p>
+<div class="section" id="descripcion-del-error">
+<h2><a class="toc-backref" href="#id2">Descripción del error</a><a class="headerlink" href="#descripcion-del-error" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt update
+
+Get:1 http://pe.archive.ubuntu.com/ubuntu bionic-updates InRelease <span class="o">[</span><span class="m">88</span>.7 kB<span class="o">]</span>
+E: Release file <span class="k">for</span> http://pe.archive.ubuntu.com/ubuntu/dists/bionic-updates/InRelease is not valid yet <span class="o">(</span>invalid <span class="k">for</span> another 8d 3h 23min 37s<span class="o">)</span>. Updates <span class="k">for</span> this repository will not be applied.
+</pre></div>
+</div>
+<p>Este error nos indica que el <strong>release file</strong> no es válido aún. La causa de esto es que nuestra hora del sistema está atrasada respecto a la hora del release file. Verifiquemos esto con los siguientes comandos:</p>
+<ul class="simple">
+<li>Hora del sistema:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ timedatectl
+                      Local time: Sun <span class="m">2020</span>-03-29 <span class="m">11</span>:30:26 UTC
+                  Universal time: Sun <span class="m">2020</span>-03-29 <span class="m">11</span>:30:26 UTC
+                        RTC time: Sun <span class="m">2020</span>-03-29 <span class="m">10</span>:51:01
+                       Time zone: Etc/UTC <span class="o">(</span>UTC, +0000<span class="o">)</span>
+       System clock synchronized: no
+systemd-timesyncd.service active: yes
+                 RTC in <span class="nb">local</span> TZ: no
+</pre></div>
+</div>
+<ul class="simple">
+<li>Hora del release file:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo head -14 /var/lib/apt/lists/partial/pe.archive.ubuntu.com_ubuntu_dists_bionic-updates_InRelease
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+Origin: Ubuntu
+Label: Ubuntu
+Suite: bionic-updates
+Version: <span class="m">18</span>.04
+Codename: bionic
+Date: Mon, <span class="m">06</span> Apr <span class="m">2020</span> <span class="m">14</span>:42:02 UTC
+Architectures: amd64 arm64 armhf i386 ppc64el s390x
+Components: main restricted universe multiverse
+Description: Ubuntu Bionic Updates
+MD5Sum:
+ e8b27420ceea0481a7c733eca0463406         <span class="m">50695339</span> Contents-armhf.gz
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Los release files son encontrados bajo el directorio <code class="docutils literal notranslate"><span class="pre">/var/lib/apt/lists/partial/</span></code></p>
+</div>
+<p>Como se ve, la hora de nuestro sistema (<code class="docutils literal notranslate"><span class="pre">Local</span> <span class="pre">time:</span> <span class="pre">Sun</span> <span class="pre">2020-03-29</span> <span class="pre">11:30:26</span> <span class="pre">UTC</span></code>) está retrasada respecto a la del repository file (<code class="docutils literal notranslate"><span class="pre">Date:</span> <span class="pre">Mon,</span> <span class="pre">06</span> <span class="pre">Apr</span> <span class="pre">2020</span> <span class="pre">14:42:02</span> <span class="pre">UTC</span></code>).</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">La diferencia de tiempo puede causarse debido a que hemos iniciado nuestro sistema desde un snapshot, haciendo la hora figure sea la hora en que se tomó la snapshot.</p>
+</div>
+</div>
+<div class="section" id="solucion-del-error">
+<h2><a class="toc-backref" href="#id3">Solución del error</a><a class="headerlink" href="#solucion-del-error" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Para solucionar el error debemos sincronizar el reloj del sistema con time servers. Con este fin, podemos usar la herramienta <code class="docutils literal notranslate"><span class="pre">chrony</span></code>:</p>
+<ul class="simple">
+<li>Instalar <code class="docutils literal notranslate"><span class="pre">chrony</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo apt install chrony
+</pre></div>
+</div>
+<ul class="simple">
+<li>Sincronizar el tiempo del sistema:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo chronyd -q
+
+<span class="m">2020</span>-03-29T11:51:27Z chronyd version <span class="m">3</span>.2 starting <span class="o">(</span>+CMDMON +NTP +REFCLOCK +RTC +PRIVDROP +SCFILTER +SECHASH +SIGND +ASYNCDNS +IPV6 -DEBUG<span class="o">)</span>
+<span class="m">2020</span>-03-29T11:51:27Z Frequency <span class="m">1</span>.101 +/- <span class="m">2</span>.384 ppm <span class="nb">read</span> from /var/lib/chrony/chrony.drift
+<span class="m">2020</span>-03-29T11:51:35Z System clock wrong by <span class="m">709923</span>.800611 seconds <span class="o">(</span>step<span class="o">)</span>
+<span class="m">2020</span>-04-06T17:03:39Z chronyd exiting
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Podemos ver cuánto varía el tiempo de nuestro sistema con el del servidor de internet:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo chronyd -Q
+
+<span class="m">2020</span>-04-06T17:04:07Z chronyd version <span class="m">3</span>.2 starting <span class="o">(</span>+CMDMON +NTP +REFCLOCK +RTC +PRIVDROP +SCFILTER +SECHASH +SIGND +ASYNCDNS +IPV6 -DEBUG<span class="o">)</span>
+<span class="m">2020</span>-04-06T17:04:07Z Disabled control of system clock
+<span class="m">2020</span>-04-06T17:04:07Z Frequency <span class="m">1</span>.101 +/- <span class="m">2</span>.384 ppm <span class="nb">read</span> from /var/lib/chrony/chrony.drift
+<span class="m">2020</span>-04-06T17:04:15Z System clock wrong by -0.005141 seconds <span class="o">(</span>ignored<span class="o">)</span>
+<span class="m">2020</span>-04-06T17:04:15Z chronyd exiting
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id4">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://blog.sleeplessbeastie.eu/2019/11/15/how-to-deal-with-repository-is-not-valid-yet-error/">How to deal with repository is not valid yet error</a></li>
+<li><a class="reference external" href="https://vitux.com/keep-your-clock-sync-with-internet-time-servers-in-ubuntu/">Keep Your Clock Sync with Internet Time Servers in Ubuntu 18.04</a></li>
 </ul>
 </div>
 </div>
@@ -256,10 +352,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="ubuntu-install-usb-mkusb.html" class="btn btn-neutral float-right" title="Instalando Ubuntu en un USB con mkusb" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../linux-fundamentals/_linux-fundamentals.html" class="btn btn-neutral float-right" title="Linux Fundamentals (Sander van Vugt)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../archlinux/desktop-env.html" class="btn btn-neutral float-left" title="Instalar un Desktop Environment en Arch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ubuntu-install-usb-mkusb.html" class="btn btn-neutral float-left" title="Instalando Ubuntu en un USB con mkusb" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
