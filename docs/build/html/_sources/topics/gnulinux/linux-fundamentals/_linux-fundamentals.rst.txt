@@ -13,6 +13,26 @@ Introduction
 Module 1: Essential Commands
 ============================
 
+.. toctree::
+    :maxdepth: 1
+
+    002-Module_introduction
+
+Lesson 1: Installing Linux
+--------------------------
+
+.. toctree::
+    :maxdepth: 1
+
+    003-Learning_objectives
+    004-1.1_Understanding_Linux_Distributions
+    005-1.2_Installing_CentOS_7.5
+    006-1.3_Installing_Ubuntu_18.04_LTS
+    007-Lesson_1_Lab_Installing_Linux
+
+Lesson 2: Using Essential Tools
+-------------------------------
+
 ::
 
     002 Module introduction
