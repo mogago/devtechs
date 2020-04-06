@@ -77,7 +77,6 @@ docs/source/topics/openstack/openstack-installation-deployment/*
 # LINUX FUNDAMENTALS (Sander van Vugt)
 # archivos .doctree para cada archivo dentro del directorio linux-fundamentals (misma organización que la fuente)
 docs/build/doctrees/topics/gnulinux/linux-fundamentals/*
-docs/build/doctrees/topics/gnulinux/linux-fundamentals/_linux-fundamentals.doctree
 # imágenes dentro de build/html (directorio de imágenes de toda la página, comparten el mismo directorio)
 
 # archivos .txt para cada archivo dentro del directorio linux-fundamentals (misma organización que la fuente)
