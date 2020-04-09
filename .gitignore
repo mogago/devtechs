@@ -78,7 +78,7 @@ docs/source/topics/openstack/openstack-installation-deployment/*
 # archivos .doctree para cada archivo dentro del directorio linux-fundamentals (misma organización que la fuente)
 docs/build/doctrees/topics/gnulinux/linux-fundamentals/*
 # imágenes dentro de build/html (directorio de imágenes de toda la página, comparten el mismo directorio)
-
+docs/build/html/_images/lesson*.png
 # archivos .txt para cada archivo dentro del directorio linux-fundamentals (misma organización que la fuente)
 docs/build/html/_sources/topics/gnulinux/linux-fundamentals/*
 # archivos .html para cada archivo dentro del directorio linux-fundamentals (misma organización que la fuente)
