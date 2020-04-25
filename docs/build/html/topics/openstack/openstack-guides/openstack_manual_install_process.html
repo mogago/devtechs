@@ -1,0 +1,470 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Proceso de instalación manual de OpenStack &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/ansible-essentials/_ansible-essentials.html">Ansible Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/linux-fundamentals/_linux-fundamentals.html">Linux Fundamentals (Sander van Vugt)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/_kickstart.html">Kickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-methods/_ks-methods.html">Kickstart Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-templates/_ks-templates.html">Kickstart Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-options/_ks-options.html">Kickstart Options</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-packstack-deployment/_openstack-packstack-deployment.html">OpenStack Packstack Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/pxe-guides/_pxe-guides.html">PXE Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Windows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/_windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/windows-subsystem-for-linux/_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/windows-ssh/_windows-subsystem-for-linux.html">SSH en Windows</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Proceso de instalación manual de OpenStack</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/openstack/openstack-guides/openstack_manual_install_process.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="proceso-de-instalacion-manual-de-openstack">
+<h1><a class="toc-backref" href="#id1">Proceso de instalación manual de OpenStack</a><a class="headerlink" href="#proceso-de-instalacion-manual-de-openstack" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#proceso-de-instalacion-manual-de-openstack" id="id1">Proceso de instalación manual de OpenStack</a><ul>
+<li><a class="reference internal" href="#documentacion-oficial-de-openstack" id="id2">Documentación oficial de OpenStack</a><ul>
+<li><a class="reference internal" href="#openstack-environment-any-release" id="id3">OpenStack Environment (any release)</a></li>
+<li><a class="reference internal" href="#openstack-services-train" id="id4">OpenStack Services (Train)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#archivos-de-configuracion" id="id5">Archivos de configuración</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="documentacion-oficial-de-openstack">
+<h2><a class="toc-backref" href="#id2">Documentación oficial de OpenStack</a><a class="headerlink" href="#documentacion-oficial-de-openstack" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/train/">OpenStack Documentation - Train Release</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/">OpenStack Installation Guide (any release)</a>: The following guide provides information about getting started, setting up your environment, and launching your instance.</li>
+<li><a class="reference external" href="https://docs.openstack.org/train/install/">OpenStack Train Installation Guides</a>: These documents cover installation procedures for OpenStack services.</li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/openstack-services.html">Install OpenStack services</a></li>
+</ul>
+<div class="section" id="openstack-environment-any-release">
+<h3><a class="toc-backref" href="#id3">OpenStack Environment (any release)</a><a class="headerlink" href="#openstack-environment-any-release" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://docs.openstack.org/install-guide/environment.html">Environment</a></dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-security.html">Security</a></li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://docs.openstack.org/install-guide/environment-networking.html">Host networking</a></dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-networking-controller.html">Host networking - Controller node</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-networking-compute.html">Host networking - Compute node</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-networking-storage-cinder.html">Host networking - Block storage node (Optional)</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-networking-verify.html">Host networking - Verify connectivity</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://docs.openstack.org/install-guide/environment-ntp.html">Network Time Protocol (NTP)</a></dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-ntp-controller.html">NTP - Controller node</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-ntp-other.html">NTP - Other nodes</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-ntp-verify.html">NTP - Verify operation</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://docs.openstack.org/install-guide/environment-packages.html">OpenStack packages</a></dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-packages-obs.html">OpenStack packages for SUSE</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-packages-rdo.html">OpenStack packages for RHEL and CentOS</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-packages-ubuntu.html">OpenStack packages for Ubuntu</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://docs.openstack.org/install-guide/environment-sql-database.html">SQL database</a></dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-sql-database-obs.html">SQL database for SUSE</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-sql-database-rdo.html">SQL database for RHEL and CentOS</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-sql-database-ubuntu.html">SQL database for Ubuntu</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://docs.openstack.org/install-guide/environment-messaging.html">Message queue</a></dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-messaging-obs.html">Message queue for SUSE</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-messaging-rdo.html">Message queue for RHEL and CentOS</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-messaging-ubuntu.html">Message queue for Ubuntu</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://docs.openstack.org/install-guide/environment-memcached.html">Memcached</a></dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-memcached-obs.html">Memcached for SUSE</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-memcached-rdo.html">Memcached for RHEL and CentOS</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-memcached-ubuntu.html">Memcached for Ubuntu</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://docs.openstack.org/install-guide/environment-etcd.html">Etcd</a></dt>
+<dd><ul class="first last">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-etcd-obs.html">Etcd for SUSE</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-etcd-rdo.html">Etcd for RHEL and CentOS</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-etcd-ubuntu.html">Etcd for Ubuntu</a></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="openstack-services-train">
+<h3><a class="toc-backref" href="#id4">OpenStack Services (Train)</a><a class="headerlink" href="#openstack-services-train" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Instalar los servicios de OpenStack respetando el siguiente orden:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/keystone/train/install/">Keystone Installation</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/glance/train/install/">Glance Installation</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/placement/train/install/">Placement Installation</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/nova/train/install/">Nova Installation</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/neutron/train/install/">Neutron Installation</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/cinder/train/install/">Cinder Installation</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/horizon/train/install/">Horizon Installation</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="archivos-de-configuracion">
+<h2><a class="toc-backref" href="#id5">Archivos de configuración</a><a class="headerlink" href="#archivos-de-configuracion" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>A continuación se presenta una lista de archivos que deben ser configurados en el proceso de instalación de OpenStack y sus servicios:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Environment</dt>
+<dd><ul class="first last">
+<li>Security, Networking, Install Linux Utilities: <code class="docutils literal notranslate"><span class="pre">/etc/hosts</span></code>, <code class="docutils literal notranslate"><span class="pre">/etc/default/grub</span></code>, <code class="docutils literal notranslate"><span class="pre">/etc/netplan/50-cloud-init.yaml</span></code></li>
+<li>NTP: <code class="docutils literal notranslate"><span class="pre">/etc/chrony/chrony.conf</span></code></li>
+<li>SQL Database: <code class="docutils literal notranslate"><span class="pre">/etc/mysql/mariadb.conf.d/99-openstack.cnf</span></code></li>
+<li>Memcached: <code class="docutils literal notranslate"><span class="pre">/etc/memcached.conf</span></code></li>
+<li>Etcd: <code class="docutils literal notranslate"><span class="pre">/etc/default/etcd</span></code>, <code class="docutils literal notranslate"><span class="pre">/etc/etcd/etcd.conf.yml</span></code>, <code class="docutils literal notranslate"><span class="pre">/lib/systemd/system/etcd.service</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Keystone</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">/etc/keystone/keystone.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/apache2/apache2.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">~/admin-openrc</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">~/demo-openrc</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Glance</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">/etc/glance/glance-api.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/glance/glance-registry.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Nova</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">/etc/nova/nova.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/nova/nova.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">compute</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/nova/nova-compute.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">compute</span></code>]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Neutron</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">/etc/neutron/neutron.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/neutron/plugins/ml2/ml2_conf.ini</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/neutron/plugins/ml2/linuxbridge_agent.ini</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/neutron/l3_agent.ini</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/neutron/dhcp_agent.ini</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/neutron/metadata_agent.ini</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/nova/nova.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/neutron/neutron.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">compute</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/neutron/plugins/ml2/linuxbridge_agent.ini</span></code> [<code class="docutils literal notranslate"><span class="pre">compute</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/nova/nova.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">compute</span></code>]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Cinder</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">/etc/cinder/cinder.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">block</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/cinder/cinder.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/nova/nova.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Horizon</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal notranslate"><span class="pre">/etc/openstack-dashboard/local_settings.py</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+<li><code class="docutils literal notranslate"><span class="pre">/etc/apache2/conf-available/openstack-dashboard.conf</span></code> [<code class="docutils literal notranslate"><span class="pre">controller</span></code>]</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
