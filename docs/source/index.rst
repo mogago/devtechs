@@ -54,12 +54,12 @@ Welcome to DevTechs's documentation!
     :maxdepth: 2
     :caption: OpenStack
 
-    topics/openstack/_openstack
-    topics/openstack/openstack-essentials/_openstack-essentials
-    topics/openstack/openstack-deploy/_openstack-deploy
     topics/openstack/openstack-guide/_openstack-guide
-    topics/openstack/openstack-installation-deployment/_openstack-installation-deployment
+    topics/openstack/openstack-deploy/_openstack-deploy
     topics/openstack/openstack-ansible/_openstack-ansible
+    topics/openstack/openstack-installation-deployment/_openstack-installation-deployment
+    topics/openstack/openstack-essentials/_openstack-essentials
+    
 
 .. toctree::
     :maxdepth: 2

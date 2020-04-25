@@ -1,6 +1,6 @@
-===============================
-OpenStack initial configuration
-===============================
+================
+OpenStack Guides
+================
 
 .. toctree::
     :maxdepth: 2
@@ -8,3 +8,4 @@ OpenStack initial configuration
 
     openstack-initial-configuration-cli
     openstack_manual_install_process
+    openstack_train_manual_install_centos

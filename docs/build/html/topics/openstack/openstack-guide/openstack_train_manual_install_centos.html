@@ -1,0 +1,2006 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OpenStack Train - Manual Install - CentOS7 - VirtualBox &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="OpenStack Installation and Deployment" href="../openstack-installation-deployment/_openstack-installation-deployment.html" />
+    <link rel="prev" title="Proceso de instalación manual de OpenStack" href="openstack_manual_install_process.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/ansible-essentials/_ansible-essentials.html">Ansible Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/linux-fundamentals/_linux-fundamentals.html">Linux Fundamentals (Sander van Vugt)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/_kickstart.html">Kickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-methods/_ks-methods.html">Kickstart Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-templates/_ks-templates.html">Kickstart Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-options/_ks-options.html">Kickstart Options</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_openstack-guide.html">OpenStack initial configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="openstack-initial-configuration-cli.html">Configuración inicial de OpenStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_manual_install_process.html">Proceso de instalación manual de OpenStack</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OpenStack Train - Manual Install - CentOS7 - VirtualBox</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#scripts-y-pasos-para-el-despliegue">Scripts y pasos para el despliegue</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#definicion-del-archivo-vagrantfile">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#definicion-de-scripts-de-configuracion-de-nodos">Definición de scripts de configuración de nodos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#script-de-controller">Script de <code class="docutils literal notranslate"><span class="pre">controller</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#script-de-compute1">Script de <code class="docutils literal notranslate"><span class="pre">compute1</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#script-de-block1">Script de <code class="docutils literal notranslate"><span class="pre">block1</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-y-configuracion-de-herramientas-de-entorno">Instalación y configuración de herramientas de entorno</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#verificacion-previa">Verificación previa</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#network-time-protocol-ntp">Network Time Protocol (NTP)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#environment-packages">Environment packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sql-database">SQL Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#message-queue-rabitmq">Message Queue - RabitMQ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memcached">Memcached</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#etcd">Etcd</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#instalacion-de-servicios-de-openstack">Instalación de servicios de OpenStack</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#install-and-configure-keystone">Install and Configure Keystone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-openstack-client-environment-scripts">Create OpenStack Client Environment Scripts</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-projects-users-and-roles">Create Projects, Users and Roles</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-configure-glance">Install &amp; Configure Glance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#download-create-test-images">Download &amp; Create Test Images</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#placement-service-install-and-configure-placement">Placement service - Install and configure Placement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#placement-service-verify-installation">Placement service - Verify Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nova-service-install-and-configure-controller-node">Nova service - Install and configure controller node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nova-service-install-and-configure-a-compute-node">Nova service - Install and configure a compute node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#discover-compute-nodes-and-finalize-nova-installation">Discover Compute Nodes and Finalize Nova Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solucion-del-error-skipping-removal-of-allocations-for-deleted-instances-failed-to-retrieve-allocations-for-resource-provider">Solución del error «Skipping removal of allocations for deleted instances: Failed to retrieve allocations for resource provider»</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-network-service-on-controller-node">Install Network Service on Controller Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-neutron-on-compute-node">Install Neutron on Compute Node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#block-storage-service-controller-node">Block Storage service - Controller node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#block-storage-service-storage-node">Block Storage service - Storage node</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verify-cinder-operation">Verify Cinder operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-and-configure-horizon-packages">Install and Configure Horizon Packages</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mostrar-logs-de-servicios-para-troubleshooting-de-errores">Mostrar logs de servicios para troubleshooting de errores</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#primeras-pasos-con-openstack">Primeras pasos con OpenStack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/pxe-guides/_pxe-guides.html">PXE Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Windows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/_windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/windows-subsystem-for-linux/_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/windows-ssh/_windows-subsystem-for-linux.html">SSH en Windows</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_openstack-guide.html">OpenStack initial configuration</a> &raquo;</li>
+        
+      <li>OpenStack Train - Manual Install - CentOS7 - VirtualBox</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/openstack/openstack-guide/openstack_train_manual_install_centos.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="openstack-train-manual-install-centos7-virtualbox">
+<h1><a class="toc-backref" href="#id1">OpenStack Train - Manual Install - CentOS7 - VirtualBox</a><a class="headerlink" href="#openstack-train-manual-install-centos7-virtualbox" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#openstack-train-manual-install-centos7-virtualbox" id="id1">OpenStack Train - Manual Install - CentOS7 - VirtualBox</a><ul>
+<li><a class="reference internal" href="#scripts-y-pasos-para-el-despliegue" id="id2">Scripts y pasos para el despliegue</a></li>
+<li><a class="reference internal" href="#definicion-del-archivo-vagrantfile" id="id3">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
+<li><a class="reference internal" href="#definicion-de-scripts-de-configuracion-de-nodos" id="id4">Definición de scripts de configuración de nodos</a><ul>
+<li><a class="reference internal" href="#script-de-controller" id="id5">Script de <code class="docutils literal notranslate"><span class="pre">controller</span></code></a></li>
+<li><a class="reference internal" href="#script-de-compute1" id="id6">Script de <code class="docutils literal notranslate"><span class="pre">compute1</span></code></a></li>
+<li><a class="reference internal" href="#script-de-block1" id="id7">Script de <code class="docutils literal notranslate"><span class="pre">block1</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#instalacion-y-configuracion-de-herramientas-de-entorno" id="id8">Instalación y configuración de herramientas de entorno</a><ul>
+<li><a class="reference internal" href="#verificacion-previa" id="id9">Verificación previa</a></li>
+<li><a class="reference internal" href="#network-time-protocol-ntp" id="id10">Network Time Protocol (NTP)</a></li>
+<li><a class="reference internal" href="#environment-packages" id="id11">Environment packages</a></li>
+<li><a class="reference internal" href="#sql-database" id="id12">SQL Database</a></li>
+<li><a class="reference internal" href="#message-queue-rabitmq" id="id13">Message Queue - RabitMQ</a></li>
+<li><a class="reference internal" href="#memcached" id="id14">Memcached</a></li>
+<li><a class="reference internal" href="#etcd" id="id15">Etcd</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#instalacion-de-servicios-de-openstack" id="id16">Instalación de servicios de OpenStack</a><ul>
+<li><a class="reference internal" href="#install-and-configure-keystone" id="id17">Install and Configure Keystone</a></li>
+<li><a class="reference internal" href="#create-openstack-client-environment-scripts" id="id18">Create OpenStack Client Environment Scripts</a></li>
+<li><a class="reference internal" href="#create-projects-users-and-roles" id="id19">Create Projects, Users and Roles</a></li>
+<li><a class="reference internal" href="#install-configure-glance" id="id20">Install &amp; Configure Glance</a></li>
+<li><a class="reference internal" href="#download-create-test-images" id="id21">Download &amp; Create Test Images</a></li>
+<li><a class="reference internal" href="#placement-service-install-and-configure-placement" id="id22">Placement service - Install and configure Placement</a></li>
+<li><a class="reference internal" href="#placement-service-verify-installation" id="id23">Placement service - Verify Installation</a></li>
+<li><a class="reference internal" href="#nova-service-install-and-configure-controller-node" id="id24">Nova service - Install and configure controller node</a></li>
+<li><a class="reference internal" href="#nova-service-install-and-configure-a-compute-node" id="id25">Nova service - Install and configure a compute node</a></li>
+<li><a class="reference internal" href="#discover-compute-nodes-and-finalize-nova-installation" id="id26">Discover Compute Nodes and Finalize Nova Installation</a></li>
+<li><a class="reference internal" href="#solucion-del-error-skipping-removal-of-allocations-for-deleted-instances-failed-to-retrieve-allocations-for-resource-provider" id="id27">Solución del error «Skipping removal of allocations for deleted instances: Failed to retrieve allocations for resource provider»</a></li>
+<li><a class="reference internal" href="#install-network-service-on-controller-node" id="id28">Install Network Service on Controller Node</a></li>
+<li><a class="reference internal" href="#install-neutron-on-compute-node" id="id29">Install Neutron on Compute Node</a></li>
+<li><a class="reference internal" href="#block-storage-service-controller-node" id="id30">Block Storage service - Controller node</a></li>
+<li><a class="reference internal" href="#block-storage-service-storage-node" id="id31">Block Storage service - Storage node</a></li>
+<li><a class="reference internal" href="#verify-cinder-operation" id="id32">Verify Cinder operation</a></li>
+<li><a class="reference internal" href="#install-and-configure-horizon-packages" id="id33">Install and Configure Horizon Packages</a></li>
+<li><a class="reference internal" href="#mostrar-logs-de-servicios-para-troubleshooting-de-errores" id="id34">Mostrar logs de servicios para troubleshooting de errores</a></li>
+<li><a class="reference internal" href="#primeras-pasos-con-openstack" id="id35">Primeras pasos con OpenStack</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<p><strong>Resumen</strong>: El siguiente procedimiento consiste en la instalación de OpenStack versión Train en máquinas virtuales de VirtualBox con sistema operativo CentOS 7. Para la automatización del despliegue de máquinas virtuales usamos la herramienta Vagrant. El resto del proceso, que consiste en la instalación de herramientas y servicios de OpenStack, se hará manualmente.</p>
+<p><strong>Topología</strong>: La topología consta de 3 nodos: 1 nodo controller, 1 nodo compute y 1 nodo block.</p>
+<div class="section" id="scripts-y-pasos-para-el-despliegue">
+<h2><a class="toc-backref" href="#id2">Scripts y pasos para el despliegue</a><a class="headerlink" href="#scripts-y-pasos-para-el-despliegue" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Los siguientes scripts contienen los  pasos y comandos usados a lo largo de esta guía:</p>
+<ul class="simple">
+<li>Vagrantfile: <a class="reference download internal" download="" href="../../../_downloads/68db5159d59d1dcadbb6531f64147707/Vagrantfile"><code class="xref download docutils literal notranslate"><span class="pre">Descargar</span> <span class="pre">Vagrantfile</span></code></a></li>
+<li>Script de controller: <a class="reference download internal" download="" href="../../../_downloads/04d270b78ddbb458235362b76f27de31/controller_setup.sh"><code class="xref download docutils literal notranslate"><span class="pre">Descargar</span> <span class="pre">controller_setup.sh</span></code></a></li>
+<li>Script de compute1: <a class="reference download internal" download="" href="../../../_downloads/9cf5b1e7427e319a8c9a0cbaaf510497/compute1_setup.sh"><code class="xref download docutils literal notranslate"><span class="pre">Descargar</span> <span class="pre">compute1_setup.sh</span></code></a></li>
+<li>Script de block1: <a class="reference download internal" download="" href="../../../_downloads/6f195f95ce31ebacf5a8dd8027713d0c/block1_setup.sh"><code class="xref download docutils literal notranslate"><span class="pre">Descargar</span> <span class="pre">block1_setup.sh</span></code></a></li>
+<li>Archivo de pasos para desplegar el entorno: <a class="reference download internal" download="" href="../../../_downloads/1b99db6967c33391a38c6c5b9b3c875c/environment-install.sh"><code class="xref download docutils literal notranslate"><span class="pre">Descargar</span> <span class="pre">environment-install.sh</span></code></a></li>
+<li>Archivo de pasos para instalar servicios de OpenStack: <a class="reference download internal" download="" href="../../../_downloads/3fbebd05c22a645fbe41bd7e07d03188/openstack-train-centos-services-install.sh"><code class="xref download docutils literal notranslate"><span class="pre">Descargar</span> <span class="pre">openstack-train-centos-services-install.sh</span></code></a></li>
+</ul>
+</div>
+<div class="section" id="definicion-del-archivo-vagrantfile">
+<h2><a class="toc-backref" href="#id3">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a><a class="headerlink" href="#definicion-del-archivo-vagrantfile" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># -*- mode: ruby -*-</span>
+<span class="c1"># vi: set ft=ruby :</span>
+<span class="nv">servers</span><span class="o">=[</span>
+<span class="o">{</span>
+    :hostname <span class="o">=</span>&gt; <span class="s2">&quot;controller&quot;</span>,
+    :box <span class="o">=</span>&gt; <span class="s2">&quot;geerlingguy/centos7&quot;</span>,
+    :ram <span class="o">=</span>&gt; <span class="m">6144</span>,
+    :cpu <span class="o">=</span>&gt; <span class="m">2</span>,
+    :script <span class="o">=</span>&gt; <span class="s2">&quot;sh /vagrant/controller_setup.sh&quot;</span>
+<span class="o">}</span>,
+<span class="o">{</span>
+    :hostname <span class="o">=</span>&gt; <span class="s2">&quot;compute1&quot;</span>,
+    :box <span class="o">=</span>&gt; <span class="s2">&quot;geerlingguy/centos7&quot;</span>,
+    :ram <span class="o">=</span>&gt; <span class="m">3072</span>,
+    :cpu <span class="o">=</span>&gt; <span class="m">1</span>,
+    :script <span class="o">=</span>&gt; <span class="s2">&quot;sh /vagrant/compute1_setup.sh&quot;</span>
+<span class="o">}</span>,
+<span class="o">{</span>
+    :hostname <span class="o">=</span>&gt; <span class="s2">&quot;block1&quot;</span>,
+    :box <span class="o">=</span>&gt; <span class="s2">&quot;geerlingguy/centos7&quot;</span>,
+    :ram <span class="o">=</span>&gt; <span class="m">3072</span>,
+    :cpu <span class="o">=</span>&gt; <span class="m">1</span>,
+    :script <span class="o">=</span>&gt; <span class="s2">&quot;sh /vagrant/block1_setup.sh&quot;</span>
+<span class="o">}</span>
+<span class="o">]</span>
+<span class="c1"># All Vagrant configuration is done below. The &quot;2&quot; in Vagrant.configure</span>
+<span class="c1"># configures the configuration version (we support older styles for</span>
+<span class="c1"># backwards compatibility). Please don&#39;t change it unless you know what</span>
+<span class="c1"># you&#39;re doing.</span>
+Vagrant.configure<span class="o">(</span><span class="s2">&quot;2&quot;</span><span class="o">)</span> <span class="k">do</span> <span class="p">|</span>config<span class="p">|</span>
+servers.each <span class="k">do</span> <span class="p">|</span>machine<span class="p">|</span>
+    config.vm.define machine<span class="o">[</span>:hostname<span class="o">]</span> <span class="k">do</span> <span class="p">|</span>node<span class="p">|</span>
+    node.vm.box <span class="o">=</span> machine<span class="o">[</span>:box<span class="o">]</span>
+    node.vm.hostname <span class="o">=</span> machine<span class="o">[</span>:hostname<span class="o">]</span>
+    node.vm.provider <span class="s2">&quot;virtualbox&quot;</span> <span class="k">do</span> <span class="p">|</span>vb<span class="p">|</span>
+        vb.customize <span class="o">[</span><span class="s2">&quot;modifyvm&quot;</span>, :id, <span class="s2">&quot;--memory&quot;</span>, machine<span class="o">[</span>:ram<span class="o">]</span>, <span class="s2">&quot;--cpus&quot;</span>, machine<span class="o">[</span>:cpu<span class="o">]]</span>
+        vb.customize <span class="o">[</span><span class="s2">&quot;modifyvm&quot;</span>, :id, <span class="s2">&quot;--nic2&quot;</span>, <span class="s2">&quot;hostonly&quot;</span>, <span class="s2">&quot;--hostonlyadapter2&quot;</span>, <span class="s2">&quot;VirtualBox Host-Only Ethernet Adapter #2&quot;</span><span class="o">]</span>
+        vb.customize <span class="o">[</span><span class="s2">&quot;modifyvm&quot;</span>, :id, <span class="s2">&quot;--nic3&quot;</span>, <span class="s2">&quot;natnetwork&quot;</span>, <span class="s2">&quot;--nat-network3&quot;</span>, <span class="s2">&quot;ProviderNetwork1&quot;</span>, <span class="s2">&quot;--nicpromisc3&quot;</span>, <span class="s2">&quot;allow-all&quot;</span><span class="o">]</span>
+        vb.customize <span class="o">[</span><span class="s1">&#39;modifyvm&#39;</span>, :id, <span class="s1">&#39;--nic4&#39;</span>, <span class="s2">&quot;bridged&quot;</span>, <span class="s1">&#39;--bridgeadapter4&#39;</span>, <span class="s2">&quot;Realtek PCIe GBE Family Controller&quot;</span><span class="o">]</span>
+        <span class="c1">#vb.customize [&quot;modifyvm&quot;, :id, &quot;--nic4&quot;, &quot;natnetwork&quot;, &quot;--nat-network4&quot;, &quot;NatNetwork1&quot;]</span>
+    end
+    node.vm.provision <span class="s2">&quot;shell&quot;</span>, inline: machine<span class="o">[</span>:script<span class="o">]</span>, privileged: true, run: <span class="s2">&quot;once&quot;</span>
+    end
+end
+end
+</pre></div>
+</div>
+</div>
+<div class="section" id="definicion-de-scripts-de-configuracion-de-nodos">
+<h2><a class="toc-backref" href="#id4">Definición de scripts de configuración de nodos</a><a class="headerlink" href="#definicion-de-scripts-de-configuracion-de-nodos" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="script-de-controller">
+<h3><a class="toc-backref" href="#id5">Script de <code class="docutils literal notranslate"><span class="pre">controller</span></code></a><a class="headerlink" href="#script-de-controller" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
+
+<span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.utf-8
+<span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.utf-8
+
+<span class="c1"># Remove 127.0.1.1 controller, if present</span>
+cat <span class="s">&lt;&lt; EOF &gt; /etc/hosts</span>
+<span class="s">127.0.0.1 localhost</span>
+<span class="s">10.1.1.11 controller</span>
+<span class="s">10.1.1.31 compute1</span>
+<span class="s">10.1.1.32 compute2</span>
+<span class="s">10.1.1.41 block1</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Cambio de enp0sX a ethY (requiere reinicio)</span>
+
+<span class="c1">## Ubuntu 18</span>
+<span class="c1">#sed -i &#39;s/GRUB_CMDLINE_LINUX=&quot;&quot;/GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0&quot;/g&#39; /etc/default/grub</span>
+<span class="c1">#update-grub</span>
+
+<span class="c1">## CentOS 7</span>
+sed -i <span class="s1">&#39;s/GRUB_CMDLINE_LINUX=&quot;/GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0 /g&#39;</span> /etc/default/grub
+grub2-mkconfig -o /boot/grub2/grub.cfg
+
+<span class="c1"># Configuración de interfaz red (Host-only adapter)</span>
+cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-eth1</span>
+<span class="s">DEVICE=&quot;eth1&quot;</span>
+<span class="s">TYPE=&quot;Ethernet&quot;</span>
+<span class="s">ONBOOT=&quot;yes&quot;</span>
+<span class="s">BOOTPROTO=&quot;none&quot;</span>
+<span class="s">IPADDR=&quot;10.1.1.11&quot;</span>
+<span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Reinicio de interfaz de red (Host-only adapter)</span>
+ifdown eth1
+ifup eth1
+
+<span class="c1"># Configuración de interfaz red (Bridged adapter)</span>
+cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-eth3</span>
+<span class="s">DEVICE=&quot;eth3&quot;</span>
+<span class="s">TYPE=&quot;Ethernet&quot;</span>
+<span class="s">ONBOOT=&quot;yes&quot;</span>
+<span class="s">BOOTPROTO=&quot;none&quot;</span>
+<span class="s">IPADDR=&quot;192.168.1.111&quot;</span>
+<span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Reinicio de interfaz de red (Bridged adapter)</span>
+ifdown eth3
+ifup eth3
+
+<span class="c1"># Reiniciar el sistema</span>
+reboot
+</pre></div>
+</div>
+</div>
+<div class="section" id="script-de-compute1">
+<h3><a class="toc-backref" href="#id6">Script de <code class="docutils literal notranslate"><span class="pre">compute1</span></code></a><a class="headerlink" href="#script-de-compute1" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
+
+<span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.utf-8
+<span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.utf-8
+
+<span class="c1"># Remove 127.0.1.1 controller, if present</span>
+cat <span class="s">&lt;&lt; EOF &gt; /etc/hosts</span>
+<span class="s">127.0.0.1 localhost</span>
+<span class="s">10.1.1.11 controller</span>
+<span class="s">10.1.1.31 compute1</span>
+<span class="s">10.1.1.32 compute2</span>
+<span class="s">10.1.1.41 block1</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Cambio de enp0sX a ethY (requiere reinicio)</span>
+
+<span class="c1">## Ubuntu 18</span>
+<span class="c1">#sed -i &#39;s/GRUB_CMDLINE_LINUX=&quot;&quot;/GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0&quot;/g&#39; /etc/default/grub</span>
+<span class="c1">#update-grub</span>
+
+<span class="c1">## CentOS 7</span>
+sed -i <span class="s1">&#39;s/GRUB_CMDLINE_LINUX=&quot;/GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0 /g&#39;</span> /etc/default/grub
+grub2-mkconfig -o /boot/grub2/grub.cfg
+
+<span class="c1"># Configuración de interfaz red (Host-only adapter)</span>
+cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-eth1</span>
+<span class="s">DEVICE=&quot;eth1&quot;</span>
+<span class="s">TYPE=&quot;Ethernet&quot;</span>
+<span class="s">ONBOOT=&quot;yes&quot;</span>
+<span class="s">BOOTPROTO=&quot;none&quot;</span>
+<span class="s">IPADDR=&quot;10.1.1.31&quot;</span>
+<span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Reinicio de interfaz de red (Host-only adapter)</span>
+ifdown eth1
+ifup eth1
+
+<span class="c1"># Configuración de interfaz red (Bridged adapter)</span>
+cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-eth3</span>
+<span class="s">DEVICE=&quot;eth3&quot;</span>
+<span class="s">TYPE=&quot;Ethernet&quot;</span>
+<span class="s">ONBOOT=&quot;yes&quot;</span>
+<span class="s">BOOTPROTO=&quot;none&quot;</span>
+<span class="s">IPADDR=&quot;192.168.1.131&quot;</span>
+<span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Reinicio de interfaz de red (Bridged adapter)</span>
+ifdown eth3
+ifup eth3
+
+<span class="c1"># Reiniciar el sistema</span>
+reboot
+</pre></div>
+</div>
+</div>
+<div class="section" id="script-de-block1">
+<h3><a class="toc-backref" href="#id7">Script de <code class="docutils literal notranslate"><span class="pre">block1</span></code></a><a class="headerlink" href="#script-de-block1" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#! /bin/sh</span>
+
+<span class="nb">export</span> <span class="nv">LANG</span><span class="o">=</span>en_US.utf-8
+<span class="nb">export</span> <span class="nv">LC_ALL</span><span class="o">=</span>en_US.utf-8
+
+<span class="c1"># Remove 127.0.1.1 controller, if present</span>
+cat <span class="s">&lt;&lt; EOF &gt; /etc/hosts</span>
+<span class="s">127.0.0.1 localhost</span>
+<span class="s">10.1.1.11 controller</span>
+<span class="s">10.1.1.31 compute1</span>
+<span class="s">10.1.1.32 compute2</span>
+<span class="s">10.1.1.41 block1</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Cambio de enp0sX a ethY (requiere reinicio)</span>
+
+<span class="c1">## Ubuntu 18</span>
+<span class="c1">#sed -i &#39;s/GRUB_CMDLINE_LINUX=&quot;&quot;/GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0&quot;/g&#39; /etc/default/grub</span>
+<span class="c1">#update-grub</span>
+
+<span class="c1">## CentOS 7</span>
+sed -i <span class="s1">&#39;s/GRUB_CMDLINE_LINUX=&quot;/GRUB_CMDLINE_LINUX=&quot;net.ifnames=0 biosdevname=0 /g&#39;</span> /etc/default/grub
+grub2-mkconfig -o /boot/grub2/grub.cfg
+
+<span class="c1"># Configuración de interfaz red (Host-only adapter)</span>
+cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-eth1</span>
+<span class="s">DEVICE=&quot;eth1&quot;</span>
+<span class="s">TYPE=&quot;Ethernet&quot;</span>
+<span class="s">ONBOOT=&quot;yes&quot;</span>
+<span class="s">BOOTPROTO=&quot;none&quot;</span>
+<span class="s">IPADDR=&quot;10.1.1.41&quot;</span>
+<span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Reinicio de interfaz de red (Host-only adapter)</span>
+ifdown eth1
+ifup eth1
+
+<span class="c1"># Configuración de interfaz red (Bridged adapter)</span>
+cat <span class="s">&lt;&lt;- EOF &gt; /etc/sysconfig/network-scripts/ifcfg-eth3</span>
+<span class="s">DEVICE=&quot;eth3&quot;</span>
+<span class="s">TYPE=&quot;Ethernet&quot;</span>
+<span class="s">ONBOOT=&quot;yes&quot;</span>
+<span class="s">BOOTPROTO=&quot;none&quot;</span>
+<span class="s">IPADDR=&quot;192.168.1.141&quot;</span>
+<span class="s">NETMASK=&quot;255.255.255.0&quot;</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Reinicio de interfaz de red (Bridged adapter)</span>
+ifdown eth3
+ifup eth3
+
+<span class="c1"># Reiniciar el sistema</span>
+reboot
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="instalacion-y-configuracion-de-herramientas-de-entorno">
+<h2><a class="toc-backref" href="#id8">Instalación y configuración de herramientas de entorno</a><a class="headerlink" href="#instalacion-y-configuracion-de-herramientas-de-entorno" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="verificacion-previa">
+<h3><a class="toc-backref" href="#id9">Verificación previa</a><a class="headerlink" href="#verificacion-previa" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Verificar que el servicio de firewall esté desactivado:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar que el servicio de firewall esté desactivado</span>
+systemctl status firewalld
+sudo firewall-cmd --state
+</pre></div>
+</div>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-networking-controller.html">https://docs.openstack.org/install-guide/environment-networking-controller.html</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-networking-compute.html">https://docs.openstack.org/install-guide/environment-networking-compute.html</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-networking-storage-cinder.html">https://docs.openstack.org/install-guide/environment-networking-storage-cinder.html</a></li>
+</ul>
+</div>
+<div class="section" id="network-time-protocol-ntp">
+<h3><a class="toc-backref" href="#id10">Network Time Protocol (NTP)</a><a class="headerlink" href="#network-time-protocol-ntp" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-ntp.html">https://docs.openstack.org/install-guide/environment-ntp.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-ntp-controller.html">https://docs.openstack.org/install-guide/environment-ntp-controller.html</a></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar el programa chrony:</span>
+sudo -i
+yum install -y chrony
+
+<span class="c1"># Editar el archivo de configuración de chrony:</span>
+cat <span class="s">&lt;&lt; EOF &gt;&gt; /etc/chrony.conf</span>
+<span class="s">allow 10.1.1.0/24</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Reiniciar el servicio de NTP:</span>
+systemctl restart chronyd.service
+</pre></div>
+</div>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">COMPUTE, BLOCK</p>
+</div>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-ntp-other.html">https://docs.openstack.org/install-guide/environment-ntp-other.html</a></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar el programa chrony:</span>
+sudo -i
+yum install -y chrony
+
+<span class="c1"># Configurar el nodo controller como servidor NTP:</span>
+cat <span class="s">&lt;&lt; EOF &gt;&gt; /etc/chrony.conf</span>
+<span class="s">server controller iburst</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Comentar las líneas con los otros servidores NTP:</span>
+sed -i <span class="s1">&#39;s/server 0.centos.pool.ntp.org iburst/#server 0.centos.pool.ntp.org iburst/g&#39;</span> /etc/chrony.conf
+sed -i <span class="s1">&#39;s/server 1.centos.pool.ntp.org iburst/#server 1.centos.pool.ntp.org iburst/g&#39;</span> /etc/chrony.conf
+sed -i <span class="s1">&#39;s/server 2.centos.pool.ntp.org iburst/#server 2.centos.pool.ntp.org iburst/g&#39;</span> /etc/chrony.conf
+sed -i <span class="s1">&#39;s/server 3.centos.pool.ntp.org iburst/#server 3.centos.pool.ntp.org iburst/g&#39;</span> /etc/chrony.conf
+
+<span class="c1"># Reiniciar el servicio de NTP:</span>
+systemctl restart chronyd.service
+</pre></div>
+</div>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">ALL</p>
+</div>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-ntp-verify.html">https://docs.openstack.org/install-guide/environment-ntp-verify.html</a></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar que el nodo controller se sincronice con servidores externos y los demás nodos se sincronicen con el controller:</span>
+chronyc sources
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment-packages">
+<h3><a class="toc-backref" href="#id11">Environment packages</a><a class="headerlink" href="#environment-packages" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-packages-rdo.html">https://docs.openstack.org/install-guide/environment-packages-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">ALL</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar la versión de kernel actual</span>
+uname -mrs
+<span class="c1"># Verificar los kernels instalados en el sistema (el kernel subrayado es el que está en uso)</span>
+yum list installed kernel
+
+<span class="c1"># Habilitar el repositorio de OpenStack Train</span>
+yum install -y centos-release-openstack-train
+
+<span class="c1"># Actualizar los paquetes</span>
+yum update -y
+
+<span class="c1"># Verificar si se ha descargado un kernel más nuevo:</span>
+yum list installed kernel
+
+<span class="c1"># Upgrade de los paquetes:</span>
+yum upgrade -y
+
+<span class="c1"># Reiniciar el sistema en caso se haya descargado un nuevo kernel:</span>
+reboot
+
+<span class="c1"># Verificar que estamos usando el nuevo kernel descargado:</span>
+sudo -i
+uname -mrs
+
+<span class="c1"># Instalar el cliente de OpenStack (No existe python3-openstackclient en yum)</span>
+yum install -y python-openstackclient
+
+<span class="c1"># Instalar el paquete para SELinux</span>
+yum install -y openstack-selinux
+
+<span class="c1"># Instalar otros paquetes adicionales</span>
+yum install -y crudini vim curl
+</pre></div>
+</div>
+</div>
+<div class="section" id="sql-database">
+<h3><a class="toc-backref" href="#id12">SQL Database</a><a class="headerlink" href="#sql-database" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-sql-database-rdo.html">https://docs.openstack.org/install-guide/environment-sql-database-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar la base de datos SQL, en nuestro caso ``mariadb``:</span>
+yum install -y mariadb mariadb-server python2-PyMySQL
+
+<span class="c1"># Crear y editar el archivo de configuración de MariaDB:</span>
+cat <span class="s">&lt;&lt; EOF &gt; /etc/my.cnf.d/openstack.cnf</span>
+<span class="s">[mysqld]</span>
+<span class="s">bind-address = 10.1.1.11</span>
+
+<span class="s">default-storage-engine = innodb</span>
+<span class="s">innodb_file_per_table = on</span>
+<span class="s">max_connections = 4096</span>
+<span class="s">collation-server = utf8_general_ci</span>
+<span class="s">character-set-server = utf8</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Habilitar e iniciar el servicio de base de datos:</span>
+systemctl <span class="nb">enable</span> mariadb.service
+systemctl start mariadb.service
+
+<span class="c1"># Asegurar el servicios de base de datos:</span>
+mysql_secure_installation
+
+<span class="c1"># Enter current password for root (enter for none):</span>
+<span class="c1"># Set root password? [Y/n]</span>
+<span class="c1"># New password: openstack</span>
+<span class="c1"># Re-enter new password: openstack</span>
+<span class="c1"># Remove anonymous users? [Y/n]</span>
+<span class="c1"># Disallow root login remotely? [Y/n] n</span>
+<span class="c1"># Remove test database and access to it? [Y/n]</span>
+<span class="c1"># Reload privilege tables now? [Y/n]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="message-queue-rabitmq">
+<h3><a class="toc-backref" href="#id13">Message Queue - RabitMQ</a><a class="headerlink" href="#message-queue-rabitmq" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-messaging-rdo.html">https://docs.openstack.org/install-guide/environment-messaging-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar el paquete de RabbitMQ:</span>
+yum -y install rabbitmq-server
+
+<span class="c1"># Habilitar e iniciar el servicio de cola de mensajería:</span>
+systemctl <span class="nb">enable</span> rabbitmq-server.service
+systemctl start rabbitmq-server.service
+
+<span class="c1"># Añadir el usuario a RabbitMQ (rabbitmqctl add_user openstack RABBIT_PASS):</span>
+rabbitmqctl add_user openstack openstack
+
+<span class="c1"># Configurar los permisos para el usuario openstack:</span>
+rabbitmqctl set_permissions openstack <span class="s2">&quot;.*&quot;</span> <span class="s2">&quot;.*&quot;</span> <span class="s2">&quot;.*&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="memcached">
+<h3><a class="toc-backref" href="#id14">Memcached</a><a class="headerlink" href="#memcached" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-memcached-rdo.html">https://docs.openstack.org/install-guide/environment-memcached-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar el paquete de Memcached:</span>
+yum install -y memcached python-memcached
+
+<span class="c1"># Cambiar &#39;-l 127.0.0.1&#39; por &#39;-l 10.1.1.11&#39; en el archivo /etc/sysconfig/memcached</span>
+sed -i <span class="s1">&#39;s/-l 127.0.0.1/-l 10.1.1.11/g&#39;</span> /etc/sysconfig/memcached
+
+<span class="c1"># Habilitar e iniciar el servicio Memcached</span>
+systemctl <span class="nb">enable</span> memcached.service
+systemctl start memcached.service
+</pre></div>
+</div>
+</div>
+<div class="section" id="etcd">
+<h3><a class="toc-backref" href="#id15">Etcd</a><a class="headerlink" href="#etcd" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/install-guide/environment-etcd-rdo.html">https://docs.openstack.org/install-guide/environment-etcd-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar el paquete de etcd:</span>
+yum install -y etcd
+
+<span class="c1"># Editar el archivo /etc/etcd/etcd.conf</span>
+cat <span class="s">&lt;&lt; EOF &gt;&gt; /etc/etcd/etcd.conf</span>
+<span class="s">#[Member]</span>
+<span class="s">ETCD_DATA_DIR=&quot;/var/lib/etcd/default.etcd&quot;</span>
+<span class="s">ETCD_LISTEN_PEER_URLS=&quot;http://10.1.1.11:2380&quot;</span>
+<span class="s">ETCD_LISTEN_CLIENT_URLS=&quot;http://10.1.1.11:2379&quot;</span>
+<span class="s">ETCD_NAME=&quot;controller&quot;</span>
+<span class="s">#[Clustering]</span>
+<span class="s">ETCD_INITIAL_ADVERTISE_PEER_URLS=&quot;http://10.1.1.11:2380&quot;</span>
+<span class="s">ETCD_ADVERTISE_CLIENT_URLS=&quot;http://10.1.1.11:2379&quot;</span>
+<span class="s">ETCD_INITIAL_CLUSTER=&quot;controller=http://10.1.1.11:2380&quot;</span>
+<span class="s">ETCD_INITIAL_CLUSTER_TOKEN=&quot;etcd-cluster-01&quot;</span>
+<span class="s">ETCD_INITIAL_CLUSTER_STATE=&quot;new&quot;</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Habilitar e iniciar el servicio etcd</span>
+systemctl <span class="nb">enable</span> etcd
+systemctl start etcd
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="instalacion-de-servicios-de-openstack">
+<h2><a class="toc-backref" href="#id16">Instalación de servicios de OpenStack</a><a class="headerlink" href="#instalacion-de-servicios-de-openstack" title="Enlazar permanentemente con este título">¶</a></h2>
+<div class="section" id="install-and-configure-keystone">
+<h3><a class="toc-backref" href="#id17">Install and Configure Keystone</a><a class="headerlink" href="#install-and-configure-keystone" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/keystone/train/install/keystone-install-rdo.html">https://docs.openstack.org/keystone/train/install/keystone-install-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectarnos al servidor de base de datos como usuario root:</span>
+mysql -u root --password<span class="o">=</span>openstack
+
+<span class="c1"># Crear la base de datos de keystone:</span>
+CREATE DATABASE keystone<span class="p">;</span>
+<span class="c1"># Brindar el acceso apropiado a la base de datos de keystone:</span>
+GRANT ALL PRIVILEGES ON keystone.* TO <span class="s1">&#39;keystone&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+GRANT ALL PRIVILEGES ON keystone.* TO <span class="s1">&#39;keystone&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+EXIT<span class="p">;</span>
+
+<span class="c1"># Instalar los paquetes de Keystone (además de crudini para la configuración de archivos):</span>
+yum install -y openstack-keystone httpd mod_wsgi crudini
+
+<span class="c1"># Editar el archivo /etc/keystone/keystone.conf:</span>
+crudini --set /etc/keystone/keystone.conf database connection mysql+pymysql://keystone:openstack@controller/keystone
+<span class="c1"># Comentar cualquier otra opción en la sección [database]</span>
+
+<span class="c1"># Configurar el proveedor de token Fernet:</span>
+crudini --set /etc/keystone/keystone.conf token provider fernet
+
+<span class="c1"># Poblar la base de datos del Identity service:</span>
+su -s /bin/sh -c <span class="s2">&quot;keystone-manage db_sync&quot;</span> keystone
+
+<span class="c1"># Poblar los repositorios de Fernet:</span>
+keystone-manage fernet_setup --keystone-user keystone --keystone-group keystone
+keystone-manage credential_setup --keystone-user keystone --keystone-group keystone
+
+<span class="c1"># Bootstrap del Identity service:</span>
+keystone-manage bootstrap --bootstrap-password openstack --bootstrap-admin-url http://controller:5000/v3/ --bootstrap-internal-url http://controller:5000/v3/ --bootstrap-public-url http://controller:5000/v3/ --bootstrap-region-id RegionOne
+
+<span class="c1"># Configurr el servidor Apache HTTP:</span>
+cat <span class="s">&lt;&lt; EOF &gt;&gt; /etc/httpd/conf/httpd.conf</span>
+<span class="s">ServerName controller</span>
+<span class="s">EOF</span>
+<span class="c1"># Verificar que no exista otra entrada ServerName en el documento</span>
+
+<span class="c1"># Crear un link simbólico al archivo /usr/share/keystone/wsgi-keystone.conf:</span>
+ln -s /usr/share/keystone/wsgi-keystone.conf /etc/httpd/conf.d/
+
+<span class="c1"># Habilitar e iniciar el servicio http</span>
+systemctl <span class="nb">enable</span> httpd.service
+systemctl start httpd.service
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-openstack-client-environment-scripts">
+<h3><a class="toc-backref" href="#id18">Create OpenStack Client Environment Scripts</a><a class="headerlink" href="#create-openstack-client-environment-scripts" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/keystone/train/install/keystone-install-rdo.html#finalize-the-installation">https://docs.openstack.org/keystone/train/install/keystone-install-rdo.html#finalize-the-installation</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/keystone/train/install/keystone-openrc-rdo.html">https://docs.openstack.org/keystone/train/install/keystone-openrc-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear el archivo admin-openrc en el directorio home del usuario</span>
+su -s /bin/sh -c <span class="s1">&#39;cat &lt;&lt; EOF &gt; /home/vagrant/admin-openrc</span>
+<span class="s1">export OS_USERNAME=admin</span>
+<span class="s1">export OS_PASSWORD=openstack</span>
+<span class="s1">export OS_PROJECT_NAME=admin</span>
+<span class="s1">export OS_USER_DOMAIN_NAME=Default</span>
+<span class="s1">export OS_PROJECT_DOMAIN_NAME=Default</span>
+<span class="s1">export OS_AUTH_URL=http://controller:5000/v3</span>
+<span class="s1">export OS_IDENTITY_API_VERSION=3</span>
+<span class="s1">export OS_IMAGE_API_VERSION=2</span>
+<span class="s1">EOF&#39;</span> vagrant
+
+<span class="c1"># Crear el archivo demo-openrc en el directorio home del usuario</span>
+su -s /bin/sh -c <span class="s1">&#39;cat &lt;&lt; EOF &gt; /home/vagrant/demo-openrc</span>
+<span class="s1">export OS_USERNAME=demo</span>
+<span class="s1">export OS_PASSWORD=openstack</span>
+<span class="s1">export OS_PROJECT_NAME=demo</span>
+<span class="s1">export OS_USER_DOMAIN_NAME=Default</span>
+<span class="s1">export OS_PROJECT_DOMAIN_NAME=Default</span>
+<span class="s1">export OS_AUTH_URL=http://controller:5000/v3</span>
+<span class="s1">export OS_IDENTITY_API_VERSION=3</span>
+<span class="s1">export OS_IMAGE_API_VERSION=2</span>
+<span class="s1">EOF&#39;</span> vagrant
+
+<span class="c1"># Verificar la operación de Keystone:</span>
+. /home/vagrant/admin-openrc
+openstack token issue
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-projects-users-and-roles">
+<h3><a class="toc-backref" href="#id19">Create Projects, Users and Roles</a><a class="headerlink" href="#create-projects-users-and-roles" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/keystone/train/install/keystone-users-rdo.html">https://docs.openstack.org/keystone/train/install/keystone-users-rdo.html</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/keystone/train/install/keystone-verify-rdo.html">https://docs.openstack.org/keystone/train/install/keystone-verify-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crear un nuevo dominio (por defecto existe el dominio default del paso keystone-manage bootstrap):</span>
+openstack domain create --description <span class="s2">&quot;An Example Domain&quot;</span> example
+
+<span class="c1"># Crear un proyecto service:</span>
+openstack project create --domain default --description <span class="s2">&quot;Service Project&quot;</span> service
+
+<span class="c1"># Crear un proyecto sin privilegios para tareas no administrativas:</span>
+openstack project create --domain default --description <span class="s2">&quot;Demo Project&quot;</span> demo
+
+<span class="c1"># Crear un usuario sin privilegios para tareas no administrativas:</span>
+openstack user create --domain default --password openstack demo
+
+<span class="c1"># Crear un rol usuario</span>
+openstack role create user
+
+<span class="c1"># Asignar el rol user al usuario demo del proyecto demo:</span>
+openstack role add --project demo --user demo user
+
+<span class="c1"># Listar usuarios:</span>
+openstack user list
+
+<span class="c1"># Verificar la funcionalidad del usuario demo:</span>
+. /home/vagrant/demo-openrc
+openstack token issue
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-configure-glance">
+<h3><a class="toc-backref" href="#id20">Install &amp; Configure Glance</a><a class="headerlink" href="#install-configure-glance" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/glance/train/install/install-rdo.html">https://docs.openstack.org/glance/train/install/install-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectarnos al servidor de base de datos como usuario root:</span>
+mysql -u root --password<span class="o">=</span>openstack
+
+<span class="c1"># Crear la base de datos de glance:</span>
+CREATE DATABASE glance<span class="p">;</span>
+
+<span class="c1"># Brindar el acceso apropiado a la base de datos de glance:</span>
+GRANT ALL PRIVILEGES ON glance.* TO <span class="s1">&#39;glance&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+GRANT ALL PRIVILEGES ON glance.* TO <span class="s1">&#39;glance&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+EXIT<span class="p">;</span>
+
+<span class="c1"># Crear un usuario glance:</span>
+. /home/vagrant/admin-openrc
+openstack user create --domain default --password openstack glance
+
+<span class="c1"># Añadir el rol admin al usuario glance:</span>
+openstack role add --project service --user glance admin
+
+<span class="c1"># Crear el servicio glance:</span>
+openstack service create --name glance --description <span class="s2">&quot;OpenStack Image&quot;</span> image
+
+<span class="c1"># Crear los Glance Service Endpoints (public, internal, admin):</span>
+openstack endpoint create --region RegionOne image public http://controller:9292
+openstack endpoint create --region RegionOne image internal http://controller:9292
+openstack endpoint create --region RegionOne image admin http://controller:9292
+
+<span class="c1"># Instalar el paquete de glance:</span>
+yum update -y
+yum install -y openstack-glance
+
+<span class="c1"># Configure database access for glance</span>
+crudini --set /etc/glance/glance-api.conf database connection mysql+pymysql://glance:openstack@controller/glance
+
+<span class="c1"># Configurar el acceso a Identity Service:</span>
+crudini --set /etc/glance/glance-api.conf keystone_authtoken www_authenticate_uri http://controller:5000
+crudini --set /etc/glance/glance-api.conf keystone_authtoken auth_url http://controller:5000
+crudini --set /etc/glance/glance-api.conf keystone_authtoken memcached_servers controller:11211
+crudini --set /etc/glance/glance-api.conf keystone_authtoken auth_type password
+crudini --set /etc/glance/glance-api.conf keystone_authtoken project_domain_name default
+crudini --set /etc/glance/glance-api.conf keystone_authtoken user_domain_name default
+crudini --set /etc/glance/glance-api.conf keystone_authtoken project_name service
+crudini --set /etc/glance/glance-api.conf keystone_authtoken username glance
+crudini --set /etc/glance/glance-api.conf keystone_authtoken password openstack
+crudini --set /etc/glance/glance-api.conf paste_deploy flavor keystone
+
+<span class="c1"># Configure Glance to store Images on Local Filesystem</span>
+crudini --set /etc/glance/glance-api.conf glance_store stores <span class="s2">&quot;file,http&quot;</span>
+crudini --set /etc/glance/glance-api.conf glance_store default_store file
+crudini --set /etc/glance/glance-api.conf glance_store filesystem_store_datadir /var/lib/glance/images/
+
+<span class="c1"># Poblar la base de datos de Image Service:</span>
+su -s /bin/sh -c <span class="s2">&quot;glance-manage db_sync&quot;</span> glance
+
+<span class="c1"># Habilitar e iniciar el servicio de glance</span>
+systemctl <span class="nb">enable</span> openstack-glance-api.service
+systemctl start openstack-glance-api.service
+
+<span class="c1"># Glance Registry Service and its APIs have been DEPRECATED in the Queens release</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="download-create-test-images">
+<h3><a class="toc-backref" href="#id21">Download &amp; Create Test Images</a><a class="headerlink" href="#download-create-test-images" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/glance/train/install/verify.html">https://docs.openstack.org/glance/train/install/verify.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Descargar la imagen de CirrOS:</span>
+wget http://download.cirros-cloud.net/0.4.0/cirros-0.4.0-x86_64-disk.img
+
+<span class="c1"># Crear una nueva imagen:</span>
+. /home/vagrant/admin-openrc
+openstack image create cirros4.0 --file cirros-0.4.0-x86_64-disk.img --disk-format qcow2 --container-format bare --public
+
+<span class="c1"># Listar nuestras imágenes:</span>
+openstack image list
+</pre></div>
+</div>
+</div>
+<div class="section" id="placement-service-install-and-configure-placement">
+<h3><a class="toc-backref" href="#id22">Placement service - Install and configure Placement</a><a class="headerlink" href="#placement-service-install-and-configure-placement" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/placement/train/install/install-rdo.html">https://docs.openstack.org/placement/train/install/install-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectarnos al servidor de base de datos como usuario root:</span>
+mysql -u root --password<span class="o">=</span>openstack
+
+<span class="c1"># Crear la base de datos de placement:</span>
+CREATE DATABASE placement<span class="p">;</span>
+
+<span class="c1"># Brindar el acceso apropiado a la base de datos de placement:</span>
+GRANT ALL PRIVILEGES ON placement.* TO <span class="s1">&#39;placement&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+GRANT ALL PRIVILEGES ON placement.* TO <span class="s1">&#39;placement&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+EXIT<span class="p">;</span>
+
+<span class="c1"># Crear un usuario placement y añadir el rol admin al usuario placement:</span>
+. /home/vagrant/admin-openrc
+openstack user create --domain default --password openstack placement
+openstack role add --project service --user placement admin
+
+<span class="c1"># Crear la entrada de Placement API en el catálogo de servicios:</span>
+openstack service create --name placement --description <span class="s2">&quot;Placement API&quot;</span> placement
+
+<span class="c1"># Crear los Placement API service endpoints:</span>
+openstack endpoint create --region RegionOne placement public http://controller:8778
+openstack endpoint create --region RegionOne placement internal http://controller:8778
+openstack endpoint create --region RegionOne placement admin http://controller:8778
+<span class="c1"># NOTE: Depending on your environment, the URL for the endpoint will vary by port (possibly 8780 instead of 8778, or no port at all) and hostname. You are responsible for determining the correct URL.</span>
+
+<span class="c1"># Instalar paquetes:</span>
+yum install -y openstack-placement-api python-pip
+
+<span class="c1"># Editar el archivo /etc/placement/placement.conf:</span>
+crudini --set /etc/placement/placement.conf placement_database connection mysql+pymysql://placement:openstack@controller/placement
+
+crudini --set /etc/placement/placement.conf api auth_strategy keystone
+
+crudini --set /etc/placement/placement.conf keystone_authtoken auth_url http://controller:5000/v3
+crudini --set /etc/placement/placement.conf keystone_authtoken memcached_servers controller:11211
+crudini --set /etc/placement/placement.conf keystone_authtoken auth_type password
+crudini --set /etc/placement/placement.conf keystone_authtoken project_domain_name Default
+crudini --set /etc/placement/placement.conf keystone_authtoken user_domain_name Default
+crudini --set /etc/placement/placement.conf keystone_authtoken project_name service
+crudini --set /etc/placement/placement.conf keystone_authtoken username placement
+crudini --set /etc/placement/placement.conf keystone_authtoken password openstack
+<span class="c1"># Comentar cualquier otro parámetro en la sección [keystone_authtoken]</span>
+
+<span class="c1"># Poblar la base de datos placement:</span>
+su -s /bin/sh -c <span class="s2">&quot;placement-manage db sync&quot;</span> placement
+<span class="c1"># El comando anterior no retorna ningún outut</span>
+
+<span class="c1"># Reiniciar el servicio httpd:</span>
+systemctl restart httpd memcached
+
+<span class="c1"># Ver errores del log de Placement:</span>
+tail -f /var/log/placement/placement-api.log <span class="p">|</span> grep -i error <span class="p">&amp;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="placement-service-verify-installation">
+<h3><a class="toc-backref" href="#id23">Placement service - Verify Installation</a><a class="headerlink" href="#placement-service-verify-installation" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/placement/train/install/verify.html">https://docs.openstack.org/placement/train/install/verify.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Realizar revisión de estados para ver que todo esté en orden:</span>
+. /home/vagrant/admin-openrc
+placement-status upgrade check
+
+<span class="c1"># Correr algunos comandos sobre el placement API:</span>
+pip install osc-placement
+openstack --os-placement-api-version <span class="m">1</span>.2 resource class list --sort-column name
+openstack --os-placement-api-version <span class="m">1</span>.6 trait list --sort-column name
+</pre></div>
+</div>
+</div>
+<div class="section" id="nova-service-install-and-configure-controller-node">
+<h3><a class="toc-backref" href="#id24">Nova service - Install and configure controller node</a><a class="headerlink" href="#nova-service-install-and-configure-controller-node" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/nova/train/install/controller-install-rdo.html">https://docs.openstack.org/nova/train/install/controller-install-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectarnos al servidor de base de datos como usuario root:</span>
+mysql -u root --password<span class="o">=</span>openstack
+
+<span class="c1"># Crear las bases de datos:</span>
+CREATE DATABASE nova_api<span class="p">;</span>
+CREATE DATABASE nova<span class="p">;</span>
+CREATE DATABASE nova_cell0<span class="p">;</span>
+
+<span class="c1"># Brindar el acceso apropiado a la base de datos de Nova:</span>
+GRANT ALL PRIVILEGES ON nova_api.* TO <span class="s1">&#39;nova&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+GRANT ALL PRIVILEGES ON nova_api.* TO <span class="s1">&#39;nova&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+GRANT ALL PRIVILEGES ON nova.* TO <span class="s1">&#39;nova&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+GRANT ALL PRIVILEGES ON nova.* TO <span class="s1">&#39;nova&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+GRANT ALL PRIVILEGES ON nova_cell0.* TO <span class="s1">&#39;nova&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+GRANT ALL PRIVILEGES ON nova_cell0.* TO <span class="s1">&#39;nova&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+EXIT<span class="p">;</span>
+
+<span class="c1"># Crear un usuario nova y añadir el rol admin al usuario:</span>
+. /home/vagrant/admin-openrc
+openstack user create --domain default --password openstack nova
+openstack role add --project service --user nova admin
+
+<span class="c1"># Crear el servicio de Nova:</span>
+openstack service create --name nova --description <span class="s2">&quot;OpenStack Compute&quot;</span> compute
+
+<span class="c1"># Crear los Compute API Endpoints (public, internal, admin):</span>
+openstack endpoint create --region RegionOne compute public http://controller:8774/v2.1
+openstack endpoint create --region RegionOne compute internal http://controller:8774/v2.1
+openstack endpoint create --region RegionOne compute admin http://controller:8774/v2.1
+
+<span class="c1"># Instalar los paquetes de Nova Controller:</span>
+yum install -y openstack-nova-api openstack-nova-conductor openstack-nova-novncproxy openstack-nova-scheduler
+
+<span class="c1"># Editar el archivo /etc/nova/nova.conf:</span>
+crudini --set /etc/nova/nova.conf DEFAULT enabled_apis osapi_compute,metadata
+
+crudini --set /etc/nova/nova.conf api_database connection mysql+pymysql://nova:openstack@controller/nova_api
+crudini --set /etc/nova/nova.conf database connection mysql+pymysql://nova:openstack@controller/nova
+crudini --set /etc/nova/nova.conf DEFAULT transport_url rabbit://openstack:openstack@controller:5672/
+<span class="c1"># En Stein: transport_url = rabbit://openstack:RABBIT_PASS@controller</span>
+
+crudini --set /etc/nova/nova.conf api auth_strategy keystone
+
+crudini --set /etc/nova/nova.conf keystone_authtoken www_authenticate_uri http://controller:5000/
+<span class="c1"># En Stein: www_authenticate_uri no está presente</span>
+crudini --set /etc/nova/nova.conf keystone_authtoken auth_url http://controller:5000/
+<span class="c1"># En Stein: auth_url = http://controller:5000/v3</span>
+crudini --set /etc/nova/nova.conf keystone_authtoken memcached_servers controller:11211
+crudini --set /etc/nova/nova.conf keystone_authtoken auth_type password
+crudini --set /etc/nova/nova.conf keystone_authtoken project_domain_name default
+crudini --set /etc/nova/nova.conf keystone_authtoken user_domain_name default
+crudini --set /etc/nova/nova.conf keystone_authtoken project_name service
+crudini --set /etc/nova/nova.conf keystone_authtoken username nova
+crudini --set /etc/nova/nova.conf keystone_authtoken password openstack
+
+crudini --set /etc/nova/nova.conf DEFAULT my_ip <span class="m">10</span>.1.1.11
+crudini --set /etc/nova/nova.conf DEFAULT use_neutron <span class="nb">true</span>
+crudini --set /etc/nova/nova.conf DEFAULT firewall_driver nova.virt.firewall.NoopFirewallDriver
+
+crudini --set /etc/nova/nova.conf vnc enabled <span class="nb">true</span>
+crudini --set /etc/nova/nova.conf vnc server_listen <span class="m">10</span>.1.1.11
+crudini --set /etc/nova/nova.conf vnc server_proxyclient_address <span class="m">10</span>.1.1.11
+
+crudini --set /etc/nova/nova.conf glance api_servers http://controller:9292
+
+crudini --set /etc/nova/nova.conf oslo_concurrency lock_path /var/lib/nova/tmp
+
+crudini --set /etc/nova/nova.conf placement region_name RegionOne
+crudini --set /etc/nova/nova.conf placement project_domain_name Default
+crudini --set /etc/nova/nova.conf placement project_name service
+crudini --set /etc/nova/nova.conf placement auth_type password
+crudini --set /etc/nova/nova.conf placement user_domain_name Default
+crudini --set /etc/nova/nova.conf placement auth_url http://controller:5000/v3
+crudini --set /etc/nova/nova.conf placement username placement
+crudini --set /etc/nova/nova.conf placement password openstack
+
+<span class="c1"># Revisar si este parámetro se encuentra en el archivo de configuración. De ser el caso, removerlo:</span>
+crudini --del /etc/nova/nova.conf DEFAULT log_dir
+
+<span class="c1"># Poblar la base de datos nova-api:</span>
+su -s /bin/sh -c <span class="s2">&quot;nova-manage api_db sync&quot;</span> nova
+
+<span class="c1"># Register cell0 Database:</span>
+su -s /bin/sh -c <span class="s2">&quot;nova-manage cell_v2 map_cell0&quot;</span> nova
+
+<span class="c1"># Create cell1 Cell:</span>
+su -s /bin/sh -c <span class="s2">&quot;nova-manage cell_v2 create_cell --name=cell1 --verbose&quot;</span> nova
+
+<span class="c1"># Populate nova Database:</span>
+su -s /bin/sh -c <span class="s2">&quot;nova-manage db sync&quot;</span> nova
+
+<span class="c1"># Verificar que cell0 y cell1 han sido registradas correctamente:</span>
+su -s /bin/sh -c <span class="s2">&quot;nova-manage cell_v2 list_cells&quot;</span> nova
+
+<span class="c1"># Habilitar e iniciar servicios de Nova:</span>
+systemctl <span class="nb">enable</span> openstack-nova-api.service openstack-nova-scheduler.service openstack-nova-conductor.service openstack-nova-novncproxy.service
+systemctl start openstack-nova-api.service openstack-nova-scheduler.service openstack-nova-conductor.service openstack-nova-novncproxy.service
+</pre></div>
+</div>
+</div>
+<div class="section" id="nova-service-install-and-configure-a-compute-node">
+<h3><a class="toc-backref" href="#id25">Nova service - Install and configure a compute node</a><a class="headerlink" href="#nova-service-install-and-configure-a-compute-node" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/nova/train/install/compute-install-rdo.html">https://docs.openstack.org/nova/train/install/compute-install-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">COMPUTE</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar los paquetes de Nova (además de crudini para la configuración de archivos):</span>
+yum install -y openstack-nova-compute crudini
+
+<span class="c1"># Editar el archivo /etc/nova/nova.conf:</span>
+crudini --set /etc/nova/nova.conf DEFAULT enabled_apis osapi_compute,metadata
+
+<span class="c1"># Configurar acceso a RabbitMQ:</span>
+crudini --set /etc/nova/nova.conf DEFAULT transport_url rabbit://openstack:openstack@controller
+
+<span class="c1"># Configurar el acceso a Identity Service:</span>
+crudini --set /etc/nova/nova.conf api auth_strategy keystone
+
+crudini --set /etc/nova/nova.conf keystone_authtoken www_authenticate_uri http://controller:5000/
+<span class="c1"># En Stein: www_authenticate_uri no está presente</span>
+crudini --set /etc/nova/nova.conf keystone_authtoken auth_url http://controller:5000/
+<span class="c1"># En Stein: auth_url = http://controller:5000/v3</span>
+crudini --set /etc/nova/nova.conf keystone_authtoken memcached_servers controller:11211
+crudini --set /etc/nova/nova.conf keystone_authtoken auth_type password
+crudini --set /etc/nova/nova.conf keystone_authtoken project_domain_name default
+crudini --set /etc/nova/nova.conf keystone_authtoken user_domain_name default
+crudini --set /etc/nova/nova.conf keystone_authtoken project_name service
+crudini --set /etc/nova/nova.conf keystone_authtoken username nova
+crudini --set /etc/nova/nova.conf keystone_authtoken password openstack
+<span class="c1"># Comentar cualquier otro parámetro en la sección [keystone_authtoken]</span>
+
+<span class="c1"># Reemplazar IP por la del compute node que se está configurando:</span>
+crudini --set /etc/nova/nova.conf DEFAULT my_ip <span class="m">10</span>.1.1.31
+crudini --set /etc/nova/nova.conf DEFAULT use _neutron <span class="nb">true</span>
+crudini --set /etc/nova/nova.conf DEFAULT firewall_driver nova.virt.firewall.NoopFirewallDriver
+
+crudini --set /etc/nova/nova.conf vnc enabled <span class="nb">true</span>
+crudini --set /etc/nova/nova.conf vnc server_listen <span class="m">0</span>.0.0.0
+<span class="c1"># Reemplazar IP por la del compute node que se está configurando:</span>
+crudini --set /etc/nova/nova.conf vnc server_proxyclient_address <span class="m">10</span>.1.1.31
+crudini --set /etc/nova/nova.conf vnc novncproxy_base_url http://10.1.1.11:6080/vnc_auto.html
+
+crudini --set /etc/nova/nova.conf glance api_servers http://controller:9292
+
+crudini --set /etc/nova/nova.conf oslo_concurrency lock_path /var/lib/nova/tmp
+
+crudini --set /etc/nova/nova.conf placement region_name RegionOne
+crudini --set /etc/nova/nova.conf placement project_domain_name Default
+crudini --set /etc/nova/nova.conf placement project_name service
+crudini --set /etc/nova/nova.conf placement auth_type password
+crudini --set /etc/nova/nova.conf placement user_domain_name Default
+crudini --set /etc/nova/nova.conf placement auth_url http://controller:5000/v3
+crudini --set /etc/nova/nova.conf placement username placement
+crudini --set /etc/nova/nova.conf placement password openstack
+
+<span class="c1"># Revisar si este parámetro se encuentra en el archivo de configuración. De ser el caso, removerlo:</span>
+crudini --del /etc/nova/nova.conf DEFAULT log_dir
+
+<span class="c1"># Determinar si nuestra computadora soporta aceleración de hardware para máquinas virtuales (si lo soporta el resultado será 1 o más):</span>
+egrep -c <span class="s1">&#39;(vmx|svm)&#39;</span> /proc/cpuinfo
+
+<span class="c1"># Para un setup con máquinas virtuales configurar:</span>
+crudini --set /etc/nova/nova-compute.conf libvirt virt_type qemu
+
+<span class="c1"># Habilitar e iniciar el servicio Compute:</span>
+systemctl <span class="nb">enable</span> libvirtd.service openstack-nova-compute.service
+systemctl start libvirtd.service openstack-nova-compute.service
+<span class="c1"># If the nova-compute service fails to start, check /var/log/nova/nova-compute.log. The error message AMQP server on controller:5672 is unreachable likely indicates that the firewall on the controller node is preventing access to port 5672. Configure the firewall to open port 5672 on the controller node and restart nova-compute service on the compute node.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="discover-compute-nodes-and-finalize-nova-installation">
+<h3><a class="toc-backref" href="#id26">Discover Compute Nodes and Finalize Nova Installation</a><a class="headerlink" href="#discover-compute-nodes-and-finalize-nova-installation" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/nova/train/install/compute-install-rdo.html#add-the-compute-node-to-the-cell-database">https://docs.openstack.org/nova/train/install/compute-install-rdo.html#add-the-compute-node-to-the-cell-database</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Comprobar que hay compute nodes en la base de datos:</span>
+. /home/vagrant/admin-openrc
+openstack compute service list --service nova-compute
+
+<span class="c1"># Descubrir compute hosts:</span>
+su -s /bin/sh -c <span class="s2">&quot;nova-manage cell_v2 discover_hosts --verbose&quot;</span> nova
+
+<span class="c1"># Listar servicios de Compute:</span>
+openstack compute service list
+
+<span class="c1"># Ver errores del log de Nova:</span>
+tail -f /var/log/nova/* <span class="p">|</span> grep -i error <span class="p">&amp;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="solucion-del-error-skipping-removal-of-allocations-for-deleted-instances-failed-to-retrieve-allocations-for-resource-provider">
+<h3><a class="toc-backref" href="#id27">Solución del error «Skipping removal of allocations for deleted instances: Failed to retrieve allocations for resource provider»</a><a class="headerlink" href="#solucion-del-error-skipping-removal-of-allocations-for-deleted-instances-failed-to-retrieve-allocations-for-resource-provider" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Según las siguientes referencias:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://louky0714.tistory.com/entry/Openstack-Train-Error-Nova-Instance-fail-You-dont-have-permission-to-access-resourceproviderson-this-server">https://louky0714.tistory.com/entry/Openstack-Train-Error-Nova-Instance-fail-You-dont-have-permission-to-access-resourceproviderson-this-server</a></li>
+<li><a class="reference external" href="http://www.programmersought.com/article/2585745102/">http://www.programmersought.com/article/2585745102/</a></li>
+<li><a class="reference external" href="https://blog.csdn.net/hutiewei2008/article/details/87971379">https://blog.csdn.net/hutiewei2008/article/details/87971379</a></li>
+<li><a class="reference external" href="https://ask.openstack.org/en/question/103325/ah01630-client-denied-by-server-configuration-usrbinnova-placement-api/">https://ask.openstack.org/en/question/103325/ah01630-client-denied-by-server-configuration-usrbinnova-placement-api/</a></li>
+</ul>
+<p>Seguimos el siguiente procedimiento:</p>
+<ol class="arabic simple">
+<li>Editar el archivo <code class="docutils literal notranslate"><span class="pre">/etc/httpd/conf.d/00-placement-api.conf</span></code></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vim /etc/httpd/conf.d/00-placement-api.conf
+</pre></div>
+</div>
+<p>Añadir la siguiente sección (Probar al final del archivo o dentro de la sección <code class="docutils literal notranslate"><span class="pre">&lt;virtualhost</span> <span class="pre">*:8778=&quot;&quot;&gt;</span></code>):</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;Directory /usr/bin&gt;
+    &lt;IfVersion &gt;= 2.4&gt;
+        Require all granted
+    &lt;/IfVersion&gt;
+    &lt;IfVersion &lt; 2.4&gt;
+        Order allow,deny
+        Allow from all
+    &lt;/IfVersion&gt;
+&lt;/Directory&gt;
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Reiniciar servicios de Nova del controller node:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl restart openstack-nova-api.service openstack-nova-scheduler.service openstack-nova-conductor.service openstack-nova-novncproxy.service httpd
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Reiniciar servicios de Nova del compute node:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl restart libvirtd.service openstack-nova-compute.service
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p>Log con el error:</p>
+<div class="last highlight-text notranslate"><div class="highlight"><pre><span></span># ERROR:
+
+2020-04-23 04:41:07.504 19347 ERROR nova.compute.resource_tracker [req-1c29a29d-0f43-46c9-8255-d49f3ec1084b - - - - -] Skipping removal of allocations for deleted instances: Failed to retrieve allocations for resource provider 5a5ae2e2-063b-4311-9b24-23373417dc5b: &lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+2020-04-23 04:41:07.517 19347 ERROR nova.scheduler.client.report [req-1c29a29d-0f43-46c9-8255-d49f3ec1084b - - - - -] [None] Failed to retrieve resource provider tree from placement API for UUID 5a5ae2e2-063b-4311-9b24-23373417dc5b. Got 403: &lt;!DOCTYPE HTML PUBLIC &quot;-//IETF//DTD HTML 2.0//EN&quot;&gt;
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager [req-1c29a29d-0f43-46c9-8255-d49f3ec1084b - - - - -] Error updating resources for node compute1.: ResourceProviderRetrievalFailed: Failed to get resource provider with UUID 5a5ae2e2-063b-4311-9b24-23373417dc5b
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager Traceback (most recent call last):
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/nova/compute/manager.py&quot;, line 8673, in _update_available_resource_for_node
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     startup=startup)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/nova/compute/resource_tracker.py&quot;, line 887, in update_available_resource
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     self._update_available_resource(context, resources, startup=startup)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/oslo_concurrency/lockutils.py&quot;, line 328, in inner
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     return f(*args, **kwargs)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/nova/compute/resource_tracker.py&quot;, line 972, in _update_available_resource
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     self._update(context, cn, startup=startup)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/nova/compute/resource_tracker.py&quot;, line 1237, in _update
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     self._update_to_placement(context, compute_node, startup)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/retrying.py&quot;, line 68, in wrapped_f
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     return Retrying(*dargs, **dkw).call(f, *args, **kw)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/retrying.py&quot;, line 223, in call
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     return attempt.get(self._wrap_exception)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/retrying.py&quot;, line 261, in get
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     six.reraise(self.value[0], self.value[1], self.value[2])
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/retrying.py&quot;, line 217, in call
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     attempt = Attempt(fn(*args, **kwargs), attempt_number, False)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/nova/compute/resource_tracker.py&quot;, line 1151, in _update_to_placement
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     context, compute_node.uuid, name=compute_node.hypervisor_hostname)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/nova/scheduler/client/report.py&quot;, line 858, in get_provider_tree_and_ensure_root
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     parent_provider_uuid=parent_provider_uuid)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/nova/scheduler/client/report.py&quot;, line 640, in _ensure_resource_provider
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     rps_to_refresh = self.get_providers_in_tree(context, uuid)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager   File &quot;/usr/lib/python2.7/site-packages/nova/scheduler/client/report.py&quot;, line 503, in get_providers_in_tree
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager     raise exception.ResourceProviderRetrievalFailed(uuid=uuid)
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager ResourceProviderRetrievalFailed: Failed to get resource provider with UUID 5a5ae2e2-063b-4311-9b24-23373417dc5b
+2020-04-23 04:41:07.518 19347 ERROR nova.compute.manager
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="install-network-service-on-controller-node">
+<h3><a class="toc-backref" href="#id28">Install Network Service on Controller Node</a><a class="headerlink" href="#install-network-service-on-controller-node" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/neutron/train/install/controller-install-rdo.html">https://docs.openstack.org/neutron/train/install/controller-install-rdo.html</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/neutron/train/install/controller-install-option2-rdo.html">https://docs.openstack.org/neutron/train/install/controller-install-option2-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectarnos al servidor de base de datos como usuario root:</span>
+mysql -u root --password<span class="o">=</span>openstack
+
+<span class="c1"># Crear la base de datos de Neutron:</span>
+CREATE DATABASE neutron<span class="p">;</span>
+
+<span class="c1"># Brindar el acceso apropiado a la base de datos de Neutron:</span>
+GRANT ALL PRIVILEGES ON neutron.* TO <span class="s1">&#39;neutron&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+GRANT ALL PRIVILEGES ON neutron.* TO <span class="s1">&#39;neutron&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+EXIT<span class="p">;</span>
+
+<span class="c1"># Crear un usuario neutron y añadir el rol admin al usuario:</span>
+. /home/vagrant/admin-openrc
+openstack user create --domain default --password openstack neutron
+openstack role add --project service --user neutron admin
+
+<span class="c1"># Crear el servicio de Neutron:</span>
+openstack service create --name neutron --description <span class="s2">&quot;OpenStack Networking&quot;</span> network
+
+<span class="c1"># Crear los Compute API Endpoints (public, internal, admin):</span>
+openstack endpoint create --region RegionOne network public http://controller:9696
+openstack endpoint create --region RegionOne network internal http://controller:9696
+openstack endpoint create --region RegionOne network admin http://controller:9696
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Networking Option 2: Self-service networks</span>
+
+<span class="c1"># Instalar los paquetes de Neutron:</span>
+yum install -y openstack-neutron openstack-neutron-ml2 openstack-neutron-linuxbridge ebtables
+
+<span class="c1"># Configurar la base de datos SQL para Neutron:</span>
+crudini --set /etc/neutron/neutron.conf database connection mysql+pymysql://neutron:openstack@controller/neutron
+<span class="c1"># Configurar el acceso RabbitMQ para Neutron:</span>
+crudini --set /etc/neutron/neutron.conf DEFAULT transport_url rabbit://openstack:openstack@controller
+
+<span class="c1"># Habilitar el plug-in ML2, servicio de router, y overlaping de direcciones IP:</span>
+crudini --set /etc/neutron/neutron.conf DEFAULT core_plugin ml2
+crudini --set /etc/neutron/neutron.conf DEFAULT service_plugins router
+crudini --set /etc/neutron/neutron.conf DEFAULT allow_overlapping_ips <span class="nb">true</span>
+
+<span class="c1"># Configurar el acceso a Identity service:</span>
+crudini --set /etc/neutron/neutron.conf DEFAULT auth_strategy keystone
+
+crudini --set /etc/neutron/neutron.conf keystone_authtoken www_authenticate_uri http://controller:5000
+crudini --set /etc/neutron/neutron.conf keystone_authtoken auth_url http://controller:5000
+crudini --set /etc/neutron/neutron.conf keystone_authtoken memcached_servers controller:11211
+crudini --set /etc/neutron/neutron.conf keystone_authtoken auth_type password
+crudini --set /etc/neutron/neutron.conf keystone_authtoken project_domain_name default
+crudini --set /etc/neutron/neutron.conf keystone_authtoken user_domain_name default
+crudini --set /etc/neutron/neutron.conf keystone_authtoken project_name service
+crudini --set /etc/neutron/neutron.conf keystone_authtoken username neutron
+crudini --set /etc/neutron/neutron.conf keystone_authtoken password openstack
+<span class="c1"># Comentar cualquier otro parámetro en la sección [keystone_authtoken]</span>
+
+<span class="c1"># Configurar Networking para que notifique a Compute de cambios en la topología de red:</span>
+crudini --set /etc/neutron/neutron.conf DEFAULT notify_nova_on_port_status_changes <span class="nb">true</span>
+crudini --set /etc/neutron/neutron.conf DEFAULT notify_nova_on_port_data_changes <span class="nb">true</span>
+
+crudini --set /etc/neutron/neutron.conf nova auth_url http://controller:5000
+crudini --set /etc/neutron/neutron.conf nova auth_type password
+crudini --set /etc/neutron/neutron.conf nova project_domain_name default
+crudini --set /etc/neutron/neutron.conf nova user_domain_name default
+crudini --set /etc/neutron/neutron.conf nova region_name RegionOne
+crudini --set /etc/neutron/neutron.conf nova project_name service
+crudini --set /etc/neutron/neutron.conf nova username nova
+crudini --set /etc/neutron/neutron.conf nova password openstack
+
+<span class="c1"># Configurar el lock path:</span>
+crudini --set /etc/neutron/neutron.conf oslo_concurrency lock_path /var/lib/neutron/tmp
+
+<span class="c1"># Configurar el ML2 plug-in:</span>
+
+<span class="c1"># Enable flat, VLAN and VXLAN Networks</span>
+crudini --set /etc/neutron/plugins/ml2/ml2_conf.ini ml2 type_drivers flat,vlan,vxlan
+
+<span class="c1"># Enable VXLAN Self-service Networks</span>
+crudini --set /etc/neutron/plugins/ml2/ml2_conf.ini ml2 tenant_network_types vxlan
+
+<span class="c1"># Enable Linux Bridge and L2Population mechanisms</span>
+crudini --set /etc/neutron/plugins/ml2/ml2_conf.ini ml2 mechanism_drivers linuxbridge,l2population
+
+<span class="c1"># Enable Port Security Extenstion Driver</span>
+crudini --set /etc/neutron/plugins/ml2/ml2_conf.ini ml2 extension_drivers port_security
+
+<span class="c1"># Configure provider Virtual Network as flat Network</span>
+crudini --set /etc/neutron/plugins/ml2/ml2_conf.ini ml2_type_flat flat_networks provider
+
+<span class="c1"># Configure VXLAN Network Identifier Range for Self-service Networks</span>
+crudini --set /etc/neutron/plugins/ml2/ml2_conf.ini ml2_type_vxlan vni_ranges <span class="m">1</span>:1000
+
+<span class="c1"># Enable ipset to increase efficiency of Security Group Rules</span>
+crudini --set /etc/neutron/plugins/ml2/ml2_conf.ini securitygroup enable_ipset <span class="nb">true</span>
+
+<span class="c1"># Configuar el Linux bridge agent:</span>
+
+<span class="c1"># Configure provider Virtual Network mapping to Physical Interface</span>
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini linux_bridge physical_interface_mappings provider:eth2
+
+<span class="c1"># Enable VXLAN for Self-service Networks, configure IP address of the Management Interface handling VXLAN traffic</span>
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan enable_vxlan <span class="nb">true</span>
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan local_ip <span class="m">10</span>.1.1.11
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan l2_population <span class="nb">true</span>
+
+<span class="c1"># Enable security groups and configure the Linux bridge iptables firewall driver</span>
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini securitygroup enable_security_group <span class="nb">true</span>
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini securitygroup firewall_driver neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+
+<span class="c1"># Configurar el agent L3:</span>
+crudini --set /etc/neutron/l3_agent.ini DEFAULT interface_driver linuxbridge
+
+<span class="c1"># Configurar el agente DHCP:</span>
+crudini --set /etc/neutron/dhcp_agent.ini DEFAULT interface_driver linuxbridge
+crudini --set /etc/neutron/dhcp_agent.ini DEFAULT dhcp_driver neutron.agent.linux.dhcp.Dnsmasq
+crudini --set /etc/neutron/dhcp_agent.ini DEFAULT enable_isolated_metadata <span class="nb">true</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Configurar el agente metadata:</span>
+crudini --set /etc/neutron/metadata_agent.ini DEFAULT nova_metadata_host controller
+crudini --set /etc/neutron/metadata_agent.ini DEFAULT metadata_proxy_shared_secret openstack
+
+<span class="c1"># Configurar el Compute service para que use el Networking service:</span>
+<span class="c1"># En Stein: url = http://controller:9696 es un parámetro de configuración extra</span>
+crudini --set /etc/nova/nova.conf neutron auth_url http://controller:5000
+crudini --set /etc/nova/nova.conf neutron auth_type password
+crudini --set /etc/nova/nova.conf neutron project_domain_name default
+crudini --set /etc/nova/nova.conf neutron user_domain_name default
+crudini --set /etc/nova/nova.conf neutron region_name RegionOne
+crudini --set /etc/nova/nova.conf neutron project_name service
+crudini --set /etc/nova/nova.conf neutron username neutron
+crudini --set /etc/nova/nova.conf neutron password openstack
+crudini --set /etc/nova/nova.conf neutron service_metadata_proxy <span class="nb">true</span>
+crudini --set /etc/nova/nova.conf neutron metadata_proxy_shared_secret openstack
+
+<span class="c1"># Finalizar la instalación:</span>
+
+<span class="c1"># Si no existe, crear un link simbólico /etc/neutron/plugin.ini apuntando al archivo /etc/neutron/plugins/ml2/ml2_conf.ini</span>
+ln -s /etc/neutron/plugins/ml2/ml2_conf.ini /etc/neutron/plugin.ini
+
+<span class="c1"># Poblar la base de datos:</span>
+su -s /bin/sh -c <span class="s2">&quot;neutron-db-manage --config-file /etc/neutron/neutron.conf --config-file /etc/neutron/plugins/ml2/ml2_conf.ini upgrade head&quot;</span> neutron
+
+<span class="c1"># Reiniciar el servicio de Compute API:</span>
+systemctl restart openstack-nova-api.service
+
+<span class="c1"># Habilitat e iniciar los servicios de Networking:</span>
+systemctl <span class="nb">enable</span> neutron-server.service neutron-linuxbridge-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service
+systemctl start neutron-server.service neutron-linuxbridge-agent.service neutron-dhcp-agent.service neutron-metadata-agent.service
+
+<span class="c1"># Para la opción de Networking 2, habilitamos e iniciamos también el servicio de L3:</span>
+systemctl <span class="nb">enable</span> neutron-l3-agent.service
+systemctl start neutron-l3-agent.service
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-neutron-on-compute-node">
+<h3><a class="toc-backref" href="#id29">Install Neutron on Compute Node</a><a class="headerlink" href="#install-neutron-on-compute-node" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/neutron/train/install/compute-install-rdo.html">https://docs.openstack.org/neutron/train/install/compute-install-rdo.html</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/neutron/train/install/compute-install-option2-rdo.html">https://docs.openstack.org/neutron/train/install/compute-install-option2-rdo.html</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/neutron/train/install/verify-option2.html">https://docs.openstack.org/neutron/train/install/verify-option2.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">COMPUTE</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar los componentes:</span>
+yum install -y openstack-neutron-linuxbridge ebtables ipset
+
+<span class="c1"># Configuar los componentes comúnes:</span>
+
+<span class="c1"># En la sección [database], comentar cualquier opción de conexión porque los compute nodes no acceden directamente a la base de datos.</span>
+
+<span class="c1"># Configurar acceso a RabbitMQ:</span>
+crudini --set /etc/neutron/neutron.conf DEFAULT transport_url rabbit://openstack:openstack@controller
+
+<span class="c1"># Configurar el acceso a Identity Service:</span>
+crudini --set /etc/neutron/neutron.conf DEFAULT auth_strategy keystone
+crudini --set /etc/neutron/neutron.conf keystone_authtoken www_authenticate_uri http://controller:5000
+crudini --set /etc/neutron/neutron.conf keystone_authtoken auth_url http://controller:5000
+crudini --set /etc/neutron/neutron.conf keystone_authtoken memcached_servers controller:11211
+crudini --set /etc/neutron/neutron.conf keystone_authtoken auth_type password
+crudini --set /etc/neutron/neutron.conf keystone_authtoken project_domain_name default
+crudini --set /etc/neutron/neutron.conf keystone_authtoken user_domain_name default
+crudini --set /etc/neutron/neutron.conf keystone_authtoken project_name service
+crudini --set /etc/neutron/neutron.conf keystone_authtoken username neutron
+crudini --set /etc/neutron/neutron.conf keystone_authtoken password openstack
+
+<span class="c1"># Configurar el lock path:</span>
+crudini --set /etc/neutron/neutron.conf oslo_concurrency lock_path /var/lib/neutron/tmp
+
+<span class="c1"># Configuar el Linux bridge agent:</span>
+
+<span class="c1"># Configure provider Virtual Network mapping to Physical Interface</span>
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini linux_bridge physical_interface_mappings provider:eth2
+
+<span class="c1"># Enable VXLAN for Self-service Networks, configure IP address of the Management Interface handling VXLAN traffic</span>
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan enable_vxlan <span class="nb">true</span>
+<span class="c1"># Reemplazar IP por la del compute node que se está configurando:</span>
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan local_ip <span class="m">10</span>.1.1.31
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini vxlan l2_population <span class="nb">true</span>
+
+<span class="c1"># Enable security groups and configure the Linux bridge iptables firewall driver</span>
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini securitygroup enable_security_group <span class="nb">true</span>
+crudini --set /etc/neutron/plugins/ml2/linuxbridge_agent.ini securitygroup firewall_driver neutron.agent.linux.iptables_firewall.IptablesFirewallDriver
+
+<span class="c1"># Configurar el Compute service para que use el Networking service:</span>
+<span class="c1"># En Stein: url = http://controller:9696 es un parámetro de configuración extra</span>
+crudini --set /etc/nova/nova.conf neutron auth_url http://controller:5000
+crudini --set /etc/nova/nova.conf neutron auth_type password
+crudini --set /etc/nova/nova.conf neutron project_domain_name default
+crudini --set /etc/nova/nova.conf neutron user_domain_name default
+crudini --set /etc/nova/nova.conf neutron region_name RegionOne
+crudini --set /etc/nova/nova.conf neutron project_name service
+crudini --set /etc/nova/nova.conf neutron username neutron
+crudini --set /etc/nova/nova.conf neutron password openstack
+
+<span class="c1"># Reiniciar el Compute service:</span>
+systemctl restart openstack-nova-compute.service
+
+<span class="c1"># Habilitar e iniciar el Linux bridge agent:</span>
+systemctl <span class="nb">enable</span> neutron-linuxbridge-agent.service
+systemctl start neutron-linuxbridge-agent.service
+</pre></div>
+</div>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar la operación de Neutron:</span>
+. /home/vagrant/admin-openrc
+openstack extension list --network
+openstack network agent list
+</pre></div>
+</div>
+</div>
+<div class="section" id="block-storage-service-controller-node">
+<h3><a class="toc-backref" href="#id30">Block Storage service - Controller node</a><a class="headerlink" href="#block-storage-service-controller-node" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/cinder/train/install/cinder-controller-install-rdo.html">https://docs.openstack.org/cinder/train/install/cinder-controller-install-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conectarnos al servidor de base de datos como usuario root:</span>
+mysql -u root --password<span class="o">=</span>openstack
+
+<span class="c1"># Crear la base de datos de Cinder:</span>
+CREATE DATABASE cinder<span class="p">;</span>
+<span class="c1"># Brindar el acceso apropiado a la base de datos de Cinder:</span>
+GRANT ALL PRIVILEGES ON cinder.* TO <span class="s1">&#39;cinder&#39;</span>@<span class="s1">&#39;localhost&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+GRANT ALL PRIVILEGES ON cinder.* TO <span class="s1">&#39;cinder&#39;</span>@<span class="s1">&#39;%&#39;</span> IDENTIFIED BY <span class="s1">&#39;openstack&#39;</span><span class="p">;</span>
+EXIT<span class="p">;</span>
+
+<span class="c1"># Crear un usuario cinder y añadir el rol admin al usuario cinder:</span>
+. /home/vagrant/admin-openrc
+openstack user create --domain default --password openstack cinder
+openstack role add --project service --user cinder admin
+
+<span class="c1"># Crear los servicios cinderv2 y cinderv3:</span>
+openstack service create --name cinderv2 --description <span class="s2">&quot;OpenStack Block Storage&quot;</span> volumev2
+openstack service create --name cinderv3 --description <span class="s2">&quot;OpenStack Block Storage&quot;</span> volumev3
+
+<span class="c1"># Crear los Cinder Service Endpoints (public, internal, admin):</span>
+openstack endpoint create --region RegionOne volumev2 public http://controller:8776/v2/%<span class="se">\(</span>project_id<span class="se">\)</span>s
+openstack endpoint create --region RegionOne volumev2 internal http://controller:8776/v2/%<span class="se">\(</span>project_id<span class="se">\)</span>s
+openstack endpoint create --region RegionOne volumev2 admin http://controller:8776/v2/%<span class="se">\(</span>project_id<span class="se">\)</span>s
+openstack endpoint create --region RegionOne volumev3 public http://controller:8776/v3/%<span class="se">\(</span>project_id<span class="se">\)</span>s
+openstack endpoint create --region RegionOne volumev3 internal http://controller:8776/v3/%<span class="se">\(</span>project_id<span class="se">\)</span>s
+openstack endpoint create --region RegionOne volumev3 admin http://controller:8776/v3/%<span class="se">\(</span>project_id<span class="se">\)</span>s
+
+<span class="c1"># Instalar el paquete de Cinder:</span>
+yum install -y openstack-cinder
+
+<span class="c1"># Configurar la base de datos SQL para Neutron:</span>
+crudini --set /etc/cinder/cinder.conf database connection mysql+pymysql://cinder:openstack@controller/cinder
+<span class="c1"># Configurar el acceso RabbitMQ para Neutron:</span>
+crudini --set /etc/cinder/cinder.conf DEFAULT transport_url rabbit://openstack:openstack@controller
+
+<span class="c1"># Configurar el acceso a Identity service:</span>
+crudini --set /etc/cinder/cinder.conf DEFAULT auth_strategy keystone
+crudini --set /etc/cinder/cinder.conf keystone_authtoken www_authenticate_uri http://controller:5000
+crudini --set /etc/cinder/cinder.conf keystone_authtoken auth_url http://controller:5000
+crudini --set /etc/cinder/cinder.conf keystone_authtoken memcached_servers controller:11211
+crudini --set /etc/cinder/cinder.conf keystone_authtoken auth_type password
+crudini --set /etc/cinder/cinder.conf keystone_authtoken project_domain_name default
+crudini --set /etc/cinder/cinder.conf keystone_authtoken user_domain_name default
+crudini --set /etc/cinder/cinder.conf keystone_authtoken project_name service
+crudini --set /etc/cinder/cinder.conf keystone_authtoken username cinder
+crudini --set /etc/cinder/cinder.conf keystone_authtoken password openstack
+
+<span class="c1"># Configurar la dirección de la interfaz de administración del controller node:</span>
+crudini --set /etc/cinder/cinder.conf DEFAULT my_ip <span class="m">10</span>.1.1.11
+
+<span class="c1"># Configurar el lock path:</span>
+crudini --set /etc/cinder/cinder.conf oslo_concurrency lock_path /var/lib/cinder/tmp
+
+<span class="c1"># Poblar la base de datos de block storage:</span>
+su -s /bin/sh -c <span class="s2">&quot;cinder-manage db sync&quot;</span> cinder
+
+<span class="c1"># Configurar el Compute service para que use el Block Storage service:</span>
+crudini --set /etc/nova/nova.conf cinder os_region_name RegionOne
+
+<span class="c1"># Reiniciar el servicio de Compute API:</span>
+systemctl restart openstack-nova-api.service
+
+<span class="c1"># Habilitar e iniciar los servicios de Block Storage:</span>
+systemctl <span class="nb">enable</span> openstack-cinder-api.service openstack-cinder-scheduler.service
+systemctl start openstack-cinder-api.service openstack-cinder-scheduler.service
+</pre></div>
+</div>
+</div>
+<div class="section" id="block-storage-service-storage-node">
+<h3><a class="toc-backref" href="#id31">Block Storage service - Storage node</a><a class="headerlink" href="#block-storage-service-storage-node" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/cinder/train/install/cinder-storage-install-rdo.html">https://docs.openstack.org/cinder/train/install/cinder-storage-install-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">BLOCK</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Agregar un nuevo disco por VirtualBox a la máquina virtual (sdb)</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar los paquetes LVM (lvm2 y device-mapper-persistent-data vienen instalados por defecto):</span>
+yum install -y lvm2 device-mapper-persistent-data
+
+<span class="c1"># Habilitar e iniciar el servicio de metada de LVM:</span>
+systemctl <span class="nb">enable</span> lvm2-lvmetad.service
+systemctl start lvm2-lvmetad.service
+
+<span class="c1"># Verificar que exista el disco sdb:</span>
+fdisk -l
+
+<span class="c1"># Crear el volumen físico LVM /dev/sdb:</span>
+pvcreate /dev/sdb
+
+<span class="c1"># Crear el LVM volume group:</span>
+vgcreate cinder-volumes /dev/sdb
+
+<span class="c1"># Editar el archivo de configuración LVM /etc/lvm/lvm.conf, para que incluya la siguiente línea:</span>
+<span class="c1"># Si usamos LVM en el disco de sistema operativo, añadimos el dispositivo al filtro (p. ej. /dev/sda)</span>
+devices <span class="o">{</span>
+...
+<span class="nv">filter</span> <span class="o">=</span> <span class="o">[</span> <span class="s2">&quot;a/sda/&quot;</span>, <span class="s2">&quot;a/sdb/&quot;</span>, <span class="s2">&quot;r/.*/&quot;</span><span class="o">]</span>
+
+<span class="c1"># Instalar los paquetes de Cinder (además de crudini para la configuración de archivos):</span>
+yum install -y openstack-cinder targetcli python-keystone crudini
+
+<span class="c1"># Configurar la base de datos SQL para Neutron:</span>
+crudini --set /etc/cinder/cinder.conf database connection mysql+pymysql://cinder:openstack@controller/cinder
+<span class="c1"># Configurar el acceso RabbitMQ para Neutron:</span>
+crudini --set /etc/cinder/cinder.conf DEFAULT transport_url rabbit://openstack:openstack@controller
+
+<span class="c1"># Configurar el acceso a Identity Service:</span>
+crudini --set /etc/cinder/cinder.conf DEFAULT auth_strategy keystone
+crudini --set /etc/cinder/cinder.conf keystone_authtoken www_authenticate_uri http://controller:5000
+crudini --set /etc/cinder/cinder.conf keystone_authtoken auth_url http://controller:5000
+crudini --set /etc/cinder/cinder.conf keystone_authtoken memcached_servers controller:11211
+crudini --set /etc/cinder/cinder.conf keystone_authtoken auth_type password
+crudini --set /etc/cinder/cinder.conf keystone_authtoken project_domain_name default
+crudini --set /etc/cinder/cinder.conf keystone_authtoken user_domain_name default
+crudini --set /etc/cinder/cinder.conf keystone_authtoken project_name service
+crudini --set /etc/cinder/cinder.conf keystone_authtoken username cinder
+crudini --set /etc/cinder/cinder.conf keystone_authtoken password openstack
+<span class="c1"># Comentar cualquier otro parámetro en la sección [keystone_authtoken]</span>
+
+crudini --set /etc/cinder/cinder.conf DEFAULT my_ip <span class="m">10</span>.1.1.41
+
+<span class="c1"># Configurar LVM Backend:</span>
+crudini --set /etc/cinder/cinder.conf lvm volume_driver cinder.volume.drivers.lvm.LVMVolumeDriver
+crudini --set /etc/cinder/cinder.conf lvm volume_group cinder-volumes
+crudini --set /etc/cinder/cinder.conf lvm target_protocol iscsi
+crudini --set /etc/cinder/cinder.conf lvm target_helper lioadm
+
+<span class="c1"># Habilitar el LVM Backend:</span>
+crudini --set /etc/cinder/cinder.conf DEFAULT enabled_backends lvm
+
+<span class="c1"># Configurar la ubicación del Image service:</span>
+crudini --set /etc/cinder/cinder.conf DEFAULT glance_api_servers http://controller:9292
+
+<span class="c1"># Configurar el lock path:</span>
+crudini --set /etc/cinder/cinder.conf oslo_concurrency lock_path /var/lib/cinder/tmp
+
+<span class="c1"># Habilitar e inicar servicios de volumen Block storage:</span>
+systemctl <span class="nb">enable</span> openstack-cinder-volume.service target.service
+systemctl start openstack-cinder-volume.service target.service
+</pre></div>
+</div>
+</div>
+<div class="section" id="verify-cinder-operation">
+<h3><a class="toc-backref" href="#id32">Verify Cinder operation</a><a class="headerlink" href="#verify-cinder-operation" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/cinder/train/install/cinder-verify.html">https://docs.openstack.org/cinder/train/install/cinder-verify.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verificar la operación de Cinder:</span>
+. /home/vagrant/admin-openrc
+
+<span class="c1"># Listar los componentes del servicio:</span>
+openstack volume service list
+
+<span class="c1"># Crear un volumen:</span>
+. /home/vagrant/demo-openrc
+openstack volume create --size <span class="m">1</span> test-volume
+
+<span class="c1"># Listar volúmenes:</span>
+openstack volume list
+</pre></div>
+</div>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">BLOCK</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lvdisplay
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-and-configure-horizon-packages">
+<h3><a class="toc-backref" href="#id33">Install and Configure Horizon Packages</a><a class="headerlink" href="#install-and-configure-horizon-packages" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/horizon/train/install/install-rdo.html">https://docs.openstack.org/horizon/train/install/install-rdo.html</a></li>
+</ul>
+<div class="admonition-nodo-s admonition">
+<p class="first admonition-title">Nodo(s)</p>
+<p class="last">CONTROLLER</p>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar paquetes:</span>
+yum install -y openstack-dashboard
+</pre></div>
+</div>
+<p>Editar el archivo <code class="docutils literal notranslate"><span class="pre">/etc/openstack-dashboard/local_settings</span></code> para que incluya:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">OPENSTACK_HOST</span> <span class="o">=</span> <span class="s2">&quot;controller&quot;</span>
+
+<span class="nv">ALLOWED_HOSTS</span> <span class="o">=</span> <span class="o">[</span><span class="s1">&#39;*&#39;</span><span class="o">]</span>
+
+<span class="nv">SESSION_ENGINE</span> <span class="o">=</span> <span class="s1">&#39;django.contrib.sessions.backends.cache&#39;</span>
+
+<span class="nv">CACHES</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="s1">&#39;default&#39;</span>: <span class="o">{</span>
+        <span class="s1">&#39;BACKEND&#39;</span>: <span class="s1">&#39;django.core.cache.backends.memcached.MemcachedCache&#39;</span>,
+        <span class="s1">&#39;LOCATION&#39;</span>: <span class="s1">&#39;controller:11211&#39;</span>,
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="nv">OPENSTACK_KEYSTONE_URL</span> <span class="o">=</span> <span class="s2">&quot;http://%s:5000/v3&quot;</span> % OPENSTACK_HOST
+
+<span class="nv">OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT</span> <span class="o">=</span> True
+
+<span class="nv">OPENSTACK_API_VERSIONS</span> <span class="o">=</span> <span class="o">{</span>
+    <span class="s2">&quot;identity&quot;</span>: <span class="m">3</span>,
+    <span class="s2">&quot;image&quot;</span>: <span class="m">2</span>,
+    <span class="s2">&quot;volume&quot;</span>: <span class="m">3</span>,
+<span class="o">}</span>
+
+<span class="nv">OPENSTACK_KEYSTONE_DEFAULT_DOMAIN</span> <span class="o">=</span> <span class="s2">&quot;Default&quot;</span>
+
+<span class="nv">OPENSTACK_KEYSTONE_DEFAULT_ROLE</span> <span class="o">=</span> <span class="s2">&quot;user&quot;</span>
+
+<span class="nv">WEBROOT</span> <span class="o">=</span> <span class="s1">&#39;/dashboard/&#39;</span>
+</pre></div>
+</div>
+<div class="admonition error">
+<p class="first admonition-title">Error</p>
+<p><strong>ERROR en OpenStack Dashboard</strong>: En el navegador sale el mensaje: “Not Found. The requested URL /auth/login/ was not found on this server”</p>
+<p><strong>SOLUCIÓN</strong>:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://louky0714.tistory.com/entry/Openstack-Train-Error-The-requested-URL-authlogin-was-not-found-on-this-server">https://louky0714.tistory.com/entry/Openstack-Train-Error-The-requested-URL-authlogin-was-not-found-on-this-server</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=_sHkUn4fFe8">https://www.youtube.com/watch?v=_sHkUn4fFe8</a></li>
+</ul>
+<p>Debemos agregar una línea extra al archivo <code class="docutils literal notranslate"><span class="pre">/etc/openstack-dashboard/local_settings</span></code>:</p>
+<div class="last highlight-text notranslate"><div class="highlight"><pre><span></span>WEBROOT = &#39;/dashboard/&#39;
+</pre></div>
+</div>
+</div>
+<ul class="simple">
+<li>Editar el archivo <code class="docutils literal notranslate"><span class="pre">/etc/httpd/conf.d/openstack-dashboard.conf</span></code> para incluir la siguiente línea, si no se encuentra:</li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>WSGIApplicationGroup %{GLOBAL}
+</pre></div>
+</div>
+<ul class="simple">
+<li>Reiniciar la configuración del web server:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl restart httpd.service memcached.service
+</pre></div>
+</div>
+<ul class="simple">
+<li>Ingresar desde un navegador al dashboard: <a class="reference external" href="http://10.1.1.11/dashboard/">http://10.1.1.11/dashboard/</a></li>
+</ul>
+</div>
+<div class="section" id="mostrar-logs-de-servicios-para-troubleshooting-de-errores">
+<h3><a class="toc-backref" href="#id34">Mostrar logs de servicios para troubleshooting de errores</a><a class="headerlink" href="#mostrar-logs-de-servicios-para-troubleshooting-de-errores" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Controller node (Placemente, Neutron):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tail -f /var/log/placement/placement-api.log <span class="p">|</span> grep -i error <span class="p">&amp;</span>
+tail -f /var/log/neutron/* <span class="p">|</span> grep -i error <span class="p">&amp;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Compute node (Nova):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tail -f /var/log/nova/* <span class="p">|</span> grep -i error <span class="p">&amp;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Block node (Cinder):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tail -f /var/log/cinder/* <span class="p">|</span> grep -i error <span class="p">&amp;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="primeras-pasos-con-openstack">
+<h3><a class="toc-backref" href="#id35">Primeras pasos con OpenStack</a><a class="headerlink" href="#primeras-pasos-con-openstack" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /home/vagrant/admin-openrc
+openstack flavor create --id <span class="m">1</span> --ram <span class="m">512</span> --disk <span class="m">1</span> --public m1.tiny
+openstack network create  --share --external --provider-physical-network provider --provider-network-type flat provider
+openstack subnet create --network provider --dns-nameserver <span class="m">8</span>.8.4.4 --subnet-range <span class="m">203</span>.0.113.0/24 provider
+
+<span class="nb">source</span> /home/vagrant/demo-openrc
+openstack network create private
+openstack subnet create private --subnet-range <span class="m">192</span>.168.100.0/24 --dns-nameserver <span class="m">8</span>.8.8.8 --network private
+openstack router create demo-nsrouter
+openstack router add subnet demo-nsrouter private
+openstack router <span class="nb">set</span> demo-nsrouter --external-gateway provider
+openstack network list
+openstack server create --image cirros4.0 --flavor <span class="m">1</span> --nic net-id<span class="o">=</span>6a5f05fb-048d-4b5f-8409-ff115d32ac84 inst1
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../openstack-installation-deployment/_openstack-installation-deployment.html" class="btn btn-neutral float-right" title="OpenStack Installation and Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="openstack_manual_install_process.html" class="btn btn-neutral float-left" title="Proceso de instalación manual de OpenStack" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

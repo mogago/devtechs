@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>OpenStack initial configuration &mdash; documentación de DevTechs - </title>
+  <title>OpenStack Guides &mdash; documentación de DevTechs - </title>
   
 
   
@@ -99,6 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/linux-fundamentals/_linux-fundamentals.html">Linux Fundamentals (Sander van Vugt)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Kickstart</span></p>
 <ul>
@@ -113,15 +114,16 @@
 </ul>
 <p class="caption"><span class="caption-text">OpenStack</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../_openstack.html">OpenStack</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenStack initial configuration</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">OpenStack Guides</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="openstack-initial-configuration-cli.html">Configuración inicial de OpenStack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="openstack_manual_install_process.html">Proceso de instalación manual de OpenStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html">OpenStack Train - Manual Install - CentOS7 - VirtualBox</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
 </ul>
 <p class="caption"><span class="caption-text">PXE</span></p>
 <ul>
@@ -155,6 +157,12 @@
 <p class="caption"><span class="caption-text">Web</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Windows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/_windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/windows-subsystem-for-linux/_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/windows-ssh/_windows-subsystem-for-linux.html">SSH en Windows</a></li>
 </ul>
 
             
@@ -200,7 +208,7 @@
     
       <li><a href="../../../index.html">Docs</a> &raquo;</li>
         
-      <li>OpenStack initial configuration</li>
+      <li>OpenStack Guides</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -219,8 +227,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="openstack-initial-configuration">
-<h1>OpenStack initial configuration<a class="headerlink" href="#openstack-initial-configuration" title="Enlazar permanentemente con este título">¶</a></h1>
+  <div class="section" id="openstack-guides">
+<h1>OpenStack Guides<a class="headerlink" href="#openstack-guides" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Índice</span></p>
 <ul>
@@ -256,6 +264,14 @@
 <li class="toctree-l1"><a class="reference internal" href="openstack_manual_install_process.html">Proceso de instalación manual de OpenStack</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="openstack_manual_install_process.html#documentacion-oficial-de-openstack">Documentación oficial de OpenStack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="openstack_manual_install_process.html#archivos-de-configuracion">Archivos de configuración</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openstack_train_manual_install_centos.html">OpenStack Train - Manual Install - CentOS7 - VirtualBox</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#scripts-y-pasos-para-el-despliegue">Scripts y pasos para el despliegue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#definicion-del-archivo-vagrantfile">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#definicion-de-scripts-de-configuracion-de-nodos">Definición de scripts de configuración de nodos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#instalacion-y-configuracion-de-herramientas-de-entorno">Instalación y configuración de herramientas de entorno</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#instalacion-de-servicios-de-openstack">Instalación de servicios de OpenStack</a></li>
 </ul>
 </li>
 </ul>

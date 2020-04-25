@@ -114,12 +114,11 @@
 </ul>
 <p class="caption"><span class="caption-text">OpenStack</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="topics/openstack/_openstack.html">OpenStack</a></li>
-<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-guide/_openstack-guide.html">OpenStack Guides</a></li>
 <li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
 </ul>
 <p class="caption"><span class="caption-text">PXE</span></p>
 <ul>
@@ -338,7 +337,32 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">OpenStack</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="topics/openstack/_openstack.html">OpenStack</a></li>
+<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-guide/_openstack-guide.html">OpenStack Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-guide/openstack-initial-configuration-cli.html">Configuración inicial de OpenStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-guide/openstack_manual_install_process.html">Proceso de instalación manual de OpenStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-guide/openstack_train_manual_install_centos.html">OpenStack Train - Manual Install - CentOS7 - VirtualBox</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-deploy/packstack-singlenode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-deploy/packstack-multinode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-deploy/packstack-multinode-deploy-packstack-virtualbox.html">Despliegue de OpenStack con Packstack y VirtualBox</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-ansible/openstack-ansible-intro.html">OpenStack-Ansible Deployment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#course-introduction">1. Course Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#manual-installation-in-virtual-machines">2. Manual Installation in Virtual Machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#manual-installation-on-baremetal-servers">3. Manual Installation on Baremetal Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#kolla-ansible-installation-on-virtual-machines">4. Kolla-Ansible Installation on Virtual Machines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#automation-of-kolla-ansible-deployment">5. Automation of Kolla-Ansible Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#kolla-ansible-installation-in-physical-servers">6. Kolla-Ansible Installation in Physical Servers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#packstack-devstack">7. Packstack &amp; Devstack</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-essentials/lesson1.html">1. Lesson 1. Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-essentials/lesson2.html">2. Lesson 2. Cloud Computing Overview</a></li>
@@ -356,31 +380,6 @@
 <li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-essentials/lesson14.html">14. Lesson 14. Multi Node Design &amp; Scaling Openstack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-essentials/lesson15.html">15. Lesson 15. Expanding the Cluster Adding a Compute Node</a></li>
 <li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-essentials/lesson16.html">16. Lesson 16. Final Section</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-deploy/packstack-singlenode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Singlenode con Packstack, VirtualBox y Vagrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-deploy/packstack-multinode-deploy-packstack-virtualbox-vagrant.html">Despliegue de OpenStack Multinode con Packstack, VirtualBox y Vagrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-deploy/packstack-multinode-deploy-packstack-virtualbox.html">Despliegue de OpenStack con Packstack y VirtualBox</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-guide/openstack-initial-configuration-cli.html">Configuración inicial de OpenStack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-guide/openstack_manual_install_process.html">Proceso de instalación manual de OpenStack</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#course-introduction">1. Course Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#manual-installation-in-virtual-machines">2. Manual Installation in Virtual Machines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#manual-installation-on-baremetal-servers">3. Manual Installation on Baremetal Servers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#kolla-ansible-installation-on-virtual-machines">4. Kolla-Ansible Installation on Virtual Machines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#automation-of-kolla-ansible-deployment">5. Automation of Kolla-Ansible Deployment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#kolla-ansible-installation-in-physical-servers">6. Kolla-Ansible Installation in Physical Servers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-installation-deployment/_openstack-installation-deployment.html#packstack-devstack">7. Packstack &amp; Devstack</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="topics/openstack/openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="topics/openstack/openstack-ansible/openstack-ansible-intro.html">OpenStack-Ansible Deployment</a></li>
 </ul>
 </li>
 </ul>
