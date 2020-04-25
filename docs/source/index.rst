@@ -54,7 +54,7 @@ Welcome to DevTechs's documentation!
     :maxdepth: 2
     :caption: OpenStack
 
-    topics/openstack/openstack-guides/_openstack-guides
+    topics/openstack/openstack-guide/_openstack-guide
     topics/openstack/openstack-packstack-deployment/_openstack-packstack-deployment
     topics/openstack/openstack-ansible/_openstack-ansible
     topics/openstack/openstack-installation-deployment/_openstack-installation-deployment

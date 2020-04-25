@@ -36,8 +36,8 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
-    <link rel="next" title="Configuración inicial de OpenStack" href="openstack-initial-configuration-cli.html" />
-    <link rel="prev" title="Despliegue de OpenStack con Packstack y VirtualBox" href="../openstack-deploy/packstack-multinode-deploy-packstack-virtualbox.html" /> 
+    <link rel="next" title="Proceso de instalación manual de OpenStack" href="openstack_manual_install_process.html" />
+    <link rel="prev" title="Markdown" href="../../markdown/_markdown.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -114,13 +114,13 @@
 </ul>
 <p class="caption"><span class="caption-text">OpenStack</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">OpenStack Guides</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="openstack-initial-configuration-cli.html">Configuración inicial de OpenStack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="openstack_manual_install_process.html">Proceso de instalación manual de OpenStack</a></li>
 <li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html">OpenStack Train - Manual Install - CentOS7 - VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack-initial-configuration-cli.html">Configuración inicial de OpenStack</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-packstack-deployment/_openstack-packstack-deployment.html">OpenStack Packstack Deployment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
@@ -232,6 +232,19 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Índice</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="openstack_manual_install_process.html">Proceso de instalación manual de OpenStack</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openstack_manual_install_process.html#documentacion-oficial-de-openstack">Documentación oficial de OpenStack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_manual_install_process.html#archivos-de-configuracion">Archivos de configuración</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openstack_train_manual_install_centos.html">OpenStack Train - Manual Install - CentOS7 - VirtualBox</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#scripts-y-pasos-para-el-despliegue">Scripts y pasos para el despliegue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#definicion-del-archivo-vagrantfile">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#definicion-de-scripts-de-configuracion-de-nodos">Definición de scripts de configuración de nodos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#instalacion-y-configuracion-de-herramientas-de-entorno">Instalación y configuración de herramientas de entorno</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#instalacion-de-servicios-de-openstack">Instalación de servicios de OpenStack</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="openstack-initial-configuration-cli.html">Configuración inicial de OpenStack</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="openstack-initial-configuration-cli.html#usar-credenciales-de-usuario">Usar credenciales de usuario</a></li>
 <li class="toctree-l2"><a class="reference internal" href="openstack-initial-configuration-cli.html#crear-un-nuevo-proyecto">Crear un nuevo proyecto</a></li>
@@ -261,19 +274,6 @@
 <li class="toctree-l2"><a class="reference internal" href="openstack-initial-configuration-cli.html#crear-host-aggregates">Crear Host Aggregates</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="openstack_manual_install_process.html">Proceso de instalación manual de OpenStack</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="openstack_manual_install_process.html#documentacion-oficial-de-openstack">Documentación oficial de OpenStack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openstack_manual_install_process.html#archivos-de-configuracion">Archivos de configuración</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="openstack_train_manual_install_centos.html">OpenStack Train - Manual Install - CentOS7 - VirtualBox</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#scripts-y-pasos-para-el-despliegue">Scripts y pasos para el despliegue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#definicion-del-archivo-vagrantfile">Definición del archivo <code class="docutils literal notranslate"><span class="pre">Vagrantfile</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#definicion-de-scripts-de-configuracion-de-nodos">Definición de scripts de configuración de nodos</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#instalacion-y-configuracion-de-herramientas-de-entorno">Instalación y configuración de herramientas de entorno</a></li>
-<li class="toctree-l2"><a class="reference internal" href="openstack_train_manual_install_centos.html#instalacion-de-servicios-de-openstack">Instalación de servicios de OpenStack</a></li>
-</ul>
-</li>
 </ul>
 </div>
 </div>
@@ -286,10 +286,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="openstack-initial-configuration-cli.html" class="btn btn-neutral float-right" title="Configuración inicial de OpenStack" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="openstack_manual_install_process.html" class="btn btn-neutral float-right" title="Proceso de instalación manual de OpenStack" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../openstack-deploy/packstack-multinode-deploy-packstack-virtualbox.html" class="btn btn-neutral float-left" title="Despliegue de OpenStack con Packstack y VirtualBox" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../../markdown/_markdown.html" class="btn btn-neutral float-left" title="Markdown" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
