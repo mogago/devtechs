@@ -7,3 +7,4 @@ OpenStack-Ansible
     :caption: Índice
 
     openstack-ansible-intro
+    openstack-ansible-centos7-aio
