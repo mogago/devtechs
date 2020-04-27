@@ -36,6 +36,7 @@ Con el archivo Vagrantfile podremos desplegar una VM con la configuración inici
 
 - Vagrantfile: :download:`Descargar Vagrantfile <extra/Vagrantfile_ansibleaio>`
 - Script de ansibleaio: :download:`Descargar ansibleaio_setup.sh <extra/ansibleaio_setup.sh>`
+- Archivo de texto con detalles sobre el disco de la VM: :download:`Descargar disk_info.txt <extra/disk_info.txt>`
 
 Overview
 --------
