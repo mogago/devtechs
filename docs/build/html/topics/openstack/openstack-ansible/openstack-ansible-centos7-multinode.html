@@ -1,0 +1,877 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="es" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="es" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>OpenStack-Ansible CentOS 7 Multinode &mdash; documentación de DevTechs - </title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Índice" href="../../../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../../../search.html" />
+    <link rel="next" title="OpenStack Installation and Deployment" href="../openstack-installation-deployment/_openstack-installation-deployment.html" />
+    <link rel="prev" title="OpenStack-Ansible CentOS 7 AIO" href="openstack-ansible-centos7-aio.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> DevTechs
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Ansible</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/_ansible.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ansible/ansible-essentials/_ansible-essentials.html">Ansible Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Git &amp; GitHub</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/_gitgithub.html">Git y GitHub</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gitgithub/gitgithub-lessons.html">Git &amp; GitHub Lessons</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GNU/Linux</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/_gnulinux.html">GNU/Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ssh.html">SSH (Secure SHell)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/user-management.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/linux-fundamentals/_linux-fundamentals.html">Linux Fundamentals (Sander van Vugt)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Kickstart</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/_kickstart.html">Kickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-methods/_ks-methods.html">Kickstart Methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-templates/_ks-templates.html">Kickstart Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../kickstart/ks-options/_ks-options.html">Kickstart Options</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../openstack-guide/_openstack-guide.html">OpenStack Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-packstack-deployment/_openstack-packstack-deployment.html">OpenStack Packstack Deployment</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="_openstack-ansible.html">OpenStack-Ansible</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="openstack-ansible-intro.html">OpenStack-Ansible Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openstack-ansible-centos7-aio.html">OpenStack-Ansible CentOS 7 AIO</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OpenStack-Ansible CentOS 7 Multinode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-the-deployment-host">Prepare the deployment host</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-the-operating-system">Configuring the operating system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-ssh-keys">Configure SSH keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configure-the-network">Configure the network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#install-the-source-and-dependencies">Install the source and dependencies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#prepare-the-target-hosts">Prepare the target hosts</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Configuring the operating system</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Configure SSH keys</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-the-storage">Configuring the storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-the-network">Configuring the network</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configure-the-deployment">Configure the deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#initial-environment-configuration">Initial environment configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-additional-services">Installing additional services</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#advanced-service-configuration">Advanced service configuration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuring-service-credentials">Configuring service credentials</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#run-playbooks">Run playbooks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#checking-the-integrity-of-the-configuration-files">Checking the integrity of the configuration files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#run-the-playbooks-to-install-openstack">Run the playbooks to install OpenStack</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#verifying-openstack-operation">Verifying OpenStack operation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#verify-the-api">Verify the API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#verifying-the-dashboard-horizon">Verifying the Dashboard (horizon)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/pxe-guides/_pxe-guides.html">PXE Guides</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../python/_python.html">Python</a></li>
+</ul>
+<p class="caption"><span class="caption-text">RaspberryPi</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/_raspberrypi.html">RaspberryPi</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/noobs.html">NOOBS (New Out Of Box Software)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/touchscreen.html">Touchscreen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../raspberrypi/raspbian-config.html">Raspbian configuration</a></li>
+</ul>
+<p class="caption"><span class="caption-text">SDN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/_sdn.html">SDN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sdn/sdn-with-openstack-book/_sdn-with-openstack-book.html">SDN with OpenStack Book</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Virtualization</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/_virtualization.html">Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/mastering-kvm-virtualization-book/_mastering-kvm-virtualization-book.html">Mastering KVM Virtualization Book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/qemu-kvm/_qemu-kvm.html">QEMU/KVM Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/network-virtualization/_network-virtualization.html">Network Virtualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../virtualization/storage-virtualization/_storage-virtualization.html">Storage Virtualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Web</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Windows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/_windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/windows-subsystem-for-linux/_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/windows-ssh/_windows-subsystem-for-linux.html">SSH en Windows</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">DevTechs</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="_openstack-ansible.html">OpenStack-Ansible</a> &raquo;</li>
+        
+      <li>OpenStack-Ansible CentOS 7 Multinode</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../../_sources/topics/openstack/openstack-ansible/openstack-ansible-centos7-multinode.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="openstack-ansible-centos-7-multinode">
+<h1><a class="toc-backref" href="#id3">OpenStack-Ansible CentOS 7 Multinode</a><a class="headerlink" href="#openstack-ansible-centos-7-multinode" title="Enlazar permanentemente con este título">¶</a></h1>
+<div class="contents topic" id="table-of-contents">
+<p class="topic-title first">Table of Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#openstack-ansible-centos-7-multinode" id="id3">OpenStack-Ansible CentOS 7 Multinode</a><ul>
+<li><a class="reference internal" href="#prepare-the-deployment-host" id="id4">Prepare the deployment host</a><ul>
+<li><a class="reference internal" href="#configuring-the-operating-system" id="id5">Configuring the operating system</a></li>
+<li><a class="reference internal" href="#configure-ssh-keys" id="id6">Configure SSH keys</a></li>
+<li><a class="reference internal" href="#configure-the-network" id="id7">Configure the network</a></li>
+<li><a class="reference internal" href="#install-the-source-and-dependencies" id="id8">Install the source and dependencies</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#prepare-the-target-hosts" id="id9">Prepare the target hosts</a><ul>
+<li><a class="reference internal" href="#id1" id="id10">Configuring the operating system</a></li>
+<li><a class="reference internal" href="#id2" id="id11">Configure SSH keys</a></li>
+<li><a class="reference internal" href="#configuring-the-storage" id="id12">Configuring the storage</a></li>
+<li><a class="reference internal" href="#configuring-the-network" id="id13">Configuring the network</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#configure-the-deployment" id="id14">Configure the deployment</a><ul>
+<li><a class="reference internal" href="#initial-environment-configuration" id="id15">Initial environment configuration</a></li>
+<li><a class="reference internal" href="#installing-additional-services" id="id16">Installing additional services</a></li>
+<li><a class="reference internal" href="#advanced-service-configuration" id="id17">Advanced service configuration</a></li>
+<li><a class="reference internal" href="#configuring-service-credentials" id="id18">Configuring service credentials</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#run-playbooks" id="id19">Run playbooks</a><ul>
+<li><a class="reference internal" href="#checking-the-integrity-of-the-configuration-files" id="id20">Checking the integrity of the configuration files</a></li>
+<li><a class="reference internal" href="#run-the-playbooks-to-install-openstack" id="id21">Run the playbooks to install OpenStack</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verifying-openstack-operation" id="id22">Verifying OpenStack operation</a><ul>
+<li><a class="reference internal" href="#verify-the-api" id="id23">Verify the API</a></li>
+<li><a class="reference internal" href="#verifying-the-dashboard-horizon" id="id24">Verifying the Dashboard (horizon)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#referencias" id="id25">Referencias</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="prepare-the-deployment-host">
+<h2><a class="toc-backref" href="#id4">Prepare the deployment host</a><a class="headerlink" href="#prepare-the-deployment-host" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Referencia: <a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/deploymenthost.html">OpenStack-Ansible Prepare the deployment host</a></p>
+<p>Cuando instalamos OpenStack en un entorno de producción, se recomienda usar un host de despliegue separado que contenga Ansible y orqueste la instalación OpenStack-Ansible (OSA) en los target hosts. En un entorno de prueba, se recomienda usar uno de los infrastructure target hosts como el deployment host.</p>
+<div class="section" id="configuring-the-operating-system">
+<h3><a class="toc-backref" href="#id5">Configuring the operating system</a><a class="headerlink" href="#configuring-the-operating-system" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Verificar la versión de kernel actual:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i
+uname -mrs
+</pre></div>
+</div>
+<ul class="simple">
+<li>Verificar los kernels instalados en el sistema (el kernel subrayado es el que está en uso):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum list installed kernel
+</pre></div>
+</div>
+<ul class="simple">
+<li>Actualizar los paquetes y kernel del sistema:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum upgrade -y
+</pre></div>
+</div>
+<ul class="simple">
+<li>Reiniciar el sistema para cambiar el kernel</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>reboot
+</pre></div>
+</div>
+<ul class="simple">
+<li>Verificar la versión de kernel actualizada</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i
+uname -mrs
+</pre></div>
+</div>
+<ul class="simple">
+<li>Verificar los kernels instalados en el sistema (el kernel subrayado es el que está en uso):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum list installed kernel
+</pre></div>
+</div>
+<ul>
+<li><p class="first">Instalar el rpm de OpenStack Train de RDO:</p>
+<blockquote>
+<div><p>yum install <a class="reference external" href="https://rdoproject.org/repos/openstack-train/rdo-release-train.rpm">https://rdoproject.org/repos/openstack-train/rdo-release-train.rpm</a></p>
+</div></blockquote>
+</li>
+<li><p class="first">Instalar paquetes de software adicionales:</p>
+</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install -y ntp ntpdate openssh-server python-devel sudo <span class="s1">&#39;@Development Tools&#39;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Instalar Git:</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>La instalación de <code class="docutils literal notranslate"><span class="pre">git</span></code> en CentOS 7, con los repositorios predeterminados, instalará una version antigua de Git, por ejemplo v1.8:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install -y git
+</pre></div>
+</div>
+</div>
+<p>Referencia: <a class="reference external" href="https://linuxize.com/post/how-to-install-git-on-centos-7/">Instalar Git 2.X en CentOS 7</a></p>
+<ul class="simple">
+<li>Para instalar Git 2.X primero debemos habilitar el repositorio Wandisco GIT, para esto, creamos un nuevo archivo de configuración de repositorio YUM:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat <span class="s">&lt;&lt; EOF &gt; /etc/yum.repos.d/wandisco-git.repo</span>
+<span class="s">[wandisco-git]</span>
+<span class="s">name=Wandisco GIT Repository</span>
+<span class="s">baseurl=http://opensource.wandisco.com/centos/7/git/\$basearch/</span>
+<span class="s">enabled=1</span>
+<span class="s">gpgcheck=1</span>
+<span class="s">gpgkey=http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Importamos las llaves GPG del repositorio:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rpm --import http://opensource.wandisco.com/RPM-GPG-KEY-WANdisco
+</pre></div>
+</div>
+<ul class="simple">
+<li>Ahora que hemos agregado el repositorio, podemos instalar la última versión de Git:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install -y git
+</pre></div>
+</div>
+<ul class="simple">
+<li>Revisar la versión de git (2.X)</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git --version
+</pre></div>
+</div>
+<ul class="simple">
+<li>Configurar NTP para que se sincronce con una fuente de tiempo correcta.</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar el programa chrony:</span>
+sudo -i
+yum install -y chrony
+
+<span class="c1"># Editar el archivo de configuración de chrony:</span>
+cat <span class="s">&lt;&lt; EOF &gt;&gt; /etc/chrony.conf</span>
+<span class="s">allow 10.1.1.0/24</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Reiniciar el servicio de NTP:</span>
+systemctl restart chronyd.service
+</pre></div>
+</div>
+<ul class="simple">
+<li>Por defecto, <code class="docutils literal notranslate"><span class="pre">firewalld</span></code>  está habilitado en la mayoría de sistemas CentOS y su conjunto de reglas predeterminadas previene que algunos componentes de OpenStack se comuniquen apropiadamente. Parar el servicio <code class="docutils literal notranslate"><span class="pre">firewalld</span></code> y enmascararla para prevenirla de iniciar:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>systemctl stop firewalld
+systemctl mask firewalld
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-ssh-keys">
+<h3><a class="toc-backref" href="#id6">Configure SSH keys</a><a class="headerlink" href="#configure-ssh-keys" title="Enlazar permanentemente con este título">¶</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-copy-id vagrant@192.168.1.111
+ssh-copy-id vagrant@192.168.1.131
+ssh-copy-id vagrant@192.168.1.141
+</pre></div>
+</div>
+</div>
+<div class="section" id="configure-the-network">
+<h3><a class="toc-backref" href="#id7">Configure the network</a><a class="headerlink" href="#configure-the-network" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Container management (br-mgmt network): 172.29.236.0/22 (VLAN 10)</p>
+</div>
+<div class="section" id="install-the-source-and-dependencies">
+<h3><a class="toc-backref" href="#id8">Install the source and dependencies</a><a class="headerlink" href="#install-the-source-and-dependencies" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Referencia: <a class="reference external" href="https://stafwag.github.io/blog/blog/2019/01/21/settinp-up-openstack-ansible-all-in-one-on-a-centos-7-system/">Setting up OpenStack-Ansible All-In-One on a Centos 7 system</a></p>
+<ul class="simple">
+<li>El script de boostrap de OpenStack-Ansible descargará e instalará su propia versión de Ansible y creará un link a <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>. Por lo cual, <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code> debe estar en nuestra variable <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>. En CentOS 7, la variable <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> no contiene esta dirección, así que la debemos agregar:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/bin:<span class="nv">$PATH</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Clonar el repositorio OpenStack-Ansible y cambiar al directorio raíz del repo:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://opendev.org/openstack/openstack-ansible /opt/openstack-ansible
+
+<span class="nb">cd</span> /opt/openstack-ansible
+</pre></div>
+</div>
+<p>Luego, deberemos cambiar al branch/tag desde el cual se implementará. Desplegar desde el head de un branch puede resultar en un build inestable. Para un build de prueba (no para un build de producción) es usualmente mejor hacer checkout de la última versión tagueada.</p>
+<ul class="simple">
+<li>Listar tags</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git tag -l
+</pre></div>
+</div>
+<ul class="simple">
+<li>Checkout del branch estable y encontrar el último tag:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout stable/train
+git describe --abbrev<span class="o">=</span><span class="m">0</span> --tags
+</pre></div>
+</div>
+<ul class="simple">
+<li>Checkout del último tag:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git checkout <span class="m">20</span>.1.0
+</pre></div>
+</div>
+<ul class="simple">
+<li>Boostrap de Ansible y roles de Ansible para el entorno de desarrollo (Duración: 8:30 - 12:00 min):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scripts/bootstrap-ansible.sh
+</pre></div>
+</div>
+<ul class="simple">
+<li>Probar que se pueda ejecutar el comando openstack-ansible:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openstack-ansible
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="prepare-the-target-hosts">
+<h2><a class="toc-backref" href="#id9">Prepare the target hosts</a><a class="headerlink" href="#prepare-the-target-hosts" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Referencia: <a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/targethosts.html">OpenStack-Ansible Prepare the target hosts</a></p>
+<div class="section" id="id1">
+<h3><a class="toc-backref" href="#id10">Configuring the operating system</a><a class="headerlink" href="#id1" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li>Verificar la versión de kernel actual:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i
+uname -mrs
+</pre></div>
+</div>
+<ul class="simple">
+<li>Verificar los kernels instalados en el sistema (el kernel subrayado es el que está en uso):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum list installed kernel
+</pre></div>
+</div>
+<ul class="simple">
+<li>Actualizar los paquetes y kernel del sistema:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum upgrade -y
+</pre></div>
+</div>
+<ul class="simple">
+<li>Deshabilitar SELinux. Editar <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/selinux</span></code>, asegurarnos de cambiar <code class="docutils literal notranslate"><span class="pre">SELINUX=enforcing</span></code> a <code class="docutils literal notranslate"><span class="pre">SELINUX=disabled</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -i <span class="s1">&#39;s/SELINUX=enforcing/SELINUX=disabled/g&#39;</span> /etc/sysconfig/selinux
+</pre></div>
+</div>
+<ul class="simple">
+<li>Reiniciar el sistema para cambiar el kernel</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>reboot
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Debemos tener una versión de kernel <code class="docutils literal notranslate"><span class="pre">3.10</span></code> o superior.</p>
+</div>
+<ul class="simple">
+<li>Verificar la versión de kernel actualizada</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i
+uname -mrs
+</pre></div>
+</div>
+<ul class="simple">
+<li>Verificar los kernels instalados en el sistema (el kernel subrayado es el que está en uso):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum list installed kernel
+</pre></div>
+</div>
+<ul class="simple">
+<li>Instalar paquetes de software adicionales:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install bridge-utils iputils lsof lvm2 chrony openssh-server sudo tcpdump python
+</pre></div>
+</div>
+<ul class="simple">
+<li>Añadir los módulos de kernel apropiados al archivo <code class="docutils literal notranslate"><span class="pre">/etc/modules-load.d</span></code> para habiliar VLAN e interfaces bond:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s1">&#39;bonding&#39;</span> &gt;&gt; /etc/modules-load.d/openstack-ansible.conf
+<span class="nb">echo</span> <span class="s1">&#39;8021q&#39;</span> &gt;&gt; /etc/modules-load.d/openstack-ansible.conf
+</pre></div>
+</div>
+<ul class="simple">
+<li>Configurar NTP en <code class="docutils literal notranslate"><span class="pre">/etc/chrony.conf</span></code> para que se sincronce con una fuente de tiempo correcta.</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar el programa chrony:</span>
+sudo -i
+yum install -y chrony
+
+<span class="c1"># Editar el archivo de configuración de chrony:</span>
+cat <span class="s">&lt;&lt; EOF &gt;&gt; /etc/chrony.conf</span>
+<span class="s">allow 10.1.1.0/24</span>
+<span class="s">EOF</span>
+
+<span class="c1"># Reiniciar el servicio de NTP:</span>
+systemctl restart chronyd.service
+</pre></div>
+</div>
+<ul class="simple">
+<li>(Opcional) Reducir el nivel de log del kernel cambiando el valor <code class="docutils literal notranslate"><span class="pre">printk</span></code> en nuestro <code class="docutils literal notranslate"><span class="pre">sysctls</span></code>:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;kernel.printk=&#39;4 1 7 4&#39;&quot;</span> &gt;&gt; /etc/sysctl.conf
+</pre></div>
+</div>
+<ul class="simple">
+<li>Reiniciar el host para activar los cambios y usar el nuevo kernel</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3><a class="toc-backref" href="#id11">Configure SSH keys</a><a class="headerlink" href="#id2" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Ansible usa SSH para conectar el deployment host a los target host.</p>
+<ol class="arabic simple">
+<li>Copiar los contenidos de la llave pública en el deployment host al archivo <code class="docutils literal notranslate"><span class="pre">/root/.ssh/authorized_keys</span></code> en cada target host.</li>
+<li>Probar la autenticación de llave pública desde el deployment host a cada target host usando SSH para conectarnos al target host desde el deployment host. Si podemos conectarnos y obtener el shell sin autenticarnos, está funcionando. SSH provee un shell sin pedirnos una contraseña.</li>
+</ol>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Los depliegues OpenStack-Ansible requieren la presencia de un archivo <code class="docutils literal notranslate"><span class="pre">/root/.ssh/id_rsa.pub</span></code> en el deployment host. Los contenidos de este archivo se insertan en un archivo <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code> para los contenedores, lo cual es un paso necesario para los Ansible playbooks. Podemos sobreescribir este comportamiento configurando la variable <code class="docutils literal notranslate"><span class="pre">lxc_container_ssh_key</span></code> con la llave pública para el contenedor.</p>
+</div>
+</div>
+<div class="section" id="configuring-the-storage">
+<h3><a class="toc-backref" href="#id12">Configuring the storage</a><a class="headerlink" href="#configuring-the-storage" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Logical Volume Manager (LVM) habilita a un único dispositivo ser dividido en múltiples volúmenes lógicos que aparecen como un dispositivo de almacenamiento físico al sistema operativo. El servicio de <strong>Block Storage (Cinder)</strong>, y <strong>LXC containers</strong> que corren opcionalmente la infraestructura de OpenStack, opcionalmente pueden usar LVM para su almacenamiento de datos.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">OpenStack-Ansible configura LVM automáticamente en los nodos, y sobreescribe cualquier configuración LVM. Si tenemos una configuración LVM personalizada, editar el archivo de configuración generado como se necesite.</p>
+</div>
+<ol class="arabic simple">
+<li>Para usar el servicio de Block Storage (cinder), crear un LVM volume group llamado <code class="docutils literal notranslate"><span class="pre">cinder-volumes</span></code> en el storage host. Especificar un tamaño de metadata de 2048 cuando creamos el volumen físico. Por ejemplo:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pvcreate --metadatasize <span class="m">2048</span> physical_volume_device_path
+vgcreate cinder-volumes physical_volume_device_path
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Opcionalmente, crear un LVM volume group llamado <code class="docutils literal notranslate"><span class="pre">lxc</span></code> para container file systems si deseamos usar LXC con LVM. Si el <code class="docutils literal notranslate"><span class="pre">lxc</span></code> volume group no existe, los cotenedores serán instalados automáticamente en el file system bajo <code class="docutils literal notranslate"><span class="pre">/var/lib/lxc</span></code> por defecto.</li>
+</ol>
+</div>
+<div class="section" id="configuring-the-network">
+<h3><a class="toc-backref" href="#id13">Configuring the network</a><a class="headerlink" href="#configuring-the-network" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>OpenStack-Ansible usa bridges para conectar interfaces de red físicas y lógicas en el host a interfaces de red virtuales dentro de contenedores. Los target hosts deben ser configurados con los siguientes network bridges:</p>
+</div>
+</div>
+<div class="section" id="configure-the-deployment">
+<h2><a class="toc-backref" href="#id14">Configure the deployment</a><a class="headerlink" href="#configure-the-deployment" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Referencia: <a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/configure.html">OpenStack-Ansible Configure the deployment</a></p>
+<p>Ansible referencia algunos archivos que contienen directivas de configuración obligatorias y opcionales. Antes de poder correr los Ansible playbooks, modificar estos archivos para definir el entorno del target. Algunas tareas de configuración incluyen:</p>
+<ul class="simple">
+<li>Target host networking para definir las interfaces bridge y redes.</li>
+<li>Una lista de target hosts en los cuales instalar el software.</li>
+<li>Relaciones de redes virtuales y físicas para OpenStack Networking (neutron).</li>
+<li>Contraseñas para todos los servicios.</li>
+</ul>
+<div class="section" id="initial-environment-configuration">
+<h3><a class="toc-backref" href="#id15">Initial environment configuration</a><a class="headerlink" href="#initial-environment-configuration" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>OpenStack-Ansible (OSA) depende de varios archivos que son usados para contruir un inventario para Ansible. Realizar la siguiente configuración en el deployment host:</p>
+<ol class="arabic simple">
+<li>Copiar los contenidos del directorio <code class="docutils literal notranslate"><span class="pre">/opt/openstack-ansible/etc/openstack_deploy</span></code> al directorio <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy</span></code>.</li>
+<li>Movernos al directorio <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy</span></code>.</li>
+<li>Copiar el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml.example</span></code> a <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code>.</li>
+<li>Revisar el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code> y realizar cambios al despliegue de nuestro entorno OpenStack.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Este archivo está muy comentao con detalles sobre las diversas opciones. Ver <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/user/index.html">OpenStack-Ansible User Guide</a> y <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/index.html">OpenStack-Ansible Reference Guide</a> para más detalles.</p>
+</div>
+<ol class="arabic simple" start="5">
+<li>Revisar el archivo <code class="docutils literal notranslate"><span class="pre">user_variables.yml</span></code> para configurar opciones globales y de despliegues de roles específicos. El archivo contiene algunas variables de ejemplos y comentario pero podemos obtener la lista completa de variables en cada documentación específica del rol.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Una variable importante es <code class="docutils literal notranslate"><span class="pre">install_method</span></code>, la cual configura el método de instalación para los servicios de OpenStack. Los servicios pueden ser desplegados desde la fuente (por defecto) o de paquetes de distribución. Los despliegues basados en la fuente son más cercanos a instalaciones de OpenStack vanilla y permiten más cambios y personalizaciones. Del otro lado, despliegues basados en distros generalmente proveen una combinación de paquetes que han sido verificados por las mismas distribuciones. Sin embargos, esto significa que las actualizaciones son lanzadas con menos frecuencia y con retrasos potenciales. Aun más, este método puede ofrecernos menos oportunidades para personalizaciones de despliegues. La variable <code class="docutils literal notranslate"><span class="pre">install_method</span></code> es configurada durante el despliegue inicial y no podremos cambiarla, pues OpenStack-Ansible no puede convertirse de un método de instalación a otro. Como tal, es importante juzgar nuestras necesidades con los pros y contras de cada método antes de tomar una decisión. Notar que el método de instalación <code class="docutils literal notranslate"><span class="pre">distro</span></code> fue introducido en el ciclo Rocky, y como resutado, Ubuntu 16.04 no es soportado debido al hecho de que no hay paquetes de Rocky para este.</p>
+</div>
+<p>La configuración en el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code> define qué hosts corren los contenedores y servicios desplegados por OpenStack-Ansible. Por ejemplo, los hosts listados en la sección <code class="docutils literal notranslate"><span class="pre">shared-infra_hosts</span></code> corren contenedores para muchos de los servicios compartidos que nuestro entorno OpenStack requiere. Algunos de estos servicios incluyen bases de datos, Memcached, y RabbitMQ. Muchos otros tipos de hosts contiene otros tipos de contenedores, y todos estos son listados en el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code>.</p>
+<p>Algunos servicios, como glance, heat, horizon, nova-infra, no son listados individualmente en el archivo de ejemplo al estar contenidos en los hosts de os-infra. Podemos especificar image-hosts o dashboard-hosts si queremos escalar de una manera específica.</p>
+<p>Para ejemplos, ver <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/user/index.html">OpenStack-Ansible User Guide</a>.</p>
+<p>Para detalles sobre cómo es generado el inventario, de la configuración de entorno y la precendencia de variable, ver <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/index.html">OpenStack-Ansible Reference Guide</a>, en la seccion de inventario.</p>
+</div>
+<div class="section" id="installing-additional-services">
+<h3><a class="toc-backref" href="#id16">Installing additional services</a><a class="headerlink" href="#installing-additional-services" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Para instalar servicios adicionales, los archivos en <code class="docutils literal notranslate"><span class="pre">etc/openstack_deploy/conf.d</span></code> proveen ejemplos mostrando los host groups correctos para usar. Para añadir otro servicio: añadir el host group, asignarle hosts y luego ejecutar los playbooks.</p>
+</div>
+<div class="section" id="advanced-service-configuration">
+<h3><a class="toc-backref" href="#id17">Advanced service configuration</a><a class="headerlink" href="#advanced-service-configuration" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>OpenStack-Ansible tiene muchas opciones que podemos usar para la configuración avanzada de servicios. Cada documentación de rol provee información sobre las opciones disponibles.</p>
+<div class="admonition important">
+<p class="first admonition-title">Importante</p>
+<p class="last">Este paso es esencial para adaptar OpenStack-Ansible a nuestras necesidades y es generalmente pasado por alto por nuevos deployers. Hechar un vistazo a cada documentación de rol, guía de usuario y referenciarnos a estas si deseamos un cloud adaptada a nuestra necesidad.</p>
+</div>
+</div>
+<div class="section" id="configuring-service-credentials">
+<h3><a class="toc-backref" href="#id18">Configuring service credentials</a><a class="headerlink" href="#configuring-service-credentials" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Configurar credenciales para cada servicio en el archivo <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy/user_secrets.yml</span></code>. Considerar usar el feature Ansible Vault para incrementar la seguridad encriptando archivos que contengan credenciales.</p>
+<p>Ajustar permisos en estos archivos para restringir acceso por usuario no-privilegiados.</p>
+<p>La opción <code class="docutils literal notranslate"><span class="pre">keystone_auth_admin_password</span></code> configura la contraseña tenant <code class="docutils literal notranslate"><span class="pre">admin</span></code> tanto para el acceso OpenStack API y Dashboard.</p>
+<p>Se recomienda usar el script <code class="docutils literal notranslate"><span class="pre">pw-token-gen.py</span></code> para generar valores aleatorios para las variables en cada archivo que contiene credenciales de servicio:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /opt/openstack-ansible
+./scripts/pw-token-gen.py --file /etc/openstack_deploy/user_secrets.yml
+</pre></div>
+</div>
+<p>Para regenerar las contraseñas existentes, añadir el flag <code class="docutils literal notranslate"><span class="pre">--regen</span></code>.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Advertencia</p>
+<p class="last">Los playbooks no soportan cambiar contraseñas en un entorno existente. Cambiar contraseñas y volver a correr los playbooks causará fallos que puedan malograr nuestro entorno OpenStack.</p>
+</div>
+</div>
+</div>
+<div class="section" id="run-playbooks">
+<h2><a class="toc-backref" href="#id19">Run playbooks</a><a class="headerlink" href="#run-playbooks" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Referencia: <a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/run-playbooks.html">OpenStack-Ansible Run playbooks</a></p>
+<p>Los procesos de instalación requieren correr 3 playbooks:</p>
+<ul class="simple">
+<li>El playbook base de Ansible <code class="docutils literal notranslate"><span class="pre">setup-hosts.yml</span></code> prepara los target hosts para servicios de infraestructura y de OpenStack, construye y reinicia contenedores en target hosts, e instala componentes comúnes en contenedores de target hosts.</li>
+<li>El playbook de infraestructura de Ansible <code class="docutils literal notranslate"><span class="pre">setup-infrastructure.yml</span></code> instala servicios de infraestructura: Memcached, el servicio de repositorio, Galera, RabbitMQ, and rsyslog.</li>
+<li>El playbook de OpenStack <code class="docutils literal notranslate"><span class="pre">setup-openstack.yml</span></code> instala servicios de OpenStack, incluyendo Identity (keystone), Image (glance), Block Storage (cinder), Compute (nova), Networking (neutron), etc.</li>
+</ul>
+<div class="section" id="checking-the-integrity-of-the-configuration-files">
+<h3><a class="toc-backref" href="#id20">Checking the integrity of the configuration files</a><a class="headerlink" href="#checking-the-integrity-of-the-configuration-files" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Antes de correr cualquier playbook, revisar la integridad de los archivos de configuración.</p>
+<ol class="arabic simple">
+<li>Asegurar que todos los archivos editados en el directorio <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy</span></code> son compatibles con Ansible YAML.</li>
+<li>Revisar la integridad de nuestros archivos YAML.</li>
+</ol>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Para revisar la sintáxis de nuestros archivo YAML podemos usar el <a class="reference external" href="http://www.yamllint.com/">Programa YAML Lint</a>.</p>
+</div>
+<ol class="arabic simple" start="3">
+<li>Movernos al directorio <code class="docutils literal notranslate"><span class="pre">/opt/openstack-ansible/playbooks</span></code> y correr el comando:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openstack-ansible setup-infrastructure.yml --syntax-check
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Volver a revisar que toda la identación es correcta. Esto es importante porque la sintáxis de los archivos de configuración puede ser correcta sin ser significativa para OpenStack-Ansible.</li>
+</ol>
+</div>
+<div class="section" id="run-the-playbooks-to-install-openstack">
+<h3><a class="toc-backref" href="#id21">Run the playbooks to install OpenStack</a><a class="headerlink" href="#run-the-playbooks-to-install-openstack" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li>Movernos al directorio <code class="docutils literal notranslate"><span class="pre">/opt/openstack-ansible/playbooks</span></code>.</li>
+<li>Correr el playbook de configuración del host:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openstack-ansible setup-hosts.yml
+</pre></div>
+</div>
+<p>Confirmar la finalización satisfactoria con cero elementos inalcanzables o fallidos:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>PLAY RECAP ********************************************************************
+...
+deployment_host                :  ok=18   changed=11   unreachable=0    failed=0
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Correr el playbook de configuración de la infraestructura:</li>
+</ol>
+<p>Confirmar la finalización satisfactoria con cero elementos inalcanzables o fallidos:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>PLAY RECAP ********************************************************************
+...
+deployment_host                : ok=27   changed=0    unreachable=0    failed=0
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Correr los siguientes comandos para verificar el database cluster:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible galera_container -m shell -a <span class="s2">&quot;mysql -h localhost -e &#39;show status like \&quot;%wsrep_cluster_%\&quot;;&#39;&quot;</span>
+</pre></div>
+</div>
+<p>Outpur de ejemplo:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>node3_galera_container-3ea2cbd3 <span class="p">|</span> success <span class="p">|</span> <span class="nv">rc</span><span class="o">=</span><span class="m">0</span> &gt;&gt;
+Variable_name             Value
+wsrep_cluster_conf_id     <span class="m">17</span>
+wsrep_cluster_size        <span class="m">3</span>
+wsrep_cluster_state_uuid  338b06b0-2948-11e4-9d06-bef42f6c52f1
+wsrep_cluster_status      Primary
+
+node2_galera_container-49a47d25 <span class="p">|</span> success <span class="p">|</span> <span class="nv">rc</span><span class="o">=</span><span class="m">0</span> &gt;&gt;
+Variable_name             Value
+wsrep_cluster_conf_id     <span class="m">17</span>
+wsrep_cluster_size        <span class="m">3</span>
+wsrep_cluster_state_uuid  338b06b0-2948-11e4-9d06-bef42f6c52f1
+wsrep_cluster_status      Primary
+
+node4_galera_container-76275635 <span class="p">|</span> success <span class="p">|</span> <span class="nv">rc</span><span class="o">=</span><span class="m">0</span> &gt;&gt;
+Variable_name             Value
+wsrep_cluster_conf_id     <span class="m">17</span>
+wsrep_cluster_size        <span class="m">3</span>
+wsrep_cluster_state_uuid  338b06b0-2948-11e4-9d06-bef42f6c52f1
+wsrep_cluster_status      Primary
+</pre></div>
+</div>
+<p>El campo <code class="docutils literal notranslate"><span class="pre">wsrep_cluster_size</span></code> indica el número de nodos en el clúster y el campo <code class="docutils literal notranslate"><span class="pre">wsrep_cluster_status</span></code> indica que es primario.</p>
+<ol class="arabic simple" start="5">
+<li>Correr el playbook de configuración de OpenStack:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openstack-ansible setup-openstack.yml
+</pre></div>
+</div>
+<p>Confirmar la finalización satisfactoria con cero elementos inalcanzables o fallidos.</p>
+</div>
+</div>
+<div class="section" id="verifying-openstack-operation">
+<h2><a class="toc-backref" href="#id22">Verifying OpenStack operation</a><a class="headerlink" href="#verifying-openstack-operation" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Referencia: <a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/verify-operation.html">OpenStack-Ansible Verifying OpenStack operation</a></p>
+<p>Para verificar la operación básica de OpenStack API y el Dashboard, realizar las siguientes tareas en un host de infraestructura.</p>
+<div class="section" id="verify-the-api">
+<h3><a class="toc-backref" href="#id23">Verify the API</a><a class="headerlink" href="#verify-the-api" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>El <strong>utility container</strong> provee un entorno CLI para configuraciones adicionales y pruebas.</p>
+<ol class="arabic simple">
+<li>Determinar el nombre del utility container:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lxc-ls <span class="p">|</span> grep utility
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Acceder al utility container:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lxc-attach -n infra1_utility_container-161a4084
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Obtener las credenciales de tenant <code class="docutils literal notranslate"><span class="pre">admin</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>. ~/openrc
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Listar los usuarios de openstack:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openstack user list --os-cloud<span class="o">=</span>default
+</pre></div>
+</div>
+</div>
+<div class="section" id="verifying-the-dashboard-horizon">
+<h3><a class="toc-backref" href="#id24">Verifying the Dashboard (horizon)</a><a class="headerlink" href="#verifying-the-dashboard-horizon" title="Enlazar permanentemente con este título">¶</a></h3>
+<ol class="arabic simple">
+<li>Dentro de un navegador web, acceder al Dashboard usando la dirección IP del load balancer externo definido por la opción <code class="docutils literal notranslate"><span class="pre">external_lb_vip_address</span></code> en el archivo <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code>. El Dashboard usa HTTPS en el puerto 443.</li>
+<li>Autenticarse usando el nombre de usuario <code class="docutils literal notranslate"><span class="pre">admin</span></code> y la contraseña definida por la opción <code class="docutils literal notranslate"><span class="pre">keystone_auth_admin_password</span></code> en el archivo <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy/user_secrets.yml</span></code>.</li>
+</ol>
+</div>
+</div>
+<div class="section" id="referencias">
+<h2><a class="toc-backref" href="#id25">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/index.html">OpenStack-Ansible Reference Guide</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/user/index.html">OpenStack-Ansible User Guide</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/architecture/index.html">OpenStack-Ansible Architecture</a></li>
+<li><a class="reference external" href="https://www.youtube.com/watch?v=JZet1uNAr_o">OpenStack-Ansible - Project Update</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../openstack-installation-deployment/_openstack-installation-deployment.html" class="btn btn-neutral float-right" title="OpenStack Installation and Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="openstack-ansible-centos7-aio.html" class="btn btn-neutral float-left" title="OpenStack-Ansible CentOS 7 AIO" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Gabriel
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

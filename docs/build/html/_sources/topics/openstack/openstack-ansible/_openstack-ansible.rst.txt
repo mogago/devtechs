@@ -8,3 +8,4 @@ OpenStack-Ansible
 
     openstack-ansible-intro
     openstack-ansible-centos7-aio
+    openstack-ansible-centos7-multinode
