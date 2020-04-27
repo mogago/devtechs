@@ -119,6 +119,7 @@
 <li class="toctree-l1 current"><a class="reference internal" href="_openstack-ansible.html">OpenStack-Ansible</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="openstack-ansible-intro.html">OpenStack-Ansible Deployment</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">OpenStack-Ansible CentOS 7 AIO</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#despliegue-con-vagrant">Despliegue con Vagrant</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#prepare-the-host">Prepare the host</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#bootstrap-ansible-and-the-required-roles">Bootstrap Ansible and the required roles</a></li>
@@ -241,11 +242,12 @@
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
 <li><a class="reference internal" href="#openstack-ansible-centos-7-aio" id="id1">OpenStack-Ansible CentOS 7 AIO</a><ul>
-<li><a class="reference internal" href="#overview" id="id2">Overview</a></li>
-<li><a class="reference internal" href="#prepare-the-host" id="id3">Prepare the host</a></li>
-<li><a class="reference internal" href="#bootstrap-ansible-and-the-required-roles" id="id4">Bootstrap Ansible and the required roles</a></li>
-<li><a class="reference internal" href="#bootstrap-the-aio-configuration" id="id5">Bootstrap the AIO configuration</a></li>
-<li><a class="reference internal" href="#run-playbooks" id="id6">Run playbooks</a></li>
+<li><a class="reference internal" href="#despliegue-con-vagrant" id="id2">Despliegue con Vagrant</a></li>
+<li><a class="reference internal" href="#overview" id="id3">Overview</a></li>
+<li><a class="reference internal" href="#prepare-the-host" id="id4">Prepare the host</a></li>
+<li><a class="reference internal" href="#bootstrap-ansible-and-the-required-roles" id="id5">Bootstrap Ansible and the required roles</a></li>
+<li><a class="reference internal" href="#bootstrap-the-aio-configuration" id="id6">Bootstrap the AIO configuration</a></li>
+<li><a class="reference internal" href="#run-playbooks" id="id7">Run playbooks</a></li>
 </ul>
 </li>
 </ul>
@@ -271,8 +273,16 @@
 <li>80 GB libres de espacio de disco en la partición root o 60GB+ en un disco secundario vacío. Usar un disco secundario requiere usar el parámetro <code class="docutils literal notranslate"><span class="pre">bootstrap_host_data_disk_device</span></code></li>
 </ul>
 <p>Es posible realizar AIO builds en una máquina virtual para demostraciones y evaluación, pero nuestras VMs rendirán pobremente, excepto que activemos nested virtualization. Para cargas de trabajo de producción, se recomienda múltiples nodos para roles específicos.</p>
+<div class="section" id="despliegue-con-vagrant">
+<h2><a class="toc-backref" href="#id2">Despliegue con Vagrant</a><a class="headerlink" href="#despliegue-con-vagrant" title="Enlazar permanentemente con este título">¶</a></h2>
+<p>Con el archivo Vagrantfile podremos desplegar una VM con la configuración inicial para desplegar OpenStack-Ansible AIO:</p>
+<ul class="simple">
+<li>Vagrantfile: <a class="reference download internal" download="" href="../../../_downloads/6fa512f718cefff39cdecca719eada1a/Vagrantfile_ansibleaio"><code class="xref download docutils literal notranslate"><span class="pre">Descargar</span> <span class="pre">Vagrantfile</span></code></a></li>
+<li>Script de ansibleaio: <a class="reference download internal" download="" href="../../../_downloads/5b79af8303f0ea87573a3ba5294631cc/ansibleaio_setup.sh"><code class="xref download docutils literal notranslate"><span class="pre">Descargar</span> <span class="pre">ansibleaio_setup.sh</span></code></a></li>
+</ul>
+</div>
 <div class="section" id="overview">
-<h2><a class="toc-backref" href="#id2">Overview</a><a class="headerlink" href="#overview" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id3">Overview</a><a class="headerlink" href="#overview" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Hay 4 pasos para lograr correr un entorno AIO:</p>
 <ul class="simple">
 <li>Preparar el host</li>
@@ -282,7 +292,7 @@
 </ul>
 </div>
 <div class="section" id="prepare-the-host">
-<h2><a class="toc-backref" href="#id3">Prepare the host</a><a class="headerlink" href="#prepare-the-host" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id4">Prepare the host</a><a class="headerlink" href="#prepare-the-host" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li>Verificar la versión de kernel actual:</li>
 </ul>
@@ -297,11 +307,33 @@ uname -mrs
 </pre></div>
 </div>
 <ul class="simple">
-<li>Actualizar el kernel:</li>
+<li>Actualizar los paquetes y kernel del sistema:</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum upgrade -y
 </pre></div>
 </div>
+<ul class="simple">
+<li>Reiniciar el sistema para cambiar el kernel</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>reboot
+</pre></div>
+</div>
+<ul class="simple">
+<li>Verificar la versión de kernel actualizada</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i
+uname -mrs
+</pre></div>
+</div>
+<ul class="simple">
+<li>Verificar los kernels instalados en el sistema (el kernel subrayado es el que está en uso):</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum list installed kernel
+</pre></div>
+</div>
+<ul class="simple">
+<li>Instalar Git:</li>
+</ul>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
 <p>La instalación de <code class="docutils literal notranslate"><span class="pre">git</span></code> en CentOS 7, con los repositorios predeterminados, instalará una version antigua de Git, por ejemplo v1.8:</p>
@@ -341,28 +373,9 @@ uname -mrs
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git --version
 </pre></div>
 </div>
-<ul class="simple">
-<li>Reiniciar el sistema para cambiar el kernel</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>reboot
-</pre></div>
-</div>
-<ul class="simple">
-<li>Verificar la versión de kernel actualizada</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i
-uname -mrs
-</pre></div>
-</div>
-<ul class="simple">
-<li>Verificar los kernels instalados en el sistema (el kernel subrayado es el que está en uso):</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum list installed kernel
-</pre></div>
-</div>
 </div>
 <div class="section" id="bootstrap-ansible-and-the-required-roles">
-<h2><a class="toc-backref" href="#id4">Bootstrap Ansible and the required roles</a><a class="headerlink" href="#bootstrap-ansible-and-the-required-roles" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id5">Bootstrap Ansible and the required roles</a><a class="headerlink" href="#bootstrap-ansible-and-the-required-roles" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Referencia: <a class="reference external" href="https://stafwag.github.io/blog/blog/2019/01/21/settinp-up-openstack-ansible-all-in-one-on-a-centos-7-system/">Setting up OpenStack-Ansible All-In-One on a Centos 7 system</a></p>
 <ul class="simple">
 <li>El script de boostrap de OpenStack-Ansible descargará e instalará su propia versión de Ansible y creará un link a <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code>. Por lo cual, <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code> debe estar en nuestra variable <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>. En CentOS 7, la variable <code class="docutils literal notranslate"><span class="pre">$PATH</span></code> no contiene esta dirección, así que la debemos agregar:</li>
@@ -412,7 +425,7 @@ git describe --abbrev<span class="o">=</span><span class="m">0</span> --tags
 </div>
 </div>
 <div class="section" id="bootstrap-the-aio-configuration">
-<h2><a class="toc-backref" href="#id5">Bootstrap the AIO configuration</a><a class="headerlink" href="#bootstrap-the-aio-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id6">Bootstrap the AIO configuration</a><a class="headerlink" href="#bootstrap-the-aio-configuration" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Para que todos los servicios corran, el host debe estar preparado con el particionamiento de disco, paquetes, configuración de red y configuraciones para el OpenStack Deployment correctos.</p>
 <p>Por defecto, los bootstrap scripts de AIO despliegan un conjunto base de servicios OpenStack con valores predeterminados razonables con el propósito de un gate check, sistema de despliegue o sistema de pruebas.</p>
 <p>El bootstrap script está pre-configurado para pasar la variable de entorno <code class="docutils literal notranslate"><span class="pre">BOOTSTRAP_OPTS</span></code> como una opción adicional para al proceso bootstrap.</p>
@@ -421,6 +434,15 @@ git describe --abbrev<span class="o">=</span><span class="m">0</span> --tags
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scripts/bootstrap-aio.sh
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Entre todas los cambios hechos luego de ejecutar este script, se cambiará el hostname a <code class="docutils literal notranslate"><span class="pre">aio1</span></code>. Además se editará el parámetro <code class="docutils literal notranslate"><span class="pre">PasswordAuthentication</span></code> del archivo <code class="docutils literal notranslate"><span class="pre">/etc/ssh/sshd_config</span></code>, impidiendo conexiones SSH mediante contraseñas.</p>
+<p>Para volver a permitir la conexión por SSH al sistema ejecutar:</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -i <span class="s1">&#39;s/PasswordAuthentication no/PasswordAuthentication yes/g&#39;</span> /etc/ssh/sshd_config
+systemctl restart sshd
+</pre></div>
+</div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
@@ -452,7 +474,7 @@ scripts/bootstrap-aio.sh
 </ul>
 </div>
 <div class="section" id="run-playbooks">
-<h2><a class="toc-backref" href="#id6">Run playbooks</a><a class="headerlink" href="#run-playbooks" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id7">Run playbooks</a><a class="headerlink" href="#run-playbooks" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li>Finalmente correr los playbooks ejecutando:</li>
 </ul>

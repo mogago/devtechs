@@ -29,6 +29,14 @@ Recursos de servidor recomendados:
 
 Es posible realizar AIO builds en una máquina virtual para demostraciones y evaluación, pero nuestras VMs rendirán pobremente, excepto que activemos nested virtualization. Para cargas de trabajo de producción, se recomienda múltiples nodos para roles específicos.
 
+Despliegue con Vagrant
+----------------------
+
+Con el archivo Vagrantfile podremos desplegar una VM con la configuración inicial para desplegar OpenStack-Ansible AIO:
+
+- Vagrantfile: :download:`Descargar Vagrantfile <extra/Vagrantfile_ansibleaio>`
+- Script de ansibleaio: :download:`Descargar ansibleaio_setup.sh <extra/ansibleaio_setup.sh>`
+
 Overview
 --------
 
@@ -55,11 +63,32 @@ Prepare the host
 
     yum list installed kernel
 
-- Actualizar el kernel:
+- Actualizar los paquetes y kernel del sistema:
 
 .. code-block:: bash
 
     yum upgrade -y
+
+- Reiniciar el sistema para cambiar el kernel
+
+.. code-block:: bash
+
+    reboot
+
+- Verificar la versión de kernel actualizada
+
+.. code-block:: bash
+
+    sudo -i
+    uname -mrs
+
+- Verificar los kernels instalados en el sistema (el kernel subrayado es el que está en uso):
+
+.. code-block:: bash
+
+    yum list installed kernel
+
+- Instalar Git:
 
 .. Note::
 
@@ -103,25 +132,6 @@ Referencia: `Instalar Git 2.X en CentOS 7`_
 .. code-block:: bash
 
     git --version
-
-- Reiniciar el sistema para cambiar el kernel
-
-.. code-block:: bash
-
-    reboot
-
-- Verificar la versión de kernel actualizada
-
-.. code-block:: bash
-
-    sudo -i
-    uname -mrs
-
-- Verificar los kernels instalados en el sistema (el kernel subrayado es el que está en uso):
-
-.. code-block:: bash
-
-    yum list installed kernel
 
 Bootstrap Ansible and the required roles
 ----------------------------------------
@@ -191,6 +201,17 @@ El bootstrap script está pre-configurado para pasar la variable de entorno ``BO
 .. code-block:: bash
 
     scripts/bootstrap-aio.sh
+
+.. Note::
+
+    Entre todas los cambios hechos luego de ejecutar este script, se cambiará el hostname a ``aio1``. Además se editará el parámetro ``PasswordAuthentication`` del archivo ``/etc/ssh/sshd_config``, impidiendo conexiones SSH mediante contraseñas.
+
+    Para volver a permitir la conexión por SSH al sistema ejecutar:
+
+    .. code-block:: bash
+
+        sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
+        systemctl restart sshd
 
 .. Note::
 
