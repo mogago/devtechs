@@ -8,12 +8,12 @@ Prepare the deployment host
 
 Referencia: `OpenStack-Ansible Prepare the deployment host`_
 
-.. _OpenStack-Ansible Prepare the deployment host: https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/deploymenthost.html
-
 Cuando instalamos OpenStack en un entorno de producción, se recomienda usar un host de despliegue separado que contenga Ansible y orqueste la instalación OpenStack-Ansible (OSA) en los target hosts. En un entorno de prueba, se recomienda usar uno de los infrastructure target hosts como el deployment host.
 
 Configuring the operating system
 ''''''''''''''''''''''''''''''''
+
+Configurar al menos una interfaz de red para que acceda a Internet o a repositorios locales.
 
 - Verificar la versión de kernel actual:
 
@@ -55,13 +55,15 @@ Configuring the operating system
 
 - Instalar el rpm de OpenStack Train de RDO:
 
-    yum install https://rdoproject.org/repos/openstack-train/rdo-release-train.rpm
+.. code-block:: bash
+
+    yum install -y https://rdoproject.org/repos/openstack-train/rdo-release-train.rpm
 
 - Instalar paquetes de software adicionales:
 
 .. code-block:: bash
 
-    yum install -y ntp ntpdate openssh-server python-devel sudo '@Development Tools'
+    yum install -y vim ntp ntpdate openssh-server python-devel sudo '@Development Tools'
 
 - Instalar Git:
 
@@ -113,16 +115,13 @@ Referencia: `Instalar Git 2.X en CentOS 7`_
 .. code-block:: bash
 
     # Instalar el programa chrony:
-    sudo -i
     yum install -y chrony
-
-    # Editar el archivo de configuración de chrony:
-    cat << EOF >> /etc/chrony.conf
-    allow 10.1.1.0/24
-    EOF
 
     # Reiniciar el servicio de NTP:
     systemctl restart chronyd.service
+
+    # Verificar sincronización de relojes
+    chronyc sources
 
 - Por defecto, ``firewalld``  está habilitado en la mayoría de sistemas CentOS y su conjunto de reglas predeterminadas previene que algunos componentes de OpenStack se comuniquen apropiadamente. Parar el servicio ``firewalld`` y enmascararla para prevenirla de iniciar:
 
@@ -134,16 +133,40 @@ Referencia: `Instalar Git 2.X en CentOS 7`_
 Configure SSH keys
 ''''''''''''''''''
 
+Ansible usa SSH con autenticación de llave pública para conectar el deployment host y los target hosts. Para reducir la interacción del usuario durante las operaciones de Ansible, no incluir passphrases con key pairs. Sin embargo, si se requiere un passphrase, considerar usar los comandos ``ssh-agent`` y ``ssh-add`` para almacenar temporalmente el passphrase antes de realizar operaciones de Ansible.
+
+1. Copiar los contenidos de la llave pública en el deployment host al archivo ``/root/.ssh/authorized_keys`` en cada target host.
+
 .. code-block:: bash
 
-    ssh-copy-id vagrant@192.168.1.111
-    ssh-copy-id vagrant@192.168.1.131
-    ssh-copy-id vagrant@192.168.1.141
+    ssh-keygen -t rsa -b 4096 -C "root@adh"
+
+.. code-block:: bash
+
+    ssh-copy-id root@172.29.236.101
+    ssh-copy-id root@172.29.236.104
+
+2. Probar la autenticación de llave pública desde el deployment host a cada target host usando SSH para conectarnos al target host desde el deployment host. Si podemos conectarnos y obtener el shell sin autenticarnos, está funcionando. SSH provee un shell sin pedirnos una contraseña.
+
+.. code-block:: bash
+
+    ssh root@172.29.236.101 hostname
+    cc
+    ssh root@172.29.236.104 hostname
+    cn
 
 Configure the network
 '''''''''''''''''''''
 
-Container management (br-mgmt network): 172.29.236.0/22 (VLAN 10)
+Los despliegues de Ansible fallan si el deployment server no puede usar SSH para conectase a los contenedores.
+
+Configurar el **deployment host** (donde es ejecutado Ansible) para que esté **en la misma red capa 2 como la red designada para la administración de contenedores**. Por defecto, esta es la red ``br-mgmt``. Esta configuración reduce la probabilidad de falla causada por problemas de conectividad.
+
+Seleccionar una dirección IP del siguiente ejemplo de rango para asignarlo al deployment host:
+
+.. code-block:: text
+
+    Container management (br-mgmt network): 172.29.236.0/22 (VLAN 10)
 
 Install the source and dependencies
 '''''''''''''''''''''''''''''''''''
@@ -187,24 +210,22 @@ Luego, deberemos cambiar al branch/tag desde el cual se implementará. Desplegar
 
     git checkout 20.1.0
 
-- Boostrap de Ansible y roles de Ansible para el entorno de desarrollo (Duración: 8:30 - 12:00 min):
+- Boostrap de Ansible y roles de Ansible para el entorno de desarrollo (Duración: 8:00 - 12:00 min):
 
 .. code-block:: bash
 
     scripts/bootstrap-ansible.sh
 
-- Probar que se pueda ejecutar el comando openstack-ansible:
+- Probar que se pueda ejecutar el comando openstack-ansible (debemos tener la ruta ``/usr/local/bin`` en nuestra variable ``$PATH``):
 
 .. code-block:: bash
 
-    openstack-ansible
+    openstack-ansible --version
 
 Prepare the target hosts
 ------------------------
 
 Referencia: `OpenStack-Ansible Prepare the target hosts`_
-
-.. _OpenStack-Ansible Prepare the target hosts: https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/targethosts.html
 
 Configuring the operating system
 ''''''''''''''''''''''''''''''''
@@ -233,6 +254,7 @@ Configuring the operating system
 .. code-block:: bash
 
     sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/sysconfig/selinux
+    sed -i 's/SELINUX=permissive/SELINUX=disabled/g' /etc/sysconfig/selinux
 
 - Reiniciar el sistema para cambiar el kernel
 
@@ -261,7 +283,7 @@ Configuring the operating system
 
 .. code-block:: bash
 
-    yum install bridge-utils iputils lsof lvm2 chrony openssh-server sudo tcpdump python
+    yum install -y bridge-utils iputils lsof lvm2 chrony openssh-server sudo tcpdump python
 
 - Añadir los módulos de kernel apropiados al archivo ``/etc/modules-load.d`` para habiliar VLAN e interfaces bond:
 
@@ -275,16 +297,13 @@ Configuring the operating system
 .. code-block:: bash
 
     # Instalar el programa chrony:
-    sudo -i
     yum install -y chrony
-
-    # Editar el archivo de configuración de chrony:
-    cat << EOF >> /etc/chrony.conf
-    allow 10.1.1.0/24
-    EOF
 
     # Reiniciar el servicio de NTP:
     systemctl restart chronyd.service
+
+    # Verificar sincronización de relojes
+    chronyc sources
 
 - (Opcional) Reducir el nivel de log del kernel cambiando el valor ``printk`` en nuestro ``sysctls``:
 
@@ -301,6 +320,10 @@ Ansible usa SSH para conectar el deployment host a los target host.
 
 1. Copiar los contenidos de la llave pública en el deployment host al archivo ``/root/.ssh/authorized_keys`` en cada target host.
 2. Probar la autenticación de llave pública desde el deployment host a cada target host usando SSH para conectarnos al target host desde el deployment host. Si podemos conectarnos y obtener el shell sin autenticarnos, está funcionando. SSH provee un shell sin pedirnos una contraseña.
+
+.. Note::
+
+    Estos pasos se han realizado en el deployment host (`Prepare the deployment host`_)
 
 .. Important::
 
@@ -327,14 +350,58 @@ Logical Volume Manager (LVM) habilita a un único dispositivo ser dividido en m�
 Configuring the network
 '''''''''''''''''''''''
 
-OpenStack-Ansible usa bridges para conectar interfaces de red físicas y lógicas en el host a interfaces de red virtuales dentro de contenedores. Los target hosts deben ser configurados con los siguientes network bridges:
+OpenStack-Ansible usa **bridges** para conectar **interfaces de red físicas y lógicas** en el **host** a **interfaces de red virtuales** dentro de **contenedores**. Los target hosts deben ser configurados con los siguientes network bridges:
+
++-------------------+-------------------------+--------------------------------------------+
+| Nombre del Bridge | Mejor configurado en    | Con IP estática                            |
++-------------------+-------------------------+--------------------------------------------+
+| br-mgmt           | En cada nodo            | Siempre                                    |
++-------------------+-------------------------+--------------------------------------------+
+| br-storage        | En cada nodo de storage | Cuando el componente se despliega en metal |
++-------------------+-------------------------+--------------------------------------------+
+| br-storage        | En cada nodo de compute | Siempre                                    |
++-------------------+-------------------------+--------------------------------------------+
+| br-vxlan          | En cada nodo de network | Cuando el componente se despliega en metal |
++-------------------+-------------------------+--------------------------------------------+
+| br-vxlan          | En cada nodo de compute | Siempre                                    |
++-------------------+-------------------------+--------------------------------------------+
+| br-vlan           | En cada nodo de network | Nunca                                      |
++-------------------+-------------------------+--------------------------------------------+
+| br-vlan           | En cada nodo de compute | Nunca                                      |
++-------------------+-------------------------+--------------------------------------------+
+
+Para una referencia detallada sobre cómo implementar el host y container networking, ir a `OpenStack-Ansible Architecture - Container networking`_
+
+Para ejemplos de casos de uso, ir a `OpenStack-Ansible User Guide`_
+
+Host network bridges information
+''''''''''''''''''''''''''''''''
+
+- LXC internal ``lxcbr0``
+    - El bridge ``lxcbr0`` es requerido para LXC, pero OpenStack-Ansible lo configura automáticamente. Provee conectividad externa (generalmente Internet) a los contenedores con dnsmasq (DHCP/DNS) + NAT.
+    - Este bridge no se conecta directamente a ninguna interfaz física o lógica en el host, pues iptables maneja la conectividad. El bridge se conecta a ``eth0`` en cada contenedor.
+    - La red de contenedor a la que el bridge se conecta es configurable en el archivo ``openstack_user_config.yml`` en el diccionario ``provider_networks``.
+- Container management: ``br-mgmt``
+    - El ``br-mgmt`` provee administración y comunicación entre la infraestructura y servicios de OpenStack.
+    - El bridge se conecta a una interfaz física o lógica, generalmente una subinterfaz VLAN ``bond0``. También se conecta a ``eth1`` en cada contenedor.
+    - La interfaz de red del contenedor a la que se conecta el bridge es configurable en el archivo ``openstack_user_config.yml``.
+- Storage: ``br-storage``
+    - El bridge ``br-storage`` provee acceso segregado a dispositivos Block Storage entre servicios servicios de OpenStack y dispositivos Block Storage.
+    - El bridge se conecta a una interfaz física o lógica, generalmente una subinterfaz VLAN ``bond0``. También se conecta a ``eth2`` en cada contenedor asociado.
+    - La interfaz de red del contenedor a la que se conecta el bridge es configurable en el archivo ``openstack_user_config.yml``.
+- OpenStack Networking tunnel: ``br-vxlan``
+    - El bridge ``br-vxlan`` es **requerido si** el entorno es configurado para que permita a proyectos crear redes virtuales usando VXLAN. Provee la interfaz para **redes de túneles virtuales (VXLAN)**.
+    - El bridge se conecta a una interfaz física o lógica, generalmente una subinterfaz VLAN ``bond1``. También se conecta a ``eth10`` en cada contenedor asociado.
+    - La interfaz de red del contenedor a la que se conecta el bridge es configurable en el archivo ``openstack_user_config.yml``.
+- OpenStack Networking provider: ``br-vlan``
+    - El bridge ``br-vlan`` provee infraestructura para **redes VLAN tagged** o **flat (sin VLANT tag)**.
+    - El bridge se conecta a una interfaz física o lógica, generalmente una subinterfaz VLAN ``bond1``. Se conecta a ``eth11`` para redes tipo VLAN en cada contenedor asociado. No se le asigna una dirección IP porque maneja solo conectividad capa 2.
+    - La interfaz de red del contenedor a la que se conecta el bridge es configurable en el archivo ``openstack_user_config.yml``.
 
 Configure the deployment
 ------------------------
 
 Referencia: `OpenStack-Ansible Configure the deployment`_
-
-.. _OpenStack-Ansible Configure the deployment: https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/configure.html
 
 Ansible referencia algunos archivos que contienen directivas de configuración obligatorias y opcionales. Antes de poder correr los Ansible playbooks, modificar estos archivos para definir el entorno del target. Algunas tareas de configuración incluyen:
 
@@ -349,19 +416,32 @@ Initial environment configuration
 OpenStack-Ansible (OSA) depende de varios archivos que son usados para contruir un inventario para Ansible. Realizar la siguiente configuración en el deployment host:
 
 1. Copiar los contenidos del directorio ``/opt/openstack-ansible/etc/openstack_deploy`` al directorio ``/etc/openstack_deploy``.
+
+.. code-block:: bash
+
+    cp -R /opt/openstack-ansible/etc/openstack_deploy /etc
+
 2. Movernos al directorio ``/etc/openstack_deploy``.
+
+.. code-block:: bash
+
+    cd /etc/openstack_deploy
+
 3. Copiar el archivo ``openstack_user_config.yml.example`` a ``/etc/openstack_deploy/openstack_user_config.yml``.
+
+.. code-block:: bash
+
+    cp openstack_user_config.yml.example /etc/openstack_deploy/openstack_user_config.yml
+
 4. Revisar el archivo ``openstack_user_config.yml`` y realizar cambios al despliegue de nuestro entorno OpenStack.
 
-.. Note::
+.. code-block:: bash
 
-    Este archivo está muy comentao con detalles sobre las diversas opciones. Ver `OpenStack-Ansible User Guide`_ y `OpenStack-Ansible Reference Guide`_ para más detalles.
-
-5. Revisar el archivo ``user_variables.yml`` para configurar opciones globales y de despliegues de roles específicos. El archivo contiene algunas variables de ejemplos y comentario pero podemos obtener la lista completa de variables en cada documentación específica del rol.
+    vim openstack_user_config.yml
 
 .. Note::
 
-    Una variable importante es ``install_method``, la cual configura el método de instalación para los servicios de OpenStack. Los servicios pueden ser desplegados desde la fuente (por defecto) o de paquetes de distribución. Los despliegues basados en la fuente son más cercanos a instalaciones de OpenStack vanilla y permiten más cambios y personalizaciones. Del otro lado, despliegues basados en distros generalmente proveen una combinación de paquetes que han sido verificados por las mismas distribuciones. Sin embargos, esto significa que las actualizaciones son lanzadas con menos frecuencia y con retrasos potenciales. Aun más, este método puede ofrecernos menos oportunidades para personalizaciones de despliegues. La variable ``install_method`` es configurada durante el despliegue inicial y no podremos cambiarla, pues OpenStack-Ansible no puede convertirse de un método de instalación a otro. Como tal, es importante juzgar nuestras necesidades con los pros y contras de cada método antes de tomar una decisión. Notar que el método de instalación ``distro`` fue introducido en el ciclo Rocky, y como resutado, Ubuntu 16.04 no es soportado debido al hecho de que no hay paquetes de Rocky para este.
+    Este archivo está muy comentado con detalles sobre las diversas opciones. Ver `OpenStack-Ansible User Guide`_ y `OpenStack-Ansible Reference Guide`_ para más detalles.
 
 La configuración en el archivo ``openstack_user_config.yml`` define qué hosts corren los contenedores y servicios desplegados por OpenStack-Ansible. Por ejemplo, los hosts listados en la sección ``shared-infra_hosts`` corren contenedores para muchos de los servicios compartidos que nuestro entorno OpenStack requiere. Algunos de estos servicios incluyen bases de datos, Memcached, y RabbitMQ. Muchos otros tipos de hosts contiene otros tipos de contenedores, y todos estos son listados en el archivo ``openstack_user_config.yml``.
 
@@ -370,6 +450,16 @@ Algunos servicios, como glance, heat, horizon, nova-infra, no son listados indiv
 Para ejemplos, ver `OpenStack-Ansible User Guide`_.
 
 Para detalles sobre cómo es generado el inventario, de la configuración de entorno y la precendencia de variable, ver `OpenStack-Ansible Reference Guide`_, en la seccion de inventario.
+
+5. Revisar el archivo ``user_variables.yml`` para configurar opciones globales y de despliegues de roles específicos. El archivo contiene algunas variables de ejemplos y comentario pero podemos obtener la lista completa de variables en cada documentación específica del rol.
+
+.. code-block:: bash
+
+    vim user_variables.yml
+
+.. Note::
+
+    Una variable importante es ``install_method``, la cual configura el método de instalación para los servicios de OpenStack. Los servicios pueden ser desplegados desde la fuente (por defecto) o de paquetes de distribución. Los despliegues basados en la fuente son más cercanos a instalaciones de OpenStack vanilla y permiten más cambios y personalizaciones. Del otro lado, despliegues basados en distros generalmente proveen una combinación de paquetes que han sido verificados por las mismas distribuciones. Sin embargos, esto significa que las actualizaciones son lanzadas con menos frecuencia y con retrasos potenciales. Aun más, este método puede ofrecernos menos oportunidades para personalizaciones de despliegues. La variable ``install_method`` es configurada durante el despliegue inicial y no podremos cambiarla, pues OpenStack-Ansible no puede convertirse de un método de instalación a otro. Como tal, es importante juzgar nuestras necesidades con los pros y contras de cada método antes de tomar una decisión. Notar que el método de instalación ``distro`` fue introducido en el ciclo Rocky, y como resutado, Ubuntu 16.04 no es soportado debido al hecho de que no hay paquetes de Rocky para este.
 
 Installing additional services
 ''''''''''''''''''''''''''''''
@@ -389,6 +479,10 @@ Configuring service credentials
 '''''''''''''''''''''''''''''''
 
 Configurar credenciales para cada servicio en el archivo ``/etc/openstack_deploy/user_secrets.yml``. Considerar usar el feature Ansible Vault para incrementar la seguridad encriptando archivos que contengan credenciales.
+
+.. code-block:: bash
+
+    vi user_secrets.yml
 
 Ajustar permisos en estos archivos para restringir acceso por usuario no-privilegiados.
 
@@ -411,8 +505,6 @@ Run playbooks
 -------------
 
 Referencia: `OpenStack-Ansible Run playbooks`_
-
-.. _OpenStack-Ansible Run playbooks: https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/run-playbooks.html
 
 Los procesos de instalación requieren correr 3 playbooks:
 
@@ -462,6 +554,10 @@ Confirmar la finalización satisfactoria con cero elementos inalcanzables o fall
 
 3. Correr el playbook de configuración de la infraestructura:
 
+.. code-block:: text
+
+    openstack-ansible setup-infrastructure.yml
+
 Confirmar la finalización satisfactoria con cero elementos inalcanzables o fallidos:
 
 .. code-block:: text
@@ -476,7 +572,7 @@ Confirmar la finalización satisfactoria con cero elementos inalcanzables o fall
 
     ansible galera_container -m shell -a "mysql -h localhost -e 'show status like \"%wsrep_cluster_%\";'"
 
-Outpur de ejemplo:
+Output de ejemplo:
 
 .. code-block:: bash
 
@@ -511,12 +607,18 @@ El campo ``wsrep_cluster_size`` indica el número de nodos en el clúster y el c
 
 Confirmar la finalización satisfactoria con cero elementos inalcanzables o fallidos.
 
+.. Note::
+
+    Guardar el output de los comandos impresos en el terminal en un archivo, incluyendo mensajes de advertencia y errores (``2>&1``):
+
+    .. code-block:: bash
+
+        openstack-ansible setup-hosts.yml 2>&1 | tee /root/setup-hosts.log
+
 Verifying OpenStack operation
 -----------------------------
 
 Referencia: `OpenStack-Ansible Verifying OpenStack operation`_
-
-.. _OpenStack-Ansible Verifying OpenStack operation: https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/verify-operation.html
 
 Para verificar la operación básica de OpenStack API y el Dashboard, realizar las siguientes tareas en un host de infraestructura.
 
@@ -555,15 +657,144 @@ Verifying the Dashboard (horizon)
 1. Dentro de un navegador web, acceder al Dashboard usando la dirección IP del load balancer externo definido por la opción ``external_lb_vip_address`` en el archivo ``/etc/openstack_deploy/openstack_user_config.yml``. El Dashboard usa HTTPS en el puerto 443.
 2. Autenticarse usando el nombre de usuario ``admin`` y la contraseña definida por la opción ``keystone_auth_admin_password`` en el archivo ``/etc/openstack_deploy/user_secrets.yml``.
 
+
+Resumen de archivos del repositorio ``openstack-ansible/``
+----------------------------------------------------------
+
+- Archivos de configuración:
+    - Configuration for OSA core services: ``openstack-ansible/etc/openstack_deploy/openstack_user_config.yml``
+    - Optional servicie configuration: ``openstack-ansible/etc/openstack_deploy/conf.d/*``
+        - aodh.yml.aio
+        - aodh.yml.example
+        - barbican.yml.aio
+        - barbican.yml.example
+        - blazar.yml.aio
+        - ceilometer.yml.aio
+        - ceilometer.yml.example
+        - ceph.yml.aio
+        - cinder.yml.aio
+        - congress.yml.aio
+        - designate.yml.aio
+        - designate.yml.example
+        - etcd.yml.aio
+        - etcd.yml.example
+        - glance.yml.aio
+        - gnocchi.yml.aio
+        - haproxy.yml.aio
+        - haproxy.yml.example
+        - heat.yml.aio
+        - horizon.yml.aio
+        - ironic.yml.aio
+        - keystone.yml.aio
+        - magnum.yml.aio
+        - magnum.yml.example
+        - manila.yml.aio
+        - manila.yml.example
+        - masakari.yml.aio
+        - masakari.yml.example
+        - mistral.yml.aio
+        - mistral.yml.example
+        - murano.yml.aio
+        - murano.yml.example
+        - neutron.yml.aio
+        - nova.yml.aio
+        - octavia.yml.aio
+        - panko.yml.aio
+        - panko.yml.example
+        - placement.yml.aio
+        - placement.yml.example
+        - qdrouterd.yml.aio
+        - rally.yml.aio
+        - sahara.yml.aio
+        - swift-remote.yml.sample
+        - swift.yml.aio
+        - swift.yml.example
+        - tacker.yml.aio
+        - trove.yml.aio
+        - trove.yml.example
+        - unbound.yml.aio
+        - unbound.yml.example
+    - Opciones globales y de despliegues de roles específicos: ``openstack-ansible/etc/openstack_deploy/user_variables.yml``
+    - Credenciales para cada servicio: ``openstack-ansible/etc/openstack_deploy/user_secrets.yml``
+
+- Archivos de ejecución (playbooks):
+    - ``openstack-ansible/playbooks/setup-hosts.yml``
+        - import_playbook: openstack-hosts-setup.yml
+        - import_playbook: security-hardening.yml
+        - import_playbook: containers-deploy.yml
+    - ``openstack-ansible/playbooks/setup-infrastructure.yml``
+        - import_playbook: unbound-install.yml
+        - import_playbook: repo-install.yml
+        - import_playbook: haproxy-install.yml
+        - import_playbook: utility-install.yml
+        - import_playbook: memcached-install.yml
+        - import_playbook: galera-install.yml
+        - import_playbook: qdrouterd-install.yml
+        - import_playbook: rabbitmq-install.yml
+        - import_playbook: etcd-install.yml
+        - import_playbook: ceph-install.yml
+        - import_playbook: rsyslog-install.yml
+    - openstack-ansible/playbooks/setup-openstack.yml
+        - import_playbook: os-keystone-install.yml
+        - import_playbook: os-barbican-install.yml
+        - import_playbook: os-placement-install.yml
+        - import_playbook: os-glance-install.yml
+        - import_playbook: os-cinder-install.yml
+        - import_playbook: os-nova-install.yml
+        - import_playbook: os-neutron-install.yml
+        - import_playbook: os-heat-install.yml
+        - import_playbook: os-horizon-install.yml
+        - import_playbook: os-designate-install.yml
+        - import_playbook: os-gnocchi-install.yml
+        - import_playbook: os-swift-install.yml
+        - import_playbook: os-ceilometer-install.yml
+        - import_playbook: os-aodh-install.yml
+        - import_playbook: os-panko-install.yml
+        - import_playbook: os-ironic-install.yml
+        - import_playbook: os-magnum-install.yml
+        - import_playbook: os-trove-install.yml
+        - import_playbook: os-sahara-install.yml
+        - import_playbook: os-octavia-install.yml
+        - import_playbook: os-tacker-install.yml
+        - import_playbook: os-blazar-install.yml
+        - import_playbook: os-masakari-install.yml
+        - import_playbook: os-manila-install.yml
+        - import_playbook: os-mistral-install.yml
+        - import_playbook: os-murano-install.yml
+        - import_playbook: ceph-rgw-install.yml
+        - import_playbook: os-congress-install.yml
+        - import_playbook: os-tempest-install.yml
+        - import_playbook: os-rally-install.yml
+
 Referencias
 -----------
 
 - `OpenStack-Ansible Reference Guide`_
 - `OpenStack-Ansible User Guide`_
+- `OpenStack-Ansible User Guide - Network architectures`_
+- `OpenStack-Ansible User Guide - Test environment example`_
 - `OpenStack-Ansible Architecture`_
+- `OpenStack-Ansible Architecture - Container Networking`_
 - `OpenStack-Ansible - Project Update`_
 
 .. _OpenStack-Ansible Reference Guide: https://docs.openstack.org/openstack-ansible/train/reference/index.html
 .. _OpenStack-Ansible User Guide: https://docs.openstack.org/openstack-ansible/train/user/index.html
+.. _OpenStack-Ansible User Guide - Network architectures: https://docs.openstack.org/openstack-ansible/train/user/network-arch/example.html
+.. _OpenStack-Ansible User Guide - Test environment example: https://docs.openstack.org/openstack-ansible/train/user/test/example.html
 .. _OpenStack-Ansible Architecture: https://docs.openstack.org/openstack-ansible/train/reference/architecture/index.html
+.. _OpenStack-Ansible Architecture - Container networking: https://docs.openstack.org/openstack-ansible/train/reference/architecture/container-networking.html
 .. _OpenStack-Ansible - Project Update: https://www.youtube.com/watch?v=JZet1uNAr_o
+
+Flujo de instalación de OpenStack-Ansible
+
+- `OpenStack-Ansible Prepare the deployment host`_
+- `OpenStack-Ansible Prepare the target hosts`_
+- `OpenStack-Ansible Configure the deployment`_
+- `OpenStack-Ansible Run playbooks`_
+- `OpenStack-Ansible Verifying OpenStack operation`_
+
+.. _OpenStack-Ansible Prepare the deployment host: https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/deploymenthost.html
+.. _OpenStack-Ansible Prepare the target hosts: https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/targethosts.html
+.. _OpenStack-Ansible Configure the deployment: https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/configure.html
+.. _OpenStack-Ansible Run playbooks: https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/run-playbooks.html
+.. _OpenStack-Ansible Verifying OpenStack operation: https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/verify-operation.html

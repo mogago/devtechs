@@ -132,6 +132,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id2">Configure SSH keys</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#configuring-the-storage">Configuring the storage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#configuring-the-network">Configuring the network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#host-network-bridges-information">Host network bridges information</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#configure-the-deployment">Configure the deployment</a><ul>
@@ -151,6 +152,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#verifying-the-dashboard-horizon">Verifying the Dashboard (horizon)</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#resumen-de-archivos-del-repositorio-openstack-ansible">Resumen de archivos del repositorio <code class="docutils literal notranslate"><span class="pre">openstack-ansible/</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#referencias">Referencias</a></li>
 </ul>
 </li>
@@ -281,26 +283,28 @@
 <li><a class="reference internal" href="#id2" id="id11">Configure SSH keys</a></li>
 <li><a class="reference internal" href="#configuring-the-storage" id="id12">Configuring the storage</a></li>
 <li><a class="reference internal" href="#configuring-the-network" id="id13">Configuring the network</a></li>
+<li><a class="reference internal" href="#host-network-bridges-information" id="id14">Host network bridges information</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#configure-the-deployment" id="id14">Configure the deployment</a><ul>
-<li><a class="reference internal" href="#initial-environment-configuration" id="id15">Initial environment configuration</a></li>
-<li><a class="reference internal" href="#installing-additional-services" id="id16">Installing additional services</a></li>
-<li><a class="reference internal" href="#advanced-service-configuration" id="id17">Advanced service configuration</a></li>
-<li><a class="reference internal" href="#configuring-service-credentials" id="id18">Configuring service credentials</a></li>
+<li><a class="reference internal" href="#configure-the-deployment" id="id15">Configure the deployment</a><ul>
+<li><a class="reference internal" href="#initial-environment-configuration" id="id16">Initial environment configuration</a></li>
+<li><a class="reference internal" href="#installing-additional-services" id="id17">Installing additional services</a></li>
+<li><a class="reference internal" href="#advanced-service-configuration" id="id18">Advanced service configuration</a></li>
+<li><a class="reference internal" href="#configuring-service-credentials" id="id19">Configuring service credentials</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#run-playbooks" id="id19">Run playbooks</a><ul>
-<li><a class="reference internal" href="#checking-the-integrity-of-the-configuration-files" id="id20">Checking the integrity of the configuration files</a></li>
-<li><a class="reference internal" href="#run-the-playbooks-to-install-openstack" id="id21">Run the playbooks to install OpenStack</a></li>
+<li><a class="reference internal" href="#run-playbooks" id="id20">Run playbooks</a><ul>
+<li><a class="reference internal" href="#checking-the-integrity-of-the-configuration-files" id="id21">Checking the integrity of the configuration files</a></li>
+<li><a class="reference internal" href="#run-the-playbooks-to-install-openstack" id="id22">Run the playbooks to install OpenStack</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#verifying-openstack-operation" id="id22">Verifying OpenStack operation</a><ul>
-<li><a class="reference internal" href="#verify-the-api" id="id23">Verify the API</a></li>
-<li><a class="reference internal" href="#verifying-the-dashboard-horizon" id="id24">Verifying the Dashboard (horizon)</a></li>
+<li><a class="reference internal" href="#verifying-openstack-operation" id="id23">Verifying OpenStack operation</a><ul>
+<li><a class="reference internal" href="#verify-the-api" id="id24">Verify the API</a></li>
+<li><a class="reference internal" href="#verifying-the-dashboard-horizon" id="id25">Verifying the Dashboard (horizon)</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#referencias" id="id25">Referencias</a></li>
+<li><a class="reference internal" href="#resumen-de-archivos-del-repositorio-openstack-ansible" id="id26">Resumen de archivos del repositorio <code class="docutils literal notranslate"><span class="pre">openstack-ansible/</span></code></a></li>
+<li><a class="reference internal" href="#referencias" id="id27">Referencias</a></li>
 </ul>
 </li>
 </ul>
@@ -311,6 +315,7 @@
 <p>Cuando instalamos OpenStack en un entorno de producción, se recomienda usar un host de despliegue separado que contenga Ansible y orqueste la instalación OpenStack-Ansible (OSA) en los target hosts. En un entorno de prueba, se recomienda usar uno de los infrastructure target hosts como el deployment host.</p>
 <div class="section" id="configuring-the-operating-system">
 <h3><a class="toc-backref" href="#id5">Configuring the operating system</a><a class="headerlink" href="#configuring-the-operating-system" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>Configurar al menos una interfaz de red para que acceda a Internet o a repositorios locales.</p>
 <ul class="simple">
 <li>Verificar la versión de kernel actual:</li>
 </ul>
@@ -349,16 +354,16 @@ uname -mrs
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum list installed kernel
 </pre></div>
 </div>
-<ul>
-<li><p class="first">Instalar el rpm de OpenStack Train de RDO:</p>
-<blockquote>
-<div><p>yum install <a class="reference external" href="https://rdoproject.org/repos/openstack-train/rdo-release-train.rpm">https://rdoproject.org/repos/openstack-train/rdo-release-train.rpm</a></p>
-</div></blockquote>
-</li>
-<li><p class="first">Instalar paquetes de software adicionales:</p>
-</li>
+<ul class="simple">
+<li>Instalar el rpm de OpenStack Train de RDO:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install -y ntp ntpdate openssh-server python-devel sudo <span class="s1">&#39;@Development Tools&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install -y https://rdoproject.org/repos/openstack-train/rdo-release-train.rpm
+</pre></div>
+</div>
+<ul class="simple">
+<li>Instalar paquetes de software adicionales:</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install -y vim ntp ntpdate openssh-server python-devel sudo <span class="s1">&#39;@Development Tools&#39;</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -407,16 +412,13 @@ uname -mrs
 <li>Configurar NTP para que se sincronce con una fuente de tiempo correcta.</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar el programa chrony:</span>
-sudo -i
 yum install -y chrony
-
-<span class="c1"># Editar el archivo de configuración de chrony:</span>
-cat <span class="s">&lt;&lt; EOF &gt;&gt; /etc/chrony.conf</span>
-<span class="s">allow 10.1.1.0/24</span>
-<span class="s">EOF</span>
 
 <span class="c1"># Reiniciar el servicio de NTP:</span>
 systemctl restart chronyd.service
+
+<span class="c1"># Verificar sincronización de relojes</span>
+chronyc sources
 </pre></div>
 </div>
 <ul class="simple">
@@ -429,15 +431,35 @@ systemctl mask firewalld
 </div>
 <div class="section" id="configure-ssh-keys">
 <h3><a class="toc-backref" href="#id6">Configure SSH keys</a><a class="headerlink" href="#configure-ssh-keys" title="Enlazar permanentemente con este título">¶</a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-copy-id vagrant@192.168.1.111
-ssh-copy-id vagrant@192.168.1.131
-ssh-copy-id vagrant@192.168.1.141
+<p>Ansible usa SSH con autenticación de llave pública para conectar el deployment host y los target hosts. Para reducir la interacción del usuario durante las operaciones de Ansible, no incluir passphrases con key pairs. Sin embargo, si se requiere un passphrase, considerar usar los comandos <code class="docutils literal notranslate"><span class="pre">ssh-agent</span></code> y <code class="docutils literal notranslate"><span class="pre">ssh-add</span></code> para almacenar temporalmente el passphrase antes de realizar operaciones de Ansible.</p>
+<ol class="arabic simple">
+<li>Copiar los contenidos de la llave pública en el deployment host al archivo <code class="docutils literal notranslate"><span class="pre">/root/.ssh/authorized_keys</span></code> en cada target host.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-keygen -t rsa -b <span class="m">4096</span> -C <span class="s2">&quot;root@adh&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh-copy-id root@172.29.236.101
+ssh-copy-id root@172.29.236.104
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Probar la autenticación de llave pública desde el deployment host a cada target host usando SSH para conectarnos al target host desde el deployment host. Si podemos conectarnos y obtener el shell sin autenticarnos, está funcionando. SSH provee un shell sin pedirnos una contraseña.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh root@172.29.236.101 hostname
+cc
+ssh root@172.29.236.104 hostname
+cn
 </pre></div>
 </div>
 </div>
 <div class="section" id="configure-the-network">
 <h3><a class="toc-backref" href="#id7">Configure the network</a><a class="headerlink" href="#configure-the-network" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>Container management (br-mgmt network): 172.29.236.0/22 (VLAN 10)</p>
+<p>Los despliegues de Ansible fallan si el deployment server no puede usar SSH para conectase a los contenedores.</p>
+<p>Configurar el <strong>deployment host</strong> (donde es ejecutado Ansible) para que esté <strong>en la misma red capa 2 como la red designada para la administración de contenedores</strong>. Por defecto, esta es la red <code class="docutils literal notranslate"><span class="pre">br-mgmt</span></code>. Esta configuración reduce la probabilidad de falla causada por problemas de conectividad.</p>
+<p>Seleccionar una dirección IP del siguiente ejemplo de rango para asignarlo al deployment host:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Container management (br-mgmt network): 172.29.236.0/22 (VLAN 10)
+</pre></div>
+</div>
 </div>
 <div class="section" id="install-the-source-and-dependencies">
 <h3><a class="toc-backref" href="#id8">Install the source and dependencies</a><a class="headerlink" href="#install-the-source-and-dependencies" title="Enlazar permanentemente con este título">¶</a></h3>
@@ -477,15 +499,15 @@ git describe --abbrev<span class="o">=</span><span class="m">0</span> --tags
 </pre></div>
 </div>
 <ul class="simple">
-<li>Boostrap de Ansible y roles de Ansible para el entorno de desarrollo (Duración: 8:30 - 12:00 min):</li>
+<li>Boostrap de Ansible y roles de Ansible para el entorno de desarrollo (Duración: 8:00 - 12:00 min):</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scripts/bootstrap-ansible.sh
 </pre></div>
 </div>
 <ul class="simple">
-<li>Probar que se pueda ejecutar el comando openstack-ansible:</li>
+<li>Probar que se pueda ejecutar el comando openstack-ansible (debemos tener la ruta <code class="docutils literal notranslate"><span class="pre">/usr/local/bin</span></code> en nuestra variable <code class="docutils literal notranslate"><span class="pre">$PATH</span></code>):</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openstack-ansible
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>openstack-ansible --version
 </pre></div>
 </div>
 </div>
@@ -518,6 +540,7 @@ uname -mrs
 <li>Deshabilitar SELinux. Editar <code class="docutils literal notranslate"><span class="pre">/etc/sysconfig/selinux</span></code>, asegurarnos de cambiar <code class="docutils literal notranslate"><span class="pre">SELINUX=enforcing</span></code> a <code class="docutils literal notranslate"><span class="pre">SELINUX=disabled</span></code>:</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -i <span class="s1">&#39;s/SELINUX=enforcing/SELINUX=disabled/g&#39;</span> /etc/sysconfig/selinux
+sed -i <span class="s1">&#39;s/SELINUX=permissive/SELINUX=disabled/g&#39;</span> /etc/sysconfig/selinux
 </pre></div>
 </div>
 <ul class="simple">
@@ -546,7 +569,7 @@ uname -mrs
 <ul class="simple">
 <li>Instalar paquetes de software adicionales:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install bridge-utils iputils lsof lvm2 chrony openssh-server sudo tcpdump python
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum install -y bridge-utils iputils lsof lvm2 chrony openssh-server sudo tcpdump python
 </pre></div>
 </div>
 <ul class="simple">
@@ -560,16 +583,13 @@ uname -mrs
 <li>Configurar NTP en <code class="docutils literal notranslate"><span class="pre">/etc/chrony.conf</span></code> para que se sincronce con una fuente de tiempo correcta.</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instalar el programa chrony:</span>
-sudo -i
 yum install -y chrony
-
-<span class="c1"># Editar el archivo de configuración de chrony:</span>
-cat <span class="s">&lt;&lt; EOF &gt;&gt; /etc/chrony.conf</span>
-<span class="s">allow 10.1.1.0/24</span>
-<span class="s">EOF</span>
 
 <span class="c1"># Reiniciar el servicio de NTP:</span>
 systemctl restart chronyd.service
+
+<span class="c1"># Verificar sincronización de relojes</span>
+chronyc sources
 </pre></div>
 </div>
 <ul class="simple">
@@ -589,6 +609,10 @@ systemctl restart chronyd.service
 <li>Copiar los contenidos de la llave pública en el deployment host al archivo <code class="docutils literal notranslate"><span class="pre">/root/.ssh/authorized_keys</span></code> en cada target host.</li>
 <li>Probar la autenticación de llave pública desde el deployment host a cada target host usando SSH para conectarnos al target host desde el deployment host. Si podemos conectarnos y obtener el shell sin autenticarnos, está funcionando. SSH provee un shell sin pedirnos una contraseña.</li>
 </ol>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Estos pasos se han realizado en el deployment host (<a class="reference internal" href="#prepare-the-deployment-host">Prepare the deployment host</a>)</p>
+</div>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
 <p class="last">Los depliegues OpenStack-Ansible requieren la presencia de un archivo <code class="docutils literal notranslate"><span class="pre">/root/.ssh/id_rsa.pub</span></code> en el deployment host. Los contenidos de este archivo se insertan en un archivo <code class="docutils literal notranslate"><span class="pre">authorized_keys</span></code> para los contenedores, lo cual es un paso necesario para los Ansible playbooks. Podemos sobreescribir este comportamiento configurando la variable <code class="docutils literal notranslate"><span class="pre">lxc_container_ssh_key</span></code> con la llave pública para el contenedor.</p>
@@ -614,11 +638,109 @@ vgcreate cinder-volumes physical_volume_device_path
 </div>
 <div class="section" id="configuring-the-network">
 <h3><a class="toc-backref" href="#id13">Configuring the network</a><a class="headerlink" href="#configuring-the-network" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>OpenStack-Ansible usa bridges para conectar interfaces de red físicas y lógicas en el host a interfaces de red virtuales dentro de contenedores. Los target hosts deben ser configurados con los siguientes network bridges:</p>
+<p>OpenStack-Ansible usa <strong>bridges</strong> para conectar <strong>interfaces de red físicas y lógicas</strong> en el <strong>host</strong> a <strong>interfaces de red virtuales</strong> dentro de <strong>contenedores</strong>. Los target hosts deben ser configurados con los siguientes network bridges:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="28%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Nombre del Bridge</td>
+<td>Mejor configurado en</td>
+<td>Con IP estática</td>
+</tr>
+<tr class="row-even"><td>br-mgmt</td>
+<td>En cada nodo</td>
+<td>Siempre</td>
+</tr>
+<tr class="row-odd"><td>br-storage</td>
+<td>En cada nodo de storage</td>
+<td>Cuando el componente se despliega en metal</td>
+</tr>
+<tr class="row-even"><td>br-storage</td>
+<td>En cada nodo de compute</td>
+<td>Siempre</td>
+</tr>
+<tr class="row-odd"><td>br-vxlan</td>
+<td>En cada nodo de network</td>
+<td>Cuando el componente se despliega en metal</td>
+</tr>
+<tr class="row-even"><td>br-vxlan</td>
+<td>En cada nodo de compute</td>
+<td>Siempre</td>
+</tr>
+<tr class="row-odd"><td>br-vlan</td>
+<td>En cada nodo de network</td>
+<td>Nunca</td>
+</tr>
+<tr class="row-even"><td>br-vlan</td>
+<td>En cada nodo de compute</td>
+<td>Nunca</td>
+</tr>
+</tbody>
+</table>
+<p>Para una referencia detallada sobre cómo implementar el host y container networking, ir a <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/architecture/container-networking.html">OpenStack-Ansible Architecture - Container networking</a></p>
+<p>Para ejemplos de casos de uso, ir a <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/user/index.html">OpenStack-Ansible User Guide</a></p>
+</div>
+<div class="section" id="host-network-bridges-information">
+<h3><a class="toc-backref" href="#id14">Host network bridges information</a><a class="headerlink" href="#host-network-bridges-information" title="Enlazar permanentemente con este título">¶</a></h3>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>LXC internal <code class="docutils literal notranslate"><span class="pre">lxcbr0</span></code></dt>
+<dd><ul class="first last">
+<li>El bridge <code class="docutils literal notranslate"><span class="pre">lxcbr0</span></code> es requerido para LXC, pero OpenStack-Ansible lo configura automáticamente. Provee conectividad externa (generalmente Internet) a los contenedores con dnsmasq (DHCP/DNS) + NAT.</li>
+<li>Este bridge no se conecta directamente a ninguna interfaz física o lógica en el host, pues iptables maneja la conectividad. El bridge se conecta a <code class="docutils literal notranslate"><span class="pre">eth0</span></code> en cada contenedor.</li>
+<li>La red de contenedor a la que el bridge se conecta es configurable en el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code> en el diccionario <code class="docutils literal notranslate"><span class="pre">provider_networks</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Container management: <code class="docutils literal notranslate"><span class="pre">br-mgmt</span></code></dt>
+<dd><ul class="first last">
+<li>El <code class="docutils literal notranslate"><span class="pre">br-mgmt</span></code> provee administración y comunicación entre la infraestructura y servicios de OpenStack.</li>
+<li>El bridge se conecta a una interfaz física o lógica, generalmente una subinterfaz VLAN <code class="docutils literal notranslate"><span class="pre">bond0</span></code>. También se conecta a <code class="docutils literal notranslate"><span class="pre">eth1</span></code> en cada contenedor.</li>
+<li>La interfaz de red del contenedor a la que se conecta el bridge es configurable en el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Storage: <code class="docutils literal notranslate"><span class="pre">br-storage</span></code></dt>
+<dd><ul class="first last">
+<li>El bridge <code class="docutils literal notranslate"><span class="pre">br-storage</span></code> provee acceso segregado a dispositivos Block Storage entre servicios servicios de OpenStack y dispositivos Block Storage.</li>
+<li>El bridge se conecta a una interfaz física o lógica, generalmente una subinterfaz VLAN <code class="docutils literal notranslate"><span class="pre">bond0</span></code>. También se conecta a <code class="docutils literal notranslate"><span class="pre">eth2</span></code> en cada contenedor asociado.</li>
+<li>La interfaz de red del contenedor a la que se conecta el bridge es configurable en el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>OpenStack Networking tunnel: <code class="docutils literal notranslate"><span class="pre">br-vxlan</span></code></dt>
+<dd><ul class="first last">
+<li>El bridge <code class="docutils literal notranslate"><span class="pre">br-vxlan</span></code> es <strong>requerido si</strong> el entorno es configurado para que permita a proyectos crear redes virtuales usando VXLAN. Provee la interfaz para <strong>redes de túneles virtuales (VXLAN)</strong>.</li>
+<li>El bridge se conecta a una interfaz física o lógica, generalmente una subinterfaz VLAN <code class="docutils literal notranslate"><span class="pre">bond1</span></code>. También se conecta a <code class="docutils literal notranslate"><span class="pre">eth10</span></code> en cada contenedor asociado.</li>
+<li>La interfaz de red del contenedor a la que se conecta el bridge es configurable en el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>OpenStack Networking provider: <code class="docutils literal notranslate"><span class="pre">br-vlan</span></code></dt>
+<dd><ul class="first last">
+<li>El bridge <code class="docutils literal notranslate"><span class="pre">br-vlan</span></code> provee infraestructura para <strong>redes VLAN tagged</strong> o <strong>flat (sin VLANT tag)</strong>.</li>
+<li>El bridge se conecta a una interfaz física o lógica, generalmente una subinterfaz VLAN <code class="docutils literal notranslate"><span class="pre">bond1</span></code>. Se conecta a <code class="docutils literal notranslate"><span class="pre">eth11</span></code> para redes tipo VLAN en cada contenedor asociado. No se le asigna una dirección IP porque maneja solo conectividad capa 2.</li>
+<li>La interfaz de red del contenedor a la que se conecta el bridge es configurable en el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code>.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
 </div>
 </div>
 <div class="section" id="configure-the-deployment">
-<h2><a class="toc-backref" href="#id14">Configure the deployment</a><a class="headerlink" href="#configure-the-deployment" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id15">Configure the deployment</a><a class="headerlink" href="#configure-the-deployment" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Referencia: <a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/configure.html">OpenStack-Ansible Configure the deployment</a></p>
 <p>Ansible referencia algunos archivos que contienen directivas de configuración obligatorias y opcionales. Antes de poder correr los Ansible playbooks, modificar estos archivos para definir el entorno del target. Algunas tareas de configuración incluyen:</p>
 <ul class="simple">
@@ -628,36 +750,57 @@ vgcreate cinder-volumes physical_volume_device_path
 <li>Contraseñas para todos los servicios.</li>
 </ul>
 <div class="section" id="initial-environment-configuration">
-<h3><a class="toc-backref" href="#id15">Initial environment configuration</a><a class="headerlink" href="#initial-environment-configuration" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id16">Initial environment configuration</a><a class="headerlink" href="#initial-environment-configuration" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>OpenStack-Ansible (OSA) depende de varios archivos que son usados para contruir un inventario para Ansible. Realizar la siguiente configuración en el deployment host:</p>
 <ol class="arabic simple">
 <li>Copiar los contenidos del directorio <code class="docutils literal notranslate"><span class="pre">/opt/openstack-ansible/etc/openstack_deploy</span></code> al directorio <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy</span></code>.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp -R /opt/openstack-ansible/etc/openstack_deploy /etc
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
 <li>Movernos al directorio <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy</span></code>.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /etc/openstack_deploy
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
 <li>Copiar el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml.example</span></code> a <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code>.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp openstack_user_config.yml.example /etc/openstack_deploy/openstack_user_config.yml
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
 <li>Revisar el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code> y realizar cambios al despliegue de nuestro entorno OpenStack.</li>
 </ol>
-<div class="admonition note">
-<p class="first admonition-title">Nota</p>
-<p class="last">Este archivo está muy comentao con detalles sobre las diversas opciones. Ver <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/user/index.html">OpenStack-Ansible User Guide</a> y <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/index.html">OpenStack-Ansible Reference Guide</a> para más detalles.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vim openstack_user_config.yml
+</pre></div>
 </div>
-<ol class="arabic simple" start="5">
-<li>Revisar el archivo <code class="docutils literal notranslate"><span class="pre">user_variables.yml</span></code> para configurar opciones globales y de despliegues de roles específicos. El archivo contiene algunas variables de ejemplos y comentario pero podemos obtener la lista completa de variables en cada documentación específica del rol.</li>
-</ol>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
-<p class="last">Una variable importante es <code class="docutils literal notranslate"><span class="pre">install_method</span></code>, la cual configura el método de instalación para los servicios de OpenStack. Los servicios pueden ser desplegados desde la fuente (por defecto) o de paquetes de distribución. Los despliegues basados en la fuente son más cercanos a instalaciones de OpenStack vanilla y permiten más cambios y personalizaciones. Del otro lado, despliegues basados en distros generalmente proveen una combinación de paquetes que han sido verificados por las mismas distribuciones. Sin embargos, esto significa que las actualizaciones son lanzadas con menos frecuencia y con retrasos potenciales. Aun más, este método puede ofrecernos menos oportunidades para personalizaciones de despliegues. La variable <code class="docutils literal notranslate"><span class="pre">install_method</span></code> es configurada durante el despliegue inicial y no podremos cambiarla, pues OpenStack-Ansible no puede convertirse de un método de instalación a otro. Como tal, es importante juzgar nuestras necesidades con los pros y contras de cada método antes de tomar una decisión. Notar que el método de instalación <code class="docutils literal notranslate"><span class="pre">distro</span></code> fue introducido en el ciclo Rocky, y como resutado, Ubuntu 16.04 no es soportado debido al hecho de que no hay paquetes de Rocky para este.</p>
+<p class="last">Este archivo está muy comentado con detalles sobre las diversas opciones. Ver <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/user/index.html">OpenStack-Ansible User Guide</a> y <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/index.html">OpenStack-Ansible Reference Guide</a> para más detalles.</p>
 </div>
 <p>La configuración en el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code> define qué hosts corren los contenedores y servicios desplegados por OpenStack-Ansible. Por ejemplo, los hosts listados en la sección <code class="docutils literal notranslate"><span class="pre">shared-infra_hosts</span></code> corren contenedores para muchos de los servicios compartidos que nuestro entorno OpenStack requiere. Algunos de estos servicios incluyen bases de datos, Memcached, y RabbitMQ. Muchos otros tipos de hosts contiene otros tipos de contenedores, y todos estos son listados en el archivo <code class="docutils literal notranslate"><span class="pre">openstack_user_config.yml</span></code>.</p>
 <p>Algunos servicios, como glance, heat, horizon, nova-infra, no son listados individualmente en el archivo de ejemplo al estar contenidos en los hosts de os-infra. Podemos especificar image-hosts o dashboard-hosts si queremos escalar de una manera específica.</p>
 <p>Para ejemplos, ver <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/user/index.html">OpenStack-Ansible User Guide</a>.</p>
 <p>Para detalles sobre cómo es generado el inventario, de la configuración de entorno y la precendencia de variable, ver <a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/index.html">OpenStack-Ansible Reference Guide</a>, en la seccion de inventario.</p>
+<ol class="arabic simple" start="5">
+<li>Revisar el archivo <code class="docutils literal notranslate"><span class="pre">user_variables.yml</span></code> para configurar opciones globales y de despliegues de roles específicos. El archivo contiene algunas variables de ejemplos y comentario pero podemos obtener la lista completa de variables en cada documentación específica del rol.</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vim user_variables.yml
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p class="last">Una variable importante es <code class="docutils literal notranslate"><span class="pre">install_method</span></code>, la cual configura el método de instalación para los servicios de OpenStack. Los servicios pueden ser desplegados desde la fuente (por defecto) o de paquetes de distribución. Los despliegues basados en la fuente son más cercanos a instalaciones de OpenStack vanilla y permiten más cambios y personalizaciones. Del otro lado, despliegues basados en distros generalmente proveen una combinación de paquetes que han sido verificados por las mismas distribuciones. Sin embargos, esto significa que las actualizaciones son lanzadas con menos frecuencia y con retrasos potenciales. Aun más, este método puede ofrecernos menos oportunidades para personalizaciones de despliegues. La variable <code class="docutils literal notranslate"><span class="pre">install_method</span></code> es configurada durante el despliegue inicial y no podremos cambiarla, pues OpenStack-Ansible no puede convertirse de un método de instalación a otro. Como tal, es importante juzgar nuestras necesidades con los pros y contras de cada método antes de tomar una decisión. Notar que el método de instalación <code class="docutils literal notranslate"><span class="pre">distro</span></code> fue introducido en el ciclo Rocky, y como resutado, Ubuntu 16.04 no es soportado debido al hecho de que no hay paquetes de Rocky para este.</p>
+</div>
 </div>
 <div class="section" id="installing-additional-services">
-<h3><a class="toc-backref" href="#id16">Installing additional services</a><a class="headerlink" href="#installing-additional-services" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id17">Installing additional services</a><a class="headerlink" href="#installing-additional-services" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Para instalar servicios adicionales, los archivos en <code class="docutils literal notranslate"><span class="pre">etc/openstack_deploy/conf.d</span></code> proveen ejemplos mostrando los host groups correctos para usar. Para añadir otro servicio: añadir el host group, asignarle hosts y luego ejecutar los playbooks.</p>
 </div>
 <div class="section" id="advanced-service-configuration">
-<h3><a class="toc-backref" href="#id17">Advanced service configuration</a><a class="headerlink" href="#advanced-service-configuration" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id18">Advanced service configuration</a><a class="headerlink" href="#advanced-service-configuration" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>OpenStack-Ansible tiene muchas opciones que podemos usar para la configuración avanzada de servicios. Cada documentación de rol provee información sobre las opciones disponibles.</p>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
@@ -665,8 +808,11 @@ vgcreate cinder-volumes physical_volume_device_path
 </div>
 </div>
 <div class="section" id="configuring-service-credentials">
-<h3><a class="toc-backref" href="#id18">Configuring service credentials</a><a class="headerlink" href="#configuring-service-credentials" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id19">Configuring service credentials</a><a class="headerlink" href="#configuring-service-credentials" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Configurar credenciales para cada servicio en el archivo <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy/user_secrets.yml</span></code>. Considerar usar el feature Ansible Vault para incrementar la seguridad encriptando archivos que contengan credenciales.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vi user_secrets.yml
+</pre></div>
+</div>
 <p>Ajustar permisos en estos archivos para restringir acceso por usuario no-privilegiados.</p>
 <p>La opción <code class="docutils literal notranslate"><span class="pre">keystone_auth_admin_password</span></code> configura la contraseña tenant <code class="docutils literal notranslate"><span class="pre">admin</span></code> tanto para el acceso OpenStack API y Dashboard.</p>
 <p>Se recomienda usar el script <code class="docutils literal notranslate"><span class="pre">pw-token-gen.py</span></code> para generar valores aleatorios para las variables en cada archivo que contiene credenciales de servicio:</p>
@@ -682,7 +828,7 @@ vgcreate cinder-volumes physical_volume_device_path
 </div>
 </div>
 <div class="section" id="run-playbooks">
-<h2><a class="toc-backref" href="#id19">Run playbooks</a><a class="headerlink" href="#run-playbooks" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id20">Run playbooks</a><a class="headerlink" href="#run-playbooks" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Referencia: <a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/run-playbooks.html">OpenStack-Ansible Run playbooks</a></p>
 <p>Los procesos de instalación requieren correr 3 playbooks:</p>
 <ul class="simple">
@@ -691,7 +837,7 @@ vgcreate cinder-volumes physical_volume_device_path
 <li>El playbook de OpenStack <code class="docutils literal notranslate"><span class="pre">setup-openstack.yml</span></code> instala servicios de OpenStack, incluyendo Identity (keystone), Image (glance), Block Storage (cinder), Compute (nova), Networking (neutron), etc.</li>
 </ul>
 <div class="section" id="checking-the-integrity-of-the-configuration-files">
-<h3><a class="toc-backref" href="#id20">Checking the integrity of the configuration files</a><a class="headerlink" href="#checking-the-integrity-of-the-configuration-files" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id21">Checking the integrity of the configuration files</a><a class="headerlink" href="#checking-the-integrity-of-the-configuration-files" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>Antes de correr cualquier playbook, revisar la integridad de los archivos de configuración.</p>
 <ol class="arabic simple">
 <li>Asegurar que todos los archivos editados en el directorio <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy</span></code> son compatibles con Ansible YAML.</li>
@@ -712,7 +858,7 @@ vgcreate cinder-volumes physical_volume_device_path
 </ol>
 </div>
 <div class="section" id="run-the-playbooks-to-install-openstack">
-<h3><a class="toc-backref" href="#id21">Run the playbooks to install OpenStack</a><a class="headerlink" href="#run-the-playbooks-to-install-openstack" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id22">Run the playbooks to install OpenStack</a><a class="headerlink" href="#run-the-playbooks-to-install-openstack" title="Enlazar permanentemente con este título">¶</a></h3>
 <ol class="arabic simple">
 <li>Movernos al directorio <code class="docutils literal notranslate"><span class="pre">/opt/openstack-ansible/playbooks</span></code>.</li>
 <li>Correr el playbook de configuración del host:</li>
@@ -729,6 +875,9 @@ deployment_host                :  ok=18   changed=11   unreachable=0    failed=0
 <ol class="arabic simple" start="3">
 <li>Correr el playbook de configuración de la infraestructura:</li>
 </ol>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>openstack-ansible setup-infrastructure.yml
+</pre></div>
+</div>
 <p>Confirmar la finalización satisfactoria con cero elementos inalcanzables o fallidos:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>PLAY RECAP ********************************************************************
 ...
@@ -741,7 +890,7 @@ deployment_host                : ok=27   changed=0    unreachable=0    failed=0
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ansible galera_container -m shell -a <span class="s2">&quot;mysql -h localhost -e &#39;show status like \&quot;%wsrep_cluster_%\&quot;;&#39;&quot;</span>
 </pre></div>
 </div>
-<p>Outpur de ejemplo:</p>
+<p>Output de ejemplo:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>node3_galera_container-3ea2cbd3 <span class="p">|</span> success <span class="p">|</span> <span class="nv">rc</span><span class="o">=</span><span class="m">0</span> &gt;&gt;
 Variable_name             Value
 wsrep_cluster_conf_id     <span class="m">17</span>
@@ -772,14 +921,21 @@ wsrep_cluster_status      Primary
 </pre></div>
 </div>
 <p>Confirmar la finalización satisfactoria con cero elementos inalcanzables o fallidos.</p>
+<div class="admonition note">
+<p class="first admonition-title">Nota</p>
+<p>Guardar el output de los comandos impresos en el terminal en un archivo, incluyendo mensajes de advertencia y errores (<code class="docutils literal notranslate"><span class="pre">2&gt;&amp;1</span></code>):</p>
+<div class="last highlight-bash notranslate"><div class="highlight"><pre><span></span>openstack-ansible setup-hosts.yml <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span> <span class="p">|</span> tee /root/setup-hosts.log
+</pre></div>
+</div>
+</div>
 </div>
 </div>
 <div class="section" id="verifying-openstack-operation">
-<h2><a class="toc-backref" href="#id22">Verifying OpenStack operation</a><a class="headerlink" href="#verifying-openstack-operation" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id23">Verifying OpenStack operation</a><a class="headerlink" href="#verifying-openstack-operation" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Referencia: <a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/verify-operation.html">OpenStack-Ansible Verifying OpenStack operation</a></p>
 <p>Para verificar la operación básica de OpenStack API y el Dashboard, realizar las siguientes tareas en un host de infraestructura.</p>
 <div class="section" id="verify-the-api">
-<h3><a class="toc-backref" href="#id23">Verify the API</a><a class="headerlink" href="#verify-the-api" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id24">Verify the API</a><a class="headerlink" href="#verify-the-api" title="Enlazar permanentemente con este título">¶</a></h3>
 <p>El <strong>utility container</strong> provee un entorno CLI para configuraciones adicionales y pruebas.</p>
 <ol class="arabic simple">
 <li>Determinar el nombre del utility container:</li>
@@ -807,20 +963,175 @@ wsrep_cluster_status      Primary
 </div>
 </div>
 <div class="section" id="verifying-the-dashboard-horizon">
-<h3><a class="toc-backref" href="#id24">Verifying the Dashboard (horizon)</a><a class="headerlink" href="#verifying-the-dashboard-horizon" title="Enlazar permanentemente con este título">¶</a></h3>
+<h3><a class="toc-backref" href="#id25">Verifying the Dashboard (horizon)</a><a class="headerlink" href="#verifying-the-dashboard-horizon" title="Enlazar permanentemente con este título">¶</a></h3>
 <ol class="arabic simple">
 <li>Dentro de un navegador web, acceder al Dashboard usando la dirección IP del load balancer externo definido por la opción <code class="docutils literal notranslate"><span class="pre">external_lb_vip_address</span></code> en el archivo <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy/openstack_user_config.yml</span></code>. El Dashboard usa HTTPS en el puerto 443.</li>
 <li>Autenticarse usando el nombre de usuario <code class="docutils literal notranslate"><span class="pre">admin</span></code> y la contraseña definida por la opción <code class="docutils literal notranslate"><span class="pre">keystone_auth_admin_password</span></code> en el archivo <code class="docutils literal notranslate"><span class="pre">/etc/openstack_deploy/user_secrets.yml</span></code>.</li>
 </ol>
 </div>
 </div>
+<div class="section" id="resumen-de-archivos-del-repositorio-openstack-ansible">
+<h2><a class="toc-backref" href="#id26">Resumen de archivos del repositorio <code class="docutils literal notranslate"><span class="pre">openstack-ansible/</span></code></a><a class="headerlink" href="#resumen-de-archivos-del-repositorio-openstack-ansible" title="Enlazar permanentemente con este título">¶</a></h2>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Archivos de configuración:</dt>
+<dd><ul class="first last">
+<li>Configuration for OSA core services: <code class="docutils literal notranslate"><span class="pre">openstack-ansible/etc/openstack_deploy/openstack_user_config.yml</span></code></li>
+<li><dl class="first docutils">
+<dt>Optional servicie configuration: <code class="docutils literal notranslate"><span class="pre">openstack-ansible/etc/openstack_deploy/conf.d/*</span></code></dt>
+<dd><ul class="first last">
+<li>aodh.yml.aio</li>
+<li>aodh.yml.example</li>
+<li>barbican.yml.aio</li>
+<li>barbican.yml.example</li>
+<li>blazar.yml.aio</li>
+<li>ceilometer.yml.aio</li>
+<li>ceilometer.yml.example</li>
+<li>ceph.yml.aio</li>
+<li>cinder.yml.aio</li>
+<li>congress.yml.aio</li>
+<li>designate.yml.aio</li>
+<li>designate.yml.example</li>
+<li>etcd.yml.aio</li>
+<li>etcd.yml.example</li>
+<li>glance.yml.aio</li>
+<li>gnocchi.yml.aio</li>
+<li>haproxy.yml.aio</li>
+<li>haproxy.yml.example</li>
+<li>heat.yml.aio</li>
+<li>horizon.yml.aio</li>
+<li>ironic.yml.aio</li>
+<li>keystone.yml.aio</li>
+<li>magnum.yml.aio</li>
+<li>magnum.yml.example</li>
+<li>manila.yml.aio</li>
+<li>manila.yml.example</li>
+<li>masakari.yml.aio</li>
+<li>masakari.yml.example</li>
+<li>mistral.yml.aio</li>
+<li>mistral.yml.example</li>
+<li>murano.yml.aio</li>
+<li>murano.yml.example</li>
+<li>neutron.yml.aio</li>
+<li>nova.yml.aio</li>
+<li>octavia.yml.aio</li>
+<li>panko.yml.aio</li>
+<li>panko.yml.example</li>
+<li>placement.yml.aio</li>
+<li>placement.yml.example</li>
+<li>qdrouterd.yml.aio</li>
+<li>rally.yml.aio</li>
+<li>sahara.yml.aio</li>
+<li>swift-remote.yml.sample</li>
+<li>swift.yml.aio</li>
+<li>swift.yml.example</li>
+<li>tacker.yml.aio</li>
+<li>trove.yml.aio</li>
+<li>trove.yml.example</li>
+<li>unbound.yml.aio</li>
+<li>unbound.yml.example</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Opciones globales y de despliegues de roles específicos: <code class="docutils literal notranslate"><span class="pre">openstack-ansible/etc/openstack_deploy/user_variables.yml</span></code></li>
+<li>Credenciales para cada servicio: <code class="docutils literal notranslate"><span class="pre">openstack-ansible/etc/openstack_deploy/user_secrets.yml</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Archivos de ejecución (playbooks):</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">openstack-ansible/playbooks/setup-hosts.yml</span></code></dt>
+<dd><ul class="first last">
+<li>import_playbook: openstack-hosts-setup.yml</li>
+<li>import_playbook: security-hardening.yml</li>
+<li>import_playbook: containers-deploy.yml</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal notranslate"><span class="pre">openstack-ansible/playbooks/setup-infrastructure.yml</span></code></dt>
+<dd><ul class="first last">
+<li>import_playbook: unbound-install.yml</li>
+<li>import_playbook: repo-install.yml</li>
+<li>import_playbook: haproxy-install.yml</li>
+<li>import_playbook: utility-install.yml</li>
+<li>import_playbook: memcached-install.yml</li>
+<li>import_playbook: galera-install.yml</li>
+<li>import_playbook: qdrouterd-install.yml</li>
+<li>import_playbook: rabbitmq-install.yml</li>
+<li>import_playbook: etcd-install.yml</li>
+<li>import_playbook: ceph-install.yml</li>
+<li>import_playbook: rsyslog-install.yml</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>openstack-ansible/playbooks/setup-openstack.yml</dt>
+<dd><ul class="first last">
+<li>import_playbook: os-keystone-install.yml</li>
+<li>import_playbook: os-barbican-install.yml</li>
+<li>import_playbook: os-placement-install.yml</li>
+<li>import_playbook: os-glance-install.yml</li>
+<li>import_playbook: os-cinder-install.yml</li>
+<li>import_playbook: os-nova-install.yml</li>
+<li>import_playbook: os-neutron-install.yml</li>
+<li>import_playbook: os-heat-install.yml</li>
+<li>import_playbook: os-horizon-install.yml</li>
+<li>import_playbook: os-designate-install.yml</li>
+<li>import_playbook: os-gnocchi-install.yml</li>
+<li>import_playbook: os-swift-install.yml</li>
+<li>import_playbook: os-ceilometer-install.yml</li>
+<li>import_playbook: os-aodh-install.yml</li>
+<li>import_playbook: os-panko-install.yml</li>
+<li>import_playbook: os-ironic-install.yml</li>
+<li>import_playbook: os-magnum-install.yml</li>
+<li>import_playbook: os-trove-install.yml</li>
+<li>import_playbook: os-sahara-install.yml</li>
+<li>import_playbook: os-octavia-install.yml</li>
+<li>import_playbook: os-tacker-install.yml</li>
+<li>import_playbook: os-blazar-install.yml</li>
+<li>import_playbook: os-masakari-install.yml</li>
+<li>import_playbook: os-manila-install.yml</li>
+<li>import_playbook: os-mistral-install.yml</li>
+<li>import_playbook: os-murano-install.yml</li>
+<li>import_playbook: ceph-rgw-install.yml</li>
+<li>import_playbook: os-congress-install.yml</li>
+<li>import_playbook: os-tempest-install.yml</li>
+<li>import_playbook: os-rally-install.yml</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
 <div class="section" id="referencias">
-<h2><a class="toc-backref" href="#id25">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id27">Referencias</a><a class="headerlink" href="#referencias" title="Enlazar permanentemente con este título">¶</a></h2>
 <ul class="simple">
 <li><a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/index.html">OpenStack-Ansible Reference Guide</a></li>
 <li><a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/user/index.html">OpenStack-Ansible User Guide</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/user/network-arch/example.html">OpenStack-Ansible User Guide - Network architectures</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/user/test/example.html">OpenStack-Ansible User Guide - Test environment example</a></li>
 <li><a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/architecture/index.html">OpenStack-Ansible Architecture</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/openstack-ansible/train/reference/architecture/container-networking.html">OpenStack-Ansible Architecture - Container Networking</a></li>
 <li><a class="reference external" href="https://www.youtube.com/watch?v=JZet1uNAr_o">OpenStack-Ansible - Project Update</a></li>
+</ul>
+<p>Flujo de instalación de OpenStack-Ansible</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/deploymenthost.html">OpenStack-Ansible Prepare the deployment host</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/targethosts.html">OpenStack-Ansible Prepare the target hosts</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/configure.html">OpenStack-Ansible Configure the deployment</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/run-playbooks.html">OpenStack-Ansible Run playbooks</a></li>
+<li><a class="reference external" href="https://docs.openstack.org/project-deploy-guide/openstack-ansible/train/verify-operation.html">OpenStack-Ansible Verifying OpenStack operation</a></li>
 </ul>
 </div>
 </div>
