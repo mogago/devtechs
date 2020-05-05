@@ -1,3 +1,5 @@
+.. _virtualdisk:
+
 Creando un disco virtual
 ========================
 
