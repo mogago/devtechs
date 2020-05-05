@@ -133,6 +133,10 @@ Referencia: `Editing boot options`_
 
     Centos 7 VM - Cargará una página con el mensaje ``boot:``
 
+.. Important::
+
+    Pasar el archivo Kickstart por el prompt de ``boot:`` es una forma equivalente a editar las opciones de arranque del instalador definidas en sus respectivos archivos. Para pasar un archivo Kickstart en el prompt de ``boot:`` escribiríamos ``linux ks=...``. En el archivo de instalación de un sistema **Legacy** usaríamos ``ks=...`` y en un sistema **UEFI** usaríamos ``inst.ks=...``
+
 Formas de pasar el archivo kickstart
 ------------------------------------
 
@@ -150,6 +154,10 @@ Referencia 2: `Fuentes de archivo kickstart`_
 
 Archivo Kickstart pasado por HTTP
 '''''''''''''''''''''''''''''''''
+
+.. Note::
+
+    Este método es recomendable usarlo cuando el servidor al cual vamos a instalar el sistema operativo tiene un servidor DHCP con una configuración para salir a Internet. Esto, con el fin de obtener el archivo Kickstart de forma remota.
 
 En este método obtenemos el archivo kickstart de un servidor a través de HTTP. Para esto, pasamos la URL de la página que tiene el archivo kickstart como en el siguiente ejemplo:
 
@@ -195,6 +203,10 @@ Ya que en esta página solo obtenemos el archivo Kickstart en texto plano, podre
 
 Archivo Kickstart pasado por el mismo ISO de instalación (custom ISO image)
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
+.. Note::
+
+    Este método es recomendable usarlo cuando queremos tener un medio de instalación con el archivo de Kickstart pre-cargado. Tenemos la opción de almacenar múltiples archivos Kickstart dentro de archivo ISO.
 
 En este método obtendremos el archivo kickstart del mismo archivo ISO usado para obtener el medio de instalación (kernel, repos, etc.). Para lograr, esto deberemos modificar un imagen ISO oficial, agregarle nuestro archivo kickstart y volver a generar una imagen ISO modficada (también llamada **custom ISO image**). A este método de volver a generar una imagen ISO con ciertas modificaciones personalizadas se le llama **Repackaging de un Linux Install ISO**.
 
@@ -256,7 +268,7 @@ Para esto, primero crearemos nuestra imagen ISO personalizada a través de los s
     # part / --fstype="ext4" --grow --ondisk=sda --size=1
     # timezone America/Lima
     # reboot
-    # 
+
     # %packages
     # %end
 
@@ -324,9 +336,15 @@ Al momento de arrancar el medio de instalación, si no hemos usado el paso 9 par
 Archivo Kickstart pasado por imagen de disco
 ''''''''''''''''''''''''''''''''''''''''''''
 
-En este método obtendremos el archivo kickstart mediante una imagen de disco. Para el caso de VirtualBox usaremos almacenaremos el archivo Kickstart en una images de disco tipo ``vdi``. Sin embargo, en servidores físicas podemos usar imágenes con formato raw (``.img``). Para crear una imagen con este contenido debemos seguir los siguientes pasos:
+.. Note::
 
-1. Siguiendo la guía `Creando un disco virtual`_:
+    Este método es recomendable usarlo cuando tenemos un disco duro o USB con el archivo Kickstart que podamos conectar al servidor donde instalaremos el sistema operativo (o un Virtual Hard Disk en una VM). Además, lo podemos usar si no deseamos modificar la imagen ISO con el medio de instalación, a diferencia del método por ``cdrom``.
+
+En este método obtendremos el archivo kickstart mediante una imagen de disco. Para el caso de VirtualBox usaremos almacenaremos el archivo Kickstart en una images de disco tipo ``vdi``. Sin embargo, en servidores físicas podemos usar imágenes con formato raw (``.img``).
+
+Siguiendo la guía :ref:`virtualdisk`:, usaremos las herramientas ``dd``, ``mkfs`` y ``mount`` para crear nuestro **disco virtual** (Virtual Hard Disk o VHD) y agregarle el contenido deseado. Luego lo desmontaremos con ``umount`` y lo converterimos de ``raw`` a ``vdi`` usado ``qemu-img``.
+
+1. Crear una imagen que contenga el volumen virtual con ``dd``:
 
 .. code-block:: bash
 
@@ -336,6 +354,8 @@ En este método obtendremos el archivo kickstart mediante una imagen de disco. P
         1+0 records in
         1+0 records out
         104857600 bytes (105 MB, 100 MiB) copied, 0,0962088 s, 1,1 GB/s
+
+2. Formatear el archivo de la imagen VHD con ``mkfs``, por ejemplo con ``ext4``:
 
 .. code-block:: bash
 
@@ -353,66 +373,146 @@ En este método obtendremos el archivo kickstart mediante una imagen de disco. P
         Creating journal (4096 blocks): done
         Writing superblocks and filesystem accounting information: done
 
+3. Crear un directorio y montar nuestra imagen de disco formateada:
+
 .. code-block:: bash
 
     mkdir /mnt/vhd
-
-.. code-block:: bash
-
     mount -t auto -o loop /media/disk1.img /mnt/vhd/
 
-Revisar qué loop tiene el punto de montado
+4. Revisar qué loop tiene el punto de montado
 
 .. code-block:: bash
 
-    lsblsk | grep /mnt/vhd
+    lsblk | grep /mnt/vhd
 
         loop12   7:12   0   100M  0 loop /mnt/vhd
+
+5. Asignar un LABEL a nuestra imagen de disco:
 
 .. code-block:: bash
 
     e2label /dev/loop12 USBKS
 
+Para comprobar que tiene el label asignado:
+
 .. code-block:: bash
 
-    lsblk -o name,mountpoint,label,size,uuid
+    lsblk -o name,mountpoint,label,size,uuid,type
+
+6. Copiar el archivo Kickstart al directorio donde está montado el disco:
 
 .. code-block:: bash
 
     cp /path/to/ks1.cfg /mnt/vhd/ks1.cfg
 
+7. Desmontar el disco:
+
 .. code-block:: bash
 
     umount /mnt/vhd
 
-.. code-block:: bash
-
-    qemu-img convert -f raw -O vdi /media/disk1.img /home/gabriel/Downloads/disk1.vdi
-    chown gabriel:gabriel /home/gabriel/Downloads/disk1.vdi
+9. Para VirtualBox, usando ``qemu-img`` convertiremos la imagen de raw (``.img``) a ``VDI`` (formato especial para imágenes de discos de VirtualBox). Además cambiar de dueño y grupo del archivo para que VirtualBox pueda acceder:
 
 .. code-block:: bash
 
-    virt-filesystems -a /home/gabriel/Downloads/disk1.vdi --all --long --uuid -h
+    qemu-img convert -f raw -O vdi /media/disk1.img /home/mogago/Downloads/disk1.vdi
+
+    chown mogago:mogago /home/mogago/Downloads/disk1.vdi
+
+10. Revisar el UUID de la imagen de disco generada:
+
+.. code-block:: bash
+
+    virt-filesystems -a /home/mogago/Downloads/disk1.vdi --all --long --uuid -h
 
         Name     Type       VFS  Label MBR Size Parent UUID
-        /dev/sda filesystem ext4 USBKS -   1,0G -      923f9681-d847-4560-9e44-87eb55794c86
-        /dev/sda device     -    -     -   1,0G -      -
+        /dev/sda filesystem ext4 USBKS -   100M -      456b92c7-7c4e-424d-8bcc-5f13618d52ac
+        /dev/sda device     -    -     -   100M -      -
 
+- Referencia 1: `Convert images with qemu-img convert`_
+- Referencia 2: `Check image UUID`_
+- Referencia 3: `Changing label of ext2 ext3 and ext4 type partitions`_
+- Referencia 4: `VBoxManage list vms`_
 
-.. figure:: images/ks_virtualbox/22-instalacion_centos7_ks_hd.png
+.. _Convert images with qemu-img convert: https://docs.openstack.org/image-guide/convert-images.html
+.. _Check image UUID: https://stackoverflow.com/questions/42885042/qemu-how-to-get-image-uuid
+.. _Changing label of ext2 ext3 and ext4 type partitions: https://www.tecmint.com/change-modify-linux-disk-partition-label-names/
+.. _VBoxManage list vms: https://stackoverflow.com/questions/5379799/how-to-check-the-uuid-of-a-virtualbox-vdi
+
+Una vez que tengamos la imagen de disco preparada podemos conectarlo en la máquina virtual:
+
+.. figure:: images/ks_virtualbox/22-instalacion_centos7_ks_hd_sdx.png
     :align: center
 
-.. figure:: images/ks_virtualbox/23-instalacion_centos7_ks_hd.png
+Al momento de arrancar el medio de instalación debemos presionar la tecla :guilabel:`Esc` para pasar la dirección del archivo Kickstart como parámetro en el momento de arranque (``boot:``).
+
+Usando el nombre ``sdX`` de la imagen de disco
+""""""""""""""""""""""""""""""""""""""""""""""
+
+Podemos indicar el dispositivo de la imagen de disco que contiene el archivo Kickstart usando su nombre ``sdX``. El dispositivo puede llamarse ``sda``, ``sdb``, ``sdc``, etc. dependiendo de la cantidad de dispositivos que tengamos conectados al sistema y el nombre arbitrario que se le haya asignado:
+
+.. code-block:: text
+
+    boot: linux ks=hd:sdb:/ks1.cfg
+
+.. figure:: images/ks_virtualbox/23-instalacion_centos7_ks_hd_sdx.png
     :align: center
 
-.. figure:: images/ks_virtualbox/24-instalacion_centos7_ks_hd.png
+.. figure:: images/ks_virtualbox/24-instalacion_centos7_ks_hd_sdx.png
     :align: center
 
-.. figure:: images/ks_virtualbox/25-instalacion_centos7_ks_hd.png
+La máquina virtual tiene conectada dos discos (``/dev/sda`` y ``/dev/sdb``). Si bien hemos obtenido correctamente el archivo Kickstart del diso ``sdb``, en otras ocasiones el disco que contenga el archivo Kickstart podría ser el disco ``sda``. En el caso que elijamos el disco sin nuestro archivo Kickstart, obtendremos el siguiente log de fallo:
+
+.. figure:: images/ks_virtualbox/25-instalacion_centos7_ks_hd_sdx.png
     :align: center
 
-.. figure:: images/ks_virtualbox/26-instalacion_centos7_ks_hd.png
+Una vez instalado el sistema operativo podemos comprobar que el tamaño virtual asignado a los discos sigue siendo identificable:
+
+.. figure:: images/ks_virtualbox/26-instalacion_centos7_ks_hd_sdx.png
     :align: center
+
+Usando el ``LABEL`` de la imagen de disco
+"""""""""""""""""""""""""""""""""""""""""
+
+El método de selección de la imagen de disco por su ``sdX`` puede resultar en fallo si es que no sabemos exactamente el nombre que el sistema le ha asignado a nuestro disco con el archivo Kickstart. Sin embargo, usar el ``LABEL`` o ``UUID`` del disco puede resultar más específico y evitar errores. Para usar el ``LABEL`` como parámetro de arranque usamos la siguiente forma:
+
+.. code-block:: text
+
+    boot: linux ks=hd:LABEL=USBKS:/ks1.cfg
+
+.. figure:: images/ks_virtualbox/27-instalacion_centos7_ks_hd_label.png
+    :align: center
+
+.. figure:: images/ks_virtualbox/28-instalacion_centos7_ks_hd_label.png
+    :align: center
+
+.. Note::
+
+    En el paso 5 del procedimiento de creación de una imagen de disco, le asignamos una LABEL a nuestro disco. En el paso 5 y el paso 10 comprobamos el nombre del LABEL asignado.
+
+- Referencia: `Testcase Kickstart Hd Device Path Ks Cfg`_
+
+.. _Testcase Kickstart Hd Device Path Ks Cfg: https://fedoraproject.org/wiki/QA:Testcase_Kickstart_Hd_Device_Path_Ks_Cfg
+
+Usando el ``UUID`` de la imagen de disco
+""""""""""""""""""""""""""""""""""""""""
+
+Al igual que la selección de la imagen de disco por su ``LABEL``, la elección del disco por su ``UUID`` es un método más exacto y menos sujeto a errores. Para usar el ``UUID`` como parámetro de arranque usamos la siguiente forma:
+
+.. code-block:: text
+
+    boot: linux ks=hd:UUID=456b92c7-7c4e-424d-8bcc-5f13618d52ac:/ks1.cfg
+
+.. figure:: images/ks_virtualbox/29-instalacion_centos7_ks_hd_uuid.png
+    :align: center
+
+.. figure:: images/ks_virtualbox/30-instalacion_centos7_ks_hd_uuid.png
+    :align: center
+
+.. Note::
+
+    En el paso 10 del procedimiento de creación de una imagen de disco comprobamos el UUID.
 
 Instalación de CentOS 7
 -----------------------
