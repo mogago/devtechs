@@ -785,7 +785,7 @@ Referencias
 .. _OpenStack-Ansible Architecture - Container networking: https://docs.openstack.org/openstack-ansible/train/reference/architecture/container-networking.html
 .. _OpenStack-Ansible - Project Update: https://www.youtube.com/watch?v=JZet1uNAr_o
 
-Flujo de instalación de OpenStack-Ansible
+Flujo de instalación de OpenStack-Ansible:
 
 - `OpenStack-Ansible Prepare the deployment host`_
 - `OpenStack-Ansible Prepare the target hosts`_

@@ -36,7 +36,7 @@
   <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Índice" href="../../../genindex.html" />
     <link rel="search" title="Búsqueda" href="../../../search.html" />
-    <link rel="next" title="Python" href="../../python/_python.html" />
+    <link rel="next" title="Kickstart Templates" href="../ks-templates/_ks-templates.html" />
     <link rel="prev" title="Kickstart Methods" href="_ks-methods.html" /> 
 </head>
 
@@ -99,21 +99,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../gnulinux/new-disk-dd.html">Creando una imagen de disco con <code class="docutils literal notranslate"><span class="pre">dd</span></code></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gnulinux/archlinux/_archlinux.html">ArchLinux</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../gnulinux/ubuntu/_ubuntu.html">Ubuntu</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Markdown</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
-</ul>
-<p class="caption"><span class="caption-text">OpenStack</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../openstack/_openstack.html">OpenStack</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-deploy/_openstack-deploy.html">OpenStack Deploy Methods</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-guide/_openstack-guide.html">OpenStack initial configuration</a></li>
-</ul>
-<p class="caption"><span class="caption-text">PXE</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gnulinux/linux-fundamentals/_linux-fundamentals.html">Linux Fundamentals (Sander van Vugt)</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Kickstart</span></p>
 <ul class="current">
@@ -124,6 +110,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#configuracion-de-vm-en-virtualbox">Configuración de VM en VirtualBox</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#formas-de-pasar-el-archivo-kickstart">Formas de pasar el archivo kickstart</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#archivo-kickstart-pasado-por-http">Archivo Kickstart pasado por HTTP</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#archivo-kickstart-pasado-por-el-mismo-iso-de-instalacion-custom-iso-image">Archivo Kickstart pasado por el mismo ISO de instalación (custom ISO image)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#archivo-kickstart-pasado-por-imagen-de-disco">Archivo Kickstart pasado por imagen de disco</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#instalacion-de-centos-7">Instalación de CentOS 7</a></li>
@@ -131,6 +119,25 @@
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../ks-templates/_ks-templates.html">Kickstart Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ks-options/_ks-options.html">Kickstart Options</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Markdown</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../markdown/_markdown.html">Markdown</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OpenStack</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-guide/_openstack-guide.html">OpenStack Guides</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-packstack-deployment/_openstack-packstack-deployment.html">OpenStack Packstack Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-ansible/_openstack-ansible.html">OpenStack-Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-installation-deployment/_openstack-installation-deployment.html">OpenStack Installation and Deployment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../openstack/openstack-essentials/_openstack-essentials.html">OpenStack Essentials</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PXE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/_pxe.html">PXE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pxe/pxe-guides/_pxe-guides.html">PXE Guides</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Python</span></p>
 <ul>
@@ -159,6 +166,12 @@
 <p class="caption"><span class="caption-text">Web</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../web/_web.html">Web</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Windows</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/_windows.html">Windows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/windows-subsystem-for-linux/_windows-subsystem-for-linux.html">Windows Subsystem For Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../windows/windows-ssh/_windows-subsystem-for-linux.html">SSH en Windows</a></li>
 </ul>
 
             
@@ -226,90 +239,98 @@
            <div itemprop="articleBody">
             
   <div class="section" id="kickstart-methods-usando-virtualbox">
-<h1><a class="toc-backref" href="#id22">Kickstart Methods - usando Virtualbox</a><a class="headerlink" href="#kickstart-methods-usando-virtualbox" title="Enlazar permanentemente con este título">¶</a></h1>
+<h1><a class="toc-backref" href="#id25">Kickstart Methods - usando Virtualbox</a><a class="headerlink" href="#kickstart-methods-usando-virtualbox" title="Enlazar permanentemente con este título">¶</a></h1>
 <div class="contents topic" id="table-of-contents">
 <p class="topic-title first">Table of Contents</p>
 <ul class="simple">
-<li><a class="reference internal" href="#kickstart-methods-usando-virtualbox" id="id22">Kickstart Methods - usando Virtualbox</a><ul>
-<li><a class="reference internal" href="#creacion-de-vm-en-virtualbox" id="id23">Creación de VM en VirtualBox</a></li>
-<li><a class="reference internal" href="#configuracion-de-vm-en-virtualbox" id="id24">Configuración de VM en VirtualBox</a></li>
-<li><a class="reference internal" href="#formas-de-pasar-el-archivo-kickstart" id="id25">Formas de pasar el archivo kickstart</a><ul>
-<li><a class="reference internal" href="#archivo-kickstart-pasado-por-http" id="id26">Archivo Kickstart pasado por HTTP</a></li>
+<li><a class="reference internal" href="#kickstart-methods-usando-virtualbox" id="id25">Kickstart Methods - usando Virtualbox</a><ul>
+<li><a class="reference internal" href="#creacion-de-vm-en-virtualbox" id="id26">Creación de VM en VirtualBox</a></li>
+<li><a class="reference internal" href="#configuracion-de-vm-en-virtualbox" id="id27">Configuración de VM en VirtualBox</a></li>
+<li><a class="reference internal" href="#formas-de-pasar-el-archivo-kickstart" id="id28">Formas de pasar el archivo kickstart</a><ul>
+<li><a class="reference internal" href="#archivo-kickstart-pasado-por-http" id="id29">Archivo Kickstart pasado por HTTP</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-pasado-por-el-mismo-iso-de-instalacion-custom-iso-image" id="id30">Archivo Kickstart pasado por el mismo ISO de instalación (custom ISO image)</a></li>
+<li><a class="reference internal" href="#archivo-kickstart-pasado-por-imagen-de-disco" id="id31">Archivo Kickstart pasado por imagen de disco</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#instalacion-de-centos-7" id="id27">Instalación de CentOS 7</a></li>
+<li><a class="reference internal" href="#instalacion-de-centos-7" id="id32">Instalación de CentOS 7</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <p><strong>Descripción de la documentación</strong>: Método de instalación de un SO basado en Red Hat Enterprise Linux usando VirtualBox y un archivo ISO como medio de instalación. Este procedimiento sirve como un escenario de pruebas fácil de implementar, con el fin de probar archivos Kickstart que automaticen la instalación del SO.</p>
 <div class="section" id="creacion-de-vm-en-virtualbox">
-<h2><a class="toc-backref" href="#id23">Creación de VM en VirtualBox</a><a class="headerlink" href="#creacion-de-vm-en-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id26">Creación de VM en VirtualBox</a><a class="headerlink" href="#creacion-de-vm-en-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
 <ol class="arabic simple">
 <li>En VirtualBox, crear una nueva VM haciendo clic en el botón <span class="guilabel">New</span>:</li>
 </ol>
 <div class="figure align-center" id="id1">
-<img alt="../../../_images/01-virtualbox_new_vm.png" src="../../../_images/01-virtualbox_new_vm.png" />
+<img alt="../../../_images/01-virtualbox_new_vm_ks.png" src="../../../_images/01-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Crear una nueva VM</span></p>
 </div>
 <ol class="arabic simple" start="2">
 <li>Nombrar el nombre de la VM y seleccionar el SO que deseemos instalar; en este caso, es un SO basado em Red Hat:</li>
 </ol>
 <div class="figure align-center" id="id2">
-<img alt="../../../_images/02-virtualbox_new_vm.png" src="../../../_images/02-virtualbox_new_vm.png" />
+<img alt="../../../_images/02-virtualbox_new_vm_ks.png" src="../../../_images/02-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Nombrar la VM y seleccionar el SO</span></p>
 </div>
 <ol class="arabic simple" start="3">
 <li>Elegir la cantidad de memoria RAM que deseemos asignarle a nuestra VM:</li>
 </ol>
 <div class="figure align-center" id="id3">
-<img alt="../../../_images/03-virtualbox_new_vm.png" src="../../../_images/03-virtualbox_new_vm.png" />
+<img alt="../../../_images/03-virtualbox_new_vm_ks.png" src="../../../_images/03-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Seleccionar la cantidad de RAM</span></p>
 </div>
 <ol class="arabic simple" start="4">
+<li>Seleccionar la opción <span class="guilabel">Create a virtual hard disk now</span>:</li>
+</ol>
+<div class="figure align-center">
+<img alt="../../../_images/04-virtualbox_new_vm_ks.png" src="../../../_images/04-virtualbox_new_vm_ks.png" />
+</div>
+<ol class="arabic simple" start="5">
 <li>Seleccionar como tipo de disco duro <span class="guilabel">VDI (VirtualBox Disk Image)</span>:</li>
 </ol>
 <div class="figure align-center" id="id4">
-<img alt="../../../_images/04-virtualbox_new_vm.png" src="../../../_images/04-virtualbox_new_vm.png" />
+<img alt="../../../_images/05-virtualbox_new_vm_ks.png" src="../../../_images/05-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Seleccionar el tipo de disco duro que será creado y conectado a la VM</span></p>
 </div>
-<ol class="arabic simple" start="5">
+<ol class="arabic simple" start="6">
 <li>Para el provisionamiento de espacio en el disco elegir la opción <span class="guilabel">Dynamically Allocated</span>:</li>
 </ol>
 <div class="figure align-center" id="id5">
-<img alt="../../../_images/05-virtualbox_new_vm.png" src="../../../_images/05-virtualbox_new_vm.png" />
+<img alt="../../../_images/06-virtualbox_new_vm_ks.png" src="../../../_images/06-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Seleccionar <span class="guilabel">Dynamically Allocated</span></span></p>
 </div>
-<ol class="arabic simple" start="6">
+<ol class="arabic simple" start="7">
 <li>Determinar la ubicación y tamaño del disco:</li>
 </ol>
 <div class="figure align-center" id="id6">
-<img alt="../../../_images/06-virtualbox_new_vm.png" src="../../../_images/06-virtualbox_new_vm.png" />
+<img alt="../../../_images/07-virtualbox_new_vm_ks.png" src="../../../_images/07-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Seleccionar la ubicación y tamaño del disco</span></p>
 </div>
 <p>Finalmente, clic en el botón <span class="guilabel">Create</span>.</p>
 </div>
 <div class="section" id="configuracion-de-vm-en-virtualbox">
-<h2><a class="toc-backref" href="#id24">Configuración de VM en VirtualBox</a><a class="headerlink" href="#configuracion-de-vm-en-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id27">Configuración de VM en VirtualBox</a><a class="headerlink" href="#configuracion-de-vm-en-virtualbox" title="Enlazar permanentemente con este título">¶</a></h2>
 <ol class="arabic simple">
 <li>Clic en el botón <span class="guilabel">Settings</span> para configurar la VM:</li>
 </ol>
 <div class="figure align-center" id="id7">
-<img alt="../../../_images/07-virtualbox_new_vm.png" src="../../../_images/07-virtualbox_new_vm.png" />
+<img alt="../../../_images/08-virtualbox_new_vm_ks.png" src="../../../_images/08-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Seleccionar la opción <span class="guilabel">Settings</span></span></p>
 </div>
 <ol class="arabic simple" start="2">
 <li>Seleccionar la pestaña <span class="guilabel">System</span> cambiar el orden de arranque, poniendo primero <span class="guilabel">Hard Disk</span> y luego <span class="guilabel">Optical</span>:</li>
 </ol>
 <div class="figure align-center" id="id8">
-<img alt="../../../_images/08-virtualbox_new_vm.png" src="../../../_images/08-virtualbox_new_vm.png" />
+<img alt="../../../_images/09-virtualbox_new_vm_ks.png" src="../../../_images/09-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Cambiar el orden de arranque del sistema en la pestaña <span class="guilabel">System</span></span></p>
 </div>
 <ol class="arabic simple" start="3">
 <li>Seleccionar la pestaña <span class="guilabel">Storage</span> y clic sobre el ícono de disco con nombre Empty:</li>
 </ol>
 <div class="figure align-center" id="id9">
-<img alt="../../../_images/09-virtualbox_new_vm.png" src="../../../_images/09-virtualbox_new_vm.png" />
+<img alt="../../../_images/10-virtualbox_new_vm_ks.png" src="../../../_images/10-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Cambiar a la pestaña <span class="guilabel">Storage</span></span></p>
 </div>
 <p>El método de instalación del sistema operativo usando en esta guía será a través un archivo ISO de CentOS 7 que contiene el medio de instalación.</p>
@@ -318,35 +339,35 @@
 <li>Clic el botón con ícono de disco en la parte derecha y seleccionar la opción <span class="guilabel">Choose Virtual Optical Disk File…</span>:</li>
 </ol>
 <div class="figure align-center" id="id10">
-<img alt="../../../_images/10-virtualbox_new_vm.png" src="../../../_images/10-virtualbox_new_vm.png" />
+<img alt="../../../_images/11-virtualbox_new_vm_ks.png" src="../../../_images/11-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Seleccionar el ícono del disco y elegir <span class="guilabel">Choose Virtual Optical Disk File…</span></span></p>
 </div>
 <ol class="arabic simple" start="5">
 <li>En el navegador de archivos, elegir el archivo ISO que servirá como medio de instalación del SO:</li>
 </ol>
 <div class="figure align-center" id="id11">
-<img alt="../../../_images/11-virtualbox_new_vm.png" src="../../../_images/11-virtualbox_new_vm.png" />
+<img alt="../../../_images/12-virtualbox_new_vm_ks.png" src="../../../_images/12-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Elegir el archivo <code class="docutils literal notranslate"><span class="pre">.iso</span></code> del instalador del SO desde el navegador de archivos</span></p>
 </div>
 <ol class="arabic simple" start="6">
 <li>Verificar que el archivo ISO se haya cargado en el controlador IDE. Luego clic en <span class="guilabel">OK</span></li>
 </ol>
 <div class="figure align-center" id="id12">
-<img alt="../../../_images/12-virtualbox_new_vm.png" src="../../../_images/12-virtualbox_new_vm.png" />
+<img alt="../../../_images/13-virtualbox_new_vm_ks.png" src="../../../_images/13-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Revisar la configuración de Storage y clic en <span class="guilabel">OK</span></span></p>
 </div>
 <ol class="arabic simple" start="7">
 <li>Iniciar la VM haciendo clic en la opción <span class="guilabel">Start</span>:</li>
 </ol>
 <div class="figure align-center" id="id13">
-<img alt="../../../_images/13-virtualbox_new_vm.png" src="../../../_images/13-virtualbox_new_vm.png" />
+<img alt="../../../_images/14-virtualbox_new_vm_ks.png" src="../../../_images/14-virtualbox_new_vm_ks.png" />
 <p class="caption"><span class="caption-text">VirtualBox - Arrancar la VM con el botón <span class="guilabel">Start</span></span></p>
 </div>
 <ol class="arabic simple" start="8">
 <li>Una vez cargue la página principal del instalador del SO, debemos presionar en el teclado la tecla <span class="guilabel">Esc</span> para ingresar a la opciones de <span class="guilabel">boot</span>:</li>
 </ol>
 <div class="figure align-center" id="id14">
-<img alt="../../../_images/14-instalacion_centos7.png" src="../../../_images/14-instalacion_centos7.png" />
+<img alt="../../../_images/15-instalacion_centos7_ks.png" src="../../../_images/15-instalacion_centos7_ks.png" />
 <p class="caption"><span class="caption-text">Centos 7 VM - En la página principal de carga para instalar el SO, presionar la tecla <span class="guilabel">Esc</span></span></p>
 </div>
 <p>Referencia: <a class="reference external" href="https://docs.centos.org/en-US/8-docs/standard-install/assembly_booting-installer/#editing-boot-options_booting-the-installer">Editing boot options</a></p>
@@ -354,29 +375,32 @@
 <li>Verificar que cargue la siguiente pantalla con el prompt de <code class="docutils literal notranslate"><span class="pre">boot:</span></code>:</li>
 </ol>
 <div class="figure align-center" id="id15">
-<img alt="../../../_images/15-instalacion_centos7.png" src="../../../_images/15-instalacion_centos7.png" />
+<img alt="../../../_images/16-instalacion_centos7_ks.png" src="../../../_images/16-instalacion_centos7_ks.png" />
 <p class="caption"><span class="caption-text">Centos 7 VM - Cargará una página con el mensaje <code class="docutils literal notranslate"><span class="pre">boot:</span></code></span></p>
 </div>
 </div>
 <div class="section" id="formas-de-pasar-el-archivo-kickstart">
-<h2><a class="toc-backref" href="#id25">Formas de pasar el archivo kickstart</a><a class="headerlink" href="#formas-de-pasar-el-archivo-kickstart" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id28">Formas de pasar el archivo kickstart</a><a class="headerlink" href="#formas-de-pasar-el-archivo-kickstart" title="Enlazar permanentemente con este título">¶</a></h2>
 <p>Existen distintas formas de pasar el archivo Kickstart al medio de instalación con el fin de automatizar el proceso de instalación.</p>
 <p>En el prompt de <code class="docutils literal notranslate"><span class="pre">boot:</span></code> podemos emplear el parámetro <code class="docutils literal notranslate"><span class="pre">ks=</span></code> e indicar a través de qué medio se pasará el archivo kickstart. Entre los métodos soportados para pasar el archivo kickstart están NFS (<code class="docutils literal notranslate"><span class="pre">nfs</span></code>), HTTP (<code class="docutils literal notranslate"><span class="pre">http</span></code>), Diskette (<code class="docutils literal notranslate"><span class="pre">floppy</span></code>), disco montado (<code class="docutils literal notranslate"><span class="pre">hd</span></code>), file system sin montar (<code class="docutils literal notranslate"><span class="pre">file</span></code>) y CD-ROM (<code class="docutils literal notranslate"><span class="pre">cdrom</span></code>).</p>
-<p>Referencia 1: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/installation_guide/s1-kickstart2-startinginstall">Starting a Kickstart installation</a></p>
+<p>Referencia 1: <a class="reference external" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/s1-kickstart2-startinginstall">Starting a Kickstart installation</a></p>
 <p>Referencia 2: <a class="reference external" href="https://www.ibm.com/support/knowledgecenter/linuxonibm/liaae/liaaekickstart.html">Fuentes de archivo kickstart</a></p>
 <div class="section" id="archivo-kickstart-pasado-por-http">
-<h3><a class="toc-backref" href="#id26">Archivo Kickstart pasado por HTTP</a><a class="headerlink" href="#archivo-kickstart-pasado-por-http" title="Enlazar permanentemente con este título">¶</a></h3>
-<p>En este método, obtenemos el archivo kickstart de un servidor a través de HTTP. Para esto, pasamos la URL de la página que tiene el archivo kickstart como en el siguiente ejemplo:</p>
+<h3><a class="toc-backref" href="#id29">Archivo Kickstart pasado por HTTP</a><a class="headerlink" href="#archivo-kickstart-pasado-por-http" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En este método obtenemos el archivo kickstart de un servidor a través de HTTP. Para esto, pasamos la URL de la página que tiene el archivo kickstart como en el siguiente ejemplo:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>boot: linux ks=http://raw.githubusercontent.com/mogago/kickstartfiles/master/ks1.cfg
 </pre></div>
 </div>
 <div class="figure align-center" id="id16">
-<img alt="../../../_images/16-instalacion_centos7-kickstart-cdrom.png" src="../../../_images/16-instalacion_centos7-kickstart-cdrom.png" />
+<img alt="../../../_images/17-instalacion_centos7_ks_http.png" src="../../../_images/17-instalacion_centos7_ks_http.png" />
 <p class="caption"><span class="caption-text">Centos 7 VM - Ingresar la dirección URL correcta para obtener el archivo kickstart</span></p>
+</div>
+<div class="figure align-center">
+<img alt="../../../_images/18-instalacion_centos7_ks_http.png" src="../../../_images/18-instalacion_centos7_ks_http.png" />
 </div>
 <div class="admonition important">
 <p class="first admonition-title">Importante</p>
-<p class="last">La página que contiene el archivo kickstart no debe tener ningún tipo de equitas HTML ni formatos extra, solo debe contener el archivo kickstart en texto plano. Comprobar esto usando <code class="docutils literal notranslate"><span class="pre">wget</span></code> con la página web en un terminal de comandos.</p>
+<p class="last">La página que contiene el archivo kickstart no debe tener ningún tipo de etiquetas HTML ni formatos extra, solo debe contener el archivo kickstart en texto plano. Comprobar esto usando <code class="docutils literal notranslate"><span class="pre">wget</span></code> con la página web en un terminal de comandos.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Nota</p>
@@ -384,12 +408,12 @@
 </div>
 <p>En este ejemplo se está usando GitHub como repositorio de los archivos Kickstart:</p>
 <div class="figure align-center" id="id17">
-<img alt="../../../_images/github-sample-kickstart.png" src="../../../_images/github-sample-kickstart.png" />
+<img alt="../../../_images/github-ks-sample-repo.png" src="../../../_images/github-ks-sample-repo.png" />
 <p class="caption"><span class="caption-text">GitHub - Archivo Kickstart de ejemplo</span></p>
 </div>
 <p>Pero para obtener el archivo Kickstart en texto plano debemos seleccionar el botón <span class="guilabel">Raw</span> en la página anterior, lo cual nos redirigirá a otra URL:</p>
 <div class="figure align-center" id="id18">
-<img alt="../../../_images/github-sample-kickstart-raw.png" src="../../../_images/github-sample-kickstart-raw.png" />
+<img alt="../../../_images/github-ks-sample-raw.png" src="../../../_images/github-ks-sample-raw.png" />
 <p class="caption"><span class="caption-text">GitHub - Archivo Kickstart de ejemplo en formato raw</span></p>
 </div>
 <p>Ya que en esta página solo obtenemos el archivo Kickstart en texto plano, podremos emplear esta dirección URL como parámetro de <code class="docutils literal notranslate"><span class="pre">ks=http://</span></code>.</p>
@@ -398,28 +422,230 @@
 <p class="last">Este método requiere conexión al servidor web remoto que proporcione el archivo Kickstart. En caso el archivo Kickstart se encuentre en la web, podemos tener una interfaz conectada a una red con un servidor DHCP y obtener una IP y salida a Internet. Por ejemplo, en VirtualBox podemos usar una red NAT o Bridged.</p>
 </div>
 </div>
+<div class="section" id="archivo-kickstart-pasado-por-el-mismo-iso-de-instalacion-custom-iso-image">
+<h3><a class="toc-backref" href="#id30">Archivo Kickstart pasado por el mismo ISO de instalación (custom ISO image)</a><a class="headerlink" href="#archivo-kickstart-pasado-por-el-mismo-iso-de-instalacion-custom-iso-image" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En este método obtendremos el archivo kickstart del mismo archivo ISO usado para obtener el medio de instalación (kernel, repos, etc.). Para lograr, esto deberemos modificar un imagen ISO oficial, agregarle nuestro archivo kickstart y volver a generar una imagen ISO modficada (también llamada <strong>custom ISO image</strong>). A este método de volver a generar una imagen ISO con ciertas modificaciones personalizadas se le llama <strong>Repackaging de un Linux Install ISO</strong>.</p>
+<p>Para esto, primero crearemos nuestra imagen ISO personalizada a través de los siguientes pasos:</p>
+<ol class="arabic simple">
+<li>Crear un directorio para montar nuestro fuente ISO:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i
+mkdir /tmp/bootiso
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li>Hacer un <strong>loop mount</strong> de nuestra imagen ISO oficial (CentOS/RedHat) que modificaremos:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mount -o loop ~/images/ISOS/CentOS-7-x86_64-Minimal-1908.iso /tmp/bootiso
+</pre></div>
+</div>
+<ol class="arabic simple" start="3">
+<li>Crear un directorio de trabajo para nuestro medio personalizado:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir /tmp/bootisoks
+</pre></div>
+</div>
+<ol class="arabic simple" start="4">
+<li>Copiar la fuente de medios al directorio de trabajo:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp -r /tmp/bootiso/* /tmp/bootisoks/
+</pre></div>
+</div>
+<ol class="arabic simple" start="5">
+<li>Desmontar la fuente ISO y eliminar el directorio:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>umount /tmp/bootiso
+rmdir /tmp/bootiso
+</pre></div>
+</div>
+<ol class="arabic simple" start="6">
+<li>Cambiar los permisos en el directorio de trabajo:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod -R u+w /tmp/bootisoks
+</pre></div>
+</div>
+<ol class="arabic simple" start="7">
+<li>Copiar nuestro archivo kickstart personalizado en el directorio de trabajo, bajo el directorio <code class="docutils literal notranslate"><span class="pre">isolinux/</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp /path/to/someks.cfg /tmp/bootisoks/isolinux/ks1.cfg
+
+cat /tmp/bootisoks/isolinux/ks1.cfg
+
+<span class="c1"># install</span>
+<span class="c1"># cdrom</span>
+<span class="c1"># bootloader --location=mbr</span>
+<span class="c1"># keyboard --vckeymap=latam --xlayouts=&#39;latam&#39;,&#39;us&#39;</span>
+<span class="c1"># rootpw --iscrypted $1$WUDGBrnr$Bq8p.jk4ikcEr2JYJRMwE0</span>
+<span class="c1"># lang en_US.UTF-8 --addsupport=es_US.UTF-8</span>
+<span class="c1"># clearpart --all --initlabel</span>
+<span class="c1"># part / --fstype=&quot;ext4&quot; --grow --ondisk=sda --size=1</span>
+<span class="c1"># timezone America/Lima</span>
+<span class="c1"># reboot</span>
+<span class="c1">#</span>
+<span class="c1"># %packages</span>
+<span class="c1"># %end</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="8">
+<li>(Opcional) Copiar cualquier RPM adicional a la estructura de directorio y actualizar la metadata:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp /path/to/*.rpm /tmp/bootisoks/Packages/.
+<span class="nb">cd</span> /tmp/bootisoks/Packages <span class="o">&amp;&amp;</span> createrepo -dpo .. .
+</pre></div>
+</div>
+<ol class="arabic simple" start="9">
+<li>(Opcional) Para que las opciones de instalación del menú inicial arranquen usen el archivo Kickstart debemos modificar las opciones de boot en el archivo <code class="docutils literal notranslate"><span class="pre">isolinux.cfg</span></code>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sed -i <span class="s1">&#39;s/append\ initrd\=initrd.img/append initrd=initrd.img\ ks\=cdrom:\/ks1.cfg/&#39;</span> /tmp/bootisoks/isolinux/isolinux.cfg
+</pre></div>
+</div>
+<ol class="arabic simple" start="10">
+<li>Crear el nuevo archivo ISO personalizado:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /tmp/bootisoks
+mkisofs -o /tmp/boot.iso -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size <span class="m">4</span> -boot-info-table -V <span class="s2">&quot;CentOS 7 x86_64&quot;</span> -R -J -v -T isolinux/. .
+</pre></div>
+</div>
+<ol class="arabic simple" start="11">
+<li>(Opcional) Usar <code class="docutils literal notranslate"><span class="pre">isohybrid</span></code> si queremos aplicar <code class="docutils literal notranslate"><span class="pre">dd</span></code> sobre el archivo ISO en un dispositivo USB booteable:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>isohybrid /tmp/boot.iso
+</pre></div>
+</div>
+<ol class="arabic simple" start="12">
+<li>(Opcional) Añadir un MD5 checksum para permitir realizar pruebas con el medio:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>implantisomd5 /tmp/boot.iso
+</pre></div>
+</div>
+<p>Ahora debemos cambiar la imagen ISO de CentOS por la que acabamos de crear en la interfaz de VirtualBox:</p>
+<div class="figure align-center" id="id19">
+<img alt="../../../_images/19-instalacion_centos7_ks_cdrom.png" src="../../../_images/19-instalacion_centos7_ks_cdrom.png" />
+<p class="caption"><span class="caption-text">VirtualBox - seleccionar la imagen ISO personalizada</span></p>
+</div>
+<p>Al momento de arrancar el medio de instalación, si no hemos usado el paso 9 para editar el archivo <code class="docutils literal notranslate"><span class="pre">isolinux/isolinux.cfg</span></code> y se agregue el archivo Kickstart a las opciones de instalación del menú inicial, deberemos entrar al prompt de <code class="docutils literal notranslate"><span class="pre">boot:</span></code> (tecla <span class="guilabel">Esc</span> al cargar  el medio de instalación). Aquí, escribiremos:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>boot: linux ks=cdrom:/ks1.cfg
+</pre></div>
+</div>
+<div class="figure align-center" id="id20">
+<img alt="../../../_images/20-instalacion_centos7_ks_cdrom.png" src="../../../_images/20-instalacion_centos7_ks_cdrom.png" />
+<p class="caption"><span class="caption-text">Centos 7 VM - Ingresar la dirección al archivo kickstart (el directorio actual es <code class="docutils literal notranslate"><span class="pre">isolinux/</span></code>)</span></p>
+</div>
+<div class="figure align-center">
+<img alt="../../../_images/21-instalacion_centos7_ks_cdrom.png" src="../../../_images/21-instalacion_centos7_ks_cdrom.png" />
+</div>
+<ul class="simple">
+<li>Referencia 1: <a class="reference external" href="https://serverfault.com/questions/517908/how-to-create-a-custom-iso-image-in-centos">How to create a custom ISO image in CentOS</a></li>
+<li>Referencia 2: <a class="reference external" href="https://bencane.com/2013/06/12/mkisofs-repackaging-a-linux-install-iso/">mkisofs - Repackaging a Linux Install ISO</a></li>
+<li>Referencia 3: <a class="reference external" href="https://wiki.osdev.org/Mkisofs">Mkisofs Wiki</a></li>
+</ul>
+</div>
+<div class="section" id="archivo-kickstart-pasado-por-imagen-de-disco">
+<h3><a class="toc-backref" href="#id31">Archivo Kickstart pasado por imagen de disco</a><a class="headerlink" href="#archivo-kickstart-pasado-por-imagen-de-disco" title="Enlazar permanentemente con este título">¶</a></h3>
+<p>En este método obtendremos el archivo kickstart mediante una imagen de disco. Para el caso de VirtualBox usaremos almacenaremos el archivo Kickstart en una images de disco tipo <code class="docutils literal notranslate"><span class="pre">vdi</span></code>. Sin embargo, en servidores físicas podemos usar imágenes con formato raw (<code class="docutils literal notranslate"><span class="pre">.img</span></code>). Para crear una imagen con este contenido debemos seguir los siguientes pasos:</p>
+<ol class="arabic simple">
+<li>Siguiendo la guía <a href="#id33"><span class="problematic" id="id34">`Creando un disco virtual`_</span></a>:</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo -i
+dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>/media/disk1.img <span class="nv">bs</span><span class="o">=</span>100M <span class="nv">count</span><span class="o">=</span><span class="m">1</span>
+
+    <span class="m">1</span>+0 records in
+    <span class="m">1</span>+0 records out
+    <span class="m">104857600</span> bytes <span class="o">(</span><span class="m">105</span> MB, <span class="m">100</span> MiB<span class="o">)</span> copied, <span class="m">0</span>,0962088 s, <span class="m">1</span>,1 GB/s
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkfs -t ext4 /media/disk1.img
+
+    mke2fs <span class="m">1</span>.44.1 <span class="o">(</span><span class="m">24</span>-Mar-2018<span class="o">)</span>
+    Discarding device blocks: <span class="k">done</span>
+    Creating filesystem with <span class="m">102400</span> 1k blocks and <span class="m">25688</span> inodes
+    Filesystem UUID: c08e1aa7-8aff-45ed-a913-6aba75bbed9d
+    Superblock backups stored on blocks:
+            <span class="m">8193</span>, <span class="m">24577</span>, <span class="m">40961</span>, <span class="m">57345</span>, <span class="m">73729</span>
+
+    Allocating group tables: <span class="k">done</span>
+    Writing inode tables: <span class="k">done</span>
+    Creating journal <span class="o">(</span><span class="m">4096</span> blocks<span class="o">)</span>: <span class="k">done</span>
+    Writing superblocks and filesystem accounting information: <span class="k">done</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir /mnt/vhd
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mount -t auto -o loop /media/disk1.img /mnt/vhd/
+</pre></div>
+</div>
+<p>Revisar qué loop tiene el punto de montado</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsblsk <span class="p">|</span> grep /mnt/vhd
+
+    loop12   <span class="m">7</span>:12   <span class="m">0</span>   100M  <span class="m">0</span> loop /mnt/vhd
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>e2label /dev/loop12 USBKS
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsblk -o name,mountpoint,label,size,uuid
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp /path/to/ks1.cfg /mnt/vhd/ks1.cfg
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>umount /mnt/vhd
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>qemu-img convert -f raw -O vdi /media/disk1.img /home/gabriel/Downloads/disk1.vdi
+chown gabriel:gabriel /home/gabriel/Downloads/disk1.vdi
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>virt-filesystems -a /home/gabriel/Downloads/disk1.vdi --all --long --uuid -h
+
+    Name     Type       VFS  Label MBR Size Parent UUID
+    /dev/sda filesystem ext4 USBKS -   <span class="m">1</span>,0G -      923f9681-d847-4560-9e44-87eb55794c86
+    /dev/sda device     -    -     -   <span class="m">1</span>,0G -      -
+</pre></div>
+</div>
+<div class="figure align-center">
+<img alt="../../../_images/22-instalacion_centos7_ks_hd.png" src="../../../_images/22-instalacion_centos7_ks_hd.png" />
+</div>
+<div class="figure align-center">
+<img alt="../../../_images/23-instalacion_centos7_ks_hd.png" src="../../../_images/23-instalacion_centos7_ks_hd.png" />
+</div>
+<div class="figure align-center">
+<img alt="../../../_images/24-instalacion_centos7_ks_hd.png" src="../../../_images/24-instalacion_centos7_ks_hd.png" />
+</div>
+<div class="figure align-center">
+<img alt="../../../_images/25-instalacion_centos7_ks_hd.png" src="../../../_images/25-instalacion_centos7_ks_hd.png" />
+</div>
+<div class="figure align-center">
+<img alt="../../../_images/26-instalacion_centos7_ks_hd.png" src="../../../_images/26-instalacion_centos7_ks_hd.png" />
+</div>
+</div>
 </div>
 <div class="section" id="instalacion-de-centos-7">
-<h2><a class="toc-backref" href="#id27">Instalación de CentOS 7</a><a class="headerlink" href="#instalacion-de-centos-7" title="Enlazar permanentemente con este título">¶</a></h2>
+<h2><a class="toc-backref" href="#id32">Instalación de CentOS 7</a><a class="headerlink" href="#instalacion-de-centos-7" title="Enlazar permanentemente con este título">¶</a></h2>
 <ol class="arabic simple">
-<li>Inmediatamente luego de presionar el botón <span class="guilabel">Enter</span> en el prompt de <code class="docutils literal notranslate"><span class="pre">boot:</span></code> comenzará el proceso de instalación automatizado con el archivo Kickstart que hemos pasado:</li>
+<li>Inmediatamente luego de presionar el botón <span class="guilabel">Enter</span> en el prompt de <code class="docutils literal notranslate"><span class="pre">boot:</span></code> comenzará el proceso de instalación automatizado con el archivo Kickstart que hemos pasado. Dependiendo de la configuración de Kickstart, una instalación en modo gráfico o en modo texto, obtendremos una de las siguientes dos pantallas:</li>
 </ol>
-<div class="figure align-center" id="id19">
-<img alt="../../../_images/17-instalacion_centos7.png" src="../../../_images/17-instalacion_centos7.png" />
-<p class="caption"><span class="caption-text">Centos 7 VM - Iniciará el proceso de instalación automatizado leyendo la plantilla en Kickstart</span></p>
+<div class="figure align-center" id="id21">
+<img alt="../../../_images/instalacion_centos7_ks_graphical_mode.png" src="../../../_images/instalacion_centos7_ks_graphical_mode.png" />
+<p class="caption"><span class="caption-text">Centos 7 VM - Iniciará el proceso de instalación automatizado en modo gráfico</span></p>
+</div>
+<div class="figure align-center" id="id22">
+<img alt="../../../_images/instalacion_centos7_ks_text_mode.png" src="../../../_images/instalacion_centos7_ks_text_mode.png" />
+<p class="caption"><span class="caption-text">Centos 7 VM - Iniciará el proceso de instalación automatizado en modo texto</span></p>
 </div>
 <ol class="arabic simple" start="2">
 <li>Una vez acabada la instalación desatentidada del SO, la VM se reiniciará automáticamente y cargará desde el disco instalado:</li>
 </ol>
-<div class="figure align-center" id="id20">
-<img alt="../../../_images/18-instalacion_centos7.png" src="../../../_images/18-instalacion_centos7.png" />
+<div class="figure align-center" id="id23">
+<img alt="../../../_images/startup_centos7_1.png" src="../../../_images/startup_centos7_1.png" />
 <p class="caption"><span class="caption-text">Centos 7 VM - Iniciará el sistema CentOS 7 instalado</span></p>
 </div>
 <ol class="arabic simple" start="3">
 <li>Finalmente, iniciará el SO CentOS instalado automáticamente con Kickstart:</li>
 </ol>
-<div class="figure align-center" id="id21">
-<img alt="../../../_images/19-instalacion_centos7.png" src="../../../_images/19-instalacion_centos7.png" />
+<div class="figure align-center" id="id24">
+<img alt="../../../_images/startup_centos7_2.png" src="../../../_images/startup_centos7_2.png" />
 <p class="caption"><span class="caption-text">Centos 7 VM - Sistema operativo CentOS 7 funcionando</span></p>
 </div>
 </div>
@@ -433,7 +659,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../python/_python.html" class="btn btn-neutral float-right" title="Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../ks-templates/_ks-templates.html" class="btn btn-neutral float-right" title="Kickstart Templates" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="_ks-methods.html" class="btn btn-neutral float-left" title="Kickstart Methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
