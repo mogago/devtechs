@@ -163,7 +163,7 @@ En este método obtenemos el archivo kickstart de un servidor a través de HTTP.
 
 .. code-block:: text
 
-    boot: linux ks=http://raw.githubusercontent.com/mogago/kickstartfiles/master/ks1.cfg
+    boot: linux ks=http://raw.githubusercontent.com/mogago/kickstart/master/ks1.cfg
 
 .. figure:: images/ks_virtualbox/17-instalacion_centos7_ks_http.png
     :align: center
