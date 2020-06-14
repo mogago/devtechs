@@ -285,12 +285,17 @@ Para esto, primero crearemos nuestra imagen ISO personalizada a través de los s
 
     sed -i 's/append\ initrd\=initrd.img/append initrd=initrd.img\ ks\=cdrom:\/ks1.cfg/' /tmp/bootisoks/isolinux/isolinux.cfg
 
-10. Crear el nuevo archivo ISO personalizado:
+10. Crear el nuevo archivo ISO personalizado y conceder permisos al usuario:
 
 .. code-block:: bash
 
     cd /tmp/bootisoks
+
     mkisofs -o /tmp/boot.iso -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -V "CentOS 7 x86_64" -R -J -v -T isolinux/. .
+
+.. code-block:: bash
+
+    chown mogago:mogago /tmp/boot.iso
 
 11. (Opcional) Usar ``isohybrid`` si queremos aplicar ``dd`` sobre el archivo ISO en un dispositivo USB booteable:
 

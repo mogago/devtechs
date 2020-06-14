@@ -517,10 +517,14 @@ cat /tmp/bootisoks/isolinux/ks1.cfg
 </pre></div>
 </div>
 <ol class="arabic simple" start="10">
-<li>Crear el nuevo archivo ISO personalizado:</li>
+<li>Crear el nuevo archivo ISO personalizado y conceder permisos al usuario:</li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /tmp/bootisoks
+
 mkisofs -o /tmp/boot.iso -b isolinux.bin -c boot.cat -no-emul-boot -boot-load-size <span class="m">4</span> -boot-info-table -V <span class="s2">&quot;CentOS 7 x86_64&quot;</span> -R -J -v -T isolinux/. .
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chown mogago:mogago /tmp/boot.iso
 </pre></div>
 </div>
 <ol class="arabic simple" start="11">
